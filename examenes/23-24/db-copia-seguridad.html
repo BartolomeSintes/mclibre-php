@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Copia de seguridad. Bases de datos. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Bases de datos - Copia de seguridad</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Copia de seguridad</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que el administrador pueda hacer una copia de seguridad de la base de datos. La copia de seguridad no es completa, por simplicidad solo incluirá la creación de tablas y la creación de registros. La aplicación debe funcionar tanto en SQLite como en MySQL. Haga una captura de la pantalla en phpMyAdmin en la que se vea la base de datos de la aplicación y el contenido de la tabla de usuarios.</p>
+
+  <section id="comentarios">
+    <h2>Copia de seguridad - Comentarios</h2>
+
+    <p>Menú administrador</p>
+    <ul>
+      <li>El menú Administrador contiene una opción "Copia de seguridad":
+        <p class="captura"><img src="img/db-copia-seguridad-1.png" alt="Copia de seguridad" width="1188" height="110"></p>
+      </li>
+    </ul>
+
+    <p>Copia de seguridad</p>
+    <ul>
+      <li>Al elegir esta opción se mostrará un fichero de texto con el contenido del fichero .sql, que el usuario debería guardar por su cuenta. Este sería el contenido en una base en la que se han cargado los registros de demo:
+        <p class="captura"><img src="img/db-copia-seguridad-2.png" alt="Copia de seguridad" width="1188" height="220"></p>
+      </li>
+      <li>Este sería el texto que se obtendría al ver el código fuente de la página anterior:
+        <div class="codigo">
+          <pre>
+<code class="language-sql">--
+-- Estructura de tabla para la tabla `personas`
+--
+
+CREATE TABLE `personas` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nombre` varchar(40) DEFAULT NULL,
+  `apellidos` varchar(60) DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `correo` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+INSERT INTO `personas` (`id`, `nombre`, `apellidos`, `telefono`, `correo`) VALUES
+(1, 'Pepito', 'Conejo', '271828182', 'pepito.conejo@example.com'),
+(2, 'Numa', 'Nigerio', '161803398', 'numa.nigerio@example.com'),
+(3, 'Fulanito', 'Mengánez', '314159265', 'fulanito.menganez@example.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `usuario` varchar(20) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `nivel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nivel`) VALUES
+(1, 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', '20'),
+(2, 'usuario1', 'a0ccddd9e5ddd2617e88f6515a2998f0119b6e99fd2bfef049550ad983af9fa0', '10'),
+(3, 'usuario2', '534063df44e5903915d9ae79265073e51d5f21950b3af1102029378cce270f8a', '10'),
+(4, 'admin1', '25f43b1486ad95a1398e3eeb3d83bc4010015fcc9bedb35b432e00298d5021f7', '20');
+</code>
+</pre>
+        </div>
+      </li>
+      <li>Si una tabla no contiene registros, en la copia de seguridad se creará la tabla, pero no se insertará registros.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 12 de febrero de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
