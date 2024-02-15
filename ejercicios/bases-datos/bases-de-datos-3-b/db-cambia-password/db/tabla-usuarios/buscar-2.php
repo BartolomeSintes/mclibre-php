@@ -95,6 +95,7 @@ if ($usuarioOk && $registrosEncontradosOk) {
         print "              <button name=\"ordena\" value=\"password DESC\" class=\"boton-invisible\">\n";
         print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
+        print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"nivel ASC\" class=\"boton-invisible\">\n";
         print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
@@ -103,7 +104,6 @@ if ($usuarioOk && $registrosEncontradosOk) {
         print "              <button name=\"ordena\" value=\"nivel DESC\" class=\"boton-invisible\">\n";
         print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
-        print "            </th>\n";
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
