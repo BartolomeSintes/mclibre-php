@@ -21,7 +21,7 @@ cabecera("Usuarios - Añadir 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario   = recoge("usuario");
 $password  = recoge("password");
-$nivel     = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
+$nivel     = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"]);
 $registros = recoge("registros");
 
 $usuarioOk   = false;

@@ -21,7 +21,7 @@ cabecera("Usuarios - Modificar 3", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario          = recoge("usuario");
 $password         = recoge("password");
-$nivel            = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
+$nivel            = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"]);
 $id               = recoge("id");
 $mantenerPassword = recoge("mantenerPassword", default: "No", allowed: ["No", "Sí"]);
 
