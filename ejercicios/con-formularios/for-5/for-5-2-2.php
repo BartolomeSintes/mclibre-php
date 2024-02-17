@@ -92,7 +92,7 @@ if ($cuadradosOk) {
     $colorFondo    = "white";
 
     // Dibujo nº 1
-    $largoDibujo = $largoCuadrado * $cuadrados + $hueco  * ($cuadrados - 1) ;
+    $largoDibujo = $largoCuadrado * $cuadrados + $hueco  * ($cuadrados - 1);
 
     print "  <h2>Dibujo nº 1</h2>\n";
     print "\n";
@@ -114,7 +114,7 @@ if ($cuadradosOk) {
     print "\n";
 
     // Dibujo nº 2
-    $largoDibujo = $largoCuadrado * $cuadrados + + $hueco  * ($cuadrados - 1) ;
+    $largoDibujo = $largoCuadrado * $cuadrados + + $hueco  * ($cuadrados - 1);
 
     print "  <h2>Dibujo nº 2</h2>\n";
     print "\n";
