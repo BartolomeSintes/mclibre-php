@@ -109,13 +109,14 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
+
     if (!isset($_SESSION["conectado"])) {
         if ($menu == MENU_PRINCIPAL) {
             print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
         } elseif ($menu == MENU_VOLVER) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (no conectado)</li>\n";
         }
     } elseif ($_SESSION["conectado"] == NIVEL_1) {
         if ($menu == MENU_PRINCIPAL) {
@@ -127,7 +128,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
             print "        <li><a href=\"listar.php\">Listar</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (nivel 1)</li>\n";
         }
     } else {
         if ($menu == MENU_PRINCIPAL) {
@@ -171,7 +172,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
             print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (nivel 2)</li>\n";
         }
     }
     print "      </ul>\n";

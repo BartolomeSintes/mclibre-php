@@ -113,7 +113,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } elseif ($menu == MENU_VOLVER) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (no conectado)</li>\n";
         }
     } else {
         if ($menu == MENU_PRINCIPAL) {
@@ -130,7 +130,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
             print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (conectado)</li>\n";
         }
     }
     print "      </ul>\n";

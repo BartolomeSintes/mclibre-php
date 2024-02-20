@@ -101,7 +101,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
             print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (no conectado)</li>\n";
         }
     } elseif ($_SESSION["nivel"] == 1) {
         if ($menu == MENU_PRINCIPAL) {
@@ -110,7 +110,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
             print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (nivel 1)</li>\n";
         }
     } elseif ($_SESSION["nivel"] == 2 || $_SESSION["nivel"] == 3) {
         if ($menu == MENU_PRINCIPAL) {
@@ -131,7 +131,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
             print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
         } else {
-            print "        <li>Error en la selección de menú</li>\n";
+            print "        <li>Error en la selección de menú (nivel 2 y 3)</li>\n";
         }
     }
     print "      </ul>\n";
