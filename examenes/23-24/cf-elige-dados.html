@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Elige dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Elige dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Elige dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule la tirada de varios dados (de 1 a 10) de diferentes caras.</p>
+
+  <section id="comentarios">
+    <h2>Elige dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página muestra un formulario con dos controles:
+            <ul>
+              <li>El número de datos a mostrar (entre 1 y 10).</li>
+              <li>El tipo de dado (sólidos platónicos)</li>
+            </ul>
+          </li>
+          <li>Se recuerda que:
+            <ul>
+              <li>Un tetraedro tiene cuatro caras triangulares</li>
+              <li>Un cubo tiene seis caras cuadradas</li>
+              <li>Un octaedro tiene ocho caras triangulares</li>
+              <li>Un dodecaedro tiene doce caras pentagonales</li>
+              <li>Un icosaedro tiene veinte caras triangulares</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>La segunda página mostrará:
+        <ul>
+          <li>El tipo y número de dados solicitados.</li>
+          <li>El valor de los dados podrá estar girado.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
+      <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la segunda página, sólo cambiarán los valores de los dados.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cf-elige-dados-1.png" alt="Elige dados" width="1188" height="210"></p>
+        <p class="captura"><img src="img/cf-elige-dados-2.png" alt="Elige dados" width="1188" height="160"></p>
+        <p class="captura"><img src="img/cf-elige-dados-3.png" alt="Elige dados" width="1188" height="160"></p>
+        <p class="captura"><img src="img/cf-elige-dados-4.png" alt="Elige dados" width="1188" height="290"></p>
+        <p class="captura"><img src="img/cf-elige-dados-5.png" alt="Elige dados" width="1188" height="290"></p>
+        <p class="captura"><img src="img/cf-elige-dados-6.png" alt="Elige dados" width="1188" height="290"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Elige dados - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4 tetraedro(s)</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      <span class="codigo-resaltado">&lt;polygon points="0,112 60,8 120,112" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;</span>
+      <span class="codigo-resaltado">&lt;text x="60" y="92" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">120</span> 60 75)"&gt;<span class="codigo-resaltado">1</span>&lt;/text&gt;</span>
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="0,112 60,8 120,112" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="92" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">240</span> 60 75)"&gt;<span class="codigo-resaltado">2</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="0,112 60,8 120,112" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="92" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">120</span> 60 75)"&gt;<span class="codigo-resaltado">2</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="0,112 60,8 120,112" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="92" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">240</span> 60 75)"&gt;<span class="codigo-resaltado">2</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+  &lt;/p&gt;
+</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">3 cubo(s)</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      <span class="codigo-resaltado">&lt;polygon points="0,0 120,0 120,120 0,120" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;</span>
+      <span class="codigo-resaltado">&lt;text x="60" y="80" text-anchor="middle" style="text-decoration: underline; font-size: 50pt" transform="rotate(<span class="codigo-resaltado">180</span> 60 60)"&gt;<span class="codigo-resaltado">3</span>&lt;/text&gt;</span>
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="0,0 120,0 120,120 0,120" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="80" text-anchor="middle" style="text-decoration: underline; font-size: 50pt" transform="rotate(<span class="codigo-resaltado">90</span> 60 60)"&gt;<span class="codigo-resaltado">6</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="0,0 120,0 120,120 0,120" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="80" text-anchor="middle" style="text-decoration: underline; font-size: 50pt" transform="rotate(<span class="codigo-resaltado">0</span> 60 60)"&gt;<span class="codigo-resaltado">2</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4 dodecaedro(s)</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      <span class="codigo-resaltado">&lt;polygon points="60,2.9 120,46.5 97,117.1 23,117.1 0,46.5" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;</span>
+      <span class="codigo-resaltado">&lt;text x="60" y="85" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">288</span> 60 65)"&gt;<span class="codigo-resaltado">10</span>&lt;/text&gt;</span>
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="60,2.9 120,46.5 97,117.1 23,117.1 0,46.5" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="85" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">0</span> 60 65)"&gt;<span class="codigo-resaltado">12</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="60,2.9 120,46.5 97,117.1 23,117.1 0,46.5" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="85" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">216</span> 60 65)"&gt;<span class="codigo-resaltado">3</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="140" height="140" viewBox="-10 -10 140 140"&gt;
+      &lt;polygon points="60,2.9 120,46.5 97,117.1 23,117.1 0,46.5" fill="#E0E0E0" stroke="black" stroke-width="5" stroke-linejoin="round" /&gt;
+      &lt;text x="60" y="85" text-anchor="middle" style="text-decoration: underline; font-size: 40pt" transform="rotate(<span class="codigo-resaltado">72</span> 60 65)"&gt;<span class="codigo-resaltado">1</span>&lt;/text&gt;
+    &lt;/svg&gt;
+
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 19 de febrero de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

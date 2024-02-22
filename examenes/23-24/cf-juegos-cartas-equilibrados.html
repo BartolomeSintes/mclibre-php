@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>¿Juegos de cartas equilibrados?. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - ¿Juegos de cartas equilibrados?</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - ¿Juegos de cartas equilibrados?</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de un juego de cartas. En este juego cada jugador saca un número de cartas  numeradas correlativamente al azar. Habrá conseguido su objetivo si, al sacar alguna de las cartas, el número de orden coincide con el número de la carta. Gana el juego el jugador que haya conseguido su objetivo cuando el otro jugador no lo ha conseguido.</p>
+
+  <p><strong>Nota:</strong>: El juego es casi equilibrado aunque el número de cartas no coincida, ya que la probabilidad de no conseguir el objetivo es casi del 36,8% a partir de 5 cartas (exactamente !n/n! siendo n el número de cartas).</p>
+
+  <section id="comentarios">
+    <h2>¿Juegos de cartas equilibrados? - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página muestra un formulario con dos controles:
+            <ul>
+              <li>El nombre del juego a jugar (ninguno, una contra una o dos contra una).</li>
+              <li>El número de partidas a jugar (de 20 a 200 partidas).</li>
+            </ul>
+          </li>
+          <li>La segunda página mostrará:
+            <ul>
+              <li>Los posibles errores debido al mal uso del formulario o a su manipulación.</li>
+              <li>El número de partidas del juego seleccionado, el resultado de cada partida y una estadística final del resultado global.</li>
+              <li>En los dos juegos el ganador es el jugador que obtiene la carta más alta. En el juego una contra una, cada jugador saca una carta al azar del 1 al 10 de un palo al azar. En el juego dos contra una, el jugador A saca dos cartas y el jugador B saca una carta.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
+      <li>Los palos de los jugadores deben ser distintos.</li>
+      <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la segunda página, se mostrará un contenido distinto, pero sin modificarse el juego y el número de partidas.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cf-juegos-cartas-equilibrados-1.png" alt="¿Juegos de cartas equilibrados?" width="1012" height="210"></p>
+        <p class="captura"><img src="img/cf-juegos-cartas-equilibrados-2.png" alt="¿Juegos de cartas equilibrados?" width="1024" height="200"></p>
+        <p class="captura"><img src="img/cf-juegos-cartas-equilibrados-3.png" alt="¿Juegos de cartas equilibrados?" width="1007" height="560"></p>
+        <p class="captura"><img src="img/cf-juegos-cartas-equilibrados-4.png" alt="¿Juegos de cartas equilibrados?" width="1007" height="370"></p>
+        <p class="captura"><img src="img/cf-juegos-cartas-equilibrados-5.png" alt="¿Juegos de cartas equilibrados?" width="1007" height="420"></p>
+        <p class="captura"><img src="img/cf-juegos-cartas-equilibrados-6.png" alt="¿Juegos de cartas equilibrados?" width="1007" height="370"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>¿Juegos de cartas equilibrados? - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">50 partidas de la carta más alta (dos contra una)</span>&lt;/h2&gt;
+
+  &lt;p style="font-size: 300%;"&gt;
+    <span class="codigo-resaltado">1</span> -
+    A: &lt;img src="img/cartas/<span class="codigo-resaltado">d7</span>.svg" alt="<span class="codigo-resaltado">d7</span>" width="60"&gt;
+       &lt;img src="img/cartas/<span class="codigo-resaltado">c5</span>.svg" alt="<span class="codigo-resaltado">c5</span>" width="60"&gt; -
+    B: &lt;img src="img/cartas/<span class="codigo-resaltado">c8</span>.svg" alt="<span class="codigo-resaltado">c8</span>" width="60"&gt; -
+    <span class="codigo-resaltado">Gana B</span>
+  &lt;/p&gt;
+
+...
+
+  &lt;p style="font-size: 300%;"&gt;
+    <span class="codigo-resaltado">50</span> -
+    A: &lt;img src="img/cartas/<span class="codigo-resaltado">p5</span>.svg" alt="<span class="codigo-resaltado">p5</span>" width="60"&gt;
+       &lt;img src="img/cartas/<span class="codigo-resaltado">p4</span>.svg" alt="<span class="codigo-resaltado">p4</span>" width="60"&gt; -
+    B: &lt;img src="img/cartas/<span class="codigo-resaltado">c1</span>.svg" alt="<span class="codigo-resaltado">c1</span>" width="60"&gt; -
+    <span class="codigo-resaltado">Gana A</span>
+  &lt;/p&gt;
+
+  &lt;p&gt;A ha ganado <span class="codigo-resaltado">29</span> veces y B ha ganado <span class="codigo-resaltado">17</span> veces. Proporción: <span class="codigo-resaltado">58</span>% / <span class="codigo-resaltado">34</span>% &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 22 de febrero de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

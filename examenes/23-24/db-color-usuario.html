@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Color de usuario. Bases de datos. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Bases de datos - Color de usuario</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Color de usuario</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que la tabla de usuario incluyo un campo numérico (número entero de de 0 a 360) que corresponda al matiz de color de la cabecera h1 de las páginas de la aplicación. La aplicación deberá funcionar tanto en MySQL/MariaDB como en SLite.</p>
+
+  <section id="comentarios">
+    <h2>Color de usuario - Comentarios</h2>
+
+    <ul>
+      <li>Si el usuario no está conectado, el color de la cabecera será la habitual (la de la plantilla).
+        <p class="captura"><img src="img/db-color-usuario-1.png" alt="Color de usuario" width="1012" height="120"></p>
+      </li>
+      <li>El usuario root tendrá de forma predeterminada el color rojo (valor del matiz 0)
+        <p class="captura"><img src="img/db-color-usuario-2.png" alt="Color de usuario" width="1012" height="120"></p>
+        <div class="codigo">
+          <pre>
+<code class="language-html">  &lt;link rel="stylesheet" href="../comunes/mclibre-php-proyectos.css" title="Color"&gt;
+  &lt;style&gt;
+    h1 { background-color: hwb(<span class="codigo-resaltado">0</span> 20% 0%); }
+  &lt;/style&gt;
+&lt;/head&gt;</code>
+</pre>
+        </div>
+
+      </li>
+      <li>El formulario de creación de registro de usuario inclurá el campo color de tipo number:
+        <p class="captura"><img src="img/db-color-usuario-3.png" alt="Color de usuario" width="1012" height="300"></p>
+        <div class="codigo">
+          <pre>
+<code class="language-html">        &lt;tr&gt;
+          &lt;td&gt;Color:&lt;/td&gt;
+          &lt;td&gt;&lt;input type="number" name="color" value="0" size="7" min="0" max="360"&gt;&lt;/td&gt;
+        &lt;/tr&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>La creación de registro comprobará que el valor del color es correcto:
+        <p class="captura"><img src="img/db-color-usuario-4.png" alt="Color de usuario" width="1012" height="160"></p>
+      </li>
+      <li>El listado de usuarios mostrará el campo color:
+        <p class="captura"><img src="img/db-color-usuario-5.png" alt="Color de usuario" width="1012" height="260"></p>
+      </li>
+      <li>Al conectarse cualquier usuario, se mostrará el color elegido:
+        <p class="captura"><img src="img/db-color-usuario-6.png" alt="Color de usuario" width="1012" height="120"></p>
+      </li>
+      <li>Los registros de prueba incluirán distintos valores de color:
+        <p class="captura"><img src="img/db-color-usuario-7.png" alt="Color de usuario" width="1012" height="280"></p>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 22 de febrero de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

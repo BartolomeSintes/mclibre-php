@@ -96,7 +96,44 @@ INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nivel`) VALUES
 </pre>
         </div>
       </li>
-      <li>Si una tabla no contiene registros, en la copia de seguridad se creará la tabla, pero no se insertará registros.</li>
+      <li>Si una tabla no contiene registros, en la copia de seguridad se creará la tabla, pero no se insertarán registros.
+        <div class="codigo">
+          <pre>
+<code class="language-sql">--
+-- Estructura de tabla para la tabla `personas`
+--
+
+CREATE TABLE `personas` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nombre` varchar(40) DEFAULT NULL,
+  `apellidos` varchar(60) DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `correo` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `usuario` varchar(20) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `nivel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nivel`) VALUES
+(1, 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', '20');</code>
+</pre>
+        </div>
+      </li>
     </ul>
   </section>
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de un juego de dados. Dos jugadores tiran dados y acumulan los puntos obtenidos. En cualquier momento se pueden plantar. la partida termina cunado los dos jugadores se plantan. El jugador que esté más cerca de obtener 15 puntos sin superarlos, gana la partida.</p>
+
+  <section id="comentarios">
+    <h2>Juego de dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra una fila de cinco cuadros de colores y un cuadrado de nueve cuadros en blanco:
+            <ul>
+              <li>La primera vez que se abre la página, o cuando se pulsa el botón "Reiniciar" los dados estarán en blanco y la puntuación inicial será 0.</li>
+              <li>Cada vez que se tiren los dados se mostrán nuevos valores (si el jugador no se ha plantado) y se acumularán los puntos obtenidos.</li>
+              <li>Indicar los puntos acumulados.</li>
+              <li>Permitir que los jugadores se planten, es decir, que no tiren más el dado.</li>
+              <li>Cuando se hayan plantado los dos jugadores, indicar el resultado de la partida. Gana la partida el que tenga la puntuación más próxima a 15, sin superar ese valor.</li>
+              <li>Las entidades numéricas para indicar el resultado son las siguientes: <span style="font-size: 2rem;">&#10060;</span> &amp;#10060; <span style="font-size: 2rem;">&#10004;&#65039;</span> &amp;#10004;&amp;#65039; <span style="font-size: 2rem;">&#10006;&#65039;</span> &amp;#10006;&amp;#65039;</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cs-juego-dados-15-1.png" alt="Juego de dados" width="1171" height="500"></p>
+        <p class="captura"><img src="img/cs-juego-dados-15-2.png" alt="Juego de dados" width="1171" height="500"></p>
+        <p class="captura"><img src="img/cs-juego-dados-15-3.png" alt="Juego de dados" width="1171" height="500"></p>
+        <p class="captura"><img src="img/cs-juego-dados-15-4.png" alt="Juego de dados" width="1171" height="500"></p>
+        <p class="captura"><img src="img/cs-juego-dados-15-5.png" alt="Juego de dados" width="1171" height="500"></p>
+        <p class="captura"><img src="img/cs-juego-dados-15-6.png" alt="Juego de dados" width="1178" height="500"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de dados - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;table style="font-size: 4rem;"&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;img src="img/dados/<spac class="codigo-resaltado">2</spac>.svg" alt="<spac class="codigo-resaltado">2</spac>" width="140" height="140"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="plantaA"&gt;Me planto&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;<spac class="codigo-resaltado">16</spac>&lt;/td&gt;
+        &lt;td&gt;<spac class="codigo-resaltado">&amp;#10060;</spac>&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;img src="img/dados/<spac class="codigo-resaltado">3</spac>.svg" alt="3<spac class="codigo-resaltado">"</spac> width="140" height="140"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="plantaB"&gt;Me planto&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;<spac class="codigo-resaltado">15</spac>&lt;/td&gt;
+        &lt;td&gt;<spac class="codigo-resaltado">&amp;#10004;&amp;#65039;</spac>&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 19 de febrero de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
