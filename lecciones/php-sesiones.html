@@ -24,7 +24,7 @@
 
       <ul>
         <li><a href="#sesiones-introduccion">Introducción</a></li>
-        <li><a href="#sesiones-crear">Crear la sesión</a></li>
+        <li><a href="#sesiones-crear">Crear la sesión / Unirse</a></li>
         <li><a href="#sesiones-utilizar">Utilizar la sesión</a></li>
         <li><a href="#sesiones-destruir">Cerrar la sesión</a></li>
         <li><a href="#sesiones-nombre">Nombre de sesión</a></li>
@@ -127,9 +127,9 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
   </section>
 
   <section id="sesiones-crear">
-    <h2>Crear la sesión</h2>
+    <h2>Crear la sesión / Unirse a la sesión</h2>
 
-    <p>En PHP, las sesiones se crean mediante la función <a href="https://www.php.net/manual/en/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
+    <p>En PHP, las sesiones se crean mediante la función <a href="https://www.php.net/manual/en/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página se una a la sesión ya existente y tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -185,6 +185,26 @@ session_start();</code>
     </div>
 
     <p><strong>Nota</strong>: Como se comenta también en la <a href="php-cabeceras.html#buffer">lección sobre cabeceras</a>, dependiendo de la configuración de la directiva <a href="../otros/php-configuracion-1.html#output-buffering">output_buffering</a>, la sesión podría crearse correctamente y no generarse el aviso.</p>
+
+    <hr class="corta">
+
+    <p>Si en una página se repite la llamada a <span class="php-fun">session_start()</span>, se genera un aviso.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_start();
+session_start();</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <b>Notice</b>: session_start(): Ignoring session_start() because a session is already active in <b>ejemplo.php</b> on line <b>3</b>
+      </div>
+    </div>
   </section>
 
   <section id="sesiones-utilizar">
@@ -347,6 +367,50 @@ if (isset($_SESSION["nombre"])) {
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;No sé su nombre.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Tras destruir una sesión, una página puede volver a unirse a una sesión.</p>
+
+    <div class="filaflex">
+      <div class="columnaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["nombre"] = "Pepito";
+session_destroy();
+
+session_start();
+$_SESSION["apellido"] = "Conejo";
+header("Location:pagina-2.php");</code>
+</pre>
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_start();
+
+if (isset($_SESSION["nombre"])) {
+  print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;No sé su nombre.&lt;/p&gt;\n";
+}
+
+if (isset($_SESSION["apellido"])) {
+    print "&lt;p&gt;Su apellido es $_SESSION[apellido].&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No sé su apellido.&lt;/p&gt;\n";
+}</code>
+</pre>
+      </div>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;No sé su nombre.&lt;/p&gt;
+
+&lt;p&gt;Su apellido es Conejo.&lt;/p&gt;</code></pre>
       </div>
     </div>
   </section>
@@ -630,7 +694,7 @@ session_start();</code></pre>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 23 de febrero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
