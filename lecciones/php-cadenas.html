@@ -365,9 +365,71 @@ print "&lt;p&gt;&lt;strong style=\"color: red;\"&gt;Hola&lt;/strong&gt;&lt;/p&gt
   <section id="caracteres-especiales">
     <h2>Caracteres especiales</h2>
 
-    <p>Por distintos motivos, algunos caracteres necesitan escribirse dentro de las cadenas de una forma especial. Por ejemplo, :</p>
+    <p>Por distintos motivos, algunos caracteres necesitan escribirse dentro de las cadenas de una forma especial denominada caracteres especiales. Los caracteres especiales empiezan por el carácter contrabarra (\). Los caracteres especiales más utilizados son los siguientes:</p>
+
+    <table class="tabla-con-borde">
+      <tr>
+        <th>Carácter</th>
+        <th>Significado</th>
+      </tr>
+      <tr>
+        <th>\n</th>
+        <td>Salto de línea</td>
+      </tr>
+      <tr>
+        <th>\"</th>
+        <td>Carácter comilla doble " (en una cadena delimitada por comillas dobles)</td>
+      </tr>
+      <tr>
+        <th>\'</th>
+        <td>Carácter comilla simple ' (en una cadena delimitada por comillas simples)</td>
+      </tr>
+      <tr>
+        <th>\$</th>
+        <td>Carácter dólar $</td>
+      </tr>
+      <tr>
+        <th>\\</th>
+        <td>Carácter contrabarra \</td>
+      </tr>
+    </table>
+
     <ul>
-      <li>En PHP los nombres de variables empiezan por el carácter dólar ($). Cuando en una cadena aparece una palabra que empieza por el carácter $, PHP entiende que esa palabra hace referencia a una variable. Pero si a esa variable no se le ha dado valor anteriormente, se producirá un aviso. Además PHP escribe el valor de la variable (es decir, nada si la variable no está definida):
+      <li>Si en una cadena se utilizan comillas del mismo tipo (simples o dobles) que las que la delimitan, se produce un error de sintaxis y el programa no puede ejecutarse. El problema es que cuando PHP encuentra la comilla dentro de la cadena (simple o doble, pero del mismo tipo que delimita la cadena), PHP entiende que la cadena se termina precisamente ahí. Como PHP es incapaz de entender lo que viene a continuación, se produce un error de sintaxis.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">"</span> o ').&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <p><strong>Parse error</strong>: syntax error, unexpected 'o' (T_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong></p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">\"</span> o ').&lt;/p&gt;";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">"</span> o ').&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>En PHP los nombres de variables empiezan por el carácter dólar ($). Cuando en una cadena aparece una palabra que empieza por el carácter $, PHP entiende que esa palabra hace referencia a una variable. Pero si a esa variable no se le ha dado valor anteriormente, se producirá un aviso. Además PHP escribe el valor de la variable (que en este caso es nada, porque la variable no está definida):
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -385,60 +447,65 @@ print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class
             <p>Los nombres de variables empiezan por $. Por ejemplo .</p>
           </div>
         </div>
-      </li>
-      <li>Si en una cadena se utilizan comillas del mismo tipo (simples o dobles) que las que la delimitan, se se produce un error de sintaxis y el programa no puede ejecutarse. El problema es que cuando PHP encuentra la comilla dentro de la cadena (simple o doble, pero del mismo tipo que delimita la cadena), PHP entiende que la cadena se termina precisamente ahí. Como PHP es incapaz de entender lo que viene a continuación, se produce un error de sintaxis.
 
         <div class="filaflex">
           <div class="icono-ok">
-            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
           </div>
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print <span class="codigo-resaltado">"</span>&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">"</span> o ').&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">\$edad</span>.&lt;/p&gt;";
 ?&gt;</code>
 </pre>
           </div>
-          <div class="resultado-html">
-            <p><strong>Parse error</strong>: syntax error, unexpected 'o' (T_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong></p>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">$edad</span>.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>Como la contrabarra es el indicador de caráter especial, si queremos generar en el código HTML el texto que corresponde a un carácter especial, debemos escribir la contrabarra mediante su carácter especial (que es \\):
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Para generar un salto de línea debemos escribir el carácter especial <span class="codigo-resaltado">\n</span>.&lt;/p&gt;";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;LPara generar un salto de línea debemos escribir el carácter especial
+.&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Para generar un salto de línea debemos escribir el carácter especial <span class="codigo-resaltado">\\n</span>.&lt;/p&gt;";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;LPara generar un salto de línea debemos escribir el carácter especial \n.&lt;/p&gt;</code>
+</pre>
           </div>
         </div>
       </li>
       <li>Algunos caracteres (saltos de línea, tabuladores, etc) no se pueden escribir con el teclado.</li>
     </ul>
 
-    <p>Para poder escribir estos caracteres en una cadena, en PHP existen los llamados caracteres especiales. Los caracteres especiales empiezan por el carácter contrabarra (\). Los caracteres especiales más utilizados son los siguientes:</p>
-
-    <table class="tabla-con-borde">
-      <tr>
-        <th>Carácter</th>
-        <th>Significado</th>
-      </tr>
-      <tr>
-        <th>\\</th>
-        <td>Carácter contrabarra</td>
-      </tr>
-      <tr>
-        <th>\$</th>
-        <td>Carácter dólar</td>
-      </tr>
-      <tr>
-        <th>\"</th>
-        <td>Carácter comilla doble (en una cadena delimitada por comillas dobles)</td>
-      </tr>
-      <tr>
-        <th>\'</th>
-        <td>Carácter comilla simple (en una cadena delimitada por comillas simples)</td>
-      </tr>
-      <tr>
-        <th>\n</th>
-        <td>Salto de línea</td>
-      </tr>
-      <tr>
-        <th>\t</th>
-        <td>Tabulador horizontal</td>
-      </tr>
-    </table>
 
     <p>Además, existen también estos caracteres especiales, menos utilizados que los anteriores:</p>
 
@@ -446,6 +513,10 @@ print <span class="codigo-resaltado">"</span>&lt;p&gt;Las cadenas se delimitan c
       <tr>
         <th>Carácter</th>
         <th>Significado</th>
+      </tr>
+      <tr>
+        <th>\t</th>
+        <td>Tabulador horizontal</td>
       </tr>
       <tr>
         <th>\XXX</th>
@@ -472,34 +543,6 @@ print <span class="codigo-resaltado">"</span>&lt;p&gt;Las cadenas se delimitan c
         <td>Salto de página (en impresoras antiguas)</td>
       </tr>
     </table>
-
-    <p>Los ejemplos anteriores se podrían escribir así:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">\$edad</span>.&lt;/p&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">$edad</span>.&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">\"</span> o ').&lt;/p&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">"</span> o ').&lt;/p&gt;</code></pre>
-      </div>
-    </div>
   </section>
 
   <section id="saltos-linea">
@@ -542,12 +585,34 @@ print "&lt;/ul&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
+print "&lt;ul&gt;\n";
+print "&lt;li&gt;Uno&lt;/li&gt;\n";
+print "&lt;li&gt;Dos&lt;/li&gt;\n";
+print "&lt;/ul&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;ul&gt;
+&lt;li&gt;Uno&lt;/li&gt;
+&lt;li&gt;Dos&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
 print "&lt;ul&gt;\n  &lt;li&gt;Uno&lt;/li&gt;\n  &lt;li&gt;Dos&lt;/li&gt;\n&lt;/ul&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;ul&gt;<br>  &lt;li&gt;Uno&lt;/li&gt;<br>  &lt;li&gt;Dos&lt;/li&gt;<br>&lt;/ul&gt;</code></pre>
+        <pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Uno&lt;/li&gt;
+  &lt;li&gt;Dos&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
       </div>
     </div>
 
@@ -565,7 +630,7 @@ print "&lt;ul&gt;
       <div class="resultado-codigo">
         <pre>
 <code class="language-html">&lt;ul&gt;
-  &lt;li&gt;Uno&lt;/li&gt;
+  &lt;li&gt;Uno&lt;/li&gt;
   &lt;li&gt;Dos&lt;/li&gt;
 &lt;/ul&gt;</code>
 </pre>
@@ -674,7 +739,7 @@ print "&lt;p&gt;$cadena&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 25 de septiembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
