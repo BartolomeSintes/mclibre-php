@@ -345,6 +345,73 @@ print "&lt;p&gt;$cadena4&lt;/p&gt;\n";
       </div>
     </div>
 
+    <p>El operador . (punto) se puede utilizar en la instrucción <span class="php-res">print</span>. En el ejemplo siguiente se concatenan una cadena, una variable y una cadena.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+print "&lt;p&gt;¡Hola, " . $nombre . "! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: En el ejemplo anterior, se puede obtener el mismo resultado sin utilizar el operador . (punto), escribiendo la variable en la cadena:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+print "&lt;p&gt;¡Hola, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>Pero en el ejemplo siguiente no queda más remedio que utilizar el operador . (punto) porque uno de los datos que se intercala es el resultado de una operación.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$semanas = 5;
+print "&lt;p&gt;$semanas semanas son " . 7 * $semanas . " días.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;5 semanas son 35 días.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>Si la operación se escribiera dentro de la cadena, PHP no entendería que queremos hacer una operación.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$semanas = 5;
+print "&lt;p&gt;$semanas semanas son 7 * $semanas días.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;5 semanas son 7 * 5 días.&lt;p&gt;</code></pre>
+      </div>
+    </div>
+
     <p>El operador . (punto) debe escribirse entre espacios en blancos, no solamente porque sea el formato recomendado, sino para evitar posibles errores. El programa de ejemplo siguiente es incorrecto:</p>
 
     <div class="filaflex">
@@ -378,54 +445,6 @@ print "&lt;p&gt;1.5 + 1 = " . 1.5 + <span class="codigo-resaltado">1 .</span> "&
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;1.5 + 1 = 2.5&lt;p&gt;</code></pre>
-      </div>
-    </div>
-
-    <p>El operador . (punto) se puede utilizar en la instrucción <span class="php-res">print</span>. En el ejemplo siguiente se concatenan una cadena, una variable y una cadena.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombre = "Don Pepito";
-print "&lt;p&gt;¡Hola, " . $nombre . "! ¿Cómo está usted?&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
-    <p><strong>Nota</strong>: En el ejemplo anterior, se puede obtener el mismo resultado sin utilizar el operador . (punto), escribiendo la variable en la cadena:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombre = "Don Pepito";
-print "&lt;p&gt;¡Hola, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
-    <p>En el ejemplo siguiente no queda más remedio que utilizar el operador . (punto) porque uno de los datos que se intercala es el resultado de una operación.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$semanas = 5;
-print "&lt;p&gt;$semanas semanas son " . 7 * $semanas . " días.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;5 semanas son 35 días.&lt;/p&gt;</code></pre>
       </div>
     </div>
   </section>
@@ -880,7 +899,7 @@ print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudian
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 24 de septiembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
