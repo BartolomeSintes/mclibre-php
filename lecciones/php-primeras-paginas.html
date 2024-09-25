@@ -339,9 +339,9 @@ if (2 + 2 == 4) {
           <pre>
 <code class="language-html">&lt;p&gt;¿Dos y dos son cuatro?&lt;/p&gt;</code>
 <code class="language-php">&lt;?php if (2 + 2 == 4) { ?&gt;</code>
-<code class="language-html">    &lt;p&gt;Sí&lt;/p&gt;</code>
+<code class="language-html">&lt;p&gt;Sí&lt;/p&gt;</code>
 <code class="language-php">&lt;?php } else { ?&gt;</code>
-<code class="language-html">    &lt;p&gt;No&lt;/p&gt;</code>
+<code class="language-html">&lt;p&gt;No&lt;/p&gt;</code>
 <code class="language-php">&lt;?php } ?&gt;</code>
 </pre>
         </div>
@@ -361,7 +361,7 @@ if (2 + 2 == 4) {
 
       <p>El delimitador <strong>&lt;?</strong> se podía utilizar antiguamente como delimitador de bloques PHP, pero desde hace años <strong>se desaconseja completamente</strong> su uso porque provoca conflictos, entre otros, con la instrucción de procesamiento xml (&lt;?xml) de los documentos XML. En su lugar, se debe utilizar el delimitador <strong>&lt;?php .. ?&gt;</strong>.</p>
 
-      <p>Mediante la directiva <a href="../otros/php-configuracion-1.html#short-open-tag">short_open_tag</a> (etiqueta de apertura abreviada) se puede permitir el uso del delimitador <strong>&lt;?</strong> además del delimitador <strong>&lt;?php</strong>. Si la directiva short_open_tag tiene el valor On (lo que está desaconsejado), el siguiente programa no daría errores:</p>
+      <p>Mediante la directiva <a href="../otros/php-configuracion-2.html#short-open-tag">short_open_tag</a> (etiqueta de apertura abreviada) se puede permitir el uso del delimitador <strong>&lt;?</strong> además del delimitador <strong>&lt;?php</strong>. Si la directiva short_open_tag tiene el valor On (lo que está desaconsejado), el siguiente programa no daría errores:</p>
 
       <div class="filaflex">
         <div class="codigo">
@@ -566,44 +566,29 @@ if ($a == 5) {
   <section id="comentarios">
     <h2>Comentarios en páginas PHP</h2>
 
-    <p>En un fragmento PHP se pueden comentar líneas de código utilizando:</p>
+    <p>En un fragmento PHP se pueden comentar líneas o fragmentos de línea utilizando:</p>
     <ul>
       <li><span class="php-con">//</span> para comentar el resto de la línea (como en C++)</li>
       <li><span class="php-con">#</span> para comentar el resto de la línea (como en la shell de Unix o en Perl)</li>
-      <li><span class="php-con">/* */</span> para delimitar varias líneas (como en C)</li>
+      <li><span class="php-con">/* */</span> para delimitar varias líneas o una parte de una línea (como en C)</li>
     </ul>
 
-    <p>Estos comentarios no se añaden al código HTML generado por la página, por lo que no pueden verse en el navegador.</p>
+    <p>Las líneas o fragmentos comentados no se ejecutan ni se añaden al código HTML generado por la página, por lo que no se ven en el navegador. Los comentarios se pueden utilizar para añadir aclaraciones o información adicional en forma de texto libre o para evitar que se ejecuten determinadas instrucciones.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;p&gt;&lt;strong&gt;
-&lt;?php
+<code class="language-php">&lt;?php
 // La instrucción print escribe texto en la página web
-print "Hola"; // El comentario se puede escribir al final de la línea
-?&gt;
-&lt;/strong&gt;&lt;/p&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre>
-      </div>
-    </div>
+print "&lt;p&gt;Hola&lt;/p&gt;"; // El comentario se puede escribir al final de la línea
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;p&gt;&lt;strong&gt;
-&lt;?php
-# La instrucción print escribe texto en la página web
-print "Hola"; # El comentario se puede escribir al final de la línea
-?&gt;
-&lt;/strong&gt;&lt;/p&gt;</code>
+// print "&lt;p&gt;Adios&lt;/p&gt;";
+// Las instrucciones en líneas comentadas no se ejecutan
+?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
       </div>
     </div>
 
@@ -611,38 +596,69 @@ print "Hola"; # El comentario se puede escribir al final de la línea
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;&lt;strong&gt;";
-/* Dentro de un fragmento PHP no se pueden escribir
-   etiquetas html sueltas, tienen que estar siempre
-   incluidas en instrucciones print
-*/
-?&gt;
-Hola
-&lt;?php
-print "&lt;/strong&gt;&lt;/p&gt;";
+# La instrucción print escribe texto en la página web
+print "&lt;p&gt;Hola&lt;/p&gt;"; # El comentario se puede escribir al final de la línea
+
+# print "&lt;p&gt;Adios&lt;/p&gt;";
+# Las instrucciones en líneas comentadas no se ejecutan
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+/* En un fragmento PHP no se pueden escribir
+   etiquetas html sueltas, tienen que estar
+   siempre incluidas en instrucciones print
+*/
+print "&lt;p&gt;Hola&lt;/p&gt;"; /* El comentario se puede escribir al final de la línea */
+
+/* print "&lt;p&gt;Adios&lt;/p&gt;";
+   Las instrucciones en líneas comentadas no se ejecutan
+*/
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>Los comentarios /* */ pueden abarcar varias líneas o una parte de la línea:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;"; /* print "&lt;p&gt;¿Qué tal?&lt;/p&gt;"; */ print "&lt;p&gt;Adiós&lt;/p&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;&lt;p&gt;Adiós&lt;/p&gt;</code></pre>
       </div>
     </div>
 
     <hr class="corta">
 
-    <p>Si se quieren escribir comentarios en los fragmentos HTML, hay que utilizar la etiqueta de comentarios de HTML <span class="html-eti">&lt;!-- .... --&gt;</span>.</p>
+    <p>Si se quiere generar un comentario HTML, hay que incluir la etiqueta de comentarios de HTML <span class="html-eti">&lt;!-- .... --&gt;</span>.</p>
 
-    <p>Estos comentarios, como todo el código HTML situado en los fragmentos HTML, se incluyen sin modificaciones en el resultado, por lo que pueden verse en el navegador.</p>
+    <p>En principio, el navegador no muestra los comentarios HTML, salvo que elijamos ver el código fuente de la página web en el navegador (atajo <kbd>Ctrl+u</kbd>).</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;p&gt;
-&lt;?php
-print "Hola";
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+print "&lt;!-- El texto anterior ha sido generado por PHP --&gt;\n"
 ?&gt;
-&lt;/p&gt;
-&lt;!-- El texto anterior ha sido generado por PHP --&gt;</code>
+</code>
 </pre>
       </div>
       <div class="resultado-codigo">
@@ -664,14 +680,14 @@ print "Hola";
       <div class="codigo">
         <pre>
 <code class="language-css">html {
-    background-color: #FF0000; /* #FF000000 es rojo */
+    background-color: #FF0000; /* #FF0000 es rojo */
 }</code>
 </pre>
       </div>
       <div class="resultado-codigo">
         <pre>
 <code class="language-css">html {
-    background-color: #FF0000; /* #FF000000 es rojo */
+    background-color: #FF0000; /* #FF0000 es rojo */
 }</code>
 </pre>
       </div>
@@ -883,7 +899,7 @@ print "  &lt;p&gt;Esta página es una página HTML válida.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 25 de septiembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
