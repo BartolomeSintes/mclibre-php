@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>if ... elseif ... else ... (1). Soluciones. Ejercicios (sin formularios). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (sin formularios) - if ... elseif ... else ... (1) - Soluciones</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>if ... elseif ... else ... (1)</h2>
+
+      <h3><a href="index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="index.html#ejercicio-1">1 - Dos dados</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Juego: Dado más alto</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Juego: 2 dados</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Tres dados</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Juego: 3 dados</a></li>
+      </ul>
+
+      <h3><a href="#">Soluciones</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Dos dados</a></li>
+        <li><a href="#ejercicio-2">2 - Juego: Dado más alto</a></li>
+        <li><a href="#ejercicio-3">3 - Juego: 2 dados</a></li>
+        <li><a href="#ejercicio-4">4 - Tres dados</a></li>
+        <li><a href="#ejercicio-5">5 - Juego: 3 dados</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="index.html">if .. elseif ... else ...</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se pueden dejar en fragmentos HTML.</p>
+
+  <p>Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-if-else-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
+
+  <section id="ejercicio-1">
+    <h2>if ... elseif ... else ... (1) 1 - Dos dados</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+$dado2 = rand(1, 6);
+
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\"&gt;\n";
+print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado1 == $dado2) {
+    print "  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;No ha sacado pareja. El valor más alto es " . max($dado1, $dado2) . ".&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>if ... elseif ... else ... (1) 2 - Juego: Dado más alto</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+$dado2 = rand(1, 6);
+
+print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;";
+print "          &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\"&gt;";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;";
+print "          &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\"&gt;";
+print "        &lt;/td&gt;\n";
+
+if ($dado1 &gt; $dado2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($dado1 &lt; $dado2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} else {
+    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>if ... elseif ... else ... (1) 3 - Juego: Dos dados más altos</h2>
+
+    <p>Probablemente, la forma de resolver este ejercicio que primero viene a la cabeza es la siguiente, en la que compara sucesivamente:</p>
+
+    <ul>
+      <li>si ambos jugadores han sacado pareja. En ese caso se compara el total de puntos de ambos jugadores para saber quién gana.</li>
+      <li>si el primer jugador ha sacado pareja y por tanto gana. No es necesario comprobar si el segundo jugador tiene pareja porque es lo que se ha comprobado en el primer <span class="php-res">if</span>.</li>
+      <li>si el segundo jugador ha sacado pareja y por tanto gana. No es necesario comprobar si el segundo jugador tiene pareja porque es lo que se ha comprobado en el primer <span class="php-res">if</span>.</li>
+      <li>si el primer jugador ha sacado más puntos y por tanto gana. No es necesario comprobar si algún jugador tiene pareja porque es lo que se ha comprobado en los <span class="php-res">if</span> anteriores.</li>
+      <li>si el segundo jugador ha sacado más puntos y por tanto gana. No es necesario comprobar si algún jugador tiene pareja porque es lo que se ha comprobado en los <span class="php-res">if</span> anteriores.</li>
+      <li>como opción final, empatan.</li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1a = rand(1, 6);
+$dado1b = rand(1, 6);
+$dado2a = rand(1, 6);
+$dado2b = rand(1, 6);
+
+print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "          &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"100\"&gt;\n";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "          &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"100\"&gt;\n";
+print "        &lt;/td&gt;\n";
+
+$total1 = $dado1a + $dado1b;
+$total2 = $dado2a + $dado2b;
+
+if ($dado1a == $dado1b && $dado2a == $dado2b) {
+    if ($dado1a &gt; $dado2a) {
+        print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    } elseif ($dado1a &lt; $dado2a) {
+        print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    } else {
+        print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+    }
+} elseif ($dado1a == $dado1b) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($dado2a == $dado2b) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} elseif ($total1 &gt; $total2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($total1 &lt; $total2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} else {
+    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Otra forma de enfocar el ejercicio que será más útil cuando en posteriores ejercicios aumente el número de dados consiste en calcular unas variables intermedias que guarden la información sobre la pareja de dados obtenida por cada jugador. Esta variable valdrá 0 si el jugador no ha sacado pareja y valdrá el valor de la pareja si sí que ha sacado pareja.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1a = rand(1, 6);
+$dado1b = rand(1, 6);
+$dado2a = rand(1, 6);
+$dado2b = rand(1, 6);
+
+print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "          &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"100\"&gt;\n";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "          &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"100\"&gt;\n";
+print "        &lt;/td&gt;\n";
+
+if ($dado1a == $dado1b) {
+    $pareja1 = $dado1a;
+} else {
+    $pareja1 = 0;
+}
+
+if ($dado2a == $dado2b) {
+    $pareja2 = $dado2a;
+} else {
+    $pareja2 = 0;
+}
+
+$total1 = $dado1a + $dado1b;
+$total2 = $dado2a + $dado2b;
+
+if ($pareja1 &gt; $pareja2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($pareja1 &lt; $pareja2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} else {
+    if ($total1 &gt; $total2) {
+        print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    } elseif ($total1 &lt; $total2) {
+        print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    } else {
+        print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+    }
+}
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>El programa se podría simplificar utilizando la notación abreviada ... ? ... : ... y eliminado el anidamiento en el bloque <span class="php-res">if ... elseif ... else ...</span>:</p>
+    <div class="codigo">
+      <pre>
+<code class="language-php">$pareja1 = $dado1a == $dado1b ? $dado1a : 0;
+$pareja2 = $dado2a == $dado2b ? $dado2a : 0;
+
+$total1 = $dado1a + $dado1b;
+$total2 = $dado2a + $dado2b;
+
+if ($pareja1 &gt; $pareja2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($pareja1 &lt; $pareja2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} elseif ($total1 &gt; $total2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($total1 &lt; $total2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} else {
+    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>if ... elseif ... else ... (1) 4 - Tres dados</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+$dado2 = rand(1, 6);
+$dado3 = rand(1, 6);
+
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\"&gt;\n";
+print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\"&gt;\n";
+print "    &lt;img src=\"img/$dado3.svg\" alt=\"$dado3\" width=\"140\" height=\"100\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado1 == $dado2 &amp;&amp; $dado1 == $dado3) {
+    print "  &lt;p&gt;Ha sacado un trío de $dado1.&lt;/p&gt;\n";
+} elseif ($dado1 == $dado2 || $dado1 == $dado3) {
+    print "  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n";
+} elseif ($dado2 == $dado3) {
+    print "  &lt;p&gt;Ha sacado una pareja de $dado2.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;El valor más alto es " . max($dado1, $dado2, $dado3) . ".&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>if ... elseif ... else ... (1) 5 - Juego: Tres dados más altos</h2>
+
+    <p>La solución propuesta calcula unas variables intermedias que guardan la información sobre el trío o la pareja de dados obtenida por cada jugador. La variable que guarda el trío valdrá 0 si el jugador no ha sacado trío y valdrá el valor del trío si sí que ha sacado trío. La variable que guarda la pareja valdrá 0 si el jugador no ha sacado pareja y valdrá el valor de la pareja si sí que ha sacado pareja.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1a = rand(1, 6);
+$dado1b = rand(1, 6);
+$dado1c = rand(1, 6);
+$dado2a = rand(1, 6);
+$dado2b = rand(1, 6);
+$dado2c = rand(1, 6);
+
+print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "          &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado1c.svg\" alt=\"$dado1c\" width=\"140\" height=\"100\"&gt;\n";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "          &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"100\"&gt;\n";
+print "          &lt;img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"100\"&gt;\n";
+print "        &lt;/td&gt;\n";
+
+if ($dado1a == $dado1b &amp;&amp; $dado1a == $dado1c) {
+    $trio1 = $dado1a;
+} else {
+    $trio1 = 0;
+}
+
+if ($dado2a == $dado2b &amp;&amp; $dado2a == $dado2c) {
+    $trio2 = $dado2a;
+} else {
+    $trio2 = 0;
+}
+
+if ($dado1a == $dado1b || $dado1a == $dado1c) {
+    $pareja1 = $dado1a;
+} elseif ($dado1b == $dado1c) {
+    $pareja1 = $dado1b;
+} else {
+    $pareja1 = 0;
+}
+
+if ($dado2a == $dado2b || $dado2a == $dado2c) {
+    $pareja2 = $dado2a;
+} elseif ($dado2b == $dado2c) {
+    $pareja2 = $dado2b;
+} else {
+    $pareja2 = 0;
+}
+
+$total1 = $dado1a + $dado1b + $dado1c;
+
+$total2 = $dado2a + $dado2b + $dado2c;
+
+// print "&lt;p&gt;1: Trío $trio1 - Pareja $pareja1 - Total: $total1&lt;/p&gt;\n";
+// print "&lt;p&gt;2: Trío $trio2 - Pareja $pareja2 - Total: $total2&lt;/p&gt;\n";
+
+if ($trio1 &gt; $trio2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($trio1 &lt; $trio2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} else {
+    if ($pareja1 &gt; $pareja2) {
+        print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    } elseif ($pareja1 &lt; $pareja2) {
+        print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    } else {
+        if ($total1 &gt; $total2) {
+            print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+        } elseif ($total1 &lt; $total2) {
+            print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+        } else {
+            print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+        }
+    }
+}
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Como en el ejercicio 3, el programa se podría simplificar utilizando la notación abreviada ... ? ... : ... (que en el caso de la pareja se podría anidar) y eliminado el anidamiento en el bloque <span class="php-res">if ... elseif ... else ...</span>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$trio1 = $dado1a == $dado1b && $dado1a == $dado1c ? $dado1a : 0;
+$trio2 = $dado2a == $dado2b && $dado2a == $dado2c ? $dado2a : 0;
+
+$pareja1 = $dado1a == $dado1b || $dado1a == $dado1c ? $dado1a : ($dado1b == $dado1c ? $dado1b : 0);
+$pareja2 = $dado2a == $dado2b || $dado2a == $dado2c ? $dado2a : ($dado2b == $dado2c ? $dado2b : 0);
+
+$total1 = $dado1a + $dado1b + $dado1c;
+$total2 = $dado2a + $dado2b + $dado2c;
+
+if ($trio1 &gt; $trio2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($trio1 &lt; $trio2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} elseif ($pareja1 &gt; $pareja2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($pareja1 &lt; $pareja2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} elseif ($total1 &gt; $total2) {
+    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+} elseif ($total1 &lt; $total2) {
+    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+} else {
+    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
