@@ -31,7 +31,7 @@
         <li><a href="#php-7-0">PHP 7.0 (2015)</a></li>
         <li><a href="#php-5-6">PHP 5.6 (2014)</a></li>
         <li><a href="#php-5-4">PHP 5.4 (2012)</a></li>
-        <li><a href="#otros">Otros</a></li>
+        <li><a href="#otros">Otros</a></li><a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv($a, $b)</span></a> y del operador "módulo" <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-res">%</span></a>
       </ul>
     </div>
   </nav>
@@ -48,7 +48,40 @@
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration81.php">Cambios en PHP 8.1</a></p>
 
     <ul>
-      <li id="php-8-1-conversion-decimales-enteros">[<a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.core.implicit-float-conversion">Referencia</a>] A partir de PHP 8.1, si un conversión implícita de decimales a enteros supone una pérdida de precisión PHP genera un error <span class="php-con">E_DEPRECATED</span>, aunque la conversión todavía se realiza. Por ejemplo, aunque PHP no permite índices de matrices que sean números decimales, en PHP se pueden escribir números decimales como índices de matrices porque se convierten automáticamente a enteros (eliminado la parte decimal). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span>
+      <li id="php-8-1-conversion-decimales-enteros">[<a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.core.implicit-float-conversion">Referencia</a>] A partir de PHP 8.1, si un conversión implícita de decimales a enteros supone una pérdida de precisión PHP genera un error <span class="php-con">E_DEPRECATED</span>, aunque la conversión todavía se realiza.
+
+      <p>Por ejemplo, en el caso de la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv($a, $b)</span></a> (cociente de una división) o del operador "módulo" <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-res">%</span></a> (resto de una división), pensadas para trabajar con números enteros, pero que también admitían números decimales (truncándolos). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span></p>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Antes de PHP 8.1, se podían utilizar números decimales que PHP
+// convertía a enteros quitando la parte decimal.
+// Todavía se puede hacer, pero PHP genera errores E_DEPRECATED
+
+print "&lt;p&gt;" . intdiv(17.1, 3.1) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . 17.1 % 3.1 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+<b>Deprecated</b>:  Implicit conversion from float 17.1 to int loses precision in <b>ejemplo.php</b> on line <b>84</b><br>
+<b>Deprecated</b>:  Implicit conversion from float 3.1 to int loses precision in <b>ejemplo.php</b> on line <b>84</b><br>
+<p>5</p>
+<b>Deprecated</b>:  Implicit conversion from float 17.1 to int loses precision in <b>ejemplo.php</b> on line <b>85</b><br>
+<b>Deprecated</b>:  Implicit conversion from float 3.1 to int loses precision in <b>ejemplo.php</b> on line <b>85</b><br>
+<p>2</p>
+        </div>
+        <div class="icono-enlace">
+          <a href="https://3v4l.org/QKJUr"><img src="../varios/iconos/logo-3v4l.png" alt="Enlace a 3V4L" title="Enlace a 3V4L" width="66" height="21"></a>
+        </div>
+      </div>
+
+      <p>Por ejemplo, aunque PHP no permite índices de matrices que sean números decimales, en PHP se pueden escribir números decimales como índices de matrices porque se convierten automáticamente a enteros (eliminado la parte decimal). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span></p>
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -451,7 +484,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
