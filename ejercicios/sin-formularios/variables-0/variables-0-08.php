@@ -43,7 +43,7 @@
 <?php
 $centimetros  = rand(0, 1000000) / 100;
 $pies         = floor($centimetros / 30.48);
-$centimetros2 = fmod($centimetros, 12 * 2.54);
+$centimetros2 = fmod($centimetros, 30.48);
 $pulgadas     = round($centimetros2 / 2.54, 1);
 
 print "  <p>$centimetros centímetros son $pies pies y $pulgadas pulgadas.</p>\n";

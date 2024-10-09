@@ -1,6 +1,6 @@
 <?php
 /**
- * Sin formularios. Variables (0) 5 - variables-0-05.php
+ * Sin formularios. Variables (0) 4 - variables-0-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -42,12 +42,8 @@
 
 <?php
 $segundos  = rand(0, 10000);
-$horas     = intdiv($segundos, 3600);
-$segundos2 = $segundos % 3600;
-$minutos   = intdiv($segundos2, 60);
-$segundos3 = $segundos2 % 60;
 
-print "  <p>$segundos segundos son $horas horas, $minutos minutos y $segundos3 segundos.</p>\n";
+print "  <p>$segundos segundos son " . intdiv($segundos, 3600) . " horas, " . intdiv($segundos % 3600, 60) . " minutos y " . $segundos % 3600 % 60 . " segundos.</p>\n";
 ?>
 
   <footer>

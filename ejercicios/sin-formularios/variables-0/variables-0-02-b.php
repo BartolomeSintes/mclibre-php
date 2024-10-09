@@ -1,6 +1,6 @@
 <?php
 /**
- * Sin formularios. Variables (0) 5 - variables-0-05.php
+ * Sin formularios. Variables (0) 2 B - variables-0-02-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Convertidor de segundos a horas, minutos y segundos.
+    Media del Índice de Masa Corporal
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,18 +36,15 @@
 </head>
 
 <body>
-  <h1>Convertidor de segundos a horas, minutos y segundos</h1>
+  <h1>Cálculo del Índice de Masa Corporal</h1>
 
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$segundos  = rand(0, 10000);
-$horas     = intdiv($segundos, 3600);
-$segundos2 = $segundos % 3600;
-$minutos   = intdiv($segundos2, 60);
-$segundos3 = $segundos2 % 60;
+$peso   = rand(50, 100);
+$altura = rand(150, 200) / 100;
 
-print "  <p>$segundos segundos son $horas horas, $minutos minutos y $segundos3 segundos.</p>\n";
+print "  <p>Con un peso de $peso kg y una altura de $altura m, el IMC es " . round($peso / $altura ** 2, 1) . ".</p>\n";
 ?>
 
   <footer>

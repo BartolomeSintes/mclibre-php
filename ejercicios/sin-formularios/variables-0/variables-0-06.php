@@ -41,10 +41,11 @@
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$pies     = rand(0, 10);
-$pulgadas = rand(0, 10);
+$pies        = rand(0, 10);
+$pulgadas    = rand(0, 10);
+$centimetros = ($pies * 12 + $pulgadas) * 2.54;
 
-print "  <p>$pies pies y $pulgadas pulgadas son " . ($pies * 12 + $pulgadas) * 2.54 . " cm.</p>\n";
+print "  <p>$pies pies y $pulgadas pulgadas son $centimetros cm.</p>\n";
 ?>
 
   <footer>

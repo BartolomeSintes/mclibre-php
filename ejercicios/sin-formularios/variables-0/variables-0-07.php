@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Convertidor de pies y pulgadas a centímetros.
+    Convertidor de yardas, pies y pulgadas a centímetros.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,16 +36,17 @@
 </head>
 
 <body>
-  <h1>Convertidor de pies y pulgadas a centímetros</h1>
+  <h1>Convertidor de yardas, pies y pulgadas a centímetros</h1>
 
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$yardas   = rand(0, 10);
-$pies     = rand(0, 10);
-$pulgadas = rand(0, 10);
+$yardas      = rand(0, 10);
+$pies        = rand(0, 10);
+$pulgadas    = rand(0, 10);
+$centimetros = ($yardas * 36 + $pies * 12 + $pulgadas) * 2.54;
 
-print "  <p>$yardas yardas, $pies pies y $pulgadas pulgadas son " . ($yardas * 3 * 12 + $pies * 12 + $pulgadas) * 2.54 . " cm.</p>\n";
+print "  <p>$yardas yardas, $pies pies y $pulgadas pulgadas son $centimetros cm.</p>\n";
 ?>
 
   <footer>

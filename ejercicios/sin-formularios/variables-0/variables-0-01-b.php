@@ -1,6 +1,6 @@
 <?php
 /**
- * Sin formularios. Variables (0) 5 - variables-0-05.php
+ * Sin formularios. Variables (0) 1 B - variables-0-01-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Convertidor de segundos a horas, minutos y segundos.
+    Media de dos números.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,18 +36,16 @@
 </head>
 
 <body>
-  <h1>Convertidor de segundos a horas, minutos y segundos</h1>
+  <h1>Cálculo de la media de dos números</h1>
 
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$segundos  = rand(0, 10000);
-$horas     = intdiv($segundos, 3600);
-$segundos2 = $segundos % 3600;
-$minutos   = intdiv($segundos2, 60);
-$segundos3 = $segundos2 % 60;
+$a     = rand(0, 100);
+$b     = rand(0, 100);
+$media = ($a + $b) / 2;
 
-print "  <p>$segundos segundos son $horas horas, $minutos minutos y $segundos3 segundos.</p>\n";
+print "  <p>La media aritmética de $a y $b es $media.</p>\n";
 ?>
 
   <footer>
