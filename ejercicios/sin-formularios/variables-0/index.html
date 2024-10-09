@@ -70,19 +70,26 @@
 
     <p>Se recuerda que el imc se calcula con la fórmula imc = peso / altura <sup>2</sup></p>
 
+    <div class="filaflex">
+      <iframe src="variables-0-02.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-02.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
     <p>Puede comprobar el funcionamiento de su programa con esta calculadora del IMC:</p>
 
-    <table style="border: black 2px solid; padding: 10px">
+    <table style="border: black 2px solid; width: 330px; padding: 10px; text-align: center">
       <caption>Calculadora del Índice de Masa Corporal</caption>
       <tr>
-        <td style="text-align: center">Peso (kg)</td>
-        <td style="text-align: center">Altura (m)</td>
-        <td style="text-align: center; width: 100px">IMC</td>
+        <td>Peso (kg)</td>
+        <td>Altura (m)</td>
+        <td>IMC</td>
       </tr>
       <tr>
         <td><input type="number" id="co-imc-peso" min="50" max="100" step="1" value="75" style="border: blue 1px solid; font-size: 24px"></td>
         <td><input type="number" id="co-imc-altura" min="1.50" max="2.00" step="0.01" value="1.75" style="border: blue 1px solid; font-size: 24px"></td>
-        <td style="text-align: center;"><span id="co-imc-imc" style="font-size: 24px"></span></td>
+        <td><span id="co-imc-imc" style="font-size: 24px"></span></td>
       </tr>
     </table>
 
@@ -105,13 +112,6 @@
       co_imc_peso.addEventListener("change", calcula_imc);
       co_imc_altura.addEventListener("change", calcula_imc);
     </script>
-
-    <div class="filaflex">
-      <iframe src="variables-0-02.php" style="height: 16em;"></iframe>
-      <div class="icono-enlace">
-        <a href="variables-0-02.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
   </section>
 
   <section id="ejercicio-3">
@@ -119,21 +119,28 @@
 
     <p>Escriba un programa que cada vez que se ejecute muestre tres números al azar entre 0 y 150 que correspodan a una cantidad de horas, minutos y segundos y que escriba su valor en segundos.</p>
 
+    <div class="filaflex">
+      <iframe src="variables-0-03.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-03.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
     <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
 
-    <table style="border: black 2px solid; padding: 10px">
+    <table style="border: black 2px solid; width: 420px; padding: 10px; text-align: center">
       <caption>Convertidor de horas, minutos y segundos a segundos</caption>
       <tr>
-        <td style="text-align: center">Horas</td>
-        <td style="text-align: center">Minutos</td>
-        <td style="text-align: center">Segundos</td>
-        <td style="text-align: center; width: 100px">Segundos</td>
+        <td>Horas</td>
+        <td>Minutos</td>
+        <td>Segundos</td>
+        <td>Segundos</td>
       </tr>
       <tr>
         <td><input type="number" id="co-hmss-horas" min="0" max="150" step="1" value="23" style="border: blue 1px solid; font-size: 24px"></td>
         <td><input type="number" id="co-hmss-minutos" min="0" max="150" step="1" value="59" style="border: blue 1px solid; font-size: 24px"></td>
         <td><input type="number" id="co-hmss-segundos" min="0" max="150" step="1" value="59" style="border: blue 1px solid; font-size: 24px"></td>
-        <td style="text-align: center;"><span id="co-hmss-s" style="font-size: 24px"></span></td>
+        <td><span id="co-hmss-s" style="font-size: 24px"></span></td>
       </tr>
     </table>
 
@@ -155,39 +162,64 @@
       co_hmss_minutos.addEventListener("change", calcula_hmss);
       co_hmss_segundos.addEventListener("change", calcula_hmss);
     </script>
-
-    <div class="filaflex">
-      <iframe src="variables-0-03.php" style="height: 16em;"></iframe>
-      <div class="icono-enlace">
-        <a href="variables-0-03.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
   </section>
 
   <section id="ejercicio-4">
-    <h2>Variables (0) 4 - Minutos y segundos</h2>
+    <h2>Variables (0) 4 - Convertidor de segundos a minutos y segundos</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre una cantida de segundos al azar entre 0 y 1000 y que escriba su valor en minutos y segundos.</p>
+
     <details>
       <summary>Ayuda</summary>
+
+      <p>Como un minuto son 60 segundos, la conversión se realiza mediante una división entera.</p>
+
       <p>
-        <img src="../../../img/ejercicios/sin-formularios/sf-0-4.svg" alt="Segundos a minutos" width="470" height="235">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="570" viewBox="40 40 570 250" style="font-family: sans-serif; font-size: 28px;">
+          <defs>
+            <!-- A marker to be used as an arrowhead -->
+            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" />
+            </marker>
+          </defs>
+          <text x="50" y="70">segundos a convertir</text>
+          <line x1="160" y1="75" x2="190" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="240" y="140" style="font-size: 140%" text-anchor="end">1234</text>
+          <polyline points="260,100 260,150 340,150" fill="none" stroke-width="3" stroke="black" />
+          <text x="340" y="70">segundos por minuto</text>
+          <line x1="345" y1="75" x2="315" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="280" y="140" style="font-size: 140%">60</text>
+          <text x="240" y="210" style="font-size: 140%" text-anchor="end">34</text>
+          <path d="M 185 210 q 32.5 35, 65 0" stroke="black" stroke-width="3" fill="transparent" />
+          <text x="50" y="280">resto de segundos</text>
+          <line x1="160" y1="260" x2="190" y2="230" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="280" y="210" style="font-size: 140%">20</text>
+          <text x="345" y="280">minutos</text>
+          <line x1="350" y1="260" x2="320" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        </svg>
       </p>
     </details>
 
-    <p>Puede comprobar el funcionamiento de su programa con este covnertidor:</p>
+    <div class="filaflex">
+      <iframe src="variables-0-04.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-04.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
 
-    <table style="border: black 2px solid; padding: 10px">
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 370px; padding: 10px; text-align: center">
       <caption>Convertidor de segundos a minutos y segundos</caption>
       <tr>
-        <td style="text-align: center">Segundos</td>
-        <td style="text-align: center">Minutos</td>
-        <td style="text-align: center; width: 100px">Segundos</td>
+        <td>Segundos</td>
+        <td>Minutos</td>
+        <td>Segundos</td>
       </tr>
       <tr>
         <td><input type="number" id="co-sms-seg" min="0" max="1000" step="1" value="500" style="border: blue 1px solid; font-size: 24px"></td>
-        <td style="text-align: center;"><span id="co-sms-minutos" style="font-size: 24px"></span></td>
-        <td style="text-align: center;"><span id="co-sms-segundos" style="font-size: 24px"></span></td>
+        <td><span id="co-sms-minutos" style="font-size: 24px"></span></td>
+        <td><span id="co-sms-segundos" style="font-size: 24px"></span></td>
       </tr>
     </table>
 
@@ -207,36 +239,84 @@
       window.addEventListener("load", calcula_sms);
       co_sms_seg.addEventListener("change", calcula_sms);
     </script>
-
-    <div class="filaflex">
-      <iframe src="variables-0-04.php" style="height: 16em;"></iframe>
-      <div class="icono-enlace">
-        <a href="variables-0-04.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
   </section>
 
   <section id="ejercicio-5">
-    <h2>Variables (0) 5 - Horas, minutos y segundos</h2>
+    <h2>Variables (0) 5 - Convertidor de segundos a horas, minutos y segundos</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre una cantida de segundos al azar entre 0 y 10000 y que escriba su valor en horas, minutos y segundos.</p>
 
+    <details>
+      <summary>Ayuda</summary>
 
-    <p>Puede comprobar el funcionamiento de su programa con este covnertidor:</p>
+      <p>Como una hora son 60 segundos y un minuto son 60 segundos, la conversión se realiza mediante dos divisiones enteras consecutivas, la primera para obtener el número de horas y la segunda para obtener el número de minutos y segundos.</p>
 
-    <table style="border: black 2px solid; padding: 10px">
+      <p>Por ejemplo, 12345 segundos son 3 horas, 25 minutos y 45 segundos, como muestran las siguientes divisiones:</p>
+
+      <p>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1070" viewBox="30 40 1070 290" style="font-family: sans-serif; font-size: 28px;">
+          <text x="40" y="70">segundos a convertir</text>
+          <line x1="160" y1="75" x2="190" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="240" y="140" style="font-size: 140%" text-anchor="end">12345</text>
+          <polyline points="260,100 260,150 340,150" fill="none" stroke-width="3" stroke="black" />
+          <text x="365" y="70">segundos</text>
+          <text x="365" y="100">por hora</text>
+          <line x1="360" y1="75" x2="330" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="280" y="140" style="font-size: 140%">3600</text>
+          <text x="240" y="210" style="font-size: 140%" text-anchor="end">1545</text>
+          <path d="M 150 210 q 50 35, 100 0" stroke="black" stroke-width="3" fill="transparent" />
+          <text x="70" y="290">primer resto</text>
+          <text x="70" y="320">de segundos</text>
+          <line x1="160" y1="270" x2="190" y2="240" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="280" y="210" style="font-size: 140%">3</text>
+          <text x="335" y="270">horas</text>
+          <line x1="330" y1="250" x2="310" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+          <path d="M 240 230 q 200 170, 460 -80" stroke="black" stroke-width="3" fill="transparent" marker-end="url(#arrow)" />
+
+          <text x="700" y="70" text-anchor="end">primer resto</text>
+          <text x="700" y="100" text-anchor="end">de segundos</text>
+          <line x1="710" y1="75" x2="740" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="790" y="140" style="font-size: 140%" text-anchor="end">1545</text>
+          <polyline points="810,100 810,150 890,150" fill="none" stroke-width="3" stroke="black" />
+          <text x="915" y="70">segundos</text>
+          <text x="915" y="100">por minuto</text>
+          <line x1="910" y1="75" x2="880" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="830" y="140" style="font-size: 140%">60</text>
+          <text x="790" y="210" style="font-size: 140%" text-anchor="end">45</text>
+          <path d="M 730 210 q 35 35, 70 0" stroke="black" stroke-width="3" fill="transparent" />
+          <text x="600" y="290">segundo resto</text>
+          <text x="600" y="320">de segundos</text>
+          <line x1="710" y1="270" x2="740" y2="240" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="830" y="210" style="font-size: 140%">25</text>
+          <text x="895" y="280">minutos</text>
+          <line x1="890" y1="260" x2="860" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        </svg>
+      </p>
+    </details>
+
+    <div class="filaflex">
+      <iframe src="variables-0-05.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-05.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 430px; padding: 10px; text-align: center">
       <caption>Convertidor de segundos a horas, minutos y segundos</caption>
       <tr>
-        <td style="text-align: center">Segundos</td>
-        <td style="text-align: center">Horas</td>
-        <td style="text-align: center">Minutos</td>
-        <td style="text-align: center; width: 100px">Segundos</td>
+        <td>Segundos</td>
+        <td>Horas</td>
+        <td>Minutos</td>
+        <td>Segundos</td>
       </tr>
       <tr>
         <td><input type="number" id="co-shms-seg" min="0" max="10900" step="1" value="500" style="border: blue 1px solid; font-size: 24px"></td>
-        <td style="text-align: center;"><span id="co-shms-horas" style="font-size: 24px"></span></td>
-        <td style="text-align: center;"><span id="co-shms-minutos" style="font-size: 24px"></span></td>
-        <td style="text-align: center;"><span id="co-shms-segundos" style="font-size: 24px"></span></td>
+        <td><span id="co-shms-horas" style="font-size: 24px"></span></td>
+        <td><span id="co-shms-minutos" style="font-size: 24px"></span></td>
+        <td><span id="co-shms-segundos" style="font-size: 24px"></span></td>
       </tr>
     </table>
 
@@ -260,21 +340,6 @@
       window.addEventListener("load", calcula_shms);
       co_shms_seg.addEventListener("change", calcula_shms);
     </script>
-
-    <details>
-      <summary>Ayuda</summary>
-      <p>12345 segundos son 3 horas, 25 minutos y 45 segundos, como muestran las siguientes divisiones:</p>
-      <p>
-        <img src="../../../img/ejercicios/sin-formularios/sf-0-5.svg" alt="Segundos a horas, minutos y segundos" width="1022" height="241">
-      </p>
-    </details>
-
-    <div class="filaflex">
-      <iframe src="variables-0-05.php" style="height: 16em;"></iframe>
-      <div class="icono-enlace">
-        <a href="variables-0-05.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
   </section>
 
   <section id="ejercicio-6">
@@ -284,19 +349,26 @@
 
     <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
 
+    <div class="filaflex">
+      <iframe src="variables-0-06.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-06.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
     <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
 
-    <table style="border: black 2px solid; padding: 10px">
+    <table style="border: black 2px solid; width: 350px; padding: 10px; text-align: center;">
       <caption>Convertidor de pies y pulgadas a centímetros</caption>
       <tr>
-        <td style="text-align: center">Pies</td>
-        <td style="text-align: center">Pugadas</td>
-        <td style="text-align: center; width: 100px">Centímetros</td>
+        <td>Pies</td>
+        <td>Pugadas</td>
+        <td>Centímetros</td>
       </tr>
       <tr>
         <td><input type="number" id="co-ppc-pies" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
         <td><input type="number" id="co-ppc-pulgadas" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
-        <td style="text-align: center;"><span id="co-ppc-cm" style="font-size: 24px"></span></td>
+        <td><span id="co-ppc-cm" style="font-size: 24px"></span></td>
       </tr>
     </table>
 
@@ -315,35 +387,35 @@
       co_ppc_pies.addEventListener("change", calcula_ppc);
       co_ppc_pulgadas.addEventListener("change", calcula_ppc);
     </script>
-
-    <div class="filaflex">
-      <iframe src="variables-0-06.php" style="height: 16em;"></iframe>
-      <div class="icono-enlace">
-        <a href="variables-0-06.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
   </section>
 
   <section id="ejercicio-7">
     <h2>Variables (0) 7 - Convertidor de centímetros a pies y pulgadas</h2>
 
-    <p>Escriba un programa que cada vez que se ejecute muestre un número al azar entre 0 y 10000 que correspodan a una cantidad de centímetros y que escriba su valor en pies y de pulgadas, redondeadas las pulgadas con un decimal.</p>
+    <p>Escriba un programa que cada vez que se ejecute muestre un número al azar entre 0 y 10000 (con hasta dos decimales) que correspodan a una cantidad de centímetros y que escriba su valor en pies y de pulgadas, redondeadas las pulgadas con un decimal.</p>
 
     <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
 
+    <div class="filaflex">
+      <iframe src="variables-0-07.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-07.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
     <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
 
-    <table style="border: black 2px solid; padding: 10px">
+    <table style="border: black 2px solid; width: 350px; padding: 10px; text-align: center;">
       <caption>Convertidor de centímetros a pies y pulgadas</caption>
       <tr>
-        <td style="text-align: center">Centímetros</td>
-        <td style="text-align: center">Pies</td>
-        <td style="text-align: center; width: 100px">Pulgadas</td>
+        <td>Centímetros</td>
+        <td>Pies</td>
+        <td>Pulgadas</td>
       </tr>
       <tr>
-        <td><input type="number" id="co-cpp-cm" min="0" max="10000" step="1" value="5000" style="border: blue 1px solid; font-size: 24px"></td>
-        <td style="text-align: center;"><span id="co-cpp-pies" style="font-size: 24px"></span></td>
-        <td style="text-align: center;"><span id="co-cpp-pulgadas" style="font-size: 24px"></span></td>
+        <td><input type="number" id="co-cpp-cm" min="0" max="10000" step="1.00" value="5000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-cpp-pies" style="font-size: 24px"></span></td>
+        <td><span id="co-cpp-pulgadas" style="font-size: 24px"></span></td>
       </tr>
     </table>
 
@@ -364,17 +436,10 @@
       window.addEventListener("load", calcula_cpp);
       co_cpp_cm.addEventListener("change", calcula_cpp);
     </script>
-
-    <div class="filaflex">
-      <iframe src="variables-0-07.php" style="height: 16em;"></iframe>
-      <div class="icono-enlace">
-        <a href="variables-0-07.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
