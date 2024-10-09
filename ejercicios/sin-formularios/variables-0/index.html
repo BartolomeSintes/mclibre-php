@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Variables (0). Enunciados. Ejercicios (sin formularios). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (sin formularios) - Variables (0) - Enunciados</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Variables (0)</h2>
+
+      <h3><a href="#">Enunciados</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Media de dos números</a></li>
+        <li><a href="#ejercicio-2">2 - Índice de Masa Corporal</a></li>
+        <li><a href="#ejercicio-3">3 - Horas, min. y seg. a s.</a></li>
+        <li><a href="#ejercicio-4">4 - Segundos a min. y seg.</a></li>
+        <li><a href="#ejercicio-5">5 - Segundos a h., min. y s.</a></li>
+        <li><a href="#ejercicio-6">6 - Pies y pulgadas a cm</a></li>
+        <li><a href="#ejercicio-7">7 - Cm a pies y pulgadas</a></li>
+      </ul>
+
+      <h3><a href="soluciones.html">Soluciones</a></h3>
+      <ul>
+        <li><a href="soluciones.html#ejercicio-1">1 - Media de dos números</a></li>
+        <li><a href="soluciones.html#ejercicio-2">2 - Índice de Masa Corporal</a></li>
+        <li><a href="soluciones.html#ejercicio-3">3 - Horas, min. y seg. a s.</a></li>
+        <li><a href="soluciones.html#ejercicio-4">4 - Segundos a min. y seg.</a></li>
+        <li><a href="soluciones.html#ejercicio-5">5 - Segundos a h., min. y s.</a></li>
+        <li><a href="soluciones.html#ejercicio-6">6 - Pies y pulgadas a cm</a></li>
+        <li><a href="soluciones.html#ejercicio-7">7 - Cm a pies y pulgadas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/sin-formularios/sf-variables-0-plantillas.zip">plantillas de los ejercicios Variables (Sin formularios)</a>.</p>
+  <!--
+  <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios. Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-variables-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p> -->
+
+  <section id="ejercicio-1">
+    <h2>Variables (0) 1 - Media de dos números</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre dos números al azar entre 0 y 100 y que escriba su media aritmética.</p>
+
+    <div class="filaflex">
+      <iframe src="variables-0-01.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-01.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Variables (0) 2 - Cálculo del Índice de la Masa Corporal (IMC)</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre dos números al azar, uno de ellos que represente el peso de una persona (entre 50 y 100 kilos) y el otro la altura (entre 1.50 y 2.00 metros) y que escriba el IMC correspondiente, redondeado con un decimal.</p>
+
+    <p>Se recuerda que el imc se calcula con la fórmula imc = peso / altura <sup>2</sup></p>
+
+    <p>Puede comprobar el funcionamiento de su programa con esta calculadora del IMC:</p>
+
+    <table style="border: black 2px solid; padding: 10px">
+      <caption>Calculadora del Índice de Masa Corporal</caption>
+      <tr>
+        <td style="text-align: center">Peso (kg)</td>
+        <td style="text-align: center">Altura (m)</td>
+        <td style="text-align: center; width: 100px">IMC</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-imc-peso" min="50" max="100" step="1" value="75" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-imc-altura" min="1.50" max="2.00" step="0.01" value="1.75" style="border: blue 1px solid; font-size: 24px"></td>
+        <td style="text-align: center;"><span id="co-imc-imc" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_imc_peso = document.getElementById("co-imc-peso");
+      var co_imc_altura = document.getElementById("co-imc-altura");
+      var co_imc_imc = document.getElementById("co-imc-imc");
+
+      function calcula_imc() {
+        var peso = Number(co_imc_peso.value);
+        var altura = Number(co_imc_altura.value);
+        if (altura != 0) {
+          co_imc_imc.textContent = Math.round(peso / altura ** 2 * 10) / 10;
+        } else {
+          co_imc_imc.textContent = "";
+        }
+      }
+
+      window.addEventListener("load", calcula_imc);
+      co_imc_peso.addEventListener("change", calcula_imc);
+      co_imc_altura.addEventListener("change", calcula_imc);
+    </script>
+
+    <div class="filaflex">
+      <iframe src="variables-0-02.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-02.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Variables (0) 3 - Convertidor de horas, minutos y segundos a segundos</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre tres números al azar entre 0 y 150 que correspodan a una cantidad de horas, minutos y segundos y que escriba su valor en segundos.</p>
+
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; padding: 10px">
+      <caption>Convertidor de horas, minutos y segundos a segundos</caption>
+      <tr>
+        <td style="text-align: center">Horas</td>
+        <td style="text-align: center">Minutos</td>
+        <td style="text-align: center">Segundos</td>
+        <td style="text-align: center; width: 100px">Segundos</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-hmss-horas" min="0" max="150" step="1" value="23" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-hmss-minutos" min="0" max="150" step="1" value="59" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-hmss-segundos" min="0" max="150" step="1" value="59" style="border: blue 1px solid; font-size: 24px"></td>
+        <td style="text-align: center;"><span id="co-hmss-s" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_hmss_horas = document.getElementById("co-hmss-horas");
+      var co_hmss_minutos = document.getElementById("co-hmss-minutos");
+      var co_hmss_segundos = document.getElementById("co-hmss-segundos");
+      var co_hmss_s = document.getElementById("co-hmss-s");
+
+      function calcula_hmss() {
+        var horas = Number(co_hmss_horas.value);
+        var minutos = Number(co_hmss_minutos.value);
+        var segundos = Number(co_hmss_segundos.value);
+        co_hmss_s.textContent = horas * 3600 + minutos * 60 + segundos;
+      }
+
+      window.addEventListener("load", calcula_hmss);
+      co_hmss_horas.addEventListener("change", calcula_hmss);
+      co_hmss_minutos.addEventListener("change", calcula_hmss);
+      co_hmss_segundos.addEventListener("change", calcula_hmss);
+    </script>
+
+    <div class="filaflex">
+      <iframe src="variables-0-03.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-03.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Variables (0) 4 - Minutos y segundos</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre una cantida de segundos al azar entre 0 y 1000 y que escriba su valor en minutos y segundos.</p>
+    <details>
+      <summary>Ayuda</summary>
+      <p>
+        <img src="../../../img/ejercicios/sin-formularios/sf-0-4.svg" alt="Segundos a minutos" width="470" height="235">
+      </p>
+    </details>
+
+    <p>Puede comprobar el funcionamiento de su programa con este covnertidor:</p>
+
+    <table style="border: black 2px solid; padding: 10px">
+      <caption>Convertidor de segundos a minutos y segundos</caption>
+      <tr>
+        <td style="text-align: center">Segundos</td>
+        <td style="text-align: center">Minutos</td>
+        <td style="text-align: center; width: 100px">Segundos</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-sms-seg" min="0" max="1000" step="1" value="500" style="border: blue 1px solid; font-size: 24px"></td>
+        <td style="text-align: center;"><span id="co-sms-minutos" style="font-size: 24px"></span></td>
+        <td style="text-align: center;"><span id="co-sms-segundos" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_sms_seg = document.getElementById("co-sms-seg");
+      var co_sms_minutos = document.getElementById("co-sms-minutos");
+      var co_sms_segundos = document.getElementById("co-sms-segundos");
+
+      function calcula_sms() {
+        var s = Number(co_sms_seg.value);
+        var minutos = Math.trunc(s / 60);
+        var segundos = s % 60;
+        co_sms_minutos.textContent = minutos;
+        co_sms_segundos.textContent = segundos;
+      }
+
+      window.addEventListener("load", calcula_sms);
+      co_sms_seg.addEventListener("change", calcula_sms);
+    </script>
+
+    <div class="filaflex">
+      <iframe src="variables-0-04.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-04.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Variables (0) 5 - Horas, minutos y segundos</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre una cantida de segundos al azar entre 0 y 10000 y que escriba su valor en horas, minutos y segundos.</p>
+
+
+    <p>Puede comprobar el funcionamiento de su programa con este covnertidor:</p>
+
+    <table style="border: black 2px solid; padding: 10px">
+      <caption>Convertidor de segundos a horas, minutos y segundos</caption>
+      <tr>
+        <td style="text-align: center">Segundos</td>
+        <td style="text-align: center">Horas</td>
+        <td style="text-align: center">Minutos</td>
+        <td style="text-align: center; width: 100px">Segundos</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-shms-seg" min="0" max="10900" step="1" value="500" style="border: blue 1px solid; font-size: 24px"></td>
+        <td style="text-align: center;"><span id="co-shms-horas" style="font-size: 24px"></span></td>
+        <td style="text-align: center;"><span id="co-shms-minutos" style="font-size: 24px"></span></td>
+        <td style="text-align: center;"><span id="co-shms-segundos" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_shms_seg = document.getElementById("co-shms-seg");
+      var co_shms_horas = document.getElementById("co-shms-horas");
+      var co_shms_minutos = document.getElementById("co-shms-minutos");
+      var co_shms_segundos = document.getElementById("co-shms-segundos");
+
+      function calcula_shms() {
+        var s = Number(co_shms_seg.value);
+        var horas = Math.trunc(s / 3600);
+        var s2 = Math.trunc(s % 3600);
+        var minutos = Math.trunc(s2 / 60);
+        var segundos = s2 % 60;
+        co_shms_horas.textContent = horas;
+        co_shms_minutos.textContent = minutos;
+        co_shms_segundos.textContent = segundos;
+      }
+
+      window.addEventListener("load", calcula_shms);
+      co_shms_seg.addEventListener("change", calcula_shms);
+    </script>
+
+    <details>
+      <summary>Ayuda</summary>
+      <p>12345 segundos son 3 horas, 25 minutos y 45 segundos, como muestran las siguientes divisiones:</p>
+      <p>
+        <img src="../../../img/ejercicios/sin-formularios/sf-0-5.svg" alt="Segundos a horas, minutos y segundos" width="1022" height="241">
+      </p>
+    </details>
+
+    <div class="filaflex">
+      <iframe src="variables-0-05.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-05.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>Variables (0) 6 - Convertidor de pies y pulgadas a centímetros</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre dos números al azar entre 0 y 20 que correspodan a una cantidad de pies y de pulgadas y que escriba su valor en centímetros, redondeado con dos decimales.</p>
+
+    <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
+
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; padding: 10px">
+      <caption>Convertidor de pies y pulgadas a centímetros</caption>
+      <tr>
+        <td style="text-align: center">Pies</td>
+        <td style="text-align: center">Pugadas</td>
+        <td style="text-align: center; width: 100px">Centímetros</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-ppc-pies" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-ppc-pulgadas" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
+        <td style="text-align: center;"><span id="co-ppc-cm" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_ppc_pies = document.getElementById("co-ppc-pies");
+      var co_ppc_pulgadas = document.getElementById("co-ppc-pulgadas");
+      var co_ppc_cm = document.getElementById("co-ppc-cm");
+
+      function calcula_ppc() {
+        var pies = Number(co_ppc_pies.value);
+        var pulgadas = Number(co_ppc_pulgadas.value);
+        co_ppc_cm.textContent = (pies * 12 + pulgadas) * 2.54;
+      }
+
+      window.addEventListener("load", calcula_ppc);
+      co_ppc_pies.addEventListener("change", calcula_ppc);
+      co_ppc_pulgadas.addEventListener("change", calcula_ppc);
+    </script>
+
+    <div class="filaflex">
+      <iframe src="variables-0-06.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-06.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-7">
+    <h2>Variables (0) 7 - Convertidor de centímetros a pies y pulgadas</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre un número al azar entre 0 y 10000 que correspodan a una cantidad de centímetros y que escriba su valor en pies y de pulgadas, redondeadas las pulgadas con un decimal.</p>
+
+    <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
+
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; padding: 10px">
+      <caption>Convertidor de centímetros a pies y pulgadas</caption>
+      <tr>
+        <td style="text-align: center">Centímetros</td>
+        <td style="text-align: center">Pies</td>
+        <td style="text-align: center; width: 100px">Pulgadas</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-cpp-cm" min="0" max="10000" step="1" value="5000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td style="text-align: center;"><span id="co-cpp-pies" style="font-size: 24px"></span></td>
+        <td style="text-align: center;"><span id="co-cpp-pulgadas" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_cpp_cm = document.getElementById("co-cpp-cm");
+      var co_cpp_pies = document.getElementById("co-cpp-pies");
+      var co_cpp_pulgadas = document.getElementById("co-cpp-pulgadas");
+
+      function calcula_cpp() {
+        var cm = Number(co_cpp_cm.value);
+        var pies = Math.trunc(cm / (12 * 2.54));
+        var cm2 = cm % (12 * 2.54);
+        var pulgadas = Math.round(cm2 / 2.54 * 100) / 100;
+        co_cpp_pies.textContent = pies;
+        co_cpp_pulgadas.textContent = pulgadas;
+      }
+
+      window.addEventListener("load", calcula_cpp);
+      co_cpp_cm.addEventListener("change", calcula_cpp);
+    </script>
+
+    <div class="filaflex">
+      <iframe src="variables-0-07.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-07.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
