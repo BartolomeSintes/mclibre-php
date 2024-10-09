@@ -30,7 +30,9 @@
         <li><a href="#ejercicio-4">4 - Segundos a min. y seg.</a></li>
         <li><a href="#ejercicio-5">5 - Segundos a h., min. y s.</a></li>
         <li><a href="#ejercicio-6">6 - Pies y pulgadas a cm</a></li>
-        <li><a href="#ejercicio-7">7 - Cm a pies y pulgadas</a></li>
+        <li><a href="#ejercicio-7">7 - Yardas pies pulg. a cm</a></li>
+        <li><a href="#ejercicio-8">8 - Cm a pies y pulgadas</a></li>
+        <li><a href="#ejercicio-9">9 - Cm a yardas pies pulg.</a></li>
       </ul>
 
       <h3><a href="soluciones.html">Soluciones</a></h3>
@@ -41,7 +43,9 @@
         <li><a href="soluciones.html#ejercicio-4">4 - Segundos a min. y seg.</a></li>
         <li><a href="soluciones.html#ejercicio-5">5 - Segundos a h., min. y s.</a></li>
         <li><a href="soluciones.html#ejercicio-6">6 - Pies y pulgadas a cm</a></li>
-        <li><a href="soluciones.html#ejercicio-7">7 - Cm a pies y pulgadas</a></li>
+        <li><a href="soluciones.html#ejercicio-7">7 - Yardas pies pulg. a cm</a></li>
+        <li><a href="soluciones.html#ejercicio-8">8 - Cm a pies y pulgadas</a></li>
+        <li><a href="soluciones.html#ejercicio-9">9 - Cm a yardas pies pulg.</a></li>
       </ul>
     </div>
   </nav>
@@ -345,7 +349,7 @@
   <section id="ejercicio-6">
     <h2>Variables (0) 6 - Convertidor de pies y pulgadas a centímetros</h2>
 
-    <p>Escriba un programa que cada vez que se ejecute muestre dos números al azar entre 0 y 20 que correspodan a una cantidad de pies y de pulgadas y que escriba su valor en centímetros, redondeado con dos decimales.</p>
+    <p>Escriba un programa que cada vez que se ejecute muestre dos números al azar entre 0 y 20 que correspodan a cantidades de pies y de pulgadas y que escriba su valor en centímetros, redondeado con dos decimales.</p>
 
     <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
 
@@ -390,9 +394,9 @@
   </section>
 
   <section id="ejercicio-7">
-    <h2>Variables (0) 7 - Convertidor de centímetros a pies y pulgadas</h2>
+    <h2>Variables (0) 7 - Convertidor de yardas, pies y pulgadas a centímetros</h2>
 
-    <p>Escriba un programa que cada vez que se ejecute muestre un número al azar entre 0 y 10000 (con hasta dos decimales) que correspodan a una cantidad de centímetros y que escriba su valor en pies y de pulgadas, redondeadas las pulgadas con un decimal.</p>
+    <p>Escriba un programa que cada vez que se ejecute muestre dos números al azar entre 0 y 20 que correspodan a cantidades de yardas, pies y de pulgadas y que escriba su valor en centímetros, redondeado con dos decimales.</p>
 
     <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
 
@@ -400,6 +404,60 @@
       <iframe src="variables-0-07.php" style="height: 16em;"></iframe>
       <div class="icono-enlace">
         <a href="variables-0-07.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 400px; padding: 10px; text-align: center;">
+      <caption>Convertidor de yardas, pies y pulgadas a centímetros</caption>
+      <tr>
+        <td>Yardas</td>
+        <td>Pies</td>
+        <td>Pugadas</td>
+        <td>Centímetros</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-yppc-yardas" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-yppc-pies" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-yppc-pulgadas" min="0" max="20" step="1" value="10" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-yppc-cm" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_yppc_yardas = document.getElementById("co-yppc-yardas");
+      var co_yppc_pies = document.getElementById("co-yppc-pies");
+      var co_yppc_pulgadas = document.getElementById("co-yppc-pulgadas");
+      var co_yppc_cm = document.getElementById("co-yppc-cm");
+
+      function calcula_yppc() {
+        var yardas = Number(co_yppc_yardas.value);
+        var pies = Number(co_yppc_pies.value);
+        var pulgadas = Number(co_yppc_pulgadas.value);
+        co_yppc_cm.textContent = Math.round((yardas * 3 * 12 + pies * 12 + pulgadas) * 2.54 * 100) / 100;
+      }
+
+      window.addEventListener("load", calcula_yppc);
+      co_yppc_yardas.addEventListener("change", calcula_yppc);
+      co_yppc_pies.addEventListener("change", calcula_yppc);
+      co_yppc_pulgadas.addEventListener("change", calcula_yppc);
+    </script>
+  </section>
+
+  <section id="ejercicio-8">
+    <h2>Variables (0) 8 - Convertidor de centímetros a pies y pulgadas</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre un número al azar entre 0 y 10000 (con hasta dos decimales) que correspodan a una cantidad de centímetros y que escriba su valor en pies y de pulgadas, redondeadas las pulgadas con un decimal.</p>
+
+    <p>Se recuerda que un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
+
+    <p><strong>Nota</strong>: Debido a la aproximación que supone trabajar con decimales, hacer la conversión con las operaciones de cociente y resto puede dar lugar a resultados incorrectos que necesitarían un tratamiento específico (por ejemplo, se puede comprobar qué ocurre cuando se convierten los valores 365.74 cm, 365.75 cm, 365.76 cm y 365.77 cm o con los valores 3047 cm, 3048 cm y 3049 cm). Ni el programa PHP ni el convertidor que se ofrecen de ejemplo intentan resolver estas situaciones especiales.</p>
+
+    <div class="filaflex">
+      <iframe src="variables-0-08.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-08.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -428,13 +486,70 @@
         var cm = Number(co_cpp_cm.value);
         var pies = Math.trunc(cm / (12 * 2.54));
         var cm2 = cm % (12 * 2.54);
-        var pulgadas = Math.round(cm2 / 2.54 * 100) / 100;
+        var pulgadas = Math.round(cm2 / 2.54 * 10) / 10;
         co_cpp_pies.textContent = pies;
         co_cpp_pulgadas.textContent = pulgadas;
       }
 
       window.addEventListener("load", calcula_cpp);
       co_cpp_cm.addEventListener("change", calcula_cpp);
+    </script>
+  </section>
+
+  <section id="ejercicio-9">
+    <h2>Variables (0) 9 - Convertidor de centímetros a yardas, pies y pulgadas</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre un número al azar entre 0 y 50000 (con hasta dos decimales) que correspodan a una cantidad de centímetros y que escriba su valor en yardas, pies y de pulgadas, redondeadas las pulgadas con un decimal.</p>
+
+    <p>Se recuerda que una yarda son 3 pies, un pie son doce pulgadas y una pulgada son 2,54 cm.</p>
+
+    <p><strong>Nota</strong>: Debido a la aproximación que supone trabajar con decimales, hacer la conversión con las operaciones de cociente y resto puede dar lugar a resultados incorrectos que necesitarían un tratamiento específico. Ni el programa PHP ni el convertidor que se ofrecen de ejemplo intentan resolver estas situaciones especiales.</p>
+
+    <div class="filaflex">
+      <iframe src="variables-0-09.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="variables-0-09.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Puede comprobar el funcionamiento de su programa con este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 410px; padding: 10px; text-align: center;">
+      <caption>Convertidor de centímetros a yardas, pies y pulgadas</caption>
+      <tr>
+        <td>Centímetros</td>
+        <td>Yardas</td>
+        <td>Pies</td>
+        <td>Pulgadas</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-cypp-cm" min="0" max="50000" step="1.00" value="25000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-cypp-yardas" style="font-size: 24px"></span></td>
+        <td><span id="co-cypp-pies" style="font-size: 24px"></span></td>
+        <td><span id="co-cypp-pulgadas" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_cypp_cm = document.getElementById("co-cypp-cm");
+      var co_cypp_yardas = document.getElementById("co-cypp-yardas");
+      var co_cypp_pies = document.getElementById("co-cypp-pies");
+      var co_cypp_pulgadas = document.getElementById("co-cypp-pulgadas");
+
+      function calcula_cypp() {
+        var cm = Number(co_cypp_cm.value);
+        var yardas = Math.trunc(cm / (3 * 12 * 2.54));
+        var cm2 = cm % (3 * 12 * 2.54);
+        var pies = Math.trunc(cm2 / (12 * 2.54));
+        var cm3 = cm2 % (12 * 2.54);
+        var pulgadas = Math.round(cm3 / 2.54 * 10) / 10;
+        co_cypp_yardas.textContent = yardas;
+        co_cypp_pies.textContent = pies;
+        co_cypp_pulgadas.textContent = pulgadas;
+      }
+
+      window.addEventListener("load", calcula_cypp);
+      co_cypp_cm.addEventListener("change", calcula_cypp);
     </script>
   </section>
 

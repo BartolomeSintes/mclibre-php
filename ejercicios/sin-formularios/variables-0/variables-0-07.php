@@ -1,11 +1,11 @@
 <?php
 /**
- * Variables. Sin formularios.(0) 7 - variables-0-07.php
+ * Sin formularios. Variables (0) 7 - variables-0-07.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-08
+ * @version   2024-10-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Convertidor de centímetros a pies y pulgadas.
+    Convertidor de pies y pulgadas a centímetros.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,23 +36,22 @@
 </head>
 
 <body>
-  <h1>Convertidor de centímetros a pies y pulgadas</h1>
+  <h1>Convertidor de pies y pulgadas a centímetros</h1>
 
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$centimetros  = rand(0, 1000000) / 100;
-$pies         = floor($centimetros / 30.48);
-$centimetros2 = fmod($centimetros, 12 * 2.54);
-$pulgadas     = round($centimetros2 / 2.54, 1);
+$yardas   = rand(0, 10);
+$pies     = rand(0, 10);
+$pulgadas = rand(0, 10);
 
-print "  <p>$centimetros centímetros son $pies pies y $pulgadas pulgadas.</p>\n";
+print "  <p>$yardas yardas, $pies pies y $pulgadas pulgadas son " . ($yardas * 3 * 12 + $pies * 12 + $pulgadas) * 2.54 . " cm.</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-08">8 de octubre de 2024</time>
+      <time datetime="2024-10-09">9 de octubre de 2024</time>
     </p>
 
     <p class="licencia">

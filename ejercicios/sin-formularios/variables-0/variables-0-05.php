@@ -1,11 +1,11 @@
 <?php
 /**
- * Variables. Sin formularios.(0) 4 - variables-0-04.php
+ * Sin formularios. Variables (0) 4 - variables-0-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-08
+ * @version   2024-10-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ print "  <p>$segundos segundos son $horas horas, $minutos minutos y $segundos3 s
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-08">8 de octubre de 2024</time>
+      <time datetime="2024-10-09">9 de octubre de 2024</time>
     </p>
 
     <p class="licencia">

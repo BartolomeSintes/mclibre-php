@@ -1,11 +1,11 @@
 <?php
 /**
- * Variables. Sin formularios.(0) 3 - variables-0-03.php
+ * Sin formularios. Variables (0) 3 - variables-0-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-08
+ * @version   2024-10-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,18 +41,18 @@
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$horas     = rand(0, 150);
-$minutos   = rand(0, 150);
-$segundos  = rand(0, 150);
-$resultado = $horas * 3600 + $minutos * 60 + $segundos;
+$horas    = rand(0, 150);
+$minutos  = rand(0, 150);
+$segundos = rand(0, 150);
+$total    = $horas * 3600 + $minutos * 60 + $segundos;
 
-print "  <p>$horas horas, $minutos minutos y $segundos segundos son $resultado segundos.</p>\n";
+print "  <p>$horas horas, $minutos minutos y $segundos segundos son $total segundos.</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-08">8 de octubre de 2024</time>
+      <time datetime="2024-10-09">9 de octubre de 2024</time>
     </p>
 
     <p class="licencia">
