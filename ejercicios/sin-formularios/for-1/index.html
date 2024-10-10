@@ -211,7 +211,7 @@
 
     <details>
       <summary>Ayuda</summary>
-      <p>Los puntos obtenidos con cada disparo se pueden calcular con la fórmula: \(puntos = 10 - intdiv({\sqrt{$x^2 + $y^2}, 20})\), donde <i>x</i> e <i>y</i> son las coordenadas del disparo. Además hay que tener en cuenta que si el resultado obtenido con la fórmula es negativo, la puntuación debe ser 0.</p>
+      <p>Los puntos obtenidos con cada disparo se pueden calcular con la fórmula: \(puntos = 10 - floor({\sqrt{$x^2 + $y^2} / 20})\), donde <i>x</i> e <i>y</i> son las coordenadas del disparo. Además hay que tener en cuenta que si el resultado obtenido con la fórmula es negativo, la puntuación debe ser 0.</p>
       <ul>
         <li>Esta fórmula puede obtenerse analizando el dibujo siguiente.:
           <p>
@@ -261,11 +261,11 @@
           <p>\(d = \sqrt{$x^2 + $y^2}\)</p>
         </li>
         <li>Como cada franja mide 20, calculando el cociente de la división de <i>d</i> por 20 obtenemos el número de franjas de distancia a la que se encuentra el disparo del centro de la diana:
-          <p>\(numeroFranjas = intdiv({\sqrt{$x^2 + $y^2},  20})\)</p>
+          <p>\(numeroFranjas = floor({\sqrt{$x^2 + $y^2} / 20})\)</p>
           <p>Como la distancia aumenta a medida que nos alejamos del centro, si el disparo da en el blanco central, <i>numeroFranjas</i> será 0. Cuando el disparo da fuera de la diana, <i>numeroFranjas</i> será 10, 11, etc, aumentando a medida que se aleja de la diana.</p>
         </li>
         <li>Como la puntuación máxima se obtiene en el centro de la diana, la puntuación se obtiene restando de 10 el número de franjas:
-          <p>\(puntos = 10 - intdiv({\sqrt{$x^2 + $y^2},  20})\)</p>
+          <p>\(puntos = 10 - floor({\sqrt{$x^2 + $y^2} / 20})\)</p>
           <p>Sin olvidar que si el resultado es negativo (es decir, si el disparo da fuera de la diana), la puntuación debe ser 0.</p>
         </li>
       </ul>
@@ -280,7 +280,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

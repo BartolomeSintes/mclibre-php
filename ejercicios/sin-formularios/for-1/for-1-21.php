@@ -3,9 +3,9 @@
  * for (1) 21 - for-1-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2024-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -60,7 +60,7 @@ $disparos = rand(1, 10);
 for ($i = 0; $i < $disparos; $i++) {
     $x = rand(-200, 200);
     $y = rand(-200, 200);
-    $puntos += (10 - intdiv(sqrt($x ** 2 + $y ** 2), 20) > 0) ? 10 - intdiv(sqrt($x ** 2 + $y ** 2), 20) : 0;
+    $puntos += (10 - floor(sqrt($x ** 2 + $y ** 2) / 20) > 0) ? 10 - floor(sqrt($x ** 2 + $y ** 2) / 20) : 0;
     print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\" "
      . "d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 "
      . "-0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" />\n";
@@ -79,7 +79,7 @@ print "  </ul>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2024-10-10">10 de octubre de 2024</time>
     </p>
 
     <p class="licencia">
