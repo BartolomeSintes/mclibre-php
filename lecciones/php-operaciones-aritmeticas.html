@@ -191,6 +191,12 @@ print "&lt;p&gt;El resto de 17 dividido entre 3 es " . 17 % 3 . "&lt;/p&gt;\n";
 
     <p>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1500" viewBox="40 40 2000 340" style="font-family: sans-serif; font-size: 28px;">
+        <defs>
+          <!-- A marker to be used as an arrowhead -->
+          <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" />
+          </marker>
+        </defs>
         <text x="50" y="80">dividendo</text>
         <line x1="170" y1="85" x2="190" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
         <text x="190" y="140" style="font-size: 140%">17</text>
@@ -271,21 +277,6 @@ print "&lt;p&gt;El resto de 17 dividido entre 3 es " . 17 % 3 . "&lt;/p&gt;\n";
 
     <h3>Cociente y resto de una división entre números decimales</h3>
 
-    <p>Para calcular el resto de una división entre <strong>números decimales</strong>, PHP dispone de la función <a href="https://www.php.net/manual/en/function.fmod.php"><span class="php-fun">fmod($a, $b)</span></a>.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;El resto de 17 dividido entre 3.1 es " . fmod(17, 3.1) . "&lt;/p&gt;\n";
-?&gt;</code>
-  </pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3.1 es 1.5&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
     <p>Para calcular el cociente de una división entre <strong>números decimales</strong>, PHP no dispone de ninguna función u operador específico, aunque se puede recurrir al redondeo de la división entre los valores.</p>
 
     <div class="filaflex">
@@ -311,6 +302,21 @@ print "&lt;p&gt;El cociente de -17.1 dividido entre 3.1 es " . ceil(-17.1 / 3.1)
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;El cociente de -17.1 dividido entre 3.1 es -5&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>Para calcular el resto de una división entre <strong>números decimales</strong>, PHP dispone de la función <a href="https://www.php.net/manual/en/function.fmod.php"><span class="php-fun">fmod($a, $b)</span></a>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;El resto de 17 dividido entre 3.1 es " . fmod(17, 3.1) . "&lt;/p&gt;\n";
+?&gt;</code>
+  </pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3.1 es 1.5&lt;/p&gt;</code></pre>
       </div>
     </div>
 
@@ -392,6 +398,7 @@ print "&lt;p&gt;El cociente de -17.1 dividido entre 3.1 es " . ceil(-17.1 / 3.1)
       </svg>
     </p>
 
+    <p><strong>Nota</strong>: Debido a la aproximación que supone trabajar con decimales, hacer la conversión con las operaciones de cociente y resto puede dar lugar a resultados incorrectos en algunos casos (normalmente, cuando el valor a convertir está muy próximo de valores que dan cero en la unidad más pequeña).</p>
   </section>
 
   <section id="potencias">
@@ -935,10 +942,63 @@ print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
 </pre>
       </div>
     </div>
+
+    <hr class="corta">
+
+    <p>Como <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> sólo genera números enteros, si queremos generar números aleatorios con decimales podemos utilizar el "truco" de generar números más grandes multiplicando por la potencia de 10 necesaria y dividiendo después por la misma potencia.</p>
+
+    <p>Por ejemplo, para generar números con uno, dos o tres decimales entre 0 y 100:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . rand(0, 100 <span class="codigo-resaltado">* 10</span>) <span class="codigo-resaltado">/ 10</span> . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;43.1&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . rand(0, 100 * 100) / 100 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;27.63&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . rand(0, 100 * 1000) / 1000 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;8.944&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
