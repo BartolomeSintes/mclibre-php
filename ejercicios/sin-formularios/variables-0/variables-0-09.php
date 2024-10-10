@@ -28,7 +28,7 @@
   <meta charset="utf-8">
   <title>
     Convertidor de centímetros a yardas, pies y pulgadas.
-    Variables. Sin formularios.
+    Variables (0). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$centimetros  = rand(0, 1000000) / 100;
+$centimetros  = rand(0, 5_000_000) / 100;
 $yardas       = floor($centimetros / 91.44);
 $centimetros2 = fmod($centimetros, 91.44);
 $pies         = floor($centimetros2 / 30.48);

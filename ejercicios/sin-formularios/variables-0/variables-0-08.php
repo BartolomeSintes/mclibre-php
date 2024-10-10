@@ -28,7 +28,7 @@
   <meta charset="utf-8">
   <title>
     Convertidor de centímetros a pies y pulgadas.
-    Variables. Sin formularios.
+    Variables (0). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$centimetros  = rand(0, 1000000) / 100;
+$centimetros  = rand(0, 1_000_000) / 100;
 $pies         = floor($centimetros / 30.48);
 $centimetros2 = fmod($centimetros, 30.48);
 $pulgadas     = round($centimetros2 / 2.54, 1);

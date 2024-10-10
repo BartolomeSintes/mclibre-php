@@ -28,7 +28,7 @@
   <meta charset="utf-8">
   <title>
     Convertidor de segundos a horas, minutos y segundos.
-    Variables. Sin formularios.
+    Variables (0). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo cálculo.</p>
 
 <?php
-$segundos  = rand(0, 10000);
+$segundos  = rand(0, 10_000);
 $horas     = intdiv($segundos, 3600);
 $segundos2 = $segundos % 3600;
 $minutos   = intdiv($segundos2, 60);
