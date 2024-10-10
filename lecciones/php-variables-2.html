@@ -191,6 +191,27 @@ tiene un área de 196 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 
       <hr class="corta">
 
+      <p>Desde PHP 7.4 (publicado en noviembre de 2019), PHP permite utilizar el carácter subrayado (_) al escribir números. Este carácter no cambia el valor del número y no aparece al imprimir los valores, pero se suele utilizar para facilitar la legibilidad del código fuente en el caso de números con muchas cifras, por ejemplo como separador de miles, millones, etc.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$x = 123_456;
+$y = 123_456.789_012;
+print "&lt;p&gt;$x $y&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;123456 123456.789012&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+      <hr class="corta">
+
       <h4>Números enteros en notación exponencial, hexadecimal, octal o binaria</h4>
 
       <p>PHP permite expresar los números enteros en notación exponencial, hexadecimal, binaria o octal. </p>
@@ -598,7 +619,7 @@ if ($autorizado == false) {
     </section>
   </section>
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

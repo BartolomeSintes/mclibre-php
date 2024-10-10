@@ -31,7 +31,7 @@
         <li><a href="#php-7-0">PHP 7.0 (2015)</a></li>
         <li><a href="#php-5-6">PHP 5.6 (2014)</a></li>
         <li><a href="#php-5-4">PHP 5.4 (2012)</a></li>
-        <li><a href="#otros">Otros</a></li><a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv($a, $b)</span></a> y del operador "módulo" <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-res">%</span></a>
+        <li><a href="#otros">Otros</a></li>
       </ul>
     </div>
   </nav>
@@ -377,6 +377,25 @@ Matriz 2 ordenada: Array
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration74.php">Cambios en PHP 7.4</a></p>
 
     <ul>
+      <li>[<a href="https://www.php.net/manual/en/migration74.new-features.php#migration74.new-features.core.numeric-literal-separator">Referencia</a>]. A partir de PHP 7.4, se puede utilizar el carácter subrayado (_) al escribir números. Este carácter no cambia el valor del número y no aparece al imprimir los valores, pero se suele utilizar para facilitar la legibilidad del código fuente en el caso de números con muchas cifras, por ejemplo como separador de miles, millones, etc.
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$x = 123_456;
+$y = 123_456.789_012;
+print "&lt;p&gt;$x $y&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;123456 123456.789012&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
       <li>[<a href="https://www.php.net/manual/en/migration74.deprecated.php#migration74.deprecated.core.allow-url-include">Referencia</a>] A partir de PHP 7.4, no se pueden cargar bibliotecas remotas. Si se activa la directiva <a href="https://www.php.net/manual/en/filesystem.configuration.php">allow_url_include</a>, que permitía la carga de bibliotecas remotas, al cargar la biblioteca se genera un aviso E_DEPRECATED y no se carga la biblioteca.</li>
     </ul>
   </section>
@@ -484,7 +503,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
