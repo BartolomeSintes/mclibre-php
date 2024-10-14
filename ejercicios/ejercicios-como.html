@@ -33,6 +33,7 @@
         <li><a href="#validar">Validar páginas</a></li>
         <li><a href="#formatear-html">Formatear código HTML</a></li>
         <li><a href="#css">Hojas de estilo ejercicios</a></li>
+        <li><a href="#prueba-programas-if-else">Probar programas <span class="php-res">if else</span></a></li>
       </ul>
     </div>
   </nav>
@@ -252,8 +253,81 @@ print "&lt;/table&gt;\n";
     <p>Esta hoja de estilo se incluye generalmente en las plantillas de los ejercicios. En caso de que no esté incluida, se puede copiar de otro grupo de ejercicios.</p>
   </section>
 
+  <section id="prueba-programas-if-else">
+    <h3>Probar programas con estructuras <span class="php-res">if ... else ...</span></h3>
+
+    <p>Para probar el funcionamiento de un programa en el que se generan valores aleatorios y el programa da diferentes resultados, podemos actualizar la página de forma repetida hasta que salgan todos los resultados posibles.</p>
+
+    <p>Por ejejmplo, el programa siguiente indica si el número generado al azar es par o impar. Basta con actualizar la página unas pocas veces para comprobar que se muestran los dos posibles mensajes.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$n = rand(1, 1000);
+
+if ($n % 2 == 0) {
+    print "  &lt;p&gt;$n es par.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;$n es impar.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/comprobacion-programas-1.php" style="height: 12em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/comprobacion-programas-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Pero hay veces en los que obtener un valor o una combinación de valores no es fácil. Por ejemplo, el programa siguiente indica si el número generado al azar es mútiplo de 500. Haría falta actualizar muchas veces la página hasta generar uno de los dos valores múltiplos de 500 (500 y 1000).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$n = rand(1, 1000);
+
+if ($n % 500 == 0) {
+    print "  &lt;p&gt;$n es múltiplo de 500.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;$n no es múltiplo de 500.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/comprobacion-programas-2.php" style="height: 12em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/comprobacion-programas-2.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>En estos casos podemos añadir una instrucción para forzar un determinado valor de la variable, para poder comprobar que el programa funciona como esperamos. Por supuesto, esa línea debe borrarse una vez realizada la comprobación. Por ejemplo, en el programa del ejemplo anterior podemos forzar el valor 500 para comprobar que se muestra el mensaje correspondiente.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$n = rand(1, 1000);
+$n = 500;
+
+if ($n % 500 == 0) {
+    print "  &lt;p&gt;$n es múltiplo de 500.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;$n no es múltiplo de 500.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/comprobacion-programas-3.php" style="height: 13em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/comprobacion-programas-3.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 13 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 14 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
