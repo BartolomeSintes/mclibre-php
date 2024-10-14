@@ -28,6 +28,10 @@
         <li><a href="#ejercicio-4">4 - Aviso inmediato</a></li>
         <li><a href="#ejercicio-5">5 - Años bisiestos</a></li>
         <li><a href="#ejercicio-6">6 - RGB a HSL</a></li>
+        <li><a href="#ejercicio-7-a">7 A - cm, todas las unidades</a></li>
+        <li><a href="#ejercicio-7-b">7 B - cm, sin u. innecesarias</a></li>
+        <li><a href="#ejercicio-7-c">7 C - cm, con comas</a></li>
+        <li><a href="#ejercicio-7-d">7 D - cm, con comas e "y"</a></li>
       </ul>
     </div>
   </nav>
@@ -101,6 +105,41 @@
         <a href="if-else-0-5.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por esta calculadora de años bisiestos:</p>
+
+    <table style="border: black 2px solid; width: 800px; padding: 10px; text-align: center">
+      <caption>Calculadora de años bisiestos</caption>
+      <tr>
+        <td>Año</td>
+        <td>¿Es bisiesto?</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="ca-ab-year" min="1582" max="4000" step="1" value="2024" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="ca-ab-res" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var ca_ab_year = document.getElementById("ca-ab-year");
+      var ca_ab_res = document.getElementById("ca-ab-res");
+
+      function calcula_ab() {
+        var year = Number(ca_ab_year.value);
+        if (year % 400 == 0) {
+          ca_ab_res.textContent = year + " es bisiesto porque es múltiplo de 400.";
+        } else if (year % 100 == 0) {
+          ca_ab_res.textContent = year + " no es bisiesto porque es múltiplo de 100 pero no de 400.";
+        } else if (year % 4 == 0) {
+          ca_ab_res.textContent = year + " es bisiesto porque es múltiplo 4 pero no de 100.";
+        } else {
+          ca_ab_res.textContent = year + " no es bisiesto porque no es múltiplo de 4.";
+        }
+      }
+
+      window.addEventListener("load", calcula_ab);
+      ca_ab_year.addEventListener("change", calcula_ab);
+    </script>
   </section>
 
   <section id="ejercicio-6">
@@ -112,6 +151,7 @@
     <!-- 2018-10-06: la fórmula de la wikipedia estuvo mal en algún momento, pero en octubre de 2018 ya es correcta. En <a href="https://stackoverflow.com/questions/39118528/rgb-to-hsl-conversion">stack overflow</a> explican más la fórmula
     -->
     <ul>
+      <li>Los valores RGB son enteros de 0 a 255</li>
       <li>Los valores RGB se dividen por 255 y en todos los cálculos se usan los valores decimales <strong>r</strong>, <strong>g</strong> y <strong>b</strong></li>
       <li><strong>M</strong> es el máximo de los tres valores</li>
       <li><strong>m</strong> es el mínimo de los tres valores</li>
@@ -147,10 +187,91 @@
         <a href="if-else-0-6.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este convertidor de RGB a HSL:</p>
+
+    <table style="border: black 2px solid; width: 800px; padding: 10px; text-align: center">
+      <caption>Convertidor de RGB a HSL</caption>
+      <tr>
+        <td>R</td>
+        <td>G</td>
+        <td>B</td>
+        <td>M</td>
+        <td>m</td>
+        <td>C</td>
+        <td>H</td>
+        <td>S</td>
+        <td>L</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-rgbhsl-r" min="0" max="255" step="1" value="128" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-rgbhsl-g" min="0" max="255" step="1" value="128" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-rgbhsl-b" min="0" max="255" step="1" value="128" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-rgbhsl-resM" style="font-size: 24px"></span></td>
+        <td><span id="co-rgbhsl-resm" style="font-size: 24px"></span></td>
+        <td style="width: 80px;"><span id="co-rgbhsl-resC" style="font-size: 24px"></span></td>
+        <td style="width: 80px;"><span id="co-rgbhsl-resH" style="font-size: 24px"></span></td>
+        <td><span id="co-rgbhsl-resS" style="font-size: 24px"></span></td>
+        <td><span id="co-rgbhsl-resL" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_rgbhsl_r = document.getElementById("co-rgbhsl-r");
+      var co_rgbhsl_g = document.getElementById("co-rgbhsl-g");
+      var co_rgbhsl_b = document.getElementById("co-rgbhsl-b");
+      var co_rgbhsl_resM = document.getElementById("co-rgbhsl-resM");
+      var co_rgbhsl_resm = document.getElementById("co-rgbhsl-resm");
+      var co_rgbhsl_resC = document.getElementById("co-rgbhsl-resC");
+      var co_rgbhsl_resH = document.getElementById("co-rgbhsl-resH");
+      var co_rgbhsl_resS = document.getElementById("co-rgbhsl-resS");
+      var co_rgbhsl_resL = document.getElementById("co-rgbhsl-resL");
+
+      function calcula_rgbhsl() {
+        var r = Number(co_rgbhsl_r.value) / 255;
+        var g = Number(co_rgbhsl_g.value) / 255;
+        var b = Number(co_rgbhsl_b.value) / 255;
+        var M = Math.max(r, g, b);
+        co_rgbhsl_resM.textContent = Math.round(M * 1000) / 1000;
+        var m = Math.min(r, g, b);
+        co_rgbhsl_resm.textContent = Math.round(m * 1000) / 1000;
+        var C = M - m;
+        co_rgbhsl_resC.textContent = Math.round(C * 1000) / 1000;
+        var h = 0;
+        if (C == 0) {
+          h = 0;
+        } else if (M == r) {
+          h = (g - b) / C;
+        } else if (M == g) {
+          h = (b - r) / C + 2;
+        } else if (M == b) {
+          h = (r - g) / C + 4;
+        }
+        if (h < 0) {
+          h = h + 6;
+        }
+        h = Math.round(h * 60);
+        var H = h % 360;
+        var L = (M + m) / 2;
+        if (L == 1) {
+          var S = 0;
+        } else {
+          var S = C / (1 - Math.abs(2 * L - 1));
+        }
+        co_rgbhsl_resH.textContent = H;
+        co_rgbhsl_resS.textContent = Math.round(S * 1000) / 10 + "%";
+        co_rgbhsl_resL.textContent = Math.round(L * 1000) / 10 + "%";
+      }
+
+      window.addEventListener("load", calcula_rgbhsl);
+      co_rgbhsl_r.addEventListener("change", calcula_rgbhsl);
+      co_rgbhsl_g.addEventListener("change", calcula_rgbhsl);
+      co_rgbhsl_b.addEventListener("change", calcula_rgbhsl);
+    </script>
   </section>
 
   <section id="ejercicio-7-a">
-    <h2>if ... elseif ... else ... (0) 7 A - Convertidor de centímetros a kilómetros, metros y centímetros</h2>
+    <h2>if ... elseif ... else ... (0) 7 A - Convertidor de centímetros a kilómetros, metros y centímetros (con todas las unidades)</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre una distancia en centímtros al azar (de 0 a 200.000, por ejemplo) y muestre esa misma distancia en kilómetros, metros y centímetros.</p>
 
@@ -160,10 +281,41 @@
         <a href="if-else-0-7-a.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 630px; padding: 10px; text-align: center">
+      <caption>Convertidor de centímetros a kilómetros, metros y centímetros</caption>
+      <tr>
+        <td>Centímetros</td>
+        <td>Conversión (con todas las unidades)</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-ckmc1-cm" min="0" max="200000" step="1" value="50000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-ckmc1-frase" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_ckmc1_cm = document.getElementById("co-ckmc1-cm");
+      var co_ckmc1_frase = document.getElementById("co-ckmc1-frase");
+
+      function calcula_ckmc1() {
+        var cm = Number(co_ckmc1_cm.value);
+        var kilometros = Math.trunc(cm / 100000);
+        var cm2 = Math.trunc(cm % 100000);
+        var metros = Math.trunc(cm2 / 100);
+        var centimetros = cm2 % 100;
+        co_ckmc1_frase.textContent = cm + " centímetros son " + kilometros + " km " + metros + " m " + centimetros + " cm.";
+      }
+
+      window.addEventListener("load", calcula_ckmc1);
+      co_ckmc1_cm.addEventListener("change", calcula_ckmc1);
+    </script>
   </section>
 
   <section id="ejercicio-7-b">
-    <h2>if ... elseif ... else ... (0) 7 B - Convertidor de centímetros a kilómetros, metros y centímetros</h2>
+    <h2>if ... elseif ... else ... (0) 7 B - Convertidor de centímetros a kilómetros, metros y centímetros (sin unidades innecesarias)</h2>
 
     <p>Mejore el programa anterior haciendo que no se escriban las unidades innecesarias (cuando el valor es cero).</p>
 
@@ -173,10 +325,185 @@
         <a href="if-else-0-7-b.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 670px; padding: 10px; text-align: center">
+      <caption>Convertidor de centímetros a kilómetros, metros y centímetros</caption>
+      <tr>
+        <td>Centímetros</td>
+        <td>Conversión (sin unidades innecesarias)</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-ckmc2-cm" min="0" max="200000" step="1" value="50000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-ckmc2-frase" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_ckmc2_cm = document.getElementById("co-ckmc2-cm");
+      var co_ckmc2_frase = document.getElementById("co-ckmc2-frase");
+
+      function calcula_ckmc2() {
+        var cm = Number(co_ckmc2_cm.value);
+        var kilometros = Math.trunc(cm / 100000);
+        var cm2 = Math.trunc(cm % 100000);
+        var metros = Math.trunc(cm2 / 100);
+        var centimetros = cm2 % 100;
+        co_ckmc2_frase.textContent = cm + " centímetros son"
+        if (cm == 0) {
+          co_ckmc2_frase.textContent += " 0 cm";
+        } else {
+          if (kilometros != 0) {
+            co_ckmc2_frase.textContent += " " + kilometros + " km";
+          }
+          if (metros != 0) {
+            co_ckmc2_frase.textContent += " " + metros + " m";
+          }
+          if (centimetros != 0) {
+            co_ckmc2_frase.textContent += " " + centimetros + " cm";
+          }
+          co_ckmc2_frase.textContent += ".";
+        }
+      }
+
+      window.addEventListener("load", calcula_ckmc2);
+      co_ckmc2_cm.addEventListener("change", calcula_ckmc2);
+    </script>
+  </section>
+
+  <section id="ejercicio-7-c">
+    <h2>if ... elseif ... else ... (0) 7 C - Convertidor de centímetros a kilómetros, metros y centímetros (con comas)</h2>
+
+    <p>Mejore el programa anterior haciendo que se escriban comas después de las unidades (excepto en la última).</p>
+
+    <div class="filaflex">
+      <iframe src="if-else-0-7-c.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="if-else-0-7-c.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 670px; padding: 10px; text-align: center">
+      <caption>Convertidor de centímetros a kilómetros, metros y centímetros</caption>
+      <tr>
+        <td>Centímetros</td>
+        <td>Conversión (con comas)</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-ckmc3-cm" min="0" max="200000" step="1" value="50000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-ckmc3-frase" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_ckmc3_cm = document.getElementById("co-ckmc3-cm");
+      var co_ckmc3_frase = document.getElementById("co-ckmc3-frase");
+
+      function calcula_ckmc3() {
+        var cm = Number(co_ckmc3_cm.value);
+        var kilometros = Math.trunc(cm / 100000);
+        var cm2 = Math.trunc(cm % 100000);
+        var metros = Math.trunc(cm2 / 100);
+        var centimetros = cm2 % 100;
+        co_ckmc3_frase.textContent = cm + " centímetros son"
+        if (cm == 0) {
+          co_ckmc3_frase.textContent += " 0 cm";
+        } else {
+          if (kilometros != 0) {
+            co_ckmc3_frase.textContent += " " + kilometros + " km";
+            if (metros != 0 || centimetros != 0) {
+              co_ckmc3_frase.textContent += ",";
+            }
+          }
+          if (metros != 0) {
+            co_ckmc3_frase.textContent += " " + metros + " m";
+            if (centimetros != 0) {
+              co_ckmc3_frase.textContent += ",";
+            }
+          }
+          if (centimetros != 0) {
+            co_ckmc3_frase.textContent += " " + centimetros + " cm";
+          }
+          co_ckmc3_frase.textContent += ".";
+        }
+      }
+
+      window.addEventListener("load", calcula_ckmc3);
+      co_ckmc3_cm.addEventListener("change", calcula_ckmc3);
+    </script>
+  </section>
+
+  <section id="ejercicio-7-d">
+    <h2>if ... elseif ... else ... (0) 7 D - Convertidor de centímetros a kilómetros, metros y centímetros (con comas e "y")</h2>
+
+    <p>Mejore el programa anterior haciendo que se escriban la conjunción "y" antes de la última unidad.</p>
+
+    <div class="filaflex">
+      <iframe src="if-else-0-7-d.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="if-else-0-7-d.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este convertidor:</p>
+
+    <table style="border: black 2px solid; width: 670px; padding: 10px; text-align: center">
+      <caption>Convertidor de centímetros a kilómetros, metros y centímetros</caption>
+      <tr>
+        <td>Centímetros</td>
+        <td>Conversión (con comas)</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-ckmc4-cm" min="0" max="200000" step="1" value="50000" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-ckmc4-frase" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_ckmc4_cm = document.getElementById("co-ckmc4-cm");
+      var co_ckmc4_frase = document.getElementById("co-ckmc4-frase");
+
+      function calcula_ckmc4() {
+        var cm = Number(co_ckmc4_cm.value);
+        var kilometros = Math.trunc(cm / 100000);
+        var cm2 = Math.trunc(cm % 100000);
+        var metros = Math.trunc(cm2 / 100);
+        var centimetros = cm2 % 100;
+        co_ckmc4_frase.textContent = cm + " centímetros son"
+        if (cm == 0) {
+          co_ckmc4_frase.textContent += " 0 cm";
+        } else {
+          if (kilometros != 0) {
+            co_ckmc4_frase.textContent += " " + kilometros + " km";
+            if (metros != 0 && centimetros != 0) {
+              co_ckmc4_frase.textContent += ",";
+            } else if (metros != 0 || centimetros != 0) {
+              co_ckmc4_frase.textContent += " y";
+            }
+          }
+          if (metros != 0) {
+            co_ckmc4_frase.textContent += " " + metros + " m";
+            if (centimetros != 0) {
+              co_ckmc4_frase.textContent += " y";
+            }
+          }
+          if (centimetros != 0) {
+            co_ckmc4_frase.textContent += " " + centimetros + " cm";
+          }
+          co_ckmc4_frase.textContent += ".";
+        }
+      }
+
+      window.addEventListener("load", calcula_ckmc4);
+      co_ckmc4_cm.addEventListener("change", calcula_ckmc4);
+    </script>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 3 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

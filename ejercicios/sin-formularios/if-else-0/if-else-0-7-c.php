@@ -1,6 +1,6 @@
 <?php
 /**
- * if ... else ... (0) 5 - if-else-0-5.php
+ * if ... else ... (0) 7 C - if-else-0-7-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Comprobador de años bisiestos.
+    Convertidor de cm a km, m y cm (con comas).
     if .. elseif ... else ... (0). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,22 +36,37 @@
 </head>
 
 <body>
-  <h1>Comprobador de años bisiestos</h1>
+  <h1>Convertidor de centímetros a kilómetros, metros y centímetros (con comas)</h1>
 
-  <p>Actualice la página para mostrar un nuevo año.</p>
+  <p>Actualice la página para mostrar una nueva conversión.</p>
 
 <?php
-$year = rand(1582, 2100);
+$centimetros = rand(0, 200000);
 
-if ($year % 400 == 0) {
-    print "  <p>$year es un año bisiesto porque es múltiplo de 400.</p>\n";
-} elseif ($year % 100 == 0) {
-    print "  <p>$year no es un año bisiesto porque es múltiplo de 100 pero no de 400.</p>\n";
-} elseif ($year % 4 == 0) {
-    print "  <p>$year es un año bisiesto porque es múltiplo de 4 pero no de 100.</p>\n";
-} else {
-    print "  <p>$year no es un año bisiesto porque no es múltiplo de 4.</p>\n";
+$km = intdiv($centimetros, 100000);
+$cm = $centimetros % 100000;
+$m  = intdiv($cm, 100);
+$cm = $cm % 100;
+
+print "  <p>$centimetros centímetros son";
+if ($km != 0) {
+    print " $km km";
+    if ($m != 0 || $cm != 0) {
+        print ", ";
+    }
 }
+if ($m != 0) {
+    print " $m m";
+    if ($cm != 0) {
+        print ", ";
+    }
+}
+if ($cm != 0) {
+    print " $cm cm";
+} elseif ($km == 0 && $m == 0) {
+    print " $cm cm";
+}
+print ".</p>\n";
 
 ?>
 

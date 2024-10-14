@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-03
+ * @version   2024-10-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Convertidor de cm a km, m y cm.
+    Convertidor de cm a km, m y cm (sin unidades innecesarias).
     if .. elseif ... else ... (0). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Convertidor de centímetros a kilómetros, metros y centímetros</h1>
+  <h1>Convertidor de centímetros a kilómetros, metros y centímetros (sin unidades innecesarias)</h1>
 
   <p>Actualice la página para mostrar una nueva conversión.</p>
 
@@ -69,7 +69,7 @@ print ".</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-03">3 de octubre de 2024</time>
+      <time datetime="2024-10-09">9 de octubre de 2024</time>
     </p>
 
     <p class="licencia">
