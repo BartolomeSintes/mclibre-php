@@ -169,15 +169,15 @@ print "  &lt;p&gt;$horas horas, $minutos minutos y $segundos segundos son " . $h
         <text x="340" y="70">segundos por minuto</text>
         <line x1="345" y1="75" x2="315" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
         <text x="280" y="140" style="font-size: 140%">60</text>
-        <text x="240" y="210" style="font-size: 140%" text-anchor="end">34</text>
+        <text x="240" y="210" style="font-size: 140%" text-anchor="end" fill="red">34</text>
         <path d="M 185 210 q 32.5 35, 65 0" stroke="black" stroke-width="3" fill="transparent" />
         <text x="50" y="280">resto de segundos</text>
-        <line x1="160" y1="260" x2="190" y2="230" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
         <text x="110" y="315">934 % 60</text>
-        <text x="280" y="210" style="font-size: 140%">15</text>
+        <line x1="160" y1="260" x2="190" y2="230" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="210" style="font-size: 140%" fill="red">15</text>
         <text x="345" y="280">minutos</text>
-        <line x1="350" y1="260" x2="320" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
         <text x="320" y="315">intdiv(934, 60)</text>
+        <line x1="350" y1="260" x2="320" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
         <text x="110" y="370" style="font-size: 140%">934 = 60 * 15 + 34</text>
       </svg>
     </p>
@@ -213,6 +213,56 @@ print "  &lt;p&gt;$segundos segundos son " . intdiv($segundos, 60) . " minutos y
 
   <section id="ejercicio-5">
     <h2>Variables (0) 5 - Convertidor de segundos a horas, minutos y segundos</h2>
+
+    <p>Las operaciones a realizar son las siguientes:</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1070" viewBox="30 40 1070 340" style="font-family: sans-serif; font-size: 28px;">
+        <text x="40" y="70">segundos a convertir</text>
+        <line x1="160" y1="75" x2="190" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="240" y="140" style="font-size: 140%" text-anchor="end">12345</text>
+        <polyline points="260,100 260,150 340,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="365" y="70">segundos</text>
+        <text x="365" y="100">por hora</text>
+        <line x1="360" y1="75" x2="330" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="140" style="font-size: 140%">3600</text>
+        <text x="240" y="210" style="font-size: 140%" text-anchor="end">1545</text>
+        <path d="M 150 210 q 50 35, 100 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="70" y="290">primer resto</text>
+        <text x="70" y="320">de segundos</text>
+        <text x="55" y="360">12345 % 3600</text>
+        <line x1="160" y1="270" x2="190" y2="240" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="210" style="font-size: 140%" fill="red">3</text>
+        <text x="335" y="270">horas</text>
+        <text x="250" y="310">intdiv(12345, 3600)</text>
+        <line x1="330" y1="250" x2="310" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+        <path d="M 240 230 q 130 130, 460 -80" stroke="black" stroke-width="2" fill="transparent" marker-end="url(#arrow)" />
+
+        <text x="700" y="70" text-anchor="end">primer resto</text>
+        <text x="700" y="100" text-anchor="end">de segundos</text>
+        <line x1="710" y1="75" x2="740" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="790" y="140" style="font-size: 140%" text-anchor="end">1545</text>
+        <polyline points="810,100 810,150 890,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="915" y="70">segundos</text>
+        <text x="915" y="100">por minuto</text>
+        <line x1="910" y1="75" x2="880" y2="105" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="830" y="140" style="font-size: 140%">60</text>
+        <text x="790" y="210" style="font-size: 140%" text-anchor="end" fill="red">45</text>
+        <path d="M 730 210 q 35 35, 70 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="650" y="290">segundos</text>
+        <text x="645" y="330">1545 % 60</text>
+        <line x1="710" y1="270" x2="740" y2="240" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="830" y="210" style="font-size: 140%" fill="red">25</text>
+        <text x="895" y="280">minutos</text>
+        <text x="850" y="320">intdiv(1545, 60)</text>
+        <line x1="890" y1="260" x2="860" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="310" y="380" style="font-size: 140%">12345 = 3600 * 3 + 60 * 25 + 45</text>
+      </svg>
+    </p>
+
+    <p>Al tratarse de números enteros, para obtener el cociente y el resto de la división podemos utilizar la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv()</span></a> y el operador <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-res">%</span></a>.</p>
+
 
     <p>Podemos resolver este ejercicio usando cinco variables, una para el número aleatorio de segundos inicial, dos para el cociente y el resto de la división de este número inicial por 3600 y dos más para el cociente y el resto de la división del primer resto por 60.</p>
 
@@ -322,6 +372,48 @@ print "  &lt;p&gt;$yardas yardas, $pies pies y $pulgadas pulgadas son " . ($yard
   <section id="ejercicio-8">
     <h2>Variables (0) 8 - Convertidor de centímetros a pies y pulgadas</h2>
 
+    <p>Las operaciones a realizar son las siguientes:</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewBox="10 10 1100 370" style="font-family: sans-serif; font-size: 28px;">
+        <text x="160" y="30" text-anchor="middle">centímetros</text>
+        <text x="160" y="60" text-anchor="middle">a convertir</text>
+        <line x1="160" y1="70" x2="190" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="240" y="140" style="font-size: 140%" text-anchor="end">1234</text>
+        <polyline points="260,100 260,150 400,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="365" y="30" text-anchor="middle">centímetros</text>
+        <text x="365" y="60" text-anchor="middle">por pie</text>
+        <line x1="365" y1="70" x2="335" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="140" style="font-size: 140%">30.48</text>
+        <text x="240" y="210" style="font-size: 140%" text-anchor="end">14.8</text>
+        <path d="M 155 210 q 47.5 35, 95 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="165" y="285" text-anchor="middle">primer resto de</text>
+        <text x="165" y="315" text-anchor="middle">centímetros</text>
+        <text x="165" y="355" text-anchor="middle">fmod(1234, 30.48)</text>
+        <line x1="165" y1="265" x2="195" y2="235" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="210" style="font-size: 140%" fill="red">40</text>
+        <text x="380" y="275" text-anchor="middle">pies</text>
+        <text x="380" y="315" text-anchor="middle">floor(1234 / 30.48)</text>
+        <line x1="345" y1="255" x2="310" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+        <path d="M 240 230 q 160 145, 370 -90" stroke="black" stroke-width="2" fill="transparent" marker-end="url(#arrow)" />
+
+        <text x="610" y="30" text-anchor="middle">primer resto de</text>
+        <text x="610" y="60" text-anchor="middle">centímetros</text>
+        <line x1="610" y1="70" x2="640" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="690" y="140" style="font-size: 140%" text-anchor="end">14.8</text>
+        <polyline points="710,100 710,150 830,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="815" y="30" text-anchor="middle">centímetros</text>
+        <text x="815" y="60" text-anchor="middle">por pulgada</text>
+        <line x1="815" y1="70" x2="785" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="730" y="140" style="font-size: 140%">2.54</text>
+        <text x="730" y="210" style="font-size: 140%" fill="red">5.82677...</text>
+        <text x="900" y="275" text-anchor="middle">pulgadas</text>
+        <text x="900" y="315" text-anchor="middle">round(14.8 / 2.54, 1)</text>
+        <line x1="840" y1="255" x2="805" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+      </svg>
+    </p>
+
     <p>Al tratarse de números decimales, para obtener el cociente y el resto de la división podemos utilizar la función <a href="https://www.php.net/manual/en/function.floor.php"><span class="php-fun">floor()</span></a> de la divisón y la función <a href="https://www.php.net/manual/en/function.fmod.php"><span class="php-fun">fmod()</span></a>.</p>
 
     <p>Para obtener el número de pulgadas con 1 decimal podemos utilizar la función <a href="https://www.php.net/manual/en/function.round.php"><span class="php-fun">round()</span></a></p>
@@ -359,6 +451,70 @@ print round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
 
   <section id="ejercicio-9">
     <h2>Variables (0) 9 - Convertidor de centímetros a yardas, pies y pulgadas</h2>
+
+    <p>Las operaciones a realizar son las siguientes:</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="10 10 1500 350" style="font-family: sans-serif; font-size: 28px;">
+        <text x="160" y="30" text-anchor="middle">centímetros</text>
+        <text x="160" y="60" text-anchor="middle">a convertir</text>
+        <line x1="160" y1="70" x2="190" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="240" y="140" style="font-size: 140%" text-anchor="end">1234</text>
+        <polyline points="260,100 260,150 400,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="365" y="30" text-anchor="middle">centímetros</text>
+        <text x="365" y="60" text-anchor="middle">por yarda</text>
+        <line x1="365" y1="70" x2="335" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="140" style="font-size: 140%">91.44</text>
+        <text x="240" y="210" style="font-size: 140%" text-anchor="end">45.28</text>
+        <path d="M 130 210 q 60 35, 120 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="165" y="285" text-anchor="middle">primer resto de</text>
+        <text x="165" y="315" text-anchor="middle">centímetros</text>
+        <text x="165" y="355" text-anchor="middle">fmod(1234, 91.44)</text>
+        <line x1="165" y1="265" x2="195" y2="235" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="210" style="font-size: 140%" fill="red">13</text>
+        <text x="345" y="275">yardas</text>
+        <text x="380" y="315" text-anchor="middle">floor(1234 / 91.44)</text>
+        <line x1="345" y1="255" x2="310" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+        <path d="M 240 230 q 180 150, 340 -85" stroke="black" stroke-width="3" fill="transparent" marker-end="url(#arrow)" />
+
+        <text x="610" y="30" text-anchor="middle">primer resto de</text>
+        <text x="610" y="60" text-anchor="middle">centímetros</text>
+        <line x1="610" y1="70" x2="640" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="690" y="140" style="font-size: 140%" text-anchor="end">45.28</text>
+        <polyline points="710,100 710,150 850,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="815" y="30" text-anchor="middle">centímetros</text>
+        <text x="815" y="60" text-anchor="middle">por pie</text>
+        <line x1="815" y1="70" x2="785" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="730" y="140" style="font-size: 140%">30.48</text>
+        <text x="690" y="210" style="font-size: 140%" text-anchor="end">14.8</text>
+        <path d="M 605 210 q 47.5 35, 95 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="600" y="285" text-anchor="middle">segundo resto de</text>
+        <text x="600" y="315" text-anchor="middle">centímetros</text>
+        <text x="600" y="355" text-anchor="middle">fmod(45.28, 30.48)</text>
+        <line x1="600" y1="265" x2="630" y2="235" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="730" y="210" style="font-size: 140%" fill="red">1</text>
+        <text x="790" y="275">pies</text>
+        <text x="830" y="315" text-anchor="middle">floor(45.28 / 30.48)</text>
+        <line x1="790" y1="255" x2="755" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+        <path d="M 690 230 q 150 150, 370 -90" stroke="black" stroke-width="3" fill="transparent" marker-end="url(#arrow)" />
+
+        <text x="1060" y="30" text-anchor="middle">segundo resto de</text>
+        <text x="1060" y="60" text-anchor="middle">centímetros</text>
+        <line x1="1060" y1="70" x2="1090" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="1140" y="140" style="font-size: 140%" text-anchor="end">14.8</text>
+        <polyline points="1160,100 1160,150 1280,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="1265" y="30" text-anchor="middle">centímetros</text>
+        <text x="1265" y="60" text-anchor="middle">por pulgada</text>
+        <line x1="1265" y1="70" x2="1235" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="1180" y="140" style="font-size: 140%">2.54</text>
+        <text x="1180" y="210" style="font-size: 140%" fill="red">5.82677...</text>
+        <text x="1290" y="275">pulgadas</text>
+        <text x="1350" y="315" text-anchor="middle">round(14.8 / 2.54, 1)</text>
+        <line x1="1290" y1="255" x2="1255" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+      </svg>
+    </p>
 
     <p>Al tratarse de números decimales, para obtener el cociente y el resto de las divisiones podemos utilizar la función <a href="https://www.php.net/manual/en/function.floor.php"><span class="php-fun">floor()</span></a> de la divisón y la función <a href="https://www.php.net/manual/en/function.fmod.php"><span class="php-fun">fmod()</span></a>.</p>
 
@@ -400,7 +556,7 @@ print floor(fmod($centimetros, 91.44) / 30.48) . " pies y " . round(fmod($centim
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 15 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
