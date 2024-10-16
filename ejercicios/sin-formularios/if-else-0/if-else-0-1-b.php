@@ -1,11 +1,11 @@
 <?php
 /**
- * if ... else ... (0) 1 - if-else-0-1.php
+ * if ... else ... (0) 1 B - if-else-0-1-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-01
+ * @version   2024-10-16
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -56,17 +56,17 @@ print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100
 print "  </p>\n";
 print "\n";
 
-if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {       // Si el primer dado es par Y el segundo dado es par
-    print "  <p>¡Lo hemos conseguido!</p>\n";
-} else {                                        // En el resto de los casos
+if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O el segundo dado es par
     print "  <p>!No lo hemos conseguido!</p>\n";
+} else {                                        // En el resto de los casos
+    print "  <p>¡Lo hemos conseguido!</p>\n";
 }
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-03">3 de octubre de 2024</time>
+      <time datetime="2024-10-16">16 de octubre de 2024</time>
     </p>
 
     <p class="licencia">
