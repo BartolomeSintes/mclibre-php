@@ -53,6 +53,7 @@ if ($dado1 % 2 == 1) {
     print "  <p>¡No lo hemos conseguido!</p>\n";
 } else {
     $dado2 = rand(1, 6);
+
     print "  <p>\n";
     print "    Queremos sacar un valor impar:";
     print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
@@ -65,7 +66,6 @@ if ($dado1 % 2 == 1) {
         print "  <p>!Lo hemos conseguido!</p>\n";
     }
 }
-
 ?>
 
   <footer>

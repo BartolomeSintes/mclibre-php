@@ -1,11 +1,11 @@
 <?php
 /**
- * if ... else ... (0) 3 - if-else-0-3.php
+ * if ... else ... (0) 5 C - if-else-0-5-C.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-01
+ * @version   2024-10-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Avisos inmediatos. Par e impar.
+    Comprobador de años bisiestos.
     if .. elseif ... else ... (0). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,43 +36,28 @@
 </head>
 
 <body>
-  <h1>Par e impar (3)</h1>
+  <h1>Comprobador de años bisiestos</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar un nuevo año.</p>
 
 <?php
-$dado1 = rand(1, 6);
-$dado2 = rand(1, 6);
+$year = rand(1582, 2100);
 
-print "  <p>\n";
-print "    Queremos sacar un valor par:";
-print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
-print "  </p>\n";
-print "\n";
-
-if ($dado1 % 2 == 1) {
-    print "  <p>¡No hemos conseguido el dado par!</p>\n";
-}
-
-print "  <p>\n";
-print "    Queremos sacar un valor impar:";
-print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
-print "  </p>\n";
-print "\n";
-
-if ($dado2 % 2 == 0) {
-    print "  <p>¡No hemos conseguido el dado impar!</p>\n";
-}
-
-if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
-    print "  <p>!Lo hemos conseguido!</p>\n";
+if ($year % 400 == 0) {
+    print "  <p>$year es un año bisiesto porque es múltiplo de 400.</p>\n";
+} elseif ($year % 100 == 0 && $year % 400 != 0) {
+    print "  <p>$year no es un año bisiesto porque es múltiplo de 100 pero no de 400.</p>\n";
+} elseif ($year % 4 == 0 && $year % 100 != 0) {
+    print "  <p>$year es un año bisiesto porque es múltiplo de 4 pero no de 100.</p>\n";
+} else {
+    print "  <p>$year no es un año bisiesto porque no es múltiplo de 4.</p>\n";
 }
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-03">3 de octubre de 2024</time>
+      <time datetime="2024-10-17">17 de octubre de 2024</time>
     </p>
 
     <p class="licencia">

@@ -25,8 +25,8 @@
       <h3><a href="index.html">Enunciados</a></h3>
       <ul>
         <li><a href="index.html#ejercicio-1">1 - Aviso final único</a></li>
-        <li><a href="index.html#ejercicio-2">2 - Avisos inmediatos</a></li>
-        <li><a href="index.html#ejercicio-3">3 - Avisos finales</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Avisos finales</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Avisos inmediatos</a></li>
         <li><a href="index.html#ejercicio-4">4 - Aviso inmediato</a></li>
         <li><a href="index.html#ejercicio-5">5 - Años bisiestos</a></li>
         <li><a href="index.html#ejercicio-6">6 - RGB a HSL</a></li>
@@ -39,6 +39,10 @@
       <h3><a href="#">Soluciones</a></h3>
       <ul>
         <li><a href="#ejercicio-1">1 - Aviso final único</a></li>
+        <li><a href="#ejercicio-2">2 - Avisos finales</a></li>
+        <li><a href="#ejercicio-3">3 - Avisos inmediatos</a></li>
+        <li><a href="#ejercicio-4">4 - Aviso inmediato</a></li>
+        <li><a href="#ejercicio-5">5 - Años bisiestos</a></li>
       </ul>
     </div>
   </nav>
@@ -48,9 +52,9 @@
   <!-- <p>Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-if-else-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p> -->
 
   <section id="ejercicio-1">
-    <h2>if ... elseif ... else ... (0) 1 - Aviso final único</h2>
+    <h2>if ... elseif ... else ... (0) 1 - Par e impar (aviso final único)</h2>
 
-    <p>Por tratarse del primer ejercicio, se ofrecen aquí más soluciones de las habituales, para ilustrar las diferentes maneras de enfocar un problema. La manera de presentarlas aquí es empezar por la solución menos "eficiente" e ir señalando cómo podemos mejorarla, pero en general para llegar al programa más "eficiente" no hace falta pasar antes por todos los anteriores. Lo que sí es aconsejable al programar es pensar siempre si hay diferentes maneras de enfocar los problemas y elegir la solución más eficiente en cada caso. El crierio de eficiencia no es absoluto, podemos encontrar soluciones más compactas (programas más cortos), soluciones más fáciles de entender (este criterio depende obviamente del nivel de conocimientos y experiencia del programador), soluciones más rápidas (porque requieren menos cálculos) o soluciones más fáciles de extender a situaciones más generales.</p>
+    <p>Por tratarse del primer ejercicio, se ofrecen aquí más soluciones de las habituales, para ilustrar las diferentes maneras de enfocar un problema. La manera de presentarlas aquí es empezar por la solución menos "eficiente" e ir señalando cómo podemos mejorarla, pero en general para llegar al programa más "eficiente" no hace falta pasar antes por todos los anteriores. Lo que sí es aconsejable al programar es pensar siempre si hay diferentes maneras de enfocar los problemas y elegir la solución más eficiente en cada caso. El criterio de eficiencia no es absoluto, podemos encontrar soluciones más compactas (programas más cortos), soluciones más fáciles de entender (este criterio depende obviamente del nivel de conocimientos y experiencia del programador), soluciones más rápidas (porque requieren menos cálculos) o soluciones más fáciles de extender a situaciones más generales.</p>
 
     <p>En todas las soluciones, el principio del programa debe mostrar los dados obtenidos. Esa parte común a todas las soluciones es la siguiente:</p>
 
@@ -77,7 +81,7 @@ print "\n";</code>
     <p>La parte del programa que puede enfocarse de varias maneras es la que escribe el mensaje final "¡Lo hemos conseguido!" o "!No lo hemos conseguido!".</p>
 
     <ol>
-      <li>La solución más "ingenua" consistitría en comprobar todas las 36 posibles combinaciones de los valores de los dados mediante 36 estructuras <span class="php-res">if ...</span> y mostrar en cada caso el mensaje correspondiente. El problema de este enfoque es que el programa resultante es muy largo, tan largo que ni siquiera se muestra la solución completa, aunque es fácil imaginar el resto.
+      <li>La solución más "ingenua" consistiría en comprobar todas las 36 posibles combinaciones de los valores de los dados mediante 36 estructuras <span class="php-res">if ...</span> y mostrar en cada caso el mensaje correspondiente. El problema de este enfoque es que el programa resultante es muy largo, tan largo que ni siquiera se muestra la solución completa, aunque es fácil imaginar el resto.
 
         <div class="codigo">
           <pre>
@@ -152,7 +156,7 @@ if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O 
 </pre>
         </div>
       </li>
-      <li>Por último, nos podemos dar cuenta de que las dos condiciones del programa anterior son excluyentes: o se cumple una o se cumpla la otra. Por tanto, podemos utlilizar simplemente una estructura <span class="php-res">if ... else ...</span>. Lógicamente, podríamos escribir dos programas, según qué condición queramos comprobar primero:
+      <li>Por último, nos podemos dar cuenta de que las dos condiciones del programa anterior son excluyentes: o se cumple una o se cumpla la otra. Por tanto, podemos utilizar simplemente una estructura <span class="php-res">if ... else ...</span>. Lógicamente, podríamos escribir dos programas, según qué condición queramos comprobar primero:
 
         <ul>
           <li>El mensaje "¡Lo hemos conseguido!" debe mostrarse cuando el primer dado sea par <strong>y</strong> el segundo impar.
@@ -186,8 +190,231 @@ if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O 
     </ol>
   </section>
 
+  <section id="ejercicio-2">
+    <h2>if ... elseif ... else ... (0) 2 - Par e impar (avisos finales)</h2>
+
+    <p>Dependiendo del resultado obtenido se muestran distintos mensajes:</p>
+    <ul>
+      <li>Cuando no se consigue el primer dado par se muestra el mensaje "¡No hemos conseguido el dado par!".</li>
+      <li>Cuando no se consigue el segundo dado impar se muestra el mensaje "¡No hemos conseguido el dado impar!".</li>
+      <li>El mensaje final "¡Lo hemos conseguido!" se muestra cuando el primer dado es par y el segundo impar.</li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+
+print "  &lt;p&gt;\n";
+print "    Queremos sacar un valor par:";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+$dado2 = rand(1, 6);
+print "  &lt;p&gt;\n";
+print "    Queremos sacar un valor impar:";
+print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado1 % 2 == 1) {
+    print "  &lt;p&gt;¡No hemos conseguido el dado par!&lt;/p&gt;\n";
+}
+
+if ($dado2 % 2 == 0) {
+    print "  &lt;p&gt;¡No hemos conseguido el dado impar!&lt;/p&gt;\n";
+}
+
+if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
+    print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>if ... elseif ... else ... (0) 3 - Par e impar (avisos inmediatos)</h2>
+
+    <p>Este programa es prácticamente idéntico al anterior. La única diferencia es que, en su caso, el mensaje "¡No hemos conseguido el dado par!" se muestra después de mostrar el primer dado.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+$dado2 = rand(1, 6);
+
+print "  &lt;p&gt;\n";
+print "    Queremos sacar un valor par:";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado1 % 2 == 1) {
+    print "  &lt;p&gt;¡No hemos conseguido el dado par!&lt;/p&gt;\n";
+}
+
+print "  &lt;p&gt;\n";
+print "    Queremos sacar un valor impar:";
+print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado2 % 2 == 0) {
+    print "  &lt;p&gt;¡No hemos conseguido el dado impar!&lt;/p&gt;\n";
+}
+
+if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
+    print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>if ... elseif ... else ... (0) 4 - Par e impar - (aviso inmediato)</h2>
+
+    <p>En este ejercicio, sólo mostramos el segundo dado si el primer dado es par, es decir, las instrucciones que muestran el segundo dado se encontrarán en el bloque <span class="php-res">else ...</span>, así como la estructura <span class="php-res">if ... else ...</span> que muestra el mensaje correspondiente al segundo dado.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+
+print "  &lt;p&gt;\n";
+print "    Queremos sacar un valor par:";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado1 % 2 == 1) {
+    print "  &lt;p&gt;¡No lo hemos conseguido!&lt;/p&gt;\n";
+} else {
+    $dado2 = rand(1, 6);
+
+    print "  &lt;p&gt;\n";
+    print "    Queremos sacar un valor impar:";
+    print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+    print "  &lt;/p&gt;\n";
+    print "\n";
+
+    if ($dado2 % 2 == 0) {
+        print "  &lt;p&gt;¡No lo hemos conseguido!&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
+    }
+}</code>
+</pre>
+    </div>
+
+    <p>En las condiciones de la solución anterior comprobamos si los dados no tienen la paridad deseada. Si hubiéramos comprobado si los dados tienen la paridad deseada, los bloques de instrucciones simplemente se intercambiarían. Un criterio para elegir una opción u otra es la legibilidad del programa. En ese sentido, la primera solución sería preferible porque se reconoce más fácilmente la estructura <span class="php-res">if ... else ...</span> correspondiente al primer dado ya que el bloque de instrucciones del <span class="php-res">if ...</span> es más corto. En el caso del segundo dado, ese criterio no llevaría a preferir una forma u otra.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+
+print "  &lt;p&gt;\n";
+print "    Queremos sacar un valor par:";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+if ($dado1 % 2 == 0) {
+    $dado2 = rand(1, 6);
+    print "  &lt;p&gt;\n";
+    print "    Queremos sacar un valor impar:";
+    print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
+    print "  &lt;/p&gt;\n";
+    print "\n";
+
+    if ($dado2 % 2 == 1) {
+        print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;¡No lo hemos conseguido!&lt;/p&gt;\n";
+    }
+} else {
+    print "  &lt;p&gt;¡No lo hemos conseguido!&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>if ... elseif ... else ... (0) 5 - Años bisiestos</h2>
+
+    <p>Este programa es un ejemplo clásico de situación en que unos casos son un caso especial de otros casos. Concretamente, los años que son múltiplos de 400, también lo son 100 (y de 4). Y los años que son múltiplos de 100, también lo son de 4. Esto se puede aprovechar para simplificar las expresiones lógicas si utilizamos una estructura <span class="php-res">if ...</span></p>
+
+    <ol>
+      <li>Una primera solución sería escribir una estructura <span class="php-res">if ...</span> para cada uno de los casos (no múltiplos de 4, múltiplo de 4 pero no de 100, múltiplo de 100 pero no de 400, múltiplo de 400). El orden de las comprobaciones es indiferente.
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$year = rand(1582, 2100);
+
+if ($year % 4 != 0) {
+    print "  &lt;p&gt;$year no es un año bisiesto porque no es múltiplo de 4.&lt;/p&gt;\n";
+}
+
+if ($year % 4 == 0 && $year % 100 != 0) {
+    print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 4 pero no de 100.&lt;/p&gt;\n";
+}
+
+if ($year % 100 == 0 && $year % 400 != 0) {
+    print "  &lt;p&gt;$year no es un año bisiesto porque es múltiplo de 100 pero no de 400.&lt;/p&gt;\n";
+}
+
+if ($year % 400 == 0) {
+    print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 400.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>Como las cuatro condiciones son mutuamente excluyentes, se puede utilizar una estructura <span class="php-res">if ... elseif ... else ...</span>. Como antes, el orden de las comprobaciones es indiferente, aunque en este caso hemos escrito las condiciones del caso más "especial" (múltiplos de 400) al más general (no múltiplos de 4).
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$year = rand(1582, 2100);
+
+if ($year % 400 == 0) {
+    print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 400.&lt;/p&gt;\n";
+} elseif ($year % 100 == 0 && $year % 400 != 0) {
+    print "  &lt;p&gt;$year no es un año bisiesto porque es múltiplo de 100 pero no de 400.&lt;/p&gt;\n";
+} elseif ($year % 4 == 0 && $year % 100 != 0) {
+    print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 4 pero no de 100.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;$year no es un año bisiesto porque no es múltiplo de 4.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>Si nos fijamos en las condiciones, podemos observar que la segunda condición incluye la comprobación de no ser múltiplo de 400 ($year % 400 != 0) que en este caso resulta innecesaria porque la primera condición es precisamente la de ser múltiplo de 400 ($year % 400 == 0). Pero si el programa llega a evaluar la segunda condición es porque no se ha cumplido la primera, es decir, que si el programa llega a evaluar la segunda condición ya sabemos que el año no es múltiplo de 400 (si lo fuera hubiera ejecutado el primer bloque y no hubiera llegado a la primera condición). Por tanto no es necesario comprobar que el año no sea múltiplo de 400.
+        <p>El mismo razonamiento se puede hacer con la tercera condición que incluye la comprobación de que no se múltiplo de 100, cuando la segunda condición es precisamente la de ser múltiplo de 100. Es decir, no sería comprobar que el año no sea múltiplo de 100.</p>
+        <p>Por tanto, podemos simplificar el programa hasta dejarlo así:</p>
+        <div class="codigo">
+          <pre>
+  <code class="language-php">&lt;?php
+$year = rand(1582, 2100);
+
+if ($year % 400 == 0) {
+    print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 400.&lt;/p&gt;\n";
+} elseif ($year % 100 == 0) {
+    print "  &lt;p&gt;$year no es un año bisiesto porque es múltiplo de 100 pero no de 400.&lt;/p&gt;\n";
+} elseif ($year % 4 == 0) {
+    print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 4 pero no de 100.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;$year no es un año bisiesto porque no es múltiplo de 4.&lt;/p&gt;\n";
+}</code>
+  </pre>
+        </div>
+        <p>Es muy importante señalar que en este programa ya no podemos cambiar el orden de las comprobaciones, porque ha sido precisamente el orden específico (del caso más "especial" al más general) el que nos ha permitido simplificar las condiciones.</p>
+        <p>En general, ordenar los casos de manera que evaluemos primero los casos particulares y después los más generales que incluyen a los particulares permite simplificar las condiciones de los casos más generales. El precio a pagar es obligarnos a mantener el orden de las comprobaciones y a que los programas sean un poco más complejos (porque es el programador el que tiene que darse cuenta que las condiciones posteriores incluyen la negación de las comprobaciones anteriores), aunque más cortos.</p>
+      </li>
+    </ol>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

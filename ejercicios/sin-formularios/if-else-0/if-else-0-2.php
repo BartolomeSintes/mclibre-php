@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Par e impar (3)</h1>
+  <h1>Par e impar (2)</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 

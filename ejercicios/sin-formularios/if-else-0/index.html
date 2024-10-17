@@ -37,6 +37,10 @@
       <h3><a href="#">Soluciones</a></h3>
       <ul>
         <li><a href="soluciones.html#ejercicio-1">1 - Aviso final único</a></li>
+        <li><a href="soluciones.html#ejercicio-2">2 - Avisos finales</a></li>
+        <li><a href="soluciones.html#ejercicio-3">3 - Avisos inmediatos</a></li>
+        <li><a href="soluciones.html#ejercicio-4">4 - Aviso inmediato</a></li>
+        <li><a href="soluciones.html#ejercicio-5">5 - Años bisiestos</a></li>
       </ul>
     </div>
   </nav>
@@ -46,7 +50,7 @@
   <!-- <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios. Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-if-else-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p> -->
 
   <section id="ejercicio-1">
-    <h2>if ... elseif ... else ... (0) 1 - Aviso final único</h2>
+    <h2>if ... elseif ... else ... (0) 1 - Par e impar (aviso final único)</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre la tirada de dos dados al azar y diga si se ha conseguido el objetivo de paridad (queremos sacar primero un valor par y después un valor impar). En caso de que uno o los dos valores no sea correcto, se mostrará un único aviso.</p>
 
@@ -59,7 +63,7 @@
   </section>
 
   <section id="ejercicio-2">
-    <h2>if ... elseif ... else ... (0) 2 - Avisos finales</h2>
+    <h2>if ... elseif ... else ... (0) 2 - Par e impar (avisos finales)</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre la tirada de dos dados al azar y diga si se ha conseguido el objetivo de paridad (queremos sacar primero un valor par y después un valor impar). En caso de que uno o los dos valores no sean correctos, se mostrarán uno o dos avisos.</p>
 
@@ -72,7 +76,7 @@
   </section>
 
   <section id="ejercicio-3">
-    <h2>if ... elseif ... else ... (0) 3 - Avisos inmediatos</h2>
+    <h2>if ... elseif ... else ... (0) 3 - Par e impar (avisos inmediatos)</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre la tirada de dos dados al azar y diga si se ha conseguido el objetivo de paridad (queremos sacar primero un valor par y después un valor impar). Tras cada tirada, si el valor no es correcto se mostrará un aviso.</p>
 
@@ -85,7 +89,7 @@
   </section>
 
   <section id="ejercicio-4">
-    <h2>if ... elseif ... else ... (0) 4 - Avisos inmediatos</h2>
+    <h2>if ... elseif ... else ... (0) 4 - Par e impar - (aviso inmediato)</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre la tirada de dos dados al azar y diga si se ha conseguido el objetivo de paridad (queremos sacar primero un valor par y después un valor impar). Si el primer dado ya no lo cumple, no se mostrará el segundo dado.</p>
 
@@ -131,7 +135,9 @@
 
       function calcula_ab() {
         var year = Number(ca_ab_year.value);
-        if (year % 400 == 0) {
+        if (year < 1582 || year > 2100) {
+          ca_ab_res.textContent = "Escriba un año entre 1582 y 2100.";
+        } else if (year % 400 == 0) {
           ca_ab_res.textContent = year + " es bisiesto porque es múltiplo de 400.";
         } else if (year % 100 == 0) {
           ca_ab_res.textContent = year + " no es bisiesto porque es múltiplo de 100 pero no de 400.";
@@ -278,7 +284,7 @@
   <section id="ejercicio-7-a">
     <h2>if ... elseif ... else ... (0) 7 A - Convertidor de centímetros a kilómetros, metros y centímetros (con todas las unidades)</h2>
 
-    <p>Escriba un programa que cada vez que se ejecute muestre una distancia en centímtros al azar (de 0 a 200.000, por ejemplo) y muestre esa misma distancia en kilómetros, metros y centímetros.</p>
+    <p>Escriba un programa que cada vez que se ejecute muestre una distancia en centímetros al azar (de 0 a 200.000, por ejemplo) y muestre esa misma distancia en kilómetros, metros y centímetros.</p>
 
     <div class="filaflex">
       <iframe src="if-else-0-7-a.php" style="height: 16em;"></iframe>
@@ -508,7 +514,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

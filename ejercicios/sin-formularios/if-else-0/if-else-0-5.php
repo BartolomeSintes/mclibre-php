@@ -52,7 +52,6 @@ if ($year % 400 == 0) {
 } else {
     print "  <p>$year no es un año bisiesto porque no es múltiplo de 4.</p>\n";
 }
-
 ?>
 
   <footer>
