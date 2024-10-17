@@ -44,7 +44,7 @@
 $dado1 = rand(1, 6);
 
 print "  <p>\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
 print "  </p>\n";
 print "\n";
@@ -53,7 +53,7 @@ if ($dado1 % 2 == 0) {
     $dado2 = rand(1, 6);
 
     print "  <p>\n";
-    print "    Queremos sacar un valor impar:";
+    print "    Queremos sacar un valor impar:\n";
     print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
     print "  </p>\n";
     print "\n";

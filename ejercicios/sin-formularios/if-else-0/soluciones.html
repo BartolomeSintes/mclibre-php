@@ -43,6 +43,11 @@
         <li><a href="#ejercicio-3">3 - Avisos inmediatos</a></li>
         <li><a href="#ejercicio-4">4 - Aviso inmediato</a></li>
         <li><a href="#ejercicio-5">5 - Años bisiestos</a></li>
+        <li><a href="#ejercicio-6">6 - RGB a HSL</a></li>
+        <li><a href="#ejercicio-7-a">7 A - cm, todas las unidades</a></li>
+        <li><a href="#ejercicio-7-b">7 B - cm, sin u. innecesarias</a></li>
+        <li><a href="#ejercicio-7-c">7 C - cm, con comas</a></li>
+        <li><a href="#ejercicio-7-d">7 D - cm, con comas e "y"</a></li>
       </ul>
     </div>
   </nav>
@@ -65,13 +70,13 @@ $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"100\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor impar:";
+print "    Queremos sacar un valor impar:\n";
 print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";</code>
@@ -206,14 +211,14 @@ if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O 
 $dado1 = rand(1, 6);
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
 
 $dado2 = rand(1, 6);
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor impar:";
+print "    Queremos sacar un valor impar:\n";
 print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -245,7 +250,7 @@ $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -255,7 +260,7 @@ if ($dado1 % 2 == 1) {
 }
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor impar:";
+print "    Queremos sacar un valor impar:\n";
 print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -282,7 +287,7 @@ if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
 $dado1 = rand(1, 6);
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -293,7 +298,7 @@ if ($dado1 % 2 == 1) {
     $dado2 = rand(1, 6);
 
     print "  &lt;p&gt;\n";
-    print "    Queremos sacar un valor impar:";
+    print "    Queremos sacar un valor impar:\n";
     print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
     print "  &lt;/p&gt;\n";
     print "\n";
@@ -315,7 +320,7 @@ if ($dado1 % 2 == 1) {
 $dado1 = rand(1, 6);
 
 print "  &lt;p&gt;\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -323,7 +328,7 @@ print "\n";
 if ($dado1 % 2 == 0) {
     $dado2 = rand(1, 6);
     print "  &lt;p&gt;\n";
-    print "    Queremos sacar un valor impar:";
+    print "    Queremos sacar un valor impar:\n";
     print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
     print "  &lt;/p&gt;\n";
     print "\n";
@@ -411,6 +416,200 @@ if ($year % 400 == 0) {
         <p>En general, ordenar los casos de manera que evaluemos primero los casos particulares y después los más generales que incluyen a los particulares permite simplificar las condiciones de los casos más generales. El precio a pagar es obligarnos a mantener el orden de las comprobaciones y a que los programas sean un poco más complejos (porque es el programador el que tiene que darse cuenta que las condiciones posteriores incluyen la negación de las comprobaciones anteriores), aunque más cortos.</p>
       </li>
     </ol>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>if ... elseif ... else ... (0) 6 - Convertidor de RGB A HSL</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$red   = rand(0, 255);
+$green = rand(0, 255);
+$blue  = rand(0, 255);
+
+$r = $red   / 255;
+$g = $green / 255;
+$b = $blue  / 255;
+
+$M = max($r, $g, $b);
+$m = min($r, $g, $b);
+$C = $M - $m;
+
+if ($C == 0) {
+    $h = 0;
+} elseif ($M == $r) {
+    $h = ($g - $b) / $C;
+} elseif ($M == $g) {
+    $h = ($b - $r) / $C + 2;
+} elseif ($M == $b) {
+    $h = ($r - $g) / $C + 4;
+}
+if ($h &lt; 0) {
+    $h = $h + 6;
+}
+$h = $h * 60;
+$h = round($h);
+$H = $h % 360;
+
+$L = ($M + $m) / 2;
+
+if ($L == 1) {
+    $S = 0;
+} else {
+    $S = $C / (1 - abs(2 * $L - 1));
+}
+$L = round($L, 3) * 100;
+$S = round($S, 3) * 100;
+
+print "  &lt;p&gt;El color &lt;strong&gt;rgb($red $green $blue)&lt;/strong&gt; es el color &lt;strong&gt;hsl($H $S% $L%)&lt;/strong&gt;.&lt;/p&gt;\n";</code>
+</pre>
+    </div>
+
+  </section>
+
+  <section id="ejercicio-7-a">
+    <h2>if ... elseif ... else ... (0) 7 A - Convertidor de centímetros a kilómetros, metros y centímetros (con todas las unidades)</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$centimetros = rand(0, 200000);
+
+$km = intdiv($centimetros, 100000);
+$cm = $centimetros % 100000;
+$m  = intdiv($cm, 100);
+$cm = $cm % 100;
+
+print "  &lt;p&gt;$centimetros centímetros son $km km $m m $cm cm.&lt;/p&gt;\n";</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-7-b">
+    <h2>if ... elseif ... else ... (0) 7 B - Convertidor de centímetros a kilómetros, metros y centímetros (sin unidades innecesarias)</h2>
+
+    <p>La idea básica es que habrá que comprobar con una estructura <span class="php-res">if ...</span> si el valor a escribir en cada unidad es 0 porque cuando es 0 no hay que escribir el valor. Pero además tener en cuenta dos detalles:</p>
+    <ul>
+      <li>En caso de que el valor a convertir sea 0, se deberá escribir 0 cm.</li>
+      <li>Para que el punto final aparezca pegado a la última unidad escrita, no se debe escribir un espacio después de las unidades, sino antes de los números.</li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$centimetros = rand(0, 200000);
+
+$km = intdiv($centimetros, 100000);
+$cm = $centimetros % 100000;
+$m  = intdiv($cm, 100);
+$cm = $cm % 100;
+
+print "  &lt;p&gt;$centimetros centímetros son";
+if ($centimetros == 0) {
+    print " 0 cm&lt;/p&gt;\n";
+} else {
+    if ($km != 0) {
+        print " $km km";
+    }
+    if ($m != 0) {
+        print " $m m";
+    }
+    if ($cm != 0) {
+        print " $cm cm";
+    }
+    print ".&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-7-c">
+    <h2>if ... elseif ... else ... (0) 7 C - Convertidor de centímetros a kilómetros, metros y centímetros (con comas)</h2>
+
+    <p>El criterio para incluir comas es que hay que escribir una coma después de una unidad si alguna de las unidades que se van a escribir después es distinta de 0.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$centimetros = rand(0, 200000);
+
+$km = intdiv($centimetros, 100000);
+$cm = $centimetros % 100000;
+$m  = intdiv($cm, 100);
+$cm = $cm % 100;
+
+print "  &lt;p&gt;$centimetros centímetros son";
+if ($centimetros == 0) {
+    print " 0 cm&lt;/p&gt;\n";
+} else {
+    if ($km != 0) {
+        print " $km km";
+        if ($m != 0 || $cm != 0) {
+            print ",";
+        }
+    }
+    if ($m != 0) {
+        print " $m m";
+        if ($cm != 0) {
+            print ",";
+        }
+    }
+    if ($cm != 0) {
+        print " $cm cm";
+    }
+    print ".&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-7-d">
+    <h2>if ... elseif ... else ... (0) 7 D - Convertidor de centímetros a kilómetros, metros y centímetros (con comas e "y")</h2>
+
+    <ul>
+      <li>El criterio para escribir "y" después de una unidad es que después sólo se va a escribir una unidad.</li>
+      <li>El criterio para escribir "," después de una unidad es que después se van a escribir al menos dos unidades. Lógicamente solamente se puede escribir "," después de los kilómetros.</li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$centimetros = rand(0, 200000);
+
+$km = intdiv($centimetros, 100000);
+$cm = $centimetros % 100000;
+$m  = intdiv($cm, 100);
+$cm = $cm % 100;
+
+print "  &lt;p&gt;$centimetros centímetros son";
+
+if ($centimetros == 0) {
+    print " 0 cm&lt;/p&gt;\n";
+} else {
+    if ($km != 0) {
+        print " $km km";
+        if ($m != 0 && $cm == 0 || $m == 0 && $cm != 0) {
+            print " y";
+        } elseif ($m != 0 || $cm != 0) {
+            print ",";
+        }
+    }
+
+    if ($m != 0) {
+        print " $m m";
+        if ($cm != 0) {
+            print " y";
+        }
+    }
+
+    if ($cm != 0) {
+        print " $cm cm";
+    }
+    print ".&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
   </section>
 
   <footer>

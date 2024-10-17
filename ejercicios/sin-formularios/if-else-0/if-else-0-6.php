@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-03
+ * @version   2024-10-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -80,13 +80,12 @@ $L = round($L, 3) * 100;
 $S = round($S, 3) * 100;
 
 print "  <p>El color <strong>rgb($red $green $blue)</strong> es el color <strong>hsl($H $S% $L%)</strong>.</p>\n";
-
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-03">3 de octubre de 2024</time>
+      <time datetime="2024-10-17">17 de octubre de 2024</time>
     </p>
 
     <p class="licencia">

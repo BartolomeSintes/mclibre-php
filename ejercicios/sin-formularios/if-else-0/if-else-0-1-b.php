@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-16
+ * @version   2024-10-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,13 +45,13 @@ $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
 print "  <p>\n";
-print "    Queremos sacar un valor par:";
+print "    Queremos sacar un valor par:\n";
 print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"100\" height=\"100\" class=\"v-medio\">\n";
 print "  </p>\n";
 print "\n";
 
 print "  <p>\n";
-print "    Queremos sacar un valor impar:";
+print "    Queremos sacar un valor impar:\n";
 print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
 print "  </p>\n";
 print "\n";
@@ -66,7 +66,7 @@ if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-16">16 de octubre de 2024</time>
+      <time datetime="2024-10-17">17 de octubre de 2024</time>
     </p>
 
     <p class="licencia">

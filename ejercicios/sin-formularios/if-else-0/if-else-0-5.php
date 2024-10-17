@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-08
+ * @version   2024-10-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ if ($year % 400 == 0) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-09">9 de octubre de 2024</time>
+      <time datetime="2024-10-17">17 de octubre de 2024</time>
     </p>
 
     <p class="licencia">
