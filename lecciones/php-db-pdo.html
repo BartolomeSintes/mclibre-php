@@ -108,7 +108,7 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
     <section id="basicos-ejecucion">
       <h3>Ejecución de las consultas</h3>
 
-      <p>Una vez realizada la conexión, las consultas SQL se realizar a través del objeto PDO. La ejecución de la consulta y el tratamiento de la respuesta se puede hacer de cuatro formas distintas, atendiendo a dos criterios:</p>
+      <p>Una vez realizada la conexión, las consultas SQL se realizan a través del objeto PDO. La ejecución de la consulta y el tratamiento de la respuesta se puede hacer de cuatro formas distintas, atendiendo a dos criterios:</p>
 
       <p>Por un lado, se debe considerar si la consulta incluye información que nos ha llegado a través de un formulario. Por otro lado, se debe considerar si la consulta puede devolver registros:</p>
       <ul>
@@ -670,7 +670,7 @@ $pdo = conectaDb();</code>
         <p><strong>Notas</strong>:</p>
         <ul>
           <li>El <a href="https://www.php.net/manual/en/ref.pdo-mysql.connection.php">DSN para MySQL</a> permite indicar el servidor en el que se encuentra la base de datos, su puerto, el nombre de la base de datos y el juego de caracteres. En estos apuntes se indican el servidor (localhost), el nombre de la base de datos y el juego de caracteres (<a href="https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-utf8mb4.html">utf8mb4</a>). El nombre de usuario de la base de datos y su contraseña se añaden como segundo y tercer parámetros.</li>
-          <li>Si en la conexión se indica el nombre de la base de datos, en las consultas posteriores basta con indicar el nombre de la tabla afectada, mientras que si en la la conexión no se indica en nombre de la base de datos, en las consultas posteriores se debe indicar también el nombre de la base de datos en la que se encuentra la tabla afectada (siguiendo el formato nombreDB.nombreTabla). Para unificar las consultas en distintas nombres de bases de datos (SQLite no requiere nunca el nombre de la base de datos, PostgreSQL requiere indicar el nombre de la base de datos en la conexión y MariDB permite las dos formas), en estos apuntes se incluye el nombre de la base de datos en la conexión.</li>
+          <li>Si en la conexión se indica el nombre de la base de datos, en las consultas posteriores basta con indicar el nombre de la tabla afectada, mientras que si en la la conexión no se indica en nombre de la base de datos, en las consultas posteriores se debe indicar también el nombre de la base de datos en la que se encuentra la tabla afectada (siguiendo el formato nombreDB.nombreTabla). Para unificar las consultas en distintas nombres de bases de datos (SQLite no requiere nunca el nombre de la base de datos, PostgreSQL requiere indicar el nombre de la base de datos en la conexión y MariaDB permite las dos formas), en estos apuntes se incluye el nombre de la base de datos en la conexión.</li>
           <li>Si se indica el nombre de la base de datos en la conexión, un posible problema es que MariaDB requiere que la base de datos exista. Y si no existe, se produce una excepción. Para permitir que nuestros programas realicen la conexión aunque no exista la base de datos, la función intenta en segundo lugar conectarse sin indicar el nombre de la base de datos. En este caso habría que asegurarse que nuestros programas crean la base de datos antes de hacer consultas.</li>
         </ul>
       </section>
@@ -1371,7 +1371,7 @@ $pdo = conectaDb();</code>
 
       <p>El resultado podría ser el siguiente</p>
       <ul>
-        <li>biblioteca.php: contiene las variables de configuración elegidas por el programador (y que en principio el adminitrador de la aplicación no tiene por qué tener interés en modificar):
+        <li>biblioteca.php: contiene las variables de configuración elegidas por el programador (y que en principio el administrador de la aplicación no tiene por qué tener interés en modificar):
 
           <div class="codigo">
             <pre>
