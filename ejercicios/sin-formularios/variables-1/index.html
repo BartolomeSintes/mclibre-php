@@ -409,6 +409,20 @@
     <details>
       <summary><strong>Ayuda</strong></summary>
       <ul>
+        <li>En el dibujo cambian varios valores en cada ejecución. Por un lado aparecen los valores de los tamaños de los cuadrados, pero las coordenadas <span class="html-atri">x</span> de los cuadrados y el tamaño de la imagen <span class="html-eti">svg</span> deben calcularse mediante fórmulas.
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">373</span>" height="<span class="codigo-resaltado">159</span>" viewBox="-10 -10 <span class="codigo-resaltado">373</span> <span class="codigo-resaltado">159</span>" style="background-color: white;"&gt;
+      &lt;rect x="0" y="0" width="<span class="codigo-resaltado">82</span>" height="<span class="codigo-resaltado">82</span>" fill="red" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">82</span>" y="0" width="<span class="codigo-resaltado">139</span>" height="<span class="codigo-resaltado">139</span>" fill="green" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">221</span>" y="0" width="<span class="codigo-resaltado">132</span>" height="<span class="codigo-resaltado">132</span>" fill="blue" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
         <li>Los cuadrados SVG se establecen dando las coordenadas de las esquinas superior izquierda (que dependen del ancho de los cuadrados) y los tamaños de los cuadrados:
           <p>
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="310" height="180" viewBox="-40 -40 310 180" style="background-color: white;" font-family="sans-serif">
@@ -489,7 +503,7 @@
         </li>
         <li>El tamaño del dibujo SVG (<span class="html-atri">width</span>, <span class="html-atri">height</span> y <span class="html-atri">viewBox</span>) debe ser suficiente para abarcar el dibujo completo. El programa de muestra añade un margen de 10px alrededor.
           <p>
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="310" height="180" viewBox="-40 -40 310 180" style="background-color: white;" font-family="sans-serif">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="315" height="190" viewBox="-40 -40 315 190" style="background-color: white;" font-family="sans-serif">
               <rect x="0" y="0" width="100" height="100" fill="hwb(0 80% 0%)" />
               <rect x="100" y="0" width="50" height="50" fill="hwb(120 80% 0%)" />
               <rect x="150" y="0" width="75" height="75" fill="hwb(240 80% 0%)" />
@@ -497,7 +511,7 @@
               <line x1="-40" y1="0" x2="270" y2="0" stroke-width="2" stroke="black" />
               <polyline points="260,5 270,0 260,-5" fill="black" stroke-width="1" stroke="black" />
               <text x="255" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
-              <line x1="0" y1="-5" x2="0" y2="225" stroke-width="2" stroke="black" />
+              <line x1="0" y1="-5" x2="0" y2="140" stroke-width="2" stroke="black" />
               <polyline points="-5,130 0,140 5,130" fill="black" stroke-width="1" stroke="black" />
               <text x="-20" y="130" font-family="sans-serif" font-size="20" fill="black">Y</text>
 
@@ -518,11 +532,11 @@
 
               <rect x="0" y="0" width="225" height="100" fill="none" stroke="red" stroke-dasharray="5 5" />
               <rect x="-10" y="-10" width="245" height="120" fill="none" stroke="red" stroke-dasharray="5 5" />
-              <polyline points="250,135, 260,135 260,105 227,105" fill="none" stroke-width="1" stroke="red" />
-              <text x="130" y="140" font-family="sans-serif" font-size="16" text-anchor="middle" fill="red">margen 10px alrededor del dibujo</text>
+              <polyline points="262,135, 273,135 273,105 227,105" fill="none" stroke-width="1" stroke="red" />
+              <text x="135" y="140" font-family="sans-serif" font-size="16" text-anchor="middle" fill="red">margen 10px alrededor del dibujo</text>
             </svg>
 
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="310" height="180" viewBox="-40 -40 310 180" style="background-color: white;" font-family="sans-serif">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="320" height="190" viewBox="-40 -40 320 190" style="background-color: white;" font-family="sans-serif">
               <rect x="0" y="0" width="100" height="100" fill="hwb(0 80% 0%)" />
               <rect x="100" y="0" width="50" height="50" fill="hwb(120 80% 0%)" />
               <rect x="150" y="0" width="75" height="75" fill="hwb(240 80% 0%)" />
@@ -530,7 +544,7 @@
               <line x1="-40" y1="0" x2="270" y2="0" stroke-width="2" stroke="black" />
               <polyline points="260,5 270,0 260,-5" fill="black" stroke-width="1" stroke="black" />
               <text x="255" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
-              <line x1="0" y1="-5" x2="0" y2="225" stroke-width="2" stroke="black" />
+              <line x1="0" y1="-5" x2="0" y2="140" stroke-width="2" stroke="black" />
               <polyline points="-5,130 0,140 5,130" fill="black" stroke-width="1" stroke="black" />
               <text x="-20" y="130" font-family="sans-serif" font-size="20" fill="black">Y</text>
 
@@ -552,8 +566,8 @@
 
               <rect x="0" y="0" width="225" height="100" fill="none" stroke="red" stroke-dasharray="5 5" />
               <rect x="-10" y="-10" width="245" height="120" fill="none" stroke="red" stroke-dasharray="5 5" />
-              <polyline points="250,135, 260,135 260,105 227,105" fill="none" stroke-width="1" stroke="red" />
-              <text x="130" y="140" font-family="sans-serif" font-size="16" text-anchor="middle" fill="red">margen 10px alrededor del dibujo</text>
+              <polyline points="262,135, 273,135 273,105 227,105" fill="none" stroke-width="1" stroke="red" />
+              <text x="135" y="140" font-family="sans-serif" font-size="16" text-anchor="middle" fill="red">margen 10px alrededor del dibujo</text>
             </svg>
           </p>
         </li>
@@ -576,6 +590,20 @@
     <details>
       <summary><strong>Ayuda</strong></summary>
       <ul>
+        <li>En el dibujo cambian varios valores en cada ejecución. Por un lado aparecen los valores de los radios de los círculos, pero las coordenadas <span class="html-atri">cx</span> y <span class="html-atri">cy</span> de los círculos y el tamaño de la imagen <span class="html-eti">svg</span> deben calcularse mediante fórmulas.
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">574</span>" height="<span class="codigo-resaltado">320</span>" viewBox="-10 -10 <span class="codigo-resaltado">574</span> <span class="codigo-resaltado">320</span>" style="background-color: white;"&gt;
+      &lt;circle cx="<span class="codigo-resaltado">150</span>" cy="<span class="codigo-resaltado">150</span>" r="<span class="codigo-resaltado">150</span>" stroke="black" stroke-width="2" fill="red" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">371</span>" cy="<span class="codigo-resaltado">150</span>" r="<span class="codigo-resaltado">71</span>" stroke="black" stroke-width="2" fill="green" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">498</span>" cy="<span class="codigo-resaltado">150</span>" r="<span class="codigo-resaltado">56</span>" stroke="black" stroke-width="2" fill="blue" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
         <li>Los círculos SVG se establecen dando las coordenadas del centro y el radio del círculo:
           <p>
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="440" height="240" viewBox="-40 -40 440 240" style="background-color: white;" font-family="sans-serif">
@@ -893,7 +921,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 15 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
