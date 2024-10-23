@@ -392,6 +392,10 @@ print "&lt;p&gt;&lt;strong style=\"color: red;\"&gt;Hola&lt;/strong&gt;&lt;/p&gt
         <th>\\</th>
         <td>Carácter contrabarra \</td>
       </tr>
+      <tr>
+        <th>\{</th>
+        <td>Carácter llave de apertura {</td>
+      </tr>
     </table>
 
     <ul>
@@ -464,7 +468,7 @@ print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class
           </div>
         </div>
       </li>
-      <li>Como la contrabarra es el indicador de carácter especial, si queremos generar en el código HTML el texto que corresponde a un carácter especial, debemos escribir la contrabarra mediante su carácter especial (que es \\):
+      <li>En las cadenas las llaves { } permiten delimitar variables, por lo que para incluir el carácter llave de apertura como carácter debemos escribirlo como carácter especial (que es \{):
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -473,14 +477,14 @@ print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Para generar un salto de línea debemos escribir el carácter especial <span class="codigo-resaltado">\n</span>.&lt;/p&gt;";
+$m[5][3] = "abc";
+print "&lt;p&gt;Para sustituir el valor de una matriz de dos dimensiones se deben usar llaves: por ejemplo, <span class="codigo-resaltado">{m[5][3]}</span>.&lt;/p&gt;";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
             <pre>
-<code class="language-html">&lt;p&gt;Para generar un salto de línea debemos escribir el carácter especial
-.&lt;/p&gt;</code>
+<code class="language-html">&lt;p&gt;Para sustituir el valor de una matriz de dos dimensiones se deben usar llaves: por ejemplo, abc&lt;/p&gt;</code>
 </pre>
           </div>
         </div>
@@ -492,13 +496,14 @@ print "&lt;p&gt;Para generar un salto de línea debemos escribir el carácter es
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Para generar un salto de línea debemos escribir el carácter especial <span class="codigo-resaltado">\\n</span>.&lt;/p&gt;";
+$m[5][3] = "abc";
+print "&lt;p&gt;Para sustituir el valor de una matriz de dos dimensiones se deben usar llaves: por ejemplo, <span class="codigo-resaltado">\{m[5][3]}</span>.&lt;/p&gt;";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
             <pre>
-<code class="language-html">&lt;p&gt;Para generar un salto de línea debemos escribir el carácter especial \n.&lt;/p&gt;</code>
+<code class="language-html">&lt;p&gt;Para sustituir el valor de una matriz de dos dimensiones se deben usar llaves: por ejemplo, <span class="codigo-resaltado">{m[5][3]}</span>&lt;/p&gt;</code>
 </pre>
           </div>
         </div>
@@ -739,7 +744,7 @@ print "&lt;p&gt;$cadena&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de septiembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
