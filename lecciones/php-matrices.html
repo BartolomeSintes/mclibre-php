@@ -193,6 +193,50 @@ $nombres = [];
 ?&gt;</code>
 </pre>
     </div>
+
+    <p>Si queremos crear índice numéricos correlativos, podemos aprovechar que PHP genera automáticamente valores crecientes para simplificar la definición:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Para crear una matriz con índices numéricos correlativos ...
+
+// ... podemos indicar todos los índices:
+$matriz = [2 =&gt "gamma", 3 =&gt; "delta", 4 =&gt; "epsilon"];
+
+print "&lt;p&gt;$matriz[2] $matriz[3] $matriz[4]&lt;p&gt;\n";
+
+// ... o indicar únicamente el primero y dejar que PHP asigne el resto:
+$matriz = [2 =&gt "gamma", "delta", "epsilon"];
+
+print "&lt;p&gt;$matriz[2] $matriz[3] $matriz[4]&lt;p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>gamma delta epsilon</p>
+
+        <p>gamma delta epsilon</p>
+      </div>
+    </div>
+
+    <p>El índice que asigna PHP es el siguiente al máximo ya asignado:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz = [2 =&gt "alfa", "beta", 10 =&gt; "gamma", "delta", 5 =&gt; "epsilon", "zeta"];
+
+print "&lt;p&gt;$matriz[3] $matriz[11] $matriz[12]&lt;p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>beta delta zeta</p>
+      </div>
+    </div>
   </section>
 
   <section id="asociativas">
@@ -413,8 +457,8 @@ print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
 $matriz = [[20, 30, 40], [100, 200, 300]];
 // En varias líneas para facilitar la lectura:
 $matriz = [
-  [20, 30, 40],
-  [100, 200, 300]
+    [20, 30, 40],
+    [100, 200, 300]
 ];
 // Definiendo los elementos de primer nivel:
 $matriz[0] = [20, 30, 40];
@@ -826,21 +870,6 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
           </div>
         </div>
       </li>
-      <li>Si queremos crear índice numéricos correlativos, podemos aprovechar que PHP genera automáticamente valores crecientes para simplificar la definición:
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-// Para crear una matriz con índices numéricos correlativos ...
-// ... podemos indicar todos los índices:
-$letrasGriegas = [2 =&gt "gamma", 3 =&gt; "delta", 4 =&gt; "epsilon"];
-// ... o indicar únicamente el primero y dejar que PHP asigne el resto:
-$letrasGriegas = [2 =&gt "gamma", "delta", "epsilon"];
-?&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
     </ul>
 
     <hr class="corta">
@@ -947,7 +976,7 @@ for ($i = 0; $i &lt; 3; $i++) {
 print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
 
 for ($i = 0; $i &lt; 3; $i++) {
-  $dados[] = rand(1, 6);
+    $dados[] = rand(1, 6);
 }
 
 print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";

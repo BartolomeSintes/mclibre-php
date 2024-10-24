@@ -91,6 +91,8 @@
       </tr>
     </table>
 
+    <p>Las comparaciones se utilizan por ejemplo en las estructuras de selección <a href="php-estructuras-control-condicional-if.html"><span class="php-res">if ...</span></a>, que permiten condicionar la ejecución de unas instrucciones a que el resultado de una expresión sea <span class="php-con">true</span>.</p>
+
     <div class="filaflex">
       <div class="codigo">
         <pre>
@@ -191,6 +193,39 @@ if ($nombre != "Juan") {
     <p>Al escribir <span class="php-ope">=</span> en vez de <span class="php-ope">==</span>, PHP no compara el valor de la variable $nombre con la cadena "Juan", sino que cambia el valor de $nombre a "Juan". Como la asignación no da error, PHP le asigna el valor booleano <span class="php-con">true</span>, y escribe que el nombre es Juan.</p>
 
     <p>Al no mostrar PHP ningún aviso o mensaje de error, este error puede ser difícil de localizar en programas largos o complejos.</p>
+
+    <p>El error contrario, también típico, es escribir una comparación donde debería escribirse una asignación, como en el ejemplo siguiente:</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+
+$nombre <span class="codigo-resaltado">==</span> "Juan";
+
+if ($nombre == "Juan") {
+print "&lt;p&gt;Tu nombre es Juan.&lt;/p&gt;\n";
+}
+
+if ($nombre != "Juan") {
+print "&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;\n";
+}
+
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>Al escribir <span class="php-ope">==</span> en vez de <span class="php-ope">=</span>, PHP no modifica el valor de la variable a la cadena "Pepe", sino que compara el valor de $nombre con "Juan". El resultado de la comparación es <span class="php-con">true</span>, pero como la instrucción es únicamente una comparación, PHP no realiza ninguna acción aparte de calcular el resultado de la comparación. En la comparaciones de las estructuas <span class="php-res">if ...</span> siguientes, la variable $nombre sigue teniendo el valor "Pepe".</p>
+
+    <p>Al no mostrar PHP ningún aviso o mensaje de error, este error también puede ser difícil de localizar en programas largos o complejos.</p>
 
     <hr class="corta">
 
@@ -775,7 +810,7 @@ if ($todo) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 22 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
