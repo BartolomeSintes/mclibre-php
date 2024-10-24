@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Estructuras de control: sentencia condicional if elseif else (2). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Estructuras de control: sentencia condicional if ... elseif ... else ... (2)</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>if ... elseif ... else ...</h2>
+
+      <ul>
+        <li><a href="#omision-comparaciones">Omisión de comparaciones</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="omision-comparaciones">
+    <h2>Omisión de comparaciones</h2>
+
+    <p>En algunos casos, podemos escribir una condición sin necesidad de escribir comparaciones.</p>
+
+    <ul>
+      <li>Si trabajamos con variables lógicas, no es necesario compararlas con los valores <span class="php-con">true</span> o <span class="php-con">false</span>, sino que podemos utilizarlas directamente.
+
+        <p>Por ejemplo, el programa siguiente define una variable lógica <span class="php-var">$esPepe</span> como el resultado de una comparación. Concretamente la variable será <span class="php-con">true</span> si la variable <span class="php-var">$nombre</span> es la cadena <span class="php-cad">"Pepe"</span> y <span class="php-con">false</span> si no.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Juan";
+$esPepe = $nombre == "Pepe";
+
+if (<span class="codigo-resaltado">$esPepe == false</span>) {
+  print "&lt;p&gt;Su nombre no es Pepe.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$esPepe == true</span>) {
+  print "&lt;p&gt;Su nombre es Pepe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Su nombre no es Pepe&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>Podemos escribir simplemente:</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+$esPepe = $nombre == "Pepe";
+
+if (<span class="codigo-resaltado">!$esPepe</span>) {
+  print "&lt;p&gt;Su nombre no es Pepe.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$esPepe</span>) {
+  print "&lt;p&gt;Su nombre es Pepe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Su nombre es Pepe&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+
+      <li>Si trabajamos con variables numéricas, no es necesario compararlas con 0, sino que podemos utilizarlas directamente, aprovechando que PHP evalúa el valor 0 (o 0.0) como <span class="php-con">false</span> y cualquier valor distinto de cero como <span class="php-con">true</span>.
+
+        <p><strong>Nota</strong>: Las conversiones implícitas de tipos deben utilizarse con cuidado, cuando estemos seguros de los valores que van a ser covnertidos. El uso indiscrimado de conversiones implícitas puede producir errores imprevistos. En caso de duda, es preferible no utilizarlas.</p>
+
+        <p>Por ejemplo, el programa siguiente define un contador <span class="php-var">$cuenta</span> que contiene el número de cincos obtenidos al ejecutar el bucle <span class="php-res">for</span>.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$cuenta = 0;
+
+for ($i = 0; $i &lt; 3; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $cuenta++;
+    }
+}
+
+if (<span class="codigo-resaltado">$cuenta == 0</span>) {
+    print "&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$cuenta &gt; 0</span>) {
+    print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Tirada de dado: 6&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>Podemos escribir simplemente:</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$cuenta = 0;
+
+for ($i = 0; $i &lt; 3; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $cuenta++;
+    }
+}
+
+if (<span class="codigo-resaltado">!$cuenta</span>) {
+    print "&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$cuenta</span>) {
+    print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Han salido 2 cinco(s).&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+
+      <li>Si trabajamos con cadenas, no es necesario compararlas con la cadena vacía, sino que podemos utilizarlas directamente, aprovechando que PHP evalúa la cadena vacía como <span class="php-con">false</span> y cualquier valor distinto de la cadena vacía como <span class="php-con">true</span>.
+
+        <p><strong>Nota</strong>: Las conversiones implícitas de tipos deben utilizarse con cuidado, cuando estemos seguros de los valores que van a ser covnertidos. El uso indiscrimado de conversiones implícitas puede producir errores imprevistos. En caso de duda, es preferible no utilizarlas.</p>
+
+        <p>Por ejemplo, el programa siguiente define un contador <span class="php-var">$cuenta</span> que contiene el número de cincos obtenidos al ejecutar el bucle <span class="php-res">for</span>.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "";
+
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
+    print "&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$nombre != ""</span>) {
+    print "&lt;p&gt;Su nombre es $nombre.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>Podemos escribir simplemente:</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Alberto";
+
+if (<span class="codigo-resaltado">!$nombre</span>) {
+    print "&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$nombre</span>) {
+    print "&lt;p&gt;Su nombre es $nombre.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Su nombre es Alberto.&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+  </section>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 24 de octubre de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
