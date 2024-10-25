@@ -100,8 +100,7 @@ if ($circulos == 1) {
 }
 print "\n";
 print "  &lt;p&gt;\n";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
-    . "width=\"" . 90 * $circulos - 30 . "\" height=\"60\" style=\"border: black 1px solid\"&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"870\" height=\"60\" style=\"border: black 1px solid\"&gt;\n";
 
 for ($i = 1; $i &lt;= $circulos; $i++) {
     print "      &lt;circle cx=\"" . 90 * $i - 60 . "\" cy=\"30\" r=\"30\" fill=\"black\" /&gt;\n";
@@ -159,7 +158,7 @@ for ($i = 0; $i &lt; $circulos; $i++) {
     <h3>for (2) 02 - Círculos en fila (2)</h3>
 
     <ul>
-      <li>La única diferencia con el ejercicio anterior es el atributo <span class="html-atri">width</span> de la etiqueta <span class="html-eti">&lt;svg&gt;</span>. Los valores de este atributo sólo dependen del número de círculos de la figura, por lo que la fórmula será una función de la variable `\$\c\i\r\c\u\l\o\s`:
+      <li>La única diferencia con el ejercicio anterior es el atributo <span class="html-atri">width</span> de la etiqueta <span class="html-eti">&lt;svg&gt;</span>. Los valores de este atributo sólo dependen del número total de círculos de la figura, por lo que la fórmula será una función de la variable `\$\c\i\r\c\u\l\o\s`:
         <table class="tabla-con-borde" style="text-align: center">
           <tr>
             <th>Círculos</th>
@@ -201,8 +200,8 @@ print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
     . "width=\"" . 90 * $circulos - 30 . "\" height=\"60\" style=\"border: black 1px solid\"&gt;\n";
 
-for ($i = 1; $i &lt;= $circulos; $i++) {
-    print "      &lt;circle cx=\"" . 90 * $i - 60 . "\" cy=\"30\" r=\"30\" fill=\"black\" /&gt;\n";
+for ($i = 0; $i &lt; $circulos; $i++) {
+    print "      &lt;circle cx=\"" . 90 * $i + 30 . "\" cy=\"30\" r=\"30\" fill=\"black\" /&gt;\n";
 }
 
 print "    &lt;/svg&gt;\n";
@@ -233,13 +232,14 @@ if ($circulos == 1) {
 print "\n";
 print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
-    . "width=\"" . 3* $radio * $circulos - $radio . "\" height=\"" . 2 * $radio . "\" style=\"border: black 1px solid\"&gt;\n";
+    . "width=\"" . 3 * $radio * $circulos - $radio
+    . "\" height=\"" . 2 * $radio
+    . "\" style=\"border: black 1px solid\"&gt;\n";
 
-for ($i = 1; $i &lt;= $circulos; $i++) {
-    print "      &lt;circle cx=\"" . 3 * $radio * $i - 2 * $radio . "\" cy=\"$radio\" r=\"$radio\" fill=\"black\" /&gt;\n";
+for ($i = 0; $i &lt; $circulos; $i++) {
+    print "      &lt;circle cx=\"" . 3 * $radio * $i + $radio
+        . "\" cy=\"$radio\" r=\"$radio\" fill=\"black\" /&gt;\n";
 }
-
-print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -295,11 +295,11 @@ print "  &lt;/p&gt;\n";
             <table class="tabla-con-borde" style="text-align: center">
               <tr>
                 <th>Círculo</th>
+                <td style="width: 50px">0</td>
                 <td style="width: 50px">1</td>
                 <td style="width: 50px">2</td>
                 <td style="width: 50px">3</td>
                 <td style="width: 50px">4</td>
-                <td style="width: 50px">5</td>
                 <td style="width: 50px">...</td>
                 <td style="width: 50px">`\$\i`</td>
               </tr>
@@ -314,7 +314,7 @@ print "  &lt;/p&gt;\n";
                 <td>`\$\c\x`</td>
               </tr>
             </table>
-            <p>... se trata de una sucesión cuya fórmula es `\$\c\x = (3 * \$\i - 2) * $radio = 3 * \$\i * $radio - 2 * $radio`.</p>
+            <p>... se trata de una sucesión cuya fórmula es `\$\c\x = (3 * \$\i + 1) * $radio = 3 * \$\i * $radio + $radio`.</p>
           </li>
           <li>En el caso del tamaño <span class="html-atri">width</span>:
             <p class="mcl-svg-figura">
@@ -446,7 +446,7 @@ print "  &lt;/p&gt;\n";
   </section>
 
   <section id="ejercicio-05">
-    <h3>for (2) 05 - Líneas (1)</h3>
+    <h3>for (2) 05 - Líneas (2)</h3>
 
     <ul>
       <li>En el código fuente HTML del programa de ejemplo se puede ver que sólo se repite una línea, la que crea los <span class="html-eti">&lt;line&gt;</span>. Esa línea es la que formará el cuerpo del bucle <span class="php-res">for</span>, que debe ejecutarse tantas veces como indique el valor obtenido al azar.</li>
@@ -475,7 +475,7 @@ print "  &lt;/p&gt;\n";
         </table>
         <p>Se trata de una sucesión aritmética cuya fórmula es `$x2 = 50 * $i - 50`.</p>
       </li>
-      <li>Por otro lado, los valores de los atributos <span class="html-atri">width</span> y <span class="html-atri">view</span> dependen del número de líneas del dibujo y son los siguientes:
+      <li>Por otro lado, los valores de los atributos <span class="html-atri">width</span> y <span class="html-atri">viewbox</span> dependen del número de líneas del dibujo y son los siguientes:
         <table class="tabla-con-borde" style="text-align: center">
           <tr>
             <th>Líneas</th>
@@ -485,7 +485,7 @@ print "  &lt;/p&gt;\n";
             <td style="width: 50px">6</td>
             <td style="width: 50px">7</td>
             <td style="width: 50px">...</td>
-            <td style="width: 70px">`$lineas`</td>
+            <td style="width: 70px">`$l\i\n\eas`</td>
           </tr>
           <tr>
             <th><span class="html-atri">width</span></th>
@@ -498,7 +498,7 @@ print "  &lt;/p&gt;\n";
             <td>`$width`</td>
           </tr>
         </table>
-        <p>Se trata de una sucesión aritmética cuya fórmula es `$width = 50 * $lineas`.</p>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$width = 50 * $l\i\n\eas`.</p>
       </li>
     </ul>
 
@@ -526,11 +526,11 @@ print "  &lt;/p&gt;\n";
   </section>
 
   <section id="ejercicio-06">
-    <h3>for (2) 06 - Líneas (1)</h3>
+    <h3>for (2) 06 - Líneas (3)</h3>
 
     <ul>
       <li>En el código fuente HTML del programa de ejemplo se puede ver que sólo se repite una línea, la que crea los <span class="html-eti">&lt;line&gt;</span>. Esa línea es la que formará el cuerpo del bucle <span class="php-res">for</span>, que debe ejecutarse tantas veces como indique el valor obtenido al azar.</li>
-      <li>Los valores del atributo <span class="html-atri">x1</span> dependen del número de líneas del dibujo `$lineas` y son los siguientes:
+      <li>Los valores del atributo <span class="html-atri">x1</span> dependen del número de líneas del dibujo `$l\i\n\eas` y son los siguientes:
         <table class="tabla-con-borde" style="text-align: center">
           <tr>
             <th>Líneas</th>
@@ -540,7 +540,7 @@ print "  &lt;/p&gt;\n";
             <td style="width: 50px">6</td>
             <td style="width: 50px">7</td>
             <td style="width: 50px">...</td>
-            <td style="width: 50px">`$lineas`</td>
+            <td style="width: 50px">`$l\i\n\eas`</td>
           </tr>
           <tr>
             <th><span class="html-atri">x1</span></th>
@@ -553,7 +553,7 @@ print "  &lt;/p&gt;\n";
             <td>`$x1`</td>
           </tr>
         </table>
-        <p>Se trata de una sucesión aritmética cuya fórmula es `$x1 = 25 * $lineas - 25`.</p>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$x1 = 25 * $l\i\n\eas - 25`.</p>
       </li>
       <li>Mientras que los valores del atributo <span class="html-atri">x2</span>, como en el ejercicio anterior, dependen de la línea (`$i`) y son los siguientes:
         <table class="tabla-con-borde" style="text-align: center">
@@ -590,7 +590,7 @@ print "  &lt;/p&gt;\n";
             <td style="width: 50px">6</td>
             <td style="width: 50px">7</td>
             <td style="width: 50px">...</td>
-            <td style="width: 70px">`$lineas`</td>
+            <td style="width: 70px">`$l\i\n\eas`</td>
           </tr>
           <tr>
             <th><span class="html-atri">width</span></th>
@@ -715,7 +715,7 @@ print "  &lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

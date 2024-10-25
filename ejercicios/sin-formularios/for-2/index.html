@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+  <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
 </head>
 
 <body>
@@ -59,6 +62,75 @@
 
     <p>Escriba un programa que dibuje entre 1 y 10 círculos (al azar) de 30px de radio.</p>
 
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>El dibujo contiene más o menos círculos, pero los valores numéricos de la posición horizontal de los círculos <span class="html-atri">cx</span> sigue una sucesión aritmética:
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4</span> círculo<span class="codigo-resaltado">s</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="870" height="60" style="border: black 1px solid"&gt;
+      &lt;circle cx="<span class="codigo-resaltado">30</span>" cy="30" r="30" fill="black" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">120</span>" cy="30" r="30" fill="black" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">210</span>" cy="30" r="30" fill="black" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">300</span>" cy="30" r="30" fill="black" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>Los valores del atributo <span class="html-atri">cx</span> son los siguientes:
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Círculo</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">cx</span></th>
+              <td>30</td>
+              <td>120</td>
+              <td>210</td>
+              <td>300</td>
+              <td>390</td>
+              <td>...</td>
+              <td>`\$\c\x`</td>
+            </tr>
+          </table>
+          <p>Aunque también podríamos contar los círculos desde 0:</p>
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Círculo</th>
+              <td style="width: 50px">0</td>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">cx</span></th>
+              <td>30</td>
+              <td>120</td>
+              <td>210</td>
+              <td>300</td>
+              <td>390</td>
+              <td>...</td>
+              <td>`\$\c\x`</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <iframe src="for-2-01.php" style="height: 22em;"></iframe>
       <div class="icono-enlace">
@@ -71,6 +143,52 @@
     <h3>for (2) 02 - Círculos en fila (2)</h3>
 
     <p>Escriba un programa que dibuje entre 1 y 10 círculos (al azar) de 30px de radio.</p>
+
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Los círculos que aparecen en este ejercicio son como los del ejercicio anterior. La diferencia entre los dos dibujos es únicamente el atributo <span class="html-atri">width</span> de la etiqueta <span class="html-eti">&lt;svg&gt;</span>.
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4</span> círculo<span class="codigo-resaltado">s</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="<span class="codigo-resaltado">330</span>" height="60" style="border: black 1px solid"&gt;
+      &lt;circle cx="<span class="codigo-resaltado">30</span>" cy="30" r="30" fill="black" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">120</span>" cy="30" r="30" fill="black" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">210</span>" cy="30" r="30" fill="black" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">300</span>" cy="30" r="30" fill="black" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>Los valores del atributo <span class="html-atri">width</span> sólo dependen del número total de círculos de la figura, por lo que la fórmula será una función de la variable `\$\c\i\r\c\u\l\o\s`:
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Círculos</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td>`\$\c\i\r\c\u\l\o\s`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">width</span></th>
+              <td>60</td>
+              <td>150</td>
+              <td>240</td>
+              <td>330</td>
+              <td>420</td>
+              <td>...</td>
+              <td>`$width`</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </details>
 
     <div class="filaflex">
       <iframe src="for-2-02.php" style="height: 22em;"></iframe>
@@ -85,7 +203,58 @@
 
     <p>Escriba un programa que dibuje entre 1 y 10 círculos (al azar) de radio entre 10 y 50 píxeles (al azar).</p>
 
-    <p>Este es el programa más difícil de este apartado, ya que en las fórmulas aparecen dos variables. Aunque no se puede hablar estrictamente de sucesiones aritméticas, las fórmulas se pueden deducir del ejercicio anterior.</p>
+    <p>La dificultad de este ejercicio reside en que en las fórmulas aparecen dos variables. Aunque no se puede hablar estrictamente de sucesiones aritméticas, las fórmulas se pueden deducir del ejercicio anterior o razonar a partir del propio dibujo.</p>
+
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>La posición <span class="html-atri">cx</span> de los círculos y el tamaño <span class="html-atri">width</span> de la imagen depende tanto del número de círculo como del radio de los círculos.
+          <p>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewbox="-5 -25 600 160">
+              <rect x="0" y="0" width="560" height="80" fill="none" stroke="black" stroke-width="1" />
+              <circle cx="40" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+              <circle cx="160" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+              <circle cx="280" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+              <circle cx="400" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+              <circle cx="520" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+              <line x1="0" y1="40" x2="40" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="20" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+              <line x1="40" y1="40" x2="80" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="60" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+              <line x1="80" y1="40" x2="120" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="100" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+              <line x1="120" y1="40" x2="160" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="140" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+              <line x1="160" y1="40" x2="200" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="180" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+              <line x1="200" y1="40" x2="240" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="220" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+              <line x1="240" y1="40" x2="280" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="260" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+              <line x1="280" y1="40" x2="320" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="300" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+              <line x1="320" y1="40" x2="360" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="340" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+              <text x="380" y="32" text-anchor="middle" fill="black" font-size="16">...</text>
+              <text x="420" y="32" text-anchor="middle" fill="black" font-size="16">...</text>
+              <text x="460" y="32" text-anchor="middle" fill="black" font-size="16">...</text>
+              <text x="500" y="32" text-anchor="middle" fill="black" font-size="16">...</text>
+
+              <line x1="40" y1="-10" x2="40" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <line x1="160" y1="-10" x2="160" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <line x1="280" y1="-10" x2="280" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <line x1="400" y1="-10" x2="400" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <text x="280" y="-15" text-anchor="middle" fill="red" font-size="16">cx</text>
+
+              <line x1="0" y1="110" x2="560" y2="110" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+              <line x1="0" y1="105" x2="0" y2="115" stroke="black" stroke-width="1" />
+              <line x1="560" y1="105" x2="560" y2="115" stroke="black" stroke-width="1" />
+              <text x="280" y="130" text-anchor="middle" fill="red" font-size="16">width</text>
+            </svg>
+          </p>
+        </li>
+      </ul>
+    </details>
 
     <div class="filaflex">
       <iframe src="for-2-03.php" style="height: 25em;"></iframe>
@@ -100,6 +269,76 @@
 
     <p>Escriba un programa que dibuje entre 3 y 10 líneas (al azar) con un punto común.</p>
 
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>El dibujo contiene más o menos líneas, pero los valores numéricos de la posición horizontal del extremo inferior de cada línea <span class="html-atri">x2</span> sigue una sucesión aritmética:
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4</span> líneas&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="500" height="100" style="border: black 1px solid"&gt;
+      &lt;line x1="10" y1="0" x2="<span class="codigo-resaltado">10</span>" y2="100" stroke="red" stroke-width="1" /&gt;
+      &lt;line x1="10" y1="0" x2="<span class="codigo-resaltado">60</span>" y2="100" stroke="red" stroke-width="1" /&gt;
+      &lt;line x1="10" y1="0" x2="<span class="codigo-resaltado">110</span>" y2="100" stroke="red" stroke-width="1" /&gt;
+      &lt;line x1="10" y1="0" x2="<span class="codigo-resaltado">160</span>" y2="100" stroke="red" stroke-width="1" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>Los valores del atributo <span class="html-atri">x2</span> son los siguientes:
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Línea</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>10</td>
+              <td>60</td>
+              <td>110</td>
+              <td>160</td>
+              <td>210</td>
+              <td>...</td>
+              <td>`\$\x\2`</td>
+            </tr>
+          </table>
+          <p>Aunque también podríamos contar las líneas desde 0:</p>
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Círculo</th>
+              <td style="width: 50px">0</td>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>10</td>
+              <td>60</td>
+              <td>110</td>
+              <td>160</td>
+              <td>210</td>
+              <td>...</td>
+              <td>`\$\x\2`</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <iframe src="for-2-04.php" style="height: 24em;"></iframe>
       <div class="icono-enlace">
@@ -109,9 +348,103 @@
   </section>
 
   <section id="ejercicio-05">
-    <h3>for (2) 05 - Líneas (1)</h3>
+    <h3>for (2) 05 - Líneas (2)</h3>
 
     <p>Escriba un programa que dibuje entre 3 y 10 líneas (al azar) con un punto común.</p>
+
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>En este dibujo, tanto los valores numéricos de la posición horizontal del extremo inferior de cada línea <span class="html-atri">x2</span> como el ancho del dibujo (que aparece en los atributos <span class="html-atri">width</span> y <span class="html-atri">viewbox</span> de la etiqueta <span class="html-eti">svg</span>) siguen una sucesión aritmética:
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;4 líneas&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">200</span>" height="120"  viewbox=" -10 -10 <span class="codigo-resaltado">200</span> 120" style="border: black 1px solid"&gt;
+      &lt;line x1="0" y1="0" x2="<span class="codigo-resaltado">0</span>" y2="100" stroke="green" stroke-width="1" /&gt;
+      &lt;line x1="0" y1="0" x2="<span class="codigo-resaltado">50</span>" y2="100" stroke="green" stroke-width="1" /&gt;
+      &lt;line x1="0" y1="0" x2="<span class="codigo-resaltado">100</span>" y2="100" stroke="green" stroke-width="1" /&gt;
+      &lt;line x1="0" y1="0" x2="<span class="codigo-resaltado">150</span>" y2="100" stroke="green" stroke-width="1" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>Los valores del atributo <span class="html-atri">x2</span> son los siguientes:
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Línea</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>0</td>
+              <td>50</td>
+              <td>100</td>
+              <td>150</td>
+              <td>200</td>
+              <td>...</td>
+              <td>`\$\x\2`</td>
+            </tr>
+          </table>
+          <p>Aunque también podríamos contar las líneas desde 0:</p>
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Círculo</th>
+              <td style="width: 50px">0</td>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>0</td>
+              <td>50</td>
+              <td>100</td>
+              <td>150</td>
+              <td>200</td>
+              <td>...</td>
+              <td>`\$\x\2`</td>
+            </tr>
+          </table>
+        </li>
+        <li>Los valores de los atributos <span class="html-atri">width</span> y <span class="html-atri">viewbox</span> son los siguientes:
+          <table class="tabla-con-borde" style="text-align: center">
+            <tr>
+              <th>Líneas</th>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">6</td>
+              <td style="width: 50px">7</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 70px">`$l\i\n\eas`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">width</span></th>
+              <td>150</td>
+              <td>200</td>
+              <td>250</td>
+              <td>300</td>
+              <td>350</td>
+              <td>...</td>
+              <td>`$width`</td>
+            </tr>
+          </table>
+          </li>
+      </ul>
+    </details>
 
     <div class="filaflex">
       <iframe src="for-2-05.php" style="height: 25em;"></iframe>
@@ -122,7 +455,7 @@
   </section>
 
   <section id="ejercicio-06">
-    <h3>for (2) 06 - Líneas (1)</h3>
+    <h3>for (2) 06 - Líneas (3)</h3>
 
     <p>Escriba un programa que dibuje entre 3 y 10 líneas (al azar) con un punto común.</p>
 
@@ -174,13 +507,13 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 22 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
       Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
-    </footer>
+  </footer>
 </body>
 </html>

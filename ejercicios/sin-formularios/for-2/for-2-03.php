@@ -42,7 +42,7 @@
 
 <?php
 $circulos = rand(1, 10);
-$radio = rand(10, 50);
+$radio    = rand(10, 50);
 
 if ($circulos == 1) {
     print "  <h2>$circulos círculo de $radio px</h2>\n";
@@ -52,7 +52,7 @@ if ($circulos == 1) {
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
-    . "width=\"" . 3* $radio * $circulos - $radio
+    . "width=\"" . 3 * $radio * $circulos - $radio
     . "\" height=\"" . 2 * $radio
     . "\" style=\"border: black 1px solid\">\n";
 
@@ -60,7 +60,6 @@ for ($i = 0; $i < $circulos; $i++) {
     print "      <circle cx=\"" . 3 * $radio * $i + $radio
         . "\" cy=\"$radio\" r=\"$radio\" fill=\"black\" />\n";
 }
-
 print "    </svg>\n";
 print "  </p>\n";
 ?>
