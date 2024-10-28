@@ -366,6 +366,51 @@ Matriz 2 ordenada: Array
           </div>
         </div>
       </li>
+      <li>[<a href="https://www.php.net/manual/en/migration80.incompatible.php#:~:text=Any%20array%20that%20has%20a%20number">Referencia</a> - <a href="https://wiki.php.net/rfc/negative_array_index">RFC</a>] A partir de PHP 8.0, el índice asignado por PHP al crear un nuevo elemento de una matriz es el siguiente al mayor índice existente, incluso cuando es un valor negativo. En versiones anteriores, el índice asignado era como mínimo 0.
+
+        <div class="filaflex cabecera">
+          <div>Código fuente </div>
+          <div>
+            Resultado en PHP 7.4
+            <a href="https://3v4l.org/uoDQk#v7.4.0"><img src="../varios/iconos/logo-3v4l.png" alt="Enlace a 3V4L" title="Enlace a 3V4L" width="66" height="21"></a>
+          </div>
+          <div>
+            Resultado en PHP 8.0
+            <a href="https://3v4l.org/uoDQk#v8.0.0"><img src="../varios/iconos/logo-3v4l.png" alt="Enlace a 3V4L" title="Enlace a 3V4L" width="66" height="21"></a>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$valores = [-2 =&gt; "a", "b", "c", ];
+print "&lt;pre&gt;" . print_r($valores, true) . "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">Array
+(
+    [-2] =&gt; "a"
+    [0] =&gt; "b"
+    [1] =&gt; "c"
+)</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">Array
+(
+    [-2] =&gt; "a"
+    [-1] =&gt; "b"
+    [0] =&gt; "c"
+)</code>
+</pre>
+          </div>
+        </div>
+        </li>
       <li>A partir de PHP 8.0, un conjunto de avisos <span class="php-con">E_WARNINGS</span> se han reconvertido en errores <span class="php-con">E_ERROR</span>: constantes no definidas, etc.</li>
       <li>A partir de PHP 8.0, un conjunto de avisos <span class="php-con">E_NOTICE</span> se han reconvertido en avisos <span class="php-con">E_WARNING</span>: variables no definidas, índices de matrices no definidos, intento de conversión de matriz en cadena, etc.</li>
     </ul>
@@ -503,7 +548,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 28 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
