@@ -56,7 +56,7 @@ print "        <td><button type=\"submit\" name=\"accion\" value=\"a\" style=\"f
 print "        <td><img src=\"img/dados/$_SESSION[ad].svg\" alt=\"$_SESSION[ad]\" width=\"50\" height=\"50\"></td>\n ";
 print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
+print "            width=\"620\" height=\"20\" viewBox=\"-10 0 610 20\">\n";
 print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"gray\" stroke-width=\"5\" />\n";
 print "            <circle cx=\"$_SESSION[ax]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
 print "          </svg>\n";
@@ -67,7 +67,7 @@ print "        <td><button type=\"submit\" name=\"accion\" value=\"b\" style=\"f
 print "        <td><img src=\"img/dados/$_SESSION[bd].svg\" alt=\"$_SESSION[bd]\" width=\"50\" height=\"50\"></td>\n ";
 print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
+print "            width=\"620\" height=\"20\" viewBox=\"-10 0 610 20\">\n";
 print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"gray\" stroke-width=\"5\" />\n";
 print "            <circle cx=\"$_SESSION[bx]\" cy=\"10\" r=\"8\" fill=\"blue\" />\n";
 print "          </svg>\n";

@@ -74,7 +74,7 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
         </td>
         <td>
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-            width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid">
+            width="400" height="400" viewBox="-200 -200 400 400" style="border: black 2px solid">
 <?php
 // Dibujamos el círculo en su posición
 print "            <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" />\n";
