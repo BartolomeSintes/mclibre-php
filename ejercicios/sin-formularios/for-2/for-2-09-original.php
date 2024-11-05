@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3,10);
+$numero = rand(3, 10);
 $radio  = 30;
 $paso = 360 / $numero;
 
@@ -50,7 +50,7 @@ print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . $radio * $numero * 2 + 20 . "\" height=\"" . $radio * $numero + 20 . "\" "
-    . " viewbox=\"" . - $radio * $numero -10 . " " . - $radio * $numero -10 . " "
+    . " viewBox=\"" . - $radio * $numero -10 . " " . - $radio * $numero -10 . " "
     . $radio * $numero * 2 + 20 . " " . $radio * $numero + 20
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 

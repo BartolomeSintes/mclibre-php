@@ -41,14 +41,14 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3,10);
+$numero = rand(3, 10);
 
 print "  <h2>$numero líneas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . 50 * $numero - 25 . "\" height=\"120\" "
-    . " viewbox=\" -10 -10 " . 50 * $numero - 25 . " 120\" style=\"border: black 1px solid\">\n";
+    . " viewBox=\" -10 -10 " . 50 * $numero - 25 . " 120\" style=\"border: black 1px solid\">\n";
 
 for ($i = 1; $i <= $numero; $i++) {
     print "      <line x1=\"" . 25 * $numero - 25 . "\" y1=\"0\" x2=\"" . 50 * $i - 50

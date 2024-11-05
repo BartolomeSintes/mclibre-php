@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3,10);
+$numero = rand(3, 10);
 $paso = 360 / $numero;
 
 print "  <h2>$numero colores</h2>\n";
@@ -49,7 +49,7 @@ print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . 60 * $numero . "\" height=\"" . 60 * $numero . "\" "
-    . " viewbox=\"" . - 30 * $numero . " " . - 30 * $numero . " " . 60 * $numero . " " . 60 * $numero . "\">\n";
+    . "viewBox=\"" . - 30 * $numero . " " . - 30 * $numero . " " . 60 * $numero . " " . 60 * $numero . "\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
     print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $numero

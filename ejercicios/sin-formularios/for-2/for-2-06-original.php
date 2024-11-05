@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3,10);
+$numero = rand(3, 10);
 $longitud  = 100;
 $separacion = 50;
 
@@ -50,7 +50,7 @@ print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . $separacion * $numero - $separacion / 2 . "\" height=\"" . $longitud + 20 . "\" "
-    . " viewbox=\" -10 -10 " . $separacion * $numero - $separacion / 2 . " "
+    . " viewBox=\" -10 -10 " . $separacion * $numero - $separacion / 2 . " "
     . $longitud + 20 . "\" style=\"border: black 1px solid\">\n";
 
 for ($i = 0; $i < $numero; $i++) {

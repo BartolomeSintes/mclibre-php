@@ -442,7 +442,7 @@
               <td>`$width`</td>
             </tr>
           </table>
-          </li>
+        </li>
       </ul>
     </details>
 
@@ -526,7 +526,7 @@
               <td>`$width`</td>
             </tr>
           </table>
-          </li>
+        </li>
       </ul>
     </details>
 
@@ -543,6 +543,29 @@
 
     <p>Escriba un programa que cada vez que se ejecute dibuje un número de círculos concéntricos, elegido al azar entre 3 y 10, que vayan recorriendo los colores del arco iris.</p>
 
+    <details open>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>El dibujo está formado por varios círculos, cuyos tamaños (atributo <span class="html-atri">r</span>) y colores (atributo <span class="html-atri">fill</span>) siguen una sucesión aritmética. Los atributos que definen el tamaño del dibujo (atributos <span class="html-atri">width</span>, atributos <span class="html-atri">height</span> y atributo <span class="html-atri">viewBox</span>) también siguen sucesiones aritméticas que dependen del número de círculos del dibujo.
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4</span> colores&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">240</span>" height="<span class="codigo-resaltado">240</span>" viewBox="<span class="codigo-resaltado">-120</span> <span class="codigo-resaltado">-120</span> <span class="codigo-resaltado">240</span> <span class="codigo-resaltado">240</span>"&gt;
+      &lt;circle cx="0" cy="0" r="<span class="codigo-resaltado">120</span>" fill="hwb(<span class="codigo-resaltado">0</span> 10% 10%)" /&gt;
+      &lt;circle cx="0" cy="0" r="<span class="codigo-resaltado">90</span>" fill="hwb(<span class="codigo-resaltado">90</span> 10% 10%)" /&gt;
+      &lt;circle cx="0" cy="0" r="<span class="codigo-resaltado">60</span>" fill="hwb(<span class="codigo-resaltado">180</span> 10% 10%)" /&gt;
+      &lt;circle cx="0" cy="0" r="<span class="codigo-resaltado">30</span>" fill="hwb(<span class="codigo-resaltado">270</span> 10% 10%)" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <iframe src="for-2-07.php" style="height: 42em;"></iframe>
       <div class="icono-enlace">
@@ -555,6 +578,29 @@
     <h3>for (2) 08 - Arco iris semicircular</h3>
 
     <p>Escriba un programa que cada vez que se ejecute dibuje un número de semicírculos, elegido al azar entre 3 y 10, que vayan recorriendo los colores del arco iris.</p>
+
+    <details open>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>El dibujo está formado por varios elementos <span class="html-eti">path</span>, cuyos atributos <span class="html-atri">d</span> contienen valores que siguen una sucesión aritmética. Los atributos que definen el tamaño del dibujo (atributos <span class="html-atri">width</span>, atributos <span class="html-atri">height</span> y atributo <span class="html-atri">viewBox</span>) también siguen sucesiones aritméticas que dependen del número de círculos del dibujo.
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;4 franjas&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">260</span>" height="<span class="codigo-resaltado">140</span>"  viewBox="<span class="codigo-resaltado">-130</span> <span class="codigo-resaltado">-130</span> <span class="codigo-resaltado">260</span> <span class="codigo-resaltado">140</span>" style="border: black 1px solid; background-color: white;"&gt;
+      &lt;path d="M <span class="codigo-resaltado">-120</span>,0 L <span class="codigo-resaltado">120</span>,0 A <span class="codigo-resaltado">120</span> <span class="codigo-resaltado">120</span> 0 0 0 <span class="codigo-resaltado">-120</span>,0 z" fill="hwb(<span class="codigo-resaltado">0</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-90</span>,0 L <span class="codigo-resaltado">90</span>,0 A <span class="codigo-resaltado">90</span> <span class="codigo-resaltado">90</span> 0 0 0 <span class="codigo-resaltado">-90</span>,0 z" fill="hwb(<span class="codigo-resaltado">90</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-60</span>,0 L <span class="codigo-resaltado">60</span>,0 A <span class="codigo-resaltado">60</span> <span class="codigo-resaltado">60</span> 0 0 0 <span class="codigo-resaltado">-60</span>,0 z" fill="hwb(<span class="codigo-resaltado">180</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-30</span>,0 L <span class="codigo-resaltado">30</span>,0 A <span class="codigo-resaltado">30</span> <span class="codigo-resaltado">30</span> 0 0 0 <span class="codigo-resaltado">-30</span>,0 z" fill="hwb(<span class="codigo-resaltado">270</span> 10% 10%)" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </details>
 
     <div class="filaflex">
       <iframe src="for-2-08.php" style="height: 34em;"></iframe>
@@ -569,6 +615,31 @@
 
     <p>Escriba un programa que cada vez que se ejecute dibuje un número de semicírculos, elegido al azar entre 3 y 10, que vayan recorriendo los colores del arco iris.</p>
 
+    <details open>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>El dibujo está formado por varios elementos <span class="html-eti">path</span>, cuyos atributos <span class="html-atri">d</span> contienen valores que siguen una sucesión aritmética. Los atributos que definen el tamaño del dibujo (atributos <span class="html-atri">width</span>, atributos <span class="html-atri">height</span> y atributo <span class="html-atri">viewBox</span>) también siguen sucesiones aritméticas que dependen del número de círculos del dibujo.
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">5</span> franjas&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">320</span>" height="<span class="codigo-resaltado">170</span>"  viewBox="<span class="codigo-resaltado">-160</span> <span class="codigo-resaltado">-160</span> <span class="codigo-resaltado">320</span> <span class="codigo-resaltado">170</span>" style="border: black 1px solid; background-color: white;"&gt;
+      &lt;path d="M <span class="codigo-resaltado">-150</span>,0 L <span class="codigo-resaltado">150</span>,0 A <span class="codigo-resaltado">150</span> <span class="codigo-resaltado">150</span> 0 0 0 <span class="codigo-resaltado">-150</span>,0 z" fill="hwb(<span class="codigo-resaltado">0</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-135</span>,0 L <span class="codigo-resaltado">135</span>,0 A <span class="codigo-resaltado">135</span> <span class="codigo-resaltado">135</span> 0 0 0 <span class="codigo-resaltado">-135</span>,0 z" fill="hwb(<span class="codigo-resaltado">72</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-120</span>,0 L <span class="codigo-resaltado">120</span>,0 A <span class="codigo-resaltado">120</span> <span class="codigo-resaltado">120</span> 0 0 0 <span class="codigo-resaltado">-120</span>,0 z" fill="hwb(<span class="codigo-resaltado">144</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-105</span>,0 L <span class="codigo-resaltado">105</span>,0 A <span class="codigo-resaltado">105</span> <span class="codigo-resaltado">105</span> 0 0 0 <span class="codigo-resaltado">-105</span>,0 z" fill="hwb(<span class="codigo-resaltado">216</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-90</span>,0 L <span class="codigo-resaltado">90</span>,0 A <span class="codigo-resaltado">90</span> <span class="codigo-resaltado">90</span> 0 0 0 <span class="codigo-resaltado">-90</span>,0 z" fill="hwb(<span class="codigo-resaltado">288</span> 10% 10%)" /&gt;
+      &lt;path d="M <span class="codigo-resaltado">-75</span>,0 L <span class="codigo-resaltado">75</span>,0 A <span class="codigo-resaltado">75</span> <span class="codigo-resaltado">75</span> 0 0 0 <span class="codigo-resaltado">-75</span>,0 z" fill="white" stroke="white" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <iframe src="for-2-09.php" style="height: 34em;"></iframe>
       <div class="icono-enlace">
@@ -578,7 +649,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

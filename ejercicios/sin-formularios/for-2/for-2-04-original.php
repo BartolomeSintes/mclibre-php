@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3,10);
+$numero = rand(3, 10);
 $longitud  = 100;
 $separacion = 50;
 

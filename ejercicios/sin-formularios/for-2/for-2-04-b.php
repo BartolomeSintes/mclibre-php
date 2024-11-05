@@ -1,11 +1,11 @@
 <?php
 /**
- * for (2) 07 - for-2-07.php
+ * for (2) 04 - for-2-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-05
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Arco iris circular.
+    Líneas (1).
     for (2). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,26 +36,21 @@
 </head>
 
 <body>
-  <h1>Arco iris circular</h1>
+  <h1>Líneas (1)</h1>
 
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3, 10);
-$radio  = 30;
-$paso = 360 / $numero;
+$lineas = rand(3, 10);
 
-print "  <h2>$numero colores</h2>\n";
+print "  <h2>$lineas líneas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . $radio * $numero * 2 . "\" height=\"" . $radio * $numero * 2 . "\" "
-    . " viewBox=\"" . - $radio * $numero . " " . - $radio * $numero . " "
-    . $radio * $numero * 2 . " " . $radio * $numero * 2 . "\">\n";
+print "      width=\"500\" height=\"100\" style=\"border: black 1px solid\">\n";
 
-for ($i = 0; $i < $numero; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i)
-        . "\" fill=\"hwb(" . $i * $paso . " 10% 10%)\" />\n";
+for ($i = 0; $i < $lineas; $i++) {
+    print "      <line x1=\"10\" y1=\"0\" x2=\"" . 50 * $i + 10 . "\" y2=\"100\" stroke=\"red\" stroke-width=\"1\" />\n";
 }
 
 print "    </svg>\n";
@@ -65,7 +60,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-05">5 de octubre de 2022</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">
