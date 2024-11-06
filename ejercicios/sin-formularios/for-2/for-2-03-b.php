@@ -1,6 +1,6 @@
 <?php
 /**
- * for (2) 04 - for-2-04.php
+ * for (2) 03 - for-2-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Líneas (1).
+    Círculos (3).
     for (2). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,21 +36,27 @@
 </head>
 
 <body>
-  <h1>Líneas (1)</h1>
+  <h1>Círculos (3)</h1>
 
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$lineas = rand(3, 10);
+$circulos = rand(1, 10);
+$radio    = rand(10, 50);
 
-print "  <h2>$lineas líneas</h2>\n";
+if ($circulos == 1) {
+    print "  <h2>$circulos círculo de $radio px</h2>\n";
+} else {
+    print "  <h2>$circulos círculos de $radio px</h2>\n";
+}
 print "\n";
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"500\" height=\"100\" style=\"border: black 1px solid\">\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
+    . "width=\"" . 3 * $radio * $circulos - $radio . "\" height=\"" . 2 * $radio
+    . "\" style=\"border: black 1px solid\">\n";
 
-for ($i = 0; $i < $lineas; $i++) {
-    print "      <line x1=\"10\" y1=\"0\" x2=\"" . 50 * $i + 10 . "\" y2=\"100\" stroke=\"red\" stroke-width=\"1\" />\n";
+for ($i = 1; $i <= $circulos; $i++) {
+    print "      <circle cx=\"" . 3 * $radio * $i - 2 * $radio . "\" cy=\"$radio\" r=\"$radio\" fill=\"black\" />\n";
 }
 
 print "    </svg>\n";

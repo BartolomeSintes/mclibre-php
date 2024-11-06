@@ -50,9 +50,8 @@ print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . 50 * $lineas . "\" height=\"120\" "
     . " viewBox=\" -10 -10 " . 50 * $lineas . " 120\" style=\"border: black 1px solid\">\n";
 
-for ($i = 1; $i <= $lineas; $i++) {
-    print "      <line x1=\"0\" y1=\"0\" x2=\"" . 50 * $i - 50
-        . "\" y2=\"100\" stroke=\"green\" stroke-width=\"1\" />\n";
+for ($i = 0; $i < $lineas; $i++) {
+    print "      <line x1=\"0\" y1=\"0\" x2=\"" . 50 * $i . "\" y2=\"100\" stroke=\"green\" stroke-width=\"1\" />\n";
 }
 
 print "    </svg>\n";
