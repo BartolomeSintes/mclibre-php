@@ -3,9 +3,9 @@
  * for (2) 07 - for-2-07.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2024-11-07
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,19 +41,19 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3, 10);
-$paso = 360 / $numero;
+$circulos = rand(3, 10);
+$paso     = 360 / $circulos;
 
-print "  <h2>$numero colores</h2>\n";
+print "  <h2>$circulos colores</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 60 * $numero . "\" height=\"" . 60 * $numero . "\" "
-    . "viewBox=\"" . - 30 * $numero . " " . - 30 * $numero . " " . 60 * $numero . " " . 60 * $numero . "\">\n";
+print "      width=\"" . 60 * $circulos . "\" height=\"" . 60 * $circulos . "\" "
+    . "viewBox=\"" . - 30 * $circulos . " " . - 30 * $circulos . " " . 60 * $circulos . " " . 60 * $circulos . "\">\n";
 
-for ($i = 0; $i < $numero; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $numero
-        . "\" fill=\"hwb(" . round($i * $paso) . " 10% 10%)\" />\n";
+for ($i = 0; $i < $circulos; $i++) {
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $circulos
+        . "\" fill=\"hwb(" . round($paso * $i) . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";
@@ -63,7 +63,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2024-11-07">7 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

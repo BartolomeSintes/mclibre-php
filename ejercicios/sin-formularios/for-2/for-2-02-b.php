@@ -1,11 +1,11 @@
 <?php
 /**
- * for (2) 02 - for-2-02.php
+ * for (2) 02 - for-2-02-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2024-11-07
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,6 +48,7 @@ if ($circulos == 1) {
 } else {
     print "  <h2>$circulos círculos</h2>\n";
 }
+
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
@@ -64,7 +65,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2024-11-07">7 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

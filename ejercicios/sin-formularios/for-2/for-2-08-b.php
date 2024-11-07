@@ -1,11 +1,11 @@
 <?php
 /**
- * for (2) 08 - for-2-08.php
+ * for (2) 08 - for-2-08-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2024-11-07
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,19 +41,21 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3, 10);
-$paso = 360 / $numero;
+$semicirc = rand(3, 10);
+$paso     = 360 / $semicirc;
 
-print "  <h2>$numero franjas</h2>\n";
+print "  <h2>$semicirc franjas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 60 * $numero + 20 . "\" height=\"" . 30 * $numero + 20 . "\" "
-    . " viewBox=\"" . - 30 * $numero - 10 . " " . - 30 * $numero - 10 . " " . 60 * $numero + 20 . " " . 30 * $numero + 20 . "\" style=\"border: black 1px solid; background-color: white;\">\n";
+print "      width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc + 20 . "\" "
+    . " viewBox=\"" . - 30 * $semicirc - 10 . " " . - 30 * $semicirc - 10 . " " . 60 * $semicirc + 20 . " "
+    . 30 * $semicirc + 20 . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
-for ($i = 1; $i <= $numero; $i++) {
-    $valor =  -30 * $i + 30 * $numero + 30;
-    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb(" . round($i * $paso- $paso) . " 10% 10%)\" />\n";
+for ($i = 1; $i <= $semicirc; $i++) {
+    $valor = -30 * $i + 30 * $semicirc + 30;
+    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb("
+        . round($paso * $i - $paso) . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";
@@ -63,7 +65,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2024-11-07">7 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

@@ -1,6 +1,6 @@
 <?php
 /**
- * for (2) 04 - for-2-04.php
+ * for (2) 07 - for-2-07-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Líneas (1).
+    Arco iris circular.
     for (2). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,21 +36,24 @@
 </head>
 
 <body>
-  <h1>Líneas (1)</h1>
+  <h1>Arco iris circular</h1>
 
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$lineas = rand(3, 10);
+$circulos = rand(3, 10);
+$paso     = 360 / $circulos;
 
-print "  <h2>$lineas líneas</h2>\n";
+print "  <h2>$circulos colores</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"500\" height=\"100\" style=\"border: black 1px solid\">\n";
+print "      width=\"" . 60 * $circulos . "\" height=\"" . 60 * $circulos . "\" "
+    . "viewBox=\"" . - 30 * $circulos . " " . - 30 * $circulos . " " . 60 * $circulos . " " . 60 * $circulos . "\">\n";
 
-for ($i = 0; $i < $lineas; $i++) {
-    print "      <line x1=\"10\" y1=\"0\" x2=\"" . 50 * $i + 10 . "\" y2=\"100\" stroke=\"red\" stroke-width=\"1\" />\n";
+for ($i = 1; $i <= $circulos; $i++) {
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $circulos + 30
+        . "\" fill=\"hwb(" . round($paso * $i - $paso) . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";
