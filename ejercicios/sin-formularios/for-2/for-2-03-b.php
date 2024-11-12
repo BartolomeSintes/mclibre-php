@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-07
+ * @version   2024-11-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -56,8 +56,10 @@ print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
     . "width=\"" . 3 * $radio * $circulos - $radio . "\" height=\"" . 2 * $radio
     . "\" style=\"border: black 1px solid\">\n";
 
-for ($i = 1; $i <= $circulos; $i++) {
-    print "      <circle cx=\"" . 3 * $radio * $i - 2 * $radio . "\" cy=\"$radio\" r=\"$radio\" fill=\"black\" />\n";
+$cx = $radio;
+for ($i = 0; $i < $circulos; $i++) {
+    print "      <circle cx=\"$cx\" cy=\"$radio\" r=\"$radio\" fill=\"black\" />\n";
+    $cx = $cx + 3 * $radio;
 }
 
 print "    </svg>\n";
@@ -67,7 +69,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-07">7 de noviembre de 2024</time>
+      <time datetime="2024-11-12">12 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

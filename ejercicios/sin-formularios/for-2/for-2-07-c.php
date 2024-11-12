@@ -1,6 +1,6 @@
 <?php
 /**
- * for (2) 08 - for-2-08.php
+ * for (2) 07 - for-2-07-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Arco iris semicircular.
+    Arco iris circular.
     for (2). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,25 +36,24 @@
 </head>
 
 <body>
-  <h1>Arco iris semicircular</h1>
+  <h1>Arco iris circular</h1>
 
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$semicirc = rand(3, 10);
-$paso     = 360 / $semicirc;
+$circulos = rand(3, 10);
+$paso     = 360 / $circulos;
 
-print "  <h2>$semicirc franjas</h2>\n";
+print "  <h2>$circulos colores</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc + 20 . "\""
-    . " viewBox=\"" . - 30 * $semicirc - 10 . " " . - 30 * $semicirc - 10 . " " . 60 * $semicirc + 20 . " "
-    . 30 * $semicirc + 20 . "\" style=\"border: black 1px solid; background-color: white;\">\n";
+print "      width=\"" . 60 * $circulos . "\" height=\"" . 60 * $circulos . "\" "
+    . "viewBox=\"" . - 30 * $circulos . " " . - 30 * $circulos . " " . 60 * $circulos . " " . 60 * $circulos . "\">\n";
 
-for ($i = 0; $i < $semicirc; $i++) {
-    $d = -30 * $i + 30 * $semicirc;
-    print "      <path d=\"M -$d,0 L $d,0 A $d $d 0 0 0 -$d,0 z\" fill=\"hwb(" . round($paso * $i) . " 10% 10%)\" />\n";
+for ($i = 1; $i <= $circulos; $i++) {
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $circulos + 30
+        . "\" fill=\"hwb(" . round($paso * $i - $paso) . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";

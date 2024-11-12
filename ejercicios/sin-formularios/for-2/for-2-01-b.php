@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-07
+ * @version   2024-11-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,8 +53,10 @@ print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"870\" height=\"60\" style=\"border: black 1px solid\">\n";
 
-for ($i = 1; $i <= $circulos; $i++) {
-    print "      <circle cx=\"" . 90 * $i - 60 . "\" cy=\"30\" r=\"30\" fill=\"black\" />\n";
+$cx = 30;
+for ($i = 0; $i < $circulos; $i++) {
+    print "      <circle cx=\"$cx\" cy=\"30\" r=\"30\" fill=\"black\" />\n";
+    $cx = $cx + 90;
 }
 
 print "    </svg>\n";
@@ -64,7 +66,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-07">7 de noviembre de 2024</time>
+      <time datetime="2024-11-12">12 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

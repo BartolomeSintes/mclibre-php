@@ -48,19 +48,19 @@ print "  <h2>$semicirc franjas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc + 20 . "\" "
+print "      width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc + 20 . "\""
     . " viewBox=\"" . - 30 * $semicirc - 10 . " " . - 30 * $semicirc - 10 . " "
     . 60 * $semicirc + 20 . " " . 30 * $semicirc + 20
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
 for ($i = 0; $i < $semicirc; $i++) {
-    $valor = -15 * $i + 30 * $semicirc;
-    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb("
+    $d = -15 * $i + 30 * $semicirc;
+    print "      <path d=\"M -$d,0 L $d,0 A $d $d 0 0 0 -$d,0 z\" fill=\"hwb("
         . round($i * $paso) . " 10% 10%)\" />\n";
 }
 
-$valor = 15 * $semicirc;
-print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"white\" stroke=\"white\" />\n";
+$d = 15 * $semicirc;
+print "      <path d=\"M -$d,0 L $d,0 A $d $d 0 0 0 -$d,0 z\" fill=\"white\" stroke=\"white\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>

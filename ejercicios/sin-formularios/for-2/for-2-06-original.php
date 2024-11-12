@@ -49,7 +49,7 @@ print "  <h2>$numero líneas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . $separacion * $numero - $separacion / 2 . "\" height=\"" . $longitud + 20 . "\" "
+print "      width=\"" . $separacion * $numero - $separacion / 2 . "\" height=\"" . $longitud + 20 . "\""
     . " viewBox=\" -10 -10 " . $separacion * $numero - $separacion / 2 . " "
     . $longitud + 20 . "\" style=\"border: black 1px solid\">\n";
 

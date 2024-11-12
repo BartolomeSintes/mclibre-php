@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-07
+ * @version   2024-11-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,9 +51,12 @@ print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . 60 * $circulos . "\" height=\"" . 60 * $circulos . "\" "
     . "viewBox=\"" . - 30 * $circulos . " " . - 30 * $circulos . " " . 60 * $circulos . " " . 60 * $circulos . "\">\n";
 
-for ($i = 1; $i <= $circulos; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $circulos + 30
-        . "\" fill=\"hwb(" . round($paso * $i - $paso) . " 10% 10%)\" />\n";
+$r     = 30 * $circulos;
+$color = 0;
+for ($i = 0; $i < $circulos; $i++) {
+    print "      <circle cx=\"0\" cy=\"0\" r=\"$r\" fill=\"hwb(" . round($color) . " 10% 10%)\" />\n";
+    $r     = $r - 30;
+    $color = $color + $paso;
 }
 
 print "    </svg>\n";
@@ -63,7 +66,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-07">7 de noviembre de 2024</time>
+      <time datetime="2024-11-12">12 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

@@ -1,6 +1,6 @@
 <?php
 /**
- * for (2) 08 - for-2-08.php
+ * for (2) 08 - for-2-08-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -52,9 +52,10 @@ print "      width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc +
     . " viewBox=\"" . - 30 * $semicirc - 10 . " " . - 30 * $semicirc - 10 . " " . 60 * $semicirc + 20 . " "
     . 30 * $semicirc + 20 . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
-for ($i = 0; $i < $semicirc; $i++) {
-    $d = -30 * $i + 30 * $semicirc;
-    print "      <path d=\"M -$d,0 L $d,0 A $d $d 0 0 0 -$d,0 z\" fill=\"hwb(" . round($paso * $i) . " 10% 10%)\" />\n";
+for ($i = 1; $i <= $semicirc; $i++) {
+    $valor = -30 * $i + 30 * $semicirc + 30;
+    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb("
+        . round($paso * $i - $paso) . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";

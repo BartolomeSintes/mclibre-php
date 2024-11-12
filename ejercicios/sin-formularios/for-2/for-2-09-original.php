@@ -49,7 +49,7 @@ print "  <h2>$numero franjas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . $radio * $numero * 2 + 20 . "\" height=\"" . $radio * $numero + 20 . "\" "
+print "      width=\"" . $radio * $numero * 2 + 20 . "\" height=\"" . $radio * $numero + 20 . "\""
     . " viewBox=\"" . - $radio * $numero -10 . " " . - $radio * $numero -10 . " "
     . $radio * $numero * 2 + 20 . " " . $radio * $numero + 20
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
