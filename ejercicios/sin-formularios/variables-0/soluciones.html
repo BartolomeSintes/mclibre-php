@@ -539,24 +539,78 @@ print "  &lt;p&gt;$centimetros centímetros son $yardas yardas, $pies pies y $pu
 
     <p>También podemos resolverlo con sólo una variable, el número aleatorio de centímetros. En ese caso, deberíamos concatenar los tres cálculos de yardas, pies y pulgadas al escribir la frase.</p>
 
-    <p>Como la instrucción que escribe la frase es bastante larga, la podemos partir en dos instrucciones <span class="php-res">print</span> para mejorar la legibilidad del código.</p>
-
-    <p>Como 91.44 es múltiplo de 30.48, el segundo resto se puede calcular a partir de la cantidad de centímetros inicial o a partir del primer resto, lo que nos permite simplificar la expresión que nos da las pulgadas.</p>
+    <p>Como la instrucción que escribe la frase es bastante larga, la podemos partir en varias líneas para mejorar la legibilidad del código.</p>
 
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
 $centimetros = rand(0, 5_000_000) / 100;
 
-print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, ";
-print floor(fmod($centimetros, 91.44) / 30.48) . " pies y " . round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, "
+    . floor(fmod($centimetros, 91.44) / 30.48) . " pies y "
+    . round(fmod(fmod($centimetros, 91.44), 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>El cálculo del número de pulgadas se puede simplificar teniendo en cuenta que si en dos divisiones sucesivas los divisores son múltiplos entre sí, el resto final tras las dos divisiones es el mismo que el resto de la división por el menor de los divisiores. Es decir:</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="10 55 1500 350" style="font-family: sans-serif; font-size: 28px;">
+        <text x="240" y="140" style="font-size: 140%" text-anchor="end">x</text>
+        <polyline points="260,100 260,150 330,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="280" y="140" style="font-size: 140%">a</text>
+        <text x="240" y="210" style="font-size: 140%" text-anchor="end">r1</text>
+        <path d="M 190 210 q 30 35, 60 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="165" y="285" text-anchor="middle">primer resto</text>
+        <text x="165" y="325" text-anchor="middle">r1 = fmod(x, a)</text>
+        <line x1="165" y1="265" x2="195" y2="235" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="280" y="210" style="font-size: 140%">...</text>
+
+        <path d="M 240 230 q 100 100, 300 -85" stroke="black" stroke-width="3" fill="transparent" marker-end="url(#arrow)" />
+
+        <text x="590" y="140" style="font-size: 140%" text-anchor="end">r1</text>
+        <polyline points="610,100 610,150 680,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="630" y="140" style="font-size: 140%">b</text>
+        <text x="590" y="210" style="font-size: 140%" text-anchor="end">r2</text>
+        <path d="M 540 210 q 30 35, 60 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="500" y="285" text-anchor="middle">segundo resto</text>
+        <text x="500" y="325" text-anchor="middle">r2 = fmod(r1, b)</text>
+        <text x="500" y="365" text-anchor="middle">r2 = fmod(fmod(x, a), b)</text>
+        <line x1="510" y1="265" x2="540" y2="235" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="630" y="210" style="font-size: 140%">...</text>
+
+        <text x="1000" y="80" text-anchor="middle">Si a es múltiplo de b:</text>
+
+        <text x="990" y="140" style="font-size: 140%" text-anchor="end">x</text>
+        <polyline points="1010,100 1010,150 1080,150" fill="none" stroke-width="3" stroke="black" />
+        <text x="1030" y="140" style="font-size: 140%">b</text>
+        <text x="990" y="210" style="font-size: 140%" text-anchor="end">r2</text>
+        <path d="M 940 210 q 30 35, 60 0" stroke="black" stroke-width="3" fill="transparent" />
+        <text x="900" y="285" text-anchor="middle">segundo resto</text>
+        <text x="900" y="325" text-anchor="middle">r2 = fmod(x, b)</text>
+        <line x1="910" y1="265" x2="940" y2="235" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+        <text x="1030" y="210" style="font-size: 140%">...</text>
+      </svg>
+    </p>
+
+    <p>Como en este caso 91.44 es múltiplo de 30.48 (1 yarda son 3 pies), el segundo resto se puede calcular a partir de la cantidad de centímetros inicial, lo que nos permite simplificar la expresión que calcula las pulgadas.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$centimetros = rand(0, 5_000_000) / 100;
+
+print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, "
+    . floor(fmod($centimetros, 91.44) / 30.48) . " pies y "
+    . round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 19 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

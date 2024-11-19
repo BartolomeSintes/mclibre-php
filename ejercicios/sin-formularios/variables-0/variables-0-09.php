@@ -42,10 +42,11 @@
 
 <?php
 $centimetros  = rand(0, 5_000_000) / 100;
+$centimetros = 10953.33;
 $yardas       = floor($centimetros / 91.44);
 $centimetros2 = fmod($centimetros, 91.44);
 $pies         = floor($centimetros2 / 30.48);
-$centimetros3 = fmod($centimetros, 30.48);
+$centimetros3 = fmod($centimetros2, 30.48);
 $pulgadas     = round($centimetros3 / 2.54, 1);
 
 print "  <p>$centimetros centímetros son $yardas yardas, $pies pies y $pulgadas pulgadas.</p>\n";

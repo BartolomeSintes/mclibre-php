@@ -1,6 +1,6 @@
 <?php
 /**
- * Sin formularios. Variables (0) 9 B - variables-0-09-b.php
+ * Sin formularios. Variables (0) 9 C - variables-0-09-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -45,7 +45,7 @@ $centimetros = rand(0, 5_000_000) / 100;
 
 print "  <p>$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, "
     . floor(fmod($centimetros, 91.44) / 30.48) . " pies y "
-    . round(fmod(fmod($centimetros, 91.44), 30.48) / 2.54, 1) . " pulgadas.</p>\n";
+    . round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.</p>\n";
 ?>
 
   <footer>
