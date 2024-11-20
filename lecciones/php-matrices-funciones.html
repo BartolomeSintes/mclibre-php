@@ -23,6 +23,7 @@
       <h2>Funciones de matrices</h2>
 
       <ul>
+        <li><a href="#uso">Uso de las funciones</a></li>
         <li><a href="#range">Sucesión aritmética</a></li>
         <li><a href="#array-merge">Mezclar matrices</a></li>
         <li><a href="#count">Contar elementos</a></li>
@@ -39,6 +40,73 @@
   </nav>
 
   <p>En esta lección se comentan varias funciones útiles para trabajar con matrices. La información general sobre matrices en PHP se encuentra en la lección <a href="php-matrices.html">Matrices</a>.</p>
+
+  <section id="uso">
+    <h2>Uso de las funciones de matrices</h2>
+
+    <p>Un detalle a tener en cuenta al utilizar cualquiera de las funciones de matrices disponibles en PHP es si la función devuelve una matriz con el resultado de la operación o si la función transforma la matriz enviada como argumento de la función:</p>
+
+    <ul>
+      <li>Cuando una función devuelve una nueva matriz, lo más habitual es guardar el resultado en una variable, de manera que tendremos a nuestra disposición tanto la matriz inicial como la transformada.
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$matriz = [ ... ];
+
+$resultado = funcion_de_matrices($matriz);
+
+// El resto del programa puede acceder tanto a la matriz inicial $matriz
+// como al resultado de la función (que puede ser una matriz o un valor escalar).
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>En caso de no necesitar para nada la matriz inicial, podemos guardar el resultado en la propia matriz inicial o no hacer la copia de la matriz.
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$matriz = [ ... ];
+
+$matriz = funcion_de_matrices($matriz);
+
+// El resto del programa ya no puede acceder a los valores que había en la matriz inicial,
+// solamente puede acceder al resultado de la función (que puede ser una matriz o un valor escalar).
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Cuando una función transforma la matriz inicial, si necesitamos mantener la matriz en su forma inicial, podemos hacer una copia de la matriz inicial antes de llamar a la función, y enviar como argumento la copia, de manera que tendremos a nuestra disposición tanto la matriz inicial como la transformada.
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$matriz = [ ... ];
+
+$resultado = $matriz;
+
+funcion_de_matrices($resultado);
+
+// El resto del programa puede acceder tanto a la matriz inicial $matriz
+// como al resultado de la función (que en estos casos suele ser siempre una matriz).
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>En caso de no necesitar para nada la matriz inicial, podemos no hacer la copia de la matriz.
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$matriz = [ ... ];
+
+funcion_de_matrices($matriz);
+
+// El resto del programa ya no puede acceder a los valores que había en la matriz inicial,
+// solamente puede acceder al resultado de la función (que en estos casos suele ser siempre una matriz).
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
 
   <section id="range">
     <h2>Generar valores numéricos en sucesión aritmética</h2>
@@ -154,7 +222,7 @@ Array
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$uno = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 4];
+$uno = ["a" =&gt; 1,  "b" =&gt; 2,  "c" =&gt; 4];
 $dos = ["b" =&gt; 10, "c" =&gt; 20, "d" =&gt; 40];
 
 $final = array_merge($uno, $dos);
@@ -181,7 +249,7 @@ Array
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$uno = [2 =&gt; 1, "b" =&gt; 2, "c" =&gt; 4];
+$uno = [2 =&gt; 1,   "b" =&gt; 2,  "c" =&gt; 4];
 $dos = [2 =&gt; 100, "c" =&gt; 40, "d" =&gt; 60];
 
 $final = array_merge($uno, $dos);
@@ -289,7 +357,7 @@ Array
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$nombres[1] = "Ana";
+$nombres[1]  = "Ana";
 $nombres[10] = "Bernardo";
 $nombres[25] = "Carmen";
 
@@ -472,7 +540,6 @@ print "&lt;pre&gt;\n"; print_r($cuenta); print "&lt;/pre&gt;\n";
 </pre>
       </div>
       <div class="resultado-html">
-        <p>La matriz tiene 3 elementos.</p>
         <pre>Array
 (
     [Ana] =&gt; 3
@@ -486,7 +553,7 @@ print "&lt;pre&gt;\n"; print_r($cuenta); print "&lt;/pre&gt;\n";
   <section id="maxmin">
     <h2>Mínimo y máximo</h2>
 
-    <p>La función <a href="https://www.php.net/manual/en/function.min.php"><span class="php-fun">min($matriz, ...)</span></a> devuelve el valor mínimo de una matriz (o varias). La función <a href="https://www.php.net/manual/en/function.max.php"><span class="php-fun">max($matriz, ...)</span></a> devuelve el valor máximo de una matriz (o varias).</p>
+    <p>La función <a href="https://www.php.net/manual/en/function.min.php"><span class="php-fun">min($matriz)</span></a> devuelve el valor mínimo de una matriz no vacía. La función <a href="https://www.php.net/manual/en/function.max.php"><span class="php-fun">max($matriz)</span></a> devuelve el valor máximo de una matriz no vacía.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -520,7 +587,7 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>Si los valores de la matriz incluyen números y cadenas, como PHP convierte los números a cadenas para hacer las comparaciones entre ellos (<a href="php-cambios.html#php-8-0-comparaciones">desde PHP 8.0</a>) y las cadenas van después de los números, así que el mínimo será siempre uno de los números (el menor) y el máximo una de las cadenas (la última por orden alfabético).</p>
+    <p>El manual oficial de PHP desaconseja utilizar esta función si la matriz contiene valores de diferentes tipos (por ejemplo, números y cadenas) ya que las conversiones entre tipos pueden producir resultados inesperados. En general, como PHP convierte los números a cadenas para hacer las comparaciones entre ellos (<a href="php-cambios.html#php-8-0-comparaciones">desde PHP 8.0</a>) y las cadenas van después de los números, el mínimo será uno de los números (el menor) y el máximo una de las cadenas (la última por orden alfabético).</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -552,6 +619,54 @@ print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
         <p>El mínimo de la matriz es 4.</p>
 
         <p>El máximo de la matriz es d.</p>
+      </div>
+    </div>
+
+    <p>Estas funciones sólo admiten una matriz como argumento. Si se quiere calcular el mínimo o el máximo de varias matrices, deberíamos unir las matrices previamente con <a href="#array-merge">array_merge()</a>:</p>
+
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$valores1 = [5, 10, -3];
+$valores2 = [19, 9, 2];
+
+$maximo = max(array_merge($valores1, $valores2));
+$minimo = min(array_merge($valores1, $valores2));
+
+print "&lt;pre&gt;\n"; print_r($valores1); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores2); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;p&gt;El mínimo de las dos matrices es $minimo.&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;El máximo de las dos matrices es $maximo.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>
+Array
+(
+    [0] =&gt; 5
+    [1] =&gt; 10
+    [2] =&gt; -3
+)
+</pre>
+
+        <pre>
+Array
+(
+    [0] =&gt; 19
+    [1] =&gt; 9
+    [2] =&gt; 2
+)
+</pre>
+
+        <p>El mínimo de las dos matrices es -3.</p>
+
+        <p>El máximo de las dos matrices es 19.</p>
       </div>
     </div>
   </section>
@@ -1078,7 +1193,7 @@ print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$nombres = ["a" =&gt; "Ana", 20 =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David"];
+$nombres = ["a" =&gt; "Ana", "c" =&gt; "Carmen", 20 =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David", 40 =&gt; "Carmen"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
@@ -1096,22 +1211,29 @@ print "\n";
       </div>
       <div class="resultado-html">
         <p>Matriz inicial:</p>
-        <pre>Array
-(
-    [a] =&gt; Ana
-    [20] =&gt; Bernardo
-    [c] =&gt; Carmen
-    [d] =&gt; David
-)</pre>
+
+        <pre>
+        Array
+        (
+            [a] =&gt; Ana
+            [c] =&gt; Carmen
+            [20] =&gt; Bernardo
+            [d] =&gt; David
+            [40] =&gt; Carmen
+        )
+        </pre>
 
         <p>Matriz reindexada con array_values():</p>
-        <pre>Array
-(
-    [0] =&gt; Ana
-    [1] =&gt; Bernardo
-    [2] =&gt; Carmen
-    [3] =&gt; David
-)</pre>
+
+        <pre>
+        Array
+        (
+            [0] =&gt; Ana
+            [1] =&gt; Carmen
+            [2] =&gt; Bernardo
+            [3] =&gt; David
+            [4] =&gt; Carmen
+        )</pre>
       </div>
     </div>
   </section>
@@ -1293,6 +1415,42 @@ print "&lt;/p&gt;\n";
             <p>Valores al azar: 4 121 225</p>
           </div>
         </div>
+
+        <p>Si el segundo argumento es 1 (es decir, si sólo se extrae un valor), la función <span class="php-fun">array_rand($matriz, 1)</span> no devuelve una matriz, sino una variable escalar:</p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100, 11 =&gt; 121, 15 =&gt; 225];
+
+$indice = array_rand($cuadrados, 1);
+
+print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;p&gt;Índice al azar: $indice&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;Valor al azar: $cuadrados[$indice]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>
+Array
+(
+    [2] =&gt; 4
+    [3] =&gt; 9
+    [7] =&gt; 49
+    [10] =&gt; 100
+    [11] =&gt; 121
+    [15] =&gt; 225
+)
+</pre>
+
+            <p>Índice al azar: 15</p>
+
+            <p>Valor al azar: 225</p>
+          </div>
+        </div>
       </li>
     </ul>
   </section>
@@ -1327,7 +1485,7 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 20 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
