@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (3) 1 - matrices-3-03.php
+ * Matrices (3) 3 - matrices-3-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
@@ -40,7 +40,8 @@
 
 <?php
 // Guardamos los nombres de los cuatro palos
-$palos = [["c", "corazones"], ["d", "diamantes"], ["p", "picas"], ["t", "tréboles"]];
+$palos        = ["c", "d", "p", "t"];
+$nombresPalos = ["corazones", "diamantes", "picas", "tréboles"];
 
 // No guardamos los valores de las cartas
 // Los generaremos cuando mostremos las cartas
@@ -53,7 +54,7 @@ print "  <p>\n";
 for ($i = 0; $i < $n; $i++) {
     $palo   = array_rand($palos);
     $numero = rand(1, 10);
-    print "    <img src=\"img/cartas/{$palos[$palo][0]}$numero.svg\" alt=\"$numero de {$palos[$palo][1]}\" width=\"100\">\n";
+    print "    <img src=\"img/cartas/$palos[$palo]$numero.svg\" alt=\"$numero de $nombresPalos[$palo]\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";

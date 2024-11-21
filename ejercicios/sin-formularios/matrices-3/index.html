@@ -79,9 +79,25 @@
 
     <p>Escriba un programa que simule una tirada de dados de póker que incluya entre 3 y 7 dados.</p>
 
+    <p>En este ejercicio el valor del atributo <span class="html-atri">alt</span> debe coincidir con el nombre del fichero SVG. Por ejemplo:</p>
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;img src="img/dados-poker/<span class="codigo-resaltado">J</span>.svg" alt="<span class="codigo-resaltado">J</span>" width="100"&gt;
+    &lt;img src="img/dados-poker/<span class="codigo-resaltado">Q</span>.svg" alt="<span class="codigo-resaltado">Q</span>" width="100"&gt;</code>
+</pre>
+    </div>
+
     <details>
       <summary><strong>Ayuda</strong></summary>
       <ul>
+        <li>Los nombres de los ficheros SVG con las imágenes de los dados pueden guardarse en una matriz:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$dadosPoker = ["N", "R", "J", "Q", "K", "A"];</code>
+</pre>
+          </div>
+        </li>
         <li>Puede utilizar la función <a href="../../../lecciones/php-matrices-funciones.html#array-rand"><span class="php-fun">array_rand()</span></a>.</li>
       </ul>
     </details>
@@ -99,10 +115,38 @@
 
     <p>Escriba un programa que simule una tirada de dados de póker que incluya entre 3 y 7 dados.</p>
 
+    <p>En este ejercicio el valor del atributo <span class="html-atri">alt</span> es una palabra. Por ejemplo:</p>
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;img src="img/dados-poker/<span class="codigo-resaltado">R</span>.svg" alt="<span class="codigo-resaltado">Rojos</span>" width="100"&gt;
+    &lt;img src="img/dados-poker/<span class="codigo-resaltado">K</span>.svg" alt="<span class="codigo-resaltado">Rey</span>" width="100"&gt;</code>
+</pre>
+    </div>
+
     <details>
       <summary><strong>Ayuda</strong></summary>
       <ul>
-        <li>Puede definir una matriz de dos dimensiones con los nombres de los ficheros SVG y los valores del atributo <span class="html-atri">alt</span>.</li>
+        <li>Los nombres de los ficheros SVG con las imágenes de los dados y los valores del atributo <span class="html-atri">alt</span> pueden guardarse en dos matrices o en una sola, de varias maneras:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$dadosPoker   = ["N", "R", "J", "Q", "K", "A"];
+$nombresPoker = ["Negros", "Rojos", "Jota", "Reina", "Rey", "As"];</code>
+</pre>
+          </div>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$dadosPoker = [["N", "Negros"], ["R", "Rojos"], ["J", "Jota"], ["Q", "Reina"], ["K", "Rey"], ["A", "As"]];</code>
+</pre>
+          </div>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$dadosPoker = ["N" =&gt; "Negros", "R" =&gt; "Rojos", "J" =&gt; "Jota", "Q" =&gt; "Reina", "K" =&gt; "Rey", "A" =&gt; "As"];</code>
+</pre>
+          </div>
+        </li>
       </ul>
     </details>
 
@@ -119,6 +163,41 @@
 
     <p>Escriba un programa que muestre un grupo de entre 5 y 10 cartas de valores numéricos de una baraja francesa, al azar. Las cartas se pueden repetir.</p>
 
+    <p>En este ejercicio el valor del atributo <span class="html-atri">alt</span> indica el valor y el palo de la carta. Por ejemplo:</p>
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;img src="img/cartas/<span class="codigo-resaltado">c8</span>.svg" alt="<span class="codigo-resaltado">8 de corazones</span>" width="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">t6</span>.svg" alt="<span class="codigo-resaltado">6 de tréboles</span>" width="100"&gt;</code>
+</pre>
+    </div>
+
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Las siglas de los palos en los ficheros SVG con las imágenes de las cartas y los nombres de los palos para el atributo <span class="html-atri">alt</span> pueden guardarse en dos matrices o en una sola, de varias maneras:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$palos        = ["c", "d", "p", "t"];
+$nombresPalos = ["corazones", "diamantes", "picas", "tréboles"];</code>
+</pre>
+          </div>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$palos = [["c", "corazones"], ["d", "diamantes"], ["p", "picas"], ["t", "tréboles"]];</code>
+</pre>
+          </div>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$palos = ["c" =&gt; "corazones", "d"=&gt; "diamantes", "p" =&gt; "picas", "t" =&gt; "tréboles"];</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <iframe src="matrices-3-03.php" style="height: 24em;"></iframe>
       <div class="icono-enlace">
@@ -131,6 +210,18 @@
     <h3>Matrices (3) 4 - Cartas de un palo, sin repetición</h3>
 
     <p>Escriba un programa que muestre un grupo de entre 5 y 10 cartas de valores numéricos de una baraja francesa, al azar. Las cartas <strong>NO</strong> se pueden repetir y pertenecen al mismo palo.</p>
+
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Para obtener una matriz de cartas sin repetición podemos:
+          <ul>
+            <li>o bien crear una matriz con todas las cartas, utilizar la función <a href="../../../lecciones/php-matrices-funciones.html#array-rand"><span class="php-fun">array_rand()</span></a> con dos argumentos para obtener la cantidad de valores buscada y barajar el resultado,</li>
+            <li>o bien primero barajar la matriz con todas las cartas y copiar en una nueva matriz la cantidad de valores buscada.</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
 
     <div class="filaflex">
       <iframe src="matrices-3-04.php" style="height: 24em;"></iframe>
@@ -145,7 +236,7 @@
 
     <p>Escriba un programa:</p>
     <ul>
-      <li>que muestre primero un grupo de entre 5 y 10 cartas de tréboles al azar.</li>
+      <li>que muestre primero un grupo de entre 5 y 10 cartas de tréboles al azar (los valores se pueden repetir).</li>
       <li>que indique cuál es la carta más alta y la más baja.</li>
     </ul>
 
@@ -169,7 +260,7 @@
 
     <p>Escriba un programa:</p>
     <ul>
-      <li>que muestre primero un grupo de entre 5 y 10 cartas de tréboles al azar.</li>
+      <li>que muestre primero un grupo de entre 5 y 10 cartas de tréboles al azar (los valores se pueden repetir).</li>
       <li>que indique y muestre cuál es la carta más alta del grupo.</li>
       <li>que elimine esa carta del grupo (puede haber varias) y muestre el grupo restante.</li>
       <li>que indique cuál es la carta más alta del grupo restante.</li>
@@ -267,7 +358,7 @@
 
     <p>Escriba un programa:</p>
     <ul>
-      <li>que muestre primero todos los emoticonos. Los emoticonos se encuentran en los rangos 128512 al 128580, 129296 al 129303, 129312 al 129327, 129392, 129393, 129395 al 129398, 129402 y 129488.</li>
+      <li>que muestre primero todos los emoticonos. Los emoticonos se encuentran en los rangos 128512 al 128580, 129296 al 129303, 129312 al 129317, 129319 al 129327, 129392, 129393, 129395 al 129398, 129402 y 129488.</li>
       <li>que muestre uno de esos emoticonos al azar.</li>
     </ul>
 
@@ -319,6 +410,7 @@
         <li>que muestre las cartas que han salido, sin repetir y ordenándolas de menor a mayor.</li>
         <li>que muestre cuántas cartas han salido de cada (sin ordenar).</li>
         <li>que muestre cuántas cartas han salido de cada, ordenándolas de mayor a menor número de cartas obtenido.</li>
+        <li>que muestre cuántas cartas han salido de cada, ordenándolas de menor a mayor número de carta.</li>
       </ul>
 
       <details>
@@ -331,7 +423,7 @@
       </details>
 
       <div class="filaflex">
-        <iframe src="matrices-3-22.php" style="height: 48em;"></iframe>
+        <iframe src="matrices-3-22.php" style="height: 55em;"></iframe>
         <div class="icono-enlace">
           <a href="matrices-3-22.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
@@ -359,7 +451,7 @@
       </details>
 
       <div class="filaflex">
-        <iframe src="matrices-3-23.php" style="height: 36em;"></iframe>
+        <iframe src="matrices-3-23.php" style="height: 42em;"></iframe>
         <div class="icono-enlace">
           <a href="matrices-3-23.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
@@ -417,7 +509,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

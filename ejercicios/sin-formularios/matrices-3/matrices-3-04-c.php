@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (3) 2 C - matrices-3-02-c.php
+ * Matrices (3) 4 C - matrices-3-04-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-11-01
+ * @version   2024-11-21
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dados de póker (con texto en atributo alt).
+    Cartas sin repetición.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,24 +36,23 @@
 </head>
 
 <body>
-  <h1>Dados de póker (con texto en atributo alt)</h1>
+  <h1>Cartas sin repetición</h1>
 
 <?php
-// Guardamos los nombres de las imágenes en la matriz $dadosPoker
-$dadosPoker = ["N" => "Negros", "R" => "Rojos", "J" => "Jota", "Q" => "Reina", "K" => "Rey", "A" => "As"];
+// Guardamos todos los valores de las cartas en la matriz $mazo
+$n    = rand(5, 10);
+$mazo = range(1, 10);
+// Barajamos el mazo
+shuffle($mazo);
+// Extraemos el número de cartas deseado
+$cartas = array_rand($mazo, $n);
 
-// Guardamos los valores de los dados en la matriz $dados
-$n = rand(3, 7);
-for ($i = 0; $i < $n; $i++) {
-    $dados[] = array_rand($dadosPoker);
-}
-
-// Mostramos las imágenes y los atributos alt de los dados obtenidos
-print "  <h2>Tirada de $n dados</h2>\n";
+// Mostramos las imágenes de las cartas guardadas en $cartas2
+print "  <h2>$n cartas sin repetición</h2>\n";
 print "\n";
 print "  <p>\n";
-foreach ($dados as $dado) {
-    print "    <img src=\"img/dados-poker/$dado.svg\" alt=\"$dadosPoker[$dado]\" width=\"100\">\n";
+foreach ($cartas as $carta) {
+    print "    <img src=\"img/cartas/c$mazo[$carta].svg\" alt=\"$mazo[$carta] de corazones\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -62,7 +61,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-11-01">1 de noviembre de 2023</time>
+      <time datetime="2024-11-21">21 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

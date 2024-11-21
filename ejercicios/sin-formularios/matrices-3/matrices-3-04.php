@@ -3,9 +3,9 @@
  * Matrices (3) 4 - matrices-3-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-11-01
+ * @version   2024-11-21
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,21 +39,21 @@
   <h1>Cartas sin repetición</h1>
 
 <?php
-// Guardamos los valores de las cartas en la matriz $cartas
-$n = rand(5, 10);
-$cartas = range(1, 10);
-// Barajamos las cartas
-shuffle($cartas);
-// Creamos una nueva matriz con los primeros valores de $cartas (el número de valores que queremos mostrar)
+// Guardamos todos los valores de las cartas en la matriz $mazo
+$n    = rand(5, 10);
+$mazo = range(1, 10);
+// Barajamos el mazo de cartas
+shuffle($mazo);
+// Creamos una nueva matriz con los primeros valores de $mazo (el número de valores que queremos mostrar)
 for ($i = 0; $i < $n; $i++) {
-    $cartas2[] = $cartas[$i];
+    $cartas[$i] = $mazo[$i];
 }
 
-// Mostramos las imágenes de las cartas guardadas en $cartas2
+// Mostramos las imágenes de las cartas guardadas en $cartas
 print "  <h2>$n cartas sin repetición</h2>\n";
 print "\n";
 print "  <p>\n";
-foreach ($cartas2 as $carta) {
+foreach ($cartas as $carta) {
     print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
 }
 print "  </p>\n";
@@ -63,7 +63,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-11-01">1 de noviembre de 2023</time>
+      <time datetime="2024-11-21">21 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

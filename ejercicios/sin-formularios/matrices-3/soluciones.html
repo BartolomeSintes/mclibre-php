@@ -283,7 +283,39 @@ print "\n";
     <h3>Matrices (3) 3 - Cartas de cuatro palos</h3>
 
     <ol>
-      <li>En esta solución, no se guardan los valores en una matriz, sino que se generan en el momento de mostrar la carta. El valor del palo que se genera es un índice de la matriz de dos dimensiones $palos. Como tanto el número como el palo aparecen en dos lugares de la página (en el nombre del fichero a mostrar y en el atributo <span class="html-atri">alt</span>), guardamos estos valores en dos variables auxiliares. La matriz $palos tiene dos dimensiones: el primer elemento de cada elemento de la matriz $palos ([0]) es la inicial del palo y el segundo ([1]) es el nombre del palo.
+      <li>En esta solución tenemos dos matrices de una dimensión: la matriz $palos contiene las iniciales de los palos y la matriz $nombresPalos contiene los nombres de los palos. Las dos matrices tienen el mismo número de elementos y los palos aparecen en las dos matrices en el mismo orden.
+        <p>En esta solución los valores de las cartas no se guardan en una matriz, sino que se generan en el momento de mostrar la carta. El valor del palo que se genera es un índice de la matriz $palos, y ese mismo valor se puede utilizar también en la matriz $nombresPalos.</p>
+        <p>Como tanto el número como el palo aparecen en dos lugares de la página (en el nombre del fichero a mostrar y en el atributo <span class="html-atri">alt</span>), guardamos estos valores en dos variables auxiliares.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Guardamos los nombres de los cuatro palos
+$palos        = ["c", "d", "p", "t"];
+$nombresPalos = ["corazones", "diamantes", "picas", "tréboles"];
+
+// No guardamos los valores de las cartas
+// Los generaremos cuando mostremos las cartas
+$n = rand(5, 10);
+
+// Mostramos las imágenes de las cartas obtenidas
+print "  &lt;h2&gt;Extracción de $n cartas&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $n; $i++) {
+    $palo   = <span class="codigo-resaltado">array_rand($palos)</span>;
+    $numero = <span class="codigo-resaltado">rand(1, 10)</span>;
+    print "    &lt;img src=\"img/cartas/<span class="codigo-resaltado">$palos[$palo]$numero</span>.svg\" alt=\"<span class="codigo-resaltado">$numero</span> de <span class="codigo-resaltado">$nombresPalos[$palo]</span>\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>En esta solución la matriz $palos tiene dos dimensiones: el primer elemento de cada elemento de la matriz $palos ([0]) es la inicial del palo y el segundo ([1]) es el nombre del palo.
+        <p>En esta solución no se guardan los valores en una matriz, sino que se generan en el momento de mostrar la carta. El valor del palo que se genera es un índice de la matriz de dos dimensiones $palos.</p>
+        <p>Como tanto el número como el palo aparecen en dos lugares de la página (en el nombre del fichero a mostrar y en el atributo <span class="html-atri">alt</span>), guardamos estos valores en dos variables auxiliares.</p>
 
         <div class="codigo">
           <pre>
@@ -310,7 +342,9 @@ print "\n";
 </pre>
         </div>
       </li>
-      <li>En esta solución, se guardan los valores en una matriz $cartas de dos dimensiones (aunque no sea necesario). En cada elemento de la matriz $cartas, el primer elemento de cada elemento de la matriz ([0]) es la inicial del palo y el segundo ([1]) es el número de la carta.
+      <li>En esta solución la matriz $palos es de una dimensión: el índice de cada elelemtno es la inicial del palo y el valor es el nombre del palo.
+        <p>En esta solución los valores de las cartas (palo y número) se guardan en una matriz $cartas de dos dimensiones.</p>
+        <p>Cada elemento de la matriz $cartas es una matriz de dos elementos, el primer elemento ([0]) es la inicial del palo y el segundo ([1]) es el número de la carta.</p>
 
         <div class="codigo">
           <pre>
@@ -344,31 +378,78 @@ print "\n";
   <section id="ejercicio-4">
     <h3>Matrices (3) 4 - Cartas de un palo, sin repetición</h3>
 
-    <div class="codigo">
-      <pre>
+    <ul>
+      <li>En esta solución, para obtener las cartas sin repetición creamos una matriz $mazo con todos los valores de las cartas (del 1 al 10), barajamos esa matriz y copiamos en una segunda segunda matriz $cartas los primeros valores de la matriz $mazo (tantos como cartas quermos extraer). Finalmente, mostramos los valores de las cartas.
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
-// Guardamos los valores de las cartas en la matriz $cartas
-$n = rand(5, 10);
-$cartas = range(1, 10);
-// Barajamos las cartas
-shuffle($cartas);
-// Creamos una nueva matriz con los primeros valores de $cartas (el número de valores que queremos mostrar)
+// Guardamos todos los valores de las cartas en la matriz $mazo
+$n    = rand(5, 10);
+$mazo = range(1, 10);
+// Barajamos el mazo de cartas
+shuffle($mazo);
+// Creamos una nueva matriz con los primeros valores de $mazo (el número de valores que queremos mostrar)
 for ($i = 0; $i &lt; $n; $i++) {
-    $cartas2[] = $cartas[$i];
+    $cartas[$i] = $mazo[$i];
 }
 
-// Mostramos las imágenes de las cartas guardadas en $cartas2
+// Mostramos las imágenes de las cartas guardadas en $cartas
 print "  &lt;h2&gt;$n cartas sin repetición&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
-foreach ($cartas2 as $carta) {
-    print "    &lt;img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\"&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/c<span class="codigo-resaltado">$carta</span>.svg\" alt=\"<span class="codigo-resaltado">$carta</span> de corazones\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+      <li>En esta solución, para obtener las cartas sin repetición, creamos una matriz $mazo con todos los valores de lac cartas (del 1 al 10) y extraemos con <span class="php-fun">array_rand()</span> una matriz de índices.
+        <p>Como <span class="php-fun">array_rand()</span> extrae índices al azar pero en orden creciente, debemos barajar $cartas para que las cartas no salgan en orden creciente.</p>
+        <p>Como <span class="php-fun">array_rand()</span> extrae índices de la matriz $mazo, para mostrar el valor de las cartas tenemos que utilizar la referencia $mazo[$carta].</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Guardamos todos los valores de las cartas en la matriz $mazo
+$n    = rand(5, 10);
+$mazo = range(1, 10);
+// Extraemos el número de cartas deseado
+$cartas = array_rand($mazo, $n);
+// Barajamos las cartas extraidas
+shuffle($cartas);
+
+// Mostramos las imágenes de las cartas guardadas en $cartas
+print "  &lt;h2&gt;$n cartas sin repetición&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/c<span class="codigo-resaltado">$mazo[$carta]</span>.svg\" alt=\"<span class="codigo-resaltado">$mazo[$carta]</span> de corazones\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+        </div>
+        <p>Para obtener las cartas desordenadas, también podríamos haber barajado el mazo antes de extraer los índices</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Guardamos todos los valores de las cartas en la matriz $mazo
+$n    = rand(5, 10);
+$mazo = range(1, 10);
+// Barajamos el mazo
+shuffle($mazo);
+// Extraemos el número de cartas deseado
+$cartas = array_rand($mazo, $n);
+
+// ...</code>
+</pre>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section id="ejercicio-11">
@@ -600,13 +681,14 @@ print "\n";
 // Definimos las matrices con los rangos de emoticonos
 $emoticonos_1 = range(128512, 128580);
 $emoticonos_2 = range(129296, 129303);
-$emoticonos_3 = range(129312, 129327);
-$emoticonos_4 = [129392, 129393];
-$emoticonos_5 = range(129395, 129398);
-$emoticonos_6 = [129402, 129488];
+$emoticonos_3 = range(129312, 129317);
+$emoticonos_4 = range(129319, 129327);
+$emoticonos_5 = [129392, 129393];
+$emoticonos_6 = range(129395, 129398);
+$emoticonos_7 = [129402, 129488];
 
 // Unimos las matrices en una sola
-$emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6);
+$emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6, $emoticonos_7);
 
 // Mostramos las imágenes de los emoticonos obtenidos
 print "  &lt;h2&gt;". count($emoticonos) . " emoticonos&lt;/h2&gt;\n";
@@ -760,7 +842,7 @@ for ($i = 0; $i &lt; $numero1; $i++) {
     $dados1[$i] = rand(1, 6);
 }
 
-// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Atacante
+// Ordenamos la matriz $dados1 y mostramos los resultados obtenidos por el Atacante
 rsort($dados1);
 print "  &lt;p&gt;\n";
 foreach ($dados1 as $dado) {
@@ -953,7 +1035,7 @@ print $consecutivas ? "&lt;p&gt;Hay cartas iguales consecutivas&lt;/p&gt;\n" : "
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

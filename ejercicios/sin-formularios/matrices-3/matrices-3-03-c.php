@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (3) 2 C - matrices-3-02-c.php
+ * Matrices (3) 3 C - matrices-3-03-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dados de póker (con texto en atributo alt).
+    Cartas de baraja francesa.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,24 +36,25 @@
 </head>
 
 <body>
-  <h1>Dados de póker (con texto en atributo alt)</h1>
+  <h1>Cartas de baraja francesa</h1>
 
 <?php
-// Guardamos los nombres de las imágenes en la matriz $dadosPoker
-$dadosPoker = ["N" => "Negros", "R" => "Rojos", "J" => "Jota", "Q" => "Reina", "K" => "Rey", "A" => "As"];
+// Guardamos los nombres de los cuatro palos
+$palos = ["c" => "corazones", "d"=> "diamantes", "p" => "picas", "t" => "tréboles"];
 
-// Guardamos los valores de los dados en la matriz $dados
-$n = rand(3, 7);
+// Guardamos los valores de las cartas en la matriz $cartas
+// La matriz tiene dos dimensiones
+$n = rand(5, 10);
 for ($i = 0; $i < $n; $i++) {
-    $dados[] = array_rand($dadosPoker);
+    $cartas[] = [array_rand($palos), rand(1, 10)];
 }
 
-// Mostramos las imágenes y los atributos alt de los dados obtenidos
-print "  <h2>Tirada de $n dados</h2>\n";
+// Mostramos las imágenes de las cartas obtenidas
+print "  <h2>Extracción de $n cartas</h2>\n";
 print "\n";
 print "  <p>\n";
-foreach ($dados as $dado) {
-    print "    <img src=\"img/dados-poker/$dado.svg\" alt=\"$dadosPoker[$dado]\" width=\"100\">\n";
+foreach ($cartas as $carta) {
+    print "    <img src=\"img/cartas/$carta[0]$carta[1].svg\" alt=\"$carta[1] de {$palos[$carta[0]]}\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";

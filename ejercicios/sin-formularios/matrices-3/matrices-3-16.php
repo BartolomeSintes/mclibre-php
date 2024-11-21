@@ -44,13 +44,14 @@
 // Definimos las matrices con los rangos de emoticonos
 $emoticonos_1 = range(128512, 128580);
 $emoticonos_2 = range(129296, 129303);
-$emoticonos_3 = range(129312, 129327);
-$emoticonos_4 = [129392, 129393];
-$emoticonos_5 = range(129395, 129398);
-$emoticonos_6 = [129402, 129488];
+$emoticonos_3 = range(129312, 129317);
+$emoticonos_4 = range(129319, 129327);
+$emoticonos_5 = [129392, 129393];
+$emoticonos_6 = range(129395, 129398);
+$emoticonos_7 = [129402, 129488];
 
 // Unimos las matrices en una sola
-$emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6);
+$emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6, $emoticonos_7);
 
 // Mostramos las imágenes de los emoticonos obtenidos
 print "  <h2>". count($emoticonos) . " emoticonos</h2>\n";

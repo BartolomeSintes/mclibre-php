@@ -58,7 +58,7 @@ for ($i = 0; $i < $numero1; $i++) {
     $dados1[$i] = rand(1, 6);
 }
 
-// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Atacante
+// Ordenamos la matriz $dados1 y mostramos los resultados obtenidos por el Atacante
 rsort($dados1);
 print "  <p>\n";
 foreach ($dados1 as $dado) {
