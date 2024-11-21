@@ -428,19 +428,22 @@ print "&lt;p&gt;Camilo tiene <span class="codigo-resaltado">{$edades["Camilo"]}<
         <pre>
 <code class="language-php">&lt;?php
 $nombres[-3] = "Alba";
+$nombres[]   = "Bruno";
 
 print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
+print "&lt;p&gt;$nombres[-2]&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
         <p>Alba</p>
+        <p>Bruno</p>
       </div>
     </div>
 
     <hr class="corta">
 
-    <p>PHP no permite valores decimales en los índices numéricos, aunque se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Pese a ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, si la conversión de enteros a decimales supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
+    <p>PHP no permite valores decimales en los índices numéricos, aunque se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Pese a ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, el uso de índices decimales genera un error <span class="php-con">E_DEPRECATED</span> si supone una pérdida de precisión, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
   </section>
 
   <section id="multidimensionales">
@@ -1351,7 +1354,7 @@ print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
