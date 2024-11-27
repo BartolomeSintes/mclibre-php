@@ -75,6 +75,7 @@
 
 print "&lt;p&gt;Programa de prueba.&lt;/p&gt;\n";
 print "\n";
+
 // Llamadas a la función prueba()
 <span class="codigo-resaltado">prueba();</span>
 <span class="codigo-resaltado">prueba();</span>
@@ -267,27 +268,29 @@ function prueba()
 function prueba()
 {
     $a = 42;
-    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "&lt;p&gt;En la función, la variable a es $a.&lt;/p&gt;\n";
     print "\n";
 }
 
 // Damos un valor a la variable
 $a = 100;
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 print "\n";
+
 // Llamamos a la función, que da un valor distinto a una variable con el mismo nombre
 prueba();
+
 // Pero en el programa principal, la variable no ha cambiado su valor
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La variable a es 100.&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable a es 42.&lt;/p&gt;
+&lt;p&gt;En la función, la variable a es <span class="codigo-resaltado">42</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -305,31 +308,33 @@ function prueba()
 {
     // Intentamos escribir el valor de la variable $a
     // pero como no está definida, se produce un aviso
-    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "&lt;p&gt;En la función, la variable a es $a.&lt;/p&gt;\n";
     print "\n";
 }
 
 // Damos un valor a la variable
 $a = 100;
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 print "\n";
+
 // Llamamos a la función
 prueba();
+
 // Volvemos a escribir la variable
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
             <pre><code class="language-html">&lt;p&gt;Programa de prueba.&lt;/p&gt;
 
-&lt;p&gt;La variable a es 100.&lt;/p&gt;
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;
 
 &lt;br /&gt;
-&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
-&lt;p&gt;La variable a es .&lt;/p&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  <span class="codigo-resaltado">Undefined variable</span> $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;En la función, la variable a es .&lt;/p&gt;
 
-&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -347,24 +352,25 @@ function prueba()
 {
     // La variable $a sólo está definida en la función, no fuera de ella
     $a = 42;
-    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "&lt;p&gt;En la función, la variable a es $a.&lt;/p&gt;\n";
     print "\n";
 }
 
 // Llamamos a la función
 prueba();
+
 // Intentamos escribir el valor de la variable $a
 // pero como no está definida, se produce un aviso
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La variable a es 42.&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;En la función, la variable a es <span class="codigo-resaltado">42</span>.&lt;/p&gt;
 
 &lt;br /&gt;
-&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;15&lt;/b&gt;&lt;br /&gt;
-&lt;p&gt;La variable a es .&lt;/p&gt;</code></pre>
+&lt;b&gt;Warning&lt;/b&gt;:  <span class="codigo-resaltado">Undefined variable</span> $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;16&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;En el programa principal, la variable a es .&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -387,7 +393,7 @@ function prueba()
     // Declaramos la variable $a como global
     global $a;
 
-    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "&lt;p&gt;En la función, la variable a es $a.&lt;/p&gt;\n";
     print "\n";
 }
 
@@ -397,7 +403,7 @@ prueba();
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">&lt;p&gt;En la función, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -415,13 +421,18 @@ function prueba()
 }
 
 $a = 100;
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 prueba();
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La variable a es 50.&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;
+
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">50</span>.&lt;/p&gt;
+</code></pre>
           </div>
         </div>
       </li>
@@ -518,7 +529,7 @@ prueba();
           </div>
           <div class="resultado">
             <pre><code class="language-html"><br>
-<b>Fatal error</b>:  Uncaught ArgumentCountError: Too few arguments to function prueba(), 0 passed in ejemplo.php on line 9 and exactly 1 expected in ejemplo.php:3
+<b>Fatal error</b>:  Uncaught ArgumentCountError: <span class="codigo-resaltado">Too few arguments</span> to function prueba(), <span class="codigo-resaltado">0 passed</span> in ejemplo.php on line 9 and exactly <span class="codigo-resaltado">1 expected</span> in ejemplo.php:3
 Stack trace:
 #0 ejemplo.php(9): prueba()
 #1 {main}
@@ -580,31 +591,35 @@ saludo("Don Pepito");
 // Definición de la función prueba()
 function prueba($x)
 {
-    print "&lt;p&gt;La variable es $x.&lt;/p&gt;\n";
+    print "&lt;p&gt;En la función, la variable recibida es $x.&lt;/p&gt;\n";
     print "\n";
 }
 
 // Damos un valor a las variables
 $a = 100;
 $b = 50;
-print "&lt;p&gt;La variable a es $a y la variable b es $b.&lt;/p&gt;\n";
+
+// Escribimos el valor de las variables
+print "&lt;p&gt;En el programa principal, la variable a es $a y la variable b es $b.&lt;/p&gt;\n";
 print "\n";
+
 // Llamamos a la función
 prueba($a);
 prueba($b);
+
 // Volvemos a escribir las variables
-print "&lt;p&gt;La variable a es $a y la variable b es $b.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a y la variable b es $b.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La variable a es 100 y la variable b es 50.&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span> y la variable b es <span class="codigo-resaltado">50</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable es 100.&lt;/p&gt;
+&lt;p&gt;En la función, la variable recibida es <span class="codigo-resaltado">100</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable es 50.&lt;/p&gt;
+&lt;p&gt;En la función, la variable recibida es <span class="codigo-resaltado">50</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable a es 100 y la variable b es 50.&lt;/p&gt;</code></pre>
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span> y la variable b es <span class="codigo-resaltado">50</span>.&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -616,24 +631,26 @@ print "&lt;p&gt;La variable a es $a y la variable b es $b.&lt;/p&gt;\n";
 function prueba($x)
 {
     $x = 200;
-    print "&lt;p&gt;La variable es $x.&lt;/p&gt;\n";
+    print "&lt;p&gt;En la función, la variable x es $x.&lt;/p&gt;\n";
     print "\n";
 }
 
 $a = 100;
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 print "\n";
+
 prueba($a);
-print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La variable a es 100.&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable es 200.&lt;/p&gt;
+&lt;p&gt;En la función, la variable x es <span class="codigo-resaltado">200</span>.&lt;/p&gt;
 
-&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -646,20 +663,22 @@ print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
 function saludo($nombre)
 {
     $nombre = "desconocido";
-    print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
+    print "&lt;p&gt;(función) ¡Hola, $nombre!&lt;/p&gt;\n";
     print "\n";
 }
 
 $nombre = "Don Pepito";
+
 saludo($nombre);
-print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
+
+print "&lt;p&gt;(programa principal) ¡Hola, $nombre!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;¡Hola, desconocido!&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;(función) ¡Hola, <span class="codigo-resaltado">desconocido</span>!&lt;/p&gt;
 
-&lt;p&gt;¡Hola, Don Pepito!&lt;/p&gt;</code></pre>
+&lt;p&gt;(programa principal) ¡Hola, <span class="codigo-resaltado">Don Pepito</span>!&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -667,11 +686,53 @@ print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
   </section>
 
   <section id="argumentos-por-referencia">
-    <h2>Funciones con argumentos: paso por referencia</h2>
+    <h2 class="con-aside">Funciones con argumentos: paso por referencia</h2>
 
-    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
+    <aside class="enlace-norma">
+      <p>
+        Paso por referencia<br>
+        <a href="https://www.php.net/manual/en/language.references.pass.php">
+          <img src="../varios/iconos/icono-php-horizontal.svg" alt="Manual PHP" title="Manual PHP" width="90">
+        </a>
+      </p>
+    </aside>
 
-    <p>manual de PHP: <a href="https://www.php.net/manual/en/language.references.pass.php">Paso por referencia</a></p>
+    <p>Utilizando la notación del "paso por referencia", la función puede tener acceso a la variable del programa principal (no únicamente a su valor como ocurre en el <a href="#argumentos-por-valor">paso por valor</a>).</p>
+
+    <ul>
+      <li>En un paso por referencia, si la función modifica el argumento, en realidad está modificando la variable que se envía como argumento. En el ejemplo siguiente, la función da el valor 200 al argumento $x, pero como en la llamada a la función se envía la referencia a la variable $a del programa principal, la función cambia la variable $a, como se ve en la última línea impresa por el programa.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function prueba(<span class="codigo-resaltado">&</span>$x)
+{
+    $x = 200;
+    print "&lt;p&gt;En la función, la variable x es $x.&lt;/p&gt;\n";
+    print "\n";
+}
+
+$a = 100;
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
+print "\n";
+
+prueba($a);
+
+print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">100</span>.&lt;/p&gt;
+
+&lt;p&gt;En la función, la variable x es <span class="codigo-resaltado">200</span>.&lt;/p&gt;
+
+&lt;p&gt;En el programa principal, la variable a es <span class="codigo-resaltado">200</span>.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+
   </section>
 
   <section id="argumentos-con-tipo">
@@ -679,7 +740,6 @@ print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
 
     <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
   </section>
-
 
   <section id="devolucion">
     <h2>Funciones que devuelven valores</h2>
@@ -699,17 +759,20 @@ function suma($arg1, $arg2)
 
 $a = 20;
 $b = 30;
+
 $suma = suma($a, $b);
+
 print "&lt;p&gt;$a + $b = $suma&lt;/p&gt;\n";
 print "\n";
+
 print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;
 
-&lt;p&gt;20 + 30 = 50&lt;/p&gt;</code></pre>
+&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -728,12 +791,13 @@ function suma($arg1, $arg2)
 
 $a = 20;
 $b = 30;
+
 print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -745,27 +809,30 @@ print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 function sumaProducto($arg1, $arg2)
 {
-    return [$arg1 + $arg2, $arg1 * $arg2];
+    return <span class="codigo-resaltado">[$arg1 + $arg2, $arg1 * $arg2]</span>;
 }
 
 $a = 20;
 $b = 30;
+
 $sumaProducto = sumaProducto($a, $b);
-print "&lt;p&gt;$a + $b = $sumaProducto[0]&lt;/p&gt;\n";
+
+print "&lt;p&gt;$a + $b = <span class="codigo-resaltado">$sumaProducto[0]</span>&lt;/p&gt;\n";
 print "\n";
-print "&lt;p&gt;$a * $b = $sumaProducto[1]&lt;/p&gt;\n";
+
+print "&lt;p&gt;$a * $b = <span class="codigo-resaltado">$sumaProducto[1]</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;
 
-&lt;p&gt;20 * 30 = 600&lt;/p&gt;
+&lt;p&gt;20 * 30 = <span class="codigo-resaltado">600</span>&lt;/p&gt;
 </code></pre>
           </div>
         </div>
 
-      <p>Desde PHP 7.1 (publicado en diciembre de 2016) los valores de la matriz devuelta por una función se pueden recoger directamente en varias variables utilizando  corchetes. Técnicamente, esta operación se denomina desestructurar la matriz y en versiones anteriores se debía hacer con la construcción del lenguaje <a href="https://www.php.net/manual/en/function.list.php"><span class="php-res">list()</span></a>.</p>
+        <p>Desde PHP 7.1 (publicado en diciembre de 2016) los valores de la matriz devuelta por una función se pueden recoger directamente en varias variables utilizando corchetes. Técnicamente, esta operación se denomina desestructurar la matriz y en versiones anteriores se debía hacer con la construcción del lenguaje <a href="https://www.php.net/manual/en/function.list.php"><span class="php-res">list()</span></a>.</p>
 
         <div class="filaflex">
           <div class="codigo">
@@ -778,17 +845,20 @@ function sumaProducto($arg1, $arg2)
 
 $a = 20;
 $b = 30;
+
 <span class="codigo-resaltado">[$suma, $producto] = sumaProducto($a, $b);</span>
+
 print "&lt;p&gt;$a + $b = $suma&lt;/p&gt;\n";
 print "\n";
+
 print "&lt;p&gt;$a * $b = $producto&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;
 
-&lt;p&gt;20 * 30 = 600&lt;/p&gt;
+&lt;p&gt;20 * 30 = <span class="codigo-resaltado">600</span>&lt;/p&gt;
 </code></pre>
           </div>
         </div>
@@ -839,9 +909,9 @@ print "&lt;p&gt;La media aritmética de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
       </div>
       <div class="resultado-codigo">
         <pre>
-<code class="language-html">&lt;p&gt;La media geométrica de 12 y 16 es 6.9282032302755.&lt;/p&gt;
+<code class="language-html">&lt;p&gt;La media geométrica de 12 y 16 es <span class="codigo-resaltado">6.9282032302755</span>.&lt;/p&gt;
 
-&lt;p&gt;La media aritmética de 12 y 16 es 14.&lt;/p&gt;</code>
+&lt;p&gt;La media aritmética de 12 y 16 es <span class="codigo-resaltado">14</span>.&lt;/p&gt;</code>
 </pre>
       </div>
     </div>
