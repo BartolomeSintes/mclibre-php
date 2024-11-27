@@ -24,13 +24,15 @@
 
       <ul>
         <li><a href="#sin-argumentos">Funciones sin argumentos</a></li>
-        <li><a href="#independencia">Independencia</a></li>
+        <li><a href="#independencia">Independencia funciones</a></li>
         <li><a href="#variables-globales">Variables globales</a></li>
         <li><a href="#con-argumentos">Funciones con argumentos</a></li>
         <li><a href="#argumentos-por-valor">Paso por valor</a></li>
         <li><a href="#argumentos-por-referencia">Paso por referencia</a></li>
+        <li><a href="#argumentos-con-tipo">Tipo de los argumentos</a></li>
         <li><a href="#devolucion">Devolución de valores</a></li>
         <li><a href="#argumentos-predeterminados">Argumentos predeterminados</a></li>
+        <li><a href="#argumentos-con-nombre">Argumentos con nombre</a></li>
         <li><a href="#argumentos-indeterminados">Argumentos indeterminados</a></li>
       </ul>
     </div>
@@ -211,6 +213,30 @@ function prueba()
     print "&lt;p&gt;Hola!&lt;/p&gt;\n";
 }
 
+<span class="codigo-resaltado">function prueba()</span>
+{
+    print "&lt;p&gt;Adios!&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <p><b>Fatal error</b>: Cannot redeclare prueba() (previously declared in ejemplo.php:4) in <b>ejemplo.php</b> on line <b>7</b><br></p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">function prueba()</span>
+{
+    print "&lt;p&gt;Hola!&lt;/p&gt;\n";
+}
+
 <span class="codigo-resaltado">function Prueba()</span>
 {
     print "&lt;p&gt;Adios!&lt;/p&gt;\n";
@@ -300,7 +326,7 @@ print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
 &lt;p&gt;La variable a es 100.&lt;/p&gt;
 
 &lt;br /&gt;
-&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;5&lt;/b&gt;&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
 &lt;p&gt;La variable a es .&lt;/p&gt;
 
 &lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
@@ -337,7 +363,7 @@ print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
             <pre><code class="language-html">&lt;p&gt;La variable a es 42.&lt;/p&gt;
 
 &lt;br /&gt;
-&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;13&lt;/b&gt;&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;15&lt;/b&gt;&lt;br /&gt;
 &lt;p&gt;La variable a es .&lt;/p&gt;</code></pre>
           </div>
         </div>
@@ -425,15 +451,21 @@ print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 function saludo($nombre)
 {
-    print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+    print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
+    print "\n";
 }
 
 saludo("Don Pepito");
+saludo("Don José");
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">
+&lt;p&gt;¡Hola, Don Pepito!&lt;/p&gt;
+
+&lt;p&gt;¡Hola, Don José!&lt;/p&gt;
+</code></pre>
           </div>
         </div>
       </li>
@@ -446,7 +478,7 @@ saludo("Don Pepito");
 function saludo($nombre, $veces)
 {
     for ($i = 0; $i &lt; $veces; $i++) {
-        print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+        print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
         print "\n";
     }
 }
@@ -456,11 +488,11 @@ saludo("Don Pepito", 3);
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito!&lt;/p&gt;
 
-&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;
+&lt;p&gt;¡Hola, Don Pepito!&lt;/p&gt;
 
-&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;</code></pre>
+&lt;p&gt;¡Hola, Don Pepito!&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -495,7 +527,24 @@ Stack trace:
         </div>
       </li>
 
-      <li>PHP no produce error si se envía un argumento a una función que no tiene definidos argumentos, pero el argumento enviado no se utiliza para nada.
+      <li>PHP no produce ningún error si se envían más argumentos de los que necesita la función. Esos argumentos simplemente se descartan.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function saludo($nombre)
+{
+    print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
+}
+
+saludo("Don Pepito", "Don José");
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito&lt;/p&gt;</code></pre>
+          </div>
+        </div>
         <div class="filaflex">
           <div class="codigo">
             <pre>
@@ -597,20 +646,20 @@ print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
 function saludo($nombre)
 {
     $nombre = "desconocido";
-    print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+    print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
     print "\n";
 }
 
 $nombre = "Don Pepito";
 saludo($nombre);
-print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+print "&lt;p&gt;¡Hola, $nombre!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Hola, desconocido!&lt;/p&gt;
+            <pre><code class="language-html">&lt;p&gt;¡Hola, desconocido!&lt;/p&gt;
 
-&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;</code></pre>
+&lt;p&gt;¡Hola, Don Pepito!&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -624,6 +673,13 @@ print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
 
     <p>manual de PHP: <a href="https://www.php.net/manual/en/language.references.pass.php">Paso por referencia</a></p>
   </section>
+
+  <section id="argumentos-con-tipo">
+    <h2>Declarar el tipo de los argumentos</h2>
+
+    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
+  </section>
+
 
   <section id="devolucion">
     <h2>Funciones que devuelven valores</h2>
@@ -682,7 +738,7 @@ print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
         </div>
       </li>
 
-      <li>Una función puede devolver varios valores, devolviendo una matriz. Desde PHP 7.1 (publicado en diciembre de 2016) para recoger los valores devueltos se pueden utilizar corchetes. Técnicamente, esta operación se denomina desestructurar la matriz y en versiones anteriores se debía hacer con la construcción del lenguaje <a href="https://www.php.net/manual/en/function.list.php"><span class="php-res">list()</span></a>. En el ejemplo siguiente, la función devuelve la suma y el producto de los valores recibidos:
+      <li>Una función puede devolver varios valores, devolviendo una matriz. En el ejemplo siguiente, la función devuelve la suma y el producto de los valores recibidos:
         <div class="filaflex">
           <div class="codigo">
             <pre>
@@ -694,7 +750,35 @@ function sumaProducto($arg1, $arg2)
 
 $a = 20;
 $b = 30;
-[$suma, $producto] = sumaProducto($a, $b);
+$sumaProducto = sumaProducto($a, $b);
+print "&lt;p&gt;$a + $b = $sumaProducto[0]&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;$a * $b = $sumaProducto[1]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;
+
+&lt;p&gt;20 * 30 = 600&lt;/p&gt;
+</code></pre>
+          </div>
+        </div>
+
+      <p>Desde PHP 7.1 (publicado en diciembre de 2016) los valores de la matriz devuelta por una función se pueden recoger directamente en varias variables utilizando  corchetes. Técnicamente, esta operación se denomina desestructurar la matriz y en versiones anteriores se debía hacer con la construcción del lenguaje <a href="https://www.php.net/manual/en/function.list.php"><span class="php-res">list()</span></a>.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function sumaProducto($arg1, $arg2)
+{
+    return [$arg1 + $arg2, $arg1 * $arg2];
+}
+
+$a = 20;
+$b = 30;
+<span class="codigo-resaltado">[$suma, $producto] = sumaProducto($a, $b);</span>
 print "&lt;p&gt;$a + $b = $suma&lt;/p&gt;\n";
 print "\n";
 print "&lt;p&gt;$a * $b = $producto&lt;/p&gt;\n";
@@ -763,6 +847,12 @@ print "&lt;p&gt;La media aritmética de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
     </div>
   </section>
 
+  <section id="argumentos-con-nombre">
+    <h2>Funciones con argumentos con nombre</h2>
+
+    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
+  </section>
+
   <section id="argumentos-indeterminados">
     <h2>Funciones con un número de argumentos indeterminados</h2>
 
@@ -770,7 +860,7 @@ print "&lt;p&gt;La media aritmética de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 27 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
