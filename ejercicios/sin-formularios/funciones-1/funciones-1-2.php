@@ -1,6 +1,6 @@
 <?php
 /**
- * funciones (1) 3 - funciones-1-03.php
+ * funciones (1) 2 - funciones-1-02.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos filas de cartas.
+    Dados sin ordenar, ordenados y sin repetir.
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,44 +36,48 @@
 </head>
 
 <body>
-  <h1>Dos filas de cartas</h1>
+  <h1>Dados sin ordenar, ordenados y sin repetir</h1>
 
-  <p>Actualice la página para mostrar dos nuevas filas de cartas.</p>
+  <p>Actualice la página para mostrar una nueva tirada de dados.</p>
 
 <?php
 
-function generaCartasRand(int $n)
+function generaMatrizRand(int $n, int $min, int $max)
 {
-    $palos = ["c", "d", "p", "t"];
     $m = [];
     for ($i = 0; $i < $n; $i++) {
-        $m[] = $palos[rand(0, 3)] . rand(1, 13);
+        $m[] = rand($min, $max);
     }
     return $m;
 }
 
-function pintaCartas(array $cartas)
+function pintaDados(array $dados)
 {
     print "  <p>\n";
-    foreach ($cartas as $carta) {
-        print "    <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"70\">\n";
-
+    foreach ($dados as $dado) {
+        print "    <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"60\" height=\"60\">\n";
     }
     print "  </p>\n";
     print "\n";
 }
 
 $n       = rand(5, 10);
+$valores = generaMatrizRand($n, 1, 6);
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas</h2>\n";
+print "  <h2>$n dados (sin ordenar)</h2>\n";
 print "\n";
-pintaCartas($valores);
+pintaDados($valores);
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas más</h2>\n";
+print "  <h2>$n dados (ordenados)</h2>\n";
 print "\n";
-pintaCartas($valores);
+sort($valores);
+pintaDados($valores);
+
+print "  <h2>$n dados (sin repetir)</h2>\n";
+print "\n";
+$valores = array_unique($valores);
+pintaDados($valores);
+
 ?>
 
   <footer>

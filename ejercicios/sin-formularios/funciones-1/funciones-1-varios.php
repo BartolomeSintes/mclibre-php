@@ -1,11 +1,11 @@
 <?php
 /**
- * funciones (1) 3 - funciones-1-03.php
+ * funciones (1) 1 - funciones-1-01.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-28
+ * @version   2024-11-13
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos filas de cartas.
+    Contar puntos.
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,50 +36,93 @@
 </head>
 
 <body>
-  <h1>Dos filas de cartas</h1>
+  <h1>Contar puntos</h1>
 
-  <p>Actualice la página para mostrar dos nuevas filas de cartas.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
 
-function generaCartasRand(int $n)
+function generaMatrizRand($n, $min, $max)
 {
-    $palos = ["c", "d", "p", "t"];
-    $m = [];
     for ($i = 0; $i < $n; $i++) {
-        $m[] = $palos[rand(0, 3)] . rand(1, 13);
+        $m[] = rand($min, $max);
     }
     return $m;
 }
 
-function pintaCartas(array $cartas)
+function invierteMatriz($m)
 {
-    print "  <p>\n";
-    foreach ($cartas as $carta) {
-        print "    <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"70\">\n";
-
+    $m2 = array_values($m);
+    for ($i = count($m2) - 1; $i >= 0; $i--) {
+        $m3[] = $m2[$i];
     }
-    print "  </p>\n";
-    print "\n";
+    return $m3;
 }
 
-$n       = rand(5, 10);
+function extraeValores($m, $n)
+{
+    $m2 = array_rand($m, $n);
+    foreach ($m2 as $valor) {
+        $m3[] = $m[$valor];
+    }
+    shuffle($m3);
+    return $m3;
+}
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas</h2>\n";
-print "\n";
-pintaCartas($valores);
+function valoresComunesNoRepetidos($m1, $m2)
+{
+    $m1b = array_unique($m1);
+    $m2b = array_unique($m2);
+    foreach ($m1b as $valor) {
+        if (in_array($valor, $m2b)) {
+            $m3[] = $valor;
+        }
+    }
+    return $m3;
+}
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas más</h2>\n";
+$m1 = generaMatrizRand(10, 10, 20);
+print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
+
+$m2 = invierteMatriz($m1);
+print "<p>invierteMatriz: " . print_r($m2, true) . "</p>";
+
+$m3 = extraeValores($m1, 5);
+print "<p>extraeValores: " . print_r($m3, true) . "</p>";
+
+$m1 = generaMatrizRand(10, 10, 20);
+print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
+$m2 = generaMatrizRand(10, 10, 20);
+print "<p>generaMatriz: " . print_r($m2, true) . "</p>";
+$m3 = valoresComunesNoRepetidos($m1, $m2);
+print "<p>valoresComunesNoRepetidos: " . print_r($m3, true) . "</p>";
+
+exit;
+
+$numero = rand(1, 10);
+$total  = 0;
+
+if ($numero == 1) {
+    print "  <h2>$numero dado</h2>\n";
+} else {
+    print "  <h2>$numero dados</h2>\n";
+}
 print "\n";
-pintaCartas($valores);
+print "  <p>\n";
+for ($i = 0; $i < $numero; $i++) {
+    $dado = rand(1, 6);
+    pintaDado($dado);
+    $total += $dado;
+}
+print "  </p>\n";
+print "\n";
+print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-28">28 de noviembre de 2024</time>
+      <time datetime="2024-11-13">13 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

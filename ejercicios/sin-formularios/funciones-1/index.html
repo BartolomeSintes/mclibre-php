@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Funciones (1). Enunciados. Ejercicios (sin formularios). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+  <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (sin formularios) - Funciones (1) - Enunciados</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Funciones (1)</h2>
+      <h3><a href="#">Enunciados</a></h3>
+      <!--
+      <ul>
+        <li><a href="#ejercicio-01">01 - Matriz núm. aleatorios</a></li>
+        <li><a href="#ejercicio-01">01 - Matriz núm. aleatorios</a></li>
+      </ul>
+
+      <h3><a href="soluciones.html">Soluciones</a></h3>
+      <ul>
+        <li><a href="soluciones.html#ejercicio-01">01 - Círculos en fila (1)</a></li>
+      </ul>
+       -->
+    </div>
+  </nav>
+
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/sin-formularios/sf-funciones-1-plantillas.zip">plantillas de los ejercicios Funciones (1) (Sin formularios)</a>.</p>
+
+  <!-- <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios. Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-for-2-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p> -->
+
+  <section id="ejercicio-01">
+    <h3>Funciones (1) 01 - Genera matriz de números aleatorios</h3>
+
+    <p>Defina una función <strong>generaMatrizRand(int $n, int $min, int $max)</strong> que devuelva una matriz de $n valores enteros aleatorios entre $min y $max, ambos incluidos. El programa principal puede llamar a la función 3 veces con argumentos aleatorios (por ejemplo, entre 0 y 5 valores con valores mínimos entre 0 y 100 y máximos entre 1 y 10 superiores al mínimo) y mostrar las matrices devueltas por la función.</p>
+
+    <p>En caso de que el número de valores sea 0, la función devolverá una matriz vacía.</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-1.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-02">
+    <h3>Funciones (1) 02 - Dibuja dados</h3>
+
+    <p>Defina una función <strong>pintaDados(array $dados)</strong> a la que se entregue una matriz de entre 5 y 10 valores entre 1 y 6 y que escriba un párrafo que incluya las imágenes de los dados correspondientes. El programa principal debe mostrar entre 5 y 10 dados, sin ordenar, ordenados y eliminando los dados repetidos.</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-2.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-2.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-03">
+    <h3>Funciones (1) 03 - Dibuja cartas</h3>
+
+    <p>Escriba un programa que muestre dos filas de cartas de una baraja francesa. Las dos filas tendrán el mismo número de cartas, al azar entre 5 y 10.</p>
+    <p>Para ello, defina las siguientes funciones:</p>
+    <ul>
+      <li><strong>generaCartasRand(int $n): array</strong>
+        <p>El argumento $n es un número entero. La función devuelve una matriz de $n valores que corresponden a los nombres de los ficheros de las imágenes de las cartas. Los nombres empiezan por el palo ("c", "d", "p", "t") y terminan por el número de carta (de 1 a 13). Por ejemplo ["c3", "d10", "d1", "p9"]</p>
+      </li>
+      <li><strong>pintaCartas(array $cartas): true</strong>
+        <p>El argumento $cartas es una matriz de nombres de cartas (como la que genera función generaCartasRand() anterior). La función escribe un párrafo que incluye las imágenes de las cartas correspondientes.</p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-3.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-3.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-04">
+    <h3>Funciones (1) 04 - Dibuja círculos de colores</h3>
+
+    <p>Escriba un programa que muestre tres filas de círculos de colores. Las tres filas tendrán el mismo número de círculos, al azar entre 4 y 12.</p>
+
+    <p>Para ello, defina las siguientes funciones:</p>
+    <ul>
+      <li><strong>generaMatrizValoresRand(int $n, array $m)</strong>
+        <p>El argumento $m es una matriz de valores. El argumento $n es un número entero. La función devuelve una matriz de $n valores existentes en la matriz $m.</p>
+        <p>En este ejercicio, la matriz de valores pueden ser los colores de los círculos, por ejemplo, ["black", "red", "blue", "green"].</p>
+      </li>
+      <li><strong>pintaCirculos(array $colores): true</strong>
+        <p>El argumento $colores es una matriz de nombres de colores (como la que genera función generaMatrizValoresRand() anterior). La función escribe un párrafo que incluye las imágenes de los círculos correspondientes.</p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-4.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-4.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-11">
+    <h3>Funciones (1) 11 - Funciones de matrices</h3>
+
+    <p>Defina las siguientes funciones que realicen distintas operaciones con matrices:</p>
+
+    <ul>
+      <li><strong>sumaValorMatriz(int|float $x, array $m): array</strong>
+        <p>Suma el valor $x a todos los elementos de la matriz y devuelve la matriz resultante.</p>
+      </li>
+      <li><strong>sustituyeValorMatriz(int|float|string $inicial, int|float|string $final, array $m): array</strong>
+        <p>Sustituye en la matriz $m el valor $inicial por el valor $final y devuelve la matriz resultante.</p>
+      </li>
+      <li><strong>generaMatrizRand(int $n, int $min, int $max, boolean $repetidos = true): array</strong>
+        <p>Devuelve una matriz de $n valores enteros aleatorios entre $min y $max, ambos incluidos. El argumento lógico repetidos indica si los valores pueden estar repetidos o no.</p>
+      </li>
+      <li><strong>medianaMatriz(array $m): int|float</strong>
+        <p>Devuelve la mediana de los valores de la matriz. Se recuerda que la mediana de una serie de valores ordenados es:</p>
+        <ul>
+          <li>el valor de en medio si el número de valores es impar</li>
+          <li>la media de los dos valores centrale si el número de valores es par</li>
+        </ul>
+      </li>
+      <li><strong>invierteMatriz(array $m): array</strong>
+        <p>Devuelve los mismos valores, pero ordenados al revés. Reindexa la matriz.</p>
+      </li>
+      <li><strong>insertaValorMatriz(int|float|string $x, int $posicion, array $m): array</strong>
+        <p>Inserta un valor $x en la posición $posicion de una matriz y devuelve la matriz resultante.</p>
+      </li>
+      <li><strong>extraeValores(array $m, int $n): array</strong>
+        <p>Devuelve una matriz de $n valores aleatorios de la matriz $m. Reindexa la matriz y los valores no están en el mismo orden que en $m.</p>
+      </li>
+      <li><strong>valoresComunesNoRepetidos(array $m1, array $m2): array</strong>
+        <p>Devuelve una matriz con los valores comunes a $m1 y $m2. Si hay valores repetidos, sólo los incluye una vez.</p>
+      </li>
+      <li><strong>valoresComunesRepetidos(array $m1, array $m2): array</strong>
+        <p>Devuelve una matriz con los valores comunes a $m1 y $m2. Si hay valores repetidos en las dos matrices, los incluye tantas veces como esté repetidos.</p>
+      </li>
+      <li><strong>eliminaValor(mixed $v, array $m, bool $eliminaRepetidos = false): array</strong>
+        <p>Elimina el valor $v de la matriz $m y devuelve el resultado. </p>
+        <ul>
+          <li>Si $eliminaRepetidos es false, si un valor está repetido en la matriz, lo elimina sólo una vez. </li>
+          <li>Si $eliminaRepetidos es true, si un valor está repetido en la matriz, los elimina todos.</li>
+        </ul>
+      </li>
+      <li><strong>eliminaValores(array $m1, array $m2, bool $eliminaRepetidos = false): array</strong>
+        <p>Elimina los valores de la matriz $m1 de la matriz $m2 y devuelve el resultado.</p>
+        <ul>
+          <li>Si $eliminaRepetidos es false, si un valor está repetido en la matriz $m2, lo elimina sólo una vez (si está repetido en la matriz $m1 y en $m2 lo elimina las veces que esté repetido en $m1). </li>
+          <li>Si $eliminaRepetidos es true, si un valor está repetido en la matriz $m2, los elimina todos (en ese caso, da lo mismo que esté repetido en $m1).</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 28 de noviembre de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

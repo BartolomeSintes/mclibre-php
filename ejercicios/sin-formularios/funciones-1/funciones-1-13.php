@@ -1,11 +1,11 @@
 <?php
 /**
- * funciones (1) 3 - funciones-1-03.php
+ * funciones (1) 1 - funciones-1-01.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-28
+ * @version   2024-11-13
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos filas de cartas.
+    Contar puntos.
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,50 +36,57 @@
 </head>
 
 <body>
-  <h1>Dos filas de cartas</h1>
+  <h1>Contar puntos</h1>
 
-  <p>Actualice la página para mostrar dos nuevas filas de cartas.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
 
-function generaCartasRand(int $n)
-{
-    $palos = ["c", "d", "p", "t"];
-    $m = [];
-    for ($i = 0; $i < $n; $i++) {
-        $m[] = $palos[rand(0, 3)] . rand(1, 13);
-    }
-    return $m;
+function extraeSinRepeticion($m, $n) {
+    shuffle($m);
+    $m2 = array_slice($m, 0, $n);
+    shuffle($m2);
+    return $m2;
 }
 
-function pintaCartas(array $cartas)
-{
-    print "  <p>\n";
-    foreach ($cartas as $carta) {
-        print "    <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"70\">\n";
+$m = range(1, 100);
+$m2 = extraeSinRepeticion($m, 10);
+print_r($m2);
 
-    }
-    print "  </p>\n";
-    print "\n";
+
+$carasW10 = array_merge(range(128512, 128580), range(128577, 128580), range(129296, 129301), [129303], range(129312, 129317), range(129319, 129327), [129392, 129393, 129395, 129396, 129397, 129398, 129402, 129488]);
+$carasW11 = array_merge([129394, 129400, 129401], range(129760, 129765), [129768, 129769]);
+
+print count($carasW10);
+exit;
+
+print "<p style=\"font-size: 200%;\">";
+foreach ($carasW10 as $cara) {
+    print "$cara: &#{$cara}; - ";
 }
+print "</p>\n";
 
-$n       = rand(5, 10);
+print_r($carasW10);
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas</h2>\n";
+$numero = rand(1, 10);
+$total  = 0;
+
+if ($numero == 1) {
+    print "  <h2>$numero dado</h2>\n";
+} else {
+    print "  <h2>$numero dados</h2>\n";
+}
 print "\n";
-pintaCartas($valores);
-
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas más</h2>\n";
+print "  <p>\n";
+print "  </p>\n";
 print "\n";
-pintaCartas($valores);
+print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-28">28 de noviembre de 2024</time>
+      <time datetime="2024-11-13">13 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">
