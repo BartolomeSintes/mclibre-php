@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-28
+ * @version   2024-11-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dados sin ordenar, ordenados y sin repetir.
+    Dos filas de cartas.
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,54 +36,50 @@
 </head>
 
 <body>
-  <h1>Dados sin ordenar, ordenados y sin repetir</h1>
+  <h1>Dos filas de cartas</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada de dados.</p>
+  <p>Actualice la página para mostrar dos nuevas filas de cartas.</p>
 
 <?php
 
-function generaMatrizRand(int $n, int $min, int $max)
+function generaCartasRand(int $n): array
 {
-    $m = [];
+    $palos = ["c", "d", "p", "t"];
+    $m     = [];
     for ($i = 0; $i < $n; $i++) {
-        $m[] = rand($min, $max);
+        $m[] = $palos[rand(0, 3)] . rand(1, 13);
     }
     return $m;
 }
 
-function pintaDados(array $dados)
+function pintaCartas(array $cartas): void
 {
     print "  <p>\n";
-    foreach ($dados as $dado) {
-        print "    <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"60\" height=\"60\">\n";
+    foreach ($cartas as $carta) {
+        print "    <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"70\">\n";
+
     }
     print "  </p>\n";
     print "\n";
 }
 
-$n       = rand(5, 10);
-$valores = generaMatrizRand($n, 1, 6);
+$n = rand(5, 10);
 
-print "  <h2>$n dados (sin ordenar)</h2>\n";
+$valores = generaCartasRand($n, 1, 6);
+print "<h2>$n cartas</h2>\n";
 print "\n";
-pintaDados($valores);
+pintaCartas($valores);
 
-print "  <h2>$n dados (ordenados)</h2>\n";
+$valores = generaCartasRand($n, 1, 6);
+print "<h2>$n cartas más</h2>\n";
 print "\n";
-sort($valores);
-pintaDados($valores);
-
-print "  <h2>$n dados (sin repetir)</h2>\n";
-print "\n";
-$valores = array_unique($valores);
-pintaDados($valores);
-
+pintaCartas($valores);
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-28">28 de noviembre de 2024</time>
+      <time datetime="2024-11-29">29 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

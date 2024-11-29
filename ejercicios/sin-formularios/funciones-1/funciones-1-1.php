@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Genera matrices de valores aleatorios.
+    Dados sin ordenar, ordenados y sin repetir.
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,13 +36,13 @@
 </head>
 
 <body>
-  <h1>Genera matrices de valores aleatorios</h1>
+  <h1>Dados sin ordenar, ordenados y sin repetir</h1>
 
-  <p>Actualice la página para mostrar tres nuevas matrices.</p>
+  <p>Actualice la página para mostrar una nueva tirada de dados.</p>
 
 <?php
 
-function generaMatrizRand(int $n, int $min, int $max)
+function generaEnterosRand(int $n, int $min, int $max): array
 {
     $m = [];
     for ($i = 0; $i < $n; $i++) {
@@ -51,28 +51,39 @@ function generaMatrizRand(int $n, int $min, int $max)
     return $m;
 }
 
-$numero = 3;
-
-for ($i = 0; $i < $numero; $i++) {
-    $n   = rand(0, 5);
-    $min = rand(0, 100);
-    $max = $min + rand(1, 10);
-    $m  = generaMatrizRand($n, $min, $max);
-    if ($n == 1) {
-        print "  <h2>$n valor - Mínimo: $min - Máximo: $max</h2>\n";
-    } else {
-        print "  <h2>$n valores - Mínimo: $min - Máximo: $max</h2>\n";
+function pintaDados(array $dados) : void
+{
+    print "  <p>\n";
+    foreach ($dados as $dado) {
+        print "    <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"60\" height=\"60\">\n";
     }
-    print "\n";
-    print "  <pre>" . print_r($m, true) . "</pre>\n";
+    print "  </p>\n";
     print "\n";
 }
+
+$n       = rand(5, 10);
+$valores = generaEnterosRand($n, 1, 6);
+
+print "  <h2>$n dados (sin ordenar)</h2>\n";
+print "\n";
+pintaDados($valores);
+
+print "  <h2>$n dados (ordenados)</h2>\n";
+print "\n";
+sort($valores);
+pintaDados($valores);
+
+print "  <h2>$n dados (sin repetir)</h2>\n";
+print "\n";
+$valores = array_unique($valores);
+pintaDados($valores);
+
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-28">28 de noviembre de 2024</time>
+      <time datetime="2024-11-29">29 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">

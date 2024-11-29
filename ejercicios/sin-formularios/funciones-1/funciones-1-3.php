@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-28
+ * @version   2024-11-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos filas de cartas.
+    Tres filas de círculos de colores.
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,50 +36,57 @@
 </head>
 
 <body>
-  <h1>Dos filas de cartas</h1>
+  <h1>Tres filas de círculos de colores</h1>
 
-  <p>Actualice la página para mostrar dos nuevas filas de cartas.</p>
+  <p>Actualice la página para mostrar tres nuevas filas de círculos.</p>
 
 <?php
 
-function generaCartasRand(int $n)
+function generaMatrizValoresRand(array $m, int $n): array
 {
-    $palos = ["c", "d", "p", "t"];
-    $m = [];
+    $resultado = [];
     for ($i = 0; $i < $n; $i++) {
-        $m[] = $palos[rand(0, 3)] . rand(1, 13);
+        $resultado[] = $m[array_rand($m)];
     }
-    return $m;
+    return $resultado;
 }
 
-function pintaCartas(array $cartas)
+function pintaCirculos(array $colores): void
 {
     print "  <p>\n";
-    foreach ($cartas as $carta) {
-        print "    <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"70\">\n";
-
+    foreach ($colores as $color) {
+        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" viewbox=\"-5 -5 60 60\">\n";
+        print "      <circle cx=\"25\" cy=\"25\" r=\"25\" fill=\"$color\" stroke=\"black\" />\n";
+        print "    </svg>\n";
+        print "\n";
     }
     print "  </p>\n";
     print "\n";
 }
 
+$colores = ["black", "blue", "green", "gray", "red", "white", "yellow"];
 $n       = rand(5, 10);
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas</h2>\n";
+$valores = generaMatrizValoresRand($colores, $n);
+print "<h2>$n círculos de colores</h2>\n";
 print "\n";
-pintaCartas($valores);
+pintaCirculos($valores);
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas más</h2>\n";
+$valores = generaMatrizValoresRand($colores, $n);
+print "<h2>$n círculos de colores</h2>\n";
 print "\n";
-pintaCartas($valores);
+pintaCirculos($valores);
+
+$valores = generaMatrizValoresRand($colores, $n);
+print "<h2>$n círculos de colores</h2>\n";
+print "\n";
+pintaCirculos($valores);
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-28">28 de noviembre de 2024</time>
+      <time datetime="2024-11-29">29 de noviembre de 2024</time>
     </p>
 
     <p class="licencia">
