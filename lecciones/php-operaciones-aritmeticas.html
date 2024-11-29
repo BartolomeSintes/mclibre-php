@@ -897,11 +897,7 @@ print "&lt;p&gt;" . number_format(123456789123456.789, 2, ",", ".") . "&lt;/p&gt
 
     <p>Para obtener un número entero aleatorio entre dos valores determinados, se puede utilizar la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a>, aunque esta función genera números aleatorios que no se pueden considerar <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator">criptográficamente seguros</a>. En caso de necesitarse valores seguros, se puede utilizar la función <a href="https://www.php.net/manual/en/function.random-int.php"><span class="php-fun">random_int()</span></a>, incorporada en PHP 7.0.</p>
 
-    <p>La función <span class="php-fun">rand()</span> admite dos argumentos:</p>
-    <ul>
-      <li>El primer argumento es el valor mínimo que se quiere obtener</li>
-      <li>El segundo argumento es el valor máximo que se quiere obtener.</li>
-    </ul>
+    <p>Normalmente, el primer argumento es el valor mínimo que se quiere obtener y el segundo argumento es el valor máximo que se quiere obtener, pero se pueden escribir al revés.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -918,6 +914,25 @@ print "&lt;p&gt;" . rand(-20, -10) . "&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;5&lt;/p&gt;
 &lt;p&gt;135&lt;/p&gt;
 &lt;p&gt;-20&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . rand(6, 1) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand(150, 100) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand(-10, -20) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;119&lt;/p&gt;
+&lt;p&gt;-18&lt;/p&gt;</code>
 </pre>
       </div>
     </div>
@@ -998,7 +1013,7 @@ print "&lt;p&gt;" . rand(0, 100 * 1000) / 1000 . "&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 28 de noviembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
