@@ -31,6 +31,7 @@
         <li><a href="#argumentos-por-referencia">Paso por referencia</a></li>
         <li><a href="#argumentos-con-tipo">Tipo de los argumentos</a></li>
         <li><a href="#devolucion">Devolución de valores</a></li>
+        <li><a href="#devolucion-con-tipo">Tipo del valor devuelto</a></li>
         <li><a href="#argumentos-predeterminados">Argumentos predeterminados</a></li>
         <li><a href="#argumentos-con-nombre">Argumentos con nombre</a></li>
         <li><a href="#argumentos-indeterminados">Argumentos indeterminados</a></li>
@@ -736,9 +737,83 @@ print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
   </section>
 
   <section id="argumentos-con-tipo">
-    <h2>Declarar el tipo de los argumentos</h2>
+    <h2 class="con-aside">Declarar el tipo de los argumentos</h2>
 
-    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
+    <aside class="enlace-norma">
+      <p>
+        Declaraciones de tipos<br>
+        <a href="https://www.php.net/manual/en/language.types.declarations.php">
+          <img src="../varios/iconos/icono-php-horizontal.svg" alt="Manual PHP" title="Manual PHP" width="90">
+        </a>
+      </p>
+    </aside>
+
+    <p>Al declarar una función, podemos indicar el tipo de los argumentos. De esta manera, al llamar a la función en un programa, PHP puede detectar si el tipo de los argumentos es incorrecto y mostrar el error fatal correspondiente.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+function suma(<span class="codigo-resaltado">float $x, float $y</span>)
+{
+    return $x + $y;
+}
+
+print suma(5, "abc");
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html"><b>Fatal error</b>:  Uncaught TypeError: suma(): <span class="codigo-resaltado">Argument #2 ($y) must be of type float, string given</span>, called in prueba.php on line 6 and defined in prueba:2
+Stack trace:
+#0 prueba.php(6): suma(5.0, 'abc')
+#1 {main}
+  thrown in <b>prueba.php</b> on line <b>2</b></code>
+</pre>
+      </div>
+    </div>
+
+    <p>Algunos de los tipos que se pueden indicar son los tipos <span class="php-tip">boolean</span>, <span class="php-tip">int</span>, <span class="php-tip">float</span>, <span class="php-tip">string</span> o <span class="php-tip">array</span>.</p>
+
+    <p>Si un argumento puede ser de varios tipos, se debe indicar como una expresión lógica de los tipos (utilizando el operador lógico |), como muestra el siguiente ejemplo.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+function printea(<span class="codigo-resaltado">int|float|string|array $x</span>)
+{
+    if (is_array($x) ) {
+        print "&lt;pre&gt;\n";
+        print_r($x);
+        print "&lt;/pre&gt;\n";
+    } else {
+        print($x);
+    }
+}
+
+printea("&lt;p&gt;Hola&lt;/p&gt;\n");
+printea("\n");
+printea([1, 2]);
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+
+&lt;pre&gt;
+Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 2
+)
+&lt;/pre&gt;
+</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Para indicar que un argumento puede ser de cualquier tipo, se puede indicar con el tipo <span class="php-tip">mixed</span>.</p>
   </section>
 
   <section id="devolucion">
@@ -864,6 +939,78 @@ print "&lt;p&gt;$a * $b = $producto&lt;/p&gt;\n";
         </div>
       </li>
     </ul>
+  </section>
+
+  <section id="devolucion-con-tipo">
+    <h2 class="con-aside">Declarar el tipo del valor devuelto por una función</h2>
+
+    <aside class="enlace-norma">
+      <p>
+        Declaraciones de tipos<br>
+        <a href="https://www.php.net/manual/en/language.types.declarations.php">
+          <img src="../varios/iconos/icono-php-horizontal.svg" alt="Manual PHP" title="Manual PHP" width="90">
+        </a>
+      </p>
+    </aside>
+
+    <p>Al declarar una función, podemos indicar el tipo del valor devuelto por la función. De esta manera, al llamar a la función en un programa, PHP puede detectar si el tipo del valor devuelto es incorrecto y mostrar el error fatal correspondiente.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+function une($x, $y): float
+{
+    return $x . $y;
+}
+
+print "&lt;p&gt;" . une(6.5, 6) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;" . une(6.5, 6.5) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html"><p>6.56</p>
+<b>Fatal error</b>:  Uncaught TypeError: une(): Return value must be of type float, string returned in prueba.php:4
+Stack trace:
+#0 prueba.php(8): une(6.5, 6.5)
+#1 {main}
+  thrown in <b>prueba.php</b> on line <b>4</b><br></code>
+</pre>
+      </div>
+    </div>
+
+    <p>Algunos de los tipos que se pueden indicar son los tipos <span class="php-tip">boolean</span>, <span class="php-tip">int</span>, <span class="php-tip">float</span>, <span class="php-tip">string</span> o <span class="php-tip">array</span>.</p>
+
+    <p>Si un argumento puede ser de varios tipos, se debe indicar como una expresión lógica de los tipos (utilizando el operador lógico |), como muestra el siguiente ejemplo.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+function une($x, $y): float|string
+{
+    return $x . $y;
+}
+
+print "&lt;p&gt;" . une(6.5, 6) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;" . une(6.5, 6.5) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;6.56&lt;/p&gt;
+
+&lt;p&gt;6.56.5&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Si un argumento puede ser de cualquier tipo, se debe indicar con el tipo <span class="php-tip">mixed</span>.</p>
+
+    <p>Si una función no devuelve ningún argumento, se puede indicar con el tipo <span class="php-tip">void</span>.</p>
   </section>
 
   <section id="argumentos-predeterminados">
@@ -1026,13 +1173,49 @@ saludo(saludo: "Adios", nombre: "Don José");
   </section>
 
   <section id="argumentos-indeterminados">
-    <h2>Funciones con un número de argumentos indeterminados</h2>
+    <h2 class="con-aside">Funciones con un número de argumentos indeterminados</h2>
 
-    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
+    <aside class="enlace-norma">
+      <p>
+        Argumentos indeterminados<br>
+        <a href="https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list">
+          <img src="../varios/iconos/icono-php-horizontal.svg" alt="Manual PHP" title="Manual PHP" width="90">
+        </a>
+      </p>
+    </aside>
+
+    <p>Para indicar que una función puede tener un número indeterminado de argumentos, se debe utilizar la expresión <span class="php-ope">...</span> (tres puntos seguidos). Los argumentos se reciben en una matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+function une(<span class="codigo-resaltado">...$elementos</span>)
+{
+    $tmp = "";
+    foreach($elementos as $elemento) {
+        $tmp = $tmp . $elemento;
+    }
+    return $tmp;
+}
+
+print une("&lt;p&gt;", "abc", "def", "ghi", "&lt;/p&gt;", "\n");
+print "\n";
+print une("&lt;p&gt;", 1, 2, 3, "&lt;/p&gt;", "\n");
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;abcdefghi&lt;/p&gt;
+
+&lt;p&gt;123&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 2 de diciembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
