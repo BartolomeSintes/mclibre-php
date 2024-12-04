@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-28
+ * @version   2024-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,49 +41,48 @@
   <p>Actualice la página para mostrar una nueva tirada de dados.</p>
 
 <?php
-
-function generaEnterosRand(int $n, int $min, int $max): array
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
 {
-    $m = [];
     for ($i = 0; $i < $n; $i++) {
         $m[] = rand($min, $max);
     }
     return $m;
 }
 
-function pintaDados(array $dados) : void
+function pintaDados(array $m): void
 {
     print "  <p>\n";
-    foreach ($dados as $dado) {
-        print "    <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"60\" height=\"60\">\n";
+    foreach ($m as $valor) {
+        print "    <img src=\"img/dados/$valor.svg\" alt=\"$valor\" width=\"60\" height=\"60\">\n";
     }
     print "  </p>\n";
-    print "\n";
 }
 
-$n       = rand(5, 10);
-$valores = generaEnterosRand($n, 1, 6);
+$n     = rand(5, 10);
+$dados = generaMatrizEnterosRand($n, 1, 6);
 
 print "  <h2>$n dados (sin ordenar)</h2>\n";
 print "\n";
-pintaDados($valores);
-
-print "  <h2>$n dados (ordenados)</h2>\n";
+pintaDados($dados);
 print "\n";
-sort($valores);
-pintaDados($valores);
 
-print "  <h2>$n dados (sin repetir)</h2>\n";
+print "  <h2>$n dados (los mismos $n, ordenados)</h2>\n";
 print "\n";
-$valores = array_unique($valores);
-pintaDados($valores);
+sort($dados);
+pintaDados($dados);
+print "\n";
+
+$dados = array_unique($dados);
+print "  <h2>" . count($dados) . " dados (los $n, sin repetir)</h2>\n";
+print "\n";
+pintaDados($dados);
 
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-29">29 de noviembre de 2024</time>
+      <time datetime="2024-12-04">4 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

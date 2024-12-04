@@ -27,7 +27,15 @@
       <ul>
         <li><a href="#ejercicio-01">01 - Dibuja dados</a></li>
         <li><a href="#ejercicio-02">02 - Dibuja cartas</a></li>
-        <li><a href="#ejercicio-02">03 - Dibuja bolas</a></li>
+        <li><a href="#ejercicio-03">03 - Dibuja bolas</a></li>
+        <li><a href="#ejercicio-11">11 - miArrayFill()</a></li>
+        <li><a href="#ejercicio-12">12 - miArraySum()</a></li>
+        <li><a href="#ejercicio-13">13 - miArrayProduct()</a></li>
+        <li><a href="#ejercicio-14">14 - miArraySlice()</a></li>
+        <li><a href="#ejercicio-15">15 - miArrayUnshift()</a></li>
+        <li><a href="#ejercicio-16">16 - miArrayReverse()</a></li>
+        <li><a href="#ejercicio-21">21 - sumaValorMatriz()</a></li>
+        <li><a href="#ejercicio-31">31 - Más funciones</a></li>
       </ul>
       <!--
       <h3><a href="soluciones.html">Soluciones</a></h3>
@@ -40,7 +48,9 @@
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/sin-formularios/sf-funciones-1-plantillas.zip">plantillas de los ejercicios Funciones (1) (Sin formularios)</a>.</p>
 
-  <!-- <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios. Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-for-2-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p> -->
+  <!-- <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios. Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-funciones-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p> -->
+
+  <p>Puede <a href="../../../soluciones/sin-formularios/sf-funciones-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
 
   <section id="ejercicio-01">
     <h3>Funciones (1) 01 - Dibuja dados</h3>
@@ -49,12 +59,12 @@
 
     <p>Para ello, defina las siguientes funciones:</p>
     <ul>
-      <li><strong>generaEnterosRand(int $n, int $min, int $max): array</strong>
+      <li><strong>generaMatrizEnterosRand(int $n, int $min, int $max): array</strong>
         <p>Los argumentos $n, $min y $max, son números enteros.</p>
         <p>La función devuelve una matriz de $n valores enteros aleatorios entre $min y $max, ambos incluidos.</p>
       </li>
-      <li><strong>pintaDados(array $dados): void</strong>
-        <p>El argumento $dados es una matriz de valores de dados (como la que genera función generaEnterosRand() anterior).</p>
+      <li><strong>pintaDados(array $m): void</strong>
+        <p>El argumento $m es una matriz de valores de dados (como la que genera función generaMatrizEnterosRand() anterior).</p>
         <p>La función escribe un párrafo que incluye las imágenes de los dados correspondiente.</p>
       </li>
     </ul>
@@ -73,12 +83,12 @@
     <p>Escriba un programa que muestre dos filas de cartas de una baraja francesa. Las dos filas tendrán el mismo número de cartas, al azar entre 5 y 10.</p>
     <p>Para ello, defina las siguientes funciones:</p>
     <ul>
-      <li><strong>generaCartasRand(int $n): array</strong>
+      <li><strong>generaMatrizCartasRand(int $n): array</strong>
         <p>El argumento $n es un número entero.</p>
         <p>La función devuelve una matriz de $n valores que corresponden a los nombres de los ficheros de las imágenes de las cartas. Los nombres empiezan por el palo ("c", "d", "p", "t") y terminan por el número de carta (de 1 a 13). Por ejemplo ["c3", "d10", "d1", "p9"]</p>
       </li>
-      <li><strong>pintaCartas(array $cartas): void</strong>
-        <p>El argumento $cartas es una matriz de nombres de cartas (como la que genera función generaCartasRand() anterior).</p>
+      <li><strong>pintaCartas(array $m): void</strong>
+        <p>El argumento $m es una matriz de nombres de cartas (como la que genera función generaMatrizCartasRand() anterior).</p>
         <p>La función escribe un párrafo que incluye las imágenes de las cartas correspondientes.</p>
       </li>
     </ul>
@@ -102,7 +112,7 @@
         <p>El argumento $m es una matriz de valores.</p>
         <p>El argumento $n es un número entero.</p>
         <p>La función devuelve una matriz de $n valores existentes en la matriz $m. Los valores se pueden repetir.</p>
-        <p>En este ejercicio, la matriz de valores pueden ser los colores de los círculos, por ejemplo, ["black", "red", "blue", "green"].</p>
+        <p>En este ejercicio, la matriz de valores pueden ser los colores de los círculos, por ejemplo, ["black", "blue", "green", "gray", "red", "white", "yellow"].</p>
       </li>
       <li><strong>pintaCirculos(array $colores): void</strong>
         <p>El argumento $colores es una matriz de nombres de colores (como la que genera función generaMatrizValoresRand() anterior). La función escribe un párrafo que incluye las imágenes de los círculos correspondientes.</p>
@@ -118,22 +128,216 @@
   </section>
 
   <section id="ejercicio-11">
-    <h3>Funciones (1) 11 - Funciones de matrices</h3>
+    <h3>Funciones (1) 11 - Función miArrayFill()</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArrayFill(int $startIndex, int $count, mixed $value): array</strong>
+        <p>Esta función devuelve una matriz de $count elementos de valor $value y cuyos índices (correlativos) empiezan en $startIndex.</p>
+
+        <p>Esta función existe en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-fill.php"><span class="php-fun">array_fill(int $start_index, int $count, mixed $value)</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>El valor inicial de los índices puede ser un valor al azar entre 0 y 20. El número de elementos en la matriz pueden  puede ser un valor al azar entre 1 y 10. El valor de todos los elementos de la matriz puede ser un valor entero al azar entre 100 y 1000.</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-11.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-11.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-12">
+    <h3>Funciones (1) 12 - Función miArraySum()</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArraySum(array $array): int|float</strong>
+        <p>Esta función devuelve la suma de todos los valores de una matriz.</p>
+
+        <p>Esta función existe en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-sum.php"><span class="php-fun"> array_sum(array $array): int|float</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros puede tener de 3 a 7 valores y los valores pueden estar entre 1 y 10. La matriz de números decimales puede tener de 3 a 7 valores y los valores pueden estar entre 1 y 10 (con un número decimal que puede ser 0).</p>
+
+    <details>
+      <summary>Ayuda</summary>
+
+      <ul>
+        <li>Para generar la matriz inicial de números enteros puede utilizar la función <strong>generaMatrizEnterosRand(int $n, int $min, int $max): array</strong> del ejercicio 1.</li>
+        <li>Para generar la matriz inicial de números decimales puede crear una función <strong>generaMatrizDecimalRand(int $n, int $min, int $max): array</strong> similar a la anterior pero que rellene la matriz con números decimales (con un decimal). Para obtener un número decimal con un decimal basta con dividir un número entero por 10.</li>
+        <li>Alternativamente, para generar la matriz inicial de números decimales puede crear una función <strong>generaMatrizDecimalesRand(int $n, int $min, int $max, int $decimales): array</strong> similar a la anterior que nos permita obtener una matriz de números decimales con el número de decimales que queramos. Para obtener un número decimal con <i>n</i> decimales puede dividir un número entero por 10 ** <i>n</i>.</li>
+      </ul>
+    </details>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-12.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-12.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h3>Funciones (1) 13 - Función miArrayProduct()</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArrayProduct(array $array): int|float</strong>
+        <p>Esta función devuelve el producto de todos los valores de una matriz.</p>
+
+        <p>Esta función existe en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-product.php"><span class="php-fun"> array_product(array $array): int|float</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros puede tener de 3 a 7 valores y los valores pueden estar entre 1 y 10. La matriz de números decimales puede tener de 3 a 7 valores y los valores pueden estar entre 1 y 10 (con un número decimal que puede ser 0).</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-13.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-13.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-14">
+    <h3>Funciones (1) 14 - Función miArraySlice()</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArraySlice(array $array, int $offset, int $length): array</strong>
+        <p>Esta función devuelve $length valores de una matriz, empezando en el valor $offset, manteniendo los índices de la matriz original.</p>
+
+        <p>Esta función existe (con más parámetros) en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-slice.php"><span class="php-fun">array_slice(array $array, int $offset, ?int $length = null, bool $preserve_keys = false): array</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros inicial puede tener de 7 a 10 valores y los valores pueden estar entre 1 y 10. La submatriz elegida al azar como mínimo debe tener un valor, pero puede empezar en cualquier valor.</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-14.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-14.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-15">
+    <h3>Funciones (1) 15 - Función miArrayUnshift()</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArrayUnshift(array $array, mixed $value): array</strong>
+        <p>Esta función recibe una matriz $array y un valor $value.</p>
+        <p>Esta función devuelve una matriz con los mismos valores que los de la matriz recibida y en el mismo orden, pero añadiendo el valor $value al principio de la matriz. Los índices se renumeran a partir de 0.</p>
+
+        <p>Esta función existe (con más parámetros) en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-unshift.php"><span class="php-fun">array_unshift(array &$array, mixed ...$values): int</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros inicial puede tener de 7 a 10 valores y los valores pueden estar entre 1 y 10. El valor insertado puede ser un valor entre 1 y 10.</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-15.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-15.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-16">
+    <h3>Funciones (1) 16 - Funciones miArrayReverseSimple y miArrayReverse</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArrayReverseSimple(array $array): array</strong>
+        <p>Esta función devuelve una matriz con los mismos valores que la matriz enviada como argumento, pero ordenados al revés. La matriz devuelta reindexa los índices.</p>
+
+        <p>Esta función existe (con más parámetros) en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-reverse.php"><span class="php-fun">array_reverse(array $array, bool $preserve_keys = false): array</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros inicial puede tener de 7 a 10 valores y los valores pueden estar entre 1 y 10. Los valores de los índices deben empezar en 0 y ser correlativos (aunque estén desordenados).</p>
+
+    <details>
+      <summary>Ayuda</summary>
+
+      <ul>
+        <li>Para generar la matriz inicial de números enteros puede crear una función <strong>generaMatrizEnterosRandRand(int $n, int $min, int $max): array</strong> similar a la del ejercicio 1, pero en la que los índices, aunque correlativos desde 0, estén desordenados.</li>
+      </ul>
+    </details>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-16-a.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-16-a.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>miArrayReverse(array $array, bool $preserve_keys = false): array</strong>
+        <p>Esta función devuelve una matriz con los mismos valores que la matriz enviada como argumento, pero ordenados al revés. La matriz devuelta reindexa los índices, salvo si se envía un segundo argumento <span class="php-con">true</span> en cuyo caso consrva los índices originales.</p>
+
+        <p>Esta función existe en PHP con el nombre <a href="https://www.php.net/manual/en/function.array-reverse.php"><span class="php-fun">array_reverse(array $array, bool $preserve_keys = false): array</span></a> .</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros inicial puede tener de 7 a 10 valores y los valores pueden estar entre 1 y 10. Los valores de los índices deben empezar en 0 y ser correlativos (aunque estén desordenados).</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-16-b.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-16-b.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-21">
+    <h3>Funciones (1) 21 - Función sumaValorMatriz()</h3>
+
+    <p>Escriba un programa que defina la función siguiente y muestre su fucionamiento:</p>
+    <ul>
+      <li><strong>sumaValorMatriz(array $m, int|float $x): array</strong>
+
+        <p>Esta función recibe una matriz de números $m y un valor numérico $x.</p>
+
+        <p>Esta función suma el valor $x a todos los elementos de la matriz y devuelve la matriz resultante.</p>
+      </li>
+    </ul>
+
+    <p>La matriz de números enteros inicial puede tener de 3 a 7 valores y los valores pueden estar entre 1 y 10.</p>
+
+    <div class="filaflex">
+      <iframe src="funciones-1-21.php" style="height: 20em;"></iframe>
+      <div class="icono-enlace">
+        <a href="funciones-1-21.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-31">
+    <h3>Funciones (1) 31 - Funciones de matrices</h3>
+
+    <p class="incompleto">Por completar</p>
 
     <p>Defina las siguientes funciones que realicen distintas operaciones con matrices:</p>
 
     <ul>
-      <li><strong>sumaValorMatriz(int|float $x, array $m): array</strong>
-        <p>Suma el valor $x a todos los elementos de la matriz y devuelve la matriz resultante.</p>
-      </li>
       <li><strong>multiplicaValorMatriz(int|float $x, array $m): array</strong>
         <p>Multiplica por el valor $x todos los elementos de la matriz y devuelve la matriz resultante.</p>
       </li>
       <li><strong>sustituyeValorMatriz(int|float|string $inicial, int|float|string $final, array $m): array</strong>
         <p>Sustituye en la matriz $m el valor $inicial por el valor $final y devuelve la matriz resultante.</p>
       </li>
-      <li><strong>generaMatrizRand(int $n, int $min, int $max, boolean $repetidos = true): array</strong>
+      <li><strong>generaMatrizEnterosRand(int $n, int $min, int $max, boolean $repetidos = true): array</strong>
         <p>Devuelve una matriz de $n valores enteros aleatorios entre $min y $max, ambos incluidos. El argumento lógico repetidos indica si los valores pueden estar repetidos o no.</p>
+      </li>
+      <li><strong>generaMatrizDecimalesRand(int $n, int $min, int $max, $int decimales, boolean $repetidos = true): array</strong>
+        <p>Devuelve una matriz de $n valores decimales (con $decimales decimales) aleatorios entre $min y $max, ambos incluidos. El argumento lógico repetidos indica si los valores pueden estar repetidos o no.</p>
       </li>
       <li><strong>medianaMatriz(array $m): int|float</strong>
         <p>Devuelve la mediana de los valores de la matriz. Se recuerda que la mediana de una serie de valores ordenados es:</p>
@@ -141,9 +345,6 @@
           <li>el valor de en medio si el número de valores es impar</li>
           <li>la media de los dos valores centrale si el número de valores es par</li>
         </ul>
-      </li>
-      <li><strong>invierteMatriz(array $m): array</strong>
-        <p>Devuelve los mismos valores, pero ordenados al revés. Reindexa la matriz.</p>
       </li>
       <li><strong>insertaValorMatriz(int|float|string $x, int $posicion, array $m): array</strong>
         <p>Inserta un valor $x en la posición $posicion de una matriz y devuelve la matriz resultante.</p>
@@ -175,7 +376,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 29 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 4 de diciembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

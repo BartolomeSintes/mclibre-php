@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-29
+ * @version   2024-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,52 +41,52 @@
   <p>Actualice la página para mostrar tres nuevas filas de círculos.</p>
 
 <?php
-
 function generaMatrizValoresRand(array $m, int $n): array
 {
-    $resultado = [];
     for ($i = 0; $i < $n; $i++) {
         $resultado[] = $m[array_rand($m)];
     }
     return $resultado;
 }
 
-function pintaCirculos(array $colores): void
+function pintaCirculos(array $m): void
 {
-    print "  <p>\n";
-    foreach ($colores as $color) {
-        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" viewbox=\"-5 -5 60 60\">\n";
-        print "      <circle cx=\"25\" cy=\"25\" r=\"25\" fill=\"$color\" stroke=\"black\" />\n";
-        print "    </svg>\n";
+    print "  <p>";
+    foreach ($m as $valor) {
         print "\n";
+        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" viewbox=\"-5 -5 60 60\">\n";
+        print "      <circle cx=\"25\" cy=\"25\" r=\"25\" fill=\"$valor\" stroke=\"black\" />\n";
+        print "    </svg>\n";
     }
     print "  </p>\n";
-    print "\n";
 }
 
-$colores = ["black", "blue", "green", "gray", "red", "white", "yellow"];
-$n       = rand(5, 10);
+$nombreColores = ["black", "blue", "green", "gray", "red", "white", "yellow"];
+$n             = rand(5, 10);
 
-$valores = generaMatrizValoresRand($colores, $n);
-print "<h2>$n círculos de colores</h2>\n";
+$colores = generaMatrizValoresRand($nombreColores, $n);
+print "  <h2>$n círculos de colores</h2>\n";
 print "\n";
-pintaCirculos($valores);
+pintaCirculos($colores);
+print "\n";
 
-$valores = generaMatrizValoresRand($colores, $n);
-print "<h2>$n círculos de colores</h2>\n";
+$colores = generaMatrizValoresRand($nombreColores, $n);
+print "  <h2>$n círculos de colores</h2>\n";
 print "\n";
-pintaCirculos($valores);
+pintaCirculos($colores);
+print "\n";
 
-$valores = generaMatrizValoresRand($colores, $n);
-print "<h2>$n círculos de colores</h2>\n";
+$colores = generaMatrizValoresRand($nombreColores, $n);
+print "  <h2>$n círculos de colores</h2>\n";
 print "\n";
-pintaCirculos($valores);
+pintaCirculos($colores);
+
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-29">29 de noviembre de 2024</time>
+      <time datetime="2024-12-04">4 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

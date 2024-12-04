@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-12-04
+ * @version   2024-11-13
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,62 +41,41 @@
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-function generaMatrizRand($n, $min, $max)
+function pintaDado($numero)
 {
-    for ($i = 0; $i < $n; $i++) {
-        $m[] = rand($min, $max);
+    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"140\" viewBox=\"-10 -10 140 140\">\n";
+    print "      <rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" rx=\"10\" ry=\"10\" fill=\"#E0E0E0\"  stroke=\"black\" stroke-width=\"5\" />\n";
+    if ($numero == 2 || $numero == 3 || $numero == 4 || $numero == 5 || $numero == 6) {
+        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
     }
-    return $m;
-}
-
-function invierteMatriz($m)
-{
-    $m2 = array_values($m);
-    for ($i = count($m2) - 1; $i >= 0; $i--) {
-        $m3[] = $m2[$i];
+    if ($numero == 6) {
+        print "      <circle cx=\"30\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
     }
-    return $m3;
-}
-
-function extraeValores($m, $n)
-{
-    $m2 = array_rand($m, $n);
-    foreach ($m2 as $valor) {
-        $m3[] = $m[$valor];
+    if ($numero == 4 || $numero == 5 || $numero == 6) {
+        print "      <circle cx=\"30\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
     }
-    shuffle($m3);
-    return $m3;
-}
-
-function valoresComunesNoRepetidos($m1, $m2)
-{
-    $m1b = array_unique($m1);
-    $m2b = array_unique($m2);
-    foreach ($m1b as $valor) {
-        if (in_array($valor, $m2b)) {
-            $m3[] = $valor;
-        }
+    if ($numero == 1 || $numero == 3 || $numero == 5) {
+        print "      <circle cx=\"60\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"60\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
     }
-    return $m3;
+    if ($numero == 4 || $numero == 5 || $numero == 6) {
+        print "      <circle cx=\"90\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+    }
+    if ($numero == 6) {
+        print "      <circle cx=\"90\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
+    }
+    if ($numero == 2 || $numero == 3 || $numero == 4 || $numero == 5 || $numero == 6) {
+        print "      <circle cx=\"90\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+    }
+    print "    </svg>\n";
+    print "\n";
 }
-
-$m1 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
-
-$m2 = invierteMatriz($m1);
-print "<p>invierteMatriz: " . print_r($m2, true) . "</p>";
-
-$m3 = extraeValores($m1, 5);
-print "<p>extraeValores: " . print_r($m3, true) . "</p>";
-
-$m1 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
-$m2 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m2, true) . "</p>";
-$m3 = valoresComunesNoRepetidos($m1, $m2);
-print "<p>valoresComunesNoRepetidos: " . print_r($m3, true) . "</p>";
-
-exit;
 
 $numero = rand(1, 10);
 $total  = 0;

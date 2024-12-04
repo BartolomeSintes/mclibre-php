@@ -41,36 +41,56 @@
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-
 function pintaDado($numero)
 {
     print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"140\" viewBox=\"-10 -10 140 140\">\n";
     print "      <rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" rx=\"10\" ry=\"10\" fill=\"#E0E0E0\"  stroke=\"black\" stroke-width=\"5\" />\n";
-    if ($numero == 2 || $numero == 3 || $numero == 4 || $numero == 5 || $numero == 6) {
-        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
-        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
-    }
-    if ($numero == 6) {
-        print "      <circle cx=\"30\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
-        print "      <circle cx=\"30\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
-    }
-    if ($numero == 4 || $numero == 5 || $numero == 6) {
-        print "      <circle cx=\"30\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
-        print "      <circle cx=\"30\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
-    }
-    if ($numero == 1 || $numero == 3 || $numero == 5) {
+    if ($numero == 1) {
         print "      <circle cx=\"60\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
         print "      <circle cx=\"60\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
-    }
-    if ($numero == 4 || $numero == 5 || $numero == 6) {
+    } elseif ($numero == 2) {
+        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"90\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+    } elseif ($numero == 3) {
+        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"60\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"60\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"90\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+    } elseif ($numero == 4) {
+        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"30\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
         print "      <circle cx=\"90\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
         print "      <circle cx=\"90\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
-    }
-    if ($numero == 6) {
+        print "      <circle cx=\"90\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+    } elseif ($numero == 5) {
+        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"30\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"60\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"60\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"90\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"90\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+    } elseif ($numero == 6) {
+        print "      <circle cx=\"30\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"30\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"30\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"30\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
+        print "      <circle cx=\"90\" cy=\"32\" r=\"9\" fill=\"white\" />\n";
+        print "      <circle cx=\"90\" cy=\"30\" r=\"9\" fill=\"black\" />\n";
         print "      <circle cx=\"90\" cy=\"62\" r=\"9\" fill=\"white\" />\n";
         print "      <circle cx=\"90\" cy=\"60\" r=\"9\" fill=\"black\" />\n";
-    }
-    if ($numero == 2 || $numero == 3 || $numero == 4 || $numero == 5 || $numero == 6) {
         print "      <circle cx=\"90\" cy=\"92\" r=\"9\" fill=\"white\" />\n";
         print "      <circle cx=\"90\" cy=\"90\" r=\"9\" fill=\"black\" />\n";
     }

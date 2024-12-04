@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-29
+ * @version   2024-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,45 +41,43 @@
   <p>Actualice la página para mostrar dos nuevas filas de cartas.</p>
 
 <?php
-
-function generaCartasRand(int $n): array
+function generaMatrizCartasRand(int $n): array
 {
     $palos = ["c", "d", "p", "t"];
-    $m     = [];
     for ($i = 0; $i < $n; $i++) {
         $m[] = $palos[rand(0, 3)] . rand(1, 13);
     }
     return $m;
 }
 
-function pintaCartas(array $cartas): void
+function pintaCartas(array $m): void
 {
     print "  <p>\n";
-    foreach ($cartas as $carta) {
-        print "    <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"70\">\n";
-
+    foreach ($m as $valor) {
+        print "    <img src=\"img/cartas/$valor.svg\" alt=\"$valor\" width=\"70\">\n";
     }
     print "  </p>\n";
-    print "\n";
 }
 
 $n = rand(5, 10);
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas</h2>\n";
+$cartas = generaMatrizCartasRand($n, 1, 6);
+print "  <h2>$n cartas</h2>\n";
 print "\n";
-pintaCartas($valores);
+pintaCartas($cartas);
+print "\n";
 
-$valores = generaCartasRand($n, 1, 6);
-print "<h2>$n cartas más</h2>\n";
+$cartas = generaMatrizCartasRand($n, 1, 6);
+print "  <h2>$n cartas más</h2>\n";
 print "\n";
-pintaCartas($valores);
+pintaCartas($cartas);
+
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-29">29 de noviembre de 2024</time>
+      <time datetime="2024-12-04">4 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

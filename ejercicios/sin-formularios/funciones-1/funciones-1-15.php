@@ -1,11 +1,11 @@
 <?php
 /**
- * funciones (1) 1 - funciones-1-01.php
+ * funciones (1) 15 - funciones-1-15.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-13
+ * @version   2024-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Contar puntos.
+    Función miArrayUnshift1().
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,70 +36,53 @@
 </head>
 
 <body>
-  <h1>Contar puntos</h1>
+  <h1>Función miArrayUnshift1()</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar una nueva matriz.</p>
 
 <?php
-
-function pintaCirculo($x, $y) {
-    print "      <circle cx=\"$x\" cy=\"" . $y + 2 . "\" r=\"9\" fill=\"white\" />\n";
-    print "      <circle cx=\"$x\" cy=\"$y\" r=\"9\" fill=\"black\" />\n";
-}
-
-function pintaDado($numero)
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
 {
-    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"140\" viewBox=\"-10 -10 140 140\">\n";
-    print "      <rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" rx=\"10\" ry=\"10\" fill=\"#E0E0E0\"  stroke=\"black\" stroke-width=\"5\" />\n";
-    if ($numero == 2 || $numero == 3 || $numero == 4 || $numero == 5 || $numero == 6) {
-        pintaCirculo(30, 30);
+    for ($i = 0; $i < $n; $i++) {
+        $m[] = rand($min, $max);
     }
-    if ($numero == 6) {
-        pintaCirculo(30, 60);
-    }
-    if ($numero == 4 || $numero == 5 || $numero == 6) {
-        pintaCirculo(30, 90);
-    }
-    if ($numero == 1 || $numero == 3 || $numero == 5) {
-        pintaCirculo(60, 60);
-    }
-    if ($numero == 4 || $numero == 5 || $numero == 6) {
-        pintaCirculo(90, 30);
-    }
-    if ($numero == 6) {
-        pintaCirculo(90, 60);
-    }
-    if ($numero == 2 || $numero == 3 || $numero == 4 || $numero == 5 || $numero == 6) {
-        pintaCirculo(90, 90);
-    }
-    print "    </svg>\n";
-    print "\n";
+    return $m;
 }
 
-$numero = rand(1, 10);
-$total  = 0;
+function miArrayUnshift(array $array, mixed $value): array
+{
+    $m[] = $value;
+    foreach ($array as $valor) {
+        $m[] = $valor;
+    }
+    return $m;
+}
 
-if ($numero == 1) {
-    print "  <h2>$numero dado</h2>\n";
-} else {
-    print "  <h2>$numero dados</h2>\n";
-}
+$n     = rand(7, 10);
+$m     = generaMatrizEnterosRand($n, 1, 10);
+$valor = rand(1, 10);
+
+print "  <h2>Matriz de $n valores enteros</h2>\n";
 print "\n";
-print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    $dado = rand(1, 6);
-    pintaDado($dado);
-    $total += $dado;
-}
-print "  </p>\n";
+print "  <pre>\n";
+print_r($m);
+print "</pre>\n";
+print   "\n";
+
+$m2 = miArrayUnshift($m, $valor);
+
+print "  <h2>La misma matriz con el valor $valor al principio</h2>\n";
 print "\n";
-print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
+print "  <pre>\n";
+print_r($m2);
+print "</pre>\n";
+
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-13">13 de noviembre de 2024</time>
+      <time datetime="2024-12-04">4 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

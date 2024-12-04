@@ -1,6 +1,6 @@
 <?php
 /**
- * funciones (1) 1 - funciones-1-01.php
+ * funciones (1) 16 A - funciones-1-16-a.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Contar puntos.
+    Función miArrayReverseSimple().
     Funciones (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,92 +36,55 @@
 </head>
 
 <body>
-  <h1>Contar puntos</h1>
+  <h1>Función miArrayReverseSimple()</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar una nueva matriz.</p>
 
 <?php
-function generaMatrizRand($n, $min, $max)
+function generaMatrizEnterosRandRand(int $n, int $min, int $max): array
 {
+    $indices = range(0, $n);
+    shuffle($indices);
     for ($i = 0; $i < $n; $i++) {
-        $m[] = rand($min, $max);
+        $m[$indices[$i]] = rand($min, $max);
     }
     return $m;
 }
 
-function invierteMatriz($m)
+function miArrayReverseSimple(array $array): array
 {
-    $m2 = array_values($m);
-    for ($i = count($m2) - 1; $i >= 0; $i--) {
-        $m3[] = $m2[$i];
+    $array = array_values($array);
+    $n      = count($array);
+    for ($i = 0; $i < $n; $i++) {
+        $array2[$i] = $array[$n - $i - 1];
     }
-    return $m3;
+    return $array2;
 }
 
-function extraeValores($m, $n)
-{
-    $m2 = array_rand($m, $n);
-    foreach ($m2 as $valor) {
-        $m3[] = $m[$valor];
-    }
-    shuffle($m3);
-    return $m3;
-}
+$n = rand(7, 10);
+$m = generaMatrizEnterosRandRand($n, 1, 10);
 
-function valoresComunesNoRepetidos($m1, $m2)
-{
-    $m1b = array_unique($m1);
-    $m2b = array_unique($m2);
-    foreach ($m1b as $valor) {
-        if (in_array($valor, $m2b)) {
-            $m3[] = $valor;
-        }
-    }
-    return $m3;
-}
-
-$m1 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
-
-$m2 = invierteMatriz($m1);
-print "<p>invierteMatriz: " . print_r($m2, true) . "</p>";
-
-$m3 = extraeValores($m1, 5);
-print "<p>extraeValores: " . print_r($m3, true) . "</p>";
-
-$m1 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
-$m2 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m2, true) . "</p>";
-$m3 = valoresComunesNoRepetidos($m1, $m2);
-print "<p>valoresComunesNoRepetidos: " . print_r($m3, true) . "</p>";
-
-exit;
-
-$numero = rand(1, 10);
-$total  = 0;
-
-if ($numero == 1) {
-    print "  <h2>$numero dado</h2>\n";
-} else {
-    print "  <h2>$numero dados</h2>\n";
-}
+print "  <h2>Matriz de $n valores enteros</h2>\n";
 print "\n";
-print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    $dado = rand(1, 6);
-    pintaDado($dado);
-    $total += $dado;
-}
-print "  </p>\n";
+print "  <pre>\n";
+print_r($m);
+print "</pre>\n";
+print   "\n";
+
+$m2 = miArrayReverseSimple($m);
+
+print "  <h2>La misma matriz, al revés</h2>\n";
 print "\n";
-print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
+print "  <pre>\n";
+print_r($m2);
+print "</pre>\n";
+
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-13">13 de noviembre de 2024</time>
+      <time datetime="2024-12-04">4 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

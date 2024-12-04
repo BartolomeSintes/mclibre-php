@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-28
+ * @version   2024-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,6 @@
   <p>Actualice la página para mostrar tres nuevas matrices.</p>
 
 <?php
-
 function generaMatrizRand(int $n, int $min, int $max)
 {
     $m = [];
