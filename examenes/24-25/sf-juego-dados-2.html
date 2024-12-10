@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una partida del juego "Juego de dados".</p>
+
+  <section id="comentarios">
+    <h2>Juego de dados - Comentarios</h2>
+
+    <ul>
+      <li>Las reglas del juego son las siguientes:
+        <ul>
+          <li>El juego tiene de 3 a 6 turnos, al azar.</li>
+          <li>Hay dos jugadores, un gato &amp;#128049; <span style="font-size: 3rem; vertical-align: middle;">&#128049;</span> y un ratón &amp;#128045; <span style="font-size: 3rem; vertical-align: middle;">&#128045;</span></li>
+          <li>Si los dos dados son pares o los dos dados son impares, el gato gana tantos puntos como sumen los dados.</li>
+          <li>Si un dado es par y el otro es impar, el ratón gana tantos puntos como sumen los dados.</li>
+          <li>Gana el jugador que haya sacado más puntos en total.</li>
+        </ul>
+      </li>
+      <li>El programa tendrá una sola página:
+        <ul>
+          <li>Se mostrará el número de turno.</li>
+          <li>Se mostrará las imágenes de los jugadores y sus dados en cada turno.</li>
+          <li>Se mostrarán la puntuación acumulada por cada jugador en cada turno.</li>
+          <li>Se indicará finalmente quién ha ganado la partida.</li>
+        </ul>
+      </li>
+      <li>Al actualizar la página, se mostrará una nueva partida.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-juego-dados-2-1.png" alt="Juego de dados" width="1171" height="570"></p>
+        <p class="captura"><img src="img/sf-juego-dados-2-2.png" alt="Juego de dados" width="1171" height="490"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de dados - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;table style="border-collapse: collapse; font-size: 300%; text-align: center; vertical-align: middle;"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Turno&lt;/th&gt;
+      &lt;th colspan="2" style="padding: 0 80px"&gt;Tiradas&lt;/th&gt;
+      &lt;th colspan="2" style="padding: 0 80px"&gt;Puntos&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="codigo-resaltado">1</span>&lt;/td&gt;
+      &lt;td&gt;&amp;#128049; &lt;img src="img/<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span>" width="60" height="60" class="v-medio"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;#128045; &lt;img src="img/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="60" height="60" class="v-medio"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;#128049; <span class="codigo-resaltado">8</span>&lt;/td&gt;
+      &lt;td&gt;&amp;#128045; <span class="codigo-resaltado">0</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="codigo-resaltado">2</span>&lt;/td&gt;
+      &lt;td&gt;&amp;#128049; &lt;img src="img/<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="60" height="60" class="v-medio"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;#128045; &lt;img src="img/<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" width="60" height="60" class="v-medio"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;#128049; <span class="codigo-resaltado">8</span>&lt;/td&gt;
+      &lt;td&gt;&amp;#128045; <span class="codigo-resaltado">9</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="codigo-resaltado">3</span>&lt;/td&gt;
+      &lt;td&gt;&amp;#128049; &lt;img src="img/<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="60" height="60" class="v-medio"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;#128045; &lt;img src="img/<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="60" height="60" class="v-medio"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;#128049; <span class="codigo-resaltado">18</span>&lt;/td&gt;
+      &lt;td&gt;&amp;#128045; <span class="codigo-resaltado">9</span>&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;p style="font-size: 300%"&gt;Ha ganado <span class="codigo-resaltado">&amp;#128049;</span>&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
