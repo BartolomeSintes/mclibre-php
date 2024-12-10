@@ -123,7 +123,7 @@ if (isset($_SESSION["minusculasError"])) {
 
     <p>
       <input type="submit" value="Comprobar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

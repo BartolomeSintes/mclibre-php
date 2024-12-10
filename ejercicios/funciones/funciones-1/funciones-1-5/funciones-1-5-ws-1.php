@@ -22,7 +22,7 @@
 
     <p>
       <input type="submit" value="Convertir">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

@@ -16,11 +16,11 @@
   <form action="calculadora-dni-2.php" method="get">
     <p>Escriba el número del DNI y calcularé la letra correspondiente.</p>
 
-    <p><strong>Número:</strong> <input type="number" name="dni" min="0" max= "9999999999"></p>
+    <p><strong>Número:</strong> <input type="number" name="dni" min="0" max="9999999999"></p>
 
     <p>
       <input type="submit" value="Calcular">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

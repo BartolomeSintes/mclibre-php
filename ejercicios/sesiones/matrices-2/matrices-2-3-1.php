@@ -84,7 +84,7 @@ for ($i = 1; $i <= $preguntas; $i++) {
 
     <p>
       <input type="submit" value="Contar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

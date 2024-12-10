@@ -73,7 +73,7 @@ print "\n";
 
     <p>
       <input type="submit" value="Comprobar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

@@ -69,7 +69,7 @@ for ($i = 1; $i <= $numero; $i++) {
 
     <p>
       <input type="submit" value="Contar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

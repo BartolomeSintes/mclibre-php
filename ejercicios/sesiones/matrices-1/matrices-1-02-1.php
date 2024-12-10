@@ -53,7 +53,7 @@ if (!isset($_SESSION["nombres"])) {
 
     <p>
       <input type="submit" value="Añadir">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
 
 <?php

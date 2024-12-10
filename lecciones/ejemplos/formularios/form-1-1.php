@@ -23,7 +23,7 @@
 
     <p>
         <input type="submit" value="Enviar">
-        <input type="reset" value="Borrar">
+        <input type="reset">
     </p>
   </form>
 </body>

@@ -33,7 +33,7 @@
 
     <p>
       <input type="submit" value="Resolver">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

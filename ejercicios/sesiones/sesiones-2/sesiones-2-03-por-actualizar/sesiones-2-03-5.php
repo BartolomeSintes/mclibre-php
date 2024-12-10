@@ -66,7 +66,7 @@ if (isset($_SESSION["avisoApellido2"])) {
 ?>
     <p>
       <input type="submit" value="Siguiente">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 
