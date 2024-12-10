@@ -30,7 +30,7 @@
 
     <p>
       <input type="submit" value="Mostrar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

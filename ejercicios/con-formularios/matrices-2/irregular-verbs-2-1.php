@@ -60,7 +60,7 @@ print "\n";
 ?>
     <p>
       <input type="submit" value="Corregir">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 
