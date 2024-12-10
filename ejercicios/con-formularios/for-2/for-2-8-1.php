@@ -25,7 +25,7 @@
 
     <p>
       <input type="submit" value="Dibujar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 

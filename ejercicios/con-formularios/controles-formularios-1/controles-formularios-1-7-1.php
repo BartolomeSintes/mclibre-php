@@ -50,7 +50,7 @@ print "      <label><input type=\"checkbox\" name=\"letra\" value=\"hwb($color 0
 
     <p>
       <input type="submit" value="Enviar">
-      <input type="reset" value="Borrar">
+      <input type="reset">
     </p>
   </form>
 
