@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-12-04
+ * @version   2024-12-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,13 +61,13 @@ function pintaCartas(array $m): void
 
 $n = rand(5, 10);
 
-$cartas = generaMatrizCartasRand($n, 1, 6);
+$cartas = generaMatrizCartasRand($n);
 print "  <h2>$n cartas</h2>\n";
 print "\n";
 pintaCartas($cartas);
 print "\n";
 
-$cartas = generaMatrizCartasRand($n, 1, 6);
+$cartas = generaMatrizCartasRand($n);
 print "  <h2>$n cartas más</h2>\n";
 print "\n";
 pintaCartas($cartas);
@@ -77,7 +77,7 @@ pintaCartas($cartas);
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-12-04">4 de diciembre de 2024</time>
+      <time datetime="2024-12-12">12 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">
