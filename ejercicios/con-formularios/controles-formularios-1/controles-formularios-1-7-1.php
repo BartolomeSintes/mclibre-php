@@ -1,33 +1,9 @@
-<?php
-/**
- * Controles en formularios (1) 7-1 - controles-formularios-1-7-1.php
- *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-04
- * @link      https://www.mclibre.org
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *
- *  You should have received a copy of the GNU Affero General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>
-    Colores 2 (Formulario).
+    Letrero 2 (Formulario).
     Controles en formularios (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,17 +12,34 @@
 </head>
 
 <body>
-  <h1>Colores 2 (Formulario)</h1>
+  <h1>Letrero 2 (Formulario)</h1>
 
   <form action="controles-formularios-1-7-2.php" method="get">
-    <p>Elija los colores a cambiar:<br>
-<?php
-$color = rand(0, 360);
+    <p>Indique el texto, tamaño, color y tipo de letra a mostrar:</p>
 
-print "      <label><input type=\"checkbox\" name=\"fondo\" value=\"hwb($color 80% 0%)\"> Color del fondo de la página</label><br>\n";
-print "      <label><input type=\"checkbox\" name=\"letra\" value=\"hwb($color 0% 40%)\"> Color de la letra de la página</label>\n";
-?>
-    </p>
+    <table>
+      <tr>
+        <td>Texto:</td>
+        <td><input type="text" name="info[1]" size="30"></td>
+      </tr>
+      <tr>
+        <td>Tamaño:</td>
+        <td><input type="number" name="info[2]" min="20" value="80"></td>
+      </tr>
+      <tr>
+        <td>Color:</td>
+        <td><input type="color" name="info[3]" value="#000000"></td>
+      </tr>
+      <tr>
+        <td>Tipo de letra:</td>
+        <td>
+            <input type="radio" name="tipo" value="sans-serif" checked>Sans-sérif
+            <input type="radio" name="tipo" value="serif">Sérif
+            <input type="radio" name="tipo" value="monospace">Monospace
+            <input type="radio" name="tipo" value="cursive">Cursive
+        </td>
+      </tr>
+    </table>
 
     <p>
       <input type="submit" value="Enviar">
@@ -57,7 +50,7 @@ print "      <label><input type=\"checkbox\" name=\"letra\" value=\"hwb($color 0
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-04">4 de octubre de 2022</time>
+      <time datetime="2024-12-19">19 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

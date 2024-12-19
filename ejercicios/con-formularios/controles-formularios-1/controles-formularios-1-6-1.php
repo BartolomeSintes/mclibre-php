@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Colores 1 (Formulario).
+    Letrero 1 (Formulario).
     Controles en formularios (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,13 +12,21 @@
 </head>
 
 <body>
-  <h1>Colores 1 (Formulario)</h1>
+  <h1>Letrero 1 (Formulario)</h1>
 
   <form action="controles-formularios-1-6-2.php" method="get">
-    <p>Elija los colores a cambiar:<br>
-      <label><input type="checkbox" name="fondo" value="el color del fondo"> Color del fondo de la página</label><br>
-      <label><input type="checkbox" name="letra" value="el color de la letra"> Color de la letra de la página</label>
-    </p>
+    <p>Indique el texto y tamaño a mostrar:</p>
+
+    <table>
+      <tr>
+        <td>Texto:</td>
+        <td><textarea name="info[1]" rows="4" cols="40"></textarea></td>
+      </tr>
+      <tr>
+        <td>Tamaño:</td>
+        <td><input type="number" name="info[2]" min="20" value="80"></td>
+      </tr>
+    </table>
 
     <p>
       <input type="submit" value="Enviar">
@@ -29,7 +37,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2024-12-19">19 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

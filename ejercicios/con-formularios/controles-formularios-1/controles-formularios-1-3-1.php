@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dibuja cuadrado 2 (Formulario).
+    Fruta favorita (Formulario).
     Controles en formularios (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,10 +12,17 @@
 </head>
 
 <body>
-  <h1>Dibuja cuadrado 2 (Formulario)</h1>
+  <h1>Fruta favorita (Formulario)</h1>
 
   <form action="controles-formularios-1-3-2.php" method="get">
-    <p><label>Escriba el tamaño: <input type="number" name="ancho" min="10" value="50"></label></p>
+    <p>Indique su fruta preferida:<br>
+      <label><input type="radio" name="fruta" value="cerezas.svg"> Cereza</label><br>
+      <label><input type="radio" name="fruta" value="fresa.svg"> Fresa</label><br>
+      <label><input type="radio" name="fruta" value="limon.svg"> Limón</label><br>
+      <label><input type="radio" name="fruta" value="manzana.svg"> Manzana</label><br>
+      <label><input type="radio" name="fruta" value="naranja.svg"> Naranja</label><br>
+      <label><input type="radio" name="fruta" value="pera.svg"> Pera</label>
+    </p>
 
     <p>
       <input type="submit" value="Enviar">
@@ -26,7 +33,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2024-12-19">19 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

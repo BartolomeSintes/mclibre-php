@@ -1,11 +1,11 @@
 <?php
 /**
- * Controles en formularios (1) 5-2 - controles-formularios-1-5-2.php
+ * Controles en formularios (1) 5-2 - controles-formularios-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2024-12-19
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Fruta preferida 2 (Resultado).
+    Datos personales 2 (Resultado).
     Controles en formularios (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,9 +36,7 @@
 </head>
 
 <body>
-  <h1>Fruta preferida 2 (Resultado)</h1>
-
-  <p>Esta es su fruta favorita:</p>
+  <h1>Datos personales 2 (Resultado)</h1>
 
 <?php
 // Función de recogida de datos
@@ -63,9 +61,9 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$fruta = recoge("fruta");
+$datos = recoge("datos", []);
 
-print "  <p><img src=\"img/frutas/$fruta\" width=\"300\"></p>\n";
+print "  <p>Su nombre completo es <strong>$datos[1] $datos[2]</strong>.</p>\n";
 ?>
 
   <p><a href="controles-formularios-1-5-1.php">Volver al formulario.</a></p>
@@ -73,7 +71,7 @@ print "  <p><img src=\"img/frutas/$fruta\" width=\"300\"></p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2024-12-19">19 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

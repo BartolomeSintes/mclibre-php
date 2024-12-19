@@ -1,9 +1,32 @@
+<?php
+/**
+ * Controles en formularios (1) 4-1 - controles-formularios-1-4-1.php
+ *
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2024 Bartolomé Sintes Marco
+ * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @version   2024-12-19
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>
-    Fruta preferida 1 (Formulario).
+    Colores (Formulario).
     Controles en formularios (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,16 +35,16 @@
 </head>
 
 <body>
-  <h1>Fruta preferida 1 (Formulario)</h1>
+  <h1>Colores (Formulario)</h1>
 
   <form action="controles-formularios-1-4-2.php" method="get">
-    <p>Indique su fruta preferida:<br>
-      <label><input type="radio" name="fruta" value="la cereza"> Cereza</label><br>
-      <label><input type="radio" name="fruta" value="la fresa"> Fresa</label><br>
-      <label><input type="radio" name="fruta" value="el limón"> Limón</label><br>
-      <label><input type="radio" name="fruta" value="la manzana"> Manzana</label><br>
-      <label><input type="radio" name="fruta" value="la naranja"> Naranja</label><br>
-      <label><input type="radio" name="fruta" value="la pera"> Pera</label>
+    <p>Elija los colores a cambiar:<br>
+<?php
+$color = rand(0, 360);
+
+print "      <label><input type=\"checkbox\" name=\"fondo\" value=\"hwb($color 80% 0%)\"> Color del fondo de la página</label><br>\n";
+print "      <label><input type=\"checkbox\" name=\"letra\" value=\"hwb($color 0% 40%)\"> Color de la letra de la página</label>\n";
+?>
     </p>
 
     <p>
@@ -33,7 +56,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2024-12-19">19 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">

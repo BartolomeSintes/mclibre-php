@@ -3,9 +3,9 @@
  * Controles en formularios (1) 4-2 - controles-formularios-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2024 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2024-12-19
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,12 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Fruta preferida 1 (Resultado).
+    Colores (Resultado).
     Controles en formularios (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
-</head>
-
-<body>
-  <h1>Fruta preferida 1 (Resultado)</h1>
-
 <?php
 // Función de recogida de datos
 function recoge($key, $type = "")
@@ -61,17 +56,24 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$fruta = recoge("fruta");
+$fondo = recoge("fondo");
+$letra = recoge("letra");
 
-print "  <p>Su fruta preferida es <strong>$fruta</strong>.</p>\n";
+print "  <style>body { background-color: $fondo; color: $letra; }</style>\n";
 ?>
+</head>
+
+<body>
+  <h1>Colores (Resultado)</h1>
+
+  <p>Se han cambiado los colores elegidos.</p>
 
   <p><a href="controles-formularios-1-4-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2024-12-19">19 de diciembre de 2024</time>
     </p>
 
     <p class="licencia">
