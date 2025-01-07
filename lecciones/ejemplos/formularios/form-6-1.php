@@ -15,6 +15,12 @@
 
     <p>Edad: <input type="number" name="1"></p>
 
+    <p>
+      Aficiones:
+      <input type="checkbox" name="aficion[1]"> Deporte
+      <input type="checkbox" name="aficion[2]"> Lectura
+    </p>
+
     <p><input type="submit" value="Enviar"></p>
   </form>
 </body>

@@ -16,8 +16,12 @@ print_r($_REQUEST);
 print "</pre>\n";
 print "\n";
 
-foreach($_REQUEST as $indice => $valor) {
-    print "<p>El índice $indice es de tipo <strong>" . gettype($indice) . "</strong>. El valor $valor es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+foreach ($_REQUEST as $indice => $valor) {
+    if (is_array($valor)) {
+        print "<p>El índice <strong>$indice</strong> es de tipo <strong>" . gettype($indice) . "</strong>. El valor es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+    } else {
+        print "<p>El índice <strong>$indice</strong> es de tipo <strong>" . gettype($indice) . "</strong>. El valor <strong>$valor</strong> es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+    }
     print "\n";
 }
 ?>
