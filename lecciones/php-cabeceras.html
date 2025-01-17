@@ -195,7 +195,7 @@ header("Location:http://www.example.com");
 
       <hr class="corta">
 
-      <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan las funciones <a href="https://www.php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="https://www.php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>, que permiten gestionar directamente el buffer de salida independientemente de la configuración del servidor. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
+      <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan la función <a href="https://www.php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a>, que permite gestionar directamente el buffer de salida independientemente de la configuración del servidor. Este buffer es temporal y desaparece cuando se termina de ejecutar la página.</p>
 
       <ul>
         <li>En el ejemplo siguiente, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección no llega a realizarse, por lo que el usuario ve el contenido de la página 2.
@@ -296,16 +296,24 @@ print "&lt;p&gt;&lt;a href=\"buffer-sobra-1.php\"&gt;Volver al principio&lt;/a&g
 
       <p>En el caso de los archivos UTF-8 realmente no se necesita marca de orden de bytes porque el orden de los bytes debe ser siempre el orden natural, pero el caso es que existe una marca de orden de bytes, los tres caracteres EF BB BF (que en ASCII corresponden a los caracteres <strong>ï»¿</strong>). En el caso de UTF-8 la marca de orden de bytes es opcional y puede servir para identificar un archivo como UTF-8 y distinguirlo de otros formatos.</p>
 
-      <p>Los editores (como Visual Studio Code) no muestran la marca de orden de bytes y suelen respetarlos al guardar de nuevo al archivo. Para ver esos caracteres, se puede utilizar un editor hexadecimal, que muestra todos los caracteres sin excepción.</p>
-
-      <p>Las imágenes siguientes muestran los valores hexadecimales de dos archivos UTF-8 (sin BOM y con BOM ), utilizando el editor Notepad++ con el plug-in HEX-Editor:</p>
+      <p>Los editores (como Visual Studio Code) no muestran la marca de orden de bytes y suelen respetarlos al guardar de nuevo al archivo. Visual Studio Code muestra en la barra de estado la codificación del archivo e indica si el archivo UTF-8 tiene BOM, como muestran las capturas siguientes de dos archivos UTF-8 (sin BOM y con BOM).</p>
 
       <p class="captura">
-        <img src="../img/php/utf8-bom-sin.png" alt="archivo UTF-8 con BOM" width="1024" height="290">
+        <img src="../img/php/utf8-bom-sin.png" alt="archivo UTF-8 con BOM" width="1024" height="320">
       </p>
 
       <p class="captura">
-        <img src="../img/php/utf8-bom-con.png" alt="archivo UTF-8 sin BOM" width="1024" height="290">
+        <img src="../img/php/utf8-bom-con.png" alt="archivo UTF-8 sin BOM" width="1024" height="320">
+      </p>
+
+      <p>Para ver esos caracteres, se puede utilizar un editor hexadecimal, que muestra todos los caracteres sin excepción. Las imágenes siguientes muestran los valores hexadecimales de los mismos archivos UTF-8 (sin BOM y con BOM), utilizando la extensión Hex Editor en Visual Studio Code:</p>
+
+      <p class="captura">
+        <img src="../img/php/utf8-bom-sin-hex.png" alt="archivo UTF-8 con BOM" width="1024" height="290">
+      </p>
+
+      <p class="captura">
+        <img src="../img/php/utf8-bom-con-hex.png" alt="archivo UTF-8 sin BOM" width="1024" height="290">
       </p>
 
       <p>Esta marca de orden de bytes puede causar problemas si PHP no reconoce la marca de orden de bytes como un identificador de juego de caracteres, sino como caracteres situados antes de un fragmento PHP que se deben enviar al navegador. El comportamiento de PHP depende de las opciones elegidas al compilar el intérprete de PHP, por lo que la única solución viable es asegurarse de que los archivos no tienen BOM (como recomiendan las <a href="../otros/guia-estilo.html">guías de estilo</a> más populares).</p>
@@ -829,7 +837,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de enero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
