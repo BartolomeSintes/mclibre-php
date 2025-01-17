@@ -1,6 +1,6 @@
 <?php
 /**
- * Reparto de tríos (Resultado) - seleccion-1-7-2.php
+ * if ... elseif ... else ... 6-2 - if-else-6-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Reparto de tríos (Resultado).
+    Convertidor de temperaturas Celsius / Fahrenheit (Resultado).
     Selección (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Reparto de tríos (Resultado)</h1>
+  <h1>Convertidor de temperaturas Celsius / Fahrenheit (Resultado)</h1>
 
 <?php
 // Función de recogida de datos
@@ -61,60 +61,53 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$jugadores = recoge("jugadores");
+$temperatura = recoge("temperatura");
+$unidad      = recoge("unidad");
 
-$jugadoresOk = false;
+$temperaturaOk = false;
+$unidadOk      = false;
 
-$jugadoresMinimo = 3;
-$jugadoresMaximo = 10;
-
-if ($jugadores == "") {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores.</p>\n";
+if ($temperatura == "") {
+    print "  <p class=\"aviso\">No ha escrito la temperatura.</p>\n";
     print "\n";
-} elseif (!is_numeric($jugadores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores como número.</p>\n";
+} elseif (!is_numeric($temperatura)) {
+    print "  <p class=\"aviso\">No ha escrito la temperatura como número.</p>\n";
     print "\n";
-} elseif (!ctype_digit($jugadores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores "
-        . "como número entero positivo.</p>\n";
+} elseif ($temperatura < -273.15 && $unidad == "c") {
+    print "  <p class=\"aviso\">Una temperatura no puede ser tan baja.</p>\n";
     print "\n";
-} elseif ($jugadores < $jugadoresMinimo || $jugadores > $jugadoresMaximo) {
-    print "  <p class=\"aviso\">El número de jugadores debe estar entre "
-        . "$jugadoresMinimo y $jugadoresMaximo.</p>\n";
+} elseif ($temperatura < -459.67 && $unidad == "f") {
+    print "  <p class=\"aviso\">Una temperatura no puede ser tan baja.</p>\n";
+    print "\n";
+} elseif ($temperatura >= 10000) {
+    print "  <p class=\"aviso\">La temperatura no es inferior a 10.000.</p>\n";
     print "\n";
 } else {
-    $jugadoresOk = true;
+    $temperaturaOk = true;
 }
 
-if ($jugadoresOk) {
-    $c1    = [];
-    $c2    = [];
-    $c3    = [];
-    $total = [];
-
-    for ($i = 1; $i <= $jugadores; $i++) {
-        $c1[$i]    = rand(1, 10);
-        $c2[$i]    = rand(1, 10);
-        $c3[$i]    = rand(1, 10);
-        $total[$i] = $c1[$i] + $c2[$i] + $c3[$i];
-    }
-
-    $maximo = max($total);
-
-    print "  <p>La puntuación máxima ha sido <strong>$maximo puntos</strong>.</p>\n";
+if ($unidad == "") {
+    print "  <p class=\"aviso\">No ha escrito la unidad.</p>\n";
     print "\n";
+} elseif ($unidad != "c" && $unidad != "f") {
+    print "  <p class=\"aviso\">La unidad no es correcta.</p>\n";
+    print "\n";
+} else {
+    $unidadOk = true;
+}
 
-    for ($i = 1; $i <= $jugadores; $i++) {
-        print "  <p>Jugador $i:\n";
-        print "    <img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" height=\"120px\">\n";
-        print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" height=\"120px\">\n";
-        print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" height=\"120px\">\n";
-        print "  </p>\n";
+if ($temperaturaOk && $unidadOk) {
+    if ($unidad == "c") {
+        $fahrenheit = round(1.8 * $temperatura + 32, 2);
+        print "  <p>$temperatura ºC son $fahrenheit ºF</p>\n";
+    } else {
+        $celsius = round(($temperatura - 32) / 1.8, 2);
+        print "  <p>$temperatura ºF son $celsius ºC</p>\n";
     }
     print "\n";
 }
 ?>
-  <p><a href="seleccion-1-7-1.php">Volver al formulario.</a></p>
+  <p><a href="seleccion-1-5-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

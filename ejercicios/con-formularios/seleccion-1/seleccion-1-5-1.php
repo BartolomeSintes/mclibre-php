@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Reparto de tríos (Formulario).
+    Convertidor de temperaturas Celsius / Fahrenheit (Formulario).
     Selección (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,15 +12,26 @@
 </head>
 
 <body>
-  <h1>Reparto de tríos (Formulario)</h1>
+  <h1>Convertidor de temperaturas Celsius / Fahrenheit (Formulario)</h1>
 
-  <form action="seleccion-1-7-2.php" method="get">
-    <p>Escriba un número de jugadores (3 &lt; número &le; 10) y repartiré tres cartas a cada jugador.</p>
-
-    <p><label>Número de jugadores: <input type="number" name="jugadores" min="3" max="10" value="6"></label></p>
+  <form action="seleccion-1-5-2.php" method="get">
+    <p>Escriba una temperatura en grados Celsius o Fahrenheit (-273.15 &le; Celsius &lt; 10.000;
+      -459.67 &le; Fahrenheit &lt; 10.000) para convertirla a la otra unidad (Fahrenheit o Celsius).
+    </p>
 
     <p>
-      <input type="submit" value="Mostrar">
+      <label>
+        Temperatura:
+        <input type="number" name="temperatura" min="-500" max="10000" step="any">
+      </label>
+      <select name="unidad">
+        <option value="c" selected>Celsius</option>
+        <option value="f">Fahrenheit</option>
+      </select>
+    </p>
+
+    <p>
+      <input type="submit" value="Convertir">
       <input type="reset">
     </p>
   </form>
@@ -40,4 +51,3 @@
   </footer>
 </body>
 </html>
-

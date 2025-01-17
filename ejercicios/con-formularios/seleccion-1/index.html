@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+  <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
 </head>
 
 <body>
@@ -22,118 +25,336 @@
 
       <h3><a href="#">Enunciados</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Convertidor distancias</a></li>
-        <li><a href="#ejercicio-2">2 - Convertidor segundos (1)</a></li>
-        <li><a href="#ejercicio-3">3 - Comparador 3 números</a></li>
-        <li><a href="#ejercicio-4">4 - Convertidor temperaturas</a></li>
-        <li><a href="#ejercicio-5">5 - Tabla de una columna</a></li>
-        <li><a href="#ejercicio-6">6 - Tabla sin cabecera</a></li>
+        <li><a href="#ejercicio-1">1 - Su cambio</a></li>
+        <li><a href="#ejercicio-2">2 - Camisetas</a></li>
+        <li><a href="#ejercicio-3">3 - Puntos en cuadrantes</a></li>
+        <li><a href="#ejercicio-4">4 - Comparador 3 números</a></li>
+        <li><a href="#ejercicio-5">5 - Convertidor temperaturas</a></li>
+        <li><a href="#ejercicio-6">6 - Cuenta palos</a></li>
         <li><a href="#ejercicio-7">7 - Reparto de tríos</a></li>
-      </ul>
-
-      <h3><a href="soluciones.html">Soluciones</a></h3>
-      <ul>
-        <li><a href="soluciones.html#ejercicio-1">1 - Convertidor distancias</a></li>
-        <li><a href="soluciones.html#ejercicio-2">2 - Convertidor segundos (1)</a></li>
-        <li><a href="soluciones.html#ejercicio-3">3 - Comparador 3 números</a></li>
-        <li><a href="soluciones.html#ejercicio-4">4 - Convertidor temperaturas</a></li>
-        <li><a href="soluciones.html#ejercicio-5">5 - Tabla de una columna</a></li>
-        <li><a href="soluciones.html#ejercicio-6">6 - Tabla sin cabecera</a></li>
-        <li><a href="soluciones.html#ejercicio-7">7 - Reparto de tríos</a></li>
       </ul>
     </div>
   </nav>
 
-  <p>Estos ejercicios (salvo el último) son una selección de los ejercicios propuestos en las páginas <a href="../operaciones-aritmeticas/index.html">Operaciones aritméticas</a>, <a href="../if-else/index.html">If ... else ...</a> y <a href="../for-3/index.html">for (3)</a>.</p>
-
-  <p><strong>Nota</strong>: Los valores introducidos por el usuario se deben comprobar y, si los valores no son correctos, se debe indicar el motivo al usuario.</p>
+  <p>Los valores introducidos por el usuario se deben comprobar siempre. Si los valores no son correctos, se debe indicar el motivo al usuario. Tenga en cuenta que en lagunos casos para introducir valores incorrectos se debe manipular la URL.</p>
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/con-formularios/cf-seleccion-1-plantillas.zip">plantillas de los ejercicios Selección (1) (Con formularios)</a>.</p>
 
-  <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios. Si lo prefiere, puede <a href="../../../soluciones/con-formularios/cf-seleccion-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
-
   <section id="ejercicio-1">
-    <h2>Operaciones aritméticas 2 - Convertidor de pies y pulgadas a centímetros</h2>
+    <h2>Selección (1) 1 - Su cambio</h2>
 
-    <p>Escriba un convertidor de pies y pulgadas a centímetros que conste de dos páginas.</p>
+    <p>Escriba un programa que simule una máquina de cobro, en dos páginas.</p>
+
     <ul>
-      <li>En la primera página se solicitan los pies y pulgadas a convertir (números enteros).
+      <li>La primera página muestra un formulario con tres controles:
         <ul>
-          <li>los pies deben ser un número entero mayor o igual que cero.</li>
-          <li>las pulgadas debe ser un número entero o decimal mayor o igual que cero.</li>
+          <li>La cantidad que se debe pagar (entero múltiplo de 100).</li>
+          <li>Los billetes de 200 € que se han introducido (entero sin límite).</li>
+          <li>Los billetes de 100 € que se han introducido (entre 0 y 3).</li>
         </ul>
       </li>
-      <li>En la segunda página se muestra el resultado en centímetros (con dos decimales).
+      <li>La segunda página indicará los avisos correspondientes a valores recibidos incorrectos y, en caso de no haber avisos, indicará:
         <ul>
-          <li>Recuerde que un pie son 12 pulgadas y una pulgada son 2,54 cm.</li>
+          <li>Si se ha pagado la cantidad exacta.</li>
+          <li>La cantidad faltante si no se ha entregado bastante dinero.</li>
+          <li>La cantidad sobrante, si se ha entregado dinero de sobra, junto con la cantidad de billetes de 200 € (sin límite) y 100 € (uno o ninguno) que forman el cambio.</li>
         </ul>
       </li>
     </ul>
 
+    <details>
+      <summary>Ayuda</summary>
+
+      <ul>
+        <li>Compruebe que la cantidad a pagar recibida: no es vacía, es un número, es un número entero positivo, es un múltiplo de 100.</li>
+        <li>Compruebe que el número de billetes de 200 recibido: no es vacío, es un número, es un número entero positivo.</li>
+        <li>Compruebe que el número de billetes de 100 recibido: no es vacío, es uno de los valores 0, 1, 2 o 3.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
-      <iframe src="../operaciones-aritmeticas/operaciones-aritmeticas-02-1.php" style="height: 22em;"></iframe>
+      <iframe src="seleccion-1-1-1.php" style="height: 22em;"></iframe>
       <div class="icono-enlace">
-        <a href="../operaciones-aritmeticas/operaciones-aritmeticas-02-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="seleccion-1-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por esta máquina de cobro:</p>
+
+    <table style="border: black 2px solid; width: 1100px; padding: 10px; text-align: center">
+      <caption>Máquina de cobro</caption>
+      <tr>
+        <td>Cantidad a pagar</td>
+        <td>Billetes de 200 €</td>
+        <td>Billetes de 100 €</td>
+        <td style="width: 600px">Cambio</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-cambio-deuda" min="0" step="100" value="1000" size="7" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-cambio-b200" min="0" size="5" style="border: blue 1px solid; font-size: 24px"></td>
+        <td>
+          <select id="co-cambio-b100" style="border: blue 1px solid; font-size: 24px">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </td>
+        <td><span id="co-cambio-cambio" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_cambio_deuda = document.getElementById("co-cambio-deuda");
+      var co_cambio_b200 = document.getElementById("co-cambio-b200");
+      var co_cambio_b100 = document.getElementById("co-cambio-b100");
+      var co_cambio_cambio = document.getElementById("co-cambio-cambio");
+
+      function calcula_cambio() {
+        var deuda = Number(co_cambio_deuda.value);
+        var cambio_b200 = Number(co_cambio_b200.value);
+        var cambio_b100 = Number(co_cambio_b100.value);
+        if (Math.trunc(deuda / 100) != deuda / 100) {
+          co_cambio_cambio.textContent = "¡La deuda debe ser múltiplo de 100!";
+        } else if (Math.trunc(cambio_b200) != cambio_b200) {
+          co_cambio_cambio.textContent = "¡El número de billetes no puede ser decimal!";
+        } else if (cambio_b200 * 200 + cambio_b100 * 100 == deuda) {
+          co_cambio_cambio.textContent = "Ha entregado la cantidad exacta.";
+        } else if (cambio_b200 * 200 + cambio_b100 * 100 < deuda) {
+          co_cambio_cambio.textContent = "Le falta entregar " + (deuda - cambio_b200 * 200 - cambio_b100 * 100) + "€.";
+        } else {
+          var cambio = cambio_b200 * 200 + cambio_b100 * 100 - deuda;
+          var c200 = Math.trunc(cambio / 200);
+          var c100 = Math.trunc((cambio - c200 * 200) / 100);
+          co_cambio_cambio.textContent = "Tome su cambio: " + cambio + "€ (" + c200 + " de 200€ y " + c100 + " de 100€).";
+        }
+      }
+      window.addEventListener("load", calcula_cambio);
+      co_cambio_deuda.addEventListener("change", calcula_cambio);
+      co_cambio_b200.addEventListener("change", calcula_cambio);
+      co_cambio_b100.addEventListener("change", calcula_cambio);
+    </script>
   </section>
 
   <section id="ejercicio-2">
-    <h2>Operaciones aritméticas 3 - Convertidor de segundos a minutos y segundos</h2>
+    <h2>Selección (1) 2 - Camisetas</h2>
 
-    <p>Escriba un convertidor de segundos a minutos y segundos que conste de dos páginas.</p>
+    <p>Escriba un programa que muestre una camiseta personalizada, en dos páginas.</p>
+
     <ul>
-      <li>En la primera página se solicitan los segundos a convertir (número entero).
+      <li>La primera página muestra un formulario con tres controles:
         <ul>
-          <li>los segundos deben ser un número entero mayor o igual que cero.</li>
+          <li>El color de la camiseta (no es necesario comprobar el formato del código de color, simplemente compruebe que el valor no es vacío).</li>
+          <li>El género de la camiseta (hombre o mujer).</li>
+          <li>El texto impreso en la camiseta (hasta 9 caracteres).
+            <p><strong>Nota:</strong> La longitud de una cadena se puede calcular con la función <span class="php-fun">strlen($cadena)</span>, que devuelve la longitud de la cadena.</p>
+          </li>
         </ul>
       </li>
-      <li>En la segunda página se muestra el resultado en minutos y segundos.</li>
+      <li>La segunda página indicará los avisos correspondientes a valores recibidos incorrectos y, en caso de no haber avisos, mostrará el dibujo de la camiseta personalizada.</li>
     </ul>
 
+    <details>
+      <summary>Ayuda</summary>
+
+      <ul>
+        <li>Compruebe que el color recibido: no es vacío.</li>
+        <li>Compruebe que el género recibido: es uno de los valores h o m.</li>
+        <li>Compruebe que el texto recibido: no es vacío, tiene menos de 10 caracteres.</li>
+        <li>En los dibujos de las camisetas hay que incluir el color y el texto, pero el resto del código svg sólo depende de que la camiseta sea de hombre o de mujer:
+          <ul>
+            <li>La camiseta de hombre es la siguiente:
+              <div class="codigo">
+                <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" width="266" height="332" viewBox="0 0 138.37401 171.27"&gt;
+      &lt;g&gt;
+        &lt;path fill="<span class="codigo-resaltado">#9fe4a9</span>" stroke="black" fill-rule="evenodd" d="M48.72.25s-24.6 12.56-30.4 15.82C12.57 19.34 8.3 23.35 6.3 32.9
+            4.28 42.44 0 72.83 0 72.83s13.3 4.52 18.83 4.52c5.53 0 8.8-1.5 8.8-1.5l.24 95.42H113v-99.2s6.3 1.26 11.56.5c5.28-.75 13.8-5.27
+            13.8-5.27s-7.77-35.9-9.03-42.94c-1.25-7.03-8.28-10.55-15.82-13.3C106 8.28 89.4 0 89.4 0s-5.02 4.52-17.57 5.02c-12.56.5-23.1-4.77-23.1-4.77z"
+            clip-rule="evenodd"/&gt;
+      &lt;/g&gt;
+      &lt;defs&gt;&lt;path id="camino" d="M20 50 Q 70 80 120 50" /&gt;&lt;/defs&gt;
+      &lt;text font-family="sans-serif" font-size="22"&gt;&lt;textPath xlink:href="#camino"&gt;<span class="codigo-resaltado">Camiseta</span>&lt;/textPath&gt;&lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;p&gt;</code>
+</pre>
+              </div>
+            </li>
+            <li>La camiseta de mujer es la siguiente:
+              <div class="codigo">
+                <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" width="244" height="328" viewBox="0 0 121.793 163.392"&gt;
+      &lt;g&gt;
+        &lt;path fill="<span class="codigo-resaltado">#9fe4a9</span>" stroke="black" fill-rule="evenodd" d="M41.14 0s-14.1 4.16-20.57 6.7C14.1 9.24 5.32 15.7 3
+            20.1c-2.3 4.4-3 6.5-3 6.5s4.62 3 8.78 9.24c4.16 6.24 11.56 10.4 11.56 10.4s.15 16.9 5.3 28.9c7 16.2-.9 35.8-4.38
+            45.75-3.47 9.9-6 42.5-6 42.5h94.05s-1.32-24.77-7.6-40c-6.2-15.27-9.7-36.77-4.4-47.86 5.3-11.1 4.9-29.12 4.9-29.12s6.7-3.7
+            9-8.1c2.3-4.38 5.8-7.6 7.4-9.7 1.6-2.07 3.24-2.3 3.24-2.3s-4.16-8.8-6.24-11.56c-2.1-2.8-8.1-5.33-14.1-8.1C95.45 3.92 80.9
+            0 80.9 0s-5.56 3.7-18.04 3.7S41.14 0 41.14 0z" clip-rule="evenodd"/&gt;
+      &lt;/g&gt;
+      &lt;defs&gt;&lt;path id="camino" d="M20 40 Q 60 70 100 40" /&gt;&lt;/defs&gt;
+      &lt;text font-family="sans-serif" font-size="20"&gt;&lt;textPath xlink:href="#camino"&gt;<span class="codigo-resaltado">Camiseta</span>&lt;/textPath&gt;&lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
-      <iframe src="../operaciones-aritmeticas/operaciones-aritmeticas-03-1.php" style="height: 20em;"></iframe>
+      <iframe src="seleccion-1-2-1.php" style="height: 36em;"></iframe>
       <div class="icono-enlace">
-        <a href="../operaciones-aritmeticas/operaciones-aritmeticas-03-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="seleccion-1-2-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-3">
-    <h2>if ... elseif ... else ... 3 - Comparador de tres números</h2>
+    <h2>Selección (1) 3 - Puntos en cuadrantes</h2>
 
-    <p>Escriba un comparador de tres números que conste de dos páginas.</p>
+    <p>Escriba un programa muestre un número de puntos indicado por el usuario y que especifique si alguno de esos puntos se encuentra en el cuadrante indicado por el usuario.</p>
+
     <ul>
-      <li>En la primera página se solicitan tres números.
+      <li>La primera página muestra un formulario con dos controles:
         <ul>
-          <li>Los números pueden ser decimales.</li>
-          <li>Los números deben ser superiores a -1.000 e inferiores a 1.000.</li>
+          <li>El número de puntos que se va a mostrar (como mínimo, 3 puntos).</li>
+          <li>El cuadrante a considerar (arriba a la derecha, arriba a la izquierda, abajo a la izquierda, abajo a la derecha).</li>
         </ul>
       </li>
-      <li>En la segunda página se indica si los tres números son iguales, si hay dos iguales o si los tres son distintos.</li>
+      <li>La segunda página mostrará:
+        <ul>
+          <li>Un cuadrado centrado en el origen de 400px de lado (de -200px a 200px en ambos ejes).</li>
+          <li>Los ejes de coordenadas, que delimitan los cuatro cuadrantes.</li>
+          <li>El número de puntos indicado por el usuario.</li>
+          <li>Un mensaje indicando si hay puntos en el cuadrante elegido por el usuario.</li>
+          <li>Los puntos situados en un semieje (vertical u horizontal) se considerará que pertenecen a los dos cuadrantes separados por el semieje.</li>
+          <li>El origen (el centro de la figura) se considerará que pertenece a los cuatro cuadrantes.</li>
+        </ul>
+      </li>
     </ul>
 
+    <details>
+      <summary>Ayuda</summary>
+
+      <ul>
+        <li>Compruebe que el número puntos recibido: no es vacío, es un número, es un número entero positivo, es mayor o igual que 3.</li>
+        <li>Compruebe que el cuadrante recibido: no es vacío, es uno de los valores "Arriba a la derecha", "Abajo a la derecha", "Abajo a la izquierda" o "Arriba a la izquierda".</li>
+        <li>El gráfico SVG es el siguiente (en el ejemplo sólo se muestra un punto, que no estaría en el cuadrante elegido de arriba a la derecha):
+          <div class="codigo">
+            <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="400" height="400" viewBox="-200 -200 400 400"
+      style="border: black 1px solid" &gt;
+      &lt;line x1="0" y1="-200" x2="0" y2="200" stroke-width="1" stroke="blue" /&gt;
+      &lt;line x1="-200" y1="0" x2="200" y2="0" stroke-width="1" stroke="blue" /&gt;
+      <span class="codigo-resaltado">&lt;circle cx="<span class="codigo-resaltado">111</span>" cy="<span class="codigo-resaltado">160</span>" r="2" fill="red" /&gt;</span>
+      <span class="codigo-resaltado">...</span>
+    &lt;/svg&gt;
+  &lt;/p&gt;
+
+  &lt;p&gt;<span class="codigo-resaltado">No hay puntos Arriba a la derecha.</span>&lt;/p&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </details>
+
     <div class="filaflex">
-      <iframe src="../if-else/if-else-3-1.php" style="height: 24em;"></iframe>
+      <iframe src="seleccion-1-3-1.php" style="height: 36em;"></iframe>
       <div class="icono-enlace">
-        <a href="../if-else/if-else-3-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="seleccion-1-3-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-4">
-    <h2>if ... elseif ... else ... 6 - Convertidor de temperaturas Celsius / Fahrenheit</h2>
+    <h2>Selección (1) 4 - Comparador de tres números</h2>
 
-    <p>Escriba un convertidor de temperaturas Celsius a Fahrenheit o viceversa que conste de dos páginas.</p>
+    <p>Escriba un comparador de tres números que conste de dos páginas.</p>
     <ul>
-      <li>En la primera página se solicitan la temperatura y la unidad.
+      <li>En la primera página se solicitan tres números (decimales entre -1000 y 1000).</li>
+      <li>En la segunda página se indica si los tres números son iguales, si hay dos iguales o si los tres son distintos.</li>
+    </ul>
+
+    <details>
+      <summary>Ayuda</summary>
+
+      <ul>
+        <li>Compruebe que cada uno de los números recibidos: no es vacío, es un número, se encuentra entre -1000 y 1000.</li>
+      </ul>
+    </details>
+
+    <div class="filaflex">
+      <iframe src="seleccion-1-4-1.php" style="height: 23em;"></iframe>
+      <div class="icono-enlace">
+        <a href="seleccion-1-4-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este comparador de tres números:</p>
+
+    <table style="border: black 2px solid; width: 850px; padding: 10px; text-align: center">
+      <caption>Comparador de tres números</caption>
+      <tr>
+        <td>Primer número</td>
+        <td>Segundo número</td>
+        <td>Tercer número</td>
+        <td style="width: 600px">Resultado</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-cn-n1" min="-1000" max="1000" step="any" value="0" size="7" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-cn-n2" min="-1000" max="1000" step="any" value="0" size="7" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><input type="number" id="co-cn-n3" min="-1000" max="1000" step="any" value="0" size="7" style="border: blue 1px solid; font-size: 24px"></td>
+        <td><span id="co-cn-res" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_cn_n1 = document.getElementById("co-cn-n1");
+      var co_cn_n2 = document.getElementById("co-cn-n2");
+      var co_cn_n3 = document.getElementById("co-cn-n3");
+      var co_cn_res = document.getElementById("co-cn-res");
+
+      function calcula_compara_numeros() {
+        var n1 = Number(co_cn_n1.value);
+        var n2 = Number(co_cn_n2.value);
+        var n3 = Number(co_cn_n3.value);
+        co_cn_res.textContent = n1 + " " + n2 + " " + n3;
+
+        if (n1 == n2 && n2 == n3) {
+          co_cn_res.textContent = "Ha escrito tres números iguales.";
+        } else if (n1 == n2 || n2 == n3 || n1 == n3) {
+          co_cn_res.textContent = "Ha escrito dos números iguales.";
+        } else {
+          co_cn_res.textContent = "Ha escrito tres números distintos.";
+        }
+      }
+      window.addEventListener("load", calcula_compara_numeros);
+      co_cn_n1.addEventListener("change", calcula_compara_numeros);
+      co_cn_n2.addEventListener("change", calcula_compara_numeros);
+      co_cn_n3.addEventListener("change", calcula_compara_numeros);
+    </script>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Selección (1) 5 - Convertidor de temperaturas Celsius / Fahrenheit</h2>
+
+    <p>Escriba un programa que convierta temperaturas Celsius a Fahrenheit o viceversa, en dos páginas.</p>
+    <ul>
+      <li>La primera página muestra un formulario con dos controles para indicar la temperatura y la unidad.
         <ul>
           <li>La temperatura puede ser un valor decimal.</li>
           <li>La temperatura no puede ser inferior a -273,15 ºC o -459,67 ºF (<a href="https://es.wikipedia.org/wiki/Cero_absoluto">explicación en la wikipedia</a>).</li>
           <li>La temperatura debe ser inferior a 10.000.</li>
+          <li>Las posibles unidades de emperatura son Celsius o Farenheit.</li>
         </ul>
       </li>
-      <li>En la segunda página se muestra la temperatura en la otra unidad.
+      <li>La segunda página mostrará la temperatura en la otra unidad.
         <ul>
           <li>Las fórmulas de conversión entre grados Celsius (ºC) y grados Fahrenheit (ºF) y viceversa se obtienen despejando la fórmula: F - 32 = 1,8 * C.</li>
           <li>El resultado deben presentarse con dos decimales.</li>
@@ -141,62 +362,101 @@
       </li>
     </ul>
 
-    <div class="filaflex">
-      <iframe src="../if-else/if-else-6-1.php" style="height: 20em;"></iframe>
-      <div class="icono-enlace">
-        <a href="../if-else/if-else-6-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-  </section>
+    <details>
+      <summary>Ayuda</summary>
 
-  <section id="ejercicio-5">
-    <h2>For (3) 2 - Tabla de una columna</h2>
-
-    <p>Escriba un programa que muestre una tabla de una columna que conste de dos páginas.</p>
-    <ul>
-      <li>En la primera página se solicita el número de filas.
-        <ul>
-          <li>No se deben admitir números decimales ni negativos.</li>
-          <li>Sólo se deben admitir enteros positivos inferiores o iguales a 200 y superiores a 0.</li>
-        </ul>
-      </li>
-      <li>En la segunda página se muestra la tabla (con un límite de 200 filas).
-        <ul>
-          <li>Para generar la tabla es suficiente un único bucle.</li>
-        </ul>
-      </li>
-    </ul>
+      <ul>
+        <li>Compruebe que la temperatura recibida: no es vacía, es un número, se encuentra entre -273,15 y 10000 si los grados son Celsius y entre -459,67 y 10000 si los grados son Farenheit.</li>
+        <li>Compruebe que la unidad recibida: es uno de los valores c o f.</li>
+        <li>La fórmula para calcular los grados Farenheit es: `F = 1.8 * C + 32`</li>
+        <li>La fórmula para calcular los grados Celsius es: `C = (F - 32) / 1.8`</li>
+      </ul>
+    </details>
 
     <div class="filaflex">
-      <iframe src="../for-3/for-3-2-1.php" style="height: 30em;"></iframe>
+      <iframe src="seleccion-1-5-1.php" style="height: 20em;"></iframe>
       <div class="icono-enlace">
-        <a href="../for-3/for-3-2-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="seleccion-1-5-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
+
+    <p>Compruebe el funcionamiento de su programa comparando sus resultados con los proporcionados por este convertidor de temperaturas:</p>
+
+    <table style="border: black 2px solid; width: 800px; padding: 10px; text-align: center">
+      <caption>Comparador de temperaturas</caption>
+      <tr>
+        <td>Temperatura</td>
+        <td>Unidad</td>
+        <td>Resultado</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="co-ct-te" min="-500" max="1000" step="any" value="451" size="7" style="border: blue 1px solid; font-size: 24px"></td>
+        <td>
+          <select id="co-ct-un" style="border: blue 1px solid; font-size: 24px">
+            <option value="c" selected>Celsius</option>
+            <option value="f" selected>Fahrenheit</option>
+          </select>
+        </td>
+        <td><span id="co-ct-res" style="font-size: 24px"></span></td>
+      </tr>
+    </table>
+
+    <script>
+      var co_ct_te = document.getElementById("co-ct-te");
+      var co_ct_un = document.getElementById("co-ct-un");
+      var co_ct_res = document.getElementById("co-ct-res");
+
+      function calcula_convierte_temperatura() {
+        var te = Number(co_ct_te.value);
+        var un = co_ct_un.value;
+        co_ct_res.textContent = te + " " + un;
+
+        if (te < -273.15 && un == "c") {
+          co_ct_res.textContent = "Una temperatura no puede ser tan baja.";
+        } else if (te < -459.67 && un == "f") {
+          co_ct_res.textContent = "Una temperatura no puede ser tan baja.";
+        } else if (te >= 10000) {
+          co_ct_res.textContent = "La temperatura no es inferior a 10.000.";
+        } else if (un == "c") {
+          var fa = Math.round((1.8 * te + 32) * 100) / 100;
+          co_ct_res.textContent = "La temperatura " + te + " ºC son " + fa + " ºF.";
+        } else {
+          var ce = Math.round((te - 32) / 1.8 * 100) / 100;
+          co_ct_res.textContent = "La temperatura " + te + " ºF son " + ce + " ºC.";
+        }
+      }
+      window.addEventListener("load", calcula_convierte_temperatura);
+      co_ct_te.addEventListener("change", calcula_convierte_temperatura);
+      co_ct_un.addEventListener("change", calcula_convierte_temperatura);
+    </script>
   </section>
 
   <section id="ejercicio-6">
-    <h2>For (3) 3 - Tabla de multiplicar sin cabecera</h2>
+    <h2>Selección (1) 6 - Cuenta palos</h2>
 
-    <p>Escriba un programa que muestre una tabla de multiplicar que conste de dos páginas.</p>
+    <p>Escriba un programa que muestre el número de cartas indicado por el usuario. Además, el programa señalará cuántas cartas hay de los palos indicados por el usuario y los mostrará.</p>
+
     <ul>
-      <li>En la primera página se solicita el tamaño de la tabla.
+      <li>La primera página muestra un formulario con tres controles:
         <ul>
-          <li>No se deben admitir números decimales ni negativos.</li>
-          <li>Sólo se deben admitir enteros positivos inferiores o iguales a 100 y superiores a 0.</li>
+          <li>El número de cartas que se va a mostrar (entre 3 y 7).</li>
+          <li>Los dos palos que se van a contar (Corazones, Rombos, Picas o Tréboles)</li>
         </ul>
       </li>
-      <li>En la segunda página se muestra la tabla de multiplicar hasta el número indicado (tabla sin cabecera, con un límite de 100 columnas o filas).
+      <li>La segunda página mostrará:
         <ul>
-          <li>Para generar la tabla son necesarios dos bucles anidados.</li>
+          <li>Si se han recibido valores incorrectos, los mensajes de error correspondientes.</li>
+          <li>El número de cartas indicado por el usuario.</li>
+          <li>Las imágenes de las cartas del 1 al 10, al azar.</li>
+          <li>El número de cartas de cada uno de los dos palos elegidos por el usuario.</li>
         </ul>
       </li>
     </ul>
 
     <div class="filaflex">
-      <iframe src="../for-3/for-3-3-1.php" style="height: 32em;"></iframe>
+      <iframe src="seleccion-1-6-1.php" style="height: 31em;"></iframe>
       <div class="icono-enlace">
-        <a href="../for-3/for-3-3-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="seleccion-1-6-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -211,7 +471,7 @@
     </ul>
 
     <div class="filaflex">
-      <iframe src="seleccion-1-7-1.php" style="height: 34em;"></iframe>
+      <iframe src="seleccion-1-7-1.php" style="height: 36em;"></iframe>
       <div class="icono-enlace">
         <a href="seleccion-1-7-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -219,13 +479,13 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 14 de enero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
       Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
-    </footer>
+  </footer>
 </body>
 </html>

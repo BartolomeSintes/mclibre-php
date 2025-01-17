@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Reparto de tríos (Formulario).
+    Comparador de tres números (Formulario).
     Selección (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,15 +12,28 @@
 </head>
 
 <body>
-  <h1>Reparto de tríos (Formulario)</h1>
+  <h1>Comparador de tres números (Formulario)</h1>
 
-  <form action="seleccion-1-7-2.php" method="get">
-    <p>Escriba un número de jugadores (3 &lt; número &le; 10) y repartiré tres cartas a cada jugador.</p>
+  <form action="seleccion-1-4-2.php" method="get">
+    <p>Escriba tres números (-1.000 &lt; números &lt; 1.000) para comprobar si hay números iguales.</p>
 
-    <p><label>Número de jugadores: <input type="number" name="jugadores" min="3" max="10" value="6"></label></p>
+    <table>
+      <tr>
+        <td><label for="numero1">Primer número</label>:</td>
+        <td><input type="number" name="numero1" min="-1000" max="1000" step="any" id="numero1"></td>
+      </tr>
+      <tr>
+        <td><label for="numero2">Segundo número:</label></td>
+        <td><input type="number" name="numero2" min="-1000" max="1000" step="any" id="numero2"></td>
+      </tr>
+      <tr>
+        <td><label for="numero3">Tercer número:</label></td>
+        <td><input type="number" name="numero3" min="-1000" max="1000" step="any" id="numero3"></td>
+      </tr>
+    </table>
 
     <p>
-      <input type="submit" value="Mostrar">
+      <input type="submit" value="Comprobar">
       <input type="reset">
     </p>
   </form>
@@ -40,4 +53,3 @@
   </footer>
 </body>
 </html>
-

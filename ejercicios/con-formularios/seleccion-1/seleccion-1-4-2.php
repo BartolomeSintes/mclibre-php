@@ -1,6 +1,6 @@
 <?php
 /**
- * Reparto de tríos (Resultado) - seleccion-1-7-2.php
+ * if ... elseif ... else ... 3-2 - if-else-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Reparto de tríos (Resultado).
+    Comparador de tres números (Resultado).
     Selección (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Reparto de tríos (Resultado)</h1>
+  <h1>Comparador de tres números (Resultado)</h1>
 
 <?php
 // Función de recogida de datos
@@ -61,60 +61,71 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$jugadores = recoge("jugadores");
+$numero1 = recoge("numero1");
+$numero2 = recoge("numero2");
+$numero3 = recoge("numero3");
 
-$jugadoresOk = false;
+$numero1Ok = false;
+$numero2Ok = false;
+$numero3Ok = false;
 
-$jugadoresMinimo = 3;
-$jugadoresMaximo = 10;
-
-if ($jugadores == "") {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores.</p>\n";
+if ($numero1 == "") {
+    print "  <p class=\"aviso\">No ha escrito el primer número.</p>\n";
     print "\n";
-} elseif (!is_numeric($jugadores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores como número.</p>\n";
+} elseif (!is_numeric($numero1)) {
+    print "  <p class=\"aviso\">No ha escrito el primer número como número.</p>\n";
     print "\n";
-} elseif (!ctype_digit($jugadores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores "
-        . "como número entero positivo.</p>\n";
-    print "\n";
-} elseif ($jugadores < $jugadoresMinimo || $jugadores > $jugadoresMaximo) {
-    print "  <p class=\"aviso\">El número de jugadores debe estar entre "
-        . "$jugadoresMinimo y $jugadoresMaximo.</p>\n";
+} elseif ($numero1 <= -1000 || $numero1 >= 1000) {
+    print "  <p class=\"aviso\">El primer número no está entre -1.000 y 1.000.</p>\n";
     print "\n";
 } else {
-    $jugadoresOk = true;
+    $numero1Ok = true;
 }
 
-if ($jugadoresOk) {
-    $c1    = [];
-    $c2    = [];
-    $c3    = [];
-    $total = [];
-
-    for ($i = 1; $i <= $jugadores; $i++) {
-        $c1[$i]    = rand(1, 10);
-        $c2[$i]    = rand(1, 10);
-        $c3[$i]    = rand(1, 10);
-        $total[$i] = $c1[$i] + $c2[$i] + $c3[$i];
-    }
-
-    $maximo = max($total);
-
-    print "  <p>La puntuación máxima ha sido <strong>$maximo puntos</strong>.</p>\n";
+if ($numero2 == "") {
+    print "  <p class=\"aviso\">No ha escrito el segundo numero.</p>\n";
     print "\n";
+} elseif (!is_numeric($numero2)) {
+    print "  <p class=\"aviso\">No ha escrito el segundo número como número.</p>\n";
+    print "\n";
+} elseif ($numero2 <= -1000 || $numero2 >= 1000) {
+    print "  <p class=\"aviso\">El segundo número no está entre -1.000 y 1.000.</p>\n";
+    print "\n";
+} else {
+    $numero2Ok = true;
+}
 
-    for ($i = 1; $i <= $jugadores; $i++) {
-        print "  <p>Jugador $i:\n";
-        print "    <img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" height=\"120px\">\n";
-        print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" height=\"120px\">\n";
-        print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" height=\"120px\">\n";
-        print "  </p>\n";
+if ($numero3 == "") {
+    print "  <p class=\"aviso\">No ha escrito el tercer numero.</p>\n";
+    print "\n";
+} elseif (!is_numeric($numero3)) {
+    print "  <p class=\"aviso\">No ha escrito el tercer número como número.</p>\n";
+    print "\n";
+} elseif ($numero3 <= -1000 || $numero3 >= 1000) {
+    print "  <p class=\"aviso\">El tercer número no está entre -1.000 y 1.000.</p>\n";
+    print "\n";
+} else {
+    $numero3Ok = true;
+}
+
+if ($numero1Ok && $numero2Ok && $numero3Ok) {
+    print "  <p>Primer número: <strong>$numero1</strong></p>\n";
+    print "\n";
+    print "  <p>Segundo número: <strong>$numero2</strong></p>\n";
+    print "\n";
+    print "  <p>Tercer número: <strong>$numero3</strong></p>\n";
+    print "\n";
+    if ($numero1 == $numero2 && $numero2 == $numero3) {
+        print "  <p>Ha escrito tres números iguales.</p>\n";
+    } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
+        print "  <p>Ha escrito dos números iguales.</p>\n";
+    } else {
+        print "  <p>Ha escrito tres números distintos.</p>\n";
     }
     print "\n";
 }
 ?>
-  <p><a href="seleccion-1-7-1.php">Volver al formulario.</a></p>
+  <p><a href="seleccion-1-4-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
