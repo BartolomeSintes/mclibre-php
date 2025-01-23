@@ -24,23 +24,23 @@
 
       <h3><a href="index.html">Enunciados</a></h3>
       <ul>
-        <li><a href="index.html#ejercicio-1">1 - Convertidor distancias</a></li>
-        <li><a href="index.html#ejercicio-2">2 - Convertidor segundos (1)</a></li>
-        <li><a href="index.html#ejercicio-3">3 - Comparador 3 números</a></li>
-        <li><a href="index.html#ejercicio-4">4 - Convertidor temperaturas</a></li>
-        <li><a href="index.html#ejercicio-5">5 - Tabla de una columna</a></li>
-        <li><a href="index.html#ejercicio-6">6 - Tabla sin cabecera</a></li>
+        <li><a href="index.html#ejercicio-1">1 - Su cambio</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Camisetas</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Puntos en cuadrantes</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Comparador 3 números</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Convertidor temperaturas</a></li>
+        <li><a href="index.html#ejercicio-6">6 - Cuenta palos</a></li>
         <li><a href="index.html#ejercicio-7">7 - Reparto de tríos</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Convertidor distancias</a></li>
-        <li><a href="#ejercicio-2">2 - Convertidor segundos (1)</a></li>
-        <li><a href="#ejercicio-3">3 - Comparador 3 números</a></li>
-        <li><a href="#ejercicio-4">4 - Convertidor temperaturas</a></li>
-        <li><a href="#ejercicio-5">5 - Tabla de una columna</a></li>
-        <li><a href="#ejercicio-6">6 - Tabla sin cabecera</a></li>
+        <li><a href="#ejercicio-1">1 - Su cambio</a></li>
+        <li><a href="#ejercicio-2">2 - Camisetas</a></li>
+        <li><a href="#ejercicio-3">3 - Puntos en cuadrantes</a></li>
+        <li><a href="#ejercicio-4">4 - Comparador 3 números</a></li>
+        <li><a href="#ejercicio-5">5 - Convertidor temperaturas</a></li>
+        <li><a href="#ejercicio-6">6 - Cuenta palos</a></li>
         <li><a href="#ejercicio-7">7 - Reparto de tríos</a></li>
       </ul>
     </div>
@@ -51,7 +51,7 @@
   <p>Si lo prefiere, puede <a href="../../../soluciones/con-formularios/cf-seleccion-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
 
   <section id="ejercicio-1">
-    <h2>Operaciones aritméticas 2 - Convertidor de pies y pulgadas a centímetros</h2>
+    <h2>Selección (1) 1 - Su cambio</h2>
 
     <div class="codigo">
       <pre>
@@ -78,39 +78,70 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$pies     = recoge("pies");
-$pulgadas = recoge("pulgadas");
+$deuda = recoge("deuda");
+$b200  = recoge("b200");
+$b100  = recoge("b100");
 
-$piesOk     = false;
-$pulgadasOk = false;
+$deudaOk = false;
+$b200Ok  = false;
+$b100Ok  = false;
 
-if ($pies == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de pies.&lt;/p&gt;\n";
+if ($deuda == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la cantidad a pagar.&lt;/p&gt;\n";
     print "\n";
-} elseif (!ctype_digit($pies)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito los pies como número entero positivo.&lt;/p&gt;\n";
+} elseif (!is_numeric($deuda)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la cantidad a pagar como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($deuda)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la cantidad a pagar como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($deuda % 100 != 0) {
+    print "  &lt;p class=\"aviso\"&gt;La cantidad no es un múltiplo de cien.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $piesOk = true;
+    $deudaOk = true;
 }
 
-if ($pulgadas == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de pulgadas.&lt;/p&gt;\n";
+if ($b200 == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de billetes de doscientos.&lt;/p&gt;\n";
     print "\n";
-} elseif (!is_numeric($pulgadas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito las pulgadas como número.&lt;/p&gt;\n";
+} elseif (!is_numeric($b200)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de billetes de doscientos como número.&lt;/p&gt;\n";
     print "\n";
-} elseif ($pulgadas &lt; 0) {
-    print "  &lt;p class=\"aviso\"&gt;Las pulgadas no pueden ser negativas.&lt;/p&gt;\n";
+} elseif (!ctype_digit($b200)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de billetes de doscientos como número entero.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $pulgadasOk = true;
+    $b200Ok = true;
 }
 
-if ($piesOk && $pulgadasOk) {
-    $centimetros = round(($pies * 12 + $pulgadas) * 2.54, 2);
-    print "  &lt;p&gt;$pies pies y $pulgadas pulgadas son $centimetros centímetros&lt;/p&gt;\n";
+if ($b100 != 0 && $b100 != 1 && $b100 != 2 && $b100 != 3) {
+    print "  &lt;p class=\"aviso\"&gt;El número de billetes de cien no es correcto.&lt;/p&gt;\n";
     print "\n";
+} else {
+    $b100Ok = true;
+}
+
+if ($deudaOk && $b200Ok && $b100Ok) {
+    $pagado = 200 * $b200 + 100 * $b100;
+    print "  &lt;p&gt;Tiene que pagar &lt;strong&gt;$deuda €&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Ha entregado &lt;strong&gt;$pagado €&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+
+    if ($pagado == $deuda) {
+        print "  &lt;p&gt;Ha entregado la cantidad exacta.&lt;/p&gt;\n";
+        print "\n";
+    } elseif ($pagado &lt; $deuda) {
+        print "  &lt;p&gt;Le falta entregar &lt;strong&gt;" . ($deuda - $pagado) . " €&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
+    } else {
+        $cambio = $pagado - $deuda;
+        $c200   = floor($cambio / 200);
+        $c100   = $cambio % 200 / 100;
+        print "  &lt;p&gt;Tome su cambio: &lt;strong&gt;$cambio €&lt;/strong&gt; (&lt;strong&gt;$c200&lt;/strong&gt; billetes de 200 € y &lt;strong&gt;$c100&lt;/strong&gt; de 100 €).&lt;/p&gt;\n";
+        print "\n";
+    }
 }
 ?&gt;</code>
 </pre>
@@ -118,7 +149,7 @@ if ($piesOk && $pulgadasOk) {
   </section>
 
   <section id="ejercicio-2">
-    <h2>Operaciones aritméticas 3 - Convertidor de segundos a minutos y segundos</h2>
+    <h2>Selección (1) 2 - Camisetas</h2>
 
     <div class="codigo">
       <pre>
@@ -145,25 +176,71 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$segundos = recoge("segundos");
+$color  = recoge("color");
+$genero = recoge("genero");
+$texto  = recoge("texto");
 
-$segundosOk = false;
+$colorOk  = false;
+$generoOk = false;
+$textoOk  = false;
 
-if ($segundos == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de segundos.&lt;/p&gt;\n";
-    print "\n";
-} elseif (!ctype_digit($segundos)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito los segundos como número entero positivo.&lt;/p&gt;\n";
+if ($color == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito ningún color.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $segundosOk = true;
+    $colorOk = true;
 }
 
-if ($segundosOk) {
-    $min = intdiv($segundos, 60);
-    $seg = $segundos % 60;
-    print "  &lt;p&gt;$segundos segundos son $min minutos y $seg segundos.&lt;/p&gt;\n";
+if ($genero != "h" && $genero != "m") {
+    print "  &lt;p class=\"aviso\"&gt;Debe elegir un sexo: hombre o mujer.&lt;/p&gt;\n";
     print "\n";
+} else {
+    $generoOk = true;
+}
+
+if ($texto == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito ningún texto.&lt;/p&gt;\n";
+    print "\n";
+} elseif (strlen($texto) &gt; 9) {
+    print "  &lt;p class=\"aviso\"&gt;El texto es demasiado largo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $textoOk = true;
+}
+
+if ($colorOk && $generoOk && $textoOk) {
+    if ($genero == "m") {
+        print "  &lt;p&gt;\n";
+        print "    &lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=\"244\" height=\"328\" viewBox=\"0 0 121.793 163.392\"&gt;\n";
+        print "      &lt;g&gt;\n";
+        print "        &lt;path fill=\"$color\" stroke=\"black\" fill-rule=\"evenodd\" d=\"M41.14 0s-14.1 4.16-20.57 6.7C14.1 9.24 5.32 15.7 3
+            20.1c-2.3 4.4-3 6.5-3 6.5s4.62 3 8.78 9.24c4.16 6.24 11.56 10.4 11.56 10.4s.15 16.9 5.3 28.9c7 16.2-.9 35.8-4.38
+            45.75-3.47 9.9-6 42.5-6 42.5h94.05s-1.32-24.77-7.6-40c-6.2-15.27-9.7-36.77-4.4-47.86 5.3-11.1 4.9-29.12 4.9-29.12s6.7-3.7
+            9-8.1c2.3-4.38 5.8-7.6 7.4-9.7 1.6-2.07 3.24-2.3 3.24-2.3s-4.16-8.8-6.24-11.56c-2.1-2.8-8.1-5.33-14.1-8.1C95.45 3.92 80.9
+            0 80.9 0s-5.56 3.7-18.04 3.7S41.14 0 41.14 0z\" clip-rule=\"evenodd\"/&gt;\n";
+        print "      &lt;/g&gt;\n";
+        print "      &lt;defs&gt;&lt;path id=\"camino\" d=\"M20 40 Q 60 70 100 40\" /&gt;&lt;/defs&gt;\n";
+        //        print "      &lt;use xlink:href=\"#camino\" fill=\"none\" stroke=\"red\" /&gt;\n";
+        print "      &lt;text font-family=\"sans-serif\" font-size=\"20\"&gt;&lt;textPath xlink:href=\"#camino\"&gt;$texto&lt;/textPath&gt;&lt;/text&gt;\n";
+        print "    &lt;/svg&gt;\n";
+        print "  &lt;/p&gt;\n";
+        print "\n";
+    } else {
+        print "  &lt;p&gt;\n";
+        print "    &lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=\"266\" height=\"332\" viewBox=\"0 0 138.37401 171.27\"&gt;\n";
+        print "      &lt;g&gt;\n";
+        print "        &lt;path fill=\"$color\" stroke=\"black\" fill-rule=\"evenodd\" d=\"M48.72.25s-24.6 12.56-30.4 15.82C12.57 19.34 8.3 23.35 6.3 32.9
+            4.28 42.44 0 72.83 0 72.83s13.3 4.52 18.83 4.52c5.53 0 8.8-1.5 8.8-1.5l.24 95.42H113v-99.2s6.3 1.26 11.56.5c5.28-.75 13.8-5.27
+            13.8-5.27s-7.77-35.9-9.03-42.94c-1.25-7.03-8.28-10.55-15.82-13.3C106 8.28 89.4 0 89.4 0s-5.02 4.52-17.57 5.02c-12.56.5-23.1-4.77-23.1-4.77z\"
+            clip-rule=\"evenodd\"/&gt;\n";
+        print "      &lt;/g&gt;\n";
+        print "      &lt;defs&gt;&lt;path id=\"camino\" d=\"M20 50 Q 70 80 120 50\" /&gt;&lt;/defs&gt;\n";
+        //        print "      &lt;use xlink:href=\"#camino\" fill=\"none\" stroke=\"red\" /&gt;\n";
+        print "      &lt;text font-family=\"sans-serif\" font-size=\"22\"&gt;&lt;textPath xlink:href=\"#camino\"&gt;$texto&lt;/textPath&gt;&lt;/text&gt;\n";
+        print "    &lt;/svg&gt;\n";
+        print "  &lt;/p&gt;\n";
+        print "\n";
+    }
 }
 ?&gt;</code>
 </pre>
@@ -171,7 +248,102 @@ if ($segundosOk) {
   </section>
 
   <section id="ejercicio-3">
-    <h2>if ... elseif ... else ... 3 - Comparador de tres números</h2>
+    <h2>Selección (1) 3 - Puntos en cuadrantes</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+$cantidad  = recoge("cantidad");
+$cuadrante = recoge("cuadrante");
+
+$cantidadOk  = false;
+$cuadranteOk = false;
+
+if ($cantidad == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de puntos.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($cantidad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de puntos como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($cantidad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de puntos como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($cantidad &lt; 3 || $cantidad &gt; 12) {
+    print "  &lt;p class=\"aviso\"&gt;El número de puntos solicitado no está en el rango permitido.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $cantidadOk = true;
+}
+
+if ($cuadrante != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
+        && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda") {
+    print "  &lt;p class=\"aviso\"&gt;El cuadrante solicitado no es uno de los permitidos.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $cuadranteOk = true;
+}
+
+if ($cantidadOk && $cuadranteOk) {
+    print "  &lt;p&gt;\n";
+    print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+    print "      width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\" \n";
+    print "      style=\"border: black 1px solid\" &gt;\n";
+    print "      &lt;line x1=\"0\" y1=\"-200\" x2=\"0\" y2=\"200\" stroke-width=\"1\" stroke=\"blue\" /&gt;\n";
+    print "      &lt;line x1=\"-200\" y1=\"0\" x2=\"200\" y2=\"0\" stroke-width=\"1\" stroke=\"blue\" /&gt;\n";
+    $hayPuntos = false;
+    for ($i = 0; $i &lt; $cantidad; $i++) {
+        $px = rand(-200, 200);
+        $py = rand(-200, 200);
+        print "      &lt;circle cx=\"$px\" cy=\"$py\" r=\"2\" fill=\"red\" /&gt;\n";
+        if ($cuadrante == "Arriba a la derecha" && $px &gt;= 0 && $py &lt;= 0) {
+            $hayPuntos = true;
+        } elseif ($cuadrante == "Abajo a la derecha" && $px &gt;= 0 && $py &gt;= 0) {
+            $hayPuntos = true;
+        } elseif ($cuadrante == "Abajo a la izquierda" && $px &lt;= 0 && $py &gt;= 0) {
+            $hayPuntos = true;
+        } elseif ($cuadrante == "Arriba a la izquierda" && $px &lt;= 0 && $py &lt;= 0) {
+            $hayPuntos = true;
+        }
+    }
+    print "    &lt;/svg&gt;\n";
+    print "  &lt;/p&gt;\n";
+    print "\n";
+
+    if ($hayPuntos) {
+        print "  &lt;p&gt;Hay puntos $cuadrante.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;No hay puntos $cuadrante.&lt;/p&gt;\n";
+    }
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Selección (1) 4 - Comparador de tres números</h2>
 
     <div class="codigo">
       <pre>
@@ -254,7 +426,7 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  &lt;p&gt;Ha escrito tres números iguales.&lt;/p&gt;\n";
-    } elseif ($numero1 == $numero2 ||  $numero2 == $numero3 || $numero1 == $numero3) {
+    } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  &lt;p&gt;Ha escrito dos números iguales.&lt;/p&gt;\n";
     } else {
         print "  &lt;p&gt;Ha escrito tres números distintos.&lt;/p&gt;\n";
@@ -266,8 +438,8 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     </div>
   </section>
 
-  <section id="ejercicio-4">
-    <h2>if ... elseif ... else ... 6 - Convertidor de temperaturas Celsius / Fahrenheit</h2>
+  <section id="ejercicio-5">
+    <h2>Selección (1) 5 - Convertidor de temperaturas Celsius / Fahrenheit</h2>
 
     <div class="codigo">
       <pre>
@@ -319,10 +491,7 @@ if ($temperatura == "") {
     $temperaturaOk = true;
 }
 
-if ($unidad == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito la unidad.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($unidad != "c" && $unidad != "f") {
+if ($unidad != "c" && $unidad != "f") {
     print "  &lt;p class=\"aviso\"&gt;La unidad no es correcta.&lt;/p&gt;\n";
     print "\n";
 } else {
@@ -344,78 +513,8 @@ if ($temperaturaOk && $unidadOk) {
     </div>
   </section>
 
-  <section id="ejercicio-5">
-    <h2>For (3) 2 - Tabla de una columna</h2>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-$filas = recoge("filas");
-
-$filasOk = false;
-
-$filasMinimo = 1;
-$filasMaximo = 200;
-
-if ($filas == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas.&lt;/p&gt;\n";
-    print "\n";
-} elseif (!is_numeric($filas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas como número.&lt;/p&gt;\n";
-    print "\n";
-} elseif (!ctype_digit($filas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas "
-        . "como número entero positivo.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($filas &lt; $filasMinimo || $filas &gt; $filasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de filas debe estar entre "
-        . "$filasMinimo y $filasMaximo.&lt;/p&gt;\n";
-    print "\n";
-} else {
-    $filasOk = true;
-}
-
-if ($filasOk) {
-    print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
-    for ($i = 1; $i &lt;= $filas; $i++) {
-        print "      &lt;tr&gt;\n";
-        print "        &lt;td&gt;$i&lt;/td&gt;\n";
-        print "      &lt;/tr&gt;\n";
-    }
-    print "    &lt;/tbody&gt;\n";
-    print "  &lt;/table&gt;\n";
-    print "\n";
-}
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
   <section id="ejercicio-6">
-    <h2>For (3) 3 - Tabla de multiplicar sin cabecera</h2>
+    <h2>Selección (1) 6 - Cuenta palos</h2>
 
     <div class="codigo">
       <pre>
@@ -442,43 +541,87 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$numero = recoge("numero");
+$cantidad = recoge("cantidad");
+$palo1    = recoge("palo1");
+$palo2    = recoge("palo2");
 
-$numeroOk = false;
+$cantidadOk = false;
+$palo1Ok    = false;
+$palo2Ok    = false;
 
-$numeroMinimo = 1;
-$numeroMaximo = 100;
-
-if ($numero == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla.&lt;/p&gt;\n";
+if ($cantidad == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de cartas.&lt;/p&gt;\n";
     print "\n";
-} elseif (!is_numeric($numero)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla como número.&lt;/p&gt;\n";
+} elseif (!is_numeric($cantidad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de cartas como número.&lt;/p&gt;\n";
     print "\n";
-} elseif (!ctype_digit($numero)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.&lt;/p&gt;\n";
+} elseif (!ctype_digit($cantidad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de cartas como número entero.&lt;/p&gt;\n";
     print "\n";
-} elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+} elseif ($cantidad &lt; 3 || $cantidad &gt; 7) {
+    print "  &lt;p class=\"aviso\"&gt;El número de cartas indicado no está en el rango permitido.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $numeroOk = true;
+    $cantidadOk = true;
 }
 
-if ($numeroOk) {
-    print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
-    for ($i = 1; $i &lt;= $numero; $i++) {
-        print "      &lt;tr&gt;\n";
-        for ($j = 1; $j &lt;= $numero; $j++) {
-            print "        &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
+if ($palo1 == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido el primer palo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($palo1 != "c" && $palo1 != "d" && $palo1 != "p" && $palo1 != "t") {
+    print "  &lt;p class=\"aviso\"&gt;El primer palo indicado no es uno de los permitidos.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $palo1Ok = true;
+}
+
+if ($palo2 == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido el segundo palo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($palo2 != "c" && $palo2 != "d" && $palo2 != "p" && $palo2 != "t") {
+    print "  &lt;p class=\"aviso\"&gt;El segundo palo indicado no es uno de los permitidos.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $palo2Ok = true;
+}
+
+if ($palo1 == $palo2 && $palo1 != "") {
+    print "  &lt;p class=\"aviso\"&gt;Los palos deben ser distintos.&lt;/p&gt;\n";
+    print "\n";
+    $palo1Ok = $palo2Ok = false;
+}
+
+if ($cantidadOk && $palo1Ok && $palo2Ok) {
+    $tiposPalos   = ["c", "d", "p", "t"];
+    $nombresPalos = ["c" =&gt; "corazones", "d" =&gt; "diamantes", "p" =&gt; "picas", "t" =&gt; "tréboles"];
+    $cartas       = [];
+    $palos        = [];
+    $cuenta1      = 0;
+    $cuenta2      = 0;
+    for ($i = 0; $i &lt; $cantidad; $i++) {
+        $cartas[$i] = rand(1, 10);
+        $palos[$i]  = $tiposPalos[rand(0, 3)];
+        if ($palos[$i] == $palo1) {
+            $cuenta1 += 1;
+        } elseif ($palos[$i] == $palo2) {
+            $cuenta2 += 1;
         }
-        print "      &lt;/tr&gt;\n";
     }
-    print "    &lt;/tbody&gt;\n";
-    print "  &lt;/table&gt;\n";
+
+    print "  &lt;h2&gt;$cantidad cartas";
+    print "&lt;/h2&gt;\n";
+    print "\n";
+
+    print "  &lt;p&gt;\n";
+    for ($i = 0; $i &lt; $cantidad; $i++) {
+        print "    &lt;img src=\"img/$palos[$i]$cartas[$i].svg\" alt=\"$cartas[$i]\" width=\"100\"&gt;\n";
+    }
+    print "  &lt;/p&gt;\n";
+    print "\n";
+
+    print "  &lt;h2&gt;Resultado&lt;/h2&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Hay {$cuenta1} cartas de {$nombresPalos[$palo1]} y {$cuenta2} cartas de {$nombresPalos[$palo2]}.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -518,9 +661,6 @@ $jugadores = recoge("jugadores");
 
 $jugadoresOk = false;
 
-$jugadoresMinimo = 3;
-$jugadoresMaximo = 10;
-
 if ($jugadores == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores.&lt;/p&gt;\n";
     print "\n";
@@ -531,9 +671,8 @@ if ($jugadores == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores "
         . "como número entero positivo.&lt;/p&gt;\n";
     print "\n";
-} elseif ($jugadores &lt; $jugadoresMinimo || $jugadores &gt; $jugadoresMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de jugadores debe estar entre "
-        . "$jugadoresMinimo y $jugadoresMaximo.&lt;/p&gt;\n";
+} elseif ($jugadores &lt; 3 || $jugadores &gt; 10) {
+    print "  &lt;p class=\"aviso\"&gt;El número de jugadores debe estar entre 3 y 10.&lt;/p&gt;\n";
     print "\n";
 } else {
     $jugadoresOk = true;
@@ -559,9 +698,9 @@ if ($jugadoresOk) {
 
     for ($i = 1; $i &lt;= $jugadores; $i++) {
         print "  &lt;p&gt;Jugador $i:\n";
-        print "    &lt;img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\"&gt;\n";
-        print "    &lt;img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\"&gt;\n";
-        print "    &lt;img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\"&gt;\n";
+        print "    &lt;img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" height=\"120px\"&gt;\n";
+        print "    &lt;img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" height=\"120px\"&gt;\n";
+        print "    &lt;img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" height=\"120px\"&gt;\n";
         print "  &lt;/p&gt;\n";
     }
     print "\n";
@@ -572,7 +711,7 @@ if ($jugadoresOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 23 de enero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

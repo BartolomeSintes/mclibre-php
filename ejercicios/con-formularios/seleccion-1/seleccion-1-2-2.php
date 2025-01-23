@@ -38,30 +38,45 @@
   <h1>Camisetas 2 (Resultado)</h1>
 
 <?php
-function recoge($var)
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
     return $tmp;
 }
 
-$color    = recoge("color");
-$genero   = recoge("genero");
-$texto    = recoge("texto");
+$color  = recoge("color");
+$genero = recoge("genero");
+$texto  = recoge("texto");
+
 $colorOk  = false;
 $generoOk = false;
 $textoOk  = false;
 
 if ($color == "") {
-  print "  <p class=\"aviso\">No ha escrito ningún color.</p>\n";
-  print "\n";
+    print "  <p class=\"aviso\">No ha escrito ningún color.</p>\n";
+    print "\n";
 } else {
-  $colorOk = true;
+    $colorOk = true;
 }
 
 if ($genero != "h" && $genero != "m") {
-    print "  <p class=\"aviso\">Debe elegir su sexo: hombre o mujer.</p>\n";
+    print "  <p class=\"aviso\">Debe elegir un sexo: hombre o mujer.</p>\n";
     print "\n";
 } else {
     $generoOk = true;
@@ -70,7 +85,7 @@ if ($genero != "h" && $genero != "m") {
 if ($texto == "") {
     print "  <p class=\"aviso\">No ha escrito ningún texto.</p>\n";
     print "\n";
-}elseif (strlen($texto) > 9) {
+} elseif (strlen($texto) > 9) {
     print "  <p class=\"aviso\">El texto es demasiado largo.</p>\n";
     print "\n";
 } else {
@@ -89,7 +104,7 @@ if ($colorOk && $generoOk && $textoOk) {
             0 80.9 0s-5.56 3.7-18.04 3.7S41.14 0 41.14 0z\" clip-rule=\"evenodd\"/>\n";
         print "      </g>\n";
         print "      <defs><path id=\"camino\" d=\"M20 40 Q 60 70 100 40\" /></defs>\n";
-//        print "      <use xlink:href=\"#camino\" fill=\"none\" stroke=\"red\" />\n";
+        //        print "      <use xlink:href=\"#camino\" fill=\"none\" stroke=\"red\" />\n";
         print "      <text font-family=\"sans-serif\" font-size=\"20\"><textPath xlink:href=\"#camino\">$texto</textPath></text>\n";
         print "    </svg>\n";
         print "  </p>\n";
@@ -104,7 +119,7 @@ if ($colorOk && $generoOk && $textoOk) {
             clip-rule=\"evenodd\"/>\n";
         print "      </g>\n";
         print "      <defs><path id=\"camino\" d=\"M20 50 Q 70 80 120 50\" /></defs>\n";
-//        print "      <use xlink:href=\"#camino\" fill=\"none\" stroke=\"red\" />\n";
+        //        print "      <use xlink:href=\"#camino\" fill=\"none\" stroke=\"red\" />\n";
         print "      <text font-family=\"sans-serif\" font-size=\"22\"><textPath xlink:href=\"#camino\">$texto</textPath></text>\n";
         print "    </svg>\n";
         print "  </p>\n";

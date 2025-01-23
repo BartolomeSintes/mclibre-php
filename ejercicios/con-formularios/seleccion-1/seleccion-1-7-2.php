@@ -65,9 +65,6 @@ $jugadores = recoge("jugadores");
 
 $jugadoresOk = false;
 
-$jugadoresMinimo = 3;
-$jugadoresMaximo = 10;
-
 if ($jugadores == "") {
     print "  <p class=\"aviso\">No ha escrito el número de jugadores.</p>\n";
     print "\n";
@@ -78,9 +75,8 @@ if ($jugadores == "") {
     print "  <p class=\"aviso\">No ha escrito el número de jugadores "
         . "como número entero positivo.</p>\n";
     print "\n";
-} elseif ($jugadores < $jugadoresMinimo || $jugadores > $jugadoresMaximo) {
-    print "  <p class=\"aviso\">El número de jugadores debe estar entre "
-        . "$jugadoresMinimo y $jugadoresMaximo.</p>\n";
+} elseif ($jugadores < 3 || $jugadores > 10) {
+    print "  <p class=\"aviso\">El número de jugadores debe estar entre 3 y 10.</p>\n";
     print "\n";
 } else {
     $jugadoresOk = true;

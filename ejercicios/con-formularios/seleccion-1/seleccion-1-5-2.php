@@ -86,10 +86,7 @@ if ($temperatura == "") {
     $temperaturaOk = true;
 }
 
-if ($unidad == "") {
-    print "  <p class=\"aviso\">No ha escrito la unidad.</p>\n";
-    print "\n";
-} elseif ($unidad != "c" && $unidad != "f") {
+if ($unidad != "c" && $unidad != "f") {
     print "  <p class=\"aviso\">La unidad no es correcta.</p>\n";
     print "\n";
 } else {

@@ -39,11 +39,25 @@
   <h1>Cuenta palos (Resultado)</h1>
 
 <?php
-function recoge($var)
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
     return $tmp;
 }
 
@@ -52,8 +66,8 @@ $palo1    = recoge("palo1");
 $palo2    = recoge("palo2");
 
 $cantidadOk = false;
-$palo1Ok  = false;
-$palo2Ok  = false;
+$palo1Ok    = false;
+$palo2Ok    = false;
 
 if ($cantidad == "") {
     print "  <p class=\"aviso\">No ha escrito el número de cartas.</p>\n";
@@ -64,7 +78,7 @@ if ($cantidad == "") {
 } elseif (!ctype_digit($cantidad)) {
     print "  <p class=\"aviso\">No ha escrito el número de cartas como número entero.</p>\n";
     print "\n";
-} elseif ($cantidad < 2 || $cantidad > 10) {
+} elseif ($cantidad < 3 || $cantidad > 7) {
     print "  <p class=\"aviso\">El número de cartas indicado no está en el rango permitido.</p>\n";
     print "\n";
 } else {
@@ -91,29 +105,22 @@ if ($palo2 == "") {
     $palo2Ok = true;
 }
 
-if ($palo1 == $palo2 && $palo1 !=  "") {
+if ($palo1 == $palo2 && $palo1 != "") {
     print "  <p class=\"aviso\">Los palos deben ser distintos.</p>\n";
     print "\n";
     $palo1Ok = $palo2Ok = false;
 }
 
 if ($cantidadOk && $palo1Ok && $palo2Ok) {
-    $cartas = [];
-    $palos = [];
-    $cuenta1 = 0;
-    $cuenta2 = 0;
+    $tiposPalos   = ["c", "d", "p", "t"];
+    $nombresPalos = ["c" => "corazones", "d" => "diamantes", "p" => "picas", "t" => "tréboles"];
+    $cartas       = [];
+    $palos        = [];
+    $cuenta1      = 0;
+    $cuenta2      = 0;
     for ($i = 0; $i < $cantidad; $i++) {
         $cartas[$i] = rand(1, 10);
-        $palo = rand(1, 4);
-        if ($palo == 1) {
-            $palos[$i] = "c";
-        } elseif ($palo == 2) {
-            $palos[$i] = "d";
-        } elseif ($palo == 3) {
-            $palos[$i] = "p";
-        } elseif ($palo == 4) {
-            $palos[$i] = "t";
-        }
+        $palos[$i]  = $tiposPalos[rand(0, 3)];
         if ($palos[$i] == $palo1) {
             $cuenta1 += 1;
         } elseif ($palos[$i] == $palo2) {
@@ -132,28 +139,9 @@ if ($cantidadOk && $palo1Ok && $palo2Ok) {
     print "  </p>\n";
     print "\n";
 
-    if ($palo1 == "c") {
-        $palo1 = "corazones";
-    } elseif ($palo1 == "d") {
-        $palo1 = "rombos";
-    } elseif ($palo1 == "p") {
-        $palo1 = "picas";
-    } elseif ($palo1 == "t") {
-        $palo1 = "tréboles";
-    }
-    if ($palo2 == "c") {
-        $palo2 = "corazones";
-    } elseif ($palo2 == "d") {
-        $palo2 = "rombos";
-    } elseif ($palo2 == "p") {
-        $palo2 = "picas";
-    } elseif ($palo2 == "t") {
-        $palo2 = "tréboles";
-    }
-
     print "  <h2>Resultado</h2>\n";
     print "\n";
-    print "  <p>Hay {$cuenta1} cartas de {$palo1} y {$cuenta2} cartas de {$palo2}.</p>\n";
+    print "  <p>Hay {$cuenta1} cartas de {$nombresPalos[$palo1]} y {$cuenta2} cartas de {$nombresPalos[$palo2]}.</p>\n";
     print "\n";
 }
 ?>

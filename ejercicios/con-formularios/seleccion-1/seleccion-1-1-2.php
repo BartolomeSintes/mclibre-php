@@ -38,11 +38,25 @@
   <h1>Su cambio (Resultado)</h1>
 
 <?php
-function recoge($var)
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
     return $tmp;
 }
 
@@ -105,9 +119,10 @@ if ($deudaOk && $b200Ok && $b100Ok) {
         print "\n";
     } else {
         $cambio = $pagado - $deuda;
-        $c200 = floor($cambio / 200);
-        $c100 = $cambio % 200 / 100;
+        $c200   = floor($cambio / 200);
+        $c100   = $cambio % 200 / 100;
         print "  <p>Tome su cambio: <strong>$cambio €</strong> (<strong>$c200</strong> billetes de 200 € y <strong>$c100</strong> de 100 €).</p>\n";
+        print "\n";
     }
 }
 ?>
