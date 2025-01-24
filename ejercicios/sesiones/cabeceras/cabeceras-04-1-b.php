@@ -68,7 +68,7 @@ $edad  = recoge("edad");
 
 // Incluimos siempre el aviso y la edad recibida
 print "    <p>\n";
-print "      <label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\"></label>\n";
+print "      <label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"5\"></label>\n";
 print "      <span class=\"aviso\">$aviso</span>\n";
 print "    </p>\n";
 print "\n";

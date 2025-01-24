@@ -82,7 +82,7 @@ print "      </tr>\n";
 print "      <tr>\n";
 print "        <td><label for=\"edad\">Escriba su edad (entre 18 y 130 años):</label></td>\n";
 // Incluimos la edad recibida (aunque sea en blanco) en el control
-print "        <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\">";
+print "        <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"5\" id=\"edad\">";
 // Si hemos recibido un aviso sobre la edad, lo mostramos
 if ($avisoEdad) {
     print " <span class=\"aviso\">$avisoEdad</span>";

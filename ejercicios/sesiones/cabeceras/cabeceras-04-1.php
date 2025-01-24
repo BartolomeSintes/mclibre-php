@@ -72,7 +72,7 @@ print "      <label>Escriba su edad (entre 18 y 130 años): <input type=\"text\"
 if ($edad != "") {
     print "value=\"$edad\" ";
 }
-print "size=\"5\" maxlength=\"3\"></label>\n";
+print "size=\"5\" maxlength=\"5\"></label>\n";
 // Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
     print "      <span class=\"aviso\">$aviso</span>\n";
