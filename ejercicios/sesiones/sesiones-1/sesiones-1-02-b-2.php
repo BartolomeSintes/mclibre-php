@@ -52,10 +52,6 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el texto
-$texto   = recoge("texto");
-$textoOk = false;
-
-// Recogemos el texto
 $texto = recoge("texto");
 
 // Comprobamos el texto
