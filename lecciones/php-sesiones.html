@@ -324,10 +324,60 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
     <p>Las sesiones se pueden cerrar de varias maneras:</p>
 
     <ul>
-      <li>El usuario puede cerrar la sesión simplemente cerrando el navegador (no basta con cerrar las pestañas).</li>
+      <li>El usuario puede cerrar la sesión simplemente cerrando el navegador. Pero no basta con cerrar la pestaña, hay que cerrar todas las ventanas abiertas (salvo que sean ventanas privadas / de incógnito, ya que estas son independientes unas de otras).</li>
       <li>Un programa puede cerrar la sesión mediante la función <a href="https://www.php.net/manual/en/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
+      <li>El usuario puede cerrar una sesión borrando la cookie que contiene el identificador de la sesión.</li>
       <li>En general, las cookies tienen una duración establecida en la directiva <a href="http://docs.php.net/session.configuration#ini.session.cookie-lifetime">session.cookie_lifetime</a> (y el servidor puede borrar la información cuando ha pasado el tiempo indicado en segundos en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>), pero la duración de una sesión en particular puede establecerse en el momento de su creación mediante la función <span class="php-fun"><a href="https://www.php.net/manual/en/function.session-set-cookie-params.php">session_set_cookie_params()</a></span> (tiempo que se puede modificar posteriormente).</li>
     </ul>
+
+    <hr class="corta">
+
+    <p>Para borrar la cookie que contiene el identificador de la sesión en Firefox ...</p>
+
+    <ul>
+      <li>abra las Herramientas para desarrolladores web (pulsando por ejemplo la tecla <span class="soft-atajo-teclado">F12</span>), haga clic en la pestaña Almacenamiento, haga clic en Cookies y haga clic en el nombre del servidor de la página que creó la cookie.
+
+        <p class="captura">
+          <img src="../img/php/sesiones-borrar-cookie-1.png" alt="Borrar cookie en Firefox" width="1024" height="390">
+        </p>
+      </li>
+      <li>haga clic derecho en la cookie que quiera eliminar y haga clic en la opción Eliminar del menú contextual
+
+        <p class="captura">
+          <img src="../img/php/sesiones-borrar-cookie-2.png" alt="Borrar cookie en Firefox" width="1024" height="290">
+        </p>
+      </li>
+      <li>compruebe que la cookie ha sido eliminada
+
+        <p class="captura">
+          <img src="../img/php/sesiones-borrar-cookie-3.png" alt="Borrar cookie en Firefox" width="1024" height="290">
+        </p>
+      </li>
+    </ul>
+
+    <p>Para borrar la cookie que contiene el identificador de la sesión en Chrome ...</p>
+
+    <ul>
+      <li>abra las Herramientas para desarrolladores (pulsando por ejemplo la tecla <span class="soft-atajo-teclado">F12</span>), haga clic en la pestaña Application, haga clic en Cookies y haga clic en el nombre del servidor de la página que creó la cookie.
+
+        <p class="captura">
+          <img src="../img/php/sesiones-borrar-cookie-4.png" alt="Borrar cookie en Chrome" width="1024" height="490">
+        </p>
+      </li>
+      <li>haga clic derecho en la cookie que quiera eliminar y haga clic en la opción Delete del menú contextual
+
+        <p class="captura">
+          <img src="../img/php/sesiones-borrar-cookie-5.png" alt="Borrar cookie en Chrome" width="1024" height="315">
+        </p>
+      </li>
+      <li>compruebe que la cookie ha sido eliminada
+
+        <p class="captura">
+          <img src="../img/php/sesiones-borrar-cookie-6.png" alt="Borrar cookie en Chrome" width="1024" height="315">        </p>
+      </li>
+    </ul>
+
+    <hr class="corta">
 
     <p>Cuando se destruye una sesión, el programa que ha destruido la sesión sigue teniendo acceso a los valores de $_SESSION creados antes de la destrucción de la sesión, pero las páginas siguientes no. Si se ejecuta el primero de los ejemplos siguientes y después el segundo, se obtienen los resultados indicados:</p>
 
@@ -376,8 +426,8 @@ if (isset($_SESSION["nombre"])) {
 
     <div class="filaflex">
       <div class="columnaflex">
-      <div class="codigo">
-        <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 $_SESSION["nombre"] = "Pepito";
@@ -387,9 +437,9 @@ session_start();
 $_SESSION["apellido"] = "Conejo";
 header("Location:pagina-2.php");</code>
 </pre>
-      </div>
-      <div class="codigo">
-        <pre>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -405,7 +455,7 @@ if (isset($_SESSION["apellido"])) {
     print "&lt;p&gt;No sé su apellido.&lt;/p&gt;\n";
 }</code>
 </pre>
-      </div>
+        </div>
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;No sé su nombre.&lt;/p&gt;
@@ -694,7 +744,7 @@ session_start();</code></pre>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de febrero de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 30 de enero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
