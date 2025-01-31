@@ -24,7 +24,6 @@
 
 session_name("sesiones-2-04");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">

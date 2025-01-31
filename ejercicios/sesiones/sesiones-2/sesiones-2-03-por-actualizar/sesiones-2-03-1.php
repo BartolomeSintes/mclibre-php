@@ -58,11 +58,15 @@ if (isset($_SESSION["paso"]) && $_SESSION["paso"] != 1) {
 
 <?php
 if (isset($_SESSION["avisoNombre"])) {
-    print "    <p><label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label> "
-        . "<span class=\"aviso\">$_SESSION[avisoNombre]</span></p>\n";
+    print "    <p>\n";
+    print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "      <span class=\"aviso\">$_SESSION[avisoNombre]</span>\n";
+    print "    </p>\n";
     print "\n";
 } else {
-    print "    <p><label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></p></label>\n";
+    print "    <p>\n";
+    print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "    <p>\n";
     print "\n";
 }
 ?>

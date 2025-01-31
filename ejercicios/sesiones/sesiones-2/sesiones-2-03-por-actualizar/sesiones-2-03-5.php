@@ -56,11 +56,15 @@ if (!isset($_SESSION["paso"])) {
 
 <?php
 if (isset($_SESSION["avisoApellido2"])) {
-    print "    <p><label>Segundo apellido: <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\"></label> "
-        . "<span class=\"aviso\">$_SESSION[avisoApellido2]</span></p>\n";
+    print "    <p>\n";
+    print "      <label>Segundo apellido: <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\"></label>\n";
+    print "      <span class=\"aviso\">$_SESSION[avisoApellido2]</span>\n";
+    print "    </p>\n";
     print "\n";
 } else {
-    print "    <p><label>Segundo apellido: <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\"></label></p>\n";
+    print "    <p>\n";
+    print "      <label>Segundo apellido: <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\"></label>\n";
+    print "    </p>\n";
     print "\n";
 }
 ?>

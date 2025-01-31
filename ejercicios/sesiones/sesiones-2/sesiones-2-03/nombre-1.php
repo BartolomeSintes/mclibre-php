@@ -25,7 +25,6 @@
 // Accedemos a la sesión
 session_name("sesiones-2-03");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
