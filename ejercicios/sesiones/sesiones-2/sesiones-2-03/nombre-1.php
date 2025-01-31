@@ -3,9 +3,9 @@
  * Sesiones (2) 03 - nombre-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2025-01-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-03");
 session_start();
 
@@ -43,7 +44,9 @@ session_start();
   <h1>Nombre (1)</h1>
 
 <?php
+// Si hay un nombre guardado en la sesión, ...
 if (isset($_SESSION["nombre"])) {
+    // se muestra
     print "  <p>Usted ya ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
 }
 ?>
@@ -52,12 +55,19 @@ if (isset($_SESSION["nombre"])) {
     <p>Escriba su nombre:</p>
 
 <?php
+// Si hay un aviso guardado en la sesión, ...
 if (isset($_SESSION["avisoNombre"])) {
-    print "    <p><label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label> "
-        . "<span class=\"aviso\">$_SESSION[avisoNombre]</span></p>\n";
+    // se muestra
+    print "    <p>\n";
+    print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "      <span class=\"aviso\">$_SESSION[avisoNombre]</span>\n";
+    print "    </p>\n";
     print "\n";
 } else {
-    print "    <p><label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label></p>\n";
+    // si no, no se muestra el aviso
+    print "    <p>\n";
+    print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "    </p>\n";
     print "\n";
 }
 ?>
@@ -72,7 +82,7 @@ if (isset($_SESSION["avisoNombre"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-15">15 de noviembre de 2018</time>
+      <time datetime="2025-01-31">31 de enero de 2025</time>
     </p>
 
     <p class="licencia">

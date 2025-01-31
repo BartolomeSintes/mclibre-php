@@ -1,6 +1,6 @@
 <?php
 /**
- * Quita cartas - sesiones-2-11-1.php
+ * Cara o cruz - sesiones-2-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -23,13 +23,14 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-11");
+session_name("sesiones-2-13");
 session_start();
 
 // Si falta una de los dos variables de sesión, reiniciamos los valores
-if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
-    $_SESSION["cartas"]  = rand(3, 10);
-    $_SESSION["mensaje"] = "  <p>Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.</p>\n";
+if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
+    $_SESSION["moneda"] = 0;
+    $_SESSION["g"]      = 0;
+    $_SESSION["m"]      = 0;
 }
 
 ?>
@@ -38,7 +39,7 @@ if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Quita cartas.
+    Cara o cruz.
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -47,37 +48,61 @@ if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
 </head>
 
 <body>
-  <h1>Quita cartas</h1>
+  <h1>Cara o cruz</h1>
 
-<?php
-// Escribimos el mensaje
-print $_SESSION["mensaje"];
-?>
+  <p>Haga clic en uno de los botones:</p>
 
-  <form action="sesiones-2-11-2.php">
+  <form action="sesiones-2-13-b-2.php">
     <p>
-      <button type="submit" name="quita" value="quita" style="background-color: #eee;">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-          width="210" height="250" viewBox="-10 -10 210 250">
-          <defs>
-            <pattern id="patron-1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" >
-              <rect x="0" y="0" width="10" height="10" fill="hwb(0 60% 0%)" />
-              <line x1="0" y1="10" x2="10" y2="0" stroke="hwb(0 80% 0%)" stroke-width="1" />
-              <line x1="0" y1="0" x2="10" y2="10" stroke="hwb(0 80% 0%)" stroke-width="1" />
-            </pattern>
-          </defs>
-
-<?php
-// Hacemos un bucle para dibujar el número de cartas guardado en la sesión
-for ($i = 0; $i < $_SESSION["cartas"]; $i++) {
-    $pos = 10 * $i;
-    print "          <rect x=\"$pos\" y=\"$pos\" width=\"100\" height=\"140\" rx=\"5\" ry=\"5\" style=\"stroke: black; fill: url(#patron-1);\" />\n";
-}
-?>
-        </svg>
-      </button>
+      <input type="submit" name="siguiente" value="Lanzar moneda">
+      <input type="submit" name="siguiente" value="Volver a empezar">
     </p>
   </form>
+
+  <table style="text-align: center;">
+    <tr>
+      <th>Jugador A</th>
+      <th>Resultado</th>
+      <th>Jugador B</th>
+    </tr>
+<?php
+// Mostramos las puntuaciones de cada jugador
+print "    <tr style=\"font-size: 400%\">\n";
+print "      <td>$_SESSION[g]</td>\n";
+print "      <td></td>\n";
+print "      <td>$_SESSION[m]</td>\n";
+print "    </tr>\n";
+
+// Calculamos la cara del gato
+print "    <tr style=\"font-size: 400%\">\n";
+if ($_SESSION["g"] > $_SESSION["m"]) {
+    print "      <td>&#128568;</td>\n";
+} elseif ($_SESSION["g"] < $_SESSION["m"]) {
+    print "      <td>&#128576;</td>\n";
+} else {
+    print "      <td>&#128572;</td>\n";
+}
+
+// Enseñamos la moneda
+if ($_SESSION["moneda"] == 0) {
+    print "      <td></td>\n";
+} elseif ($_SESSION["moneda"] == 1) {
+    print "      <td><img src=\"img/a.svg\" alt=\"A\" width=\"100\" height=\"100\"></td>\n";
+} else {
+    print "      <td><img src=\"img/b.svg\" alt=\"B\" width=\"100\" height=\"100\"></td>\n";
+}
+
+// Calculamos la cara del mono
+if ($_SESSION["g"] > $_SESSION["m"]) {
+    print "      <td>&#128584;</td>\n";
+} elseif ($_SESSION["g"] < $_SESSION["m"]) {
+    print "      <td>&#128053;</td>\n";
+} else {
+    print "      <td>&#128586;</td>\n";
+}
+print "    </tr>\n";
+?>
+  </table>
 
   <footer>
     <p class="ultmod">

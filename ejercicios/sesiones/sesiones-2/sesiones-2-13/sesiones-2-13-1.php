@@ -3,9 +3,9 @@
  * Cara o cruz - sesiones-2-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-25
+ * @version   2025-01-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,13 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-13");
 session_start();
 
-if (!isset($_SESSION["g"]) || !isset($_SESSION["m"]) || !isset($_SESSION["moneda"])) {
-    $_SESSION["moneda"] = 0;
-    $_SESSION["g"] = 0;
-    $_SESSION["m"] = 0;
+// Si falta una de los dos variables de sesión, reiniciamos los valores
+if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
+    $_SESSION["puntosG"] = 0;
+    $_SESSION["puntosM"] = 0;
+    $_SESSION["moneda"]  = "";
+    $_SESSION["caraG"]   = "&#128572;";
+    $_SESSION["caraM"]   = "&#128586;";
 }
 
 ?>
@@ -65,34 +69,27 @@ if (!isset($_SESSION["g"]) || !isset($_SESSION["m"]) || !isset($_SESSION["moneda
     </tr>
 <?php
 print "    <tr style=\"font-size: 400%\">\n";
-print "      <td>$_SESSION[g]</td>\n";
+
+// Mostramos la puntuación del gato
+print "      <td>$_SESSION[puntosG]</td>\n";
 print "      <td></td>\n";
-print "      <td>$_SESSION[m]</td>\n";
+
+// Mostramos la puntuación del mono
+print "      <td>$_SESSION[puntosM]</td>\n";
+
 print "    </tr>\n";
 
 print "    <tr style=\"font-size: 400%\">\n";
-if ($_SESSION["g"] > $_SESSION["m"]) {
-    print "      <td>&#128568;</td>\n";
-} elseif ($_SESSION["g"] < $_SESSION["m"]) {
-    print "      <td>&#128576;</td>\n";
-} else {
-    print "      <td>&#128572;</td>\n";
-}
 
-if ($_SESSION["moneda"] == 0) {
-    print "      <td></td>\n";
-} elseif ($_SESSION["moneda"] == 1) {
-    print "      <td><img src=\"img/a.svg\" alt=\"A\" width=\"100\" height=\"100\"></td>\n";
-} else
-    print "      <td><img src=\"img/b.svg\" alt=\"B\" width=\"100\" height=\"100\"></td>\n";
+// Mostramos la cara del gato
+print "      <td>$_SESSION[caraG]</td>\n";
 
-if ($_SESSION["g"] > $_SESSION["m"]) {
-    print "      <td>&#128584;</td>\n";
-} elseif ($_SESSION["g"] < $_SESSION["m"]) {
-    print "      <td>&#128053;</td>\n";
-} else {
-    print "      <td>&#128586;</td>\n";
-}
+// Mostramos la moneda
+print "      <td>$_SESSION[moneda]</td>\n";
+
+// Mostramos la cara del mono
+print "      <td>$_SESSION[caraM]</td>\n";
+
 print "    </tr>\n";
 ?>
   </table>
@@ -100,7 +97,7 @@ print "    </tr>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-25">25 de noviembre de 2021</time>
+      <time datetime="2025-01-31">31 de enero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Sesiones (2) 03 - ver.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2025-01-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-03");
 session_start();
 
@@ -44,12 +45,16 @@ session_start();
 
 <?php
 if (!isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
+    // Si no hay nombre ni apellidos en la sesión, lo dice
     print "  <p>Usted no ha escrito todavía ni su nombre ni sus apellidos</p>\n";
 } elseif (isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
+    // Si hay nombre pero no hay apellidos en la sesión, lo dice
     print "  <p>Usted <strong>sólo</strong> ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
 } elseif (!isset($_SESSION["nombre"]) and isset($_SESSION["apellidos"])) {
+    // Si no hay nombre pero sí apellidos en la sesión, lo dice
     print "  <p>Usted <strong>sólo</strong> ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
 } else {
+    // Si hay nombre y apellidos en la sesión, lo dice
     print "  <p>Usted ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
     print "\n";
     print "  <p>Usted ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
@@ -61,7 +66,7 @@ if (!isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-15">15 de noviembre de 2018</time>
+      <time datetime="2025-01-31">31 de enero de 2025</time>
     </p>
 
     <p class="licencia">

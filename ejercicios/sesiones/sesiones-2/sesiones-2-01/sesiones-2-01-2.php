@@ -3,9 +3,9 @@
  * Sesiones (2) 01 - sesiones-2-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-14
+ * @version   2025-01-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-01");
 session_start();
 
@@ -47,15 +48,22 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
+// Recogemos el nombre
 $nombre = recoge("nombre");
 
+// Comprobamos el nombre
 if ($nombre == "") {
+    // Si no hay nombre, guardamos el aviso en la sesión
     $_SESSION["avisoNombre"] = "No ha escrito su nombre";
+    // y volvemos a la página 1
     header("Location:sesiones-2-01-1.php");
     exit;
 } else {
+    // Si hay nombre, borramos el aviso que se podría haber generado en intentos anteriores,
     unset($_SESSION["avisoNombre"]);
+    // guardamos el nombre en la sesión
     $_SESSION["nombre"] = $nombre;
+    // y pasamos a la página 3
     header("Location:sesiones-2-01-3.php");
     exit;
 }

@@ -3,9 +3,9 @@
  * Quita cartas - sesiones-2-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-25
+ * @version   2025-01-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,10 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-11");
 session_start();
 
-if (!isset($_SESSION["cartas"])) {
+// Si falta una de los dos variables de sesión, redirigimos a la primera página
+if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
     header("Location:sesiones-2-11-1.php");
     exit;
 }
@@ -52,13 +54,27 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
+// Recogemos la orden de quitar una carta
 $quita = recoge("quita");
 
+// Si hemos recibido la orden de quitar una carta ...
 if ($quita == "quita") {
+    // reducimos el número de cartas a mostrar guardado
     $_SESSION["cartas"] -= 1;
+    // Si el número de cartas a mostrar guardado era cero y al reducirlo se hace negativo ...
     if ($_SESSION["cartas"] < 0) {
+        // lo generamos al azar
         $_SESSION["cartas"] = rand(3, 10);
+    }
+    // Guardamos el mensaje correspondiente al número de cartas
+    if ($_SESSION["cartas"] == 0) {
+        $_SESSION["mensaje"] = "  <p>No quedan cartas. Haga clic en el dibujo para volver a poner cartas.</p>\n";
+    } elseif ($_SESSION["cartas"] == 1) {
+        $_SESSION["mensaje"] = "  <p>Queda $_SESSION[cartas] sola carta. Haga clic en el dibujo para eliminarla.</p>\n";
+    } else {
+        $_SESSION["mensaje"] = "  <p>Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.</p>\n";
     }
 }
 
+// Volvemos a la primera página
 header("Location:sesiones-2-11-1.php");

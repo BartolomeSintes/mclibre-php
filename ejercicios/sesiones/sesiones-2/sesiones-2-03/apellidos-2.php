@@ -3,9 +3,9 @@
  * Sesiones (2) 03 - apellidos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2025-01-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-03");
 session_start();
 
@@ -47,16 +48,21 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
+// Recogemos los apellidos
 $apellidos = recoge("apellidos");
 
 if ($apellidos == "") {
-    $_SESSION["avisoApellido"] = "No ha escrito sus apellidos";
+    // Si no hay apellidos, guardamos el aviso en la sesión
+    $_SESSION["avisoApellidos"] = "No ha escrito sus apellidos";
+    // y volvemos a la página apellidos-1
     header("Location:apellidos-1.php");
     exit;
 } else {
-    unset($_SESSION["avisoApellido"]);
+    // Si hay apellidos, borramos el aviso que se podría haber generado en intentos anteriores,
+    unset($_SESSION["avisoApellidos"]);
+    // guardamos los apellidos en la sesión
     $_SESSION["apellidos"] = $apellidos;
+    // y volvemos a index
     header("Location:index.php");
     exit;
 }
-?>

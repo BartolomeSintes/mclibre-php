@@ -3,9 +3,9 @@
  * Hucha de monedas- sesiones-2-12-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-25
+ * @version   2025-01-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-12-1");
 session_start();
 
-if (!isset($_SESSION["cantidad"])) {
-    $_SESSION["cantidad"] = 0;
+// Si el ahorro no está guardado en la sesión, inicializamos el valor a cero
+if (!isset($_SESSION["ahorro"])) {
+    $_SESSION["ahorro"] = 0;
 }
 
 ?>
@@ -88,7 +90,8 @@ if (!isset($_SESSION["cantidad"])) {
           <path fill="#f2f2f2" stroke="#000" stroke-width=".25" d="M129.7 8.93h57.7v8.46h-57.7z" stroke-linecap="round" stroke-linejoin="bevel"/>
         </g>
 <?php
-print "        <text x=\"170\" y=\"110\" font-size=\"60\" text-anchor=\"middle\">$_SESSION[cantidad]</text>\n";
+// Mostramos la cantidad ahorrada
+print "        <text x=\"170\" y=\"110\" font-size=\"60\" text-anchor=\"middle\">$_SESSION[ahorro]</text>\n";
 ?>
       </svg>
     </p>
@@ -99,7 +102,7 @@ print "        <text x=\"170\" y=\"110\" font-size=\"60\" text-anchor=\"middle\"
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-25">25 de noviembre de 2021</time>
+      <time datetime="2025-01-31">31 de enero de 2025</time>
     </p>
 
     <p class="licencia">

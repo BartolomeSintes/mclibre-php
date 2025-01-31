@@ -23,13 +23,12 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-11");
+session_name("sesiones-2-11-b");
 session_start();
 
-// Si falta una de los dos variables de sesión, reiniciamos los valores
-if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
-    $_SESSION["cartas"]  = rand(3, 10);
-    $_SESSION["mensaje"] = "  <p>Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.</p>\n";
+// Si el número de cartas no está guardado en la sesión, lo generamos al azar
+if (!isset($_SESSION["cartas"])) {
+    $_SESSION["cartas"] = rand(3, 10);
 }
 
 ?>
@@ -50,11 +49,19 @@ if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
   <h1>Quita cartas</h1>
 
 <?php
-// Escribimos el mensaje
-print $_SESSION["mensaje"];
+if ($_SESSION["cartas"] == 0) {
+    // Si no quedan cartas, lo dice
+    print "  <p>No quedan cartas. Haga clic en el dibujo para volver a poner cartas.</p>\n";
+} elseif ($_SESSION["cartas"] == 1) {
+    // Si no queda una sola carta, lo dice
+    print "  <p>Queda $_SESSION[cartas] sola carta. Haga clic en el dibujo para eliminarla.</p>\n";
+} else {
+    // Si quedan varias cartas, lo dice
+    print "  <p>Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.</p>\n";
+}
 ?>
 
-  <form action="sesiones-2-11-2.php">
+  <form action="sesiones-2-11-b-2.php">
     <p>
       <button type="submit" name="quita" value="quita" style="background-color: #eee;">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +75,6 @@ print $_SESSION["mensaje"];
           </defs>
 
 <?php
-// Hacemos un bucle para dibujar el número de cartas guardado en la sesión
 for ($i = 0; $i < $_SESSION["cartas"]; $i++) {
     $pos = 10 * $i;
     print "          <rect x=\"$pos\" y=\"$pos\" width=\"100\" height=\"140\" rx=\"5\" ry=\"5\" style=\"stroke: black; fill: url(#patron-1);\" />\n";

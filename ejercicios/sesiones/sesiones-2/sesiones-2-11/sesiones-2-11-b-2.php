@@ -1,12 +1,12 @@
 <?php
 /**
- * Sesiones (2) 03 - sesiones-2-03-2.php
+ * Quita cartas - sesiones-2-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2025-01-31
- * @link      https://www.mclibre.org
+ * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -22,14 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-03");
+// Accedemos a la sesión
+session_name("sesiones-2-11-b");
 session_start();
 
-if (!isset($_SESSION["paso"])) {
-    $_SESSION["paso"] = 1;
-    header("Location:sesiones-2-03-1.php");
-} elseif (isset($_SESSION["paso"]) && $_SESSION["paso"] != 2) {
-    header("Location:sesiones-2-03-$_SESSION[paso].php");
+// Si el número de cartas no está guardado en la sesión, redirigimos a la primera página
+if (!isset($_SESSION["cartas"])) {
+    header("Location:sesiones-2-11-1.php");
     exit;
 }
 
@@ -55,17 +54,18 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$nombre = recoge("nombre");
+// Recogemos la orden de quitar una carta
+$quita = recoge("quita");
 
-if ($nombre == "") {
-    $_SESSION["avisoNombre"] = "No ha escrito su nombre";
-    $_SESSION["paso"] = 1;
-    header("Location:sesiones-2-03-1.php");
-    exit;
-} else {
-    unset($_SESSION["avisoNombre"]);
-    $_SESSION["nombre"] = $nombre;
-    $_SESSION["paso"] = 3;
-    header("Location:sesiones-2-03-3.php");
-    exit;
+// Si hemos recibido la orden de quitar una carta ...
+if ($quita == "quita") {
+    // reducimos el número de cartas a mostrar guardado
+    $_SESSION["cartas"] -= 1;
+    // Si el número de cartas a mostrar guardado era cero y al reducirlo se hace negativo ...
+    if ($_SESSION["cartas"] < 0) {
+        // lo generamos al azar
+        $_SESSION["cartas"] = rand(3, 10);
+    }
 }
+
+header("Location:sesiones-2-11-b-1.php");

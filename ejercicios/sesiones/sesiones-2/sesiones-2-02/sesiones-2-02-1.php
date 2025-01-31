@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 01 - sesiones-2-02-1.php
+ * Sesiones (2) 02 - sesiones-2-02-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-05
+ * @version   2025-01-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-02");
 session_start();
-// Borrramos los datos por si estamos volvendo a empezar
+
+// Borrramos los datos guardados en intentos anteriores
+// salvo el aviso1 que puede tener que mostrarse en esta página
 unset($_SESSION["palabra1"]);
 unset($_SESSION["palabra2"]);
 unset($_SESSION["aviso2"]);
@@ -49,12 +52,19 @@ unset($_SESSION["aviso2"]);
     <p>Escriba una palabra (con letras mayúsculas, letras minúsculas y números):</p>
 
 <?php
+// Si hay un aviso guardado en la sesión, ...
 if (isset($_SESSION["aviso1"])) {
-    print "    <p><label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label> "
-        . "<span class=\"aviso\">$_SESSION[aviso1]</span></p>\n";
+    // se muestra
+    print "    <p>\n";
+    print "      <label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "      <span class=\"aviso\">$_SESSION[aviso1]</span>\n";
+    print "    </p>\n";
     print "\n";
 } else {
-    print "    <p><label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label></p>\n";
+    // si no, no se muestra el aviso
+    print "    <p>\n";
+    print "      <label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "    </p>\n";
     print "\n";
 }
 ?>
@@ -67,7 +77,7 @@ if (isset($_SESSION["aviso1"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-05">5 de diciembre de 2023</time>
+      <time datetime="2025-01-31">31 de enero de 2025</time>
     </p>
 
     <p class="licencia">

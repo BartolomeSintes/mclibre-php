@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 01 - sesiones-2-02-3.php
+ * Sesiones (2) 02 - sesiones-2-02-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-05
+ * @version   2025-01-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,8 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("sesiones-2-02");
 session_start();
+
+// Si accedemos a esta página sin haber guardado antes la palabra1 en la sesión ...
+if (!isset($_SESSION["palabra1"])) {
+    // nos envía a la página 1
+    header("Location:sesiones-2-02-1.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,12 +53,19 @@ session_start();
     <p>Repita la palabra que acaba de escribir:</p>
 
 <?php
+// Si hay un aviso guardado en la sesión, ...
 if (isset($_SESSION["aviso2"])) {
-    print "    <p><label>Escriba de nuevo: <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\"></label> "
-        . "<span class=\"aviso\">$_SESSION[aviso2]</span></p>\n";
+    // se muestra
+    print "    <p>\n";
+    print "      <label>Escriba de nuevo: <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\"></label>\n";
+    print "      <span class=\"aviso\">$_SESSION[aviso2]</span>\n";
+    print "    </p>\n";
     print "\n";
 } else {
-    print "    <p><label>Escriba de nuevo: <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\"></label></p>\n";
+    // si no, no se muestra el aviso
+    print "    <p>\n";
+    print "      <label>Escriba de nuevo: <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\"></label>\n";
+    print "    </p>\n";
     print "\n";
 }
 ?>
@@ -63,7 +78,7 @@ if (isset($_SESSION["aviso2"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-05">5 de diciembre de 2023</time>
+      <time datetime="2025-01-31">31 de enero de 2025</time>
     </p>
 
     <p class="licencia">

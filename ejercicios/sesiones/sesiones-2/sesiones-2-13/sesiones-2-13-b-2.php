@@ -1,12 +1,12 @@
 <?php
 /**
- * Sesiones (2) 03 - sesiones-2-03-2.php
+ * Cara o cruz - sesiones-2-13-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2025-01-31
- * @link      https://www.mclibre.org
+ * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -22,14 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-03");
+// Accedemos a la sesión
+session_name("sesiones-2-13");
 session_start();
 
-if (!isset($_SESSION["paso"])) {
-    $_SESSION["paso"] = 1;
-    header("Location:sesiones-2-03-1.php");
-} elseif (isset($_SESSION["paso"]) && $_SESSION["paso"] != 2) {
-    header("Location:sesiones-2-03-$_SESSION[paso].php");
+// Si falta una de los dos variables de sesión, redirigimos a la primera página
+if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
+    header("Location:sesiones-2-13-b-1.php");
     exit;
 }
 
@@ -55,17 +54,25 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$nombre = recoge("nombre");
+// Recogemos la acción
+$siguiente = recoge("siguiente");
 
-if ($nombre == "") {
-    $_SESSION["avisoNombre"] = "No ha escrito su nombre";
-    $_SESSION["paso"] = 1;
-    header("Location:sesiones-2-03-1.php");
-    exit;
-} else {
-    unset($_SESSION["avisoNombre"]);
-    $_SESSION["nombre"] = $nombre;
-    $_SESSION["paso"] = 3;
-    header("Location:sesiones-2-03-3.php");
-    exit;
+if ($siguiente == "Lanzar moneda") {
+    // Si la acción es lanzar la moneda ...
+    // Lanzamos la moneda
+    $_SESSION["moneda"] = rand(1, 2);
+    // Calculamos quién gana el turno
+    if ($_SESSION["moneda"] == 1) {
+        $_SESSION["g"] += 1;
+    } else {
+        $_SESSION["m"] += 1;
+    }
+} elseif ($siguiente == "Volver a empezar") {
+    // Si la acción es volver a empezar, reiniciamos las variables de sesión
+    $_SESSION["moneda"] = 0;
+    $_SESSION["g"]      = 0;
+    $_SESSION["m"]      = 0;
 }
+
+// Volvemos a la primera página
+header("Location:sesiones-2-13-b-1.php");
