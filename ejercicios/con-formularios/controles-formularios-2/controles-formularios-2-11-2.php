@@ -93,7 +93,7 @@ if ($esquina == "") {
     print "  <p class=\"aviso\">No ha escrito el tamaño de la esquina como número entero.</p>\n";
     print "\n";
 } elseif ($esquina < 10 || $esquina > 250) {
-    print "  <p class=\"aviso\">El tamaño de la esquina no está entre 20 y 500 px.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la esquina no está entre 10 y 250 px.</p>\n";
     print "\n";
 } else {
     $esquinaOk = true;

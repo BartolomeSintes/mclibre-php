@@ -26,7 +26,7 @@
 session_name("sesiones-1-11");
 session_start();
 
-// Si falta una de los dos variables de sesión, redirigimos a la primera página
+// Si el número no está guardado en la sesión, redirigimos a la primera página
 if (!isset($_SESSION["numero"])) {
     header("Location:sesiones-1-11-1.php");
     exit;

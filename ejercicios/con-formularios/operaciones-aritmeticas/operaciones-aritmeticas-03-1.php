@@ -17,7 +17,7 @@
   <form action="operaciones-aritmeticas-03-2.php" method="get">
     <p>Escriba un número de segundos para convertir a minutos y segundos.</p>
 
-    <p><label>Segundos: <input type="number" name="segundos" min="0"></label>
+    <p><label>Segundos: <input type="number" name="segundos" min="0"></label></p>
 
     <p>
       <input type="submit" value="Convertir">
