@@ -19,7 +19,6 @@
 
   <main>
 <?php
-
 // SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()

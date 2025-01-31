@@ -38,7 +38,6 @@
   <h1>Puntos en cuadrantes (Resultado)</h1>
 
 <?php
-
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
@@ -83,8 +82,8 @@ if ($cantidad == "") {
     $cantidadOk = true;
 }
 
-if ($cuadrante != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
-        && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda") {
+if ($cuadrante                                        != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
+                                        && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda") {
     print "  <p class=\"aviso\">El cuadrante solicitado no es uno de los permitidos.</p>\n";
     print "\n";
 } else {

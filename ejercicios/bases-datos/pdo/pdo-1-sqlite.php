@@ -19,7 +19,6 @@
 
   <main>
 <?php
-
 // PASO 1: Definir las opciones del programa
 
 // Variables configurables por el administrador de la aplicación

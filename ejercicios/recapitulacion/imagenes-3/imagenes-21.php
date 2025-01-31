@@ -38,7 +38,6 @@
   <h1>Cuadrado de color al azar</h1>
 
 <?php
-
 $colores = [
     ["black",   "negro"],
     ["blue",    "azul"],

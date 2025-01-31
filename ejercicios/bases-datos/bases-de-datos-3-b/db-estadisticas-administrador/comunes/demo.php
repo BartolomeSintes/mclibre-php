@@ -1,5 +1,4 @@
 <?php
-
 // Registros de prueba opcionales
 
 $cfg["registrosDemo"] = [

@@ -6,5 +6,3 @@ print "<!DOCTYPE html>
   <p>Esta página es una página HTML válida.</p>
 </body>
 </html>\n";
-
-?>
