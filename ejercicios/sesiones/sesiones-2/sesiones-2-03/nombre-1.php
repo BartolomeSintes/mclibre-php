@@ -45,7 +45,7 @@ session_start();
 <?php
 // Si hay un nombre guardado en la sesión, ...
 if (isset($_SESSION["nombre"])) {
-    // se muestra
+    // lo mostramos
     print "  <p>Usted ya ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
 }
 ?>
@@ -56,14 +56,14 @@ if (isset($_SESSION["nombre"])) {
 <?php
 // Si hay un aviso guardado en la sesión, ...
 if (isset($_SESSION["avisoNombre"])) {
-    // se muestra
+    // lo mostramos
     print "    <p>\n";
     print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
     print "      <span class=\"aviso\">$_SESSION[avisoNombre]</span>\n";
     print "    </p>\n";
     print "\n";
 } else {
-    // si no, no se muestra el aviso
+    // si no, no mostramos el aviso
     print "    <p>\n";
     print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
     print "    </p>\n";

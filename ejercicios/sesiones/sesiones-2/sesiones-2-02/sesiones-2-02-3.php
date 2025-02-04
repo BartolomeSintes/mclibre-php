@@ -28,7 +28,7 @@ session_start();
 
 // Si accedemos a esta página sin haber guardado antes la palabra1 en la sesión ...
 if (!isset($_SESSION["palabra1"])) {
-    // nos envía a la página 1
+    // volvemos a la página 1
     header("Location:sesiones-2-02-1.php");
     exit;
 }
@@ -55,14 +55,14 @@ if (!isset($_SESSION["palabra1"])) {
 <?php
 // Si hay un aviso guardado en la sesión, ...
 if (isset($_SESSION["aviso2"])) {
-    // se muestra
+    // lo mostramos
     print "    <p>\n";
     print "      <label>Escriba de nuevo: <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\"></label>\n";
     print "      <span class=\"aviso\">$_SESSION[aviso2]</span>\n";
     print "    </p>\n";
     print "\n";
 } else {
-    // si no, no se muestra el aviso
+    // si no, no mostramos el aviso
     print "    <p>\n";
     print "      <label>Escriba de nuevo: <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\"></label>\n";
     print "    </p>\n";

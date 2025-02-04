@@ -28,7 +28,7 @@ session_start();
 
 // Si accedemos a esta página sin haber guardado antes un nombre en la sesión ...
 if (!isset($_SESSION["nombre"])) {
-    // nos envía a la página 1
+    // volvemos a la página 1
     header("Location:sesiones-2-01-1.php");
     exit;
 }

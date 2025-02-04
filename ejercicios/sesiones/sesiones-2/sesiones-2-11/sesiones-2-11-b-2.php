@@ -68,4 +68,5 @@ if ($quita == "quita") {
     }
 }
 
+// Volvemos a la primera página
 header("Location:sesiones-2-11-b-1.php");

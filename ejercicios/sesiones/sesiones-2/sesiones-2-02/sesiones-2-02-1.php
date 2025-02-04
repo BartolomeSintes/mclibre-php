@@ -54,14 +54,14 @@ unset($_SESSION["aviso2"]);
 <?php
 // Si hay un aviso guardado en la sesión, ...
 if (isset($_SESSION["aviso1"])) {
-    // se muestra
+    // lo mostramos
     print "    <p>\n";
     print "      <label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label>\n";
     print "      <span class=\"aviso\">$_SESSION[aviso1]</span>\n";
     print "    </p>\n";
     print "\n";
 } else {
-    // si no, no se muestra el aviso
+    // si no, no mostramos el aviso
     print "    <p>\n";
     print "      <label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label>\n";
     print "    </p>\n";
