@@ -108,11 +108,12 @@ $cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo d
         <ul>
           <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.
             <p>Para ello, podemos hacer una consulta COUNT(*), que devuelve un único registro con una única columna que contiene el número de registros en la tabla. Podemos obtener ese valor con el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">fetchColumn()</a>.</p>
-            <p>La variable lógica <span class="php-var">$limiteRegistrosOk</span> tendrá el valor <span class="php-con">true</span> si no se ha alcanzado el límte de número de registros y <span class="php-con">false</span> si se ha alcanzado.</p>
+            <p>La variable lógica <span class="php-var">$limiteRegistrosOk</span> tendrá el valor <span class="php-con">true</span> si no se ha alcanzado el límite de número de registros y <span class="php-con">false</span> si se ha alcanzado.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$limiteRegistrosOk = false;
+<code class="language-php">// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
+$limiteRegistrosOk = false;
 
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
@@ -142,7 +143,8 @@ if ($limiteRegistrosOk) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$registroNoVacioOk = false;
+<code class="language-php">// Comprobamos que no se intenta crear un registro vacío
+$registroNoVacioOk = false;
 
 if ($nombre == "" && $apellidos == "") {
     print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
@@ -159,7 +161,8 @@ if ($nombre == "" && $apellidos == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$registroDistintoOk = false;
+<code class="language-php">// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
+$registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $registroNoVacioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
@@ -185,7 +188,8 @@ if ($nombreOk && $apellidosOk && $registroNoVacioOk) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$limiteRegistrosOk = false;
+<code class="language-php">// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
+$limiteRegistrosOk = false;
 
 if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
@@ -209,6 +213,7 @@ if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk) {
             <div class="codigo">
               <pre>
 <code class="language-php">if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";
@@ -276,6 +281,8 @@ if (!$resultado) {
               <pre>
 <code class="language-php">if ($idOk) {
     foreach ($id as $indice =&gt; $valor) {
+        // Comprobamos que el registro con el id recibido existe en la base de datos
+
         $registroEncontradoOk = false;
 
         $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
@@ -292,7 +299,9 @@ if (!$resultado) {
             $registroEncontradoOk = true;
         }
 
+        // Si todas las comprobaciones han tenido éxito ...
         if ($registroEncontradoOk) {
+            // Borramos el registro con el id recibido
             $consulta = "DELETE FROM $cfg[tablaPersonas]
                          WHERE id = :indice";
           ...</code>
@@ -342,6 +351,7 @@ if (!$resultado) {
             <div class="codigo">
               <pre>
 <code class="language-php">if ($registrosEncontradosOk) {
+    // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE nombre LIKE :nombre
                  AND apellidos LIKE :apellidos";
@@ -376,6 +386,7 @@ if (!$resultado) {
               <pre>
 <code class="language-php">$id = recoge("id");
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == "") {
@@ -461,7 +472,8 @@ if ($id == "") {
             <p>Esta comprobación es la misma que la de insertar-2.php</p>
             <div class="codigo">
               <pre>
-<code class="language-php">$registroNoVacioOk = false;
+<code class="language-php">// Comprobamos que no se intenta crear un registro vacío
+$registroNoVacioOk = false;
 
 if ($nombre == "" && $apellidos == "") {
     print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
@@ -498,11 +510,12 @@ if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk) {
           </li>
           <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la tabla (es decir, como no queremos registros repetidos en la tabla, tenemos que comprobar que al modificar un registro no lo hagamos coincidir con otro registro).
             <p>Esta comprobación es similar a la de insertar-2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
-            <p>La variable lógica <span class="php-var">$registroDistintoOk</span> tendrá el valor <span class="php-con">true</span> si no existe ningún registro con los nuevos valores y <span class="php-con">false</span> si ya existe un registro con los nuevpos valores.</p>
+            <p>La variable lógica <span class="php-var">$registroDistintoOk</span> tendrá el valor <span class="php-con">true</span> si no existe ningún registro con los nuevos valores y <span class="php-con">false</span> si ya existe un registro con los nuevos valores.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$registroDistintoOk = false;
+<code class="language-php">// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
+$registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
@@ -534,6 +547,7 @@ if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontr
         <div class="codigo">
           <pre>
 <code class="language-php">if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontradoOk && $registroDistintoOk) {
+    // Actualizamos el registro con los datos recibidos
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos
                  WHERE id = :id";
@@ -547,6 +561,8 @@ if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontr
 
   <section id="ejercicio-2">
     <h2>Bases de datos (2) 2 - Listados ordenables</h2>
+
+    <p>Estos son los fragmentos de código que se deben añadir a las páginas del ejercicio Bases de datos (2) 1 para resolver el ejercicio Bases de datos (2) 2.</p>
 
     <p>En cualquier listado en forma de tabla, queremos poder ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
 
