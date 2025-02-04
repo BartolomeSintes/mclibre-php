@@ -53,7 +53,7 @@
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/bases-de-datos/bases-de-datos-1-plantillas.zip">plantillas de los ejercicios Bases de datos (1) (Bases de datos)</a> que incluyen parte de las páginas (los fragmentos HTML y las bibliotecas específicas de bases de datos). También puede descargar otras <a href="../../../soluciones/bases-de-datos/bases-de-datos-1-plantillas-2.zip">plantillas de los ejercicios Bases de datos (1) (Bases de datos)</a> que incluyen únicamente el ejercicio 6, pero con más código ya incluido en las plantillas.</p>
 
-  <p>Las plantillas incluyen ficheros .side que permiten la comprobación con <a href="../../../otros/selenium.html">Selenium IDE 4</a> del funcionamiento de la aplicación de ejemplo y de los ejercicios.</p>
+  <p>Para facilitar la verificación de los ejercicios, se proporcionan <a href="../../../soluciones/bases-de-datos/selenium.zip">ficheros .side</a> que permiten la comprobación con <a href="../../../otros/selenium.html">Selenium IDE 4</a> del funcionamiento de la aplicación de ejemplo y de los ejercicios.</p>
 
   <p>Puede <a href="../../../soluciones/bases-de-datos/bases-de-datos-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
 
@@ -144,7 +144,7 @@
       </li>
       <li>En una aplicación real, el borrado y creación de la base de datos estarían disponibles únicamente para el administrador, pero aquí cualquier usuario puede borrar y crear la base de datos.</li>
       <li>Las operaciones de borrar y crear la base de datos se realizan una a continuación de la otra.</li>
-      <li>Si el usuario intenta acceder directamente a la página que crea la tabla (escribiendo la dirección en el navegador), se le redireccionará directamente a la página inicial.</li>
+      <li>Si el usuario no confirma el borrado de la tabla (es decir, si accede directamente a la página que crea la tabla escribiendo la dirección en el navegador, o si envía valores distintos de Sí), se le redireccionará directamente a la página inicial.</li>
       <li>Esta puede ser la configuración de las bases de datos para este proyecto:
 
         <div class="codigo">
@@ -303,9 +303,9 @@ $consulta = "CREATE TABLE $cfg[tablaPersonas] (
         <div class="codigo">
           <pre>
 <code class="language-php">// Controles en el formulario
-print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasTamNombre]\" autofocus&gt;&lt;/td&gt;\n";
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasMaxNombre]\" autofocus&gt;&lt;/td&gt;\n";
 ...
-print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasTamApellidos]\"&gt;&lt;/td&gt;\n";</code>
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasMaxApellidos]\"&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
         <p>Estas constantes se pueden definir en config.php y en este caso hacerlas coincidir con el tamaño de los campos en la base de datos:</p>
@@ -319,7 +319,13 @@ $cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la col
 // Tamaño de los controles en los formularios
 
 $cfg["formPersonasTamNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño de la caja de texto Personas &gt; Nombre
-$cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas &gt; Apellidos</code>
+$cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas &gt; Apellidos
+
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formPersonasMaxNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño máximo admitido por la caja de texto Personas &gt; Nombre
+$cfg["formPersonasMaxApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño máximo admitido por la caja de texto Personas &gt; Apellidos
+</code>
 </pre>
         </div>
       </li>
@@ -329,10 +335,11 @@ $cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamañ
           <pre>
 <code class="language-php">// Comprueba la longitud del dato recibido
 $nombre   = recoge("nombre");
+
 $nombreOk = false;
 
-if (mb_strlen($nombre, "UTF-8") &gt; $cfg["tablaPersonasTamNombre"]) {
-    print "    &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.&lt;/p&gt;\n";
+if (mb_strlen($nombre, "UTF-8") &gt; $cfg["formPersonasMaxNombre"]) {
+    print "    &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $cfg[formPersonasMaxNombre] caracteres.&lt;/p&gt;\n";
     print "\n";
 } else {
     $nombreOk = true;
@@ -613,6 +620,7 @@ if (!$resultado) {
 <code class="language-php">// Recoge y borra los registros seleccionados
 $id = recoge("id", []);
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == []) {
@@ -624,7 +632,7 @@ if ($id == []) {
 if ($idOk) {
     foreach ($id as $indice =&gt; $valor) {
         $consulta = "DELETE FROM $cfg[tablaPersonas]
-                    WHERE id = :indice";
+                     WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
@@ -761,7 +769,7 @@ if ($idOk) {
         </p>
       </li>
       <li>La primera página es un formulario como el de añadir registros.</li>
-      <li>Para buscar los registros, esta puede ser la consulta preparada de selección:
+      <li>Para buscar los registros, comprobaríamos los valores recibidos con la misma comprobación que hacemos al insertar nuevos registros (insertar-2.php). Esta puede ser la consulta preparada de selección:
 
         <div class="codigo">
           <pre>
@@ -769,25 +777,32 @@ if ($idOk) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT * FROM $cfg[tablaPersonas]
-             WHERE nombre LIKE :nombre
-             AND apellidos LIKE :apellidos";
+// Comprobamos los datos recibidos procedentes de un formulario
+$nombreOk    = false;
+$apellidosOk = false;
 
-$resultado = $pdo-&gt;prepare($consulta);
-if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
-    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} else {
-    print "    &lt;p&gt;Registros encontrados:&lt;/p&gt;\n";
-    ...
-    foreach ($resultado as $registro) {
-        print "        &lt;tr&gt;\n";
-        print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
-        print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
-        print "        &lt;/tr&gt;\n";
-    }
-    ...</code>
+...
+
+if ($nombreOk && $apellidosOk) {
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                WHERE nombre LIKE :nombre
+                AND apellidos LIKE :apellidos";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registros encontrados:&lt;/p&gt;\n";
+        ...
+        foreach ($resultado as $registro) {
+            print "        &lt;tr&gt;\n";
+            print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+            print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+            print "        &lt;/tr&gt;\n";
+        }
+...</code>
 </pre>
         </div>
         <p>los comodines (%) deben incluirse al ejecutar la consulta, no se podrían incluir en la definición de $consulta.</p>
@@ -989,9 +1004,9 @@ if ($id == "") {
         <div class="codigo">
           <pre>
 <code class="language-php">        // Muestra los valores del registro en el formulario
-        print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";
+        print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasMaxNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";
         ...
-        print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasTamApellidos]\" value=\"$registro[apellidos]\"&gt;&lt;/td&gt;\n";</code>
+        print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasMaxApellidos]\" value=\"$registro[apellidos]\"&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -1029,7 +1044,7 @@ if ($id == "") {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de enero de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 7 de febrero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
