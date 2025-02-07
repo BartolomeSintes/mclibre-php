@@ -18,14 +18,14 @@ print "\n";
 
 foreach ($_REQUEST as $indice => $valor) {
     if (is_array($valor)) {
-        print "<p>El índice <strong>$indice</strong> es de tipo <strong>" . gettype($indice) . "</strong>. El valor es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+        print "  <p>El índice <strong>$indice</strong> es de tipo <strong>" . gettype($indice) . "</strong>. El valor es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+        print "\n";
     } else {
-        print "<p>El índice <strong>$indice</strong> es de tipo <strong>" . gettype($indice) . "</strong>. El valor <strong>$valor</strong> es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+        print "  <p>El índice <strong>$indice</strong> es de tipo <strong>" . gettype($indice) . "</strong>. El valor <strong>$valor</strong> es de tipo <strong>" . gettype($valor) . "</strong>,</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
-
   <p><a href="form-6-1.php">Volver al formulario.</a></p>
 </body>
 </html>

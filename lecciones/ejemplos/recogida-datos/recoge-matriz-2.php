@@ -38,18 +38,21 @@ function recoge($key, $type = "")
 $apellidos = recoge("apellidos", []);
 
 if ($apellidos[1] == "") {
-    print "<p>No ha escrito su primer apellido</p>";
+    print "  <p>No ha escrito su primer apellido</p>\n";
+    print "\n";
 } else {
-    print "<p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
+    print "  <p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
+    print "\n";
 }
 
 if ($apellidos[2] == "") {
-    print "<p>No ha escrito su segundo apellido</p>";
+    print "  <p>No ha escrito su segundo apellido</p>\n";
+    print "\n";
 } else {
-    print "<p>Su segundo apellido es <strong>$apellidos[2]</strong>.</p>\n";
+    print "  <p>Su segundo apellido es <strong>$apellidos[2]</strong>.</p>\n";
+    print "\n";
 }
 ?>
-
-<p><a href="recoge-matriz-1.php">Volver al formulario.</a></p>
+  <p><a href="recoge-matriz-1.php">Volver al formulario.</a></p>
 </body>
 </html>

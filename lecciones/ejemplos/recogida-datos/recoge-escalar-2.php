@@ -39,18 +39,21 @@ $nombre   = recoge("nombre");
 $apellidos = recoge("apellidos");
 
 if ($nombre == "") {
-    print "<p>No ha escrito ningún nombre</p>";
+    print "  <p>No ha escrito ningún nombre</p>\n";
+    print "\n";
 } else {
-    print "<p>Su nombre es <strong>$nombre</strong>.</p>\n";
+    print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
+    print "\n";
 }
 
 if ($apellidos == "") {
-    print "<p>No ha escrito ningún apellido</p>";
+    print "  <p>No ha escrito ningún apellido</p>\n";
+    print "\n";
 } else {
-    print "<p>Sus apellidos son <strong>$apellidos</strong>.</p>\n";
+    print "  <p>Sus apellidos son <strong>$apellidos</strong>.</p>\n";
+    print "\n";
 }
 ?>
-
-<p><a href="recoge-escalar-1.php">Volver al formulario.</a></p>
+  <p><a href="recoge-escalar-1.php">Volver al formulario.</a></p>
 </body>
 </html>

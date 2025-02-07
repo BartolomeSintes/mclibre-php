@@ -73,9 +73,8 @@ print "      <input type=\"submit\" value=\"Enviar\">\n";
 print "      <input type=\"reset\" value=\"Borrar\">\n";
 print "    </p>\n";
 print "  </form>\n";
-
+print "\n";
 ?>
-
   <p><a href="controles-ocultos-1.php">Volver al formulario anterior.</a></p>
 
   <footer>

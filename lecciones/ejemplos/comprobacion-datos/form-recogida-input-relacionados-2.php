@@ -83,13 +83,13 @@ if ($operacion == "division" && $y == 0) {
 
 // Si todo es correcto, ejecución del programa
 if ($operacionOk && $xOk && $yOk) {
-    print ($operacion == "suma") ? "<p>$x + $y = " . $x + $y . "</p>" : "";
-    print ($operacion == "resta") ? "<p>$x - $y = " . $x - $y . "</p>" : "";
-    print ($operacion == "multiplicacion") ? "<p>$x * $y = " . $x * $y . "</p>" : "";
-    print ($operacion == "division") ? "<p>$x / $y = " . $x / $y . "</p>" : "";
+    print ($operacion == "suma") ? "  <p>$x + $y = " . $x + $y . "</p>\n" : "";
+    print ($operacion == "resta") ? "  <p>$x - $y = " . $x - $y . "</p>\n" : "";
+    print ($operacion == "multiplicacion") ? "  <p>$x * $y = " . $x * $y . "</p>\n" : "";
+    print ($operacion == "division") ? "  <p>$x / $y = " . $x / $y . "</p>\n" : "";
+    print "\n";
 }
 ?>
-
-<p><a href="form-recogida-input-relacionados-1.php">Volver al formulario.</a></p>
+  <p><a href="form-recogida-input-relacionados-1.php">Volver al formulario.</a></p>
 </body>
 </html>

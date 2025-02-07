@@ -54,7 +54,6 @@ if ($nombreOk) {
     print "\n";
 }
 ?>
-
-<p><a href="form-recogida-input-text-1.php">Volver al formulario.</a></p>
+  <p><a href="form-recogida-input-text-1.php">Volver al formulario.</a></p>
 </body>
 </html>

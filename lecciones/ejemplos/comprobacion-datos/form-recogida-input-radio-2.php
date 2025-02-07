@@ -57,7 +57,6 @@ if ($gustaOk) {
     print "\n";
 }
 ?>
-
-<p><a href="form-recogida-input-radio-1.php">Volver al formulario.</a></p>
+  <p><a href="form-recogida-input-radio-1.php">Volver al formulario.</a></p>
 </body>
 </html>

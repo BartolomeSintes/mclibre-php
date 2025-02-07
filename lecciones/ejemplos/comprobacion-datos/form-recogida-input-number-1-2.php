@@ -60,7 +60,6 @@ if ($pesoOk) {
     print "\n";
 }
 ?>
-
-<p><a href="form-recogida-input-number-1-1.php">Volver al formulario.</a></p>
+  <p><a href="form-recogida-input-number-1-1.php">Volver al formulario.</a></p>
 </body>
 </html>

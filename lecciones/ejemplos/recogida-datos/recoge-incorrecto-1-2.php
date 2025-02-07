@@ -38,13 +38,13 @@ function recoge($key, $type = "")
 $apellidos = recoge("apellidos");
 
 if ($apellidos == "") {
-    print "<p>No ha escrito su primer apellido</p>";
+    print "  <p>No ha escrito su primer apellido</p>\n";
+    print "\n";
 } else {
-    print "<p>Su primer apellido es <strong>$apellidos</strong>.</p>\n";
+    print "  <p>Su primer apellido es <strong>$apellidos</strong>.</p>\n";
+    print "\n";
 }
-
 ?>
-
-<p><a href="recoge-incorrecto-1-1.php">Volver al formulario.</a></p>
+  <p><a href="recoge-incorrecto-1-1.php">Volver al formulario.</a></p>
 </body>
 </html>

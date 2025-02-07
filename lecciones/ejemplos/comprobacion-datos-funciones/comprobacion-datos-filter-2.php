@@ -29,7 +29,7 @@
   <title>
     Función filter_var() (Resultado). Funciones de comprobación de datos.
     PHP. Bartolomé Sintes Marco. www.mclibre.org
-</title>
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
@@ -68,9 +68,9 @@ if (!isset($_REQUEST["dato"])) {
     print "\n";
 } else {
     if ($dato != $_REQUEST["dato"] && $dato != "") {
-        print "  <p>El texto introducido contiene caracteres potencialmente problemáticos (comillas, ampersand, etiquetas html, etc.). "
-            . "Por seguridad se ha aplicado al texto la función recoge() comentada en "
-            . "<a href=\"https://www.mclibre.org/consultar/php/lecciones/php-recogida-datos.html#recoger-datos\">estos apuntes</a>.</p>\n";
+        print "  <p>El texto introducido contiene caracteres potencialmente problemáticos (comillas, ampersand, etiquetas html, etc.). ";
+        print "Por seguridad se ha aplicado al texto la función recoge() comentada en ";
+        print "<a href=\"https://www.mclibre.org/consultar/php/lecciones/php-recogida-datos.html#recoger-datos\">estos apuntes</a>.</p>\n";
         print "\n";
         print "  <p>Tenga en cuenta que el resultado de las funciones mostrado puede ser diferente al que se obtendría utilizando el texto original.</p>\n";
         print "\n";

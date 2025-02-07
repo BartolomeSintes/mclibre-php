@@ -21,7 +21,6 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -67,9 +66,8 @@ $apellidos = recoge("apellidos");
 print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
 print "\n";
 print "  <p>Su apellido es <strong>$apellidos</strong>.</p>\n";
-
+print "\n";
 ?>
-
   <p><a href="controles-ocultos-1.php">Volver al formulario inicial.</a></p>
 
   <footer>

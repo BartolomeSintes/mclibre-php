@@ -39,12 +39,12 @@ $apellidos = recoge("apellidos", "[]");
 
 if ($apellidos[1] == "") {
     print "<p>No ha escrito su primer apellido</p>";
+    print "\n";
 } else {
     print "<p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
+    print "\n";
 }
-
 ?>
-
-<p><a href="recoge-error-1.php">Volver al formulario.</a></p>
+  <p><a href="recoge-error-1.php">Volver al formulario.</a></p>
 </body>
 </html>

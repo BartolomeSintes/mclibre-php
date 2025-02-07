@@ -15,7 +15,7 @@ print "  <pre>\n";
 print_r($_REQUEST);
 print "<a href=\"form-name-repetido-1.php\">Volver al formulario.</a>\n";
 print "  </pre>";
+print "\n";
 ?>
-
 </body>
 </html>
