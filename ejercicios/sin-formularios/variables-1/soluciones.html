@@ -66,14 +66,15 @@ $longitud = rand(10, 1000);
 
 print "  &lt;p&gt;Longitud: $longitud&lt;/p&gt;\n";
 print "\n";
-print "  &lt;p&gt;";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . $longitud . "px\" height=\"10px\"&gt;\n";
+print "  &lt;p&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . $longitud . "px\" height=\"10px\"&gt;\n";
 // forma alternativa
-//print "      width=\"{$longitud}px\" height=\"10px\"&gt;\n";
+//print "         width=\"{$longitud}px\" height=\"10px\"&gt;\n";
 print "      &lt;line x1=\"1\" y1=\"5\" x2=\"$longitud\" y2=\"5\" stroke=\"black\" stroke-width=\"10\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;";
+print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -94,11 +95,12 @@ $b = rand(0, 255);
 print "  &lt;p&gt;Color: rgb($r $g $b)&lt;/p&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"100\" height=\"100\"&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"100\" height=\"100\"&gt;\n";
 print "      &lt;circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"rgb($r $g $b)\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -112,12 +114,13 @@ $color = "rgb(" . rand(0, 255) . " " . rand(0, 255) . " " . rand(0, 255) . ")";
 
 print "  &lt;p&gt;Color: $color&lt;/p&gt;\n";
 print "\n";
-print "  &lt;p&gt;";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"100\" height=\"100\"&gt;\n";
+print "  &lt;p&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"100\" height=\"100\"&gt;\n";
 print "      &lt;circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"$color\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;";
+print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -138,6 +141,7 @@ print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"
 print "  &lt;/p&gt;\n";
 print "\n";
 print "  &lt;p&gt;Total: &lt;span style=\"border: black 2px solid; padding: 10px; font-size: 300%\"&gt;" . $dado1 + $dado2 . "&lt;/span&gt;&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -160,7 +164,8 @@ print "    &lt;img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\"&gt;\n";
 print "    &lt;img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
-print "&lt;p&gt;La carta más alta es un &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
+print "  &lt;p&gt;La carta más alta es un &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -177,8 +182,8 @@ $verde = rand(64, 255);
 $azul  = rand(64, 255);
 
 print "  &lt;p&gt;\n";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400\" height=\"300\" viewBox=\"-200 -120 400 300\"&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "          width=\"400\" height=\"300\" viewBox=\"-200 -120 400 300\"&gt;\n";
 print "      &lt;text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\"&gt;Verde: $verde&lt;/text&gt;\n";
 print "      &lt;text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\"&gt;Azul: $azul&lt;/text&gt;\n";
 print "      &lt;text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\"&gt;Rojo: $rojo&lt;/text&gt;\n";
@@ -191,6 +196,7 @@ print "      &lt;path fill=\"rgb(0 $verde $azul)\" stroke=\"black\" stroke-width
 print "      &lt;path fill=\"rgb($rojo $verde $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -206,17 +212,18 @@ $r     = rand(50, 150);
 $ancho = 8 * $r + 20;
 $alto  = 2 * $r + 20;
 
-print "  &lt;p&lg;Estos círculos tienen $r px de radio. Actualice la página para mostrar cuatro nuevos círculos.&lt;/p&lg;\n";
+print "  &lt;p&gt;Estos círculos tienen $r px de radio. Actualice la página para mostrar cuatro nuevos círculos.&lt;/p&gt;\n";
 print "\n";
-print "  &lt;p&lg;\n";
+print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&lg;\n";
-print "      &lt;circle cx=\"$r\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"red\" /&lg;\n";
-print "      &lt;circle cx=\"" . 3 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"yellow\" /&lg;\n";
-print "      &lt;circle cx=\"" . 5 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"green\" /&lg;\n";
-print "      &lt;circle cx=\"" . 7 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"blue\" /&lg;\n";
-print "    &lt;/svg&lg;\n";
+print "         width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\"&gt;\n";
+print "      &lt;circle cx=\"$r\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"red\" /&gt;\n";
+print "      &lt;circle cx=\"" . 3 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"yellow\" /&gt;\n";
+print "      &lt;circle cx=\"" . 5 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"green\" /&gt;\n";
+print "      &lt;circle cx=\"" . 7 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"blue\" /&gt;\n";
+print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -234,14 +241,15 @@ $c3    = rand(50, 150);
 $ancho = $c1 + $c2 + $c3 + 20;
 $alto  = max($c1, $c2, $c3) + 20;
 
-print "  &lt;p&gt;";
+print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "         width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\"&gt;\n";
 print "      &lt;rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" /&gt;\n";
 print "      &lt;rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" /&gt;\n";
 print "      &lt;rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;";
+print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -253,21 +261,22 @@ print "  &lt;/p&gt;";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$r1 = rand(50, 150);
-$r2 = rand(50, 150);
-$r3 = rand(50, 150);
-$ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
-$alto  = 2 * max($r1, $r2, $r3) + 20;
+$r1      = rand(50, 150);
+$r2      = rand(50, 150);
+$r3      = rand(50, 150);
+$ancho   = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
+$alto    = 2 * max($r1, $r2, $r3) + 20;
 $centros = max($r1, $r2, $r3);
 
 print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "         width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\"&gt;\n";
 print "      &lt;circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
 print "      &lt;circle cx=\"" . 2 * $r1 + $r2 . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" /&gt;\n";
 print "      &lt;circle cx=\"" . 2 * $r1 + 2 * $r2 + $r3 . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -281,28 +290,29 @@ print "  &lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 $dado = rand(1, 6);
 
-print "  &lt;p&gt;";
-print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;&lt;/p&gt;\n";
-print "  &lt;/p&gt;";
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+print "  &lt;/p&gt;\n";
 print "\n";
-print "  &lt;p&gt;";
+print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"620\" height=\"120\" viewBox=\"-15 -15 620 120\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "         width=\"620\" height=\"120\" viewBox=\"-15 -15 620 120\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
 print "      &lt;rect x=\"0\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" /&gt;\n";
-print "      &lt;text x=\"50\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" &gt;1&lt;/text&gt;\n";
+print "      &lt;text x=\"50\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\"&gt;1&lt;/text&gt;\n";
 print "      &lt;rect x=\"100\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" /&gt;\n";
-print "      &lt;text x=\"150\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" &gt;2&lt;/text&gt;\n";
+print "      &lt;text x=\"150\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\"&gt;2&lt;/text&gt;\n";
 print "      &lt;rect x=\"200\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" /&gt;\n";
-print "      &lt;text x=\"250\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" &gt;3&lt;/text&gt;\n";
+print "      &lt;text x=\"250\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\"&gt;3&lt;/text&gt;\n";
 print "      &lt;rect x=\"300\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" /&gt;\n";
-print "      &lt;text x=\"350\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" &gt;4&lt;/text&gt;\n";
+print "      &lt;text x=\"350\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\"&gt;4&lt;/text&gt;\n";
 print "      &lt;rect x=\"400\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" /&gt;\n";
-print "      &lt;text x=\"450\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" &gt;5&lt;/text&gt;\n";
+print "      &lt;text x=\"450\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\"&gt;5&lt;/text&gt;\n";
 print "      &lt;rect x=\"500\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" /&gt;\n";
-print "      &lt;text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" &gt;6&lt;/text&gt;\n";
+print "      &lt;text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\"&gt;6&lt;/text&gt;\n";
 print "      &lt;circle cx=\"" . 100 * $dado - 50 . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;";
+print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -315,9 +325,9 @@ print "  &lt;/p&gt;";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$d1    = rand(1, 6);
-$d2    = rand(1, 6);
-$d3    = rand(1, 6);
+$d1 = rand(1, 6);
+$d2 = rand(1, 6);
+$d3 = rand(1, 6);
 
 print "  &lt;p&gt;\n";
 print "    &lt;img src=\"img/$d1.svg\" alt=\"$d1\" width=\"120\" height=\"120\"&gt;\n";
@@ -333,16 +343,16 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-print "      &lt;text x=\"" . $d1 * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\"&gt;\n";
-print "        &amp;#x1f4a5;\n";
+print "      &lt;text x=\"" . $d1 * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\"&gt;\n";
+print "        &#x1f4a5;\n";
 print "        &lt;animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . $d1 * 0.1 + 0.5 . "s\" fill=\"freeze\" /&gt;\n";
 print "      &lt;/text&gt;\n";
-print "      &lt;text x=\"" . ($d1 + $d2) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\"&gt;\n";
-print "        &amp;#x1f4a5;\n";
+print "      &lt;text x=\"" . ($d1 + $d2) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\"&gt;\n";
+print "        &#x1f4a5;\n";
 print "        &lt;animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2) * 0.1 + 0.5 . "s\" fill=\"freeze\" /&gt;\n";
 print "      &lt;/text&gt;\n";
-print "      &lt;text x=\"" . ($d1 + $d2 + $d3) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\"&gt;\n";
-print "        &amp;#x1f4a5;\n";
+print "      &lt;text x=\"" . ($d1 + $d2 + $d3) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\"&gt;\n";
+print "        &#x1f4a5;\n";
 print "        &lt;animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2 + $d3) * 0.1 + 0.5 . "s\" fill=\"freeze\" /&gt;\n";
 print "      &lt;/text&gt;\n";
 ?&gt;</code>
@@ -351,7 +361,7 @@ print "      &lt;/text&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 9 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

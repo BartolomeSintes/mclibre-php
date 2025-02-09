@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 15 - variables-1-15.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-10-03
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,9 +41,9 @@
   <p>Actualice la página para mostrar un nuevo bombardeo alienígena. Los dados determinan qué casillas son bombardeadas.</p>
 
 <?php
-$d1    = rand(1, 6);
-$d2    = rand(1, 6);
-$d3    = rand(1, 6);
+$d1 = rand(1, 6);
+$d2 = rand(1, 6);
+$d3 = rand(1, 6);
 
 print "  <p>\n";
 print "    <img src=\"img/$d1.svg\" alt=\"$d1\" width=\"120\" height=\"120\">\n";
@@ -100,7 +100,7 @@ print "      </text>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-10-03">3 de octubre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

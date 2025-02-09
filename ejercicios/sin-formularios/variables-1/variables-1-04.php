@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 4 - variables-1-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,12 +53,12 @@ print "    <img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\">\n";
 print "  </p>\n";
 print "\n";
 print "  <p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

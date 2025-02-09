@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 1 - variables-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,19 +46,19 @@ $longitud = rand(10, 1000);
 print "  <p>Longitud: $longitud</p>\n";
 print "\n";
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . $longitud . "px\" height=\"10px\">\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . $longitud . "px\" height=\"10px\">\n";
 // forma alternativa
-//print "      width=\"{$longitud}px\" height=\"10px\">\n";
+//print "         width=\"{$longitud}px\" height=\"10px\">\n";
 print "      <line x1=\"1\" y1=\"5\" x2=\"$longitud\" y2=\"5\" stroke=\"black\" stroke-width=\"10\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-24">24 de septiembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

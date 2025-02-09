@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 5 - variables-1-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-09-26
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,8 +46,8 @@ $verde = rand(64, 255);
 $azul  = rand(64, 255);
 
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400\" height=\"300\" viewBox=\"-200 -120 400 300\">\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "          width=\"400\" height=\"300\" viewBox=\"-200 -120 400 300\">\n";
 print "      <text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\">Verde: $verde</text>\n";
 print "      <text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\">Azul: $azul</text>\n";
 print "      <text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\">Rojo: $rojo</text>\n";
@@ -60,12 +60,12 @@ print "      <path fill=\"rgb(0 $verde $azul)\" stroke=\"black\" stroke-width=\"
 print "      <path fill=\"rgb($rojo $verde $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-09-26">26 de septiembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
