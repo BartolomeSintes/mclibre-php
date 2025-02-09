@@ -3,9 +3,9 @@
  * Sin formularios. Variables (0) 3 B - variables-0-03-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,12 +46,12 @@ $minutos  = rand(0, 150);
 $segundos = rand(0, 150);
 
 print "  <p>$horas horas, $minutos minutos y $segundos segundos son " . $horas * 3600 + $minutos * 60 + $segundos . " segundos.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-09">9 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -67,6 +67,7 @@ $b     = rand(0, 100);
 $media = ($a + $b) / 2;
 
 print "  &lt;p&gt;La media aritmética de $a y $b es $media.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -80,6 +81,7 @@ $a = rand(0, 100);
 $b = rand(0, 100);
 
 print "  &lt;p&gt;La media aritmética de $a y $b es " . ($a + $b) / 2 . ".&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -98,6 +100,7 @@ $altura = rand(150, 200) / 100;
 $imc    = round($peso / $altura ** 2, 1);
 
 print "  &lt;p&gt;Con un peso de $peso kg y una altura de $altura m, el IMC es $imc.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -111,6 +114,7 @@ $peso   = rand(50, 100);
 $altura = rand(150, 200) / 100;
 
 print "  &lt;p&gt;Con un peso de $peso kg y una altura de $altura m, el IMC es " . round($peso / $altura ** 2, 1) . ".&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -130,6 +134,7 @@ $segundos = rand(0, 150);
 $total    = $horas * 3600 + $minutos * 60 + $segundos;
 
 print "  &lt;p&gt;$horas horas, $minutos minutos y $segundos segundos son $total segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -144,6 +149,7 @@ $minutos  = rand(0, 150);
 $segundos = rand(0, 150);
 
 print "  &lt;p&gt;$horas horas, $minutos minutos y $segundos segundos son " . $horas * 3600 + $minutos * 60 + $segundos . " segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -194,6 +200,7 @@ $minutos         = intdiv($segundosTotales, 60);
 $segundos        = $segundosTotales % 60;
 
 print "  &lt;p&gt;$segundosTotales segundos son $minutos minutos y $segundos segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -206,6 +213,7 @@ print "  &lt;p&gt;$segundosTotales segundos son $minutos minutos y $segundos seg
 $segundos = rand(0, 1000);
 
 print "  &lt;p&gt;$segundos segundos son " . intdiv($segundos, 60) . " minutos y " . $segundos % 60 . " segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -276,6 +284,7 @@ $minutos   = intdiv($segundos2, 60);
 $segundos3 = $segundos2 % 60;
 
 print "  &lt;p&gt;$segundos segundos son $horas horas, $minutos minutos y $segundos3 segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -285,9 +294,10 @@ print "  &lt;p&gt;$segundos segundos son $horas horas, $minutos minutos y $segun
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$segundos  = rand(0, 10_000);
+$segundos = rand(0, 10_000);
 
 print "  &lt;p&gt;$segundos segundos son " . intdiv($segundos, 3600) . " horas, " . intdiv($segundos % 3600, 60) . " minutos y " . $segundos % 3600 % 60 . " segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -300,6 +310,7 @@ print "  &lt;p&gt;$segundos segundos son " . intdiv($segundos, 3600) . " horas, 
 $segundos  = rand(0, 10_000);
 
 print "  &lt;p&gt;$segundos segundos son " . intdiv($segundos, 3600) . " horas, " . intdiv($segundos % 3600, 60) . " minutos y " . $segundos % 60 . " segundos.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -318,6 +329,7 @@ $pulgadas    = rand(0, 10);
 $centimetros = ($pies * 12 + $pulgadas) * 2.54;
 
 print "  &lt;p&gt;$pies pies y $pulgadas pulgadas son $centimetros cm.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -330,7 +342,8 @@ print "  &lt;p&gt;$pies pies y $pulgadas pulgadas son $centimetros cm.&lt;/p&gt;
 $pies     = rand(0, 10);
 $pulgadas = rand(0, 10);
 
-print "  &lt;p&gt;$pies pies y $pulgadas pulgadas son " . ($pies * 12 + $pulgadas) * 2.54 . " cm.&lt;/p&gt;\n";
+print "  <p>$pies pies y $pulgadas pulgadas son " . ($pies * 12 + $pulgadas) * 2.54 . " cm.</p>\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -350,6 +363,7 @@ $pulgadas    = rand(0, 10);
 $centimetros = ($yardas * 36 + $pies * 12 + $pulgadas) * 2.54;
 
 print "  &lt;p&gt;$yardas yardas, $pies pies y $pulgadas pulgadas son $centimetros cm.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -364,6 +378,7 @@ $pies     = rand(0, 10);
 $pulgadas = rand(0, 10);
 
 print "  &lt;p&gt;$yardas yardas, $pies pies y $pulgadas pulgadas son " . ($yardas * 36 + $pies * 12 + $pulgadas) * 2.54 . " cm.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -429,6 +444,7 @@ $centimetros2 = fmod($centimetros, 30.48);
 $pulgadas     = round($centimetros2 / 2.54, 1);
 
 print "  &lt;p&gt;$centimetros centímetros son $pies pies y $pulgadas pulgadas.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -444,6 +460,7 @@ $centimetros = rand(0, 1_000_000) / 100;
 
 print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 30.48) . " pies y ";
 print round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -529,10 +546,11 @@ $centimetros  = rand(0, 5_000_000) / 100;
 $yardas       = floor($centimetros / 91.44);
 $centimetros2 = fmod($centimetros, 91.44);
 $pies         = floor($centimetros2 / 30.48);
-$centimetros3 = fmod($centimetros, 30.48);
+$centimetros3 = fmod($centimetros2, 30.48);
 $pulgadas     = round($centimetros3 / 2.54, 1);
 
 print "  &lt;p&gt;$centimetros centímetros son $yardas yardas, $pies pies y $pulgadas pulgadas.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -546,9 +564,10 @@ print "  &lt;p&gt;$centimetros centímetros son $yardas yardas, $pies pies y $pu
 <code class="language-php">&lt;?php
 $centimetros = rand(0, 5_000_000) / 100;
 
-print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, "
-    . floor(fmod($centimetros, 91.44) / 30.48) . " pies y "
-    . round(fmod(fmod($centimetros, 91.44), 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, ";
+print floor(fmod($centimetros, 91.44) / 30.48) . " pies y ";
+print round(fmod(fmod($centimetros, 91.44), 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -601,16 +620,17 @@ print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) 
 <code class="language-php">&lt;?php
 $centimetros = rand(0, 5_000_000) / 100;
 
-print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, "
-    . floor(fmod($centimetros, 91.44) / 30.48) . " pies y "
-    . round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, ";
+print floor(fmod($centimetros, 91.44) / 30.48) . " pies y ";
+print round(fmod($centimetros, 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 19 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 9 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

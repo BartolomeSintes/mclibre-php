@@ -3,9 +3,9 @@
  * Sin formularios. Variables (0) 9 - variables-0-09.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,6 @@
 
 <?php
 $centimetros  = rand(0, 5_000_000) / 100;
-$centimetros = 10953.33;
 $yardas       = floor($centimetros / 91.44);
 $centimetros2 = fmod($centimetros, 91.44);
 $pies         = floor($centimetros2 / 30.48);
@@ -50,12 +49,12 @@ $centimetros3 = fmod($centimetros2, 30.48);
 $pulgadas     = round($centimetros3 / 2.54, 1);
 
 print "  <p>$centimetros centímetros son $yardas yardas, $pies pies y $pulgadas pulgadas.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-09">9 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
