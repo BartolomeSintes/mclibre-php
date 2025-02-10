@@ -118,7 +118,7 @@ for ($i = 0; $i &lt; $n; $i++) {
     // Cuidado: se trata de un índice, no del valor
     $dado = <span class="codigo-resaltado">$dadosPoker[array_rand($dadosPoker)]</span>;
     // Mostramos la imagen del dado
-    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dado</span>.svg\" alt=\"<span class="codigo-resaltado">$dado</span>\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dado.svg</span>\" alt=\"<span class="codigo-resaltado">$dado</span>\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -146,7 +146,7 @@ print "  &lt;h2&gt;Tirada de $n dados&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
 foreach ($dados as $dado) {
-    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dadosPoker[$dado]</span>.svg\" alt=\"$dadosPoker[$dado]\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dadosPoker[$dado]</span>.svg\" alt=\"<span class="codigo-resaltado">$dadosPoker[$dado]</span>\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -173,7 +173,7 @@ print "  &lt;h2&gt;Tirada de $n dados&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
 foreach ($dados as $dado) {
-    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dado</span>.svg\" alt=\"$dado\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dado</span>.svg\" alt=\"<span class="codigo-resaltado">$dado</span>\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -241,7 +241,7 @@ print "  &lt;h2&gt;Tirada de $n dados&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
 foreach ($dados as $dado) {
-    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">{$dadosPoker[$dado][0]}</span>.svg\" alt=\"<span class="codigo-resaltado">{$dadosPoker[$dado][1]}</span>\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/dados-poker/{<span class="codigo-resaltado">$dadosPoker[$dado][0]</span>}.svg\" alt=\"{<span class="codigo-resaltado">$dadosPoker[$dado][1]</span>}\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -334,7 +334,7 @@ print "  &lt;p&gt;\n";
 for ($i = 0; $i &lt; $n; $i++) {
     $palo   = <span class="codigo-resaltado">array_rand($palos)</span>;
     $numero = <span class="codigo-resaltado">rand(1, 10)</span>;
-    print "    &lt;img src=\"img/cartas/<span class="codigo-resaltado">{$palos[$palo][0]}$numero</span>.svg\" alt=\"<span class="codigo-resaltado">$numero</span> de <span class="codigo-resaltado">{$palos[$palo][1]}</span>\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/cartas/{<span class="codigo-resaltado">$palos[$palo][0]}$numero</span>.svg\" alt=\"<span class="codigo-resaltado">$numero</span> de {<span class="codigo-resaltado">$palos[$palo][1]</span>}\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -350,7 +350,7 @@ print "\n";
           <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de los cuatro palos
-$palos = ["c" =&gt; "corazones", "d"=&gt; "diamantes", "p" =&gt; "picas", "t" =&gt; "tréboles"];
+$palos = ["c" =&gt; "corazones", "d" =&gt; "diamantes", "p" =&gt; "picas", "t" =&gt; "tréboles"];
 
 // Guardamos los valores de las cartas en la matriz $cartas
 // La matriz tiene dos dimensiones
@@ -364,7 +364,7 @@ print "  &lt;h2&gt;Extracción de $n cartas&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
 foreach ($cartas as $carta) {
-    print "    &lt;img src=\"img/cartas/<span class="codigo-resaltado">$carta[0]$carta[1]</span>.svg\" alt=\"<span class="codigo-resaltado">$carta[1]</span> de <span class="codigo-resaltado">{$palos[$carta[0]]}</span>\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/cartas/<span class="codigo-resaltado">$carta[0]$carta[1]</span>.svg\" alt=\"<span class="codigo-resaltado">$carta[1]</span> de {<span class="codigo-resaltado">$palos[$carta[0]]</span>}\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -477,7 +477,6 @@ print "\n";
 // Calculamos y mostramos los valores máximo y mínimo
 print "&lt;p&gt;La carta más alta es un " . max($cartas) . " y la carta más baja es un " . min($cartas) . "&lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
     </div>
@@ -540,7 +539,6 @@ print "\n";
 // Calculamos y mostramos el valor máximo actual
 print "&lt;p&gt;La carta más alta es ahora un " . max($cartas) . ".&lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
     </div>
@@ -583,7 +581,6 @@ foreach ($resultado as $bola) {
 }
 print "  &lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
     </div>
@@ -619,11 +616,11 @@ $busca = rand(128512, 128580);
 // Mostramos el resultado de la búsqueda
 if (in_array($busca, $emoticonos)) {
     print "  &lt;p&gt;El emoticono &lt;span style=\"font-size: 400%;\"&gt;&#$busca;&lt;/span&gt; está entre ellos.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "  &lt;p&gt;El emoticono &lt;span style=\"font-size: 400%;\"&gt;&#$busca;&lt;/span&gt; NO está entre ellos.&lt;/p&gt;\n";
+    print "\n";
 }
-print "\n";
-
 ?&gt;</code>
 </pre>
     </div>
@@ -663,10 +660,8 @@ print "\n";
 
 foreach ($cuenta as $indice =&gt; $valor) {
     print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;&#$indice; $valor&lt;/p&gt;\n";
+    print "\n";
 }
-
-print "\n";
-
 ?&gt;</code>
 </pre>
     </div>
@@ -691,7 +686,7 @@ $emoticonos_7 = [129402, 129488];
 $emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6, $emoticonos_7);
 
 // Mostramos las imágenes de los emoticonos obtenidos
-print "  &lt;h2&gt;". count($emoticonos) . " emoticonos&lt;/h2&gt;\n";
+print "  &lt;h2&gt;" . count($emoticonos) . " emoticonos&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
 foreach ($emoticonos as $emoticono) {
@@ -703,8 +698,8 @@ print "\n";
 // Mostramos un emoticono al azar
 print "  &lt;h2&gt;Uno al azar&lt;/h2&gt;\n";
 print "\n";
-print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;&#". $emoticonos[rand(0, count($emoticonos)-1)] . ";&lt;/p&gt;\n";
-
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;&#" . $emoticonos[rand(0, count($emoticonos) - 1)] . ";&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -745,7 +740,7 @@ foreach ($dados as $dado) {
     print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
-
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -795,9 +790,9 @@ $cartas_3 = array_count_values($cartas);
 // Mostramos las cartas contadas
 print "  &lt;h2&gt;Número de cartas obtenidas (sin ordenar)&lt;/h2&gt;\n";
 print "\n";
-print "  &lt;p style=\"line-height: 600%;\"&gt;\n";
+print "  &lt;p style=\"line-height: 500%;\"&gt;\n";
 foreach ($cartas_3 as $indice =&gt; $valor) {
-    print "    &lt;span style=\"font-size: 500%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
+    print "    &lt;span style=\"font-size: 400%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
@@ -805,15 +800,28 @@ print "\n";
 // Ordenamos las cartas
 arsort($cartas_3);
 
-// Mostramos las cartas contadas ordenadas
-print "  &lt;h2&gt;Número de cartas obtenidas (ordenada)&lt;/h2&gt;\n";
+// Mostramos las cartas contadas ordenadas por el número de cartas obtenidas, de mayor a menor
+print "  &lt;h2&gt;Número de cartas obtenidas (ordenadas de más a menos cartas obtenidas)&lt;/h2&gt;\n";
 print "\n";
-print "  &lt;p style=\"line-height: 600%;\"&gt;\n";
+print "  &lt;p style=\"line-height: 500%;\"&gt;\n";
 foreach ($cartas_3 as $indice =&gt; $valor) {
-    print "    &lt;span style=\"font-size: 500%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
+    print "    &lt;span style=\"font-size: 400%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
 }
 print "  &lt;/p&gt;\n";
+print "\n";
 
+// Ordenamos las cartas
+ksort($cartas_3);
+
+// Mostramos las cartas contadas ordenadas por el número de carta, de menor a mayor
+print "  &lt;h2&gt;Número de cartas obtenidas (ordenadas de menos a más valor de carta)&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"line-height: 500%;\"&gt;\n";
+foreach ($cartas_3 as $indice =&gt; $valor) {
+    print "    &lt;span style=\"font-size: 400%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -879,7 +887,7 @@ print "\n";
 
 // En los acumuladores $bajasAtacante $bajasDefensor contamos cuántas partidas ha perdido cada uno
 // El número de dados que se compara es el menor de los números de dados tirados
-$menor = min($numero1, $numero2);
+$menor         = min($numero1, $numero2);
 $bajasAtacante = 0;
 $bajasDefensor = 0;
 for ($i = 0; $i &lt; $menor; $i++) {
@@ -902,7 +910,7 @@ if ($bajasDefensor != 1) {
     print "es";
 }
 print ".&lt;/p&gt;\n";
-
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -917,7 +925,7 @@ print ".&lt;/p&gt;\n";
 // Guardamos los valores de las cartas en la matriz $cartas
 // $n es el número de cartas que repartiremos a cada jugador,
 // por lo que generamos 2 * $n cartas
-$n       = rand(2, 6);
+$n      = rand(2, 6);
 $cartas = [];
 for ($i = 0; $i &lt; 2 * $n; $i++) {
     $cartas[] = rand(1, 10);
@@ -944,7 +952,7 @@ for ($i = 0; $i &lt; $n; $i++) {
 
 // Creamos una matriz con las $n siguientes cartas
 for ($i = 0; $i &lt; $n; $i++) {
-    $cartasB[] = $cartas[$i+ $n];
+    $cartasB[] = $cartas[$i + $n];
 }
 
 // Mostramos las imágenes de las cartas del primer jugador
@@ -966,7 +974,6 @@ foreach ($cartasB as $carta) {
 }
 print "  &lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
     </div>
@@ -1028,14 +1035,14 @@ for ($i = 0; $i &lt; count($cartas) - 1; $i++) {
 
 // Según el valor de consecutivas mostramos un mensaje distinto
 print $consecutivas ? "&lt;p&gt;Hay cartas iguales consecutivas&lt;/p&gt;\n" : "&lt;p&gt;No hay cartas iguales consecutivas&lt;/p&gt;\n";
-
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 10 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

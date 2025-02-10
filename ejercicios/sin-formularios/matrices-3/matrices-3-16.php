@@ -3,9 +3,9 @@
  * Matrices (3) 16 - matrices-3-16.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -54,7 +54,7 @@ $emoticonos_7 = [129402, 129488];
 $emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6, $emoticonos_7);
 
 // Mostramos las imágenes de los emoticonos obtenidos
-print "  <h2>". count($emoticonos) . " emoticonos</h2>\n";
+print "  <h2>" . count($emoticonos) . " emoticonos</h2>\n";
 print "\n";
 print "  <p style=\"font-size: 400%; margin: 0;\">\n";
 foreach ($emoticonos as $emoticono) {
@@ -66,14 +66,13 @@ print "\n";
 // Mostramos un emoticono al azar
 print "  <h2>Uno al azar</h2>\n";
 print "\n";
-print "  <p style=\"font-size: 400%; margin: 0;\">&#". $emoticonos[rand(0, count($emoticonos)-1)] . ";</p>\n";
-
+print "  <p style=\"font-size: 400%; margin: 0;\">&#" . $emoticonos[rand(0, count($emoticonos) - 1)] . ";</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-17">17 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

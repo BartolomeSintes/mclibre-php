@@ -3,9 +3,9 @@
  * Matrices (3) 14 - matrices-3-14.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -65,17 +65,16 @@ $busca = rand(128512, 128580);
 // Mostramos el resultado de la búsqueda
 if (in_array($busca, $emoticonos)) {
     print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> está entre ellos.</p>\n";
+    print "\n";
 } else {
     print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> NO está entre ellos.</p>\n";
+    print "\n";
 }
-print "\n";
-
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-17">17 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
