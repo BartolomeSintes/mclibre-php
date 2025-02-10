@@ -3,9 +3,9 @@
  * if ... else ... (0) 6 - if-else-0-6.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,9 +45,9 @@ $red   = rand(0, 255);
 $green = rand(0, 255);
 $blue  = rand(0, 255);
 
-$r = $red   / 255;
+$r = $red / 255;
 $g = $green / 255;
-$b = $blue  / 255;
+$b = $blue / 255;
 
 $M = max($r, $g, $b);
 $m = min($r, $g, $b);
@@ -80,12 +80,12 @@ $L = round($L, 3) * 100;
 $S = round($S, 3) * 100;
 
 print "  <p>El color <strong>rgb($red $green $blue)</strong> es el color <strong>hsl($H $S% $L%)</strong>.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-17">17 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

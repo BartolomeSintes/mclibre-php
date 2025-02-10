@@ -3,9 +3,9 @@
  * if ... else ... (0) 1 C - if-else-0-1-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -58,17 +58,18 @@ print "\n";
 
 if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {       // Si el primer dado es par Y el segundo dado es impar
     print "  <p>¡Lo hemos conseguido!</p>\n";
+    print "\n";
 }
 
 if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O el segundo dado es par
     print "  <p>!No lo hemos conseguido!</p>\n";
+    print "\n";
 }
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-17">17 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

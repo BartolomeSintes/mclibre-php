@@ -3,9 +3,9 @@
  * if ... else ... (0) 2 - if-else-0-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,6 +50,7 @@ print "  </p>\n";
 print "\n";
 
 $dado2 = rand(1, 6);
+
 print "  <p>\n";
 print "    Queremos sacar un valor impar:\n";
 print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
@@ -58,21 +59,23 @@ print "\n";
 
 if ($dado1 % 2 == 1) {
     print "  <p>¡No hemos conseguido el dado par!</p>\n";
+    print "\n";
 }
 
 if ($dado2 % 2 == 0) {
     print "  <p>¡No hemos conseguido el dado impar!</p>\n";
+    print "\n";
 }
 
 if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
     print "  <p>!Lo hemos conseguido!</p>\n";
+    print "\n";
 }
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-17">17 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

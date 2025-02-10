@@ -3,9 +3,9 @@
  * if ... else ... (0) 5 C - if-else-0-5-C.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,19 +45,22 @@ $year = rand(1582, 2100);
 
 if ($year % 400 == 0) {
     print "  <p>$year es un año bisiesto porque es múltiplo de 400.</p>\n";
+    print "\n";
 } elseif ($year % 100 == 0 && $year % 400 != 0) {
     print "  <p>$year no es un año bisiesto porque es múltiplo de 100 pero no de 400.</p>\n";
+    print "\n";
 } elseif ($year % 4 == 0 && $year % 100 != 0) {
     print "  <p>$year es un año bisiesto porque es múltiplo de 4 pero no de 100.</p>\n";
+    print "\n";
 } else {
     print "  <p>$year no es un año bisiesto porque no es múltiplo de 4.</p>\n";
+    print "\n";
 }
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-17">17 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
