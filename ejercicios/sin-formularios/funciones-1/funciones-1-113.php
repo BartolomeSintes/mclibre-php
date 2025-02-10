@@ -3,9 +3,9 @@
  * funciones (1) 1 - funciones-1-01.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-13
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,17 +41,17 @@
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-function extraeSinRepeticion($m, $n) {
+function extraeSinRepeticion($m, $n)
+{
     shuffle($m);
     $m2 = array_slice($m, 0, $n);
     shuffle($m2);
     return $m2;
 }
 
-$m = range(1, 100);
+$m  = range(1, 100);
 $m2 = extraeSinRepeticion($m, 10);
 print_r($m2);
-
 
 $carasW10 = array_merge(range(128512, 128580), range(128577, 128580), range(129296, 129301), [129303], range(129312, 129317), range(129319, 129327), [129392, 129393, 129395, 129396, 129397, 129398, 129402, 129488]);
 $carasW11 = array_merge([129394, 129400, 129401], range(129760, 129765), [129768, 129769]);
@@ -80,12 +80,12 @@ print "  <p>\n";
 print "  </p>\n";
 print "\n";
 print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-13">13 de noviembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

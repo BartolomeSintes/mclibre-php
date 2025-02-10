@@ -3,9 +3,9 @@
  * funciones (1) 21 - funciones-1-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-12-04
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,7 +51,7 @@ function generaMatrizEnterosRand(int $n, int $min, int $max): array
 
 function sumaValorMatriz(array $m, int|float $x): array
 {
-    foreach($m as $valor) {
+    foreach ($m as $valor) {
         $m2[] = $valor + $x;
     }
     return $m2;
@@ -68,20 +68,19 @@ print "</pre>\n";
 print   "\n";
 
 $valor = rand(1, 10);
-$m2 = sumaValorMatriz($m, $valor);
+$m2    = sumaValorMatriz($m, $valor);
 
 print "  <h2>La misma matriz, sumando $valor a cada valor</h2>\n";
 print "\n";
 print "  <pre>\n";
 print_r($m2);
 print "</pre>\n";
-
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-12-04">4 de diciembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

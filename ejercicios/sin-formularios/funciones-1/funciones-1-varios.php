@@ -3,9 +3,9 @@
  * funciones (1) 1 - funciones-1-01.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-12-04
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -82,19 +82,27 @@ function valoresComunesNoRepetidos($m1, $m2)
 
 $m1 = generaMatrizRand(10, 10, 20);
 print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
+print "\n";
 
 $m2 = invierteMatriz($m1);
 print "<p>invierteMatriz: " . print_r($m2, true) . "</p>";
+print "\n";
 
 $m3 = extraeValores($m1, 5);
 print "<p>extraeValores: " . print_r($m3, true) . "</p>";
+print "\n";
 
 $m1 = generaMatrizRand(10, 10, 20);
 print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
+print "\n";
+
 $m2 = generaMatrizRand(10, 10, 20);
 print "<p>generaMatriz: " . print_r($m2, true) . "</p>";
+print "\n";
+
 $m3 = valoresComunesNoRepetidos($m1, $m2);
 print "<p>valoresComunesNoRepetidos: " . print_r($m3, true) . "</p>";
+print "\n";
 
 exit;
 
@@ -107,6 +115,7 @@ if ($numero == 1) {
     print "  <h2>$numero dados</h2>\n";
 }
 print "\n";
+
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
@@ -116,12 +125,12 @@ for ($i = 0; $i < $numero; $i++) {
 print "  </p>\n";
 print "\n";
 print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-13">13 de noviembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
