@@ -3,9 +3,9 @@
  * Matrices (1) 4 - matrices-1-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-19
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,15 +45,15 @@ $emojis = [128070, 128071, 128072, 128073, 128074, 128075, 128076, 128077, 12807
 $pieles = [127995, 127996, 127997, 127998, 127999];
 
 $emoji = rand(0, count($emojis) - 1);
-$piel = rand(0, 4);
+$piel  = rand(0, 4);
 
 print "  <p><span style=\"font-size: 800%\">&#$emojis[$emoji];&#$pieles[$piel];</span></p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-19">19 de octubre de 2021</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

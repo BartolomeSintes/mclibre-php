@@ -3,9 +3,9 @@
  * Matrices (1) 22 - matrices-1-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -82,22 +82,20 @@ for ($i = 0; $i < $numero; $i++) {
 print "  <h2>Quedan " . count($animales) . " animales</h2>\n";
 print "\n";
 if (count($animales) == 0) {
-    print "<p>No quedan animales.</p>\n";
+    print "  <p>No quedan animales.</p>\n";
+    print "\n";
 } else {
     print "  <p style=\"font-size: 400%; margin: 0;\">\n";
     foreach ($animales as $animal) {
         print "    &#$animal;\n";
     }
+    print "  </p>\n";
 }
-print "  </p>\n";
-print "\n";
-
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-17">17 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

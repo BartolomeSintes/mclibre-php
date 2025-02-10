@@ -3,9 +3,9 @@
  * Matrices (1) 21 - matrices-1-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,6 +42,7 @@
 
 <?php
 $numero = rand(1, 10);
+$numero = 1;
 
 // Guardamos los valores de los dados en la matriz $dados
 $dados = [];
@@ -52,10 +53,12 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos las imágenes de los dados obtenidos
 if ($numero == 1) {
     print "  <h2>Tirada de $numero dado</h2>\n";
+    print "\n";
 } else {
     print "  <h2>Tirada de $numero dados</h2>\n";
+    print "\n";
 }
-print "\n";
+
 print "  <p>\n";
 foreach ($dados as $dado) {
     print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\">\n";
@@ -85,22 +88,21 @@ for ($i = 0; $i < $numero; $i++) {
 print "  <h2>Dados restantes</h2>\n";
 print "\n";
 if (count($dados) == 0) {
-    print "<p>No quedan dados.</p>\n";
+    print "  <p>No quedan dados.</p>\n";
+    print "\n";
 } else {
     print "  <p>\n";
     foreach ($dados as $dado) {
         print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\">\n";
     }
+    print "  </p>\n";
+    print "\n";
 }
-print "  </p>\n";
-print "\n";
-
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-17">17 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

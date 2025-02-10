@@ -3,9 +3,9 @@
  * Matrices (1) 3 - matrices-1-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,27 +45,28 @@ $dibujos = [
     "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
     "hipopotamo.svg", "jirafa.svg", "leon.svg", "leopardo.svg", "medusa.svg",
     "mono.svg", "oso.svg", "oso-blanco.svg", "pajaro.svg", "pinguino.svg",
-    "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg"
+    "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg",
 ];
 
 $nombres = [
     "Ballena", "Caballito de mar", "Camello", "Cebra", "Elefante",
     "Hipopótamo", "Jirafa", "León", "Leopardo", "Medusa",
     "Mono", "Oso", "Oso blanco", "Pájaro", "Pingüino",
-    "Rinoceronte", "Serpiente", "Tigre", "Tortuga marina", "Tortuga"
+    "Rinoceronte", "Serpiente", "Tigre", "Tortuga marina", "Tortuga",
 ];
 
 $animal = rand(0, count($dibujos) - 1);
 
 print "  <h2>$nombres[$animal]</h2>\n";
 print "\n";
-print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" height=\"250\"></p>\n";
-?>
 
+print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" height=\"250\"></p>\n";
+print "\n";
+?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

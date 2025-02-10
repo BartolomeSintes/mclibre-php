@@ -3,9 +3,9 @@
  * Matrices (1) 17 - matrices-1-17.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-19
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -107,17 +107,19 @@ print "\n";
 // Mostramos quién ha ganado la partida
 if ($gana1 > $gana2) {
     print "  <p>En conjunto, ha ganado el jugador <strong>1</strong>.</p>\n";
+    print "\n";
 } elseif ($gana1 < $gana2) {
     print "  <p>En conjunto, ha ganado el jugador <strong>2</strong>.</p>\n";
+    print "\n";
 } else {
     print "  <p>En conjunto, han empatado.</p>\n";
+    print "\n";
 }
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-19">19 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

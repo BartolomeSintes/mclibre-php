@@ -3,9 +3,9 @@
  * Matrices (1) 5 - matrices-1-05.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-19
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,12 +41,12 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$emojis = [127939, 127940, 127946, 128675, 128692, 128693, 128694, 129336, 129337, 129341, 129342, 129495];
-$actividades = ["corriendo", "surfeando", "nadando", "remando", "pedaleando", "pedaleando en la montaña", "caminando", "dando volteretas", "haciendo malabares", "jugando al waterpolo", "jugando al balonmano", "escalando"];
-$generos = [9794, 9792];
+$emojis        = [127939, 127940, 127946, 128675, 128692, 128693, 128694, 129336, 129337, 129341, 129342, 129495];
+$actividades   = ["corriendo", "surfeando", "nadando", "remando", "pedaleando", "pedaleando en la montaña", "caminando", "dando volteretas", "haciendo malabares", "jugando al waterpolo", "jugando al balonmano", "escalando"];
+$generos       = [9794, 9792];
 $generosTextos = ["Hombre", "Mujer"];
 
-$emoji = rand(0, count($emojis) - 1);
+$emoji  = rand(0, count($emojis) - 1);
 $genero = rand(0, 1);
 
 print "  <h2>$generosTextos[$genero] $actividades[$emoji]</h2>\n";
@@ -56,12 +56,12 @@ print "\n";
 print "  <h2>Secuencia Unicode del emoji</h2>\n";
 print "\n";
 print "  <p>&amp;#$emojis[$emoji];&amp;#8205;&amp;#$generos[$genero];&amp;#65039;";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-19">19 de octubre de 2021</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
