@@ -3,9 +3,9 @@
  * Matrices (2) 03 - matrices-2-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-26
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -43,18 +43,18 @@ $palabras = [
     ["tres", "three", "trois", "tre"],
     ["cuatro", "four", "quatre", "quattro"],
     ["cinco", "five", "cinq", "cinque"],
-    ["seis", "six", "six", "sei"]
+    ["seis", "six", "six", "sei"],
 ];
 
 $mensajes = [
     ["Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"],
     ["Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
         "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."],
-    ["Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un"]
+    ["Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un"],
 ];
 
 $idioma = rand(0, count($palabras[0]) - 1);
-$dado = rand(1, 6);
+$dado   = rand(1, 6);
 
 print "  <h1>{$mensajes[0][$idioma]}</h1>\n";
 print "\n";
@@ -62,13 +62,13 @@ print "  <p>{$mensajes[1][$idioma]}</p>\n";
 print "\n";
 print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"></p>\n";
 print "\n";
-print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado-1][$idioma]}</strong>.</p>\n";
+print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado - 1][$idioma]}</strong>.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

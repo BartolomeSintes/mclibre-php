@@ -74,25 +74,26 @@ $animales = [
     ["Medusa", "medusa.svg", "https://es.wikipedia.org/wiki/Medusa_(animal)"],
     ["Mono", "mono.svg", "https://es.wikipedia.org/wiki/Mono"],
     ["Oso", "oso.svg", "https://es.wikipedia.org/wiki/Ursidae"],
-    ["Oso blanco", "oso-blanco.svg","https://es.wikipedia.org/wiki/Ursus_maritimus"],
+    ["Oso blanco", "oso-blanco.svg", "https://es.wikipedia.org/wiki/Ursus_maritimus"],
     ["Pájaro", "pajaro.svg", "https://es.wikipedia.org/wiki/Aves"],
     ["Pingüino", "pinguino.svg", "https://es.wikipedia.org/wiki/Spheniscidae"],
     ["Rinoceronte", "rinoceronte.svg", "https://es.wikipedia.org/wiki/Rhinocerotidae"],
     ["Serpiente", "serpiente.svg", "https://es.wikipedia.org/wiki/Serpentes"],
     ["Tigre", "tigre.svg", "https://es.wikipedia.org/wiki/Panthera_tigris"],
     ["Tortuga marina", "tortuga-marina.svg", "https://es.wikipedia.org/wiki/Chelonioidea"],
-    ["Tortuga", "tortuga.svg", "https://es.wikipedia.org/wiki/Testudines"]
+    ["Tortuga", "tortuga.svg", "https://es.wikipedia.org/wiki/Testudines"],
 ];
 
 $animal = rand(0, count($animales) - 1);
 
 print "  &lt;h2&gt;" . $animales[$animal][0] . "&lt;/h2&gt;\n";
 print "\n";
-print "  &lt;p&gt;&lt;img src=\"img/animales/{$animales[$animal][1]}\" alt=\""
-    . "{$animales[$animal][0]}\" height=\"250\"&gt;&lt;/p&gt;\n";
 
+print "  &lt;p&gt;&lt;img src=\"img/animales/{$animales[$animal][1]}\" alt=\"{$animales[$animal][0]}\" height=\"250\"&gt;&lt;/p&gt;\n";
 print "\n";
+
 print "  &lt;p&gt;Más &lt;a href=\"{$animales[$animal][2]}\"&gt;información sobre este animal&lt;/a&gt; en la Wikipedia&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -114,19 +115,21 @@ $palabras = [
     ["viernes", "friday", "vendredi", "venerdì"],
     ["sábado", "saturday", "samedi", "sabato"],
     ["domingo", "sunday", "dimanche", "domenica"],
-    ["cachimba", "", "", ""]
+    ["cachimba", "", "", ""],
 ];
 
-$idioma = rand(1, count($idiomas) - 1);
+$idioma  = rand(1, count($idiomas) - 1);
 $palabra = rand(0, count($palabras) - 1);
 
 if ($palabras[$palabra][$idioma] == "") {
-    print "  &lt;p&gt;Lo siento, pero no está disponible la traducción de &lt;strong&gt;"
-        . "{$palabras[$palabra][0]}&lt;/strong&gt; al $idiomas[$idioma].&lt;/p&gt;\n";
+    print "  &lt;p&gt;Lo siento, pero no está disponible la traducción de &lt;strong&gt; ";
+    print "{$palabras[$palabra][0]}&lt;/strong&gt; al $idiomas[$idioma].&lt;/p&gt;\n";
+    print "\n";
 } else {
-    print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma]}"
-        . "&lt;/strong&gt; quiere decir &lt;strong&gt;{$palabras[$palabra][0]}"
-        . " &lt;/strong&gt; en $idiomas[$idioma].&lt;/p&gt;\n";
+    print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma]}";
+    print "&lt;/strong&gt; quiere decir &lt;strong&gt;{$palabras[$palabra][0]}";
+    print "&lt;/strong&gt; en $idiomas[$idioma].&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -145,18 +148,18 @@ $palabras = [
     ["tres", "three", "trois", "tre"],
     ["cuatro", "four", "quatre", "quattro"],
     ["cinco", "five", "cinq", "cinque"],
-    ["seis", "six", "six", "sei"]
+    ["seis", "six", "six", "sei"],
 ];
 
 $mensajes = [
     ["Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"],
     ["Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
         "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."],
-    ["Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un"]
+    ["Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un"],
 ];
 
 $idioma = rand(0, count($palabras[0]) - 1);
-$dado = rand(1, 6);
+$dado   = rand(1, 6);
 
 print "  &lt;h1&gt;{$mensajes[0][$idioma]}&lt;/h1&gt;\n";
 print "\n";
@@ -164,7 +167,8 @@ print "  &lt;p&gt;{$mensajes[1][$idioma]}&lt;/p&gt;\n";
 print "\n";
 print "  &lt;p&gt;&lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;&lt;/p&gt;\n";
 print "\n";
-print "  &lt;p&gt;{$mensajes[2][$idioma]} &lt;strong&gt;{$palabras[$dado-1][$idioma]}&lt;/strong&gt;.&lt;/p&gt;\n";
+print "  &lt;p&gt;{$mensajes[2][$idioma]} &lt;strong&gt;{$palabras[$dado - 1][$idioma]}&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -180,7 +184,7 @@ $idiomas = [
     ["español", "spanish", "espagnol", "spagnolo"],
     ["inglés", "engligh", "anglais", "inglese"],
     ["francés", "french", "français", "francese"],
-    ["italiano", "italian", "italien", "italiano"]
+    ["italiano", "italian", "italien", "italiano"],
 ];
 
 $palabras = [
@@ -198,7 +202,7 @@ $mensajes = [
     ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.",
         "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
     ["quiere decir", "means", "veut dire", "significa"],
-    ["en", "in", "en", "in"]
+    ["en", "in", "en", "in"],
 ];
 
 $idioma = rand(0, count($idiomas) - 1);
@@ -213,9 +217,10 @@ print "\n";
 print "  &lt;p&gt;{$mensajes[1][$idioma]}&lt;/p&gt;\n";
 print "\n";
 
-print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma2]}"
-    . "&lt;/strong&gt; {$mensajes[2][$idioma]} &lt;strong&gt;{$palabras[$palabra][$idioma]}"
-    . "&lt;/strong&gt; {$mensajes[3][$idioma]} {$idiomas[$idioma2][$idioma]}.&lt;/p&gt;\n";
+print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma2]}";
+print "&lt;/strong&gt; {$mensajes[2][$idioma]} &lt;strong&gt;{$palabras[$palabra][$idioma]}";
+print "&lt;/strong&gt; {$mensajes[3][$idioma]} {$idiomas[$idioma2][$idioma]}.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -223,7 +228,7 @@ print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 10 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

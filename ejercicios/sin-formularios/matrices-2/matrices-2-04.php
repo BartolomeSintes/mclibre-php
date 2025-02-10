@@ -3,9 +3,9 @@
  * Matrices (2) 04 - matrices-2-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-26
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ $idiomas = [
     ["español", "spanish", "espagnol", "spagnolo"],
     ["inglés", "engligh", "anglais", "inglese"],
     ["francés", "french", "français", "francese"],
-    ["italiano", "italian", "italien", "italiano"]
+    ["italiano", "italian", "italien", "italiano"],
 ];
 
 $palabras = [
@@ -59,7 +59,7 @@ $mensajes = [
     ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.",
         "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
     ["quiere decir", "means", "veut dire", "significa"],
-    ["en", "in", "en", "in"]
+    ["en", "in", "en", "in"],
 ];
 
 $idioma = rand(0, count($idiomas) - 1);
@@ -74,15 +74,15 @@ print "\n";
 print "  <p>{$mensajes[1][$idioma]}</p>\n";
 print "\n";
 
-print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma2]}"
-    . "</strong> {$mensajes[2][$idioma]} <strong>{$palabras[$palabra][$idioma]}"
-    . "</strong> {$mensajes[3][$idioma]} {$idiomas[$idioma2][$idioma]}.</p>\n";
+print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma2]}";
+print "</strong> {$mensajes[2][$idioma]} <strong>{$palabras[$palabra][$idioma]}";
+print "</strong> {$mensajes[3][$idioma]} {$idiomas[$idioma2][$idioma]}.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
