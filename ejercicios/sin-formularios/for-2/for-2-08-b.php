@@ -3,9 +3,9 @@
  * for (2) 08 - for-2-08-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-12
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,12 +46,12 @@ $paso     = 360 / $semicirc;
 
 print "  <h2>$semicirc franjas</h2>\n";
 print "\n";
-print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc + 20 . "\""
-    . " viewBox=\"" . - 30 * $semicirc - 10 . " " . - 30 * $semicirc - 10 . " " . 60 * $semicirc + 20 . " "
-    . 30 * $semicirc + 20 . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . 60 * $semicirc + 20 . "\" height=\"" . 30 * $semicirc + 20 . "\"\n";
+print "         viewBox=\"" . -30 * $semicirc - 10 . " " . -30 * $semicirc - 10 . " " . 60 * $semicirc + 20 . " " . 30 * $semicirc + 20 . "\"\n";
+print "         style=\"border: black 1px solid; background-color: white;\">\n";
 $d     = 30 * $semicirc;
 $color = 0;
 for ($i = 0; $i < $semicirc; $i++) {
@@ -59,15 +59,14 @@ for ($i = 0; $i < $semicirc; $i++) {
     $d     = $d - 30;
     $color = $color + $paso;
 }
-
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-12">12 de noviembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

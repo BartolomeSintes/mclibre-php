@@ -3,9 +3,9 @@
  * for (2) 04 - for-2-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,29 +41,27 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(3, 10);
-$longitud  = 100;
+$numero     = rand(3, 10);
+$longitud   = 100;
 $separacion = 50;
 
 print "  <h2>$numero líneas</h2>\n";
 print "\n";
+
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"500\" height=\"100\" style=\"border: black 1px solid\">\n";
-
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"500\" height=\"100\" style=\"border: black 1px solid\">\n";
 for ($i = 0; $i < $numero; $i++) {
-    print "      <line x1=\"10\" y1=\"0\" x2=\"" . $i * $separacion + 10
-        . "\" y2=\"$longitud\" stroke=\"red\" stroke-width=\"1\" />\n";
+    print "      <line x1=\"10\" y1=\"0\" x2=\"" . $i * $separacion + 10 . "\" y2=\"$longitud\" stroke=\"red\" stroke-width=\"1\" />\n";
 }
-
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

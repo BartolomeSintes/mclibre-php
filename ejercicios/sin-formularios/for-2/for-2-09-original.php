@@ -3,9 +3,9 @@
  * for (2) 09 - for-2-09.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -43,32 +43,30 @@
 <?php
 $numero = rand(3, 10);
 $radio  = 30;
-$paso = 360 / $numero;
+$paso   = 360 / $numero;
 
 print "  <h2>$numero franjas</h2>\n";
 print "\n";
-print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . $radio * $numero * 2 + 20 . "\" height=\"" . $radio * $numero + 20 . "\""
-    . " viewBox=\"" . - $radio * $numero -10 . " " . - $radio * $numero -10 . " "
-    . $radio * $numero * 2 + 20 . " " . $radio * $numero + 20
-    . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . $radio * $numero * 2 + 20 . "\" height=\"" . $radio * $numero + 20 . "\"\n";
+print "         viewBox=\"" . -$radio * $numero - 10 . " " . -$radio * $numero - 10 . " " . $radio * $numero * 2 + 20 . " " . $radio * $numero + 20 . "\"\n";
+print "         style=\"border: black 1px solid; background-color: white;\">\n";
 for ($i = 0; $i < $numero; $i++) {
     $valor = $radio * $numero - $radio * $i / 2;
-    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb("
-        . $i * $paso . " 10% 10%)\" />\n";
+    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb(" . $i * $paso . " 10% 10%)\" />\n";
 }
 $valor = $radio * $numero / 2;
 print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"white\" stroke=\"white\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

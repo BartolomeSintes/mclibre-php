@@ -3,9 +3,9 @@
  * for (2) 03 - for-2-03-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-12
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,30 +46,29 @@ $radio    = rand(10, 50);
 
 if ($circulos == 1) {
     print "  <h2>$circulos círculo de $radio px</h2>\n";
+    print "\n";
 } else {
     print "  <h2>$circulos círculos de $radio px</h2>\n";
+    print "\n";
 }
 
-print "\n";
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
-    . "width=\"" . 3 * $radio * $circulos - $radio . "\" height=\"" . 2 * $radio
-    . "\" style=\"border: black 1px solid\">\n";
-
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . 3 * $radio * $circulos - $radio . "\" height=\"" . 2 * $radio . "\"\n";
+print "         style=\"border: black 1px solid\">\n";
 $cx = $radio;
 for ($i = 0; $i < $circulos; $i++) {
     print "      <circle cx=\"$cx\" cy=\"$radio\" r=\"$radio\" fill=\"black\" />\n";
     $cx = $cx + 3 * $radio;
 }
-
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-12">12 de noviembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

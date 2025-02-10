@@ -3,9 +3,9 @@
  * for (2) 07 - for-2-07-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-12
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,11 +46,11 @@ $paso     = 360 / $circulos;
 
 print "  <h2>$circulos colores</h2>\n";
 print "\n";
-print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 60 * $circulos . "\" height=\"" . 60 * $circulos . "\" "
-    . "viewBox=\"" . - 30 * $circulos . " " . - 30 * $circulos . " " . 60 * $circulos . " " . 60 * $circulos . "\">\n";
 
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . 60 * $circulos . "\" height=\"" . 60 * $circulos . "\"\n";
+print "         viewBox=\"" . -30 * $circulos . " " . -30 * $circulos . " " . 60 * $circulos . " " . 60 * $circulos . "\">\n";
 $r     = 30 * $circulos;
 $color = 0;
 for ($i = 0; $i < $circulos; $i++) {
@@ -58,15 +58,14 @@ for ($i = 0; $i < $circulos; $i++) {
     $r     = $r - 30;
     $color = $color + $paso;
 }
-
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-12">12 de noviembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

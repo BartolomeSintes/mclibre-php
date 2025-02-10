@@ -3,9 +3,9 @@
  * for (2) 05 - for-2-05-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-11-12
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,25 +45,24 @@ $lineas = rand(3, 10);
 
 print "  <h2>$lineas líneas</h2>\n";
 print "\n";
-print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . 50 * $lineas . "\" height=\"120\" "
-    . " viewBox=\" -10 -10 " . 50 * $lineas . " 120\" style=\"border: black 1px solid\">\n";
 
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"" . 50 * $lineas . "\" height=\"120\"\n";
+print "         viewBox=\" -10 -10 " . 50 * $lineas . " 120\" style=\"border: black 1px solid\">\n";
 $x2 = 0;
 for ($i = 0; $i < $lineas; $i++) {
     print "      <line x1=\"0\" y1=\"0\" x2=\"$x2\" y2=\"100\" stroke=\"green\" stroke-width=\"1\" />\n";
     $x2 = $x2 + 50;
 }
-
 print "    </svg>\n";
 print "  </p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-11-12">12 de noviembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
