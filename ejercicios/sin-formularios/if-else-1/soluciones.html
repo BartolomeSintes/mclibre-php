@@ -63,8 +63,10 @@ print "\n";
 
 if ($dado1 == $dado2) {
     print "  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "  &lt;p&gt;No ha sacado pareja. El valor más alto es " . max($dado1, $dado2) . ".&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -80,19 +82,19 @@ if ($dado1 == $dado2) {
 $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
-print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;";
-print "          &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140\"&gt;";
-print "        &lt;/td&gt;\n";
-print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;";
-print "          &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\"&gt;";
-print "        &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "        &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "        &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
 
 if ($dado1 &gt; $dado2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($dado1 &lt; $dado2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } else {
-    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+    print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -121,36 +123,36 @@ $dado1b = rand(1, 6);
 $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 
-print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
-print "          &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\"&gt;\n";
-print "        &lt;/td&gt;\n";
-print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
-print "          &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\"&gt;\n";
-print "        &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "        &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "        &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
 
 $total1 = $dado1a + $dado1b;
 $total2 = $dado2a + $dado2b;
 
 if ($dado1a == $dado1b && $dado2a == $dado2b) {
     if ($dado1a &gt; $dado2a) {
-        print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+        print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
     } elseif ($dado1a &lt; $dado2a) {
-        print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+        print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
     } else {
-        print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+        print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
     }
 } elseif ($dado1a == $dado1b) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($dado2a == $dado2b) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } elseif ($total1 &gt; $total2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($total1 &lt; $total2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } else {
-    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+    print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -166,14 +168,14 @@ $dado1b = rand(1, 6);
 $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 
-print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
-print "          &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\"&gt;\n";
-print "        &lt;/td&gt;\n";
-print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
-print "          &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\"&gt;\n";
-print "        &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "        &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "        &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
 
 if ($dado1a == $dado1b) {
     $pareja1 = $dado1a;
@@ -191,16 +193,16 @@ $total1 = $dado1a + $dado1b;
 $total2 = $dado2a + $dado2b;
 
 if ($pareja1 &gt; $pareja2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($pareja1 &lt; $pareja2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } else {
     if ($total1 &gt; $total2) {
-        print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+        print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
     } elseif ($total1 &lt; $total2) {
-        print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+        print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
     } else {
-        print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+        print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
     }
 }
 ?&gt;</code>
@@ -217,16 +219,17 @@ $total1 = $dado1a + $dado1b;
 $total2 = $dado2a + $dado2b;
 
 if ($pareja1 &gt; $pareja2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($pareja1 &lt; $pareja2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } elseif ($total1 &gt; $total2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($total1 &lt; $total2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } else {
-    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
-}</code>
+    print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -248,14 +251,18 @@ print "    &lt;img src=\"img/$dado3.svg\" alt=\"$dado3\" width=\"140\" height=\"
 print "  &lt;/p&gt;\n";
 print "\n";
 
-if ($dado1 == $dado2 &amp;&amp; $dado1 == $dado3) {
+if ($dado1 == $dado2 && $dado1 == $dado3) {
     print "  &lt;p&gt;Ha sacado un trío de $dado1.&lt;/p&gt;\n";
+    print "\n";
 } elseif ($dado1 == $dado2 || $dado1 == $dado3) {
     print "  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n";
+    print "\n";
 } elseif ($dado2 == $dado3) {
     print "  &lt;p&gt;Ha sacado una pareja de $dado2.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "  &lt;p&gt;El valor más alto es " . max($dado1, $dado2, $dado3) . ".&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -277,24 +284,24 @@ $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 $dado2c = rand(1, 6);
 
-print "        &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
-print "          &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado1c.svg\" alt=\"$dado1c\" width=\"140\" height=\"140\"&gt;\n";
-print "        &lt;/td&gt;\n";
-print "        &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
-print "          &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\"&gt;\n";
-print "          &lt;img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"140\"&gt;\n";
-print "        &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: red;\"&gt;\n";
+print "        &lt;img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado1c.svg\" alt=\"$dado1c\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
+print "      &lt;td style=\"padding: 10px; background-color: blue;\"&gt;\n";
+print "        &lt;img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\"&gt;\n";
+print "        &lt;img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"140\"&gt;\n";
+print "      &lt;/td&gt;\n";
 
-if ($dado1a == $dado1b &amp;&amp; $dado1a == $dado1c) {
+if ($dado1a == $dado1b && $dado1a == $dado1c) {
     $trio1 = $dado1a;
 } else {
     $trio1 = 0;
 }
 
-if ($dado2a == $dado2b &amp;&amp; $dado2a == $dado2c) {
+if ($dado2a == $dado2b && $dado2a == $dado2c) {
     $trio2 = $dado2a;
 } else {
     $trio2 = 0;
@@ -320,25 +327,22 @@ $total1 = $dado1a + $dado1b + $dado1c;
 
 $total2 = $dado2a + $dado2b + $dado2c;
 
-// print "&lt;p&gt;1: Trío $trio1 - Pareja $pareja1 - Total: $total1&lt;/p&gt;\n";
-// print "&lt;p&gt;2: Trío $trio2 - Pareja $pareja2 - Total: $total2&lt;/p&gt;\n";
-
 if ($trio1 &gt; $trio2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($trio1 &lt; $trio2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } else {
     if ($pareja1 &gt; $pareja2) {
-        print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+        print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
     } elseif ($pareja1 &lt; $pareja2) {
-        print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+        print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
     } else {
         if ($total1 &gt; $total2) {
-            print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+            print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
         } elseif ($total1 &lt; $total2) {
-            print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+            print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
         } else {
-            print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
+            print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
         }
     }
 }
@@ -360,26 +364,27 @@ $total1 = $dado1a + $dado1b + $dado1c;
 $total2 = $dado2a + $dado2b + $dado2c;
 
 if ($trio1 &gt; $trio2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($trio1 &lt; $trio2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } elseif ($pareja1 &gt; $pareja2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($pareja1 &lt; $pareja2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } elseif ($total1 &gt; $total2) {
-    print "        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n";
 } elseif ($total1 &lt; $total2) {
-    print "        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
+    print "      &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n";
 } else {
-    print "        &lt;td&gt;Han empatado&lt;/td&gt;\n";
-}</code>
+    print "      &lt;td&gt;Han empatado&lt;/td&gt;\n";
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 10 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
