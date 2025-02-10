@@ -3,9 +3,9 @@
  * for (1) 21 - for-1-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,8 +42,8 @@
 
 <?php
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"420\" height=\"420\" viewBox=\"-210 -210 420 420\">\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"420\" height=\"420\" viewBox=\"-210 -210 420 420\">\n";
 
 for ($i = 0; $i < 5; $i++) {
     print "      <circle cx=\"0\" cy=\"0\" r=\"" . 200 - 40 * $i . "\" fill=\"red\" />\n";
@@ -51,8 +51,7 @@ for ($i = 0; $i < 5; $i++) {
 }
 
 for ($i = 0; $i < 10; $i++) {
-    print "      <text x=\"0\" y=\"" . 195 - 20 * $i
-        . "\" text-anchor=\"middle\" font-size=\"13\">" . $i + 1 . "</text>\n";
+    print "      <text x=\"0\" y=\"" . 195 - 20 * $i . "\" text-anchor=\"middle\" font-size=\"13\">" . $i + 1 . "</text>\n";
 }
 
 $puntos   = 0;
@@ -61,25 +60,25 @@ for ($i = 0; $i < $disparos; $i++) {
     $x = rand(-200, 200);
     $y = rand(-200, 200);
     $puntos += (10 - floor(sqrt($x ** 2 + $y ** 2) / 20) > 0) ? 10 - floor(sqrt($x ** 2 + $y ** 2) / 20) : 0;
-    print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\" "
-     . "d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 "
-     . "-0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" />\n";
+    print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\"\n";
+    print "            d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 -0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" />\n";
 }
 print "    </svg>\n";
 print "  </p>\n";
 print "\n";
+
 print "  <h2>Estadísticas</h2>\n";
 print "\n";
 print "  <ul>\n";
 print "    <li>Número de disparos: <strong>$disparos</strong>.</li>\n";
 print "    <li>Puntuación obtenida: <strong>$puntos</strong>.</li>\n";
 print "  </ul>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-10-10">10 de octubre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

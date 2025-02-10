@@ -3,9 +3,9 @@
  * for (1) 11 - for-1-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,14 +42,16 @@
 
 <?php
 $numero = rand(1, 10);
-$total = 0;
+$total  = 0;
 
 if ($numero == 1) {
     print "  <h2>$numero dado</h2>\n";
+    print "\n";
 } else {
     print "  <h2>$numero dados</h2>\n";
+    print "\n";
 }
-print "\n";
+
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
@@ -59,12 +61,12 @@ for ($i = 0; $i < $numero; $i++) {
 print "  </p>\n";
 print "\n";
 print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

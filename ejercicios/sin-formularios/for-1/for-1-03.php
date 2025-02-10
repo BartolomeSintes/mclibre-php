@@ -3,9 +3,9 @@
  * for (1) 1 - for-1-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,10 +45,12 @@ $circulos = rand(1, 10);
 
 if ($circulos == 1) {
     print "  <h2>$circulos círculo</h2>\n";
+    print "\n";
 } else {
     print "  <h2>$circulos círculos</h2>\n";
+    print "\n";
 }
-print "\n";
+
 print "  <table class=\"conborde\">\n";
 print "    <tr>\n";
 for ($i = 0; $i < $circulos; $i++) {
@@ -60,12 +62,12 @@ for ($i = 0; $i < $circulos; $i++) {
 }
 print "    </tr>\n";
 print "  </table>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-05">5 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
