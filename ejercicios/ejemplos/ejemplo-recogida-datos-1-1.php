@@ -35,7 +35,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-21">21 de octubre de 2019</time>
+      <time datetime="2025-02-10">10 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

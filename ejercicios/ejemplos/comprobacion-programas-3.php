@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    button submit (1). Controles en Formularios.
+    Ejemplo de comprobación de programas (3).
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
