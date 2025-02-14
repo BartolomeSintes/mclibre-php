@@ -3,9 +3,9 @@
  * Controles en formularios (1) 3-2 - controles-formularios-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2024 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2024-12-19
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -66,14 +66,14 @@ function recoge($key, $type = "")
 $fruta = recoge("fruta");
 
 print "  <p><img src=\"img/frutas/$fruta\" width=\"300\"></p>\n";
+print "\n";
 ?>
-
   <p><a href="controles-formularios-1-3-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2024-12-19">19 de diciembre de 2024</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
