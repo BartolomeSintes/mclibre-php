@@ -3,9 +3,9 @@
  * Tabla de multiplicar (Resultado) - for-3-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -71,10 +71,10 @@ $anchura  = recoge("anchura");
 
 $filasOk = $columnasOk = $alturaOk = $anchuraOk = false;
 
-$filasMinimo   = $columnasMinimo   = 1;
+$filasMinimo   = $columnasMinimo = 1;
 $alturaMinimo  = 30;
 $anchuraMinimo = 50;
-$filasMaximo   = $columnasMaximo   = $alturaMaximo   = $anchuraMaximo   = 100;
+$filasMaximo   = $columnasMaximo = $alturaMaximo = $anchuraMaximo = 100;
 
 if ($filas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de filas.</p>\n";
@@ -83,12 +83,10 @@ if ($filas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de filas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($filas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de filas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de filas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($filas < $filasMinimo || $filas > $filasMaximo) {
-    print "  <p class=\"aviso\">El número de filas debe estar entre "
-        . "$filasMinimo y $filasMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de filas debe estar entre $filasMinimo y $filasMaximo.</p>\n";
     print "\n";
 } else {
     $filasOk = true;
@@ -101,12 +99,10 @@ if ($columnas == "") {
     print "  <p class=\"aviso\">No ha escrito  el número de columnas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($columnas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de columnas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de columnas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($columnas < $columnasMinimo || $columnas > $columnasMaximo) {
-    print "  <p class=\"aviso\">El número de columnas debe estar entre "
-        . "$columnasMinimo y $columnasMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de columnas debe estar entre $columnasMinimo y $columnasMaximo.</p>\n";
     print "\n";
 } else {
     $columnasOk = true;
@@ -119,12 +115,10 @@ if ($altura == "") {
     print "  <p class=\"aviso\">No ha escrito la altura de las filas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($altura)) {
-    print "  <p class=\"aviso\">No ha escrito la altura de las filas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la altura de las filas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($altura < $alturaMinimo || $altura > $alturaMaximo) {
-    print "  <p class=\"aviso\">La altura de las filas debe estar entre "
-        . "$alturaMinimo y $alturaMaximo.</p>\n";
+    print "  <p class=\"aviso\">La altura de las filas debe estar entre $alturaMinimo y $alturaMaximo.</p>\n";
     print "\n";
 } else {
     $alturaOk = true;
@@ -137,12 +131,10 @@ if ($anchura == "") {
     print "  <p class=\"aviso\">No ha escrito la anchura de las columnas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($anchura)) {
-    print "  <p class=\"aviso\">No ha escrito la anchura de las columnas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la anchura de las columnas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($anchura < $anchuraMinimo || $anchura > $anchuraMaximo) {
-    print "  <p class=\"aviso\">La anchura de las columnas debe estar entre "
-        . "$anchuraMinimo y $anchuraMaximo.</p>\n";
+    print "  <p class=\"aviso\">La anchura de las columnas debe estar entre $anchuraMinimo y $anchuraMaximo.</p>\n";
     print "\n";
 } else {
     $anchuraOk = true;
@@ -168,14 +160,13 @@ if ($filasOk && $columnasOk && $alturaOk && $anchuraOk) {
     print "  </table>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-3-5-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

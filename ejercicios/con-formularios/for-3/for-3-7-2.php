@@ -3,9 +3,9 @@
  * Tablas de colores (Resultado) - for-3-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-09-26
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -79,12 +79,10 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito el número de tablas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el número de tablas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de tablas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El número de tablas debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de tablas debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -98,11 +96,10 @@ if ($numeroOk) {
         for ($i = 0; $i < $numero; $i++) {
             print "    <tr>\n";
             for ($j = 0; $j < $numero; $j++) {
-                print "      <td style=\"background-color:rgb("
-                    . round($k * $paso) . " " . round($i * $paso) . " "
-                    . round($j * $paso) . ")\" title=\"R:" . round($k * $paso)
-                    . " G:" . round($i * $paso) . " B:" . round($j * $paso)
-                    . "\"></td>\n";
+                $rk = round($k * $paso);
+                $ri = round($i * $paso);
+                $rj = round($j * $paso);
+                print "      <td style=\"background-color:rgb($rk $ri $rj)\" title=\"R:$rk G:$ri B:$rj\"></td>\n";
             }
             print "    </tr>\n";
         }
@@ -110,14 +107,13 @@ if ($numeroOk) {
         print "\n";
     }
 }
-
 ?>
   <p><a href="for-3-7-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-09-26">26 de septiembre de 2023</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

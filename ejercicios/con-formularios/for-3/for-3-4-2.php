@@ -3,9 +3,9 @@
  * Tabla de multiplicar con cabecera (Resultado) - for-3-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -75,12 +75,10 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -106,14 +104,13 @@ if ($numeroOk) {
     print "  </table>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-3-4-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

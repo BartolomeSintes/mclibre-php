@@ -3,9 +3,9 @@
  * Varios elementos (Resultado) - for-3-0-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -78,8 +78,7 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito un número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El número debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -88,10 +87,11 @@ if ($numero == "") {
 if ($numeroOk) {
     print "  <h2>Preformateado (&lt;pre&gt;)</h2>\n";
     print "\n";
-    print "  <pre>";
+    print "  <pre>\n";
     for ($i = 1; $i <= $numero; $i++) {
         print "$i ";
     }
+    print "\n";
     print "</pre>\n";
     print "\n";
 
@@ -101,7 +101,6 @@ if ($numeroOk) {
         print "  <p>$i</p>\n";
         print "\n";
     }
-    print "\n";
 
     print "  <h2>Lista sin ordenar (&lt;ul&gt;)</h2>\n";
     print "\n";
@@ -121,14 +120,13 @@ if ($numeroOk) {
     print "  </ol>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-3-0-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

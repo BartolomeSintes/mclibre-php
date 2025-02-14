@@ -99,8 +99,7 @@ if ($numero == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito un número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número debe estar entre $numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -109,10 +108,11 @@ if ($numero == "") {
 if ($numeroOk) {
     print "  &lt;h2&gt;Preformateado (&lt;pre&gt;)&lt;/h2&gt;\n";
     print "\n";
-    print "  &lt;pre&gt;";
+    print "  &lt;pre&gt;\n";
     for ($i = 1; $i &lt;= $numero; $i++) {
         print "$i ";
     }
+    print "\n";
     print "&lt;/pre&gt;\n";
     print "\n";
 
@@ -122,7 +122,6 @@ if ($numeroOk) {
         print "  &lt;p&gt;$i&lt;/p&gt;\n";
         print "\n";
     }
-    print "\n";
 
     print "  &lt;h2&gt;Lista sin ordenar (&lt;ul&gt;)&lt;/h2&gt;\n";
     print "\n";
@@ -142,7 +141,6 @@ if ($numeroOk) {
     print "  &lt;/ol&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -190,12 +188,10 @@ if ($columnas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($columnas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($columnas &lt; $columnasMinimo || $columnas &gt; $columnasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de columnas debe estar entre "
-        . "$columnasMinimo y $columnasMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de columnas debe estar entre $columnasMinimo y $columnasMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $columnasOk = true;
@@ -203,17 +199,14 @@ if ($columnas == "") {
 
 if ($columnasOk) {
     print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
-    print "      &lt;tr&gt;\n";
+    print "    &lt;tr&gt;\n";
     for ($i = 1; $i &lt;= $columnas; $i++) {
-        print "        &lt;td&gt;$i&lt;/td&gt;\n";
+        print "      &lt;td&gt;$i&lt;/td&gt;\n";
     }
-    print "      &lt;/tr&gt;\n";
-    print "    &lt;/tbody&gt;\n";
+    print "    &lt;/tr&gt;\n";
     print "  &lt;/table&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -261,12 +254,10 @@ if ($filas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($filas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($filas &lt; $filasMinimo || $filas &gt; $filasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de filas debe estar entre "
-        . "$filasMinimo y $filasMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de filas debe estar entre $filasMinimo y $filasMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $filasOk = true;
@@ -274,17 +265,14 @@ if ($filas == "") {
 
 if ($filasOk) {
     print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
     for ($i = 1; $i &lt;= $filas; $i++) {
-        print "      &lt;tr&gt;\n";
-        print "        &lt;td&gt;$i&lt;/td&gt;\n";
-        print "      &lt;/tr&gt;\n";
+        print "    &lt;tr&gt;\n";
+        print "      &lt;td&gt;$i&lt;/td&gt;\n";
+        print "    &lt;/tr&gt;\n";
     }
-    print "    &lt;/tbody&gt;\n";
     print "  &lt;/table&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -332,12 +320,10 @@ if ($numero == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -345,19 +331,16 @@ if ($numero == "") {
 
 if ($numeroOk) {
     print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
     for ($i = 1; $i &lt;= $numero; $i++) {
-        print "      &lt;tr&gt;\n";
+        print "    &lt;tr&gt;\n";
         for ($j = 1; $j &lt;= $numero; $j++) {
-            print "        &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
+            print "      &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
         }
-        print "      &lt;/tr&gt;\n";
+        print "    &lt;/tr&gt;\n";
     }
-    print "    &lt;/tbody&gt;\n";
     print "  &lt;/table&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -405,12 +388,10 @@ if ($numero == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -418,27 +399,24 @@ if ($numero == "") {
 
 if ($numeroOk) {
     print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
-    print "      &lt;tr&gt;\n";
-    print "        &lt;th&gt;X&lt;/th&gt;\n";
+    print "    &lt;tr&gt;\n";
+    print "      &lt;th&gt;X&lt;/th&gt;\n";
     for ($j = 1; $j &lt;= $numero; $j++) {
-        print "        &lt;th&gt;$j&lt;/th&gt;\n";
+        print "      &lt;th&gt;$j&lt;/th&gt;\n";
     }
-    print "      &lt;/tr&gt;\n";
+    print "    &lt;/tr&gt;\n";
 
     for ($i = 1; $i &lt;= $numero; $i++) {
-        print "      &lt;tr&gt;\n";
-        print "        &lt;th&gt;$i&lt;/th&gt;\n";
+        print "    &lt;tr&gt;\n";
+        print "      &lt;th&gt;$i&lt;/th&gt;\n";
         for ($j = 1; $j &lt;= $numero; $j++) {
-            print "        &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
+            print "      &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
         }
-        print "      &lt;/tr&gt;\n";
+        print "    &lt;/tr&gt;\n";
     }
-    print "    &lt;/tbody&gt;\n";
     print "  &lt;/table&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -479,10 +457,10 @@ $anchura  = recoge("anchura");
 
 $filasOk = $columnasOk = $alturaOk = $anchuraOk = false;
 
-$filasMinimo   = $columnasMinimo   = 1;
+$filasMinimo   = $columnasMinimo = 1;
 $alturaMinimo  = 30;
 $anchuraMinimo = 50;
-$filasMaximo   = $columnasMaximo   = $alturaMaximo   = $anchuraMaximo   = 100;
+$filasMaximo   = $columnasMaximo = $alturaMaximo = $anchuraMaximo = 100;
 
 if ($filas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas.&lt;/p&gt;\n";
@@ -491,12 +469,10 @@ if ($filas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($filas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($filas &lt; $filasMinimo || $filas &gt; $filasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de filas debe estar entre "
-        . "$filasMinimo y $filasMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de filas debe estar entre $filasMinimo y $filasMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $filasOk = true;
@@ -509,12 +485,10 @@ if ($columnas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito  el número de columnas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($columnas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($columnas &lt; $columnasMinimo || $columnas &gt; $columnasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de columnas debe estar entre "
-        . "$columnasMinimo y $columnasMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de columnas debe estar entre $columnasMinimo y $columnasMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $columnasOk = true;
@@ -527,12 +501,10 @@ if ($altura == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito la altura de las filas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($altura)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito la altura de las filas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la altura de las filas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($altura &lt; $alturaMinimo || $altura &gt; $alturaMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;La altura de las filas debe estar entre "
-        . "$alturaMinimo y $alturaMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;La altura de las filas debe estar entre $alturaMinimo y $alturaMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $alturaOk = true;
@@ -545,40 +517,35 @@ if ($anchura == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito la anchura de las columnas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($anchura)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito la anchura de las columnas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la anchura de las columnas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($anchura &lt; $anchuraMinimo || $anchura &gt; $anchuraMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;La anchura de las columnas debe estar entre "
-        . "$anchuraMinimo y $anchuraMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;La anchura de las columnas debe estar entre $anchuraMinimo y $anchuraMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $anchuraOk = true;
 }
 
 if ($filasOk && $columnasOk && $alturaOk && $anchuraOk) {
-    print "  &lt;table class=\"conborde\" style=\"table-layout: fixed; border-collapse: collapse; width: " . ($anchura * ($columnas + 1)) . "px\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
-    print "      &lt;tr style=\"height: {$altura}px\"&gt;\n";
-    print "        &lt;th&gt;X&lt;/th&gt;\n";
+    print "  &lt;table class=\"conborde\" style=\"table-layout: fixed; border-collapse: collapse; width: " . $anchura * ($columnas + 1) . "px\"&gt;\n";
+    print "    &lt;tr style=\"height: {$altura}px\"&gt;\n";
+    print "      &lt;th&gt;X&lt;/th&gt;\n";
     for ($j = 1; $j &lt;= $columnas; $j++) {
-        print "        &lt;th&gt;$j&lt;/th&gt;\n";
+        print "      &lt;th&gt;$j&lt;/th&gt;\n";
     }
-    print "      &lt;/tr&gt;\n";
+    print "    &lt;/tr&gt;\n";
 
     for ($i = 1; $i &lt;= $filas; $i++) {
-        print "      &lt;tr style=\"height: {$altura}px\"&gt;\n";
-        print "        &lt;th&gt;$i&lt;/th&gt;\n";
+        print "    &lt;tr style=\"height: {$altura}px\"&gt;\n";
+        print "      &lt;th&gt;$i&lt;/th&gt;\n";
         for ($j = 1; $j &lt;= $columnas; $j++) {
-            print "        &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
+            print "      &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
         }
-        print "      &lt;/tr&gt;\n";
+        print "    &lt;/tr&gt;\n";
     }
-    print "    &lt;/tbody&gt;\n";
     print "  &lt;/table&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -626,12 +593,10 @@ if ($numero == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito  el número de tablas número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de tablas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de tablas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de tablas debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de tablas debe estar entre $numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -641,28 +606,25 @@ if ($numeroOk) {
     for ($k = 1; $k &lt;= $numero; $k++) {
         print "  &lt;table class=\"conborde\"&gt;\n";
         print "    &lt;caption&gt;Tabla del $k&lt;/caption&gt;\n";
-        print "    &lt;tbody&gt;\n";
-        print "      &lt;tr&gt;\n";
-        print "        &lt;th&gt;X&lt;/th&gt;\n";
+        print "    &lt;tr&gt;\n";
+        print "      &lt;th&gt;X&lt;/th&gt;\n";
         for ($j = 1; $j &lt;= $k; $j++) {
-            print "        &lt;th&gt;$j&lt;/th&gt;\n";
+            print "      &lt;th&gt;$j&lt;/th&gt;\n";
         }
-        print "      &lt;/tr&gt;\n";
+        print "    &lt;/tr&gt;\n";
 
         for ($i = 1; $i &lt;= $k; $i++) {
-            print "      &lt;tr&gt;\n";
-            print "        &lt;th&gt;$i&lt;/th&gt;\n";
+            print "    &lt;tr&gt;\n";
+            print "      &lt;th&gt;$i&lt;/th&gt;\n";
             for ($j = 1; $j &lt;= $k; $j++) {
-                print "        &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
+                print "      &lt;td&gt;" . $i * $j . "&lt;/td&gt;\n";
             }
-            print "      &lt;/tr&gt;\n";
+            print "    &lt;/tr&gt;\n";
         }
-        print "    &lt;/tbody&gt;\n";
         print "  &lt;/table&gt;\n";
         print "\n";
     }
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -710,12 +672,10 @@ if ($numero == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de tablas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de tablas "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de tablas como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de tablas debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de tablas debe estar entre $numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -726,24 +686,20 @@ if ($numeroOk) {
     for ($k = 0; $k &lt; $numero; $k++) {
         print "  &lt;table class=\"conborde\"&gt;\n";
         print "    &lt;caption&gt;Tabla nº" . 1 + $k . "&lt;/caption&gt;\n";
-        print "    &lt;tbody&gt;\n";
         for ($i = 0; $i &lt; $numero; $i++) {
-            print "      &lt;tr&gt;\n";
+            print "    &lt;tr&gt;\n";
             for ($j = 0; $j &lt; $numero; $j++) {
-                print "        &lt;td style=\"background-color:rgb("
-                    . round($k * $paso) . " " . round($i * $paso) . " "
-                    . round($j * $paso) . ")\" title=\"R:" . round($k * $paso)
-                    . " G:" . round($i * $paso) . " B:" . round($j * $paso)
-                    . "\"&gt;&lt;/td&gt;\n";
+                $rk = round($k * $paso);
+                $ri = round($i * $paso);
+                $rj = round($j * $paso);
+                print "      &lt;td style=\"background-color:rgb($rk $ri $rj)\" title=\"R: $rk G: $ri B: $rj\"&gt;&lt;/td&gt;\n";
             }
-            print "      &lt;/tr&gt;\n";
+            print "    &lt;/tr&gt;\n";
         }
-        print "    &lt;/tbody&gt;\n";
         print "  &lt;/table&gt;\n";
         print "\n";
     }
 }
-
 ?&gt;</code>
 </pre>
     </div>
@@ -794,12 +750,10 @@ if ($numeradas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de celdas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numeradas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de celdas numeradas "
-        . "como número entero.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de celdas numeradas como número entero.&lt;/p&gt;\n";
     print "\n";
 } elseif ($numeradas &lt; $numeradasMinimo || $numeradas &gt; $numeradasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de celdas numeradas debe estar entre "
-        . "$numeradasMinimo y $numeradasMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de celdas numeradas debe estar entre $numeradasMinimo y $numeradasMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $numeradasOk = true;
@@ -812,42 +766,40 @@ if ($columnas == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($columnas)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas "
-        . "como número entero.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de columnas como número entero.&lt;/p&gt;\n";
     print "\n";
 } elseif ($columnas &lt; $columnasMinimo || $columnas &gt; $columnasMaximo) {
-    print "  &lt;p class=\"aviso\"&gt;El número de columnas debe estar entre "
-        . "$columnasMinimo y $columnasMaximo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;El número de columnas debe estar entre $columnasMinimo y $columnasMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $columnasOk = true;
 }
 
 if ($numeradasOk && $columnasOk) {
-    $filas = ceil($numeradas / $columnas);
+    $filas    = ceil($numeradas / $columnas);
     $contador = 1;
     print "  &lt;table class=\"conborde\"&gt;\n";
-    print "    &lt;tbody&gt;\n";
     for ($i = 1; $i &lt;= $filas; $i++) {
-        print "      &lt;tr&gt;\n";
+        print "    &lt;tr&gt;\n";
         for ($j = 1; $j &lt;= $columnas; $j++) {
-            // Los paréntesis aquí son necesarios
-            print "        &lt;td&gt;" . ($contador &lt;= $numeradas ? $contador++ : "") . "&lt;/td&gt;\n";
+            print "      &lt;td&gt;";
+            if ($contador &lt;= $numeradas) {
+                print $contador++;
+            }
+            print "&lt;/td&gt;\n";
         }
-        print "      &lt;/tr&gt;\n";
+        print "    &lt;/tr&gt;\n";
     }
-    print "    &lt;/tbody&gt;\n";
     print "  &lt;/table&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
