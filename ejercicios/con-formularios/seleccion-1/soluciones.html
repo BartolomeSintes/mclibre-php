@@ -297,8 +297,10 @@ if ($cantidad == "") {
     $cantidadOk = true;
 }
 
-if ($cuadrante != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
-        && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda") {
+if (
+    $cuadrante != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
+    && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda"
+) {
     print "  &lt;p class=\"aviso\"&gt;El cuadrante solicitado no es uno de los permitidos.&lt;/p&gt;\n";
     print "\n";
 } else {
@@ -307,8 +309,8 @@ if ($cuadrante != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
 
 if ($cantidadOk && $cuadranteOk) {
     print "  &lt;p&gt;\n";
-    print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-    print "      width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\" \n";
+    print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "         width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\"\n";
     print "      style=\"border: black 1px solid\" &gt;\n";
     print "      &lt;line x1=\"0\" y1=\"-200\" x2=\"0\" y2=\"200\" stroke-width=\"1\" stroke=\"blue\" /&gt;\n";
     print "      &lt;line x1=\"-200\" y1=\"0\" x2=\"200\" y2=\"0\" stroke-width=\"1\" stroke=\"blue\" /&gt;\n";
@@ -333,8 +335,10 @@ if ($cantidadOk && $cuadranteOk) {
 
     if ($hayPuntos) {
         print "  &lt;p&gt;Hay puntos $cuadrante.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;No hay puntos $cuadrante.&lt;/p&gt;\n";
+        print "\n";
     }
 }
 ?&gt;</code>
@@ -426,12 +430,14 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  &lt;p&gt;Ha escrito tres números iguales.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  &lt;p&gt;Ha escrito dos números iguales.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Ha escrito tres números distintos.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -502,11 +508,12 @@ if ($temperaturaOk && $unidadOk) {
     if ($unidad == "c") {
         $fahrenheit = round(1.8 * $temperatura + 32, 2);
         print "  &lt;p&gt;$temperatura ºC son $fahrenheit ºF&lt;/p&gt;\n";
+        print "\n";
     } else {
         $celsius = round(($temperatura - 32) / 1.8, 2);
         print "  &lt;p&gt;$temperatura ºF son $celsius ºC&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -608,8 +615,7 @@ if ($cantidadOk && $palo1Ok && $palo2Ok) {
         }
     }
 
-    print "  &lt;h2&gt;$cantidad cartas";
-    print "&lt;/h2&gt;\n";
+    print "  &lt;h2&gt;$cantidad cartas&lt;/h2&gt;\n";
     print "\n";
 
     print "  &lt;p&gt;\n";
@@ -668,8 +674,7 @@ if ($jugadores == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($jugadores)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores "
-        . "como número entero positivo.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } elseif ($jugadores &lt; 3 || $jugadores &gt; 10) {
     print "  &lt;p class=\"aviso\"&gt;El número de jugadores debe estar entre 3 y 10.&lt;/p&gt;\n";
@@ -702,8 +707,8 @@ if ($jugadoresOk) {
         print "    &lt;img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" height=\"120px\"&gt;\n";
         print "    &lt;img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" height=\"120px\"&gt;\n";
         print "  &lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -711,7 +716,7 @@ if ($jugadoresOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de enero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 14 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

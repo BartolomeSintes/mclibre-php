@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-09
+ * @version   2025-02-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -128,8 +128,7 @@ if ($cantidadOk && $palo1Ok && $palo2Ok) {
         }
     }
 
-    print "  <h2>$cantidad cartas";
-    print "</h2>\n";
+    print "  <h2>$cantidad cartas</h2>\n";
     print "\n";
 
     print "  <p>\n";
@@ -150,7 +149,7 @@ if ($cantidadOk && $palo1Ok && $palo2Ok) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

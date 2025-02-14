@@ -41,7 +41,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

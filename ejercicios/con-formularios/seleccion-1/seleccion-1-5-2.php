@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-09
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -97,11 +97,12 @@ if ($temperaturaOk && $unidadOk) {
     if ($unidad == "c") {
         $fahrenheit = round(1.8 * $temperatura + 32, 2);
         print "  <p>$temperatura ºC son $fahrenheit ºF</p>\n";
+        print "\n";
     } else {
         $celsius = round(($temperatura - 32) / 1.8, 2);
         print "  <p>$temperatura ºF son $celsius ºC</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="seleccion-1-5-1.php">Volver al formulario.</a></p>
@@ -109,7 +110,7 @@ if ($temperaturaOk && $unidadOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

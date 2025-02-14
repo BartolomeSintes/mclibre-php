@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-09
+ * @version   2025-02-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -82,8 +82,10 @@ if ($cantidad == "") {
     $cantidadOk = true;
 }
 
-if ($cuadrante                                        != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
-                                        && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda") {
+if (
+    $cuadrante != "Arriba a la derecha" && $cuadrante != "Abajo a la derecha"
+    && $cuadrante != "Abajo a la izquierda" && $cuadrante != "Arriba a la izquierda"
+) {
     print "  <p class=\"aviso\">El cuadrante solicitado no es uno de los permitidos.</p>\n";
     print "\n";
 } else {
@@ -92,8 +94,8 @@ if ($cuadrante                                        != "Arriba a la derecha" &
 
 if ($cantidadOk && $cuadranteOk) {
     print "  <p>\n";
-    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-    print "      width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\" \n";
+    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "         width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\"\n";
     print "      style=\"border: black 1px solid\" >\n";
     print "      <line x1=\"0\" y1=\"-200\" x2=\"0\" y2=\"200\" stroke-width=\"1\" stroke=\"blue\" />\n";
     print "      <line x1=\"-200\" y1=\"0\" x2=\"200\" y2=\"0\" stroke-width=\"1\" stroke=\"blue\" />\n";
@@ -118,18 +120,19 @@ if ($cantidadOk && $cuadranteOk) {
 
     if ($hayPuntos) {
         print "  <p>Hay puntos $cuadrante.</p>\n";
+        print "\n";
     } else {
         print "  <p>No hay puntos $cuadrante.</p>\n";
+        print "\n";
     }
 }
 ?>
-
   <p><a href="seleccion-1-3-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

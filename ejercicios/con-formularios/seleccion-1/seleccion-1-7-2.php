@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-09
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -72,8 +72,7 @@ if ($jugadores == "") {
     print "  <p class=\"aviso\">No ha escrito el número de jugadores como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($jugadores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de jugadores "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de jugadores como número entero positivo.</p>\n";
     print "\n";
 } elseif ($jugadores < 3 || $jugadores > 10) {
     print "  <p class=\"aviso\">El número de jugadores debe estar entre 3 y 10.</p>\n";
@@ -106,8 +105,8 @@ if ($jugadoresOk) {
         print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" height=\"120px\">\n";
         print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" height=\"120px\">\n";
         print "  </p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="seleccion-1-7-1.php">Volver al formulario.</a></p>
@@ -115,7 +114,7 @@ if ($jugadoresOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

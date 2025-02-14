@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-09
+ * @version   2025-02-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -115,7 +115,7 @@ if ($deudaOk && $b200Ok && $b100Ok) {
         print "  <p>Ha entregado la cantidad exacta.</p>\n";
         print "\n";
     } elseif ($pagado < $deuda) {
-        print "  <p>Le falta entregar <strong>" . ($deuda - $pagado) . " €</strong>.</p>\n";
+        print "  <p>Le falta entregar <strong>" . $deuda - $pagado . " €</strong>.</p>\n";
         print "\n";
     } else {
         $cambio = $pagado - $deuda;
@@ -126,13 +126,12 @@ if ($deudaOk && $b200Ok && $b100Ok) {
     }
 }
 ?>
-
   <p><a href="seleccion-1-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -117,12 +117,14 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  <p>Ha escrito tres números iguales.</p>\n";
+        print "\n";
     } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  <p>Ha escrito dos números iguales.</p>\n";
+        print "\n";
     } else {
         print "  <p>Ha escrito tres números distintos.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="seleccion-1-4-1.php">Volver al formulario.</a></p>
@@ -130,7 +132,7 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-09">9 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
