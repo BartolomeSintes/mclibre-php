@@ -3,9 +3,9 @@
  * Controles en formularios (2) 3-2 - controles-formularios-2-03-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -105,30 +105,31 @@ if ($musica != "" && $musica != "on") {
 if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
     if ($sexo == "hombre") {
         print "  <p>Es un <strong>hombre</strong>.</p>\n";
+        print "\n";
     } else {
         print "  <p>Es una <strong>mujer</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     if ($cine == "on") {
         print "  <p>Le gusta <strong>el cine</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     if ($literatura == "on") {
         print "  <p>Le gusta <strong>la literatura</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     if ($musica == "on") {
         print "  <p>Le gusta <strong>la música</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     if ($cine != "on" && $literatura != "on" && $musica != "on") {
         print "  <p>No ha marcado ninguna afición.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="controles-formularios-2-03-1.php">Volver al formulario.</a></p>
@@ -136,7 +137,7 @@ if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

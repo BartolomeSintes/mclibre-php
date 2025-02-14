@@ -258,30 +258,31 @@ if ($musica != "" && $musica != "on") {
 if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
     if ($sexo == "hombre") {
         print "  &lt;p&gt;Es un &lt;strong&gt;hombre&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Es una &lt;strong&gt;mujer&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     if ($cine == "on") {
         print "  &lt;p&gt;Le gusta &lt;strong&gt;el cine&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     if ($literatura == "on") {
         print "  &lt;p&gt;Le gusta &lt;strong&gt;la literatura&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     if ($musica == "on") {
         print "  &lt;p&gt;Le gusta &lt;strong&gt;la música&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     if ($cine != "on" && $literatura != "on" && $musica != "on") {
         print "  &lt;p&gt;No ha marcado ninguna afición.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -443,7 +444,7 @@ if ($ladoOk && $esquinaOk) {
 }
 
 if ($ladoOk && $esquinaOk) {
-    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n"
         . "    width=\"" . $lado + 10 . "px\" height=\"" . $lado + 10 . "px\"&gt;\n";
     print "    &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
     . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" rx=\"$esquina\" ry=\"$esquina\" /&gt;\n";
@@ -516,7 +517,7 @@ if ($forma == "") {
 }
 
 if ($ladoOk && $formaOk) {
-    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n"
         . "    width=\"" . $lado + 10 . "px\" height=\"" . $lado + 10 . "px\"&gt;\n";
     if ($forma == "cuadrado") {
         print "  &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
@@ -600,7 +601,7 @@ if ($final == "") {
 }
 
 if ($ladoOk && $inicialOk && $finalOk) {
-    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n"
         . "    width=\"" . $lado + 10 . "px\" height=\"" . $lado + 10 . "px\"&gt;\n";
     print "    &lt;defs&gt;\n"
         . "      &lt;linearGradient id=\"gradiente\"&gt;\n"
@@ -775,8 +776,10 @@ if ($television != "" && $television != "on") {
 }
 
 // Si todas las comprobaciones han tenido éxito ...
-if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk &&
-    $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
+if (
+    $nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
+    && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk
+) {
     print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
     print "  &lt;p&gt;Sus apellidos son &lt;strong&gt;$apellidos&lt;/strong&gt;.&lt;/p&gt;\n";
@@ -784,36 +787,41 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
 
     if ($edad == 1) {
         print "  &lt;p&gt;Tiene &lt;strong&gt;menos de 20 años&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($edad == 2) {
         print "  &lt;p&gt;Tiene &lt;strong&gt;entre 20 y 39 años&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($edad == 3) {
         print "  &lt;p&gt;Tiene &lt;strong&gt;entre 40 y 59 años&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Tiene &lt;strong&gt;60 o más años&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     print "  &lt;p&gt;Su peso es de &lt;strong&gt;$peso&lt;/strong&gt; kg.&lt;/p&gt;\n";
     print "\n";
 
     if ($sexo == "hombre") {
         print "  &lt;p&gt;Es un &lt;strong&gt;hombre&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Es una &lt;strong&gt;mujer&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     if ($estadoCivil == "soltero") {
         print "  &lt;p&gt;Su estado civil es &lt;strong&gt;soltero&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($estadoCivil == "casado") {
         print "  &lt;p&gt;Su estado civil es &lt;strong&gt;casado&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Su estado civil no es &lt;strong&gt;ni soltero ni casado&lt;/strong&gt;.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
-    if ($cine != "on" && $deporte != "on" && $literatura != "on" &&
-        $musica != "on" && $tebeos != "on" && $television != "on") {
+    if ($cine != "on" && $deporte != "on" && $literatura != "on" && $musica != "on" && $tebeos != "on" && $television != "on") {
         print "  &lt;p class=\"aviso\"&gt;No ha marcado ninguna afición.&lt;/p&gt;\n";
     } else {
         print "  &lt;p&gt;Le gusta: ";
@@ -845,7 +853,7 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

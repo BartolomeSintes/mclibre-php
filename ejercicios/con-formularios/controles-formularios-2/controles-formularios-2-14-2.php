@@ -3,9 +3,9 @@
  * Controles en formularios (2) 14-2 - controles-formularios-2-14-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -190,8 +190,10 @@ if ($television != "" && $television != "on") {
 }
 
 // Si todas las comprobaciones han tenido éxito ...
-if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
-    && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
+if (
+    $nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
+    && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk
+) {
     print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
     print "\n";
     print "  <p>Sus apellidos son <strong>$apellidos</strong>.</p>\n";
@@ -199,33 +201,39 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
 
     if ($edad == 1) {
         print "  <p>Tiene <strong>menos de 20 años</strong>.</p>\n";
+        print "\n";
     } elseif ($edad == 2) {
         print "  <p>Tiene <strong>entre 20 y 39 años</strong>.</p>\n";
+        print "\n";
     } elseif ($edad == 3) {
         print "  <p>Tiene <strong>entre 40 y 59 años</strong>.</p>\n";
+        print "\n";
     } else {
         print "  <p>Tiene <strong>60 o más años</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     print "  <p>Su peso es de <strong>$peso</strong> kg.</p>\n";
     print "\n";
 
     if ($sexo == "hombre") {
         print "  <p>Es un <strong>hombre</strong>.</p>\n";
+        print "\n";
     } else {
         print "  <p>Es una <strong>mujer</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     if ($estadoCivil == "soltero") {
         print "  <p>Su estado civil es <strong>soltero</strong>.</p>\n";
+        print "\n";
     } elseif ($estadoCivil == "casado") {
         print "  <p>Su estado civil es <strong>casado</strong>.</p>\n";
+        print "\n";
     } else {
         print "  <p>Su estado civil no es <strong>ni soltero ni casado</strong>.</p>\n";
+        print "\n";
     }
-    print "\n";
 
     if ($cine != "on" && $deporte != "on" && $literatura != "on" && $musica != "on" && $tebeos != "on" && $television != "on") {
         print "  <p class=\"aviso\">No ha marcado ninguna afición.</p>\n";
@@ -259,7 +267,7 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

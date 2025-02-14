@@ -15,7 +15,6 @@
   <h1>Gradiente en cuadrado (Formulario)</h1>
 
   <form action="controles-formularios-2-13-2.php" method="get">
-
     <table>
       <tr>
         <td><label for="control1">Tamaño de la figura:<label></td>
@@ -40,7 +39,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-29">29 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

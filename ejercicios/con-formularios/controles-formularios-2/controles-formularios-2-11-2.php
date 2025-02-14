@@ -3,9 +3,9 @@
  * Controles en formularios (2) 11-2 - controles-formularios-2-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -109,10 +109,10 @@ if ($ladoOk && $esquinaOk) {
 }
 
 if ($ladoOk && $esquinaOk) {
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $lado + 10 . "px\" height=\"" . $lado + 10 . "px\">\n";
-    print "    <rect fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
-    . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" rx=\"$esquina\" ry=\"$esquina\" />\n";
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $lado + 10 . "px\" height=\"" . $lado + 10 . "px\">\n";
+    print "    <rect fill=\"white\" stroke=\"black\" stroke-width=\"10\"\n";
+    print "          x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" rx=\"$esquina\" ry=\"$esquina\" />\n";
     print "  </svg>\n";
     print "\n";
 }
@@ -122,7 +122,7 @@ if ($ladoOk && $esquinaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
