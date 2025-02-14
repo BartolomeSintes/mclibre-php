@@ -3,9 +3,9 @@
  * Sucesiones aritméticas 2 - for-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-04
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,27 +63,27 @@ for ($i = 0; $i < 6; $i++) {
 print "\n";
 
 for ($i = 0; $i < 10; $i++) {
-    printf("%6d", - 2 * $i + 8);
+    printf("%6d", -2 * $i + 8);
 }
 print "\n";
 
 for ($i = 0; $i < 7; $i++) {
-    printf("%6d", - 5 * $i + 40);
+    printf("%6d", -5 * $i + 40);
 }
 print "\n";
 
 for ($i = 0; $i < 8; $i++) {
-    printf("%6d", - 6 * $i - 7);
+    printf("%6d", -6 * $i - 7);
 }
 print "\n";
 
 print "</pre>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-04">4 de noviembre de 2016</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
