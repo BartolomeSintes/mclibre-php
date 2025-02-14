@@ -3,9 +3,9 @@
  * Validación de entrada de texto 1 (Resultado) - expresiones-regulares-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2010 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-11-14
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -113,14 +113,14 @@ $patron = "/^[0-4][0-9]{4}$/";
 comprueba_pcre($patron, $texto, "es un código postal");
 
 print "  </ol>\n";
+print "\n";
 ?>
-
   <p><a href="expresiones-regulares-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2011-11-14">14 de noviembre de 2011</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
