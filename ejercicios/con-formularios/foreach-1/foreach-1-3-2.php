@@ -3,9 +3,9 @@
  * Encuesta (Resultado 1) - foreach-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -73,12 +73,13 @@ $numeroMaximo     = 10;
 // Comprobación de $preguntas (entero entre 2 y 10)
 if ($preguntas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($preguntas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de preguntas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de preguntas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($preguntas < $preguntasMinimo || $preguntas > $numeroMaximo) {
-    print "  <p class=\"aviso\">El número de preguntas debe estar entre "
-        . "$preguntasMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de preguntas debe estar entre $preguntasMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $preguntasOk = true;
 }
@@ -86,12 +87,13 @@ if ($preguntas == "") {
 // Comprobación de $respuestas (entero entre 2 y 10)
 if ($respuestas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de respuestas.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($respuestas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de respuestas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de respuestas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($respuestas < $respuestasMinimo || $respuestas > $numeroMaximo) {
-    print "  <p class=\"aviso\">El número de respuestas debe estar entre "
-        . "$respuestasMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de respuestas debe estar entre $respuestasMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $respuestasOk = true;
 }
@@ -140,15 +142,15 @@ if ($preguntasOk && $respuestasOk) {
     print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "  </form>\n";
+    print "\n";
 }
 ?>
-
   <p><a href="foreach-1-3-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-05">5 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

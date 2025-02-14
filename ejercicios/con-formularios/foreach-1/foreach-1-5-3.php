@@ -3,9 +3,9 @@
  * Tabla con casillas de verificación (Resultado 2) - foreach-1-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -73,12 +73,13 @@ $numeroMaximo = 20;
 // Comprobación de $numero (entero entre 1 y 20)
 if ($numero == "") {
     print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $numeroOk = true;
 }
@@ -92,20 +93,22 @@ if ($casillasMarcadas == 0) {
     print "\n";
 // Si se han recibido demasiadas casillas
 } elseif ($casillasMarcadas > $numero * $numero) {
-      print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
-      print "\n";
+    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
     foreach ($c as $indice => $valor) {
-        // Si el índice es numérico (como es de tipo int hay que convertirlo a string
-        if (!ctype_digit((string)$indice)
+        if (
+            // Si el índice es numérico (como es de tipo int hay que convertirlo a string
+            !ctype_digit((string)$indice)
             // o si el índice está fuera de rango
             || $indice < 1 || $indice > $numero * $numero
         // o si el valor no es "on"
-            || $valor != $cValor) {
+            || $valor != $cValor
+        ) {
             $cOk = false;
-       }
+        }
     }
     if (!$cOk) {
         print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
@@ -132,16 +135,15 @@ if ($numeroOk && $cOk) {
 // dibujar la tabla
 if ($numeroOk) {
     print "  <p><a href=\"foreach-1-5-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "\n";
 }
-
 ?>
-
   <p><a href="foreach-1-5-1.php">Volver al formulario inicial.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

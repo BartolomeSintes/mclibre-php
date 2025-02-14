@@ -3,9 +3,9 @@
  * Palabras repetidas (Resultado 2) - foreach-1-2-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -74,12 +74,10 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -135,11 +133,11 @@ if ($numeroOk && $cOk) {
             // ... y los compara con todos los valores de las cajas
             foreach ($c as $indice2 => $valor2) {
                 // Si los valores son iguales (pero distintos de la cadena vacía) hay repeticiones
-                if ($valor1 == $valor2 && $valor1 != "" && // pero como compara todos con todos también comparará cada elemento consigo mismo
+                // pero como compara todos con todos también comparará cada elemento consigo mismo
                 // así que hay que decirle que los índices sean distintos (para que
                 // no tenga en cuenta el caso en que los valores son iguales porque
                 // los índices también lo son)
-                $indice1 != $indice2) {
+                if ($valor1 == $valor2 && $valor1 != "" && $indice1 != $indice2) {
                     $repeticion = true;
                 }
             }
@@ -158,16 +156,15 @@ if ($numeroOk && $cOk) {
 // dibujar la tabla
 if ($numeroOk) {
     print "  <p><a href=\"foreach-1-2-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "\n";
 }
-
 ?>
-
   <p><a href="foreach-1-2-1.php">Volver al formulario inicial.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-05">5 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

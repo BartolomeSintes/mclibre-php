@@ -3,9 +3,9 @@
  * Hombres y mujeres (Resultado 2) - foreach-1-4-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -75,12 +75,13 @@ $cajasRecibidas = 0;
 // Comprobación de $numero (entero entre 2 y 10)
 if ($numero == "") {
     print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $numeroOk = true;
 }
@@ -97,12 +98,14 @@ if ($cajasRecibidas != $numero) {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
     foreach ($c as $indice => $valor) {
-        // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
-        if (!ctype_digit((string)$indice)
+        if (
+            // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
+            !ctype_digit((string)$indice)
             // o si el índice está fuera de rango
             || $indice < 1 || $indice > $numero
             // o si el contenido no es vacío o todo letras
-           || (!ctype_alpha($valor) && $valor != "")) {
+            || (!ctype_alpha($valor) && $valor != "")
+        ) {
             $cOk = false;
         }
     }
@@ -126,12 +129,14 @@ if ($botonesRecibidos == 0) {
 } else {
     $bOk = true;
     foreach ($b as $indice => $valor) {
-        // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
-        if (!ctype_digit((string)$indice)
+        if (
+            // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
+            !ctype_digit((string)$indice)
             // o si el índice está fuera de rango
             || $indice < 1 || $indice > $numero
             // o si el valor no es "m" o "h"
-           || ($valor != "h" && $valor != "m")) {
+            || ($valor != "h" && $valor != "m")
+        ) {
             $bOk = false;
         }
     }
@@ -165,8 +170,7 @@ if ($numeroOk && $cOk && $bOk) {
         print "  <p>No se ha recibido ningún dato completo</p>\n";
         print "\n";
     } else {
-        print "  <p>Se han recibido $datosCompletos dato(s) completo(s)";
-        print " de un total de $numero.</p>\n";
+        print "  <p>Se han recibido $datosCompletos dato(s) completo(s) de un total de $numero.</p>\n";
         print "\n";
 
         print "  <ul>\n";
@@ -195,16 +199,15 @@ if ($numeroOk && $cOk && $bOk) {
 // su valor para que pueda dibujar la tabla
 if ($numeroOk) {
     print "  <p><a href=\"foreach-1-4-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "\n";
 }
-
 ?>
-
   <p><a href="foreach-1-4-1.php">Volver al formulario inicial.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-05">5 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
