@@ -3,9 +3,9 @@
  * Operaciones aritmeticas 1-2 - operaciones-aritmeticas-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -95,12 +95,9 @@ if ($altura == "") {
 
 if ($pesoOk && $alturaOk) {
     $imc = round($peso / ($altura / 100) ** 2);
-    print "  <p>Con un peso de <strong>$peso kg</strong> y una altura de <strong>"
-        . "$altura cm</strong>, su índice de masa corporal es <strong>$imc</strong>.</p>\n";
+    print "  <p>Con un peso de <strong>$peso kg</strong> y una altura de <strong>$altura cm</strong>, su índice de masa corporal es <strong>$imc</strong>.</p>\n";
     print "\n";
-    print "  <p>Un imc muy alto indica obesidad. Los valores \"normales\" de imc "
-        . "están entre 20 y 25, pero esos límites dependen de la edad, del "
-        . "sexo, de la constitución física, etc.</p>\n";
+    print "  <p>Un imc muy alto indica obesidad. Los valores \"normales\" de imc están entre 20 y 25, pero esos límites dependen de la edad, del sexo, de la constitución física, etc.</p>\n";
     print "\n";
 }
 ?>
@@ -109,7 +106,7 @@ if ($pesoOk && $alturaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

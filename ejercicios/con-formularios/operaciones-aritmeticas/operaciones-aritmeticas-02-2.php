@@ -3,9 +3,9 @@
  * Operaciones aritmeticas 2-2 - operaciones-aritmeticas-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -101,7 +101,7 @@ if ($piesOk && $pulgadasOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-06-09">9 de junio de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
