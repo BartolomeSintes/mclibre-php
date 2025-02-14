@@ -3,9 +3,9 @@
  * Tablas con casillas de verificación (Resultado 1) - foreach-2-2-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -66,8 +66,8 @@ function recoge($key, $type = "")
 $tablas           = recoge("tablas");
 $tamano           = recoge("tamano");
 $casillas         = recoge("c", []);
-$tablasMinimo     = $tamanoMinimo     = 1;
-$tablasMaximo     = $tamanoMaximo     = 20;
+$tablasMinimo     = $tamanoMinimo = 1;
+$tablasMaximo     = $tamanoMaximo = 20;
 $casillaValor     = "on";
 $tablasOk         = false;
 $tamanoOk         = false;
@@ -76,24 +76,26 @@ $casillasMarcadas = count($casillas, COUNT_RECURSIVE) - count($casillas);
 
 if ($tablas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de tablas.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($tablas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de tablas  "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de tablas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($tablas < $tablasMinimo || $tablas > $tablasMaximo) {
-    print "  <p class=\"aviso\">El número de tablas debe estar entre "
-        . "$tablasMinimo y $tablasMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de tablas debe estar entre $tablasMinimo y $tablasMaximo.</p>\n";
+    print "\n";
 } else {
     $tablasOk = true;
 }
 
 if ($tamano == "") {
     print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($tamano)) {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
-        . "como número entero.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla como número entero.</p>\n";
+    print "\n";
 } elseif ($tamano < $tamanoMinimo || $tamano > $tamanoMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$tamanoMinimo y $tamanoMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $tamanoMinimo y $tamanoMaximo.</p>\n";
+    print "\n";
 } else {
     $tamanoOk = true;
 }
@@ -102,8 +104,10 @@ if ($tamano == "") {
 if ($tablasOk && $tamanoOk) {
     if ($casillasMarcadas == 0) {
         print "  <p>No ha marcado ninguna casilla.</p>";
+        print "\n";
     } elseif ($casillasMarcadas > $tamano * $tamano * $tablas) {
         print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+        print "\n";
     } else {
         $casillasOk = true;
         foreach ($casillas as $indice => $valor) {
@@ -120,6 +124,7 @@ if ($tablasOk && $tamanoOk) {
         }
         if (!$casillasOk) {
             print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+            print "\n";
         }
     }
 }
@@ -128,9 +133,9 @@ if ($tablasOk && $tamanoOk && $casillasOk) {
     for ($k = 1; $k <= $tablas; $k++) {
         if (!isset($casillas[$k])) {
             print "  <p>En la tabla <strong>$k</strong> no ha marcado ninguna casilla.</p>\n";
+            print "\n";
         } else {
-            print "  <p>En la tabla <strong>$k</strong> ha marcado <strong>"
-                . count($casillas[$k]) . "</strong> casilla";
+            print "  <p>En la tabla <strong>$k</strong> ha marcado <strong>" . count($casillas[$k]) . "</strong> casilla";
             if (count($casillas[$k]) > 1) {
                 print "s";
             }
@@ -139,23 +144,22 @@ if ($tablasOk && $tamanoOk && $casillasOk) {
                 print "<strong>$indice</strong> ";
             }
             print "</p>\n";
+            print "\n";
         }
-        print "\n";
     }
 }
 
 if ($tablasOk && $tamanoOk) {
     print "  <p><a href=\"foreach-2-2-2.php?tamano=$tamano&amp;tablas=$tablas\">Volver a las tablas</a></p>\n";
+    print "\n";
 }
-
 ?>
-
   <p><a href="foreach-2-2-1.php">Volver al formulario inicial.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

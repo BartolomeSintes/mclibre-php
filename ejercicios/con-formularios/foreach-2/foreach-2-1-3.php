@@ -3,9 +3,9 @@
  * Tabla con casillas de verificación (Resultado 2) - foreach-2-1-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -66,17 +66,18 @@ $casillas         = recoge("c", []);
 $casillaValor     = "on";
 $numeroMinimo     = 1;
 $numeroMaximo     = 20;
-$numeroOk         = $casillasOk         = false;
+$numeroOk         = $casillasOk = false;
 $casillasMarcadas = count($casillas, COUNT_RECURSIVE) - count($casillas);
 
 if ($numero == "") {
     print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $numeroMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $numeroOk = true;
 }
@@ -85,8 +86,10 @@ if ($numero == "") {
 if ($numeroOk) {
     if ($casillasMarcadas == 0) {
         print "  <p>No ha marcado ninguna casilla.</p>";
+        print "\n";
     } elseif ($casillasMarcadas > $numero * $numero) {
         print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+        print "\n";
     } else {
         $casillasOk = true;
         foreach ($casillas as $indice => $fila) {
@@ -103,6 +106,7 @@ if ($numeroOk) {
         }
         if (!$casillasOk) {
             print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+            print "\n";
         }
     }
 }
@@ -126,15 +130,15 @@ if ($numeroOk && $casillasOk) {
 
 if ($numeroOk) {
     print "  <p><a href=\"foreach-2-1-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "\n";
 }
 ?>
-
   <p><a href="foreach-2-1-1.php">Volver al formulario inicial.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

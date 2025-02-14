@@ -3,9 +3,9 @@
  * Tablas con casillas de verificación (Resultado 1) - foreach-2-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-10-16
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -67,28 +67,30 @@ $tablas       = recoge("tablas");
 $tamano       = recoge("tamano");
 $tablasMinimo = $tamanoMinimo = 1;
 $tablasMaximo = $tamanoMaximo = 20;
-$tablasOk     = $tamanoOk     = false;
+$tablasOk     = $tamanoOk = false;
 
 if ($tablas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de tablas.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($tablas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de tablas  "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de tablas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($tablas < $tablasMinimo || $tablas > $tablasMaximo) {
-    print "  <p class=\"aviso\">El número de tablas debe estar entre "
-        . "$tablasMinimo y $tablasMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de tablas debe estar entre $tablasMinimo y $tablasMaximo.</p>\n";
+    print "\n";
 } else {
     $tablasOk = true;
 }
 
 if ($tamano == "") {
     print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($tamano)) {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($tamano < $tamanoMinimo || $tamano > $tamanoMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$tamanoMinimo y $tamanoMaximo.</p>\n";
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre $tamanoMinimo y $tamanoMaximo.</p>\n";
+    print "\n";
 } else {
     $tamanoOk = true;
 }
@@ -117,15 +119,15 @@ if ($tablasOk && $tamanoOk) {
     print "      <input type=\"hidden\" name=\"tablas\" value=\"$tablas\">\n";
     print "    </p>\n";
     print "  </form>\n";
+    print "\n";
 }
 ?>
-
   <p><a href="foreach-2-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-16">16 de octubre de 2014</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
