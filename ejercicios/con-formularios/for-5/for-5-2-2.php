@@ -3,9 +3,9 @@
  * Dibujos con cuadrados (Resultado) - for-5-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -74,12 +74,10 @@ if ($cuadrados == "") {
     print "  <p class=\"aviso\">No ha escrito el número de cuadrados como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($cuadrados)) {
-    print "  <p class=\"aviso\">No ha escrito el número de cuadrados "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de cuadrados como número entero positivo.</p>\n";
     print "\n";
 } elseif ($cuadrados < $cuadradosMinimo || $cuadrados > $cuadradosMaximo) {
-    print "  <p class=\"aviso\">El número de cuadrados debe estar entre "
-        . "$cuadradosMinimo y $cuadradosMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de cuadrados debe estar entre $cuadradosMinimo y $cuadradosMaximo.</p>\n";
     print "\n";
 } else {
     $cuadradosOk = true;
@@ -92,45 +90,41 @@ if ($cuadradosOk) {
     $colorFondo    = "white";
 
     // Dibujo nº 1
-    $largoDibujo = $largoCuadrado * $cuadrados + $hueco  * ($cuadrados - 1);
+    $largoDibujo = $largoCuadrado * $cuadrados + $hueco * ($cuadrados - 1);
 
     print "  <h2>Dibujo nº 1</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoCuadrado + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoCuadrado + 2 * $margenDibujo . "\" \n"
-        . "    style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\" height=\"" . $largoCuadrado + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoCuadrado + 2 * $margenDibujo . "\"\n";
+    print "       style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $cuadrados; $i++) {
-        print "    <rect "
-            . "x=\"" . ($largoCuadrado + $hueco) * $i . "\" "
-            . "y=\"0\" "
-            . "width=\"$largoCuadrado\" "
-            . "height=\"$largoCuadrado\" />\n";
+        print "    <rect ";
+        print "x=\"" . ($largoCuadrado + $hueco) * $i . "\" ";
+        print "y=\"0\" ";
+        print "width=\"$largoCuadrado\" ";
+        print "height=\"$largoCuadrado\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 
     // Dibujo nº 2
-    $largoDibujo = $largoCuadrado * $cuadrados + + $hueco  * ($cuadrados - 1);
+    $largoDibujo = $largoCuadrado * $cuadrados + $hueco * ($cuadrados - 1);
 
     print "  <h2>Dibujo nº 2</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-         . "    style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\" height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $cuadrados; $i++) {
-        print "    <rect "
-            . "x=\"" . ($largoCuadrado + $hueco) * $i . "\" "
-            . "y=\"" . ($largoCuadrado + $hueco) * $i . "\" "
-            . "width=\"$largoCuadrado\" "
-            . "height=\"$largoCuadrado\" />\n";
+        print "    <rect ";
+        print "x=\"" . ($largoCuadrado + $hueco) * $i . "\" ";
+        print "y=\"" . ($largoCuadrado + $hueco) * $i . "\" ";
+        print "width=\"$largoCuadrado\" ";
+        print "height=\"$largoCuadrado\" />\n";
     }
     print "  </svg>\n";
     print "\n";
@@ -141,19 +135,17 @@ if ($cuadradosOk) {
 
     print "  <h2>Dibujo nº 3</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    fill=\"none\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\" height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       fill=\"none\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $cuadrados; $i++) {
-        print "    <rect "
-            . "x=\"0\" "
-            . "y=\"0\" "
-            . "width=\"" . $largoCuadrado + $aumento * $i . "\" "
-            . "height=\"" . $largoCuadrado + $aumento * $i . "\" />\n";
+        print "    <rect ";
+        print "x=\"0\" ";
+        print "y=\"0\" ";
+        print "width=\"" . $largoCuadrado + $aumento * $i . "\" ";
+        print "height=\"" . $largoCuadrado + $aumento * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
@@ -161,59 +153,54 @@ if ($cuadradosOk) {
     // Dibujo nº 4
     $largoCuadrado = 10;
     $aumento       = 10;
-    $largoDibujo = $largoCuadrado + $aumento * ($cuadrados - 1);
+    $largoDibujo   = $largoCuadrado + $aumento * ($cuadrados - 1);
 
     print "  <h2>Dibujo nº 4</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    fill=\"none\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\" height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       fill=\"none\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $cuadrados; $i++) {
-        print "    <rect "
-            . "x=\"" . $largoDibujo / 2 - $aumento / 2 * $i - $margenDibujo . "\" "
-            . "y=\"0\" "
-            . "width=\"" . $largoCuadrado + $aumento * $i . "\" "
-            . "height=\"" . $largoCuadrado + $aumento * $i . "\" />\n";
+        print "    <rect ";
+        print "x=\"" . $largoDibujo / 2 - $aumento / 2 * $i - $margenDibujo . "\" ";
+        print "y=\"0\" ";
+        print "width=\"" . $largoCuadrado + $aumento * $i . "\" ";
+        print "height=\"" . $largoCuadrado + $aumento * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 
     // Dibujo nº 5
     $largoCuadrado = 10;
-    $aumento     = 10;
-    $largoDibujo = $largoCuadrado + $aumento * ($cuadrados - 1);
+    $aumento       = 10;
+    $largoDibujo   = $largoCuadrado + $aumento * ($cuadrados - 1);
 
     print "  <h2>Dibujo nº 5</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    fill=\"none\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\" height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       fill=\"none\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $cuadrados; $i++) {
-        print "    <rect "
-            . "x=\"" . $largoDibujo / 2 - $aumento / 2 * $i - $margenDibujo . "\" "
-            . "y=\"" . $largoDibujo / 2 - $aumento / 2 * $i - $margenDibujo . "\" "
-            . "width=\"" . $largoCuadrado + $aumento * $i . "\" "
-            . "height=\"" . $largoCuadrado + $aumento * $i . "\" />\n";
+        print "    <rect ";
+        print "x=\"" . $largoDibujo / 2 - $aumento / 2 * $i - $margenDibujo . "\" ";
+        print "y=\"" . $largoDibujo / 2 - $aumento / 2 * $i - $margenDibujo . "\" ";
+        print "width=\"" . $largoCuadrado + $aumento * $i . "\" ";
+        print "height=\"" . $largoCuadrado + $aumento * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-5-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

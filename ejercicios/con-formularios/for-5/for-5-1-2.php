@@ -3,9 +3,9 @@
  * Dibujos con líneas (Resultado) - for-5-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -74,12 +74,10 @@ if ($lineas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de líneas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($lineas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de líneas "
-        . "como número entero positivo.</p>\n";
-        print "\n";
+    print "  <p class=\"aviso\">No ha escrito el número de líneas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($lineas < $lineasMinimo || $lineas > $lineasMaximo) {
-    print "  <p class=\"aviso\">El número de líneas debe estar entre "
-        . "$lineasMinimo y $lineasMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de líneas debe estar entre $lineasMinimo y $lineasMaximo.</p>\n";
     print "\n";
 } else {
     $lineasOk = true;
@@ -95,119 +93,113 @@ if ($lineasOk) {
 
     print "  <h2>Dibujo nº 1</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $lineas; $i++) {
-        print "    <line "
-            . "x1=\"" . $hueco * $i . "\" "
-            . "y1=\"0\" "
-            . "x2=\"" . $hueco * $i . "\" "
-            . "y2=\"$largoDibujo\" />\n";
+        print "    <line ";
+        print "x1=\"" . $hueco * $i . "\" ";
+        print "y1=\"0\" ";
+        print "x2=\"" . $hueco * $i . "\" ";
+        print "y2=\"$largoDibujo\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 
     // Dibujo nº 2
-    $largoDibujo  = $hueco * ($lineas - 1);
+    $largoDibujo = $hueco * ($lineas - 1);
 
     print "  <h2>Dibujo nº 2</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $lineas; $i++) {
-        print "    <line "
-            . "x1=\"0\" "
-            . "y1=\"" . $hueco * $i . "\" "
-            . "x2=\"$largoDibujo\" "
-            . "y2=\"". $hueco * $i . "\" />\n";
+        print "    <line ";
+        print "x1=\"0\" ";
+        print "y1=\"" . $hueco * $i . "\" ";
+        print "x2=\"$largoDibujo\" ";
+        print "y2=\"" . $hueco * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 
     // Dibujo nº 3
-    $largoDibujo  = $hueco * ($lineas - 1);
+    $largoDibujo = $hueco * ($lineas - 1);
 
     print "  <h2>Dibujo nº 3</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $lineas; $i++) {
-        print "    <line "
-            . "x1=\"0\" "
-            . "y1=\"" . $hueco * $i . "\" "
-            . "x2=\"". $hueco * $i . "\" "
-            . "y2=\"0\" />\n";
+        print "    <line ";
+        print "x1=\"0\" ";
+        print "y1=\"" . $hueco * $i . "\" ";
+        print "x2=\"" . $hueco * $i . "\" ";
+        print "y2=\"0\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 
     // Dibujo nº 4
-    $largoDibujo  = $hueco * ($lineas - 1);
+    $largoDibujo = $hueco * ($lineas - 1);
 
     print "  <h2>Dibujo nº 4</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $lineas; $i++) {
-        print "    <line "
-            . "x1=\"0\" "
-            . "y1=\"0\" "
-            . "x2=\"$largoDibujo\" "
-            . "y2=\"". $hueco * $i . "\" />\n";
+        print "    <line ";
+        print "x1=\"0\" ";
+        print "y1=\"0\" ";
+        print "x2=\"$largoDibujo\" ";
+        print "y2=\"" . $hueco * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 
     // Dibujo nº 5
-    $largoDibujo  = $hueco * ($lineas - 1);
+    $largoDibujo = $hueco * ($lineas - 1);
 
     print "  <h2>Dibujo nº 5</h2>\n";
     print "\n";
-    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
-        . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . $largoDibujo + 2 * $margenDibujo . " "
-        . $largoDibujo + 2 * $margenDibujo . "\" \n"
-        . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
+
+    print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "       width=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       height=\"" . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       viewBox=\"-$margenDibujo -$margenDibujo " . $largoDibujo + 2 * $margenDibujo . " " . $largoDibujo + 2 * $margenDibujo . "\"\n";
+    print "       stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\">\n";
     for ($i = 0; $i < $lineas; $i++) {
-        print "    <line "
-            . "x1=\"0\" "
-            . "y1=\"". $hueco * $i . "\" "
-            . "x2=\"$largoDibujo\" "
-            . "y2=\"" . $largoDibujo - $hueco * $i . "\" />\n";
+        print "    <line ";
+        print "x1=\"0\" ";
+        print "y1=\"" . $hueco * $i . "\" ";
+        print "x2=\"$largoDibujo\" ";
+        print "y2=\"" . $largoDibujo - $hueco * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-5-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
