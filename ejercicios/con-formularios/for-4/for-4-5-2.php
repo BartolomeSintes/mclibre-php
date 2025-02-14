@@ -3,9 +3,9 @@
  * Sucesiones aritméticas 5 (Resultado) - for-4-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -103,8 +103,7 @@ if ($valores == "") {
     print "  <p class=\"aviso\">No ha escrito el número de valores como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($valores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de valores "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de valores como número entero positivo.</p>\n";
     print "\n";
 } elseif ($valores < 2) {
     print "  <p class=\"aviso\">Como mínimo debe solicitar dos valores.</p>\n";
@@ -151,18 +150,20 @@ if ($recibidosOk && $inicialOk && $finalOk && $incrementoOk && $valoresOk) {
         if ($incremento == 0) {
             if ($inicial == $final) {
                 print "  <p>La sucesión constante en la que todos los términos son $inicial cumple las condiciones indicadas.</p>\n";
+                print "\n";
             } else {
                 print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados.</p>\n";
+                print "\n";
             }
         } else {
             $valores = 1 + ($final - $inicial) / $incremento;
             if ($valores != round($valores) || $valores < 2) {
                 print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados.</p>\n";
+                print "\n";
             } else {
                 $escribeSolucion = true;
             }
         }
-        print "\n";
     }
 
     if ($escribeSolucion) {
@@ -185,14 +186,13 @@ if ($recibidosOk && $inicialOk && $finalOk && $incrementoOk && $valoresOk) {
         print "\n";
     }
 }
-
 ?>
   <p><a href="for-4-5-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

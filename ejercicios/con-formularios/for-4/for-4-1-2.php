@@ -3,9 +3,9 @@
  * Sucesiones aritméticas 1 (Resultado) - for-4-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,7 @@ $inicial    = recoge("inicial");
 $incremento = recoge("incremento");
 $valores    = recoge("valores");
 
-$inicialOk  = $incrementoOk = $valoresOk = false;
+$inicialOk = $incrementoOk = $valoresOk = false;
 
 if ($inicial == "") {
     print "  <p class=\"aviso\">No ha escrito el valor inicial.</p>\n";
@@ -93,8 +93,7 @@ if ($valores == "") {
     print "  <p class=\"aviso\">No ha escrito el número de valores como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($valores)) {
-    print "  <p class=\"aviso\">No ha escrito el número de valores "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de valores como número entero positivo.</p>\n";
     print "\n";
 } elseif ($valores < 2) {
     print "  <p class=\"aviso\">Como mínimo debe solicitar dos valores.</p>\n";
@@ -124,14 +123,13 @@ if ($inicialOk && $incrementoOk && $valoresOk) {
     print "  </ol>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-4-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
