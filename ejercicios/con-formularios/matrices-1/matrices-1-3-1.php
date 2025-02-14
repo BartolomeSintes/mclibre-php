@@ -15,8 +15,7 @@
   <h1>Ordenar matriz (Formulario)</h1>
 
   <form action="matrices-1-3-2.php" method="get">
-    <p>Indique el rango del número de valores y el rango de los valores y
-      mostraré un numero aleatorio de valores aleatorios en los rangos indicados.</p>
+    <p>Indique el rango del número de valores y el rango de los valores y mostraré un numero aleatorio de valores aleatorios en los rangos indicados.</p>
 
     <p>Indique si quiere los valores ordenados en orden directo o inverso.</p>
 
@@ -55,7 +54,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
