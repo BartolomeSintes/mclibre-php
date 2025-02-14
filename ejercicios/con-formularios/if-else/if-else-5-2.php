@@ -3,9 +3,9 @@
  * if ... elseif ... else ... 5-2 - if-else-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -72,8 +72,7 @@ if ($anyo == "") {
     print "  <p class=\"aviso\">No ha escrito el año como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($anyo)) {
-    print "  <p class=\"aviso\">No ha escrito el año como número "
-        . "entero positivo (sin parte decimal).</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el año como número entero positivo (sin parte decimal).</p>\n";
     print "\n";
 } elseif ($anyo >= 10000) {
     print "  <p class=\"aviso\">El año no es inferior a 10.000.</p>\n";
@@ -85,16 +84,17 @@ if ($anyo == "") {
 if ($anyoOk) {
     if ($anyo % 400 == 0) {
         print "  <p>El año $anyo es bisiesto porque es múltiplo de 400.</p>\n";
+        print "\n";
     } elseif ($anyo % 100 == 0) {
-        print "  <p>El año $anyo no es bisiesto porque es múltiplo de 100, "
-            . "pero no es múltiplo de 400.</p>\n";
+        print "  <p>El año $anyo no es bisiesto porque es múltiplo de 100, pero no es múltiplo de 400.</p>\n";
+        print "\n";
     } elseif ($anyo % 4 == 0) {
-        print "  <p>El año $anyo es bisiesto porque es múltiplo de 4, "
-            . "pero no es múltiplo de 100.</p>\n";
+        print "  <p>El año $anyo es bisiesto porque es múltiplo de 4, pero no es múltiplo de 100.</p>\n";
+        print "\n";
     } else {
         print "  <p>El año $anyo no es bisiesto porque no es múltiplo de 4.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="if-else-5-1.php">Volver al formulario.</a></p>
@@ -102,7 +102,7 @@ if ($anyoOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

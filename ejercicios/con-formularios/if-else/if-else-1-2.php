@@ -3,9 +3,9 @@
  * if ... elseif ... else ... 1-2 - if-else-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-04
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -109,10 +109,11 @@ if ($dividendoOk && $divisorOk) {
     print "\n";
     if ($resto) {
         print "  <p>La división <strong>no</strong> es exacta.</p>\n";
+        print "\n";
     } else {
         print "  <p>La división es exacta.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="if-else-1-1.php">Volver al formulario.</a></p>
@@ -120,7 +121,7 @@ if ($dividendoOk && $divisorOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-04">4 de octubre de 2022</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

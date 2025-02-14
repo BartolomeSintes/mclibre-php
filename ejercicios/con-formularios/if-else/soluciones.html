@@ -126,10 +126,11 @@ if ($dividendoOk && $divisorOk) {
     print "\n";
     if ($resto) {
         print "  &lt;p&gt;La división &lt;strong&gt;no&lt;/strong&gt; es exacta.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;La división es exacta.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -177,8 +178,7 @@ if ($numero1 == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numero1)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número como número "
-        . "entero positivo (sin parte decimal).&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número como número entero positivo (sin parte decimal).&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero1 == 0) {
     print "  &lt;p class=\"aviso\"&gt;El primer número es cero.&lt;/p&gt;\n";
@@ -197,8 +197,7 @@ if ($numero2 == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($numero2)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número como número "
-        . "entero positivo (sin parte decimal).&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número como número entero positivo (sin parte decimal).&lt;/p&gt;\n";
     print "\n";
 } elseif ($numero2 == 0) {
     print "  &lt;p class=\"aviso\"&gt;El segundo número es cero.&lt;/p&gt;\n";
@@ -219,10 +218,11 @@ if ($numero1Ok && $numero2Ok) {
     print "\n";
     if ($mayor % $menor == 0) {
         print "  &lt;p&gt;$mayor es múltiplo de $menor.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;$mayor &lt;strong&gt;no&lt;/strong&gt; es múltiplo de $menor.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -313,12 +313,14 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  &lt;p&gt;Ha escrito tres números iguales.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  &lt;p&gt;Ha escrito dos números iguales.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Ha escrito tres números distintos.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -418,12 +420,14 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  &lt;p&gt;Has escrito tres números iguales.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  &lt;p&gt;Has escrito dos números iguales.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;Has escrito tres números distintos.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -469,8 +473,7 @@ if ($anyo == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito el año como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($anyo)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito el año como número "
-        . "entero positivo (sin parte decimal).&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el año como número entero positivo (sin parte decimal).&lt;/p&gt;\n";
     print "\n";
 } elseif ($anyo &gt;= 10000) {
     print "  &lt;p class=\"aviso\"&gt;El año no es inferior a 10.000.&lt;/p&gt;\n";
@@ -482,16 +485,17 @@ if ($anyo == "") {
 if ($anyoOk) {
     if ($anyo % 400 == 0) {
         print "  &lt;p&gt;El año $anyo es bisiesto porque es múltiplo de 400.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($anyo % 100 == 0) {
-        print "  &lt;p&gt;El año $anyo no es bisiesto porque es múltiplo de 100, "
-            . "pero no es múltiplo de 400.&lt;/p&gt;\n";
+        print "  &lt;p&gt;El año $anyo no es bisiesto porque es múltiplo de 100, pero no es múltiplo de 400.&lt;/p&gt;\n";
+        print "\n";
     } elseif ($anyo % 4 == 0) {
-        print "  &lt;p&gt;El año $anyo es bisiesto porque es múltiplo de 4, "
-            . "pero no es múltiplo de 100.&lt;/p&gt;\n";
+        print "  &lt;p&gt;El año $anyo es bisiesto porque es múltiplo de 4, pero no es múltiplo de 100.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "  &lt;p&gt;El año $anyo no es bisiesto porque no es múltiplo de 4.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -565,11 +569,12 @@ if ($temperaturaOk && $unidadOk) {
     if ($unidad == "c") {
         $fahrenheit = round(1.8 * $temperatura + 32, 2);
         print "  &lt;p&gt;$temperatura ºC son $fahrenheit ºF&lt;/p&gt;\n";
+        print "\n";
     } else {
         $celsius = round(($temperatura - 32) / 1.8, 2);
         print "  &lt;p&gt;$temperatura ºF son $celsius ºC&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -615,8 +620,7 @@ if ($distancia == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito la distancia como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($distancia)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito la distancia como número "
-        . "entero positivo (sin parte decimal).&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la distancia como número entero positivo (sin parte decimal).&lt;/p&gt;\n";
     print "\n";
 } elseif ($distancia &gt;= 1000000000) {
     print "  &lt;p class=\"aviso\"&gt;La distancia no es inferior a 1.000.000.000.&lt;/p&gt;\n";
@@ -673,7 +677,7 @@ if ($distanciaOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

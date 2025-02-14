@@ -3,9 +3,9 @@
  * if ... elseif ... else ... 2-2 - if-else-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -74,8 +74,7 @@ if ($numero1 == "") {
     print "  <p class=\"aviso\">No ha escrito el primer número como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero1)) {
-    print "  <p class=\"aviso\">No ha escrito el primer número como número "
-        . "entero positivo (sin parte decimal).</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el primer número como número entero positivo (sin parte decimal).</p>\n";
     print "\n";
 } elseif ($numero1 == 0) {
     print "  <p class=\"aviso\">El primer número es cero.</p>\n";
@@ -94,8 +93,7 @@ if ($numero2 == "") {
     print "  <p class=\"aviso\">No ha escrito el segundo número como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero2)) {
-    print "  <p class=\"aviso\">No ha escrito el segundo número como número "
-        . "entero positivo (sin parte decimal).</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el segundo número como número entero positivo (sin parte decimal).</p>\n";
     print "\n";
 } elseif ($numero2 == 0) {
     print "  <p class=\"aviso\">El segundo número es cero.</p>\n";
@@ -116,10 +114,11 @@ if ($numero1Ok && $numero2Ok) {
     print "\n";
     if ($mayor % $menor == 0) {
         print "  <p>$mayor es múltiplo de $menor.</p>\n";
+        print "\n";
     } else {
         print "  <p>$mayor <strong>no</strong> es múltiplo de $menor.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="if-else-2-1.php">Volver al formulario.</a></p>
@@ -127,7 +126,7 @@ if ($numero1Ok && $numero2Ok) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

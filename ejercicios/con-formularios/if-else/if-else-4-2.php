@@ -3,9 +3,9 @@
  * if ... elseif ... else ... 4-2 - if-else-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -126,12 +126,14 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  <p>Has escrito tres números iguales.</p>\n";
+        print "\n";
     } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  <p>Has escrito dos números iguales.</p>\n";
+        print "\n";
     } else {
         print "  <p>Has escrito tres números distintos.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
   <p><a href="if-else-4-1.php">Volver al formulario.</a></p>
@@ -139,7 +141,7 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
