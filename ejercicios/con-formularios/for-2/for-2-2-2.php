@@ -3,9 +3,9 @@
  * Segmentos (Resultado)- for-2-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -79,8 +79,7 @@ if ($tamano == "") {
     print "  <p class=\"aviso\">No ha escrito el tamaño como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($tamano)) {
-    print "  <p class=\"aviso\">No ha escrito el tamaño "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el tamaño como número entero positivo.</p>\n";
     print "\n";
 } elseif ($tamano < $tamanoMinimo || $tamano > $tamanoMaximo) {
     print "  <p class=\"aviso\">El tamaño debe estar entre $tamanoMinimo y $tamanoMaximo.</p>\n";
@@ -96,12 +95,10 @@ if ($segmentos == "") {
     print "  <p class=\"aviso\">No ha escrito el número de segmentos como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($segmentos)) {
-    print "  <p class=\"aviso\">No ha escrito el número de segmentos "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de segmentos como número entero positivo.</p>\n";
     print "\n";
 } elseif ($segmentos < $segmentosMinimo || $segmentos > $segmentosMaximo) {
-    print "  <p class=\"aviso\">El número de segmentos debe estar entre "
-        . "$segmentosMinimo y $segmentosMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de segmentos debe estar entre $segmentosMinimo y $segmentosMaximo.</p>\n";
     print "\n";
 } else {
     $segmentosOk = true;
@@ -126,14 +123,13 @@ if ($tamanoOk && $segmentosOk) {
     print "</pre>\n";
     print "\n";
 }
-
 ?>
   <p><a href="for-2-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-06">6 de noviembre de 2016</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
