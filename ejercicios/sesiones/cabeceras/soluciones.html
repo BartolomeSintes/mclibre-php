@@ -121,14 +121,13 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el nombre
-$nombre   = recoge("nombre");
+$nombre = recoge("nombre");
 
 // Comprobamos el nombre. Si es vacío volvemos al formulario
 if ($nombre == "") {
     header("Location:cabeceras-01-1.php");
     exit;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -138,7 +137,6 @@ if ($nombre == "") {
 // Mostramos el nombre
 print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
 print "\n";
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-01-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -173,7 +171,8 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el nombre
-$nombre   = recoge("nombre");
+$nombre = recoge("nombre");
+
 $nombreOk = false;
 
 // Comprobamos el nombre. Si es vacío, volvemos al formulario
@@ -183,7 +182,6 @@ if ($nombre == "") {
 } else {
     $nombreOk = true;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -195,7 +193,6 @@ if ($nombreOk) {
     print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-01-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -260,7 +257,6 @@ if ($aviso != "") {
 }
 print "    &lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
           </div>
@@ -325,14 +321,13 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el nombre
-$nombre   = recoge("nombre");
+$nombre = recoge("nombre");
 
 // Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
 if ($nombre == "") {
     header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
     exit;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -342,7 +337,6 @@ if ($nombre == "") {
 // Mostramos el nombre
 print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
 print "\n";
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-02-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -387,7 +381,6 @@ if ($nombre == "") {
 } else {
     $nombreOk = true;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -399,7 +392,6 @@ if ($nombreOk) {
     print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-02-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -464,7 +456,6 @@ if ($aviso != "") {
 }
 print "    &lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
           </div>
@@ -501,7 +492,7 @@ function recoge($key, $type = "")
 }
 
 // Recogemos la edad
-$edad   = recoge("edad");
+$edad = recoge("edad");
 
 $edadOk = false;
 
@@ -519,7 +510,6 @@ if ($edad == "") {
     header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
     exit;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -529,7 +519,6 @@ if ($edad == "") {
 // Mostramos la edad
 print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
 print "\n";
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-03-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -564,7 +553,7 @@ function recoge($key, $type = "")
 }
 
 // Recogemos la edad
-$edad   = recoge("edad");
+$edad = recoge("edad");
 
 $edadOk = false;
 
@@ -584,7 +573,6 @@ if ($edad == "") {
 } else {
     $edadOk = true;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -596,7 +584,6 @@ if ($edadOk) {
     print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
     print "\n";
 }
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-03-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -668,7 +655,6 @@ if ($aviso != "") {
 }
 print "    &lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
           </div>
@@ -705,7 +691,7 @@ function recoge($key, $type = "")
 }
 
 // Recogemos la edad
-$edad   = recoge("edad");
+$edad = recoge("edad");
 
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
 if ($edad == "") {
@@ -721,7 +707,6 @@ if ($edad == "") {
     header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
     exit;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -731,7 +716,6 @@ if ($edad == "") {
 // Mostramos la edad
 print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
 print "\n";
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -766,7 +750,7 @@ function recoge($key, $type = "")
 }
 
 // Recogemos la edad
-$edad   = recoge("edad");
+$edad = recoge("edad");
 
 $edadOk = false;
 
@@ -786,7 +770,6 @@ if ($edad == "") {
 } else {
     $edadOk = true;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -798,7 +781,6 @@ if ($edadOk) {
     print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
     print "\n";
 }
-
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -831,7 +813,6 @@ print "        &lt;/tr&gt;\n";
 print "      &lt;/tbody&gt;\n";
 print "    &lt;/table&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
           </div>
@@ -893,7 +874,6 @@ print "&lt;/td&gt;\n";
 print "      &lt;/tr&gt;\n";
 print "    &lt;/table&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
           </div>
@@ -930,11 +910,11 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el nombre y la edad
-$nombre      = recoge("nombre");
-$edad        = recoge("edad");
+$nombre = recoge("nombre");
+$edad   = recoge("edad");
 
-$nombreOk    = false;
-$edadOk      = false;
+$nombreOk = false;
+$edadOk   = false;
 
 $avisoNombre = "";
 $avisoEdad   = "";
@@ -964,7 +944,6 @@ if (!$nombreOk || !$edadOk) {
     header("Location:cabeceras-05-1.php?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
     exit;
 }
-
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
@@ -1021,11 +1000,10 @@ print "  background-color: hwb($color 0% 40%);\n";
 print "  color: hwb($color 20% 0%);\n";
 print "}\n";
 print "\n";
-
 ?&gt;
 footer {
-    border-top: black 1px solid;
-    margin-top: 2em;
+  border-top: black 1px solid;
+  margin-top: 2em;
 }</code>
 </pre>
       </div>
@@ -1047,13 +1025,11 @@ $cx    = rand($radio + 1, 148 - $radio);
 $cy    = rand($radio + 1, 148 - $radio);
 
 print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;\n";
-print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "  width=\"150\" height=\"150\" viewBox=\"0 0 150 150\"&gt;\n";
-print "  &lt;rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
-    . "x=\"1\" y=\"1\" width=\"148\" height=\"148\" /&gt;\n";
+print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "     width=\"150\" height=\"150\" viewBox=\"0 0 150 150\"&gt;\n";
+print "  &lt;rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" x=\"1\" y=\"1\" width=\"148\" height=\"148\" /&gt;\n";
 print "  &lt;circle cx=\"$cx\" cy=\"$cy\" r=\"$radio\" fill=\"black\" /&gt;\n";
 print "&lt;/svg&gt;";
-
 ?&gt;</code>
 </pre>
       </div>
@@ -1061,7 +1037,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 21 de febrero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

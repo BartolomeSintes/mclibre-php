@@ -3,9 +3,9 @@
  * Formulario 3-2 - cabeceras-03-2-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ function recoge($key, $type = "")
 }
 
 // Recogemos la edad
-$edad   = recoge("edad");
+$edad = recoge("edad");
 
 $edadOk = false;
 
@@ -63,7 +63,6 @@ if ($edad == "") {
     header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,14 +84,13 @@ if ($edad == "") {
 // Mostramos la edad
 print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
 print "\n";
-
 ?>
   <p><a href="cabeceras-03-1-b.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-11-10">10 de noviembre de 2019</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-17
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -72,26 +72,27 @@ print "    <table>\n";
 print "      <tr>\n";
 print "        <td><label for=\"nombre\">Escriba su nombre:</label></td>\n";
 // Incluimos el nombre recibido (aunque sea en blanco) en el control
-print "        <td><input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\">";
+print "        <td>\n";
+print "          <input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\">\n";
 // Si hemos recibido un aviso sobre el nombre, lo mostramos
 if ($avisoNombre) {
-    print " <span class=\"aviso\">$avisoNombre</span>";
+    print "          <span class=\"aviso\">$avisoNombre</span>\n";
 }
-print "</td>\n";
+print "        </td>\n";
 print "      </tr>\n";
 print "      <tr>\n";
 print "        <td><label for=\"edad\">Escriba su edad (entre 18 y 130 años):</label></td>\n";
 // Incluimos la edad recibida (aunque sea en blanco) en el control
-print "        <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"5\" id=\"edad\">";
+print "        <td>\n";
+print "          <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"5\" id=\"edad\">\n";
 // Si hemos recibido un aviso sobre la edad, lo mostramos
 if ($avisoEdad) {
-    print " <span class=\"aviso\">$avisoEdad</span>";
+    print "          <span class=\"aviso\">$avisoEdad</span>\n";
 }
-print "</td>\n";
+print "        </td>\n";
 print "      </tr>\n";
 print "    </table>\n";
 print "\n";
-
 ?>
     <p>
       <input type="submit" value="Comprobar">
@@ -103,7 +104,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-17">17 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

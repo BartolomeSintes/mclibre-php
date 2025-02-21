@@ -3,9 +3,9 @@
  * Imagen - cabeceras-12-svg.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,10 +29,8 @@ $cx    = rand($radio + 1, 148 - $radio);
 $cy    = rand($radio + 1, 148 - $radio);
 
 print "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "  width=\"150\" height=\"150\" viewBox=\"0 0 150 150\">\n";
-print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
-    . "x=\"1\" y=\"1\" width=\"148\" height=\"148\" />\n";
+print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "     width=\"150\" height=\"150\" viewBox=\"0 0 150 150\">\n";
+print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" x=\"1\" y=\"1\" width=\"148\" height=\"148\" />\n";
 print "  <circle cx=\"$cx\" cy=\"$cy\" r=\"$radio\" fill=\"black\" />\n";
 print "</svg>";
-?>
