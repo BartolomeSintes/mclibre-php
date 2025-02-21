@@ -3,9 +3,9 @@
  * Buscador en la Wikipedia - funciones-1-5-ws-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-12-09
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,9 +63,9 @@ function recoge($key, $type = "")
 
 $camino = "https://es.wikipedia.org/w/api.php?action=opensearch&prop=extracts&format=json&formatversion=2&srwhat=title";
 
-$cadena  = recoge("cadena");
+$cadena = recoge("cadena");
 
-$cadenaOk  = false;
+$cadenaOk = false;
 
 if ($cadena == "") {
     print "  <p class=\"aviso\">No ha escrito nada.</p>\n";
@@ -75,27 +75,28 @@ if ($cadena == "") {
 }
 
 if ($cadenaOk) {
-    print "<p>Artículos de la Wikipedia relacionados con <strong>$cadena</strong>.</p>\n";
+    print "  <p>Artículos de la Wikipedia relacionados con <strong>$cadena</strong>.</p>\n";
+    print "\n";
 
-    $consulta = http_build_query(["search" => $cadena]);
+    $consulta  = http_build_query(["search" => $cadena]);
     $respuesta = json_decode(file_get_contents("{$camino}&$consulta"));
-    // print "<pre>\n"; print_r($respuesta); print "</pre>\n";
+    // print "  <pre>\n" . print_r($respuesta, true) . "</pre>\n";
 
     $respuestas = count($respuesta[1]);
 
     if ($respuestas == 0) {
-        print "<p>No se ha encontrado nada</p>\n";
+        print "  <p>No se ha encontrado nada</p>\n";
+        print "\n";
     } else {
         print "  <ul>\n";
-        for ($i = 0; $i < $respuestas ; $i++) {
+        for ($i = 0; $i < $respuestas; $i++) {
             print "    <li><a href=\"{$respuesta[3][$i]}\">{$respuesta[1][$i]}</a>\n";
             print "      <p>{$respuesta[2][$i]}</p>\n";
             print "    </li>\n";
         }
         print "  </ul>\n";
+        print "\n";
     }
-
-    print "\n";
 }
 ?>
   <p><a href="funciones-1-5-ws-1.php">Volver al formulario.</a></p>
@@ -103,7 +104,7 @@ if ($cadenaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-12-09">9 de diciembre de 2018</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

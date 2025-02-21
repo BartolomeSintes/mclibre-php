@@ -44,7 +44,8 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-function convierte($num, $uniOri, $uniFin) {
+function convierte($num, $uniOri, $uniFin)
+{
     // La unidad intermedia es el metro
     $numeroIntermedio = 0;
     if ($uniOri == "km") {

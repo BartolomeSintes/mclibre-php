@@ -3,9 +3,9 @@
  * Convertidor de distancias (1) Con funciones - funciones-1-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-12-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,8 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-function convierte($num, $uniOri, $uniFin) {
+function convierte($num, $uniOri, $uniFin)
+{
     // La unidad intermedia es el metro
     $numeroIntermedio = 0;
     if ($uniOri == "km") {
@@ -127,7 +128,7 @@ if ($numeroOk && $inicialOk && $finalOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-12-09">9 de diciembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

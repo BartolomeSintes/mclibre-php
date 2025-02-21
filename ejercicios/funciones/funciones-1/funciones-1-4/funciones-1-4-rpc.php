@@ -3,9 +3,9 @@
  * Convertidor de distancias y tiempos JSON-RPC - funciones-1-4-rpc.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-12-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function convierte($num, $uniOri, $uniFin) {
+function convierte($num, $uniOri, $uniFin)
+{
     // La unidad intermedia es el metro
     $numeroIntermedio = 0;
     if ($uniOri == "km") {
@@ -55,7 +56,7 @@ if ($_REQUEST["method"] == "convertir") {
 }
 
 if ($peticionOk == true) {
-    $result = convierte($_REQUEST["params"]["value"],$_REQUEST["params"]["from"], $_REQUEST["params"]["into"]);
+    $result = convierte($_REQUEST["params"]["value"], $_REQUEST["params"]["from"], $_REQUEST["params"]["into"]);
     print "{\"jsonrpc\" : \"2.0\", \"result\" : $result, \"id\" : $_REQUEST[id] }";
 } else {
     print "{\"jsonrpc\" : \"2.0\", \"error\" : -1, \"id\" : $_REQUEST[id] }";

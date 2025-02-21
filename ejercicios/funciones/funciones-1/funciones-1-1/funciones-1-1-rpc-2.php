@@ -3,9 +3,9 @@
  * Convertidor de distancias (1) JSON-RPC- funciones-1-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-12-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
  */
 
 // ATENCIÓN: ESTE PROGRAMA NO ESIGUE EXACTAMENTE EL PROTOCOLO JSON-RPC
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -101,8 +100,8 @@ if (!in_array($final, $unidades)) {
 }
 
 if ($numeroOk && $inicialOk && $finalOk) {
-    $id = rand();
-    $consulta = http_build_query(["jsonrpc" => "2.0", "method" => "convertir", "params" => ["from" => $inicial, "into" => $final, "value" => $numero], "id" => $id]);
+    $id        = rand();
+    $consulta  = http_build_query(["jsonrpc" => "2.0", "method" => "convertir", "params" => ["from" => $inicial, "into" => $final, "value" => $numero], "id" => $id]);
     $respuesta = json_decode(file_get_contents("{$camino}funciones-1-1-rpc.php?$consulta"), true);
     if ($respuesta["id"] == $id) {
         if (isset($respuesta["error"])) {
@@ -124,7 +123,7 @@ if ($numeroOk && $inicialOk && $finalOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-12-09">9 de diciembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
