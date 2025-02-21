@@ -3,9 +3,9 @@
  * Menús 6 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-09
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 session_name("menus6");
 session_start();
 
-define("MENU_PRINCIPAL",  1);      // Para función cabecera()
+define("MENU_PRINCIPAL", 1);      // Para función cabecera()
 define("MENU_SECUNDARIO", 2);      // Para función cabecera()
 
 function cabecera($texto)
