@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de dados (2). Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de dados (2)</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de dados (2)</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de un juego de dados en el que cada jugador tira dos dados. Si ningún jugador saca dos valores iguales o los dos sacan valores iguales, el punto se acumula en la tirada siguiente. Cuando sólo un jugador saca valores iguales, se lleva los puntos acumulados. El primero que gana 20 puntos, gana la partida. Acabada la partida, ya no se pueden tirar más los dados.</p>
+
+  <section id="comentarios">
+    <h2>Juego de dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra una tabla con tres filas:
+            <ul>
+              <li>La primera fila mostrará las caras de los jugadores (&amp;#x1f474; <span style="font-size: 2rem;">&#x1f474;</span> y &amp;#x1f475; <span style="font-size: 2rem;">&#x1f475;</span>) o, en su caso, la corona (&amp;#x1f451; <span style="font-size: 2rem;">&#x1f451;</span>) y la bolsa (&amp;#x1f4b0; <span style="font-size: 2rem;">&#x1f4b0;</span>).</li>
+              <li>La segunda fila mostrará los dados de ambos jugadores y los puntos acumulados para el turno siguiente.</li>
+              <li>La tercera fila mostrará el número de puntos de ambos jugadores (inicialmente, 0).</li>
+              <li>La primera vez que se abre la página, o cuando se pulsa el botón "Volver a empezar" los dados se mostrarán en blanco, los puntos acumulados será 1 y el número de puntos de cada jugador 0.</li>
+              <li>Al hacer clic en "Tirar dados", se mostrarán cuatro nuevos valores de dados.</li>
+              <li>Al hacer clic en "Tirar dados", si hay un ganador se aumentará su puntuación en la puntuación acumulada.</li>
+              <li>Al hacer clic en "Tirar dados", si no hay un ganador se aumentará la puntuación acumulada.</li>
+              <li>Al acabar la partida, se mostrará una corona en el lugar del jugador ganador.</li>
+              <li>Si la partida ha acabado, no será posible tirar de nuevo los dados.</li>
+              <li>Al hacer clic en el botón "Volver a empezar", la partida empezará de nuevo inmediatamente.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario.</li>
+      <li>No se debe cambiar el nombre de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cs-juego-dados-2-1.png" alt="Juego de dados" width="1018" height="480"></p>
+        <p class="captura"><img src="img/cs-juego-dados-2-2.png" alt="Juego de dados" width="1018" height="300"></p>
+        <p class="captura"><img src="img/cs-juego-dados-2-3.png" alt="Juego de dados" width="1018" height="300"></p>
+        <p class="captura"><img src="img/cs-juego-dados-2-4.png" alt="Juego de dados" width="1018" height="300"></p>
+        <p class="captura"><img src="img/cs-juego-dados-2-5.png" alt="Juego de dados" width="1018" height="300"></p>
+        <p class="captura"><img src="img/cs-juego-dados-2-6.png" alt="Juego de dados" width="1018" height="300"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de dados - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">
+    &lt;table style="font-size: 4rem; text-align: center; border-spacing: 50px 0;"&gt;
+      &lt;tr&gt;
+        &lt;td&gt;<span class="codigo-resaltado">&amp;#x1f474;</span>&lt;/td&gt;
+        &lt;td&gt;<span class="codigo-resaltado">&amp;#x1f451;</span>&lt;/td&gt;
+        &lt;td&gt;<span class="codigo-resaltado">&amp;#x1f4b0;</span>&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="120" height="120"&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="120" height="120"&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="120" height="120"&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="120" height="120"&gt;
+        &lt;/td&gt;
+        &lt;td&gt;<span class="codigo-resaltado">1</span>&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;<span class="codigo-resaltado">13</span>&lt;/td&gt;
+        &lt;td&gt;<span class="codigo-resaltado">23</span>&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;</code>
+</pre>
+    </div>
+
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 20 de febrero de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

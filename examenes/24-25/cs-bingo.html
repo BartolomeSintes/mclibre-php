@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Bingo. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Bingo</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Bingo</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de bingo. El jugador irá mostrando nuevos números y podrá tapar los números de su cartón cuando coincida con el número mostrado. El programa avisará cuando se complete una línea o el cartón completo ().</p>
+
+  <section id="comentarios">
+    <h2>Bingo - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra el cartón de bingo y un número:
+            <ul>
+              <li>El cartón es una tabla de dos filas y tres columnas con cuatro números.</li>
+              <li>El primer número será un 1 o un 2 y se mostrará en la primera casilla de la primera fila.</li>
+              <li>El segundo número será un 3 o un 4 y se mostrará en la tercera casilla de la primera fila.</li>
+              <li>El tercer número será un 5 o un 6 y se mostrará en la primera casilla de la segunda fila.</li>
+              <li>El cuarto número será un 7 o un 8 y se mostrará en la segunda casilla de la segunda fila.</li>
+              <li>La primera vez que se abre la página, o cuando se pulsa el botón "Volver a empezar", se mostraá un nuevo cartón y un número del 1 al 8, al azar.
+                <p class="captura"><img src="img/cs-bingo-1.png" alt="Bingo" width="1184" height="450"></p>
+              </li>
+              <li>Al hacer clic "Nuevo número" se mostrará un nuevo número del 1 al 8, al azar. Los valores se pueden repetir.</li>
+              <li>Si se hace clic en un número del cartón y ese número coincide con el número mostrado, la casilla correspondiente se oscurecerá.
+                <p class="captura"><img src="img/cs-bingo-2.png" alt="Bingo" width="1184" height="290"></p>
+              </li>
+              <li>Al tapar las dos casillas de una fila, se mostrará el mensaje correspondiente. El mensaje dejará de mostrarse al mostrarse un nuevo número.
+                <p class="captura"><img src="img/cs-bingo-3.png" alt="Bingo" width="1184" height="360"></p>
+              </li>
+              <li>Al tapar las cuatro casillas del cartón, se mostrará el mensaje correspondiente. El mensaje dejará de mostrarse al mostrarse un nuevo número.
+                <p class="captura"><img src="img/cs-bingo-4.png" alt="Bingo" width="1184" height="360"></p>
+              </li>
+              <li>Al hacer clic en un número tapado no cambiará nada.</li>
+              <li>Se podrán seguir mostrando nuevos números aunque se hayan tapado todos los números.</li>
+              <li>Al hacer clic en el botón "Volver a empezar", se mostrará un nuevo cartón sin números tapados y un nuevo número.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Bingo - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">1</span>"&gt;1&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">2</span>"&gt;4&lt;/button&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">3</span>"&gt;5&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">4</span>"&gt;7&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;Número: &lt;span style="font-size: 4rem"&gt;<span class="codigo-resaltado">8</span>&lt;/span&gt;&lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">1</span>"&gt;1&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">2</span>"&gt;4&lt;/button&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">3</span>"&gt;5&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">4</span> <span class="codigo-resaltado">style="background-color: hwb(240 40% 100%)"</span>&gt;7&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;Número: &lt;span style="font-size: 4rem"&gt;<span class="codigo-resaltado">7</span>&lt;/span&gt;&lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">1</span>" <span class="codigo-resaltado">style="background-color: hwb(240 40% 100%)"</span>&gt;1&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">2</span>" <span class="codigo-resaltado">style="background-color: hwb(240 40% 100%)"</span>&gt;4&lt;/button&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">3</span>"&gt;5&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="<span class="codigo-resaltado">4</span>" <span class="codigo-resaltado">style="background-color: hwb(240 40% 100%)"</span>&gt;7&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;Número: &lt;span style="font-size: 4rem"&gt;<span class="codigo-resaltado">7</span>&lt;/span&gt;&lt;/p&gt;
+
+    <span class="codigo-resaltado">&lt;p style="font-size: 2rem;"&gt;¡Línea!&lt;/p&gt;</span></code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 13 de febrero de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Distribución de dado. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Distribución de dado</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Distrib. dado</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que dibuje una gráfica de distribución de los valores obtenidos al lanzar un dado.</p>
+
+  <section id="comentarios">
+    <h2>Distribución de dado - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra:
+            <ul>
+              <li>Un dado.</li>
+              <li>Un gráfico de barras que muestra la cantidad de veces que se ha obtenido un valor.</li>
+              <li>La primera vez que se abre la página, o cuando se pulsa el botón "Volver a empezar", el dado no muestra ningún valor y el gráfico sólo mostrará los ejes.
+                <p class="captura"><img src="img/cs-distribucion-dado-1.png" alt="Distribución de dado" width="1184" height="465"></p>
+              </li>
+              <li>Al hacer clic en el dado, se mostrará un nuevo valor del dado y se aumentará el rectángulo correspondiente al valor obtenido.
+                <p class="captura"><img src="img/cs-distribucion-dado-2.png" alt="Distribución de dado" width="1184" height="380"></p>
+                <p class="captura"><img src="img/cs-distribucion-dado-3.png" alt="Distribución de dado" width="1184" height="380"></p>
+              </li>
+              <li>Si se hace clic en el botón "Volver a empezar", el dado mo mostrará ningún valor y el gráfico sólo mostrará los ejes.
+              </li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Distribución de dado - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;p&gt;
+      &lt;button type="submit" name="accion" value="dado"&gt;
+        &lt;img src="img/dados/<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="100"&gt;
+      &lt;/button&gt;
+      &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+           width="300" height="320" viewBox="-20 -140 150 160" style="font-size: 10px; border: black 1px solid;"&gt;
+        &lt;line x1="-10" y1="1" x2="125" y2="1" stroke="black" stroke-width="2" /&gt;
+        &lt;line x1="-1" y1="10" x2="-1" y2="-130" stroke="black" stroke-width="2" /&gt;
+        &lt;text x="10" y="15" text-anchor="middle"&gt;1&lt;/text&gt;
+        &lt;text x="30" y="15" text-anchor="middle"&gt;2&lt;/text&gt;
+        &lt;text x="50" y="15" text-anchor="middle"&gt;3&lt;/text&gt;
+        &lt;text x="70" y="15" text-anchor="middle"&gt;4&lt;/text&gt;
+        &lt;text x="90" y="15" text-anchor="middle"&gt;5&lt;/text&gt;
+        &lt;text x="110" y="15" text-anchor="middle"&gt;6&lt;/text&gt;
+
+        &lt;rect x="0" y="<span class="codigo-resaltado">-0</span>" width="20" height="<span class="codigo-resaltado">0</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="20" y="<span class="codigo-resaltado">-0</span>" width="20" height="<span class="codigo-resaltado">0</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="40" y="<span class="codigo-resaltado">-10</span>" width="20" height="<span class="codigo-resaltado">10</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="60" y="<span class="codigo-resaltado">-0</span>" width="20" height="<span class="codigo-resaltado">0</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="80" y="<span class="codigo-resaltado">-0</span>" width="20" height="<span class="codigo-resaltado">0</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="100" y="<span class="codigo-resaltado">-0</span>" width="20" height="<span class="codigo-resaltado">0</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+
+        &lt;text x="-10" y="-45" text-anchor="middle"&gt;5&lt;/text&gt;
+        &lt;line x1="0" y1="-50" x2="125" y2="-50" stroke="black" stroke-width="1" stroke-dasharray="4 4" /&gt;
+        &lt;text x="-10" y="-95" text-anchor="middle"&gt;10&lt;/text&gt;
+        &lt;line x1="0" y1="-100" x2="125" y2="-100" stroke="black" stroke-width="1" stroke-dasharray="4 4" /&gt;
+      &lt;/svg&gt;
+    &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">        &lt;rect x="0" y="<span class="codigo-resaltado">-10</span>" width="20" height="<span class="codigo-resaltado">10</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="20" y="<span class="codigo-resaltado">-20</span>" width="20" height="<span class="codigo-resaltado">20</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="40" y="<span class="codigo-resaltado">-30</span>" width="20" height="<span class="codigo-resaltado">30</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="60" y="<span class="codigo-resaltado">-40</span>" width="20" height="<span class="codigo-resaltado">40</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="80" y="<span class="codigo-resaltado">-50</span>" width="20" height="<span class="codigo-resaltado">50</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;
+        &lt;rect x="100" y="<span class="codigo-resaltado">-60</span>" width="20" height="<span class="codigo-resaltado">60</span>" fill="lightgray" stroke="black" stroke-width="1" /&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 13 de febrero de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
