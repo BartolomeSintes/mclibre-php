@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cerca y lejos. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Cerca y lejos</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Cerca y lejos</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que pida tres números ordenados y diga de cuál está más cerca el de en medio y haga un dibujo con tres puntos sobre una línea:</p>
+
+  <section id="comentarios">
+    <h2>Cerca y lejos - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página pide tres números (entre 0 y 500):
+            <p class="captura">
+              <img src="img/cf-cerca-lejos-1.png" alt="Cerca y lejos - Formulario 1" width="944" height="250">
+            </p>
+          </li>
+          <li>La segunda página comprueba, además de las comprobaciones habituales, si los números están ordenados:
+            <p class="captura">
+              <img src="img/cf-cerca-lejos-2.png" alt="Cerca y lejos - Error en formulario" width="944" height="130">
+            </p>
+          </li>
+          <li>En el caso de que los valores sean correctos, la segunda página muestra los posibles resultados:
+            <p class="captura">
+              <img src="img/cf-cerca-lejos-3.png" alt="Cerca y lejos - Resultado" width="944" height="230">
+            </p>
+            <p class="captura">
+              <img src="img/cf-cerca-lejos-4.png" alt="Cerca y lejos - Resultado" width="944" height="230">
+            </p>
+            <p class="captura">
+              <img src="img/cf-cerca-lejos-5.png" alt="Cerca y lejos - Resultado" width="944" height="230">
+            </p>
+            <p class="captura">
+              <img src="img/cf-cerca-lejos-6.png" alt="Cerca y lejos - Resultado" width="944" height="230">
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Cerca y lejos - Ejemplo de código HTML</h2>
+
+    <p>Los valores del dibujo que dependerán de los valores recibidos se han marcado con un borde. Para que el texto se vea más o menos centrado en el círculo se le han restado 20 unidades a la coordenada x. Los valores recibidos en el ejemplo han sido 100, 300 y 400.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">&lt;h1&gt;Cerca y lejos (Resultado)&lt;/h1&gt;
+
+<span class="codigo-resaltado">&lt;p&gt;300 está más cerca de 400 que de 100&lt;/p&gt;</span>
+
+&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="80" viewBox="-50 0 600 80"&gt;
+  &lt;line x1="0" y1="40" x2="500" y2="40" stroke-width="3" stroke="RoyalBlue" /&gt;
+
+  &lt;circle cx="<span class="codigo-resaltado">100</span>" cy="40" r="10" fill="red" /&gt;
+  &lt;text x="<span class="codigo-resaltado">80</span>" y="25" font-family="sans-serif" font-size="20"&gt;<span class="codigo-resaltado">100</span>&lt;/text&gt;
+
+  &lt;circle cx="<span class="codigo-resaltado">300</span>" cy="40" r="10" fill="black" /&gt;
+  &lt;text x="<span class="codigo-resaltado">280</span>" y="70" font-family="sans-serif" font-size="20"&gt;<span class="codigo-resaltado">300</span>&lt;/text&gt;
+
+  &lt;circle cx="<span class="codigo-resaltado">400</span>" cy="40" r="10" fill="red" /&gt;
+  &lt;text x="<span class="codigo-resaltado">380</span>" y="25" font-family="sans-serif" font-size="20"&gt;<span class="codigo-resaltado">400</span>&lt;/text&gt;
+&lt;/svg&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 13 de febrero de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
