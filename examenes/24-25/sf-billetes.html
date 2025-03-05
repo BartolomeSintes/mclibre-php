@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Billetes de euro. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Billetes de euro</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Billetes de euro</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre los billetes necesarios para cubrir una cantidad de euros.</p>
+
+  <section id="comentarios">
+    <h2>Billetes de euro - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá una sola página:
+        <ul>
+          <li>Cada vez que se carga la página, se muestra una cantidad de euros (entre 500 y 2900 euros, en múltiplos de 100) y un dibujo con los billetes de 500 y de 100 necesarios para alcanzar esa cantidad:
+            <p class="captura"><img src="img/sf-billetes-1.png" alt="Billetes de euro" width="1008" height="260"></p>
+          </li>
+          <li>La posición exacta del valor del billete no es importante, pero debe situarse a la misma distancia de los bordes respecto al billete visible (independientemente del número de billetes que haya).</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Billetes de euro - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h1&gt;Billetes&lt;/h1&gt;
+
+  &lt;p&gt;Actualice la página para mostrar otra cantidad de billetes.&lt;/p&gt;
+
+  &lt;h2&gt;<span class="codigo-resaltado">2300</span> euros&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+<div class="codigo-resaltado">      &lt;rect x="<span class="codigo-resaltado">0</span>" y="<span class="codigo-resaltado">0</span>" width="160" height="82" stroke-width="1" stroke="black" fill="hsl(320, 35%, 75%)" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">10</span>" y="<span class="codigo-resaltado">5</span>" width="160" height="82" stroke-width="1" stroke="black" fill="hsl(320, 35%, 75%)" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">20</span>" y="<span class="codigo-resaltado">10</span>" width="160" height="82" stroke-width="1" stroke="black" fill="hsl(320, 35%, 75%)" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">30</span>" y="<span class="codigo-resaltado">15</span>" width="160" height="82" stroke-width="1" stroke="black" fill="hsl(320, 35%, 75%)" /&gt;
+</div>      &lt;text x="<span class="codigo-resaltado">120</span>" y="<span class="codigo-resaltado">50</span>" font-size="30" fill="hsl(320, 35%, 30%)"&gt;500&lt;/text&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+<div class="codigo-resaltado">      &lt;rect x="<span class="codigo-resaltado">0</span>" y="<span class="codigo-resaltado">0</span>" width="147" height="82" stroke-width="1" stroke="black" fill="hsl(100, 40%, 70%)" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">10</span>" y="<span class="codigo-resaltado">5</span>" width="147" height="82" stroke-width="1" stroke="black" fill="hsl(100, 40%, 70%)" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">20</span>" y="<span class="codigo-resaltado">10</span>" width="147" height="82" stroke-width="1" stroke="black" fill="hsl(100, 40%, 70%)" /&gt;
+</div>      &lt;text x="<span class="codigo-resaltado">100</span>" y ="<span class="codigo-resaltado">45</span>" font-size="30" fill="hsl(100, 40%, 30%)"&gt;100&lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h1&gt;Billetes&lt;/h1&gt;
+
+  &lt;p&gt;Actualice la página para mostrar otra cantidad de billetes.&lt;/p&gt;
+
+  &lt;h2&gt;<span class="codigo-resaltado">700</span> euros&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+<div class="codigo-resaltado">      &lt;rect x="<span class="codigo-resaltado">0</span>" y="<span class="codigo-resaltado">0</span>" width="160" height="82" stroke-width="1" stroke="black" fill="hsl(320, 35%, 75%)" /&gt;
+</div>      &lt;text x="<span class="codigo-resaltado">90</span>" y="<span class="codigo-resaltado">35</span>" font-size="30" fill="hsl(320, 35%, 30%)"&gt;500&lt;/text&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+<div class="codigo-resaltado">      &lt;rect x="<span class="codigo-resaltado">0</span>" y="<span class="codigo-resaltado">0</span>" width="147" height="82" stroke-width="1" stroke="black" fill="hsl(100, 40%, 70%)" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">10</span>" y="<span class="codigo-resaltado">5</span>" width="147" height="82" stroke-width="1" stroke="black" fill="hsl(100, 40%, 70%)" /&gt;
+</div>      &lt;text x="<span class="codigo-resaltado">90</span>" y="<span class="codigo-resaltado">40</span>" font-size="30" fill="hsl(100, 40%, 30%)"&gt;100&lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de febrero de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
