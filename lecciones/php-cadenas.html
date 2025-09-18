@@ -721,6 +721,29 @@ print "&lt;p&gt;Pasa" <span class="php-ope">.</span> "tiempos&lt;/p&gt;\n";
 
     <hr class="corta">
 
+    <p>Es importante escribir espacios en blanco alrededor del operador de concatenación ya que en algunos casos la ausencia de espacios puede dar lugar a errores de sintaxis. En el ejemplo siguiente PHP entiende el punto como parte del número (al no tener parte decimal, PHP entiende que la parte decimal es 0) y el error de sintaxis que se produce es que tenemos un número seguido de una cadena sin operador entre ellos:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+  print "&lt;p&gt;" . <span class="codigo-resaltado">10 .</span> "&lt;/p&gt;\n";  // Correcto
+
+  print "&lt;p&gt;" . <span class="codigo-resaltado">10.</span> "&lt;/p&gt;\n";   // Incorrecto
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>
+<code class="language-html">
+<p><strong>Parse error</strong>: syntax error, unexpected double-quoted string "&lt;/p&gt;\n" in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
+</code>
+</pre>
+      </div>
+    </div>
+
+    <hr class="corta">
+
     <p>El operador combinado de asignación con concatenación (.=) permite modificar una variable concatenándole una cadena o expresión:</p>
 
     <div class="filaflex">
@@ -736,15 +759,15 @@ print "&lt;p&gt;$cadena&lt;/p&gt;\n";
       </div>
       <div class="resultado-codigo">
         <pre>
-<code class="language-html"><code>&lt;p&gt;Pasa&lt;/p&gt;
-&lt;p&gt;Pasatiempos&lt;/p&gt;</code></code>
+<code class="language-html">&lt;p&gt;Pasa&lt;/p&gt;
+&lt;p&gt;Pasatiempos&lt;/p&gt;</code>
 </pre>
       </div>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 18 de septiembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
