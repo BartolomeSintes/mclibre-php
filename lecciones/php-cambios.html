@@ -23,6 +23,7 @@
       <h2>Cambios en el lenguaje</h2>
 
       <ul>
+        <li><a href="#php-8-4">PHP 8.4 (2024)</a></li>
         <li><a href="#php-8-1">PHP 8.1 (2021)</a></li>
         <li><a href="#php-8-0">PHP 8.0 (2020)</a></li>
         <li><a href="#php-7-4">PHP 7.4 (2019)</a></li>
@@ -42,6 +43,17 @@
 
   <p>Manual de PHP: <a href="https://www.php.net/manual/en/appendices.php">Apéndices</a></p>
 
+  <section id="php-8-4">
+    <h2>PHP 8.4 (noviembre de 2024)</h2>
+
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration84.php">Cambios en PHP 8.4</a></p>
+
+    <ul>
+      <li id="php-8-4-e-strict">[<a href="https://www.php.net/manual/en/migration84.deprecated.php#:~:text=E_STRICT">Referencia</a>] A partir de PHP 8.4, la constante <span class="php-con">E_STRICT</span> está desaconsejada puesto que el nivel de error <span class="php-con">E_STRICT</span> se ha eliminado. La constante se eliminará en PHP 9 (cuya fecha de publicación prevista no está todavía anunciada).</li>
+      <li id="php-8-4-e-user-error">[<a href="https://www.php.net/manual/en/migration84.deprecated.php#:~:text=Using trigger_error()">Referencia</a>] A partir de PHP 8.4, el uso de la constante <span class="php-con">E_USER_ERROR</span> en la función <a href="https://www.php.net/manual/en/function.trigger-error.php"><span class="php-fun">trigger_error()</span></a> está desaconsejado, aunque la constante <span class="php-con">E_USER_ERROR</span> no se ha eliminado.</li>
+    </ul>
+  </section>
+
   <section id="php-8-1">
     <h2>PHP 8.1 (noviembre de 2021)</h2>
 
@@ -50,14 +62,14 @@
     <ul>
       <li id="php-8-1-conversion-decimales-enteros">[<a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.core.implicit-float-conversion">Referencia</a>] A partir de PHP 8.1, si un conversión implícita de decimales a enteros supone una pérdida de precisión PHP genera un error <span class="php-con">E_DEPRECATED</span>, aunque la conversión todavía se realiza.
 
-      <p>Por ejemplo, en el caso de la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv($a, $b)</span></a> (cociente de una división) o del operador "módulo" <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-res">%</span></a> (resto de una división), pensadas para trabajar con números enteros, pero que también admitían números decimales (truncándolos). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span></p>
+        <p>Por ejemplo, en el caso de la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv($a, $b)</span></a> (cociente de una división) o del operador "módulo" <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-res">%</span></a> (resto de una división), pensadas para trabajar con números enteros, pero que también admitían números decimales (truncándolos). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span></p>
 
-      <div class="filaflex">
-        <div class="icono-ok">
-          <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
-        </div>
-        <div class="codigo">
-          <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // Antes de PHP 8.1, se podían utilizar números decimales que PHP
 // convertía a enteros quitando la parte decimal.
@@ -67,21 +79,21 @@ print "&lt;p&gt;" . intdiv(17.1, 3.1) . "&lt;/p&gt;\n";
 print "&lt;p&gt;" . 17.1 % 3.1 . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
+          </div>
+          <div class="resultado-html">
+            <b>Deprecated</b>: Implicit conversion from float 17.1 to int loses precision in <b>ejemplo.php</b> on line <b>84</b><br>
+            <b>Deprecated</b>: Implicit conversion from float 3.1 to int loses precision in <b>ejemplo.php</b> on line <b>84</b><br>
+            <p>5</p>
+            <b>Deprecated</b>: Implicit conversion from float 17.1 to int loses precision in <b>ejemplo.php</b> on line <b>85</b><br>
+            <b>Deprecated</b>: Implicit conversion from float 3.1 to int loses precision in <b>ejemplo.php</b> on line <b>85</b><br>
+            <p>2</p>
+          </div>
+          <div class="icono-enlace">
+            <a href="https://3v4l.org/QKJUr"><img src="../varios/iconos/logo-3v4l.png" alt="Enlace a 3V4L" title="Enlace a 3V4L" width="66" height="21"></a>
+          </div>
         </div>
-        <div class="resultado-html">
-<b>Deprecated</b>:  Implicit conversion from float 17.1 to int loses precision in <b>ejemplo.php</b> on line <b>84</b><br>
-<b>Deprecated</b>:  Implicit conversion from float 3.1 to int loses precision in <b>ejemplo.php</b> on line <b>84</b><br>
-<p>5</p>
-<b>Deprecated</b>:  Implicit conversion from float 17.1 to int loses precision in <b>ejemplo.php</b> on line <b>85</b><br>
-<b>Deprecated</b>:  Implicit conversion from float 3.1 to int loses precision in <b>ejemplo.php</b> on line <b>85</b><br>
-<p>2</p>
-        </div>
-        <div class="icono-enlace">
-          <a href="https://3v4l.org/QKJUr"><img src="../varios/iconos/logo-3v4l.png" alt="Enlace a 3V4L" title="Enlace a 3V4L" width="66" height="21"></a>
-        </div>
-      </div>
 
-      <p>Por ejemplo, aunque PHP no permite índices de matrices que sean números decimales, en PHP se pueden escribir números decimales como índices de matrices porque se convierten automáticamente a enteros (eliminado la parte decimal). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span></p>
+        <p>Por ejemplo, aunque PHP no permite índices de matrices que sean números decimales, en PHP se pueden escribir números decimales como índices de matrices porque se convierten automáticamente a enteros (eliminado la parte decimal). A partir de PHP 8.1, se puede seguir haciendo, pero se genera un error <span class="php-con">E_DEPRECATED</span></p>
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -97,7 +109,7 @@ $nombres[1.7] = "Alba";
 
 print "&lt;p&gt;$nombres[1]&lt;p&gt;\n";
 ?&gt;</code>
-  </pre>
+</pre>
           </div>
           <div class="resultado-html">
             <b>Deprecated</b>: Implicit conversion from float 1.7 to int loses precision in <b>ejemplo.php</b> on line <b>5</b>
@@ -121,7 +133,7 @@ $nombres[1.0] = "Alba";
 
 print "&lt;p&gt;$nombres[1]&lt;p&gt;\n";
 ?&gt;</code>
-  </pre>
+</pre>
           </div>
           <div class="resultado-html">
             <p>Alba</p>
@@ -167,7 +179,7 @@ print "&lt;p&gt;{$nombres[1.2]}&lt;p&gt;\n";
 print "\n";
 print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
 ?&gt;</code>
-  </pre>
+</pre>
           </div>
           <div class="resultado-html">
             <p><b>Deprecated</b>: Implicit conversion from float 1.7 to int loses precision in <b>ejemplo.php</b> on line <b>5</b></p>
@@ -411,7 +423,7 @@ print "&lt;pre&gt;" . print_r($valores, true) . "&lt;/pre&gt;\n";
 </pre>
           </div>
         </div>
-        </li>
+      </li>
       <li>A partir de PHP 8.0, un conjunto de avisos <span class="php-con">E_WARNINGS</span> se han reconvertido en errores <span class="php-con">E_ERROR</span>: constantes no definidas, etc.</li>
       <li>A partir de PHP 8.0, un conjunto de avisos <span class="php-con">E_NOTICE</span> se han reconvertido en avisos <span class="php-con">E_WARNING</span>: variables no definidas, índices de matrices no definidos, intento de conversión de matriz en cadena, etc.</li>
     </ul>
@@ -505,6 +517,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
       <li>[<a href="https://www.php.net/manual/en/migration70.incompatible.php#migration70.incompatible.integers.div-by-zero">Referencia</a>] A partir de PHP 7.0, la división por cero ya no genera un error E_WARNING, sino una excepción. En caso de que la excepción no sea capturada, se genera un error E_ERROR.</li>
       <li>Se eliminan la función split() y las funciones ereg_().</li>
       <li>En PHP 7.0 se introdujo la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv()</span></a>, que calcula el cociente de la división de dos números enteros. En el curso 2022/23 he empezado a utilizarla para calcular cocientes, en vez de hacer floor() de la división.</li>
+      <li id="php-7-0-e-strict">[<a href="https://www.php.net/manual/en/migration70.incompatible.php#migration70.incompatible.error-handling.strict">Referencia</a>] Los errores de tipo <span class="php-con">E_STRICT</span> se clasificaron en otras categorías, aunque el tipo <span class="php-con">E_STRICT</span> no eliminó hasta la version PHP 8.4.</li>
     </ul>
   </section>
 
@@ -549,7 +562,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 19 de septiembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

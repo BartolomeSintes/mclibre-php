@@ -412,10 +412,6 @@ error_reporting=E_ALL </code>
           </td>
         </tr>
         <tr>
-          <td>E_RECOVERABLE_ERROR </td>
-          <td>Error recuperable.</td>
-        </tr>
-        <tr>
           <td>E_DEPRECATED</td>
           <td>Advertencias sobre código obsoleto que no funcionará en futuras versiones de PHP.</td>
         </tr>
@@ -451,9 +447,17 @@ error_reporting=E_ALL </code>
           <td>E_USER_DEPRECATED </td>
           <td>Advertencias generadas por el usuario sobre código que no funcionará en futuras versiones de PHP.</td>
         </tr>
+        <tr>
+          <td>E_RECOVERABLE_ERROR </td>
+          <td>Error recuperable. Este tipo de error no se utiliza.</td>
+        </tr>
       </table>
 
-      <p><strong>Nota</strong>: En PHP 5.0, 5.1, 5.2 y 5.3 E_STRICT no estaba incluido en E_ALL, por lo que se debía escribir E_ALL | E_STRICT para incluir todos los errores. En PHP 5.4 E_STRICT se incluyó en E_ALL, por lo que era suficiente escribir E_ALL para incluir todos los errores. Desde 7.0 los errores detectados por E_STRICT se clasifican en otras categorías (como se comenta en <a href="https://www.php.net/manual/en/migration70.incompatible.php">las notas de versión de PHP 7.0</a>), por lo que E_SCTRICT ya no cumple ninguna función, aunque se mantiene por compatibilidad con versiones anteriores.</p>
+      <p><strong>Notas</strong>:</p>
+        <ul>
+          <li>En PHP 5.0, 5.1, 5.2 y 5.3 E_STRICT no estaba incluido en E_ALL, por lo que se debía escribir E_ALL | E_STRICT para incluir todos los errores. En PHP 5.4 E_STRICT se incluyó en E_ALL, por lo que era suficiente escribir E_ALL para incluir todos los errores. Desde 7.0 los errores detectados por E_STRICT se clasifican en otras categorías, como se comenta en la lección <a href="../lecciones/php-cambios.html#php-7-0-e-strict">Cambios en el lenguaje</a>, por lo que E_SCTRICT ya no cumple ninguna función, aunque se mantiene por compatibilidad con versiones anteriores. Desde PHP 8.4 E_STRICT está desaconsejada y se eliminará en PHP 9 (cuya fecha de publicación prevista no está todavía anunciada), como se comenta en la lección <a href="../lecciones/php-cambios.html#php-8-4-e-strict">Cambios en el lenguaje</a>.</li>
+          <li>Desde PHP 8.4 E_USER_ERROR está desaconsejada, aunque no se ha eliminado, como se comenta en la lección <a href="../lecciones/php-cambios.html#php-8-4-e-user-error">Cambios en el lenguaje</a>.</li>
+        </ul>
     </section>
 
     <section id="output-buffering">
@@ -499,7 +503,7 @@ output_buffering=0</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de diciembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 19 de septiembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
