@@ -24,306 +24,136 @@
 
       <h3><a href="#">Enunciados</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Alias</a></li>
-        <li><a href="#ejercicio-2">2 - Alias</a></li>
-        <li><a href="#ejercicio-3">3 - Área de trabajo y alias</a></li>
-        <li><a href="#ejercicio-4">4 - Área de trabajo y alias</a></li>
-        <li><a href="#ejercicio-5">5 - Área de trabajo clase</a></li>
-      </ul>
-
-      <h3><a href="soluciones.html">Soluciones</a></h3>
-      <ul>
-        <li><a href="soluciones.html#ejercicio-1">1 - Alias</a></li>
-        <li><a href="soluciones.html#ejercicio-2">2 - Alias</a></li>
-        <li><a href="soluciones.html#ejercicio-3">3 - Área de trabajo y alias</a></li>
-        <li><a href="soluciones.html#ejercicio-4">4 - Área de trabajo y alias</a></li>
-        <li><a href="soluciones.html#ejercicio-5">5 - Área de trabajo clase</a></li>
+        <li><a href="#ejercicio-1">1 - Directiva DocumentRoot</a></li>
+        <li><a href="#ejercicio-2">2 - Modificar DocumentRoot</a></li>
+        <li><a href="#ejercicio-3">3 - Directiva DirectoryIndex</a></li>
       </ul>
     </div>
   </nav>
 
-  <p>Estos ejercicios tratan de la configuración de Apache y de Visual Studio Code. Se pueden consultar unas <a href="soluciones.html">posibles soluciones</a>.</p>
+  <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Estos ejercicios tratan de la configuración de Apache. Los cambios que se realicen se deben deshacer al terminar los ejercicios, por lo que se recomienda hacer antes una <strong>copia de seguridad del fichero de configuración httpd.conf de Apache</strong> y restaurarlo al final.</p>
 
   <section id="ejercicio-1">
-    <h2>Apache (1) 1 - Creación de alias</h2>
+    <h2>Apache (1) 1 - Directiva DocumentRoot</h2>
 
-    <ol>
-      <li>Cree la carpeta <strong>C:\tmp\apache-1\e01</strong></li>
-      <li>Cree en el archivo <strong>httpd.conf</strong> el alias <strong>/ejercicio-01</strong> que enlace a <strong>C:\tmp\apache-1\e01</strong></li>
-      <li>Compruebe que el navegador muestra el directorio vacío al abrir la dirección <strong>http://localhost/ejercicio-01/</strong></li>
-      <li>Cree con Notepad++ el archivo <strong>prueba.html</strong> en la carpeta <strong>C:\tmp\apache-1\e01</strong> con el siguiente contenido:
+    <ul>
+      <li>Abra el archivo httpd.conf con el Panel de control de XAMPP.</li>
+      <li>Compruebe que la directiva de Apache DocumentRoot tiene el valor "C:/xampp/htdocs":
 
-        <div class="codigo-nocolor">
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">DocumentRoot <span class="codigo-resaltado">"C:/xampp/htdocs"</span>
+&lt;Directory <span class="codigo-resaltado">"C:/xampp/htdocs"</span>&gt;
+    #
+...</code>
+</pre>
+        </div>
+      </li>
+      <li>En el directorio C:/xampp/htdocs, cree con Notepad++ el fichero e01-1.html. Por ejemplo:
+
+        <div class="codigo copy">
           <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 1&lt;/title&gt;
+  &lt;title&gt;Ejercicio Apache (1) 1&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
-  &lt;p&gt;Esta es la página prueba.html del ejercicio 1.&lt;/p&gt;
+  &lt;h1&gt;¡Hola, amigo!&lt;/h1&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code>
+&lt;/html&gt;</code>
 </pre>
         </div>
       </li>
-      <li>Compruebe que el navegador muestra el directorio con un archivo al abrir la dirección <strong>http://localhost/ejercicio-01/</strong></li>
-      <li>Compruebe que el navegador muestra la página <strong>prueba.html</strong> al hacer clic en el nombre del archivo en el directorio.</li>
-      <li>Cree con Notepad++ el archivo <strong>index.html</strong> en la carpeta <strong>C:\tmp\apache-1\e01</strong> con el siguiente contenido:
-
-        <div class="codigo-nocolor">
-          <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 1&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;p&gt;Esta es la página index.html del ejercicio 1.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code>
-</pre>
-        </div>
+      <li>Compruebe en el navegador que puede ver la página web escribiendo la dirección http://localhost/e01-1.html:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1.png" alt="Ejercicios Apache (1) 1" width="1024" height="170">
+        </p>
       </li>
-      <li>Compruebe que el navegador muestra la página <strong>index.html</strong> al abrir la dirección <strong>http://localhost/ejercicio-01/</strong></li>
-      <li>Compruebe que el navegador muestra la página <strong>prueba.html</strong> al abrir la dirección <strong>http://localhost/ejercicio-01/prueba.html</strong></li>
-      <li>Compruebe que el navegador muestra la página <strong>index.html</strong> al abrir la dirección <strong>http://localhost/ejercicio-01/index.html</strong></li>
-    </ol>
+    </ul>
   </section>
 
   <section id="ejercicio-2">
-    <h2>Apache (1) 2 - Creación de alias</h2>
-    <ol>
+    <h2>Apache (1) 2 - Modificar DocumentRoot</h2>
+    <ul>
       <li>Cree la carpeta <strong>C:\tmp\apache-1\e02</strong></li>
-      <li>Cree en el archivo <strong>httpd.conf</strong> el alias <strong>/ejercicio-02/paginas</strong> que enlace a <strong>C:\tmp\apache-1\e02</strong></li>
-      <li>Compruebe que el navegador da error al abrir la dirección <strong>http://localhost/ejercicio-02/</strong></li>
-      <li>Compruebe que en el navegador se muestra el directorio vacío al abrir la dirección <strong>http://localhost/ejercicio-02/paginas/</strong></li>
-      <li>Cree con Notepad++ el archivo <strong>index.html</strong> en la carpeta <strong>C:\tmp\apache-1\e02</strong> con el siguiente contenido:
+      <li>Cree con Notepad++ en la carpeta C:\tmp\apache-1\e02 un fichero que se llame <strong>prueba.html</strong> con el siguiente contenido:
 
-        <div class="codigo-nocolor">
+        <div class="codigo">
           <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 2&lt;/title&gt;
+  &lt;title&gt;Ejercicio 8&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
-  &lt;p&gt;Esta es la página index.html principal del ejercicio 2.&lt;/p&gt;
-  &lt;p&gt;Ir a &lt;a href="ejemplo/"&gt;la página secundaria&lt;/a&gt;.&lt;/p&gt;
+  &lt;p&gt;Esta es la página prueba.html del ejercicio 8.&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code>
+&lt;/html&gt;</code>
 </pre>
         </div>
       </li>
-      <li>Compruebe que el navegador muestra la página <strong>index.html</strong> al abrir la dirección <strong>http://localhost/ejercicio-02/paginas/</strong></li>
-      <li>Compruebe que al hacer clic en el enlace se muestra un error 404 (objeto no localizado).</li>
-      <li>Cree la carpeta <strong>C:\tmp\apache-1\e02\ejemplo</strong></li>
-      <li>Compruebe que al hacer clic en el enlace se muestra el directorio vacío.</li>
-      <li>Cree con Notepad++ el archivo <strong>index.html</strong> en la carpeta <strong>C:\tmp\apache-1\e02\ejemplo</strong> con el siguiente contenido:
-
-        <div class="codigo-nocolor">
-          <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 2&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;p&gt;Esta es la página index.html secundaria del ejercicio 2.&lt;/p&gt;
-  &lt;p&gt;Ir a &lt;a href="../"&gt;la página principal&lt;/a&gt;.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code>
-</pre>
-        </div>
-      </li>
-      <li>Compruebe que al hacer clic en el enlace de la página <strong>index.html</strong> principal se muestra la página <strong>index.html</strong> secundaria.</li>
-      <li>Compruebe que al hacer clic en el enlace de la página <strong>index.html</strong> secundaria se muestra la página <strong>index.html</strong> principal.</li>
-    </ol>
+      <li>Modifique en el fichero <strong>httpd.conf</strong> la directiva DocumentRoot de manera que apunte a la carpeta "C:\tmp\apache-1\e02"</li>
+      <li>Compruebe que se muestra el directorio con el archivo prueba.html al escribir en el navegador la dirección <strong>http://localhost</strong></li>
+      <li>Deshaga los cambios realizados en el archivo httpd.conf</li>
+      <li>Compruebe que en el navegador se muestra el panel de administración web de XAMPP al escribir <strong>http://localhost</strong></li>
+    </ul>
   </section>
 
   <section id="ejercicio-3">
-    <h2>Apache (1) 3 - Creación de área de trabajo (carpeta), tareas y alias</h2>
+    <h2>Apache (1) 3 - Directiva DirectoryIndex</h2>
 
-    <p>El objetivo de este ejercicio es crear <strong>un área de trabajo (carpeta) y unas tareas</strong> en Visual Studio Code y crear un alias en Apache para que se puedan abrir páginas en el navegador desde Visual Studio Code.</p>
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-3\e03</strong></li>
+      <li>Cree con Notepad++ dos archivos <strong>index.html</strong> y <strong>home.html</strong> diferentes en la carpeta "C:\tmp\apache-1\e01". Por ejemplo:
 
-    <ol>
-      <li>Abrir área de trabajo (carpeta)
-        <ol>
-          <li>Cree la carpeta <strong>C:\tmp\apache-1\e03</strong></li>
-          <li>Cree la carpeta <strong>C:\tmp\apache-1\e03\archivos</strong></li>
-          <li>Abra Visual Studio Code eligiendo como área de trabajo la carpeta <strong>C:\tmp\apache-1\e03\archivos</strong></li>
-        </ol>
-      </li>
-      <li>Crear archivo
-        <ol>
-          <li>Cree con Visual Studio Code el archivo <strong>test.php</strong> en la carpeta <strong>archivos</strong> con el siguiente contenido:
-
-            <div class="codigo">
-              <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Ejercicio 3 - Página 1&lt;/p&gt;\n";
-phpinfo();
-</code>
-</pre>
-            </div>
-          </li>
-        </ol>
-      </li>
-      <li>Crear tareas
-        <ol>
-          <li>Cree las tareas que abran los ficheros en Firefox y Chrome con la URL <strong>http://localhost/ejercicio-03/...</strong></li>
-          <li>Ejecute desde Visual Studio Code el archivo <strong>test.php</strong> y compruebe que en la barra de dirección del navegador aparece la dirección <strong>http://localhost/ejercicio-03/test.php</strong> pero se muestra un error 404 (objeto no localizado).</li>
-        </ol>
-      </li>
-      <li>Configurar Apache
-        <ol>
-          <li>Cree en el archivo <strong>httpd.conf</strong> el alias <strong>/ejercicio-03</strong> que enlace a <strong>C:\tmp\apache-1\e03\archivos</strong></li>
-          <li>Compruebe que al abrir la dirección <strong>http://localhost/ejercicio-03/</strong> en el navegador se muestra el directorio.</li>
-        </ol>
-      </li>
-      <li>Crear archivos
-        <ol>
-          <li>Ejecute desde Visual Studio Code el archivo <strong>test.php</strong> y compruebe que se abre correctamente en el navegador la página <strong>http://localhost/ejercicio-03/test.php</strong> (se mostrará una tabla con información detallada del PHP instalado en el servidor).</li>
-          <li>Cree con Visual Studio Code la carpeta <strong>ejemplo</strong> en la carpeta <strong>archivos</strong>.</li>
-          <li>Compruebe con el Explorador de archivos de Windows que se ha creado la carpeta <strong>C:\tmp\apache-1\e03\archivos\ejemplo</strong></li>
-          <li>Cree con Visual Studio Code el archivo <strong>test2.php</strong> en la carpeta <strong>ejemplo</strong> con el siguiente contenido:
-
-            <div class="codigo">
-              <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Ejercicio 3 - Página 2&lt;/p&gt;\n";
-phpinfo();
-</code>
-</pre>
-            </div>
-          </li>
-          <li>Ejecute desde Visual Studio Code el archivo <strong>test2.php</strong> y compruebe que se abre correctamente en el navegador la página <strong>http://localhost/ejercicio-03/ejemplo/test2.php</strong> (se mostrará una tabla con información detallada del PHP instalado en el servidor).</li>
-        </ol>
-      </li>
-    </ol>
-  </section>
-
-  <section id="ejercicio-4">
-    <h2>Apache (1) 4 - Creación de área de trabajo (carpeta), tareas y alias</h2>
-
-    <p>El objetivo de este ejercicio es crear <strong>un área de trabajo (carpeta) y unas tareas</strong> en Visual Studio Code y crear un alias en Apache para que se puedan abrir páginas en el navegador desde Visual Studio Code.</p>
-
-    <ol>
-      <li>Abrir área de trabajo (carpeta)
-        <ol>
-          <li>Cree la carpeta <strong>C:\tmp\apache-1\e04</strong></li>
-          <li>Abra Visual Studio Code eligiendo como área de trabajo la carpeta <strong>C:\tmp\apache-1\e04</strong></li>
-          <li>Cree la carpeta <strong>C:\tmp\apache-1\e04\archivos</strong></li>
-        </ol>
-      </li>
-      <li>Crear tareas
-        <ol>
-          <li>Cree las tareas que abran los ficheros en Firefox y Chrome con la URL <strong>http://localhost/ejercicio-04/ficheros/...</strong></li>
-        </ol>
-      </li>
-      <li>Configurar Apache
-        <ol>
-          <li>Cree en el archivo <strong>httpd.conf</strong> el alias <strong>/ejercicio-04/ficheros</strong> que enlace a <strong>C:\tmp\apache-1\e04</strong></li>
-          <li>Compruebe que en el navegador se muestra el directorio que contiene el directorio <strong>archivos</strong> al escribir <strong>http://localhost/apache-01/ejercicio-04/ficheros</strong></li>
-        </ol>
-      </li>
-      <li>Crear archivos
-        <ol>
-          <li>Cree con Visual Studio Code el archivo <strong>test.php</strong> en la carpeta <strong>archivos</strong> con el siguiente contenido:
-
-            <div class="codigo">
-              <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Ejercicio 4 - Página 1&lt;/p&gt;\n";
-phpinfo();
-</code>
-</pre>
-            </div>
-          </li>
-          <li>Ejecute desde Visual Studio Code el archivo <strong>test.php</strong> y compruebe que se abre correctamente en el navegador la página <strong>http://localhost/ejercicio-04/ficheros/archivos/test.php</strong> (se mostrará una tabla con información detallada del PHP instalado en el servidor).</li>
-          <li>Cree con Visual Studio Code la carpeta <strong>ejemplos</strong> en la carpeta <strong>e04</strong>.</li>
-          <li>Compruebe con el Explorador de archivos de Windows que se ha creado la carpeta <strong>C:\tmp\apache-1\e04\ejemplos</strong></li>
-          <li>Cree con Visual Studio Code el archivo <strong>test2.php</strong> en la carpeta <strong>ejemplos</strong> con el siguiente contenido:
-
-            <div class="codigo">
-              <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Ejercicio 4 - Página 2&lt;/p&gt;\n";
-phpinfo();
-</code>
-</pre>
-            </div>
-          </li>
-          <li>Ejecute desde Visual Studio Code el archivo <strong>test2.php</strong> y compruebe que se abre correctamente en el navegador la página <strong>http://localhost/ejercicio-04/ficheros/ejemplos/test2.php</strong> (se mostrará una tabla con información detallada del PHP instalado en el servidor).</li>
-        </ol>
-      </li>
-    </ol>
-  </section>
-
-  <section id="ejercicio-5">
-    <h2>Apache (1) 5 - Creación de área de trabajo (carpeta) para clase</h2>
-
-    <p>El objetivo de este ejercicio es configurar Visual Studio Code en el ordenador de <strong>clase</strong>, para utilizar a lo largo del curso.</p>
-
-    <ol>
-      <li>Cree la carpeta <strong>Documentos &gt; IAW &gt; PHP</strong></li>
-      <li>Abra Visual Studio Code eligiendo como área de trabajo dicha carpeta.</li>
-      <li>Cree en el archivo <strong>httpd.conf</strong> el alias <strong>/iaw/php</strong> (sin mayúsculas ni espacios) que enlace a la carpeta.</li>
-      <li>Cree las tareas que abran los ficheros en Firefox y Chrome con la URL <strong>http://localhost//iaw/php/..."</strong></li>
-      <li>Cree las carpetas "<strong>pruebas</strong>" y "<strong>ejercicios</strong>" en la carpeta <strong>PHP</strong>..</li>
-      <li>Cree con Visual Studio Code un archivo <strong>test.php</strong> en cada una de las carpetas (PHP, pruebas y ejercicios) con el siguiente contenido:
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Ejercicio 5&lt;/p&gt;\n";
-phpinfo();
-</code>
-</pre>
-        </div>
-      </li>
-      <li>Cree con Visual Studio Code un archivo <strong>test.html</strong> en cada una de las carpetas (PHP, pruebas y ejercicios) con el siguiente contenido:
         <div class="codigo">
           <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;IAW PHP&lt;/title&gt;
+  &lt;title&gt;Ejercicio 3&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
-  &lt;p&gt;Esta es una prueba.&lt;/p&gt;
+  &lt;p&gt;Esta es la página index.html del ejercicio 3.&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</code>
+&lt;/html&gt;</code>
+</pre>
+        </div>
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Ejercicio 3&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Esta es la página home.html del ejercicio 3.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
 </pre>
         </div>
       </li>
-      <li>Ejecute desde Visual Studio Code los archivos <strong>test.php</strong> y <strong>test.html</strong> en cada una de las carpetas y compruebe que se muestran correctamente en los navegadores.</li>
-    </ol>
-
-    <p>En el caso del ordenador de <strong>casa</strong> se recomienda a los alumnos elegir una estructura similar para facilitar el traslado de información entre clase y casa.</p>
+      <li>Cree el alias <strong>/ejercicio-03</strong> que enlace a la carpeta "C:\tmp\apache-3\e03"</li>
+      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
+      <li>Modifique en el archivo httpd.conf la directiva DirectoryIndex de manera que se abra primero el archivo home.html</li>
+      <li>Compruebe que en el navegador se muestra el archivo home.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
+      <li>Deshaga los cambios realizados en el archivo httpd.conf</li>
+      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
+    </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de septiembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
