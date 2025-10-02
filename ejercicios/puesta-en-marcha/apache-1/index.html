@@ -24,21 +24,80 @@
 
       <h3><a href="#">Enunciados</a></h3>
       <ul>
+        <li><a href="#ejercicio-0">0 - Copia de seguridad</a></li>
         <li><a href="#ejercicio-1">1 - Directiva DocumentRoot</a></li>
         <li><a href="#ejercicio-2">2 - Modificar DocumentRoot</a></li>
-        <li><a href="#ejercicio-3">3 - Directiva DirectoryIndex</a></li>
+        <li><a href="#ejercicio-3">3 - Directiva Listen</a></li>
+        <li><a href="#ejercicio-4">4 - Directiva DirectoryIndex</a></li>
+        <li><a href="#ejercicio-5">5 - Directiva Alias</a></li>
+      </ul>
+
+      <h3><a href="soluciones.html">Soluciones</a></h3>
+      <ul>
+        <li><a href="soluciones.html#ejercicio-2">2 - Modificar DocumentRoot</a></li>
+        <li><a href="soluciones.html#ejercicio-4">4 - Directiva DirectoryIndex</a></li>
       </ul>
     </div>
   </nav>
 
-  <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Estos ejercicios tratan de la configuración de Apache. Los cambios que se realicen se deben deshacer al terminar los ejercicios, por lo que se recomienda hacer antes una <strong>copia de seguridad del fichero de configuración httpd.conf de Apache</strong> y restaurarlo al final.</p>
+  <ul>
+    <li>Estos ejercicios tratan de la configuración de Apache. Aunque en estos ejercicios únicamente se modifique el archivo httpd.conf de Apache, es muy importante hacer antes la <strong>copia de seguridad</strong> de los ficheros de configuración.</li>
+    <li>Se trata de ejercicios guiados en los que se comprueba el funcionamiento de diferentes directivas de Apache.</li>
+    <li>Recuerde que tras cada modificación del archivo de configuración de Apache es necesario detener y reiniciar Apache.</li>
+    <li>Para forzar la recarga completa de una página en el navegador utilice el atajo de teclado <span class="soft-atajo-teclado">Ctrl+F5</span>.</li>
+  </ul>
+
+  <section id="ejercicio-0">
+    <h2>Apache (1) 0 - Copia de seguridad</h2>
+
+    <p>Realice una copia de seguridad de los archivos de configuración de Apache, PHP, MariaDB y phpMyAdmin que se encuentran en la carpeta de XAMPP (en principio, C:\xampp).</p>
+
+    <ol>
+      <li>Cree una carpeta donde guardar las sucesivas copias de seguridad. Por ejemplo: <strong>IAW &gt; Backups Configuración XAMPP &gt; Backup Configuración XAMPP 2025-09-25</strong></li>
+      <li>Copie la carpeta y ficheros de configuración siguientes:
+        <ul>
+          <li>Apache: carpeta apache/conf</li>
+          <li>PHP: fichero php/php.ini</li>
+          <li>MariaDB: fichero mysql/bin/my.ini</li>
+          <li>phpMyAdmin: fichero phpmyadmin/config.inc.php</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p class="captura">
+      <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-0.png" alt="Ejercicios Apache (1) 0" width="1024" height="320">
+    </p>
+  </section>
 
   <section id="ejercicio-1">
     <h2>Apache (1) 1 - Directiva DocumentRoot</h2>
 
-    <ul>
-      <li>Abra el archivo httpd.conf con el Panel de control de XAMPP.</li>
-      <li>Compruebe que la directiva de Apache DocumentRoot tiene el valor "C:/xampp/htdocs":
+    <p>El objetivo de este ejercicio es comprobar que Apache sirve los ficheros existentes en el directorio indicado por la directiva <strong>DocumentRoot</strong> del archivo de configuración <strong>httpd.conf</strong>.</p>
+
+    <ol>
+      <li>Detenga Apache si lo había iniciado. Abra la dirección <strong>http://localhost</strong> y que compruebe que no se recibe respuesta:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1-1.png" alt="Ejercicios Apache (1) 1" width="1024" height="270">
+        </p>
+      </li>
+      <li>En el caso de Firefox, cuando no se recibe respuesta, Firefox modifica automáticamente la petición de http a htpps. Compruébelo haciendo clic en la barra de dirección para ver el protocolo:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1-2.png" alt="Ejercicios Apache (1) 1" width="1024" height="120">
+        </p>
+      </li>
+      <li>Si iniciáramos Apache y recargáramos la página, Firefox mostraría un aviso de seguridad indicando que el certificado de seguridad de Apache no es válido. Efectivamente, XAMPP no incluye un certificado válido, es el usuario el que debe obtener un certificado válido para el servidor.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1-3.png" alt="Ejercicios Apache (1) 1" width="1024" height="310">
+        </p>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Para evitar este problema, en estos apuntes utilizaremos siempre el protocolo http, nunca el https.</p>
+      </li>
+      <li>Inicie Apache y compruebe que escribiendo la dirección <strong>http://localhost</strong> se muestra la página de inicio de XAMPP (concretamente, se produce una redirección a la URL <strong>http://localhost/dashboard/</strong>):
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1-4.png" alt="Ejercicios Apache (1) 1" width="1024" height="260">
+        </p>
+      </li>
+      <li>Abra el archivo principal de configuración de Apache <strong>httpd.conf</strong> con el Panel de control de XAMPP.</li>
+      <li>Compruebe que en el archivo httpd.conf la directiva <strong>DocumentRoot</strong> tiene el valor "<strong>C:/xampp/htdocs</strong>":
 
         <div class="codigo">
           <pre>
@@ -49,7 +108,7 @@
 </pre>
         </div>
       </li>
-      <li>En el directorio C:/xampp/htdocs, cree con Notepad++ el fichero e01-1.html. Por ejemplo:
+      <li>En el directorio C:/xampp/htdocs, cree con un editor de texto plano el fichero <strong>e01-1.html</strong>. Por ejemplo, con el contenido siguiente:
 
         <div class="codigo copy">
           <pre>
@@ -67,19 +126,47 @@
 </pre>
         </div>
       </li>
-      <li>Compruebe en el navegador que puede ver la página web escribiendo la dirección http://localhost/e01-1.html:
+      <li>Compruebe en el navegador que puede ver esta página web escribiendo la dirección <strong>http://localhost/e01-1.html</strong>
         <p class="captura">
-          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1.png" alt="Ejercicios Apache (1) 1" width="1024" height="170">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-1-5.png" alt="Ejercicios Apache (1) 1" width="1024" height="160">
         </p>
       </li>
-    </ul>
+    </ol>
   </section>
 
   <section id="ejercicio-2">
-    <h2>Apache (1) 2 - Modificar DocumentRoot</h2>
-    <ul>
-      <li>Cree la carpeta <strong>C:\tmp\apache-1\e02</strong></li>
-      <li>Cree con Notepad++ en la carpeta C:\tmp\apache-1\e02 un fichero que se llame <strong>prueba.html</strong> con el siguiente contenido:
+    <h2>Apache (1) 2 - Modificar directiva DocumentRoot</h2>
+
+    <p>El objetivo de este ejercicio es comprobar que es posible alojar páginas web en una carpeta distinta a la predeterminada.</p>
+
+    <ol>
+      <li>Modifique en el fichero <strong>httpd.conf</strong> la directiva <strong>DocumentRoot</strong> de manera que apunte a la carpeta "<strong>C:\tmp\apache-1\</strong>". Modifique únicamente la línea de la directiva DocumentRoot.</li>
+      <li>Abra la URL <strong>http://localhost</strong> en el navegador y compruebe que sigue viendo la página de inicio de XAMPP.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-2-1.png" alt="Ejercicios Apache (1) 2" width="1024" height="260">
+        </p>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Esto se debe a que no ha reiniciado el servidor. Recuerde reiniciar siempre el servidor tras modificar el archivo de configuración.</p>
+      </li>
+      <li>Reinicie el servidor y compruebe que Apache no puede iniciarse.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-2-2.png" alt="Ejercicios Apache (1) 2" width="668" height="195">
+        </p>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Esto se debe a que la directiva está haciendo una referencia a un directorio que no existe. Recuerde hacer siempre referencia a directorios que ya existen o cree los directorios a los que haga referencia.</p>
+      </li>
+      <li>Cree la carpeta "<strong>C:\tmp\apache-1\</strong>". Reinicie el servidor y compruebe que puede iniciarse.</li>
+      <li>Abra la URL <strong>http://localhost</strong> en el navegador y compruebe que el acceso a la carpeta no está permitido (el código de error HTTP correspondiente es 403).
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-2-3.png" alt="Ejercicios Apache (1) 2" width="1024" height="230">
+        </p>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Esto se debe a que en el archivo de configuración de Apache hay ahora una referencia a una carpeta del sistema de archivos sin que haya también una directiva <strong>Directory</strong> para ella.</p>
+      </li>
+      <li>Modifique la directiva <strong>Directory</strong> que se encuentra a continuación de la directiva DocumentRoot de manera que apunte a la misma carpeta "C:\tmp\apache-1\". Reinicie el servidor y compruebe que puede iniciarse.</li>
+      <li>Abra la URL <strong>http://localhost</strong> en el navegador y compruebe que puede acceder a la carpeta. Compruebe que Apache le muestra el contenido de la carpeta (vacía).
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-2-4.png" alt="Ejercicios Apache (1) 2" width="1024" height="250">
+        </p>
+      </li>
+      <li>Cree con un editor de texto plano en la carpeta C:\tmp\apache-1\ un fichero que se llame <strong>prueba-1.html</strong> con el siguiente contenido:
 
         <div class="codigo">
           <pre>
@@ -87,45 +174,88 @@
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 8&lt;/title&gt;
+  &lt;title&gt;prueba-1&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;p&gt;Esta es la página prueba.html del ejercicio 8.&lt;/p&gt;
+  &lt;h1&gt;Esta es la página prueba-1.html&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
         </div>
       </li>
-      <li>Modifique en el fichero <strong>httpd.conf</strong> la directiva DocumentRoot de manera que apunte a la carpeta "C:\tmp\apache-1\e02"</li>
-      <li>Compruebe que se muestra el directorio con el archivo prueba.html al escribir en el navegador la dirección <strong>http://localhost</strong></li>
-      <li>Deshaga los cambios realizados en el archivo httpd.conf</li>
-      <li>Compruebe que en el navegador se muestra el panel de administración web de XAMPP al escribir <strong>http://localhost</strong></li>
-    </ul>
+      <li>Recargue la URL <strong>http://localhost</strong> en el navegador y compruebe que Apache muestra el fichero prueba-1.html en la carpeta.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-2-5.png" alt="Ejercicios Apache (1) 2" width="1024" height="275">
+        </p>
+      </li>
+      <li>Haga clic en el nombre del fichero y compruebe que Apache muestra el contenido de la página prueba-1.html. Compruebe también que el navegador muestra en la barra de dirección el camino hasta el fichero.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-2-6.png" alt="Ejercicios Apache (1) 2" width="1024" height="170">
+        </p>
+      </li>
+    </ol>
   </section>
 
   <section id="ejercicio-3">
-    <h2>Apache (1) 3 - Directiva DirectoryIndex</h2>
+    <h2>Apache (1) 3 - Directiva Listen</h2>
 
-    <ul>
-      <li>Cree la carpeta <strong>C:\tmp\apache-3\e03</strong></li>
-      <li>Cree con Notepad++ dos archivos <strong>index.html</strong> y <strong>home.html</strong> diferentes en la carpeta "C:\tmp\apache-1\e01". Por ejemplo:
+    <p>El objetivo de este ejercicio es comprobar que Apache "escucha" las peticiones en el puerto indicado por la directiva <strong>Listen</strong> del archivo de configuración <strong>httpd.conf</strong>.</p>
 
+    <ol>
+      <li>Inicie Apache y compruebe que escribiendo la dirección <strong>http://localhost</strong> se muestra el contenido de la carpeta indicada por la directiva DocumentRoot:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-3-1.png" alt="Ejercicios Apache (1) 3" width="1024" height="275">
+        </p>
+      </li>
+      <li>Modifique la directiva <strong>Listen</strong> al valor <strong>8000</strong>:
         <div class="codigo">
           <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 3&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;p&gt;Esta es la página index.html del ejercicio 3.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
+<code class="language-configuracion">Listen <span class="codigo-resaltado">8000</span></code>
 </pre>
         </div>
+      </li>
+      <li>Recargue la página en el navegador y compruebe que Apache no responde:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-3-2.png" alt="Ejercicios Apache (1) 3" width="1024" height="265">
+        </p>
+      </li>
+      <li>Abra la dirección <strong>http://localhost:8000</strong> para comprobar que el motivo por el que Apache no respodía es que Apache está atendiendo al puerto 8000. Compruebe que haciendo la petición al puerto que atiende Apache, sí que se muestra el contenido:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-3-4.png" alt="Ejercicios Apache (1) 3" width="1024" height="280">
+        </p>
+      </li>
+      <li>Haga clic en el nombre del fichero y compruebe que Apache muestra el contenido de la página prueba-1.html. Compruebe también que el navegador muestra en la barra de dirección el camino hasta el fichero que es ahora <strong>http://localhost:8000/prueba-1.html</strong> .
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-3-5.png" alt="Ejercicios Apache (1) 2" width="1024" height="280">
+        </p>
+      </li>
+      <li>Devuelva la directiva <strong>Listen</strong> al valor <strong>80</strong>:
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">Listen <span class="codigo-resaltado">80</span></code>
+</pre>
+        </div>
+      </li>
+      <li>Recargue la URL <strong>http://localhost:8000/prueba-1.html</strong> y en el navegador compruebe que Apache ya no atiende al puerto 8000:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-3-6.png" alt="Ejercicios Apache (1) 3" width="1024" height="260">
+        </p>
+      </li>
+      <li>Abra la dirección <strong>http://localhost:80/prueba-1.html</strong> y compruebe que el navegador puede mostrar la dirección, aunque elimina la referencia al puerto 80 porque es el puerto habitual.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-3-7.png" alt="Ejercicios Apache (1) 1" width="1024" height="170">
+        </p>
+      </li>
+    </ol>
+
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Apache (1) 4 - Directiva DirectoryIndex</h2>
+
+    <ol>
+      <li>Cree con un editor de texto plano un archivo <strong>test.html</strong> en la carpeta "C:\tmp\apache-1\". Por ejemplo:
 
         <div class="codigo">
           <pre>
@@ -133,27 +263,179 @@
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 3&lt;/title&gt;
+  &lt;title&gt;test&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;p&gt;Esta es la página home.html del ejercicio 3.&lt;/p&gt;
+  &lt;h1&gt;Esta es otra página de prueba.&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
         </div>
       </li>
-      <li>Cree el alias <strong>/ejercicio-03</strong> que enlace a la carpeta "C:\tmp\apache-3\e03"</li>
-      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
-      <li>Modifique en el archivo httpd.conf la directiva DirectoryIndex de manera que se abra primero el archivo home.html</li>
-      <li>Compruebe que en el navegador se muestra el archivo home.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
-      <li>Deshaga los cambios realizados en el archivo httpd.conf</li>
-      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
-    </ul>
+      <li>Abra la URL <strong>http://localhost</strong> en el navegador y compruebe que Apache le muestra los dos ficheros.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-1.png" alt="Ejercicios Apache (1) 3" width="1024" height="310">
+        </p>
+      </li>
+      <li>Cambie el nombre del fichero <strong>test.html</strong> a <strong>home.html</strong> y modifique su contenido.
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;home&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Esta es la página home.html&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Recargue la página en el navegador y compruebe que Apache le muestra la página home.html aunque la dirección siga siendo <strong>http://localhost</strong>.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-2.png" alt="Ejercicios Apache (1) 3" width="1024" height="170">
+        </p>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Cuando se solicita una URL que corresponde a una carpeta, Apache puede entregar una página concreta, en este caso home.html.</p>
+      </li>
+      <li>Cambie el nombre del fichero <strong>home.html</strong> a <strong>index.html</strong> y modifique su contenido.
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;index&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Esta es la página index.html&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Recargue la página en el navegador y compruebe que Apache le muestra la página <strong>index.html</strong> aunque la dirección siga siendo <strong>http://localhost</strong>.
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-2.png" alt="Ejercicios Apache (1) 3" width="1024" height="170">
+        </p>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Cuando se solicita una URL que corresponde a una carpeta, Apache puede entregar una página concreta, en este caso index.html.</p>
+      </li>
+      <li>Compruebe en el archivo httpd.conf el valor de la directiva <strong>DirectoryIndex</strong>:
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;IfModule dir_module&gt;
+    DirectoryIndex index.php index.pl index.cgi index.asp index.shtml index.html index.htm \
+                   default.php default.pl default.cgi default.asp default.shtml default.html default.htm \
+                   home.php home.pl home.cgi home.asp home.shtml home.html home.htm
+&lt;/IfModule&gt;</code>
+</pre>
+        </div>
+        <p>Relacione la directiva <strong>DirectoryIndex</strong> con el comportamiento observado y conteste las siguientes preguntas (confirme sus respuestas aplicándolas):</p>
+        <ul>
+          <li>¿Qué otro nombre podríamos haber dado al archivo test.html para que se mostrara al abrir la dirección <strong>http://localhost</strong>?</li>
+          <li>¿Qué ocurrirá si en la carpeta hay tanto un archivo index.html como un archivo home.html? ¿Cuál se abrirá?</li>
+          <li>¿Cómo podríamos cambiar la directiva DirectoryIndex para que se abriera el otro archivo?</li>
+          <li>¿Cómo podríamos cambiar la directiva DirectoryIndex para que se abriera el archivo prueba-1.html en vez de los archivos index.html o home.html?</li>
+        </ul>
+      </li>
+      <li>Restaure el valor de la directiva <strong>DirectoryIndex</strong> a su valor inicial:
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;IfModule dir_module&gt;
+    DirectoryIndex index.php index.pl index.cgi index.asp index.shtml index.html index.htm \
+                   default.php default.pl default.cgi default.asp default.shtml default.html default.htm \
+                   home.php home.pl home.cgi home.asp home.shtml home.html home.htm
+&lt;/IfModule&gt;</code>
+</pre>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Apache (1) 5 - Directiva Alias</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Este ejercicio está en elaboración.</p>
+
+    <ol>
+      <li>Cree en la carpeta <strong>Documentos</strong> la carpeta <strong>IAW &gt; PHP &gt; prueba</strong> y cree en ellos los ficheros test-1.html y test-2.html.
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;test 1&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Esta es la página test-1.html&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;test 2&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Esta es la página test-2.html&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Cree el alias <strong>/php</strong> que enlace a la carpeta <strong>"C:\Users\mclibre\Documents\IAW\PHP"</strong>
+        <div class="codigo">
+          <pre>
+<code class="language-html">    # Alias: Maps web paths into filesystem paths and is used to
+    # access content that does not live under the DocumentRoot.
+    # Example:
+    # Alias /webpath /full/filesystem/path
+    #
+    # If you include a trailing / on /webpath then the server will
+    # require it to be present in the URL.  You will also likely
+    # need to provide a &lt;Directory&gt; section to allow access to
+    # the filesystem path.
+
+    Alias /php "C:\Users\mclibre\Documents\IAW\PHP"
+    &lt;Directory "C:\Users\mclibre\Documents\IAW\PHP"&gt;
+        Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Abra la URL <strong>http://localhost/php</strong> en el navegador y compruebe que Apache le muestra el directorio:
+      </li>
+      <li>Haga clic en el archivo <strong>test-1.html</strong> y compruebe que Apache le muestra su contenido:
+      </li>
+      <li>Haga clic en el directorio <strong>prueba</strong> y compruebe que Apache le muestra el directorio:
+      </li>
+      <li>Haga clic en el archivo <strong>test-2.html</strong> y compruebe que Apache le muestra su contenido:
+      </li>
+      <li>Cree el alias <strong>/prueba</strong> que enlace a la carpeta <strong>"C:\Users\mclibre\Documents\IAW\PHP\prueba"</strong>
+      </li>
+      <li>Abra la URL <strong>http://localhost/prueba</strong> en el navegador y compruebe que Apache le muestra el directorio:
+      </li>
+    </ol>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 2 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
