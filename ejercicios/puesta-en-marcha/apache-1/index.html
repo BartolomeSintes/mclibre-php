@@ -36,9 +36,12 @@
       <ul>
         <li><a href="soluciones.html#ejercicio-2">2 - Modificar DocumentRoot</a></li>
         <li><a href="soluciones.html#ejercicio-4">4 - Directiva DirectoryIndex</a></li>
+        <li><a href="soluciones.html#ejercicio-5">5 - Directiva Alias</a></li>
       </ul>
     </div>
   </nav>
+
+  <p>Puede <a href="soluciones.html">consultar unas posibles soluciones</a> de estos ejercicios.</p>
 
   <ul>
     <li>Estos ejercicios tratan de la configuración de Apache. Aunque en estos ejercicios únicamente se modifique el archivo httpd.conf de Apache, es muy importante hacer antes la <strong>copia de seguridad</strong> de los ficheros de configuración.</li>
@@ -298,7 +301,7 @@
       </li>
       <li>Recargue la página en el navegador y compruebe que Apache le muestra la página home.html aunque la dirección siga siendo <strong>http://localhost</strong>.
         <p class="captura">
-          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-2.png" alt="Ejercicios Apache (1) 3" width="1024" height="170">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-2.png" alt="Ejercicios Apache (1) 4" width="1024" height="170">
         </p>
         <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Cuando se solicita una URL que corresponde a una carpeta, Apache puede entregar una página concreta, en este caso home.html.</p>
       </li>
@@ -322,7 +325,7 @@
       </li>
       <li>Recargue la página en el navegador y compruebe que Apache le muestra la página <strong>index.html</strong> aunque la dirección siga siendo <strong>http://localhost</strong>.
         <p class="captura">
-          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-2.png" alt="Ejercicios Apache (1) 3" width="1024" height="170">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-4-2.png" alt="Ejercicios Apache (1) 4" width="1024" height="170">
         </p>
         <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Cuando se solicita una URL que corresponde a una carpeta, Apache puede entregar una página concreta, en este caso index.html.</p>
       </li>
@@ -361,10 +364,8 @@
   <section id="ejercicio-5">
     <h2>Apache (1) 5 - Directiva Alias</h2>
 
-    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Este ejercicio está en elaboración.</p>
-
     <ol>
-      <li>Cree en la carpeta <strong>Documentos</strong> la carpeta <strong>IAW &gt; PHP &gt; prueba</strong> y cree en ellos los ficheros test-1.html y test-2.html.
+      <li>Cree en la carpeta <strong>Documentos</strong> las carpetas <strong>IAW</strong> <strong>IAW &gt; PHP</strong> y <strong>IAW &gt; PHP &gt; prueba</strong> y cree en las dos últimas los ficheros test-1.html y test-2.html, respectivamente.
         <div class="codigo">
           <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
@@ -380,7 +381,6 @@
 &lt;/html&gt;</code>
 </pre>
         </div>
-
         <div class="codigo">
           <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
@@ -396,8 +396,14 @@
 &lt;/html&gt;</code>
 </pre>
         </div>
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-1.png" alt="Ejercicios Apache (1) 5" width="1024" height="240">
+        </p>
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-2.png" alt="Ejercicios Apache (1) 5" width="1024" height="240">
+        </p>
       </li>
-      <li>Cree el alias <strong>/php</strong> que enlace a la carpeta <strong>"C:\Users\mclibre\Documents\IAW\PHP"</strong>
+      <li>Cree el alias <strong>/php</strong> que enlace a la carpeta <strong>"C:\Users\mclibre\Documents\IAW\PHP"</strong> (en el ejemplo XXX es el nombre del usuario de Windows)
         <div class="codigo">
           <pre>
 <code class="language-html">    # Alias: Maps web paths into filesystem paths and is used to
@@ -410,8 +416,8 @@
     # need to provide a &lt;Directory&gt; section to allow access to
     # the filesystem path.
 
-    Alias /php "C:\Users\mclibre\Documents\IAW\PHP"
-    &lt;Directory "C:\Users\mclibre\Documents\IAW\PHP"&gt;
+    Alias /php "C:\Users\XXX\Documents\IAW\PHP"
+    &lt;Directory "C:\Users\XXX\Documents\IAW\PHP"&gt;
         Options Indexes FollowSymLinks Includes ExecCGI
         AllowOverride All
         Require all granted
@@ -420,16 +426,36 @@
         </div>
       </li>
       <li>Abra la URL <strong>http://localhost/php</strong> en el navegador y compruebe que Apache le muestra el directorio:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-3.png" alt="Ejercicios Apache (1) 5" width="1024" height="340">
+        </p>
       </li>
       <li>Haga clic en el archivo <strong>test-1.html</strong> y compruebe que Apache le muestra su contenido:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-4.png" alt="Ejercicios Apache (1) 5" width="1024" height="170">
+        </p>
       </li>
       <li>Haga clic en el directorio <strong>prueba</strong> y compruebe que Apache le muestra el directorio:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-5.png" alt="Ejercicios Apache (1) 5" width="1024" height="310">
+        </p>
       </li>
       <li>Haga clic en el archivo <strong>test-2.html</strong> y compruebe que Apache le muestra su contenido:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-6.png" alt="Ejercicios Apache (1) 5" width="1024" height="170">
+        </p>
       </li>
-      <li>Cree el alias <strong>/prueba</strong> que enlace a la carpeta <strong>"C:\Users\mclibre\Documents\IAW\PHP\prueba"</strong>
+      <li>Añada otro alias, <strong>/prueba</strong>, que enlace a la carpeta <strong>"C:\Users\mclibre\Documents\IAW\PHP\prueba"</strong>
       </li>
       <li>Abra la URL <strong>http://localhost/prueba</strong> en el navegador y compruebe que Apache le muestra el directorio:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-7.png" alt="Ejercicios Apache (1) 5" width="1024" height="310">
+        </p>
+      </li>
+      <li>Haga clic en el archivo <strong>test-2.html</strong> y compruebe que Apache le muestra su contenido:
+        <p class="captura">
+          <img src="../../../img/ejercicios/puesta-en-marcha/pm-apache-1-5-8.png" alt="Ejercicios Apache (1) 5" width="1024" height="170">
+        </p>
       </li>
     </ol>
   </section>
