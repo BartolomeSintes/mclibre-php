@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Récord de cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Dibujo cuadrado. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../varios/favicon.svg">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Exámenes - Récord de cartas</h1>
+  <h1>Exámenes - Dibujo cuadrado</h1>
 
   <nav>
     <p>
@@ -21,7 +21,7 @@
     </p>
 
     <div class="toc">
-      <h2>Exámenes - Récord de cartas</h2>
+      <h2>Exámenes - Dibujo cuadrado</h2>
 
       <ul>
         <li><a href="#comentarios">Comentarios</a></li>
@@ -30,48 +30,41 @@
     </div>
   </nav>
 
-  <p>En este ejercicio se debe crear un programa que muestre tres cartas de corazones y muestre la puntuación más alta obtenida.</p>
+  <p>En este ejercicio se debe crear un programa que permita cambiar el color del borde y del relleno de un cuadrado.</p>
 
   <section id="comentarios">
-    <h2>Récord de cartas - Comentarios</h2>
+    <h2>Dibujo cuadrado - Comentarios</h2>
 
     <ul>
       <li>El programa podrá tener dos páginas y utilizar sesiones:
         <ul>
-          <li>La primera página muestra tres cartas del 1 al 10 de corazones y la puntuación más alta obtenida:
+          <li>La primera página muestra el cuadrado y las paletas para elegir el color de borde y de fondo del círculo:
             <ul>
-              <li>La primera vez que se abre la página se muestran tres ases.</li>
-              <li>Al pulsar el botón "Sacar de nuevo" se muestran 3 nuevas cartas del 1 al 10 de corazones.</li>
-              <li>Se muestra también la puntuación más alta obtenida hasta el momento (la puntuación es la suma de los valores de las cartas).</li>
-              <li>Al pulsar el botón "Volver a empezar" se vuelven a mostrar tres ases y el récord vale de nuevo tres.</li>
+              <li>La primera vez que se abre la página se muestra el cuadrado con fondo blanco y borde negro.</li>
+              <li>A su lado se muestran los colores posibles (blanco, rojo, amarillo, verde, azul y negro) para cada elemento (borde y relleno), en dos columnas.</li>
+              <li>Al hacer clic en un color, cambiará el color del elemento correspondiente.</li>
+              <li>El borde y el relleno no pueden ser del mismo color.</li>
             </ul>
           </li>
           <li>La segunda página recoge el botón, modifica las variables de sesión y redirige a la primera página.</li>
         </ul>
       </li>
       <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario.</li>
-      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>No se debe cambiar el nombre de los controles incluido en las plantillas.</li>
       <li>Al actualizar la primera página, no se modificará el contenido.</li>
       <li>Capturas de pantalla de ejemplo:
-        <p class="captura"><img src="img/cs-record-cartas-1.png" alt="Récord de cartas" width="1008" height="320"></p>
-        <p class="captura"><img src="img/cs-record-cartas-2.png" alt="Récord de cartas" width="1008" height="320"></p>
-        <p class="captura"><img src="img/cs-record-cartas-3.png" alt="Récord de cartas" width="1008" height="320"></p>
+        <p class="captura"><img src="img/cs-dibujo-cuadrado-1.png" alt="Dibujo cuadrado" width="1184" height="320"></p>
+        <p class="captura"><img src="img/cs-dibujo-cuadrado-2.png" alt="Dibujo cuadrado" width="1184" height="320"></p>
       </li>
     </ul>
   </section>
 
   <section id="ejemplo-html">
-    <h2>Récord de cartas - Ejemplo de código HTML</h2>
+    <h2>Dibujo cuadrado - Ejemplo de código HTML</h2>
 
     <div class="codigo">
       <pre>
-<code class="language-html">    &lt;p&gt;
-      &lt;img src="img/c<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="140" height="140"&gt;
-      &lt;img src="img/c<span class="codigo-resaltado">8</span>.svg" alt="<span class="codigo-resaltado">8</span>" width="140" height="140"&gt;
-      &lt;img src="img/c<span class="codigo-resaltado">7</span>.svg" alt="<span class="codigo-resaltado">7</span>" width="140" height="140"&gt;
-    &lt;/p&gt;
-
-    &lt;p&gt;Récord: <span class="codigo-resaltado">20</span>&lt;/p&gt;</code>
+<code class="language-html">            &lt;rect x="3" y="3" width="180" height="180" fill="<span class="codigo-resaltado">yellow</span>" stroke="<span class="codigo-resaltado">red</span>" stroke-width="6" /&gt;</code>
 </pre>
     </div>
   </section>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cronómetro. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Cronómetro</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Cronómetro</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre un cronómetro de la prestigiosa marca Nisupa que descuente un tiempo hasta cero.</p>
+
+  <section id="comentarios">
+    <h2>Cronómetro - Comentarios</h2>
+
+    <ul>
+      <li>El cronómetro es una imagen SVG incluida en la página.</li>
+      <li>Al actualizar la página, el cronómetro mostrará un valor entre 10 y 25 y se pondrá en marcha.</li>
+      <li>El valor irá descendiendo de uno en uno, segundo a segundo.</li>
+      <li>Al llegar a 0, el cronómetro se detendrá. El 0 se mostrará en rojo.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-cronometro-1.png" alt="Cronómetro" width="1188" height="270"></p>
+        <p class="captura"><img src="img/sf-cronometro-2.png" alt="Cronómetro" width="1188" height="270"></p>
+        <p class="captura"><img src="img/sf-cronometro-3.png" alt="Cronómetro" width="1188" height="270"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Cronómetro - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg width="320" height="220" viewBox="-10 -10 320 220" style="font-family: 'BlackOpsOne'; font-size: 110px"&gt;
+    &lt;polygon points="20,0 175,0 200,25 200,130 175,150 20,150 0,130 0,20" fill="black" /&gt;
+    &lt;rect x="199" y ="90" width="10" height="12" fill="silver" stroke="black" /&gt;
+    &lt;text x="30" y="15" text-anchor="begin" font-size="12" fill="white"&gt;NISUPA&lt;/text&gt;
+    &lt;polygon points="30,20 170,20 180,30 180,120 170,130 30,130 20,120 20,30" fill="hwb(76 75% 30%)" /&gt;
+    &lt;polygon points="30,24 170,24 176,30 176,120 170,126 30,126 24,120 24,30" stroke="black" stroke-width="1" fill="none" /&gt;
+<div class="codigo-resaltado">      &lt;text x="100" y="110" text-anchor="middle" opacity="0"&gt;<span class="codigo-resaltado">17</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">0</span>s" fill="freeze" /&gt;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">1</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div>
+<div class="codigo-resaltado">      &lt;text x="100" y="110" text-anchor="middle" opacity="0"&gt;<span class="codigo-resaltado">16</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1</span>s" fill="freeze" /&gt;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">2</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div>
+<div class="codigo-resaltado">      &lt;text x="100" y="110" text-anchor="middle" opacity="0"&gt;<span class="codigo-resaltado">15</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">2</span>s" fill="freeze" /&gt;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">3</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div>
+      ...
+
+<div class="codigo-resaltado">      &lt;text x="100" y="110" text-anchor="middle" opacity="0"&gt;<span class="codigo-resaltado">2</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">15</span>s" fill="freeze" /&gt;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">16</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</div>
+<div class="codigo-resaltado">      &lt;text x="100" y="110" text-anchor="middle" opacity="0"&gt;<span class="codigo-resaltado">1</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">16</span>s" fill="freeze" /&gt;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">17</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</div>
+<div class="codigo-resaltado">      &lt;text x="100" y="110" text-anchor="middle" opacity="0" fill="red" &gt;0
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">17</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div
+>    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2024</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cara o cruz. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Cara o cruz</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Cara o cruz</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una partida de un juego a cara o cruz entre dos jugadores que consiste en tirar cada uno una moneda. Gana cada baza el jugador que obtenga cruz él solo y gana la partida el que gane más bazas.</p>
+
+  <section id="comentarios">
+    <h2>Cara o cruz - Comentarios</h2>
+
+    <ul>
+      <li>Las imágenes de cara o cruz son imágenes SVG enlazadas en la página. La Cara muestra el símbolo del euro y la Cruz la fachada de un templo con columnas.</li>
+      <li>Al actualizar la página, se mostrará una partida completa, mostrando todas las bazas, el resultado de cada baza y el resultado final.</li>
+      <li>El número de bazas será un número al azar de 5 a 9.</li>
+      <li>La partida se mostrará en tres filas. La primera fila mostrará en orden las monedas obtenidas por el jugador A, la segunda fila mostrará en orden las monedas obtenidas por el jugador B y la tercera  fila mostrará en orden quién ha ganadado cada baza.</li>
+      <li>Al final, se indicará quién ha ganado la partida.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-cara-cruz-1.png" alt="Cara o cruz" width="1183" height="305"></p>
+        <p class="captura"><img src="img/sf-cara-cruz-2.png" alt="Cara o cruz" width="1183" height="285"></p>
+        <p class="captura"><img src="img/sf-cara-cruz-3.png" alt="Cara o cruz" width="1183" height="260"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Cara o cruz - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">
+  &lt;table style="font-size: 3rem; text-align: center;"&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A:&lt;/td&gt;
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cara-coin-u1fa99.svg" alt="Cara" title="Cara" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cara-coin-u1fa99.svg" alt="Cara" title="Cara" width="80"&gt;&lt;/td&gt;</span>
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;B:&lt;/td&gt;
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img\monedas\cruz-coin-u1fa99.svg" alt="Cruz" title="Cruz" width="80"&gt;&lt;/td&gt;</span>
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Gana:&lt;/td&gt;
+      &lt;td&gt;<span class="codigo-resaltado">-</span>&lt;/td&gt;
+      &lt;td&gt;<span class="codigo-resaltado">B</span>&lt;/td&gt;
+      &lt;td&gt;<span class="codigo-resaltado">-</span>&lt;/td&gt;
+      &lt;td&gt;<span class="codigo-resaltado">-</span>&lt;/td&gt;
+      &lt;td&gt;<span class="codigo-resaltado">A</span>&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;p&gt;<span class="codigo-resaltado">Han empatado.</span>&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 19 de junio de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

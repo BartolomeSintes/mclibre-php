@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Dibujo 3. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Dibujo 3</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Dibujo 3</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que pida un tamaño en píxeles (entre 25 y 100) y un color y muestre un dibujo SVG que incluye cuatros círculos del tamaño y color elegidos.</p>
+
+  <section id="comentarios">
+    <h2>Dibujo 3 - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página pide el radio (entre 250 y 100px) y el color de la figura (rojo, amarillo, verde o azul):
+            <p class="captura">
+              <img src="img/cf-dibujo-3-1.png" alt="Dibujo 3 - Formulario 1" width="1184" height="200">
+            </p>
+          </li>
+          <li>La segunda página realiza las comprobaciones habituales:
+            <p class="captura">
+              <img src="img/cf-dibujo-3-2.png" alt="Dibujo 3 - Error en formulario" width="1184" height="160">
+              <img src="img/cf-dibujo-3-3.png" alt="Dibujo 3 - Error en formulario" width="1184" height="160">
+            </p>
+          </li>
+          <li>En el caso de que los valores sean correctos, la segunda página muestra el dibujo.
+            <ul>
+              <li>El dibujo está formado por siete círculos.</li>
+              <li>El color y tamaño de los círculos más pequeños son los recibidos desde el formulario.</li>
+            </ul>
+            <p class="captura">
+              <img src="img/cf-dibujo-3-4.png" alt="Dibujo 3 - Resultado" width="1167" height="470">
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Dibujo 3 - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+         width="<span class="codigo-resaltado">800</span>" height="<span class="codigo-resaltado">800</span>" viewBox="<span class="codigo-resaltado">-400</span> <span class="codigo-resaltado">-400</span> <span class="codigo-resaltado">800</span> <span class="codigo-resaltado">800</span>"&gt;
+      &lt;circle cx="0" cy="0" r="<span class="codigo-resaltado">400</span>" fill="<span class="codigo-resaltado">blue</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">-200</span>" cy="0" r="<span class="codigo-resaltado">200</span>" fill="<span class="codigo-resaltado">white</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">-100</span>" cy="0" r="<span class="codigo-resaltado">100</span>" fill="<span class="codigo-resaltado">blue</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">-300</span>" cy="0" r="<span class="codigo-resaltado">100</span>" fill="<span class="codigo-resaltado">blue</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">200</span>" cy="0" r="<span class="codigo-resaltado">200</span>" fill="<span class="codigo-resaltado">white</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">100</span>" cy="0" r="<span class="codigo-resaltado">100</span>" fill="<span class="codigo-resaltado">blue</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">300</span>" cy="0" r="<span class="codigo-resaltado">100</span>" fill="<span class="codigo-resaltado">blue</span>" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+         width="<span class="codigo-resaltado">400</span>" height="<span class="codigo-resaltado">400</span>" viewBox="<span class="codigo-resaltado">-200</span> <span class="codigo-resaltado">-200</span> <span class="codigo-resaltado">400</span> <span class="codigo-resaltado">400</span>"&gt;
+      &lt;circle cx="0" cy="0" r="<span class="codigo-resaltado">200</span>" fill="<span class="codigo-resaltado">red</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">-100</span>" cy="0" r="<span class="codigo-resaltado">100</span>" fill="<span class="codigo-resaltado">white</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">-50</span>" cy="0" r="<span class="codigo-resaltado">50</span>" fill="<span class="codigo-resaltado">red</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">-150</span>" cy="0" r="<span class="codigo-resaltado">50</span>" fill="<span class="codigo-resaltado">red</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">100</span>" cy="0" r="<span class="codigo-resaltado">100</span>" fill="<span class="codigo-resaltado">white</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">50</span>" cy="0" r="<span class="codigo-resaltado">50</span>" fill="<span class="codigo-resaltado">red</span>" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">150</span>" cy="0" r="<span class="codigo-resaltado">50</span>" fill="<span class="codigo-resaltado">red</span>" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 19 de junio de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
