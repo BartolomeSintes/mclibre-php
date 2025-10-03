@@ -30,6 +30,7 @@
         <li><a href="index.html#ejercicio-3">3 - Directiva Listen</a></li>
         <li><a href="index.html#ejercicio-4">4 - Directiva DirectoryIndex</a></li>
         <li><a href="index.html#ejercicio-5">5 - Directiva Alias</a></li>
+        <li><a href="index.html#ejercicio-6">6 - Configuración clase</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
@@ -37,6 +38,7 @@
         <li><a href="#ejercicio-3">3 - Modificar DocumentRoot</a></li>
         <li><a href="#ejercicio-4">4 - Directiva DirectoryIndex</a></li>
         <li><a href="#ejercicio-5">5 - Directiva Alias</a></li>
+        <li><a href="#ejercicio-6">6 - Configuración clase</a></li>
       </ul>
     </div>
   </nav>
@@ -82,7 +84,7 @@
           <li>El orden de los nombres de archivos en DirectoryIndex determina la prioridad. Escribiendo home.html antes de index.html, se abriría home.html en vez de index.html. Por ejemplo:
             <div class="codigo">
               <pre>
-<code class="language-html">&lt;IfModule dir_module&gt;
+<code class="language-configuracion">&lt;IfModule dir_module&gt;
     DirectoryIndex index.php index.pl index.cgi index.asp index.shtml <span class="codigo-resaltado">home.html</span> index.htm \
                    default.php default.pl default.cgi default.asp default.shtml default.html default.htm \
                    home.php home.pl home.cgi home.asp home.shtml <span class="codigo-resaltado">index.html</span> home.htm
@@ -93,7 +95,7 @@
           <li>Añadiendo a la lista el nombre prueba-1.html antes de index.html y home.html. Por ejemplo:
             <div class="codigo">
               <pre>
-<code class="language-html">&lt;IfModule dir_module&gt;
+<code class="language-configuracion">&lt;IfModule dir_module&gt;
     DirectoryIndex <span class="codigo-resaltado">prueba-1.html</span> index.php index.pl index.cgi index.asp index.shtml home.html index.htm \
                    default.php default.pl default.cgi default.asp default.shtml default.html default.htm \
                    home.php home.pl home.cgi home.asp home.shtml index.html home.htm
@@ -114,7 +116,7 @@
       <li value="7">El alias es el siguiente, en el que XXX es el nombre del usuario de Windows:
         <div class="codigo">
           <pre>
-<code class="language-html">    Alias <span class="codigo-resaltado">/prueba</span> <span class="codigo-resaltado">"C:\Users\XXX\Documents\IAW\PHP\prueba"</span>
+<code class="language-configuracion">    Alias <span class="codigo-resaltado">/prueba</span> <span class="codigo-resaltado">"C:\Users\XXX\Documents\IAW\PHP\prueba"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\XXX\Documents\IAW\PHP\prueba"</span>&gt;
         Options Indexes FollowSymLinks Includes ExecCGI
         AllowOverride All
@@ -126,8 +128,57 @@
     </ol>
   </section>
 
+  <section id="ejercicio-6">
+    <h2>Apache (1) 6 - Configuración para el curso</h2>
+
+    <p>Confirme que las directivas modificadas a lo largo de estos ejercicios contienen los valores originales:</p>
+
+    <ul>
+      <li>Directiva DocumentRoot:
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">DocumentRoot "C:/xampp/htdocs"
+&lt;Directory "C:/xampp/htdocs"&gt;
+    #
+...</code>
+</pre>
+        </div>
+      </li>
+      <li>Directiva Listen:
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">Listen 80</code>
+</pre>
+        </div>
+      </li>
+      <li>Directiva DirectoryIndex:
+            <div class="codigo">
+              <pre>
+<code class="language-configuracion">&lt;IfModule dir_module&gt;
+    DirectoryIndex index.php index.pl index.cgi index.asp index.shtml index.html index.htm \
+                   default.php default.pl default.cgi default.asp default.shtml default.html default.htm \
+                   home.php home.pl home.cgi home.asp home.shtml home.html home.htm
+&lt;/IfModule&gt;</code>
+</pre>
+            </div>
+      </li>
+    </ul>
+
+  <p>El alias sería el siguiente (donde XXX es el nombre del usuario de Windows):</p>
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">    Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"C:\Users\XXX\Documents\IAW\PHP"</span>
+    &lt;Directory <span class="codigo-resaltado">"C:\Users\XXX\Documents\IAW\PHP"</span>&gt;
+        Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;</code>
+</pre>
+        </div>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 3 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
