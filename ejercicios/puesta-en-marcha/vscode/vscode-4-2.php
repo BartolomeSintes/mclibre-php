@@ -1,7 +1,8 @@
-﻿<?php
+<p>Esta es la página 2.</p>
+
+<?php
 header("Location:vscode-4-3.php");
 ?>
-<p>Esta es la página 2.</p>
 
 <p>Si ve esta página es que tiene la configuración recomendada para desarrollo recomendada en estos apuntes.</p>
 

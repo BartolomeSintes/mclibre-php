@@ -27,8 +27,9 @@
         <li><a href="#ejercicio-1">1 - Ejecutar programas</a></li>
         <li><a href="#ejercicio-2">2 - Formatear programas</a></li>
         <li><a href="#ejercicio-3">3 - PHP error_reporting</a></li>
-        <li><a href="#ejercicio-4">4 - PHP output_buffering</a></li>
-        <li><a href="#ejercicio-5">5 - mclibre.org Snippets</a></li>
+        <li><a href="#ejercicio-4">4 - PHP output_buffering (1)</a></li>
+        <li><a href="#ejercicio-5">5 - PHP output_buffering (2)</a></li>
+        <li><a href="#ejercicio-6">6 - mclibre.org Snippets</a></li>
       </ul>
     </div>
   </nav>
@@ -73,6 +74,7 @@
 /*
 Programa de prueba de PHP CS Fixer
 */
+
 $a     =        25    ;
 $b =    $a     +      $a*2 ;
 </code>
@@ -126,7 +128,7 @@ function test($a = [], $b) {}
   </section>
 
   <section id="ejercicio-4">
-    <h2>VS Code 4 - Configuración de PHP (output_buffering)</h2>
+    <h2>VS Code 4 - Configuración de PHP (output_buffering) (1)</h2>
 
     <ol>
       <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-4-1.php</strong>.</li>
@@ -134,23 +136,52 @@ function test($a = [], $b) {}
       <li>Haga clic en el enlace.</li>
       <li>Compruebe que se muestra la página vscode-4-2.php, incluyendo el siguiente aviso:
         <div class="resultado-htmnl">
-          <b>Warning</b>: Cannot modify header information - headers already sent by (output started at vscode-4-2.php:1) in <b>vscode-4-2.php</b> on line <b>2</b><br>
           <p>Esta es la página 2.</p>
+          <b>Warning</b>: Cannot modify header information - headers already sent by (output started at vscode-4-2.php:1) in <b>vscode-4-2.php</b> on line <b>2</b><br>
           <p>Si ve esta página es que tiene la configuración recomendada para desarrollo recomendada en estos apuntes.</p>
           <p>Debe ver un aviso <strong>Warning</strong> al principio de esta página.</p>
         </div>
         <p>Si en su lugar se muestra la página vscode-4-3.php, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
       </li>
     </ol>
+
+    <details>
+      <summary>Explicación</summary>
+      <p>La página vscode-4-2.php escribe primero un párrafo de html y después intenta hacer una redirección. Las redirecciones se deben hacer antes de generar html como se explica en la lección <a href="../../../lecciones/php-cabeceras.html">Cabeceras: la función header()</a>. Si el servidor tiene buffer de salida, la redirección se puede generar porque el servidor todavía no ha enviado el HTML al cliente. Pero si el servidor no tiene buffer de salida, ese HTML se envía antes de generar la redirección por lo que al intentar generar la redirección se produce un error y no se realiza la redirección.</p>
+    </details>
   </section>
 
   <section id="ejercicio-5">
-    <h2>VS Code 5 - Probar mclibre.org Snippets</h2>
+    <h2>VS Code 5 - Configuración de PHP (output_buffering) (2)</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-1.php</strong>.</li>
+      <li>Ejecute el programa.</li>
+      <li>Haga clic en el enlace.</li>
+      <li>Compruebe que se muestra la página vscode-4-2.php, incluyendo el siguiente aviso:
+        <div class="resultado-htmnl">
+          <b>Warning</b>: Cannot modify header information - headers already sent by (output started at vscode-5-2.php:1) in <b>vscode-5-2.php</b> on line <b>2</b><br>
+          <p>Esta es la página 2.</p>
+          <p>Si ve esta página es que tiene la configuración recomendada para desarrollo recomendada en estos apuntes.</p>
+          <p>Debe ver un aviso <strong>Warning</strong> al principio de esta página.</p>
+        </div>
+        <p>Si en su lugar se muestra la página vscode-5-3.php, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+
+    <details>
+      <summary>Explicación</summary>
+      <p>La página vscode-5-2.php intenta hacer una redirección justo al principio de la página. El problema es que la página está guardada en el juego de caracteres UTF-8 con BOM, que contiene caracteres no visibles al principio del archivo (como se explica en la lección <a href="../../../lecciones/php-cabeceras.html#bom">Cabeceras: la función header()</a>). Si el servidor tiene buffer de salida, la redirección se puede generar porque el servidor todavía no ha enviado esos caracteres al cliente. Pero si el servidor no tiene buffer de salida, esos caracteres se envían antes de generar la redirección por lo que al intentar generar la redirección se produce un error y no se realiza la redirección.</p>
+    </details>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>VS Code 6 - Probar mclibre.org Snippets</h2>
 
     <h3>Atajo <kbd>Ctrl+Alt+v Ctrl+Alt+l</kbd></h3>
 
     <ol>
-      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-1.php</strong>.</li>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-6-1.php</strong>.</li>
       <li>Copie el texto html siguiente:
         <div class="codigo copy">
           <pre>
@@ -178,7 +209,7 @@ function test($a = [], $b) {}
 
     <h3>Atajo <kbd>Ctrl+Alt+v Ctrl+Alt+b</kbd></h3>
     <ol>
-      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-2.php</strong>.</li>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-6-2.php</strong>.</li>
       <li>Copie el texto html siguiente:
         <div class="codigo copy">
           <pre>
@@ -206,7 +237,7 @@ function test($a = [], $b) {}
 
   <h3>Atajo <kbd>Ctrl+Alt+v Ctrl+Alt+q</kbd></h3>
   <ol>
-      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-3.php</strong>.</li>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-6-3.php</strong>.</li>
       <li>Copie el texto html siguiente:
         <div class="codigo copy">
           <pre>
@@ -227,7 +258,7 @@ function test($a = [], $b) {}
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de septiembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 6 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
