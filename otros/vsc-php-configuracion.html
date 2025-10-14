@@ -99,13 +99,11 @@
   <section id="extensiones">
     <h2>Extensiones recomendadas para el curso de PHP</h2>
 
-    <p>Estas son las extensiones que se aconseja instalar para seguir el curso <a href="https://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="https://www.mclibre.org/">mclibre.org</a>:</p>
-    <ul>
-      <li>mclibre.org Snippets</li>
-      <li>PHP CS Fixer</li>
-    </ul>
+    <p>Para seguir este curso de <a href="https://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="https://www.mclibre.org/">mclibre.org</a> se aconseja instalar las extensiones mclibre.org Snippets, PHP CS Fixer, Hex Editor, Close HTML/XML tag, Image Preview, Tag Inserter mclibre fork, HTMLHint y CSScomb</p>
 
-    <section id="mclibre-snippets">
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La forma más sencilla de instalar y configurar estas extensiones es importar un perfil ya preparado, como se comenta en la lección <a href="vsc-php-perfil.html">Perfil recomendado</a>.</p>
+
+    <section id="extension-mclibre-snippets">
       <h3>mclibre.org Snippets</h3>
 
       <p><img src="../img/vscode/vsc-extension-mclibre-snippets-logo.png" alt="Logotipo de mclibre Snippets" width="128" height="128" class="izquierda"></p>
@@ -126,7 +124,7 @@
       </ul>
     </section>
 
-    <section id="php-cs-fixer">
+    <section id="extension-php-cs-fixer">
       <h3>PHP CS Fixer</h3>
 
       <p><img src="../img/vscode/vsc-extension-php-cs-fixer-logo.png" alt="Logotipo de PHP cs fixer" width="128" height="128" class="izquierda"></p>
@@ -159,7 +157,7 @@
 
       <p><strong>Nota</strong>: En el apartado siguiente, <a href="#preferencias">Preferencias de configuración recomendadas</a>, se han incluido las configuraciones de esta extensión, por lo que no hace falta incluirlas, pero sí que debe crearse el <a href="#configuracion-php-cs-fixer">archivo de configuración de PHP CS Fixer</a> que se comenta a continuación de estas preferencias globales.</p>
 
-      <div class="codigo">
+      <div class="codigo copy">
         <pre>
 <code class="language-json">  // Extensión PHP CS Fixer
   //
@@ -235,8 +233,8 @@ return (new PhpCsFixer\Config())
         'no_unset_cast'                               =&gt; true,
         'no_unused_imports'                           =&gt; true,
         'no_useless_concat_operator'                  =&gt; true,
-        'no_useless_else'                             =&gt; true,
-        'no_useless_return'                           =&gt; false,
+        'no_useless_else'                             =&gt; false,
+        'no_useless_return'                           =&gt; true,
         'no_whitespace_before_comma_in_array'         =&gt; true,
         'normalize_index_brace'                       =&gt; true,
         'object_operator_without_whitespace'          =&gt; true,
@@ -256,6 +254,132 @@ return (new PhpCsFixer\Config())
 </pre>
       </div>
     </section>
+
+    <section id="extension-hex-editor">
+      <h3>Hex Editor</h3>
+
+      <p><img src="../img/vscode/vsc-extension-hex-editor-logo.png" alt="Logotipo de Hex Editor" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: Microsoft</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor">Hex Editor</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/microsoft/vscode-hexeditor">mclibre Snippets</a></p>
+
+      <hr class="corta">
+
+      <p>Esta extensión añade a VSCode un editor hexadecimal que permite ver todos los caracteres de un fichero.</p>
+
+      <p>En este curso, el editor hexadecimal sólo se utiliza para visualizar los caracteres de la marca de orden de bytes (BOM), que pueden afectar a la ejecución de algunos programas, como se comenta en la lección <a href="../lecciones/php-cabeceras.html#bom">Cabeceras</a>.</p>
+    </section>
+
+    <section id="extension-close-html-xml-tag">
+      <h3>Close HTML/XML tag: Cierre de etiquetas</h3>
+
+      <p><img src="../img/vscode/vsc-extension-close-html-xhtml-tag-logo.png" alt="Logotipo de Close HTML/XML tag" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: Compulim</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=Compulim.compulim-vscode-closetag">Close HTML/XML tag</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/compulim/vscode-closetag">Close HTML/XML tag</a></p>
+
+      <hr class="corta">
+
+      <p>Al pulsar el atajo de teclado <span class="soft-atajo-teclado">Alt+.</span>, se añade automáticamente la etiqueta de cierre de la etiqueta abierta anterior.</p>
+
+      <p><strong>Problemas detectados:</strong></p>
+      <ul>
+        <li>La etiqueta de cierre se añade aunque la etiqueta de cierre ya esté escrita en el documento. La extensión sólo se fija en lo que hay antes de la posición del cursor, no en lo que hay después.</li>
+      </ul>
+    </section>
+
+    <section id="extension-image-preview">
+      <h3>Image preview: Información de imágenes</h3>
+
+      <p><img src="../img/vscode/vsc-extension-image-preview-logo.png" alt="Logotipo de Image preview" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: Kiss Tamás</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview">Image preview</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/kisstkondoros/gutter-preview">Image preview</a></p>
+
+      <hr class="corta">
+
+      <p>En la lección <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-extensiones.html#extension-image-preview">Extensiones de Visual Studio Code para HTML/CSS</a> de los apuntes de HTML/CSS se comenta con más detalle el uso de esta extensión</p>
+
+      <p>Al situar el cursor sobre la ruta de una imagen, se muestra un cuadro con una miniatura de la imagen y el tamaño de la imagen. Además, haciendo
+        <span class="soft-atajo-teclado">Ctrl+clic izquierdo</span> se abre la imagen en otra pestaña.
+      </p>
+
+      <p><strong>Nota</strong>: En cursos anteriores recomendaba este extensión para ver el tamaño de las imágenes insertadas y poder rellenar los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span> fácilmente. Pero en septiembre de 2019 añadí a la lista de atajos recomendados un atajo de teclado que permite crear de forma inmediata los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span>. Sitúe el cursor en el interior de la etiqueta <span class="html-eti">img</span> y escriba el atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+s</span> y automáticamente se añadirán los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span> con los valores de la imagen. La extensión Image Preview sigue siendo útil para ver una miniatura de la imagen, pero ya no es necesaria para indicar los tamaños.</p>
+    </section>
+
+    <section id="extension-tag-inserter-mclibre-fork">
+      <h3>Tag Inserter mclibre fork: Añade etiquetas alrededor del texto seleccionado</h3>
+
+      <p><img src="../img/vscode/vsc-extension-no-logo.png" alt="Logotipo genérico" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: Bartolomé Sintes</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=BartolomeSintes.taginserter-mclibre-fork">Tag Inserter mclibre fork</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/BartolomeSintes/TagInserter-mclibre-fork">Tag Inserter mclibre fork</a></p>
+
+      <hr class="corta">
+
+      <p>En la lección <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-extensiones.html#extension-tag-inserter">Extensiones de Visual Studio Code para HTML/CSS</a> de los apuntes de HTML/CSS se comenta con más detalle el uso de esta extensión</p>
+
+      <p>Para añadir una etiqueta alrededor de un texto:</p>
+      <ul>
+        <li>seleccione con el ratón el texto alrededor del cual se quiere añadir una etiqueta</li>
+        <li>pulse el atajo de teclado <span class="soft-atajo-teclado">Alt+Shift+i</span></li>
+        <li>se abrirá en la parte superior la paleta de comandos</li>
+        <li>escriba en ella la etiqueta deseada (puede incluir atributos) y pulse <kbd>Intro</kbd></li>
+      </ul>
+
+      <p>Esta extensión es un <i>fork</i> de la extensión <a href="https://marketplace.visualstudio.com/items?itemName=l7ssha.tag-inserter">Tag Inserter</a> que permite insertar etiquetas en ficheros PHP (la extensión original no lo permite).</p>
+    </section>
+
+    <section id="extensión-htmlhint">
+      <h3>HTMLHint: Validación de HTML</h3>
+
+      <p><img src="../img/vscode/vsc-extension-htmlhint.png" alt="Logotipo de HTMLHint" width="129" height="128" class="izquierda"></p>
+
+      <p>Autor: HTMLHint</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=HTMLHint.vscode-htmlhint">HTMLHint</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/htmlhint/vscode-htmlhint">HTMLHint</a></p>
+
+      <hr class="corta">
+
+      <p>La extensión HTMLHint permite que Visual Studio Code utilice el analizador de código estático <a href="https://htmlhint.com/">HTMLHint</a>.</p>
+
+      <p>El uso de esta extensión y el significado de sus opciones de configuración se comentan en la lección <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-validacion.html#validacion-html">Validación de HTML y CSS en Visual Studio Code</a>.</p>
+    </section>
+
+    <section id="extensión-csscomb">
+      <h3>CSScomb: Formateador de CSS</h3>
+
+      <p><img src="../img/vscode/vsc-extension-csscomb.png" alt="Logotipo de CSScomb" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: Denis Malinochkin</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-csscomb">CSScomb</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/mrmlnc/vscode-csscomb">CSScomb</a></p>
+
+      <hr class="corta">
+
+      <p>La extensión CSScomb permite que Visual Studio Code utilice el formateador de código CSS <a href="https://github.com/csscomb/csscomb.js">CSScomb</a>.</p>
+
+      <p>Para que CSScomb formatee el código de la hoja de estilo, hay que pulsar la tecla <span class="soft-atajo-teclado">F1</span> y escribir el comando <span class="soft-atajo-teclado">csscomb</span>. Se puede también crear un atajo de teclado para ejecutar la orden (en los <a href="#atajos-teclado">atajos de teclado recomendados</a> se define el atajo <span class="soft-atajo-teclado">Alt+Mayús+c Alt+Mayús+f</span>).</p>
+
+      <p>El estilo de formato concreto que aplica CSScomb se configura en el archivo de configuración de usuario o en el del área de trabajo mediante la configuración csscomb.preset.</p>
+
+    </section>
   </section>
 
   <section id="preferencias">
@@ -263,24 +387,209 @@ return (new PhpCsFixer\Config())
 
     <p>Estas son las preferencias de configuración que se aconseja establecer para seguir el curso <a href="../index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="https://www.mclibre.org/">mclibre.org</a>.</p>
 
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La forma más sencilla de establecer estas preferencias de configuración es importar un perfil ya preparado, como se comenta en la lección <a href="vsc-php-perfil.html">Perfil recomendado</a>.</p>
+
     <section id="preferencias-globales">
       <h3>Preferencias globales (Usuario)</h3>
 
-      <p>En primer lugar, establezca las <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#preferencias">preferencias globales recomendadas</a> en el curso de <a href="https://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="https://www.mclibre.org/">mclibre.org</a>.</p>
+      <p>Estas son las preferencias recomendadas completas:</p>
 
-      <p>A continuación, añada las preferencias globales que se muestran a continuación, que son específicas para el curso de PHP.</p>
-
-      <p>Tenga en cuenta que estas preferencias deben añadirse dentro de las llaves inicial ({) y final (}).</p>
-
-      <p>Tenga en cuenta que puede ser necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
-      <ul>
-        <li>"php.validate.executablePath" y "php.executablePath": deben indicar la ruta hasta el ejecutable de PHP. El valor incluido en el ejemplo es el predeterminado de XAMPP en Windows.</li>
-        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
-      </ul>
-
-      <div class="codigo copy">
-        <pre>
-<code class="language-json">  // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
+      <details>
+        <summary>Haga clic para ver/ocultar las preferencias recomendadas completas:</summary>
+        <div class="codigo copy">
+          <pre>
+<code class="language-json">{
+  // Configuraciones de VSCode recomendadas para el curso
+  // Iniciación a la programación de páginas web en PHP
+  // https://www.mclibre.org/consultar/php/
+  //
+  // Versión 2025-10-12
+  //
+  //
+  // ATENCIÓN:
+  // * Se debe descomentar la línea 203 de este fichero settings.json
+  //   que corresponde a la configuración php.validate.executablePath
+  //
+  //
+  // Configuraciones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
+  //
+  // Editor: Insert Spaces
+  // Insertar espacios al presionar "TAB"
+  "editor.insertSpaces": true,
+  //
+  // Editor: Linked Editing
+  // Controla si el editor tiene habilitada la edición vinculada. Dependiendo del lenguaje, los símbolos relacionados (por ejemplo, las etiquetas HTML) se actualizan durante la edición.
+  "editor.linkedEditing": true,
+  //
+  // Editor: Minimap enabled
+  // Controla si se muestra el minimapa.
+  "editor.minimap.enabled": false,
+  //
+  // Editor: Render Whitespace
+  // Controla la forma en que el editor debe representar los caracteres de espacio en blanco.
+  "editor.renderWhitespace": "all",
+  //
+  // Editor: Word Wrap
+  // Controla cómo deben ajustarse las líneas.
+  "editor.wordWrap": "on",
+  //
+  // Files: eol
+  // Carácter predeterminado de final de línea.
+  "files.eol": "\n",
+  //
+  // Files: Trim Trailing Whitespace
+  // Si se habilita, se recortará el espacio final cuando se guarde un archivo.
+  "files.trimTrailingWhitespace": true,
+  //
+  // Git: Autofetch
+  // Si se habilita, se comprobarán automáticamente los commits del repositorio remoto.
+  "git.autofetch": true,
+  //
+  // HTML: Auto Closing Tags
+  // Habilita o deshabilita el cierre automático de las etiquetas HTML.
+  "html.autoClosingTags": false,
+  // HTML: Auto Create Quotes
+  // habilita o deshabilita la creación automática de comillas para la asignación de atributos HTML.
+  "html.autoCreateQuotes": false,
+  //
+  // HTML: Format: End With Newline
+  // Finalizar con una nueva línea.
+  "html.format.endWithNewline": true,
+  //
+  // HTML: Format Extra Liners
+  // Lista de etiquetas, separadas por comas, que deben tener una nueva línea adicional delante. null equivale a "head, body, /html".
+  "html.format.extraLiners": "body",
+  //
+  // HTML: Format Wrap Line Length
+  // Cantidad máxima de caracteres por línea (0 = deshabilitar).
+  "html.format.wrapLineLength": 0,
+  //
+  // HTML
+  // Establece los valores de configuración que se reemplazarán para el lenguaje HTML
+  "[html]": {
+    "editor.tabSize": 2,
+  },
+  //
+  // CSS
+  // Establece los valores de configuración que se reemplazarán para el lenguaje CSS
+  "[css]": {
+    "editor.tabSize": 4,
+  },
+  //
+  // Window: Command Center
+  // Muestra el iniciador de comandos junto con el título de la ventana. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
+  "window.commandCenter": false,
+  //
+  // Workkbench &gt; Layout Control: Enabled
+  // Controla si el control de diseño se muestra en la barra de título personalizada. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
+  "workbench.layoutControl.enabled": false,
+  //
+  //
+  // Configuraciones de extensiones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
+  //
+  // Extension Close HTML/XML Tag
+  //
+  // Ignore Tags : CloseTag : IgnoreTags
+  // Específica las etiquetas que serán ignoradas y no serán cerradas.
+  "closeTag.ignoreTags": "html",
+  //
+  //
+  // Extensión HTMLHint
+  //
+  // HTMLHint: Options
+  // Opciones de configuración de HTMLHint
+  "htmlhint.options": {
+    // Doctype and head
+    "doctype-first": true, //                   La primera línea es el doctype
+    "doctype-html5": true, //                   El doctype es html
+    "html-lang-require": true, //               La etiqueta html incluye el atributo lang
+    "meta-charset-require": true, //            La etiqueta head incluye la etiqueta meta con atributo charset
+    "meta-viewport-require": true, //           La etiqueta head incluye la etiqueta meta con atributo viewport
+    "title-require": true, //                   La etiqueta head incluye la etiqueta title
+    // Attributes
+    "attr-lowercase": //                        Los atributos están en minúsculas excepto los de la lista (que son atributos SVG)
+    [
+      "allowReorder", "attributeName", "attributeType", "autoReverse", "baseFrequency", "baseProfile", "calcMode", "clipPathUnits", "contentScriptType", "contentStyleType", "diffuseConstant", "edgeMode", "externalResourcesRequired", "filterRes", "filterUnits", "glyphRef", "gradientTransform", "gradientUnits", "kernelMatrix", "kernelUnitLength", "keyPoints", "keySplines", "keyTimes", "lengthAdjust", "limitingConeAngle", "markerHeight", "markerUnits", "markerWidth", "maskContentUnits", "maskUnits", "numOctaves", "pathLength", "patternContentUnits", "patternTransform", "patternUnits", "pointsAtX", "pointsAtY", "pointsAtZ", "preserveAlpha", "preserveAspectRatio", "primitiveUnits", "refX", "refY", "repeatCount", "repeatDur", "requiredExtensions", "requiredFeatures", "specularConstant", "specularExponent", "spreadMethod", "startOffset", "stdDeviation", "stitchTiles", "surfaceScale", "systemLanguage", "tableValues", "targetX", "targetY", "textLength", "viewBox", "viewTarget", "xChannelSelector", "yChannelSelector", "zoomAndPan"
+    ],
+    "attr-no-duplication": true, //             En una etiqueta no hay atributos repetidos
+    "attr-no-unnecessary-whitespace": true, //  No hay espacios entre los atributos y sus valores
+    "attr-value-double-quotes": true, //        Los valores de los atributos se escriben entre comillas dobles
+    "attr-value-no-duplication": true, //       Los valores de los atributos no se repiten en un mismo atributo
+    "attr-whitespace": true, //                 Los valores de los atributos no contienen espacios ni al principio ni al final
+    "alt-require": true, //                     Las etiquetas img incluyen el atributo alt
+    // Tags
+    "button-type-require": true, //             La etiqueta button incluye el atributo type con alguno de los valores "button", "submit" o "reset"
+    "empty-tag-not-self-closed": true, //       Las etiquetas vacías no incluyen el cierre /
+    "form-method-require": true, //             La etiqueta form incluye el atributo method con alguno de los valores "get", "post" o "dialog"
+    "src-not-empty": true, //                   Los atributos src (o href de link) no están vacíos
+    "tag-no-obsolete": true, //                 No hay etiquetas obsoletas.
+    "tag-pair": true, //                        Las etiquetas no vacías incluyen la etiqueta de cierre
+    "tagname-lowercase": //                     Las etiquetas están en minúsculas excepto las de la lista (que son etiquetas SVG)
+    [
+      "linearGradient"
+    ],
+    "tagname-specialchars": true, //            Los nombres de etiquetas solo contienen letras, números o los caracteres "-", ":" o "_"
+    // id
+    "id-class-ad-disabled": true, //            Los atributos id o class no incluyen la palabra "ad" (que puede ser bloqueada por los bloqueadores de anuncios)
+    "id-unique": true, //                       Los valores de los atributos id no se repiten
+    // Formatting
+    "spec-char-escape": true, //                Los caracteres especiales &amp;gt; &amp;lt; y &amp;amp; se escriben como entidades de carácter
+  },
+  //
+  //
+  // Extensión CSScomb
+  //
+  // CSScomb : Preset
+  // Opciones de configuración de CSScomb
+  "csscomb.preset": {
+    "always-semicolon": true, //              Escribe punto y coma (;) tras las propiedades
+    "block-indent": "    ", //                Utiliza sangrado de cuatro espacios
+    "color-case": "lower", //                 Escribe los códigos de color en minúsculas
+    "color-shorthand": false, //              Escribe los códigos de color hexadecimales con seis caracteres
+    "element-case": "lower", //               Escribe los selectores en minúsculas
+    "eof-newline": true, //                   Escribe una línea en blanco  al final del archivo
+    "leading-zero": true, //                  Escribe un cero antes de un punto decimal
+    "lines-between-rulesets": 1, //           Escribe una línea entre sentencias consecutivas
+    "quotes": "double", //                    Escribe comillas dobles
+    "remove-empty-rulesets": false, //        No elimina las sentencias sin propiedades
+    "sort-order-fallback": "abc", //          Las propiedades no ordenadas se ordenan alfabéticamente
+    "sort-order": //                          Orden de las propiedades
+    [
+      // Reseteo
+      "all",
+      // Posicionamiento clásico
+      "position", "z-index", "top", "right", "bottom", "left",
+      // Visibilidad y flexbox
+      "display", "visibility", "float", "clear", "overflow", "overflow-x", "overflow-y", "clip", "zoom", "align-content", "align-items", "align-self", "flex", "flex-flow", "flex-basis", "flex-direction", "flex-grow", "flex-shrink", "flex-wrap", "justify-content", "order",
+      // Modelo de caja: tamaño
+        "box-sizing", "width", "min-width", "max-width", "height", "min-height", "max-height", "margin", "margin-top", "margin-right", "margin-bottom", "margin-left", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left",
+      // Modelo de caja: borde, outline, fondos
+      "opacity", "border", "border-width", "border-style", "border-color", "border-top", "border-top-width", "border-top-style", "border-top-color", "border-right", "border-right-width", "border-right-style", "border-right-color", "border-bottom", "border-bottom-width", "border-bottom-style", "border-bottom-color", "border-left", "border-left-width", "border-left-style", "border-left-color", "border-radius", "border-top-left-radius", "border-top-right-radius", "border-bottom-right-radius", "border-bottom-left-radius", "border-image", "border-image-source", "border-image-slice", "border-image-width", "border-image-outset", "border-image-repeat", "outline", "outline-width", "outline-style", "outline-color", "outline-offset", "background", "background-color", "background-image", "background-repeat", "background-attachment", "background-position", "background-position-x", "background-position-y", "background-clip", "background-origin", "background-size", "box-decoration-break", "box-shadow", "text-shadow",
+      // Texto
+      "color", "cursor", "font", "font-family", "src", "font-size", "font-style", "font-variant", "font-weight", "letter-spacing", "line-height", "quotes", "resize", "text-align", "text-align-last", "text-decoration", "text-indent", "text-justify", "text-outline", "text-transform", "vertical-align", "white-space", "word-spacing",
+      // Tablas y listas
+      "table-layout", "empty-cells", "caption-side", "border-spacing", "border-collapse", "list-style", "list-style-position", "list-style-type", "list-style-image", "content", "counter-increment", "counter-reset",
+      // Animaciones y transformaciones
+      "animation", "animation-delay", "animation-direction", "animation-duration", "animation-iteration-count", "animation-name", "animation-play-state", "animation-timing-function", "transform", "transform-origin", "transition", "transition-delay", "transition-duration", "transition-property", "transition-timing-function",
+    ],
+    "space-after-colon": 1, //                Escribe un espacio en blanco después de los dos puntos (:)
+    "space-after-combinator": " ", //         Escribe un espacio en blanco después de un combinador de selectores
+    "space-after-opening-brace": "\n", //     Escribe un salto de línea después de la llave de apertura ({)
+    "space-after-selector-delimiter": " ", // Escribe un espacio en blanco después de las comas (,) en los selectores
+    "space-before-closing-brace": "\n", //    Escribe un salto de línea después de la llave de cierre (})
+    "space-before-colon": 0, //               No escribe espacios en blanco antes de una coma (,)
+    "space-before-combinator": " ", //        Escribe un espacio en blanco antes de un combinador de selectores
+    "space-before-opening-brace": " ", //     Escribe un espacio en blanco entre el selector y la llave de apertura ({)
+    "space-before-selector-delimiter": "", // No escribe espacios en blanco después de las comas (,) en los selectores
+    "space-between-declarations": "\n", //    Escribe un salto de línea entre propiedades
+    "strip-spaces": true, //                  No escribe espacios en blanco al final de las líneas
+    "tab-size": 4, //                         Escribe cuatro espacios en blanco en vez de un tabulador
+    "unitless-zero": true, //                 No escribe unidades en los valores nulos (0)
+    "vendor-prefix-align": true, //           Alinea las propiedades específicas de cada navegador para facilitar la lectura
+  },
+  //
+  //
+  // Configuraciones de VSCode recomendadas para el curso Programación web en PHP de www.mclibre.org
   //
   // PHP
   // Establece los valores de configuración que se reemplazarán para el lenguaje PHP
@@ -291,14 +600,14 @@ return (new PhpCsFixer\Config())
   //
   // PHP: Validate: Executable path
   // Ubicación del intérprete de PHP.
-  "php.validate.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
+  // "php.validate.executablePath": "C:/xampp/php/php.exe",
   //
   // PHP: Validate: Run
   // Indica la validación se ejecuta al guardar o al escribir.
   "php.validate.run": "onType",
   //
   //
-  // Configuraciones de extensiones recomendadas para el curso Programación web en PHP de www.mclibre.org
+  // Configuraciones de extensiones de VSCode recomendadas para el curso Programación web en PHP de www.mclibre.org
   //
   // Extensión PHP CS Fixer
   //
@@ -316,10 +625,279 @@ return (new PhpCsFixer\Config())
   "php-cs-fixer.autoFixBySemicolon": false,
   "php-cs-fixer.formatHtml": false,
   "php-cs-fixer.documentFormattingProvider": true,
+  "php-cs-fixer.lastDownload": 1760167353665,
+  //
+  //
+}</code>
+</pre>
+        </div>
+      </details>
+
+      <p>Estas preferencias se pueden dividir en:</p>
+
+      <ul>
+        <li>Preferencias del editor:
+          <details>
+            <summary>Haga clic para ver/ocultar las preferencias relacionadas con el editor en general:</summary>
+            <div class="codigo">
+              <pre>
+<code class="language-json">  // Configuraciones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
+  //
+  // Editor: Insert Spaces
+  // Insertar espacios al presionar "TAB"
+  "editor.insertSpaces": true,
+  //
+  // Editor: Linked Editing
+  // Controla si el editor tiene habilitada la edición vinculada. Dependiendo del lenguaje, los símbolos relacionados (por ejemplo, las etiquetas HTML) se actualizan durante la edición.
+  "editor.linkedEditing": true,
+  //
+  // Editor: Minimap enabled
+  // Controla si se muestra el minimapa.
+  "editor.minimap.enabled": false,
+  //
+  // Editor: Render Whitespace
+  // Controla la forma en que el editor debe representar los caracteres de espacio en blanco.
+  "editor.renderWhitespace": "all",
+  //
+  // Editor: Word Wrap
+  // Controla cómo deben ajustarse las líneas.
+  "editor.wordWrap": "on",
+  //
+  // Files: eol
+  // Carácter predeterminado de final de línea.
+  "files.eol": "\n",
+  //
+  // Files: Trim Trailing Whitespace
+  // Si se habilita, se recortará el espacio final cuando se guarde un archivo.
+  "files.trimTrailingWhitespace": true,
+  //
+  // Git: Autofetch
+  // Si se habilita, se comprobarán automáticamente los commits del repositorio remoto.
+  "git.autofetch": true,
+  //
+  // HTML: Auto Closing Tags
+  // Habilita o deshabilita el cierre automático de las etiquetas HTML.
+  "html.autoClosingTags": false,
+  // HTML: Auto Create Quotes
+  // habilita o deshabilita la creación automática de comillas para la asignación de atributos HTML.
+  "html.autoCreateQuotes": false,
+  //
+  // HTML: Format: End With Newline
+  // Finalizar con una nueva línea.
+  "html.format.endWithNewline": true,
+  //
+  // HTML: Format Extra Liners
+  // Lista de etiquetas, separadas por comas, que deben tener una nueva línea adicional delante. null equivale a "head, body, /html".
+  "html.format.extraLiners": "body",
+  //
+  // HTML: Format Wrap Line Length
+  // Cantidad máxima de caracteres por línea (0 = deshabilitar).
+  "html.format.wrapLineLength": 0,
+  //
+  // HTML
+  // Establece los valores de configuración que se reemplazarán para el lenguaje HTML
+  "[html]": {
+    "editor.tabSize": 2,
+  },
+  //
+  // CSS
+  // Establece los valores de configuración que se reemplazarán para el lenguaje CSS
+  "[css]": {
+    "editor.tabSize": 4,
+  },
+  //
+  // Window: Command Center
+  // Muestra el iniciador de comandos junto con el título de la ventana. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
+  "window.commandCenter": false,
+  //
+  // Workkbench &gt; Layout Control: Enabled
+  // Controla si el control de diseño se muestra en la barra de título personalizada. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
+  "workbench.layoutControl.enabled": false,
+  //</code>
+</pre>
+            </div>
+          </details>
+        </li>
+        <li>Preferencias de la extensión Close HTML/XML tag:
+          <details>
+            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión Close HTML/XML tag:</summary>
+
+            <div class="codigo">
+              <pre>
+<code class="language-json">  // Extensión Close HTML/XML tag
+  //
+  // Close Tag: Ignore Tags
+  // Específica las etiquetas que serán ignoradas y no serán cerradas.
+  "closeTag.ignoreTags": "html",
   //
   //</code>
 </pre>
-      </div>
+            </div>
+          </details>
+        </li>
+        <li>Preferencias de la extensión HTMLHint:
+          <details>
+            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión HTMLHint:</summary>
+            <div class="codigo">
+              <pre>
+<code class="language-json">  // Extensión HTMLHint
+  //
+  // HTMLHint: Options
+  // Opciones de configuración de HTMLHint
+  "htmlhint.options": {
+    // Doctype and head
+    "doctype-first": true, //                   La primera línea es el doctype
+    "doctype-html5": true, //                   El doctype es html
+    "html-lang-require": true, //               La etiqueta html incluye el atributo lang
+    "meta-charset-require": true, //            La etiqueta head incluye la etiqueta meta con atributo charset
+    "meta-viewport-require": true, //           La etiqueta head incluye la etiqueta meta con atributo viewport
+    "title-require": true, //                   La etiqueta head incluye la etiqueta title
+    // Attributes
+    "attr-lowercase": //                        Los atributos están en minúsculas excepto los de la lista (que son atributos SVG)
+    [
+      "allowReorder", "attributeName", "attributeType", "autoReverse", "baseFrequency", "baseProfile", "calcMode", "clipPathUnits", "contentScriptType", "contentStyleType", "diffuseConstant", "edgeMode", "externalResourcesRequired", "filterRes", "filterUnits", "glyphRef", "gradientTransform", "gradientUnits", "kernelMatrix", "kernelUnitLength", "keyPoints", "keySplines", "keyTimes", "lengthAdjust", "limitingConeAngle", "markerHeight", "markerUnits", "markerWidth", "maskContentUnits", "maskUnits", "numOctaves", "pathLength", "patternContentUnits", "patternTransform", "patternUnits", "pointsAtX", "pointsAtY", "pointsAtZ", "preserveAlpha", "preserveAspectRatio", "primitiveUnits", "refX", "refY", "repeatCount", "repeatDur", "requiredExtensions", "requiredFeatures", "specularConstant", "specularExponent", "spreadMethod", "startOffset", "stdDeviation", "stitchTiles", "surfaceScale", "systemLanguage", "tableValues", "targetX", "targetY", "textLength", "viewBox", "viewTarget", "xChannelSelector", "yChannelSelector", "zoomAndPan"
+    ],
+    "attr-no-duplication": true, //             En una etiqueta no hay atributos repetidos
+    "attr-no-unnecessary-whitespace": true, //  No hay espacios entre los atributos y sus valores
+    "attr-value-double-quotes": true, //        Los valores de los atributos se escriben entre comillas dobles
+    "attr-value-no-duplication": true, //       Los valores de los atributos no se repiten en un mismo atributo
+    "attr-whitespace": true, //                 Los valores de los atributos no contienen espacios ni al principio ni al final
+    "alt-require": true, //                     Las etiquetas img incluyen el atributo alt
+    // Tags
+    "button-type-require": true, //             La etiqueta button incluye el atributo type con alguno de los valores "button", "submit" o "reset"
+    "empty-tag-not-self-closed": true, //       Las etiquetas vacías no incluyen el cierre /
+    "form-method-require": true, //             La etiqueta form incluye el atributo method con alguno de los valores "get", "post" o "dialog"
+    "src-not-empty": true, //                   Los atributos src (o href de link) no están vacíos
+    "tag-no-obsolete": true, //                 No hay etiquetas obsoletas.
+    "tag-pair": true, //                        Las etiquetas no vacías incluyen la etiqueta de cierre
+    "tagname-lowercase": //                     Las etiquetas están en minúsculas excepto las de la lista (que son etiquetas SVG)
+    [
+      "linearGradient"
+    ],
+    "tagname-specialchars": true, //            Los nombres de etiquetas solo contienen letras, números o los caracteres "-", ":" o "_"
+    // id
+    "id-class-ad-disabled": true, //            Los atributos id o class no incluyen la palabra "ad" (que puede ser bloqueada por los bloqueadores de anuncios)
+    "id-unique": true, //                       Los valores de los atributos id no se repiten
+    // Formatting
+    "spec-char-escape": true, //                Los caracteres especiales &amp;gt; &amp;lt; y &amp;amp; se escriben como entidades de carácter
+  },
+  //</code>
+</pre>
+            </div>
+          </details>
+        </li>
+        <li>Preferencias de la extensión CSScomb:
+          <details>
+            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión CSScomb:</summary>
+            <div class="codigo">
+              <pre>
+<code class="language-json">  // Extensión CSScomb
+  //
+  // CSScomb : Preset
+  // Opciones de configuración de CSScomb
+  "csscomb.preset": {
+    "always-semicolon": true, //              Escribe punto y coma (;) tras las propiedades
+    "block-indent": "    ", //                Utiliza sangrado de cuatro espacios
+    "color-case": "lower", //                 Escribe los códigos de color en minúsculas
+    "color-shorthand": false, //              Escribe los códigos de color hexadecimales con seis caracteres
+    "element-case": "lower", //               Escribe los selectores en minúsculas
+    "eof-newline": true, //                   Escribe una línea en blanco  al final del archivo
+    "leading-zero": true, //                  Escribe un cero antes de un punto decimal
+    "lines-between-rulesets": 1, //           Escribe una línea entre sentencias consecutivas
+    "quotes": "double", //                    Escribe comillas dobles
+    "remove-empty-rulesets": false, //        No elimina las sentencias sin propiedades
+    "sort-order-fallback": "abc", //          Las propiedades no ordenadas se ordenan alfabéticamente
+    "sort-order": //                          Orden de las propiedades
+    [
+      // Reseteo
+      "all",
+      // Posicionamiento clásico
+      "position", "z-index", "top", "right", "bottom", "left",
+      // Visibilidad y flexbox
+      "display", "visibility", "float", "clear", "overflow", "overflow-x", "overflow-y", "clip", "zoom", "align-content", "align-items", "align-self", "flex", "flex-flow", "flex-basis", "flex-direction", "flex-grow", "flex-shrink", "flex-wrap", "justify-content", "order",
+      // Modelo de caja: tamaño
+        "box-sizing", "width", "min-width", "max-width", "height", "min-height", "max-height", "margin", "margin-top", "margin-right", "margin-bottom", "margin-left", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left",
+      // Modelo de caja: borde, outline, fondos
+      "opacity", "border", "border-width", "border-style", "border-color", "border-top", "border-top-width", "border-top-style", "border-top-color", "border-right", "border-right-width", "border-right-style", "border-right-color", "border-bottom", "border-bottom-width", "border-bottom-style", "border-bottom-color", "border-left", "border-left-width", "border-left-style", "border-left-color", "border-radius", "border-top-left-radius", "border-top-right-radius", "border-bottom-right-radius", "border-bottom-left-radius", "border-image", "border-image-source", "border-image-slice", "border-image-width", "border-image-outset", "border-image-repeat", "outline", "outline-width", "outline-style", "outline-color", "outline-offset", "background", "background-color", "background-image", "background-repeat", "background-attachment", "background-position", "background-position-x", "background-position-y", "background-clip", "background-origin", "background-size", "box-decoration-break", "box-shadow", "text-shadow",
+      // Texto
+      "color", "cursor", "font", "font-family", "src", "font-size", "font-style", "font-variant", "font-weight", "letter-spacing", "line-height", "quotes", "resize", "text-align", "text-align-last", "text-decoration", "text-indent", "text-justify", "text-outline", "text-transform", "vertical-align", "white-space", "word-spacing",
+      // Tablas y listas
+      "table-layout", "empty-cells", "caption-side", "border-spacing", "border-collapse", "list-style", "list-style-position", "list-style-type", "list-style-image", "content", "counter-increment", "counter-reset",
+      // Animaciones y transformaciones
+      "animation", "animation-delay", "animation-direction", "animation-duration", "animation-iteration-count", "animation-name", "animation-play-state", "animation-timing-function", "transform", "transform-origin", "transition", "transition-delay", "transition-duration", "transition-property", "transition-timing-function",
+    ],
+    "space-after-colon": 1, //                Escribe un espacio en blanco después de los dos puntos (:)
+    "space-after-combinator": " ", //         Escribe un espacio en blanco después de un combinador de selectores
+    "space-after-opening-brace": "\n", //     Escribe un salto de línea después de la llave de apertura ({)
+    "space-after-selector-delimiter": " ", // Escribe un espacio en blanco después de las comas (,) en los selectores
+    "space-before-closing-brace": "\n", //    Escribe un salto de línea después de la llave de cierre (})
+    "space-before-colon": 0, //               No escribe espacios en blanco antes de una coma (,)
+    "space-before-combinator": " ", //        Escribe un espacio en blanco antes de un combinador de selectores
+    "space-before-opening-brace": " ", //     Escribe un espacio en blanco entre el selector y la llave de apertura ({)
+    "space-before-selector-delimiter": "", // No escribe espacios en blanco después de las comas (,) en los selectores
+    "space-between-declarations": "\n", //    Escribe un salto de línea entre propiedades
+    "strip-spaces": true, //                  No escribe espacios en blanco al final de las líneas
+    "tab-size": 4, //                         Escribe cuatro espacios en blanco en vez de un tabulador
+    "unitless-zero": true, //                 No escribe unidades en los valores nulos (0)
+    "vendor-prefix-align": true, //           Alinea las propiedades específicas de cada navegador para facilitar la lectura
+  },
+  //</code>
+</pre>
+            </div>
+          </details>
+        </li>
+        <li>Preferencias de la extensión PHP CS Fixer:
+          <details>
+            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión PHP CS Fixer:</summary>
+
+            <p>Tenga en cuenta que es necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
+
+            <ul>
+              <li>"php.validate.executablePath" debe indicar la ruta hasta el ejecutable de PHP. La línea está comentada y debe ser descomentada e indicar la ruta correcta. El valor incluido es el predeterminado de XAMPP en Windows.</li>
+              <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
+            </ul>
+
+            <div class="codigo">
+              <pre>
+<code class="language-json">  // PHP
+  // Establece los valores de configuración que se reemplazarán para el lenguaje PHP
+  "[php]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "junstyle.php-cs-fixer",
+  },
+  //
+  // PHP: Validate: Executable path
+  // Ubicación del intérprete de PHP.
+  // "php.validate.executablePath": "C:/xampp/php/php.exe",
+  //
+  // PHP: Validate: Run
+  // Indica la validación se ejecuta al guardar o al escribir.
+  "php.validate.run": "onType",
+  //
+  //
+  // Extensión PHP CS Fixer
+  //
+  // Ubicación del ejecutable de php-cs-fixer
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php-cs-fixer.executablePathWindows": "${extensionPath}/php-cs-fixer.phar",
+  // Configuraciones de php-cs-fixer
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR2",
+  "php-cs-fixer.config": "php-cs-fixer-config.php",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
+  "php-cs-fixer.lastDownload": 1760167353665,
+  //</code>
+</pre>
+            </div>
+          </details>
+        </li>
+      </ul>
     </section>
   </section>
 
@@ -328,7 +906,7 @@ return (new PhpCsFixer\Config())
 
     <p>Estas son las tareas que se aconseja crear para seguir el curso <a href="https://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="https://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <p>Estas tareas se deben añadir a las <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#tareas">tareas recomendadas</a> en el curso de <a href="https://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="https://www.mclibre.org/">mclibre.org</a>. Cree dichas tareas y después añada las tareas definidas a continuación. Tenga en cuenta que estas tareas deben añadirse dentro de la clave "tasks" (entre los corchetes inicial ([) y final (]) que definen la clave).</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La forma más sencilla de establecer estas tareas es importar un perfil ya preparado, como se comenta en la lección <a href="vsc-php-perfil.html">Perfil recomendado</a>.</p>
 
     <p>Una vez definidas las tareas, se recomienda definir los atajos de teclado que ejecuten estas tareas, tal y como se comenta en el apartado sobre <a href="#atajos-teclado">Atajos de teclado recomendados</a>.</p>
 
@@ -339,27 +917,39 @@ return (new PhpCsFixer\Config())
 
       <p>Tenga en cuenta que para que las páginas se muestren en el navegador es necesario crear un alias en Apache, como se comenta en la lección <a href="php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
 
+
       <p>Compruebe los campos enmarcados del ejemplo siguiente, por si necesita modificarlas:</p>
       <ul>
         <li>"command": debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows 10.
           <p>En particular, compruebe la ubicación del ejecutable de Chrome, ya que desde Chrome 85 (publicado en agosto de 2020) Chrome se instala en "C:\Archivos de programa\" y no en "C:\Archivos de programa (x86)" como hacía antes, pero las actualizaciones no cambian la ubicación del programa, por lo que si tiene Chrome instalado desde antes de 2020 la ruta seguramente será "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe".</p>
         </li>
-        <li>"args": debe indicar el alias definido en Apache para acceder a la carpeta abierta en Visual Studio Code como área de trabajo (el del ejemplo corresponde a lo propuesto en el <a href="../ejercicios/puesta-en-marcha/apache-1/index.html#ejercicio-5">ejercicio Apache (1) 5</a>).</li>
+        <li>"args": debe indicar el alias definido en Apache para acceder a la carpeta abierta en Visual Studio Code como área de trabajo (el del ejemplo corresponde a lo propuesto en el <a href="../ejercicios/puesta-en-marcha/apache-1/index.html#ejercicio-5">ejercicio Apache (1) 5</a>).
+
+          <p>En los valores de "args" pueden utilizarse las variables que se comentan en la página <a href="https://code.visualstudio.com/docs/editor/variables-reference">Listado de variables</a> de la documentación oficial de Visual Studio Code.</p>
+        </li>
         <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
       </ul>
 
-      <div class="codigo copy">
-        <pre>
-<code class="language-json">    //
-    // Tareas recomendadas para el curso Programación web en PHP de www.mclibre.org
+      <details>
+        <summary>Haga clic para ver/ocultar las tareas recomendadas:</summary>
+        <div class="codigo copy">
+          <pre>
+<code class="language-json">{
+  // Tareas de VSCode recomendadas para el curso Programación web en PHP de www.mclibre.org
+  //
+  "version": "2.0.0",
+  "tasks": [
     {
       "label": "Abrir en localhost (Firefox)",
       "command": "explorer",
       "windows": {
-        "command": "<span class="codigo-resaltado">C:/Program Files/Mozilla Firefox/firefox.exe</span>"
+        "command": "C:/Program Files/Mozilla Firefox/firefox.exe"
+      },
+      "linux": {
+        "command": "firefox"
       },
       "args": [
-        "localhost/<span class="codigo-resaltado">iaw/php</span>/${relativeFile}"
+        "localhost/iaw/php/${relativeFile}"
       ],
       "presentation": {
         "reveal": "never"
@@ -370,21 +960,25 @@ return (new PhpCsFixer\Config())
       "label": "Abrir en localhost (Chrome)",
       "command": "explorer",
       "windows": {
-        "command": "<span class="codigo-resaltado">C:/Program Files/Google/Chrome/Application/chrome.exe</span>"
+        "command": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+      },
+      "linux": {
+        "command": "google-chrome"
       },
       "args": [
-        "localhost/<span class="codigo-resaltado">iaw/php</span>/${relativeFile}"
+        "localhost/iaw/php/${relativeFile}"
       ],
       "presentation": {
         "reveal": "never"
       },
       "problemMatcher": []
-    },
-    //</code>
+    }
+    //
+  ]
+}</code>
 </pre>
-      </div>
-
-      <p>En las tareas, en los valores de "args" pueden utilizarse las variables que se comentan en la página <a href="https://code.visualstudio.com/docs/editor/variables-reference">Listado de variables</a> de la documentación oficial de Visual Studio Code.</p>
+        </div>
+      </details>
     </section>
   </section>
 
@@ -393,14 +987,88 @@ return (new PhpCsFixer\Config())
 
     <p>Estos son los atajos de teclado que se aconseja definir para seguir el curso <a href="https://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="https://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <p>Estas atajos se deben añadir a las <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#atajos-teclado">atajos de teclado recomendados</a> en el curso de <a href="https://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="https://www.mclibre.org/">mclibre.org</a>. Cree dichos atajos de teclado y después añada los atajos de teclado definidos a continuación. Tenga en cuenta que estos atajos de teclado deben añadirse entre los corchetes inicial ([) y final (]).</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La forma más sencilla de establecer estos atajos es importar un perfil ya preparado, como se comenta en la lección <a href="vsc-php-perfil.html">Perfil recomendado</a>.</p>
 
-    <p>Tenga en cuenta que la clave "args" del atajo debe coincidir con la clave "label" de la tarea correspondiente o con el nombre del snippet correspondiente.</p>
+    <p>En los atajos de teclado que ejecutan tareas, tenga en cuenta que la clave "args" del atajo debe coincidir con la clave "label" de la tarea correspondiente o con el nombre del snippet correspondiente.</p>
 
-    <div class="codigo copy">
-      <pre>
-<code class="language-json">    //
-    // Atajos de teclado recomendados para el curso Programación web en PHP de www.mclibre.org
+    <details>
+      <summary>Haga clic para ver/ocultar los atajos de teclado recomendados:</summary>
+      <div class="codigo copy">
+        <pre>
+<code class="language-json">[
+    // SELECCIÓN de atajos de teclado de VSCode recomendados para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
+    //
+    {
+        // Abrir y pasar el foco al Explorador de archivos
+        "key": "ctrl+alt+NumPad_Divide",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "!filesExplorerFocus"
+    },
+    {
+        // Cerrar el Explorador de archivos
+        "key": "ctrl+alt+NumPad_Divide",
+        "command": "workbench.action.closeSidebar",
+        "when": "filesExplorerFocus"
+    },
+    {
+        // Abrir y pasar el foco a Panel &gt; Problemas. Cerrar Panel &gt; Problemas
+        "key": "ctrl+alt+NumPad_Multiply",
+        "command": "workbench.actions.view.problems",
+        "when": "workbench.panel.markers.view.active"
+    },
+    {
+        // Pasar el foco al Editor
+        "key": "ctrl+alt+NumPad_Subtract",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorFocus"
+    },
+    {
+        // Abrir y pasar el foco al Panel &gt; Terminal
+        "key": "ctrl+alt+NumPad_Add",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    },
+    {
+        // Cerrar el Panel y pasar el foco al Editor
+        "key": "ctrl+alt+NumPad_Add",
+        "command": "workbench.action.closePanel",
+        "when": "terminalFocus"
+    },
+    {
+        // Emmet: Borrar etiqueta
+        "key": "ctrl+alt+e ctrl+alt+b",
+        "command": "editor.emmet.action.removeTag"
+    },
+    {
+        // Emmet: Insertar tamaño imagen
+        "key": "ctrl+alt+e ctrl+alt+s",
+        "command": "editor.emmet.action.updateImageSize"
+    },
+    {
+        // Emmet: Seleccionar elemento superior
+        "key": "ctrl+alt+e ctrl+alt+o",
+        "command": "editor.emmet.action.balanceOut"
+    },
+    {
+        // Emmet: Seleccionar elemento inferior
+        "key": "ctrl+alt+e ctrl+alt+i",
+        "command": "editor.emmet.action.balanceIn"
+    },
+    {
+        // Extensión CSScomb: Ejecutar en Windows
+        "key": "alt+shift+c alt+shift+f",
+        "command": "csscomb.execute",
+        "when": "isWindows"
+    },
+    {
+        // Extensión CSScomb: Ejecutar en Linux
+        "key": "ctrl+shift+c ctrl+shift+i",
+        "command": "csscomb.execute",
+        "when": "isLinux"
+    },
+    //
+    //
+    // Atajos de teclado de VSCode recomendados para el curso Programación web en PHP de www.mclibre.org
     {
         // Tarea: Abrir en localhost (Firefox)
         "key": "ctrl+alt+l ctrl+alt+f",
@@ -413,13 +1081,15 @@ return (new PhpCsFixer\Config())
         "command": "workbench.action.tasks.runTask",
         "args": "Abrir en localhost (Chrome)"
     },
-    //</code>
+    //
+]</code>
 </pre>
-    </div>
+      </div>
+    </details>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de febrero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 14 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
