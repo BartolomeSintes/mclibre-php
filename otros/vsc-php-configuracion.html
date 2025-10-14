@@ -141,118 +141,9 @@
 
       <p>Una vez instalada, aplique la herramienta mediante el atajo de teclado habitual para formatear código <span class="soft-atajo-teclado">Alt+Mayús+f</span>.</p>
 
-      <p>La herramienta CS Fixer no está diseñada para formatear archivos con fragmentos HTML y fragmentos PHP, por ello al formatear estos archivos únicamente se formateará el código PHP, no el HTML.</p>
+      <p>Esta extensión requiere un fichero de configuración que debe crearse manualmente, como se explica en el apartado de <a href="#preferencias-extension-php-cs-fixer">preferencias de la extensión PHP CS Fixer</a>.</p>
 
-      <p><strong>Notas</strong>:</p>
-      <ul>
-        <li>Realmente, esta extensión puede formatear también los fragmentos HTML (estableciendo la configuración "php-cs-fixer.formatHtml" con el valor true), pero el resultado no me termina de gustar y por eso no recomiendo activarlo.</li>
-        <li>Existe una extensión para facilitar el formateo de fragmentos HTML, <a href="https://marketplace.visualstudio.com/items?itemName=rifi2k.format-html-in-php">Format HTML in PHP</a>, pero el resultado tampoco me termina de gustar y por eso no recomiendo instalarla.
-          <p>La <a href="https://github.com/RiFi2k/format-html-in-php/issues/27">issue #27</a> es una de la que me gustaría ver resuelta antes de recomendar esta extensión.</p>
-        </li>
-      </ul>
-
-      <hr class="corta">
-
-      <h4>Preferencias globales recomendadas para PHP CS Fixer:</h4>
-
-      <p><strong>Nota</strong>: En el apartado siguiente, <a href="#preferencias">Preferencias de configuración recomendadas</a>, se han incluido las configuraciones de esta extensión, por lo que no hace falta incluirlas, pero sí que debe crearse el <a href="#configuracion-php-cs-fixer">archivo de configuración de PHP CS Fixer</a> que se comenta a continuación de estas preferencias globales.</p>
-
-      <div class="codigo copy">
-        <pre>
-<code class="language-json">  // Extensión PHP CS Fixer
-  //
-  // Ubicación del ejecutable de php-cs-fixer
-  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
-  "php-cs-fixer.executablePathWindows": "${extensionPath}/php-cs-fixer.phar",
-  // Configuraciones de php-cs-fixer
-  "php-cs-fixer.onsave": false,
-  "php-cs-fixer.rules": "@PSR2",
-  "php-cs-fixer.config": "php-cs-fixer-config.php",
-  "php-cs-fixer.allowRisky": false,
-  "php-cs-fixer.pathMode": "override",
-  "php-cs-fixer.exclude": [],
-  "php-cs-fixer.autoFixByBracket": true,
-  "php-cs-fixer.autoFixBySemicolon": false,
-  "php-cs-fixer.formatHtml": false,
-  "php-cs-fixer.documentFormattingProvider": true,
-  //
-  //</code>
-</pre>
-      </div>
-
-      <h4 id="configuracion-php-cs-fixer">Archivo de configuración de PHP CS Fixer</h4>
-
-      <p>Cree un fichero <strong>php-cs-fixer-config.php</strong> en la carpeta .vscode y copie en él la configuración recomendada para PHP CS Fixer que se muestra a continuación. Tenga en cuenta que el nombre del fichero se establece con la opción de configuración "php-cs-fixer.config" y el archivo de configuración puede estar fuera de la carpeta .vscode.</p>
-
-      <p>Las reglas disponibles en PHP CS Fixer se pueden consultar de forma individual en la <a href="https://cs.symfony.com/doc/rules/index.html">documentación de PHP CS Fixer</a>.</p>
-
-      <div class="codigo copy">
-        <pre>
-<code class="language-php">&lt;?php
-
-// Apuntes del curso Programación web en PHP
-// https://www.mclibre.org/consultar/php/
-//
-// Archivo de configuración para PHP CS Fixer
-// 2025-02-06
-
-return (new PhpCsFixer\Config())
-    -&gt;setRules([
-        '@PER'                                        =&gt; true,
-        'align_multiline_comment'                     =&gt; ['comment_type' =&gt; 'all_multiline'],
-        'array_indentation'                           =&gt; true,
-        'array_syntax'                                =&gt; ['syntax' =&gt; 'short'],
-        'binary_operator_spaces'                      =&gt; ['default' =&gt; 'single_space', 'operators' =&gt; ['=' =&gt; 'align_single_space_minimal'], ],
-        'blank_line_after_opening_tag'                =&gt; false,
-        'cast_spaces'                                 =&gt; ['space' =&gt; 'none'],
-        'combine_consecutive_issets'                  =&gt; true,
-        'concat_space'                                =&gt; ['spacing' =&gt; 'one'],
-        'explicit_indirect_variable'                  =&gt; true,
-        'function_typehint_space'                     =&gt; true,
-        'include'                                     =&gt; true,
-        'linebreak_after_opening_tag'                 =&gt; true,
-        'list_syntax'                                 =&gt; ['syntax' =&gt; 'short'],
-        'magic_constant_casing'                       =&gt; true,
-        'magic_method_casing'                         =&gt; true,
-        'multiline_comment_opening_closing'           =&gt; true,
-        'multiline_whitespace_before_semicolons'      =&gt; true,
-        'native_function_casing'                      =&gt; true,
-        'native_function_type_declaration_casing'     =&gt; true,
-        'no_alias_language_construct_call'            =&gt; true,
-        'no_alternative_syntax'                       =&gt; true,
-        'no_empty_statement'                          =&gt; true,
-        'no_extra_blank_lines'                        =&gt; true,
-        'no_mixed_echo_print'                         =&gt; ['use' =&gt; 'print'],
-        'no_multiline_whitespace_around_double_arrow' =&gt; true,
-        'no_short_bool_cast'                          =&gt; true,
-        'no_singleline_whitespace_before_semicolons'  =&gt; true,
-        'no_spaces_around_offset'                     =&gt; true,
-        'no_superfluous_elseif'                       =&gt; false,
-        'no_unneeded_control_parentheses'             =&gt; true,
-        'no_unneeded_curly_braces'                    =&gt; true,
-        'no_unset_cast'                               =&gt; true,
-        'no_unused_imports'                           =&gt; true,
-        'no_useless_concat_operator'                  =&gt; true,
-        'no_useless_else'                             =&gt; false,
-        'no_useless_return'                           =&gt; true,
-        'no_whitespace_before_comma_in_array'         =&gt; true,
-        'normalize_index_brace'                       =&gt; true,
-        'object_operator_without_whitespace'          =&gt; true,
-        'semicolon_after_instruction'                 =&gt; true,
-        'single_line_comment_style'                   =&gt; true,
-        'space_after_semicolon'                       =&gt; true,
-        'standardize_not_equals'                      =&gt; true,
-        'statement_indentation'                       =&gt; ['stick_comment_to_next_continuous_control_statement' =&gt; true],
-        'ternary_to_null_coalescing'                  =&gt; true,
-        'trailing_comma_in_multiline'                 =&gt; true,
-        'trim_array_spaces'                           =&gt; true,
-        'unary_operator_spaces'                       =&gt; true,
-        'whitespace_after_comma_in_array'             =&gt; true,
-    ])
-    -&gt;setIndent("    ")
-    -&gt;setLineEnding("\n");</code>
-</pre>
-      </div>
+      <p>PHP CS Fixer puede formatear también los fragmentos HTML que haya en ficheros .php (estableciendo la configuración "php-cs-fixer.formatHtml" con el valor true), pero el resultado no me termina de gustar y por eso no recomiendo activarlo. Con la configuración recomendada en este curso, únicamente se formateará el código PHP, no el HTML.</p>
     </section>
 
     <section id="extension-hex-editor">
@@ -358,6 +249,8 @@ return (new PhpCsFixer\Config())
       <p>La extensión HTMLHint permite que Visual Studio Code utilice el analizador de código estático <a href="https://htmlhint.com/">HTMLHint</a>.</p>
 
       <p>El uso de esta extensión y el significado de sus opciones de configuración se comentan en la lección <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-validacion.html#validacion-html">Validación de HTML y CSS en Visual Studio Code</a>.</p>
+
+      <p>Actualmente (octbre de 2025), esta extensión no trabaja correctamente con ficheros .php. Con la configuración recomendada en este curso, esta extensión sólo trabajará con archivos .html, por lo que resultará de poca utilidad.</p>
     </section>
 
     <section id="extensión-csscomb">
@@ -379,6 +272,7 @@ return (new PhpCsFixer\Config())
 
       <p>El estilo de formato concreto que aplica CSScomb se configura en el archivo de configuración de usuario o en el del área de trabajo mediante la configuración csscomb.preset.</p>
 
+      <p>Actualmente (octbre de 2025), esta extensión no trabaja con ficheros .php. Con la configuración recomendada en este curso, esta extensión sólo trabajará con archivos .css y con bloques <span class="html-eti">&lt;style&gt;</span> de archivos .html, por lo que resultará de poca utilidad.</p>
     </section>
   </section>
 
@@ -616,7 +510,6 @@ return (new PhpCsFixer\Config())
   "php-cs-fixer.executablePathWindows": "${extensionPath}/php-cs-fixer.phar",
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
-  "php-cs-fixer.rules": "@PSR2",
   "php-cs-fixer.config": "php-cs-fixer-config.php",
   "php-cs-fixer.allowRisky": false,
   "php-cs-fixer.pathMode": "override",
@@ -638,7 +531,8 @@ return (new PhpCsFixer\Config())
       <ul>
         <li>Preferencias del editor:
           <details>
-            <summary>Haga clic para ver/ocultar las preferencias relacionadas con el editor en general:</summary>
+            <summary>Haga clic aquí para ver/ocultar las preferencias relacionadas con el editor en general:</summary>
+
             <div class="codigo">
               <pre>
 <code class="language-json">  // Configuraciones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
@@ -717,11 +611,77 @@ return (new PhpCsFixer\Config())
 </pre>
             </div>
           </details>
+
+          <details>
+            <summary>Haga clic aquí para ver/ocultar la explicación de las preferencias relacionadas con el editor en general:</summary>
+
+            <ul>
+              <li>"editor.insertSpaces": true,
+                <p>Es conveniente sangrar adecuadamente los documentos para facilitar su lectura. Para sangrar un documento, se han utilizado siempre los tabuladores. Pero en los editores modernos no es necesario utilizar tabuladores porque los editores saben gestionar los espacios, de manera que cuando se pulsa la tecla <kbd>tabulador</kbd> el editor añade los espacios necesarios.</p>
+              </li>
+              <li>"editor.linkedEditing": true,
+                <p>Esta preferencia hace que al cambiar una etiqueta HTML (de apertura o de cierre) VSC cambie la etiqueta emparejada (de cierre o de apertura).</p>
+              </li>
+              <li>"editor.minimap.enabled": false
+                <p>Esta preferencia hace que VSC oculte el minimapa.</p>
+              </li>
+              <li>"editor.renderWhitespace": "all"
+                <p>Esta preferencia hace que VSC muestre un punto en cada espacio en blanco. Es una ayuda visual para poder contar fácilmente el número de espacios en blanco.</p>
+              </li>
+              <li>"editor.wordWrap": "on"
+                <p>Esta preferencia hace que VSC aproveche todo el ancho de pantalla para mostrar los documentos y no añada saltos de línea al formatear el documento.</p>
+              </li>
+              <li>"files.eol": "\n"
+                <p>Esta preferencia fuerza a VSC a utilizar el carácter LF para los saltos de líneas (habitual en GNU/Linux) y no los caracteres habituales en Windows (CR LF). Esta es la configuración más extendida en el ámbito del desarrollo web.</p>
+
+                <p>Si se abren los documentos que utilizan el carácter LF para los saltos de línea con un programa que no entienda correctamente ese carácter, el contenido se verá todo seguido, sin saltos de línea. El Bloc de notas de Windows 7 es uno de estos programas, por lo que no se recomienda editar los documentos creados en este curso con el Bloc de notas de Windows 7.</p>
+              </li>
+              <li>"files.trimTrailingWhitespace": true
+                <p>Esta preferencia hace que, al guardar un archivo, VSC borre los espacios en blanco situados al final de las líneas. Esos espacios son innecesarios y lo único que hacen es ocupar espacio.</p>
+              </li>
+              <li>"git.autofetch": true
+                <p>A veces, parece que Visual Studio Code ha bloqueado los archivos (por ejemplo, si se intenta sustituir una imagen por otra). No pasa siempre, pero parece que está relacionado con una preferencia de git, que está comprobando si hay cambios y bloquea temporalmente los archivos.</p>
+              </li>
+              <li>"html.autoClosingTags": false
+                <p>Cuando se crea una página web desde cero, resulta conveniente que el editor cierre automáticamente las etiquetas, para no olvidarse de hacerlo. Al escribir una etiqueta, Visual Studio Code añade automáticamente la etiqueta de cierre después del cursor, de manera que lo que se escribe a continuación queda encerrado en el interior de la etiqueta.</p>
+
+                <p>Pero para hacer los ejercicios propuestos en este curso el cierre automático complica la realización de los ejercicios. En los ejercicios se proporciona siempre el texto de la página web, para ahorrar al alumno el trabajo de copiarlo. Hacer un ejercicio es añadir las etiquetas de apertura al principio de los fragmentos de texto y etiquetas de cierre al final. En esta situación, el cierre automático de las etiquetas es un inconveniente, ya que el cierre se crea al principio del fragmento de texto, no al final.</p>
+
+                <p>Por ello, para hacer los ejercicios de este curso, en vez del cierre automático se propone la extensión <a href="#extension-close-html-xml-tag">Close HTML/XML tag</a> que, mediante el atajo de teclado <span class="soft-atajo-teclado">Alt+.</span>, cierra la última etiqueta abierta.</p>
+              </li>
+              <li>"html.autoCreateQuotes": false,
+                <p>VSCode añade automáticamente unas comillas cuando escribimos unas comillas para dar valor a un atributo de una etiqueta (es decir, cierra las comillas cuando las abrimos). Esta preferencia controla la posición del cursor. Si esta preferencia tiene el valor true, el cursor se coloca tras la comilla de cierre. Si esta preferencia tiene el valor false, el cursor se coloca entre las comillas.</p>
+
+                <p>Para hacer los ejercicios de este curso, en el que normalmente se querrá dar un valor al atributo, creo que resulta más cómodo que el cursor se coloque entre las comillas. En cualquier caso, aunque VSCode haya añadido las comillas de cierre, si tras escribir el valor del atributo escribimos unas comillas, VSCode "comprende" que no es que queramos añadir comillas y desplaza el cursor después de las comillas que ya existían.</p>
+              </li>
+              <li> "html.format.endWithNewline": true
+                <p>Esta preferencia hace que, al formatear automáticamente un documento (mediante el atajo de teclado <span class="soft-atajo-teclado">Alt+Shift+f</span>), VSC compruebe que el último carácter de un documento sea un único salto de línea (LF). Si se trata de documentos independientes (como una página web) no es algo imprescindible, pero si se trata de documentos que se pueden cargar uno detrás de otro para crear un único documento (como un programa PHP), resulta conveniente para evitar que la última línea de un documento se una a la primera del documento siguiente.</p>
+
+                <p>Las normas <a href="https://es.wikipedia.org/wiki/POSIX">POSIX</a> especifican que en los ficheros de texto, todas las líneas deben terminar con el carácter salto de línea.</p>
+              </li>
+              <li>"html.format.extraLiners": "body"
+                <p>Esta preferencia hace que, al formatear automáticamente un documento (mediante el atajo de teclado <span class="soft-atajo-teclado">Alt+Shift+f</span>), VSC compruebe que delante de determinadas etiquetas haya al menos una línea en blanco. Yo tengo las costumbre de dejar siempre una línea en blanco delante de <span class="html-eti">&lt;body&gt;</span>, pero no delante de <span class="html-eti">&lt;head&gt;</span> ni de <span class="html-eti">&lt;/html&gt;</span>.</p>
+              </li>
+              <li>"html.format.wrapLineLength": 0
+                <p>Esta preferencia hace que, al formatear automáticamente un documento (mediante el atajo de teclado <span class="soft-atajo-teclado">Alt+Shift+f</span>), VSC compruebe que ninguna línea exceda el número de caracteres indicado y añada saltos de línea cuando sea necesario. Yo tengo la costumbre de mantener los párrafos de texto en una sola línea, aunque sea muy larga, para que al modificar el texto no se queden unas líneas más largas que otras. Para ello, esta preferencia tiene que tener el valor 0.</p>
+
+                <p>Referencia: <a href="https://code.visualstudio.com/updates/vMarch#_languages-html">Novedades VSC 1.0: Formateador HTML</a></p>
+              </li>
+              <li>"editor.tabSize": 2 / 4
+                <p>Como en una página web suele haber bastante anidamiento, en los ficheros .html se recomienda un sangrado de sólo 2 espacios. Pero una hoja de estilo no suele haber más que uno o dos niveles de anidamiento, por lo que el sangrado puede ser de 4 espacios.</p>
+              </li>
+              <li>"window.commandCenter": false
+                <p>Muestra el iniciador de comandos junto con el título de la ventana</p>
+              </li>
+              <li>"workbench.layoutControl.enabled": false
+                <p>Muestra el control de diseño en la barra de título personalizada.</p>
+              </li>
+            </ul>
+          </details>
         </li>
         <li>Preferencias de la extensión Close HTML/XML tag:
           <details>
-            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión Close HTML/XML tag:</summary>
-
+            <summary>Haga clic aquí para ver/ocultar las preferencias relacionadas con la extensión Close HTML/XML tag:</summary>
             <div class="codigo">
               <pre>
 <code class="language-json">  // Extensión Close HTML/XML tag
@@ -734,10 +694,21 @@ return (new PhpCsFixer\Config())
 </pre>
             </div>
           </details>
+
+          <details>
+            <summary>Haga clic aquí para ver/ocultar la explicación de las preferencias relacionadas con la extensión Close HTML/XML tag:</summary>
+
+            <ul>
+              <li>"closeTag.ignoreTags": "html",
+                <p>Las <a href="https://html.spec.whatwg.org/#void-elements">etiquetas vacías de html</a> (<span class="html-eti">br</span>, <span class="html-eti">col</span>, <span class="html-eti">hr</span>, <span class="html-eti">img</span>, <span class="html-eti">input</span>, <span class="html-eti">link</span>, <span class="html-eti">meta</span>, etc.) no deben cerrarse.</p>
+              </li>
+            </ul>
+          </details>
         </li>
         <li>Preferencias de la extensión HTMLHint:
           <details>
-            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión HTMLHint:</summary>
+            <summary>Haga clic aquí para ver/ocultar las preferencias relacionadas con la extensión HTMLHint:</summary>
+
             <div class="codigo">
               <pre>
 <code class="language-json">  // Extensión HTMLHint
@@ -785,10 +756,13 @@ return (new PhpCsFixer\Config())
 </pre>
             </div>
           </details>
+
+          <p>La explicación de las preferencias relacionadas con la extensión HTMLHint se pueden consultar en la lección <a href="https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-validacion.html#validacion-html">Validación de HTML y CSS en VSCode</a> de los apuntes de HTML/CSS.</p>
         </li>
         <li>Preferencias de la extensión CSScomb:
           <details>
-            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión CSScomb:</summary>
+            <summary>Haga clic aquí para ver/ocultar las preferencias relacionadas con la extensión CSScomb:</summary>
+
             <div class="codigo">
               <pre>
 <code class="language-json">  // Extensión CSScomb
@@ -846,11 +820,11 @@ return (new PhpCsFixer\Config())
             </div>
           </details>
         </li>
-        <li>Preferencias de la extensión PHP CS Fixer:
+        <li id="preferencias-extension-php-cs-fixer">Preferencias de la extensión PHP CS Fixer:
           <details>
-            <summary>Haga clic para ver/ocultar las preferencias relacionadas con la extensión PHP CS Fixer:</summary>
+            <summary>Haga clic aquí para ver/ocultar las preferencias relacionadas con la extensión PHP CS Fixer:</summary>
 
-            <p>Tenga en cuenta que es necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
+            <p>Tenga en cuenta que es necesario descomentar (y en caso necesario, modificar) la preferencia resaltada del ejemplo siguiente:</p>
 
             <ul>
               <li>"php.validate.executablePath" debe indicar la ruta hasta el ejecutable de PHP. La línea está comentada y debe ser descomentada e indicar la ruta correcta. El valor incluido es el predeterminado de XAMPP en Windows.</li>
@@ -868,7 +842,7 @@ return (new PhpCsFixer\Config())
   //
   // PHP: Validate: Executable path
   // Ubicación del intérprete de PHP.
-  // "php.validate.executablePath": "C:/xampp/php/php.exe",
+  <span class="codigo-resaltado">// "php.validate.executablePath": "C:/xampp/php/php.exe",</span>
   //
   // PHP: Validate: Run
   // Indica la validación se ejecuta al guardar o al escribir.
@@ -882,7 +856,6 @@ return (new PhpCsFixer\Config())
   "php-cs-fixer.executablePathWindows": "${extensionPath}/php-cs-fixer.phar",
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
-  "php-cs-fixer.rules": "@PSR2",
   "php-cs-fixer.config": "php-cs-fixer-config.php",
   "php-cs-fixer.allowRisky": false,
   "php-cs-fixer.pathMode": "override",
@@ -895,6 +868,77 @@ return (new PhpCsFixer\Config())
   //</code>
 </pre>
             </div>
+
+            <h4 id="configuracion-php-cs-fixer">Archivo de configuración de PHP CS Fixer</h4>
+
+            <p>Cree un fichero <strong>php-cs-fixer-config.php</strong> en la carpeta .vscode y copie en él la configuración recomendada para PHP CS Fixer que se muestra a continuación. Tenga en cuenta que el nombre del fichero se establece con la opción de configuración "php-cs-fixer.config" y el archivo de configuración puede estar fuera de la carpeta .vscode.</p>
+
+            <p>Las reglas disponibles en PHP CS Fixer se pueden consultar de forma individual en la <a href="https://cs.symfony.com/doc/rules/index.html">documentación de PHP CS Fixer</a>.</p>
+
+            <div class="codigo copy">
+              <pre>
+<code class="language-php">&lt;?php
+
+// Apuntes del curso Programación web en PHP
+// https://www.mclibre.org/consultar/php/
+//
+// Archivo de configuración para PHP CS Fixer
+// 2025-10-12
+
+return (new PhpCsFixer\Config())
+    -&gt;setRules([
+        '@PER-CS' =&gt; true,
+        'align_multiline_comment' =&gt; ['comment_type' =&gt; 'all_multiline'],
+        'binary_operator_spaces' =&gt; ['default' =&gt; 'single_space', 'operators' =&gt; ['=' =&gt; 'align_single_space_minimal'], ],
+        'combine_consecutive_issets' =&gt; true,
+        'explicit_indirect_variable' =&gt; true,
+        'include' =&gt; true,
+        'linebreak_after_opening_tag' =&gt; true,
+        'list_syntax' =&gt; ['syntax' =&gt; 'short'],
+        'magic_constant_casing' =&gt; true,
+        'magic_method_casing' =&gt; true,
+        'multiline_comment_opening_closing' =&gt; true,
+        'multiline_whitespace_before_semicolons' =&gt; true,
+        'native_function_casing' =&gt; true,
+        'native_type_declaration_casing' =&gt; true,
+        'no_alias_language_construct_call' =&gt; true,
+        'no_alternative_syntax' =&gt; true,
+        'no_empty_statement' =&gt; true,
+        'no_extra_blank_lines' =&gt; true,
+        'no_mixed_echo_print' =&gt; ['use' =&gt; 'print'],
+        'no_multiline_whitespace_around_double_arrow' =&gt; true,
+        'no_short_bool_cast' =&gt; true,
+        'no_singleline_whitespace_before_semicolons' =&gt; true,
+        'no_spaces_around_offset' =&gt; true,
+        'no_superfluous_elseif' =&gt; false,
+        'no_unneeded_braces' =&gt; true,
+        'no_unneeded_control_parentheses' =&gt; true,
+        'no_unset_cast' =&gt; true,
+        'no_unused_imports' =&gt; true,
+        'no_useless_concat_operator' =&gt; true,
+        'no_useless_else' =&gt; false,
+        'no_useless_return' =&gt; true,
+        'no_whitespace_before_comma_in_array' =&gt; true,
+        'normalize_index_brace' =&gt; true,
+        'object_operator_without_whitespace' =&gt; true,
+        'semicolon_after_instruction' =&gt; true,
+        'single_line_comment_style' =&gt; true,
+        'space_after_semicolon' =&gt; true,
+        'standardize_not_equals' =&gt; true,
+        'statement_indentation' =&gt; ['stick_comment_to_next_continuous_control_statement' =&gt; true],
+        'ternary_to_null_coalescing' =&gt; true,
+        'trailing_comma_in_multiline' =&gt; true,
+        'trim_array_spaces' =&gt; true,
+        'type_declaration_spaces' =&gt; true,
+        'unary_operator_spaces' =&gt; true,
+        'whitespace_after_comma_in_array' =&gt; true,
+    ])
+    -&gt;setIndent("    ")
+    -&gt;setLineEnding("\n");
+</code>
+</pre>
+            </div>
+
           </details>
         </li>
       </ul>
@@ -910,13 +954,63 @@ return (new PhpCsFixer\Config())
 
     <p>Una vez definidas las tareas, se recomienda definir los atajos de teclado que ejecuten estas tareas, tal y como se comenta en el apartado sobre <a href="#atajos-teclado">Atajos de teclado recomendados</a>.</p>
 
-    <section id="abrir-navegador">
-      <h3>Abrir páginas en el navegador (en el servidor local)</h3>
+    <details>
+      <summary>Haga clic para ver/ocultar las tareas recomendadas:</summary>
 
-      <p>Las siguientes tareas permiten abrir en los navegadores Firefox y Chrome las páginas que se están editando en Visual Studio Code, pero no como ficheros sino a través del servidor web.</p>
+      <div class="codigo copy">
+        <pre>
+<code class="language-json">{
+  // Tareas de VSCode recomendadas para el curso Programación web en PHP de www.mclibre.org
+  //
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Abrir en localhost (Firefox)",
+      "command": "explorer",
+      "windows": {
+        "command": "<span class="codigo-resaltado">C:/Program Files/Mozilla Firefox/firefox.exe</span>"
+      },
+      "linux": {
+        "command": "firefox"
+      },
+      "args": [
+        "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
+      ],
+      "presentation": {
+        "reveal": "never"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Abrir en localhost (Chrome)",
+      "command": "explorer",
+      "windows": {
+        "command": "<span class="codigo-resaltado">C:/Program Files/Google/Chrome/Application/chrome.exe</span>"
+      },
+      "linux": {
+        "command": "google-chrome"
+      },
+      "args": [
+        "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
+      ],
+      "presentation": {
+        "reveal": "never"
+      },
+      "problemMatcher": []
+    }
+    //
+  ]
+}</code>
+</pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Haga clic para ver/ocultar la explicación de las tareas recomendadas:</summary>
+
+      <p>Las tareas recomendadas permiten abrir en los navegadores Firefox y Chrome las páginas que se están editando en Visual Studio Code, pero no como ficheros sino a través del servidor web.</p>
 
       <p>Tenga en cuenta que para que las páginas se muestren en el navegador es necesario crear un alias en Apache, como se comenta en la lección <a href="php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
-
 
       <p>Compruebe los campos enmarcados del ejemplo siguiente, por si necesita modificarlas:</p>
       <ul>
@@ -929,57 +1023,7 @@ return (new PhpCsFixer\Config())
         </li>
         <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
       </ul>
-
-      <details>
-        <summary>Haga clic para ver/ocultar las tareas recomendadas:</summary>
-        <div class="codigo copy">
-          <pre>
-<code class="language-json">{
-  // Tareas de VSCode recomendadas para el curso Programación web en PHP de www.mclibre.org
-  //
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Abrir en localhost (Firefox)",
-      "command": "explorer",
-      "windows": {
-        "command": "C:/Program Files/Mozilla Firefox/firefox.exe"
-      },
-      "linux": {
-        "command": "firefox"
-      },
-      "args": [
-        "localhost/iaw/php/${relativeFile}"
-      ],
-      "presentation": {
-        "reveal": "never"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "Abrir en localhost (Chrome)",
-      "command": "explorer",
-      "windows": {
-        "command": "C:/Program Files/Google/Chrome/Application/chrome.exe"
-      },
-      "linux": {
-        "command": "google-chrome"
-      },
-      "args": [
-        "localhost/iaw/php/${relativeFile}"
-      ],
-      "presentation": {
-        "reveal": "never"
-      },
-      "problemMatcher": []
-    }
-    //
-  ]
-}</code>
-</pre>
-        </div>
-      </details>
-    </section>
+    </details>
   </section>
 
   <section id="atajos-teclado">
@@ -993,6 +1037,7 @@ return (new PhpCsFixer\Config())
 
     <details>
       <summary>Haga clic para ver/ocultar los atajos de teclado recomendados:</summary>
+
       <div class="codigo copy">
         <pre>
 <code class="language-json">[
@@ -1086,6 +1131,46 @@ return (new PhpCsFixer\Config())
 </pre>
       </div>
     </details>
+
+    <details>
+      <summary>Haga clic para ver/ocultar la explicación de los atajos de teclado recomendados:</summary>
+
+      <p>Estos son los atajos de teclado que se aconseja definir para seguir el curso de <a href="https://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="https://www.mclibre.org/">mclibre.org</a>.</p>
+
+      <ul>
+        <li>Los cuatro primero atajos están relacionados con la navegación entre elementos del interfaz. En los cuatro intervienen teclas de operaciones aritméticas del teclado numérico (suma +, resta -, multiplicación * y división /):
+          <ul>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+/</span> permite abrir y pasar el foco al explorador de archivos (y ocultarlo si nos encontramos en el explorador de archivos).</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+*</span> permite abrir y pasar el foco a la pestaña de Problemas del Panel (y ocultarlo si nos encontramos en la pestaña de Problemas del Panel).</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+-</span> permite pasar el foco al editor.</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt++</span> permite abrir y pasar el foco a la pestaña de Terminal del Panel (y ocultarlo si nos encontramos en la pestaña de Terminal del Panel).
+              <p>Si no se había abierto todavía ninguna pestaña de Terminal, el atajo abre una nueva pestaña de Terminal automáticamente. La primera vez que se abre una pestaña de Terminal, la pestaña se abre en el directorio raíz del área de trabajo.</p>
+            </li>
+          </ul>
+        </li>
+        <li>Los cuatro siguientes atajos permiten aplicar comandos de Emmet. Estos comandos ya están incluidos en Visual Studio Code, por lo que los atajos funcionan inmediatamente. Para que sea más fácil recordar los atajos, todos empiezan por la letra "e" (de Emmet):
+          <ul>
+            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+b</span> elimina la primera etiqueta que haya alrededor de la posición del cursor.</li>
+            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+s</span> inserta el tamaño de una imagen (atributos <span class="html-atri">width</span> y <span class="html-atri">height</span>) cuando el cursor se encuentra en la etiqueta correspondiente.</li>
+            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+o</span> selecciona la primera etiqueta que haya alrededor de la posición del cursor (o todo el texto que haya dentro de la primera etiqueta).</li>
+            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+i</span> retrocede la selección realizada con <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+o</span> o selecciona el primer elemento o texto que haya dentro del frragmento seleccionado.</li>
+          </ul>
+        </li>
+        <li>El siguiente atajo, <span class="soft-atajo-teclado">alt+shift+c alt+shift+f</span>, ejecuta CSScomb, extensión que formatea hojas de estilo CSS. Este atajo sólo funciona cuando se está editando un archivo .css o .html.</li>
+        <li>Los dos últimos atajos, <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+f</span> y <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+c</span> permiten abrir en los navegadores Firefox o Google Chrome, respectivamente, las páginas web que se están editando en Visual Studio Code. Para que estos atajos funcionen es necesario crear las tareas correspondientes, que se comentan en el apartado <a href="#tareas">Tareas recomendadas</a>.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="otros">
+    <h2>Otros</h2>
+
+    <ul>
+      <li>Existe una extensión para facilitar el formateo de fragmentos HTML en archivos .php, <a href="https://marketplace.visualstudio.com/items?itemName=rifi2k.format-html-in-php">Format HTML in PHP</a>, pero el resultado tampoco me termina de gustar y por eso no recomiendo instalarla.
+        <p>La <a href="https://github.com/RiFi2k/format-html-in-php/issues/27">issue #27</a> es una de la que me gustaría ver resuelta antes de recomendar esta extensión.</p>
+      </li>
+    </ul>
+
   </section>
 
   <footer>
