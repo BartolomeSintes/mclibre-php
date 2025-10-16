@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PHP. Enunciados. Ejercicios (puesta en marcha). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (puesta en marcha) - Configuración de PHP - Enunciados</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>PHP</h2>
+
+      <h3><a href="#">Enunciados</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - PHP short_open_tag</a></li>
+        <li><a href="#ejercicio-2">2 - PHP error_reporting</a></li>
+        <li><a href="#ejercicio-3">3 - PHP output_buffering (1)</a></li>
+        <li><a href="#ejercicio-4">4 - PHP output_buffering (2)</a></li>
+        <li><a href="#ejercicio-5">5 - Configuración curso</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Estos ejercicios permiten comprobar que se ha configurado correctamente el intérprete de PHP.</p>
+
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/puesta-en-marcha/pm-php-plantillas.zip">plantillas de los ejercicios Visual Studio Code (Puesta en marcha)</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Configuración de PHP 1 - Etiqueta inicial corta (short_open_tag)</h2>
+
+    <p>En las primeras versiones de PHP, los fragmentos de código PHP se delimitaban con las etiquetas &lt;? y &gt; (sin interrogante en la etiqueta de cierre). A partir de PHP 3.0, publicado en 1998, la etiqueta de cierre incluye siempre el interrogante (?&gt;) y la etiqueta de apertura incluye la palabra php (&lt;?php). Los fragmentos de PHP se podían todavía delimitar con las etiquetas &lt;? y ?&gt;, pero se recomendaba utilizar las etiquetas &lt;?php y ?&gt;., compatibles con XML.</p>
+
+    <p>Aunque desde 1998 la etiqueta &lt;? (llamada por motivos obvios <i>short open tag</i>) está desaconsejada, para mantener la compatibilidad con antiguos programas la directiva <strong>short_open_tag</strong> permite todavía utilizarla. En 2019 <a href="https://wiki.php.net/rfc/deprecate_php_short_tags_v2">se rechazó la propuesta</a> de eliminar completamente la etiqueta corta eliminando la directiva.</p>
+
+    <p>En este ejercicio se comprueba el funcionamiento de esta directiva.</p>
+
+    <ol>
+      <li>Descargue y descomprima las plantillas.</li>
+      <li>Abra el archivo principal de configuración de PHP <strong>php.ini</strong> con el Panel de control de XAMPP.</li>
+    </ol>
+
+    <h3>Etiqueta &lt;?php con short_open_tag Off</h3>
+
+    <ol>
+      <li>Compruebe que en el archivo php.ini la directiva <strong>short_open_tag</strong> tiene el valor "<strong>Off</strong>":
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">; https://php.net/short-open-tag
+short_open_tag=<span class="codigo-resaltado">Off</span></code>
+</pre>
+        </div>
+      </li>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-php/php-1-1.php</strong>.</li>
+      <li>Ejecute el programa <strong>php-1-1.php</strong> con los atajos de teclado <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+f</span> (para abrir en Firefox) y <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+c</span> (para abrir en Chrome) y compruebe que la página se muestra tanto en Firefox como en Chrome.
+      </li>
+      <li>Compruebe que la dirección de la página es <strong>http://localhost/iaw/php/ejercicios/pm-php/php-1-1.php</strong>.
+        <p>Si la dirección no contiene el alias <strong>/iaw/php</strong>, revise la tarea creada en Visual Studio Code, como se explica en la lección <a href="../../../otros/vsc-php-configuracion.html#tareas">Configuración de Visual Studio Code</a>.</p>
+      </li>
+      <li>El resultado en el navegador debe ser este:
+        <div class="resultado-html">
+          <p>Hola</p>
+        </div>
+      </li>
+      <li>Abra en el navegador la vista de código fuente (con el atajo <span class="soft-atajo-teclado">Ctrl+u</span>).</li>
+      <li>El resultado en el navegador debe ser este:
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code>
+</pre>
+        </div>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Este es el comportamiento esperado al abrir una página PHP: el navegador recibe únicamente HTML y este HTML es el resultado de la ejecución del programa PHP en el servidor. El programa PHP se ha ejecutado en el servidor porque el servidor ha reconocido la etiqueta de apertura &lt;?php en el programa.</p>
+      </li>
+    </ol>
+
+    <h3>Etiqueta &lt;? con short_open_tag Off</h3>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-php/php-1-2.php</strong>.</li>
+      <li>Ejecute el programa <strong>php-1-2.php</strong>. El resultado en el navegador debe ser este:
+        <div class="resultado-html">
+          <p>Hola</p>
+          <p>";</p>
+        </div>
+      </li>
+      <li>Abra en el navegador la vista de código fuente. El resultado en el navegador debe ser este:
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;?
+
+// El código fuente de un programa no debería verse en el navegador
+// porque al navegador se le envía la salida del programa
+// normalmente generada por instrucciones print.
+// Si se ve el código fuente del programa quiere decir que el
+// programa no se ha ejecutado en el servidor.
+
+print "&lt;p&gt;Hola&lt;/p&gt;";
+</code>
+</pre>
+        </div>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Este comportamiento es incorrecto: el navegador está recibiendo el programa PHP, no el resultado de su ejecución. Como el navegador no es capaz de ejecutar el programa PHP, el navegador hace lo que puede y muestra las partes que pueden interpretarse como HTML (en este caso, el párrafo y las comillas y punto y coma final). El programa PHP <strong>no</strong> se ha ejecutado en el servidor porque el servidor <strong>no</strong> ha reconocido la etiqueta de apertura &lt;? en el programa. Todo lo que el servidor no reconoce como programa se envía ta cual al navegador.</p>
+      </li>
+    </ol>
+
+    <h3>Etiqueta &lt;?php con short_open_tag On</h3>
+
+    <ol>
+      <li>Modifique el valor de la directiva <strong>short_open_tag</strong> a "<strong>On</strong>":
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">; https://php.net/short-open-tag
+; 2025-10-16. Modifico temporalmente el valor de la directiva para hacer pruebas
+short_open_tag=<span class="codigo-resaltado">On</span></code>
+</pre>
+        </div>
+      </li>
+      <li>Ejecute el programa <strong>php-1-1.php</strong> . El resultado en el navegador debe ser este:
+        <div class="resultado-html">
+          <p>Hola</p>
+        </div>
+      </li>
+      <li>Abra en el navegador la vista de código fuente. El resultado en el navegador debe ser este:
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code>
+</pre>
+        </div>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Este es el comportamiento esperado al abrir una página PHP: el navegador recibe únicamente HTML y este HTML es el resultado de la ejecución del programa PHP en el servidor. El programa PHP se ha ejecutado en el servidor porque el servidor ha reconocido la etiqueta de apertura &lt;?php en el programa.</p>
+      </li>
+    </ol>
+
+    <h3>Etiqueta &lt;? con short_open_tag On</h3>
+
+    <ol>
+      <li>Ejecute el programa <strong>php-1-2.php</strong> . El resultado en el navegador debe ser este:
+        <div class="resultado-html">
+          <p>Hola</p>
+        </div>
+      </li>
+      <li>Abra en el navegador la vista de código fuente. El resultado en el navegador debe ser este:
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code>
+</pre>
+        </div>
+        <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Este es el comportamiento esperado al abrir una página PHP: el navegador recibe únicamente HTML y este HTML es el resultado de la ejecución del programa PHP en el servidor. El programa PHP se ha ejecutado en el servidor porque el servidor ha reconocido la etiqueta de apertura &lt;? en el programa.</p>
+      </li>
+      <li>Restaure en el archivo php.ini la directiva <strong>short_open_tag</strong> al valor rcomendado "<strong>Off</strong>":
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">; https://php.net/short-open-tag
+short_open_tag=<span class="codigo-resaltado">Off</span></code>
+</pre>
+        </div>
+      </li>
+
+    </ol>
+
+    <h3>Conclusión</h3>
+
+    <p>Aunque el valor On en la directiva short_open_tag hace que todos los programas, tanto los que utilizan la etiqueta &lt;? como la etiqueta &lt;?php, se ejecuten, el valor recomendado de la directiva short_open_tag es <strong>Off</strong>. El motivo es que nunca se debe utilizar la etiqueta corta &lt;? y la mejor manera de darse cuenta si se ha utilizado por error es que los programas no funcionen.</p>
+
+    <p>Para evitar cometer el error, en el perfil recomendado en estos apuntes, PHP CS Fixer está configurado para corregir la etiqueta corta &lt;? y convertirla automáticamente en la larga &lt;?php.</p>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Configuración de PHP 2 - Configuración de PHP (error_reporting)</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-php/php-2.php</strong>.:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+function siguiente($a = 1, $b) { return $a + $b; }
+</code>
+</pre>
+        </div>
+      </li>
+      <li>Ejecute el programa.</li>
+      <li>Compruebe que se muestra el siguiente error:
+
+        <div class="resultado-html">
+          <b>Deprecated</b>: Optional parameter $a declared before required parameter $b is implicitly treated as a required parameter in <b>php-2.php</b> on line <b>2</b>
+        </div>
+        <p>Si no se muestra el error, revise la directiva error_reporting en php.ini, como se explica en la lección <a href="../../../otros/php-configuracion-1.html#error-reporting">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Configuración de PHP 3 - Configuración de PHP (output_buffering) (1)</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-php/php-3-1.php</strong>.</li>
+      <li>Ejecute el programa.</li>
+      <li>Haga clic en el enlace.</li>
+      <li>Compruebe que se muestra la página php-3-2.php, incluyendo el siguiente aviso:
+        <div class="resultado-htmnl">
+          <p>Esta es la página 2.</p>
+          <b>Warning</b>: Cannot modify header information - headers already sent by (output started at php-3-2.php:1) in <b>php-3-2.php</b> on line <b>4</b><br>
+          <p>Si ve esta página es que <strong>SÍ</strong> tiene la configuración de la directiva <strong>output_buffering</strong> en php.ini recomendada en estos apuntes para desarrollo.</p>
+          <p>Debe ver un aviso <strong>Warning</strong> tras el primer párrafo de esta página.</p>
+        </div>
+        <p>Si en su lugar se muestra la página php-3-3.php, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+
+    <details>
+      <summary>Explicación</summary>
+      <p>La página php-3-2.php escribe primero un párrafo de html y después intenta hacer una redirección. Las redirecciones se deben hacer antes de generar html, como se explica en la lección <a href="../../../lecciones/php-cabeceras.html">Cabeceras: la función header()</a>.</p>
+      <p>Si el servidor tiene buffer de salida, la redirección se puede generar porque el servidor todavía no ha enviado ese primer párrafo (ni las cabeceras de la página) al cliente. Pero si el servidor no tiene buffer de salida, el primer párrafo (y las cabeceras de la página) se envían inmediatamente por lo que al intentar generar la redirección se produce un error y no se realiza la redirección.</p>
+      <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> En conclusión, para darnos cuenta de que nos hemos equivocado generando redirecciones después de generar HTML, es conveniente configurar el buffer de salida a 0 bytes, para que esas redirecciones fallen y seamos conscientes de que debemos corregir el error.</p>
+    </details>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Configuración de PHP 4 - Configuración de PHP (output_buffering) (2)</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-php/php-4-1.php</strong>.</li>
+      <li>Ejecute el programa.</li>
+      <li>Haga clic en el enlace.</li>
+      <li>Compruebe que se muestra la página php-4-2.php, incluyendo el siguiente aviso:
+        <div class="resultado-htmnl">
+          <b>Warning</b>: Cannot modify header information - headers already sent by (output started at php-4-2.php:1) in <b>php-4-2.php</b> on line <b>2</b><br>
+          <p>Esta es la página 2.</p>
+          <p>Si no cambia el juego de caracteres de esta página, verá esta página aunque tenga la configuración recomendada en estos apuntes para desarrollo.</p>
+          <p>Debe ver un aviso <strong>Warning</strong> al principio de esta página.</p>
+        </div>
+        <p>Si en su lugar se muestra la página php-4-3.php, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+
+    <details>
+      <summary>Explicación</summary>
+      <p>La página php-4-2.php intenta hacer una redirección justo al principio de la página. Si el buffer de salida es de 0 bytes (la configuración recomendada en este curso), la redirección debería hacerse. El problema es que la página está guardada en el juego de caracteres <strong>UTF-8 con BOM</strong>, que contiene caracteres no visibles al principio del archivo (como se explica en la lección <a href="../../../lecciones/php-cabeceras.html#bom">Cabeceras: la función header()</a>). Si el servidor tiene buffer de salida, la redirección se puede generar porque el servidor todavía no ha enviado esos caracteres al cliente. Pero si el servidor no tiene buffer de salida, esos caracteres se envían antes de generar la redirección por lo que al intentar generar la redirección se produce un error y no se realiza la redirección.</p>
+      <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> En conclusión, para que los programas con redirecciones (o en general, que generen cabeceras) no fallen cuando el buffer de salida está configurado a 0 bytes, debemos asegurarnos de <strong>no</strong> usar el juego de caracteres UTF-8 con BOM.</p>
+    </details>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Configuración PHP 5 - Configuración para el curso</h2>
+
+    <p>Confirme que las directivas modificadas a lo largo de estos ejercicios contienen los valores recomendados:</p>
+
+    <ul>
+      <li>Directiva short_open_tag:
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">; https://php.net/short-open-tag
+short_open_tag=Off</code>
+</pre>
+        </div>
+      </li>
+      <li>Directiva error_reporting:
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">; https://php.net/error-reporting
+; 2025-10-16. Barto. He cambiado error_reporting para mostrar todos los errores
+; error_reporting=E_ALL & ~E_DEPRECATED & ~E_STRICT
+error_reporting=<span class="codigo-resaltado">E_ALL</span></code>
+</pre>
+        </div>
+      </li>
+      <li>Directiva DirectoryIndex:
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">; https://php.net/output-buffering
+; 2025-10-16. Barto. Desactivo output_buffering
+; output_buffering=4096
+output_buffering=<span class="codigo-resaltado">0</span></code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 16 de octubre de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
