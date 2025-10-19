@@ -23,7 +23,9 @@
       <h2>CS Fixer: Configuración</h2>
       <ul>
         <li><a href="#reglas-per">Reglas PER</a></li>
-        <li><a href="#reglas-adicionales">Reglas adicionales</a></li>
+        <li><a href="#reglas-per-modificadas">Reglas PER modificadas</a></li>
+        <li><a href="#reglas-no-per-recomendadas">Reglas no PER incluidas</a></li>
+        <li><a href="#reglas-no-per-no-recomendadas">Reglas no PER no incluidas</a></li>
       </ul>
     </div>
   </nav>
@@ -40,98 +42,173 @@
     <p>Estas son las reglas de PHP CS Fixer vinculadas a la <a href="https://www.php-fig.org/per/coding-style/">recomendación PER Coding Style</a> del PHP-FIG y que están incluidas en la <a href="vsc-php-configuracion.html#configuracion-php-cs-fixer">configuración recomendada de VSCode</a> para seguir estos apuntes.</p>
 
     <ul>
-      <li>Reglas relacionadas con PSR-1:
+      <li>Reglas relacionadas con PSR-1 [<a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PSR1.rst">Fuente</a>]:
         <ul>
           <li><a href="https://cs.symfony.com/doc/rules/basic/encoding">encoding</a></li>
           <li><a href="https://cs.symfony.com/doc/rules/php_tag/full_opening_tag">full_opening_tag</a></li>
         </ul>
       </li>
-      <li>Reglas relacionadas con PSR-2:
+      <li>Reglas adicionales relacionadas con PSR-2 [<a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PSR2.rst">Fuente</a>]:
         <ul>
-          <li><a href="https://cs.symfony.com/doc/rules/namespace_notation/blank_line_after_namespace">blank_line_after_namespace</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/casing/constant_case">constant_case</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/control_structure/elseif">elseif</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/function_notation/function_declaration">function_declaration</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/indentation_type">indentation_type</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/line_ending">line_ending</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/casing/lowercase_keywords">lowercase_keywords</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/function_notation/method_argument_space">method_argument_space ['on_multiline' =&gt; 'ensure_fully_multiline']</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_break_comment">no_break_comment</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/php_tag/no_closing_tag">no_closing_tag</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/operator/no_space_around_double_colon">no_space_around_double_colon</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/function_notation/no_spaces_after_function_name">no_spaces_after_function_name</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_spaces_inside_parenthesis">no_spaces_inside_parenthesis</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_trailing_whitespace">no_trailing_whitespace</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/namespace_notation/blank_line_after_namespace.html">blank_line_after_namespace</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/basic/braces_position.html">braces_position</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/class_definition.html">class_definition</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/casing/constant_case.html">constant_case</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/control_structure_braces.html">control_structure_braces</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/control_structure_continuation_position.html">control_structure_continuation_position</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/elseif.html">elseif</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/function_notation/function_declaration.html">function_declaration</a>, con la configuración
+            ['closure_fn_spacing' =&gt; 'one']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/indentation_type.html">indentation_type</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/line_ending.html">line_ending</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/casing/lowercase_keywords.html">lowercase_keywords</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/function_notation/method_argument_space.html">method_argument_space</a>, con la configuración ['after_heredoc' =&gt; false, 'attribute_placement' =&gt; 'ignore', 'on_multiline' =&gt; 'ensure_fully_multiline']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/modifier_keywords.html">modifier_keywords</a>, con la configuración ['elements' =&gt; ['method', 'property']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_break_comment.html">no_break_comment</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/php_tag/no_closing_tag.html">no_closing_tag</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/basic/no_multiple_statements_per_line.html">no_multiple_statements_per_line</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/no_space_around_double_colon.html">no_space_around_double_colon</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/function_notation/no_spaces_after_function_name.html">no_spaces_after_function_name</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_trailing_whitespace.html">no_trailing_whitespace</a></li>
           <li><a href="https://cs.symfony.com/doc/rules/comment/no_trailing_whitespace_in_comment.html">no_trailing_whitespace_in_comment</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/single_blank_line_at_eof">single_blank_line_at_eof</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/class_notation/single_class_element_per_statement">single_class_element_per_statement ['elements' =&gt; ['property']]</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/import/single_line_after_imports">single_line_after_imports</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/control_structure/switch_case_semicolon_to_colon">switch_case_semicolon_to_colon</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/control_structure/switch_case_space">switch_case_space</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/single_blank_line_at_eof.html">single_blank_line_at_eof</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/single_class_element_per_statement.html">single_class_element_per_statement</a>, con la configuración ['elements' =&gt; ['property']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/import/single_import_per_statement.html">single_import_per_statement</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/import/single_line_after_imports.htmls">single_line_after_imports</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/language_construct/single_space_around_construct.html">single_space_around_construct</a>, con la configuración ['constructs_followed_by_a_single_space' =&gt; ['abstract', 'as', 'case', 'catch', 'class', 'do', 'else', 'elseif', 'final', 'for', 'foreach', 'function', 'if', 'interface', 'namespace', 'private', 'protected', 'public', 'static', 'switch', 'trait', 'try', 'use_lambda', 'while'], 'constructs_preceded_by_a_single_space' =&gt; ['as', 'else', 'elseif', 'use_lambda']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/spaces_inside_parentheses.html">spaces_inside_parentheses</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/statement_indentation.html">statement_indentation</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/switch_case_semicolon_to_colon.html">switch_case_semicolon_to_colon</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/switch_case_space.html">switch_case_space</a></li>
         </ul>
       </li>
-      <li>Reglas relacionadas con PSR-12:
+      <li>Reglas adicionales relacionadas con PSR-12 [<a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PSR12.rst">Fuente</a>]:
         <ul>
-          <li><a href="https://cs.symfony.com/doc/rules/php_tag/blank_line_after_opening_tag">blank_line_after_opening_tag</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/blank_line_between_import_groups">blank_line_between_import_groups</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/basic/braces">braces config: ['allow_single_line_anonymous_class_with_empty_body' =&gt; true]</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/class_notation/class_definition">class_definition config: ['inline_constructor_arguments' =&gt; false, 'space_before_parenthesis' =&gt; true]</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/compact_nullable_typehint">compact_nullable_typehint</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/language_construct/declare_equal_normalize">declare_equal_normalize</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/cast_notation/lowercase_cast">lowercase_cast</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/casing/lowercase_static_reference">lowercase_static_reference</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/operator/new_with_braces">new_with_braces</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/class_notation/no_blank_lines_after_class_opening">no_blank_lines_after_class_opening</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/import/no_leading_import_slash">no_leading_import_slash</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_whitespace_in_blank_line">no_whitespace_in_blank_line</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/class_notation/ordered_class_elements">ordered_class_elements config: ['order' =&gt; ['use_trait']]</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/import/ordered_imports">ordered_imports config: ['imports_order' =&gt; ['class', 'function', 'const'], 'sort_algorithm' =&gt; 'none']</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/function_notation/return_type_declaration">return_type_declaration</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/cast_notation/short_scalar_cast">short_scalar_cast</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/namespace_notation/single_blank_line_before_namespace">single_blank_line_before_namespace</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/import/single_import_per_statement">single_import_per_statement config: ['group_to_single_imports' =&gt; false]</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/class_notation/single_trait_insert_per_statement">single_trait_insert_per_statement</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/operator/ternary_operator_spaces">ternary_operator_spaces</a></li>
-          <li><a href="https://cs.symfony.com/doc/rules/class_notation/visibility_required">visibility_required</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/binary_operator_spaces.html">binary_operator_spaces</a>, con configuración ['default' =&gt; 'at_least_single_space']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/php_tag/blank_line_after_opening_tag.html">blank_line_after_opening_tag</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/blank_line_between_import_groups.html">blank_line_between_import_groups</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/namespace_notation/blank_lines_before_namespace.html">blank_lines_before_namespace</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/basic/braces_position.html">braces_position</a>, con configuración ['allow_single_line_empty_anonymous_classes' =&gt; true]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/class_definition.html">class_definition config: ['inline_constructor_arguments' =&gt; false, 'space_before_parenthesis' =&gt; true]</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/compact_nullable_type_declaration.html">compact_nullable_typehint</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/language_construct/declare_equal_normalize.html">declare_equal_normalize</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/cast_notation/lowercase_cast.html">lowercase_cast</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/casing/lowercase_static_reference.html">lowercase_static_reference</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/modifier_keywords.html">modifier_keywords</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/new_with_parentheses.html">new_with_parentheses</a>, con configuración ['anonymous_class' =&gt; true]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/no_blank_lines_after_class_opening.html">no_blank_lines_after_class_opening</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_extra_blank_lines.html">no_extra_blank_lines</a>, con configuración ['tokens' =&gt; ['use']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/import/no_leading_import_slash.html">no_leading_import_slash</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_whitespace_in_blank_line.html">no_whitespace_in_blank_line</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/ordered_class_elements.html">ordered_class_elements</a>, con configuración ['order' =&gt; ['use_trait']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/import/ordered_imports.html">ordered_imports</a>, con configuración ['imports_order' =&gt; ['class', 'function', 'const'], 'sort_algorithm' =&gt; 'none']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/function_notation/return_type_declaration.html">return_type_declaration</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/cast_notation/short_scalar_cast.html">short_scalar_cast</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/import/single_import_per_statement.html">single_import_per_statement</a> con configuración ['group_to_single_imports' =&gt; false]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/language_construct/single_space_around_construct.html">single_space_around_construct</a>, con configuración ['constructs_followed_by_a_single_space' =&gt; ['abstract', 'as', 'case', 'catch', 'class', 'const_import', 'do', 'else', 'elseif', 'final', 'finally', 'for', 'foreach', 'function', 'function_import', 'if', 'insteadof', 'interface', 'namespace', 'new', 'private', 'protected', 'public', 'static', 'switch', 'trait', 'try', 'use', 'use_lambda', 'while'], 'constructs_preceded_by_a_single_space' =&gt; ['as', 'else', 'elseif', 'use_lambda']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/single_trait_insert_per_statement.html">single_trait_insert_per_statement</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/ternary_operator_spaces.html">ternary_operator_spaces</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/unary_operator_spaces.html">unary_operator_spaces</a>, con configuración ['only_dec_inc' =&gt; true]</li>
+        </ul>
+      </li>
+      <li>Reglas adicionales relacionadas con PER-CS1x0 [<a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PER-CS1x0.rst">Fuente</a>]:
+        <ul>
+          <li>Ninguna</li>
+        </ul>
+      </li>
+      <li>Reglas adicionales relacionadas con PER-CS2x0 [<a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PER-CS2x0.rst">Fuente</a>]:
+        <ul>
+          <li><a href="https://cs.symfony.com/doc/rules/whitespace/array_indentation.html">array_indentation</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/array_notation/array_syntax.html">array_syntax</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/cast_notation/cast_spaces.html">cast_spaces</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/concat_space.html">concat_space</a>, con configuración ['spacing' =&gt; 'one']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/function_notation/function_declaration.html">function_declaration</a>, con configuración ['closure_fn_spacing' =&gt; 'none']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/function_notation/method_argument_space.html">method_argument_space</a>, con configuración ['after_heredoc' =&gt; false]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/new_with_parentheses.html">new_with_parentheses</a>, con configuración ['anonymous_class' =&gt; false]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/basic/single_line_empty_body.html">single_line_empty_body</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/language_construct/single_space_around_construct.html">single_space_around_construct</a>, con configuración ['constructs_followed_by_a_single_space' =&gt; ['abstract', 'as', 'case', 'catch', 'class', 'const', 'const_import', 'do', 'else', 'elseif', 'enum', 'final', 'finally', 'for', 'foreach', 'function', 'function_import', 'if', 'insteadof', 'interface', 'match', 'named_argument', 'namespace', 'new', 'private', 'protected', 'public', 'readonly', 'static', 'switch', 'trait', 'try', 'type_colon', 'use', 'use_lambda', 'while'], 'constructs_preceded_by_a_single_space' =&gt; ['as', 'else', 'elseif', 'use_lambda']]</li>
+          <li><a href="https://cs.symfony.com/doc/rules/control_structure/trailing_comma_in_multiline.html">trailing_comma_in_multiline</a>, con configuración ['after_heredoc' =&gt; true, 'elements' =&gt; ['arguments', 'array_destructuring', 'arrays', 'match', 'parameters']]</li>
+        </ul>
+      </li>
+      <li>Reglas adicionales relacionadas con PER-CS3x0 [<a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/PER-CS3x0.rst">Fuente</a>]:
+        <ul>
+          <li><a href="https://cs.symfony.com/doc/rules/language_construct/nullable_type_declaration.html">nullable_type_declaration</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/operator/operator_linebreak.html">operator_linebreak</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/ordered_types.html">ordered_types</a>, con configuración ['null_adjustment' =&gt; 'always_last', 'sort_algorithm' =&gt; 'none']</li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/single_class_element_per_statement.html">single_class_element_per_statement</a></li>
+          <li><a href="https://cs.symfony.com/doc/rules/class_notation/single_class_element_per_statement.html">single_class_element_per_statement</a></li>
         </ul>
       </li>
     </ul>
   </section>
 
-  <section id="reglas-adicionales">
-    <h2>Reglas de PHP CS Fixer adicionales</h2>
+  <section id="reglas-per-modificadas">
+    <h2>Reglas de acuerdo con PER modificadas en la configuración recomendada</h2>
+
+    <p>Esta son las reglas de PHP CS Fixer vinculadas a la <a href="https://www.php-fig.org/per/coding-style/">recomendación PER Coding Style</a> del PHP-FIG pero cuya configuración en la <a href="vsc-php-configuracion.html#configuracion-php-cs-fixer">configuración recomendada de VSCode</a> es distinta a la predeterminada.</p>
+
+    <ul>
+      <li><a href="https://cs.symfony.com/doc/rules/operator/binary_operator_spaces.html">binary_operator_spaces</a>, con la configuración ['default' =&gt; 'single_space', 'operators' =&gt; ['=' =&gt; 'align_single_space_minimal'], ]</li>
+      <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_extra_blank_lines.html">no_extra_blank_lines</a>, con la configuración true</li>
+      <li><a href="https://cs.symfony.com/doc/rules/whitespace/statement_indentation.html">statement_indentation</a>, con la configuración['stick_comment_to_next_continuous_control_statement' =&gt; true]</li>
+      <li><a href="https://cs.symfony.com/doc/rules/operator/unary_operator_spaces.html">unary_operator_spaces</a>, con la configuración true</li>
+    </ul>
+  </section>
+
+  <section id="reglas-no-per-recomendadas">
+    <h2>Reglas no de acuerdo con PER incluidas en la configuración recomendada</h2>
 
     <p>Esta son las reglas de PHP CS Fixer <strong>no</strong> vinculadas a la <a href="https://www.php-fig.org/per/coding-style/">recomendación PER Coding Style</a> del PHP-FIG y que están incluidas en la <a href="vsc-php-configuracion.html#configuracion-php-cs-fixer">configuración recomendada de VSCode</a> para seguir estos apuntes.</p>
 
     <ul>
-      <li><a href="https://cs.symfony.com/doc/rules/phpdoc/align_multiline_comment">align_multiline_comment</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/whitespace/array_indentation">array_indentation</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/array_notation/array_syntax">array_syntax</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/binary_operator_spaces">binary_operator_spaces</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/cast_notation/cast_spaces">cast_spaces</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/language_construct/combine_consecutive_issets">combine_consecutive_issets</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/concat_space">concat_space</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/language_construct/explicit_indirect_variable">explicit_indirect_variable</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/function_notation/function_typehint_space">function_typehint_space</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/include">include</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/phpdoc/align_multiline_comment.html">align_multiline_comment</a>, con la configuración ['comment_type' =&gt; 'all_multiline']</li>
+      <li><a href="https://cs.symfony.com/doc/rules/language_construct/combine_consecutive_issets.html">combine_consecutive_issets</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/language_construct/explicit_indirect_variable.html">explicit_indirect_variable</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/include.html">include</a></li>
       <li><a href="https://cs.symfony.com/doc/rules/php_tag/linebreak_after_opening_tag.html">linebreak_after_opening_tag</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/list_notation/list_syntax">list_syntax</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/casing/magic_constant_casing">magic_constant_casing</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/casing/magic_method_casing">magic_method_casing</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/comment/multiline_comment_opening_closing">multiline_comment_opening_closing</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/semicolon/multiline_whitespace_before_semicolons">multiline_whitespace_before_semicolons</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/casing/native_function_casing">native_function_casing</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/casing/native_function_type_declaration_casing">native_function_type_declaration_casing</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/alias/no_alias_language_construct_call">no_alias_language_construct_call</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_alternative_syntax">no_alternative_syntax</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/semicolon/no_empty_statement">no_empty_statement</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_extra_blank_lines">no_extra_blank_lines</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/alias/no_mixed_echo_print">no_mixed_echo_print</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/array_notation/no_multiline_whitespace_around_double_arrow">no_multiline_whitespace_around_double_arrow</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/cast_notation/no_short_bool_cast">no_short_bool_cast</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/semicolon/no_singleline_whitespace_before_semicolons">no_singleline_whitespace_before_semicolons</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_spaces_around_offset">no_spaces_around_offset</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_superfluous_elseif">no_superfluous_elseif</a>
+      <li><a href="hhttps://cs.symfony.com/doc/rules/list_notation/list_syntax.html">list_syntax</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/casing/magic_constant_casing.html">magic_constant_casing</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/casing/magic_method_casing.html">magic_method_casing</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/comment/multiline_comment_opening_closing.html">multiline_comment_opening_closing</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/semicolon/multiline_whitespace_before_semicolons.html">multiline_whitespace_before_semicolons</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/casing/native_function_casing.html">native_function_casing</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/casing/native_type_declaration_casing.html">native_type_declaration_casing</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/alias/no_alias_language_construct_call.html">no_alias_language_construct_call</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_alternative_syntax.html">no_alternative_syntax</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/semicolon/no_empty_statement.html">no_empty_statement</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/alias/no_mixed_echo_print.html">no_mixed_echo_print</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/array_notation/no_multiline_whitespace_around_double_arrow.html">no_multiline_whitespace_around_double_arrow</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/cast_notation/no_short_bool_cast.htmlt">no_short_bool_cast</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/semicolon/no_singleline_whitespace_before_semicolons.html">no_singleline_whitespace_before_semicolons</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/whitespace/no_spaces_around_offset.html">no_spaces_around_offset</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_unneeded_braces.html">no_unneeded_braces</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_unneeded_control_parentheses.html">no_unneeded_control_parentheses</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/cast_notation/no_unset_cast.html">no_unset_cast</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/import/no_unused_imports.html">no_unused_imports</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/operator/no_useless_concat_operator.html">no_useless_concat_operator</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/return_notation/no_useless_return.html">no_useless_return</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/array_notation/no_whitespace_before_comma_in_array.html">no_whitespace_before_comma_in_array</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/array_notation/normalize_index_brace.html">normalize_index_brace</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/operator/object_operator_without_whitespace.html">object_operator_without_whitespace</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/semicolon/semicolon_after_instruction.html">semicolon_after_instruction</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/comment/single_line_comment_style.html">single_line_comment_style</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/semicolon/space_after_semicolon.html">space_after_semicolon</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/operator/standardize_not_equals.html">standardize_not_equals</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/operator/ternary_to_null_coalescing.html">ternary_to_null_coalescing</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/trailing_comma_in_multiline.html">trailing_comma_in_multiline</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/array_notation/trim_array_spaces.html">trim_array_spaces</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/whitespace/type_declaration_spaces.html">type_declaration_spaces</a></li>
+      <li><a href="https://cs.symfony.com/doc/rules/array_notation/whitespace_after_comma_in_array.html">whitespace_after_comma_in_array</a></li>
+    </ul>
+  </section>
+
+  <section id="reglas-no-per-no-recomendadas">
+    <h2>Reglas no de acuerdo con PER no incluidas en la configuración recomendada</h2>
+
+    <p>Esta son las reglas de PHP CS Fixer <strong>no</strong> vinculadas a la <a href="https://www.php-fig.org/per/coding-style/">recomendación PER Coding Style</a> del PHP-FIG y que <strong>no</strong> están incluidas en la <a href="vsc-php-configuracion.html#configuracion-php-cs-fixer">configuración recomendada de VSCode</a> para seguir estos apuntes.</p>
+
+    <ul>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_superfluous_elseif.html">no_superfluous_elseif</a>
 
         <p>Esta regla convierte algunas construcciones <span class="php-res">if ... elseif ...</span> (con uno o varios <span class="php-res">elseif ...</span>) en una serie de construcciones <span class="php-res">if ...</span>.</p>
 
@@ -213,12 +290,7 @@ if ($moneda == 1) {
           </li>
         </ul>
       </li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_unneeded_control_parentheses">no_unneeded_control_parentheses</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_unneeded_curly_braces">no_unneeded_curly_braces</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/cast_notation/no_unset_cast">no_unset_cast</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/import/no_unused_imports">no_unused_imports</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/no_useless_concat_operator">no_useless_concat_operator</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_useless_else">no_useless_else</a>
+      <li><a href="https://cs.symfony.com/doc/rules/control_structure/no_useless_else.html">no_useless_else</a>
 
         <p>Esta regla elimina el apartado <span class="php-res">else ...</span> de algunas construcciones <span class="php-res">if ... else ...</span> (con o sin <span class="php-res">elseif ...</span>).</p>
 
@@ -258,24 +330,11 @@ print "&lt;p&gt;Ha salido cruz.&lt;/p&gt;\n";
 
         <p>En este tipo de situaciones la regla <strong>no_useless_else</strong> hace que PHP CS Fixer elimine la construcción <span class="php-res">else ...</span> manteniendo el contenido del bloque <span class="php-res">else ...</span>.</p>
       </li>
-      <li><a href="https://cs.symfony.com/doc/rules/return_notation/no_useless_return">no_useless_return</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/array_notation/no_whitespace_before_comma_in_array">no_whitespace_before_comma_in_array</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/array_notation/normalize_index_brace">normalize_index_brace</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/object_operator_without_whitespace">object_operator_without_whitespace</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/semicolon/semicolon_after_instruction">semicolon_after_instruction</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/comment/single_line_comment_style">single_line_comment_style</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/semicolon/space_after_semicolon">space_after_semicolon</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/standardize_not_equals">standardize_not_equals</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/ternary_to_null_coalescing">ternary_to_null_coalescing</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/control_structure/trailing_comma_in_multiline">trailing_comma_in_multiline</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/array_notation/trim_array_spaces">trim_array_spaces</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/operator/unary_operator_spaces">unary_operator_spaces</a></li>
-      <li><a href="https://cs.symfony.com/doc/rules/array_notation/whitespace_after_comma_in_array">whitespace_after_comma_in_array</a></li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de diciembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

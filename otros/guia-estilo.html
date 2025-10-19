@@ -38,16 +38,23 @@
 
     <p>El estilo utilizado en estos apuntes y que se recomienda sigan los alumnos se basa:</p>
     <ul>
-      <li>en primer lugar, en dos de las guías de estilo del grupo <a href="https://www.php-fig.org/">PHP-FIG (PHP Framework Interop Group)</a>
-        <ul>
-          <li><a href="https://www.php-fig.org/psr/psr-1/">PSR-1</a> (publicada en mayo de 2012)</li>
-          <li><a href="https://www.php-fig.org/per/coding-style/">PER Coding Style</a> (publicada en junio de 2022)</li>
-        </ul>
+      <li>en primer lugar, en la guía de estilo <a href="https://www.php-fig.org/per/coding-style/">PER Coding Style</a> del grupo <a href="https://www.php-fig.org/">PHP-FIG (PHP Framework Interop Group)</a>
+
         <p>PHP-FIG es un grupo creado en 2009 para crear guías de estilo para programadores de PHP. El objetivo inicial era crear guías para los aspectos más elementales y contaron con la participación de los autores de los frameworks PHP más populares, pero con el paso del tiempo se creó una estructura más formal y se han publicado guías para temas más complejos. Eso ha ido produciendo el abandono de algunos participantes significativos (<a href="https://www.doctrine-project.org/">Doctrine</a> y <a href="https://laravel.com/">Laravel</a> en 2016, <a href="https://symfony.com/">Symfony</a> en 2018, <a href="https://www.drupal.org/">Drupal</a> en 2022, etc.).</p>
 
-        <p>La guía de estilo PER Coding Style sustituyó en junio de 2022 a la guía <a href="https://www.php-fig.org/psr/psr-12/">PSR-12</a>, que a su vez había sustituido en agosto de 2019 a la guía <a href="https://www.php-fig.org/psr/psr-2/">PSR-2</a>, publicada en mayo de 2012. La guía de estilo PER Coding Style pretende ser un documento en actualización continua (como la norma HTML del WHATWG). La primera versión es una copia de PSR-12 y la intención del PHP-FIG es por un lado mejorar la redacción de las reglas ya existentes y por otro añadir reglas para las novedades introducidas en el lenguaje PHP desde 2019.</p>
+        <p>
+          Las sucesivas guías de estilo publicadas han sido:
+          <a href="https://www.php-fig.org/psr/psr-1/">PSR-1</a> (mayo de 2012),
+          <a href="https://www.php-fig.org/psr/psr-2/">PSR-2</a> (mayo de 2012),
+          <a href="https://www.php-fig.org/psr/psr-12/">PSR-12</a> (agosto de 2019),
+          <a href="https://web.archive.org/web/20220703033318/https://www.php-fig.org/per/coding-style/">PER Coding Style 1.0</a> (junio de 2022),
+          <a href="https://web.archive.org/web/20230701134156/https://www.php-fig.org/per/coding-style/">PER Coding Style 2.0</a> (abril de 2023),
+          <a href="https://www.php-fig.org/per/coding-style/">PER Coding Style 3.9</a> (julio de 2025)
+        </p>
 
         <p>PSR significa PHP Standard Recommendation y PER significa PHP Evolving Recommendation.</p>
+
+        <p>La guía de estilo PER Coding Style pretende ser un documento en actualización continua (como la norma HTML del WHATWG). La primera versión PER-CS 1.0 era equivalente a PSR-12. La intención del PHP-FIG es tanto mejorar la redacción de las reglas ya existentes como añadir reglas para las novedades introducidas en el lenguaje PHP desde 2019.</p>
       </li>
       <li>en segundo lugar, en la <a href="https://pear.php.net/manual/en/standards.php">guía de estilo oficial</a> del proyecto <a href="https://pear.php.net/">PEAR</a>
 
@@ -61,8 +68,8 @@
 
     <p>En esta lección se comentan las recomendaciones de estilo más importantes. Cuando las reglas de estilo ...</p>
     <ul>
-      <li>provienen de PSR-1, PER Coding Style y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
-      <li>provienen de PSR-1, PER Coding Style o PEAR, se indica entre corchetes el nombre de la guía.</li>
+      <li>provienen de PSR, PER Coding Style y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
+      <li>provienen de PSR, PER Coding Style o PEAR, se indica entre corchetes el nombre de la guía.</li>
       <li>son elecciones del profesor se utilizan las expresiones "se aconseja ..." o "no es necesario ...".</li>
     </ul>
 
@@ -481,7 +488,7 @@ $var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
         <pre>
 <code class="language-php"><span class="codigo-resaltado">require_once</span> "biblioteca.php";
  ...</code>
- </pre>
+</pre>
       </div>
     </section>
   </section>
@@ -492,7 +499,7 @@ $var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
     <p>Existen varias herramientas capaces de formatear código PHP de acuerdo con diferentes guías de estilo.</p>
     <ul>
       <li><a href="https://cs.symfony.com/">PHP Coding Standards Fixer</a> (PHP CS Fixer) es una herramienta que formatea el código de acuerdo con algunos de las guías de estilo más extendidas (PSR, symfony, etc.).</li>
-      <li><a href="https://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</li>
+      <li><a href="https://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</a> es un paquete PEAR que detecta errores de formateo en archivos PHP. El <a href="https://github.com/squizlabs/PHP_CodeSniffer">proyecto original PHP_CodeSniffer</a> está abandonado y su sucesor es ahora <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer">PHP_CodeSniffer</a>. Existe alguna extensión de VSCode que integra PHP_Code Sniffer, como <a href="https://marketplace.visualstudio.com/items?itemName=obliviousharmony.vscode-php-codesniffer">VSCode PHP_Code Sniffer</a>, pero no son oficiales.</li>
     </ul>
 
     <p>En estos apuntes se recomienda utilizar PHP CS Fixer en Visual Studio Code, como se comenta en la lección sobre la <a href="vsc-php-configuracion.html">Configuración recomendada para Visual Studio Code</a>.</p>
@@ -505,7 +512,7 @@ $var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
