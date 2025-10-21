@@ -43,7 +43,8 @@
 <?php
 $centimetros = rand(0, 5_000_000) / 100;
 
-print "  <p>$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, ";
+print "  <p>$centimetros centímetros son ";
+print floor($centimetros / 91.44) . " yardas, ";
 print floor(fmod($centimetros, 91.44) / 30.48) . " pies y ";
 print round(fmod(fmod($centimetros, 91.44), 30.48) / 2.54, 1) . " pulgadas.</p>\n";
 print "\n";

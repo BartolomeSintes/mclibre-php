@@ -139,6 +139,22 @@ print "\n";
 </pre>
     </div>
 
+    <p>Para dejar más claros los factores de conversión, podemos escribir la fórmula de la siguiente manera:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$total    = $horas * 60 * 60 + $minutos * 60 + $segundos;</code>
+</pre>
+    </div>
+
+    <p>En matemáticas, se suele escribir primero los números y después las variables:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$total    = 60 * 60 * horas + 60 * $minutos + $segundos;</code>
+</pre>
+    </div>
+
     <p>También podemos resolverlo con sólo tres variables, una para cada uno de los valores aleatorios. En ese caso, deberíamos concatenar el cálculo del resultado al escribir la frase.</p>
 
     <div class="codigo">
@@ -200,6 +216,21 @@ $minutos         = intdiv($segundosTotales, 60);
 $segundos        = $segundosTotales % 60;
 
 print "  &lt;p&gt;$segundosTotales segundos son $minutos minutos y $segundos segundos.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Otros nombres de variables pueden ser más claros (depende de cada persona):</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$segundos          = rand(0, 1000);
+$minutosResultado  = intdiv($segundos, 60);
+$segundosResultado = $segundos % 60;
+
+print "  &lt;p&gt;$segundos segundos son $minutosResultado minutos y $segundosResultado segundos.&lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -289,6 +320,23 @@ print "\n";
 </pre>
     </div>
 
+    <p>Otros nombres de variables pueden ser más claros (depende de cada persona):</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$segundos          = rand(0, 10_000);
+$horasResultado    = intdiv($segundos, 3600);
+$resto1            = $segundos % 3600;
+$minutosResultado  = intdiv($resto1, 60);
+$segundosResutlado = $resto1 % 60;
+
+print "  &lt;p&gt;$segundos segundos son $horasResultado horas, $minutosResultado minutos y $segundosResultado segundos.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+
     <p>También podemos resolverlo con sólo una variable, el número aleatorio de segundos. En ese caso, deberíamos concatenar los dos cálculos de minutos y segundos al escribir la frase.</p>
 
     <div class="codigo">
@@ -334,6 +382,14 @@ print "\n";
 </pre>
     </div>
 
+    <p>Para dejar más claros los factores de conversión, podemos escribir la fórmula de la siguiente manera:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$centimetros = $pies * 12 * 2.54 + $pulgadas * 2.54;</code>
+</pre>
+    </div>
+
     <p>También podemos resolverlo con sólo dos variables, los números aleatorios de pies y pulgadas iniciales. En ese caso, deberíamos concatenar el cálculo de centímetros al escribir la frase.</p>
 
     <div class="codigo">
@@ -365,6 +421,22 @@ $centimetros = ($yardas * 36 + $pies * 12 + $pulgadas) * 2.54;
 print "  &lt;p&gt;$yardas yardas, $pies pies y $pulgadas pulgadas son $centimetros cm.&lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
+</pre>
+    </div>
+
+    <p>Para dejar más claros los factores de conversión, podemos escribir la fórmula de la siguiente manera:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$centimetros = $yardas * 3 * 12 * 2.54 + $pies * 12 * 2.54 + $pulgadas * 2.54;</code>
+</pre>
+    </div>
+
+    <p>Para no tener que repetir las mismas multiplicaciones cada vez que se ejecute el programa, también podemos escribir la fórmula de la siguiente manera:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$centimetros = $yardas * 91.44 + $pies * 30.48 + $pulgadas * 2.54;</code>
 </pre>
     </div>
 
@@ -444,6 +516,22 @@ $centimetros2 = fmod($centimetros, 30.48);
 $pulgadas     = round($centimetros2 / 2.54, 1);
 
 print "  &lt;p&gt;$centimetros centímetros son $pies pies y $pulgadas pulgadas.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Otros nombres de variables pueden ser más claros (depende de cada persona):</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$cm       = rand(0, 1_000_000) / 100;
+$pies     = floor($cm / 30.48);
+$resto    = fmod($cm, 30.48);
+$pulgadas = round($resto / 2.54, 1);
+
+print "  &lt;p&gt;$cm centímetros son $pies pies y $pulgadas pulgadas.&lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -555,6 +643,24 @@ print "\n";
 </pre>
     </div>
 
+    <p>Otros nombres de variables pueden ser más claros (depende de cada persona):</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$cm       = rand(0, 5_000_000) / 100;
+$yardas   = floor($cm / 91.44);
+$resto1   = fmod($cm, 91.44);
+$pies     = floor($resto1 / 30.48);
+$resto2   = fmod($resto1, 30.48);
+$pulgadas = round($resto2 / 2.54, 1);
+
+print "  &lt;p&gt;$cm centímetros son $yardas yardas, $pies pies y $pulgadas pulgadas.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+
     <p>También podemos resolverlo con sólo una variable, el número aleatorio de centímetros. En ese caso, deberíamos concatenar los tres cálculos de yardas, pies y pulgadas al escribir la frase.</p>
 
     <p>Como la instrucción que escribe la frase es bastante larga, la podemos partir en varias líneas para mejorar la legibilidad del código.</p>
@@ -564,7 +670,8 @@ print "\n";
 <code class="language-php">&lt;?php
 $centimetros = rand(0, 5_000_000) / 100;
 
-print "  &lt;p&gt;$centimetros centímetros son " . floor($centimetros / 91.44) . " yardas, ";
+print "  &lt;p&gt;$centimetros centímetros son ";
+print floor($centimetros / 91.44) . " yardas, ";
 print floor(fmod($centimetros, 91.44) / 30.48) . " pies y ";
 print round(fmod(fmod($centimetros, 91.44), 30.48) / 2.54, 1) . " pulgadas.&lt;/p&gt;\n";
 print "\n";
@@ -630,7 +737,7 @@ print "\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de febrero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
