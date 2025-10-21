@@ -285,7 +285,7 @@ print "&lt;p&gt;El resto de 17 dividido entre 3 es " . 17 % 3 . "&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;El cociente de 17.1 dividido entre 3.1 es " . floor(17.1 / 3.1) . "&lt;/p&gt;\n";
 ?&gt;</code>
-  </pre>
+</pre>
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;El cociente de 17.1 dividido entre 3.1 es 5&lt;/p&gt;</code></pre>
@@ -298,7 +298,7 @@ print "&lt;p&gt;El cociente de 17.1 dividido entre 3.1 es " . floor(17.1 / 3.1) 
 <code class="language-php">&lt;?php
 print "&lt;p&gt;El cociente de -17.1 dividido entre 3.1 es " . ceil(-17.1 / 3.1) . "&lt;/p&gt;\n";
 ?&gt;</code>
-  </pre>
+</pre>
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;El cociente de -17.1 dividido entre 3.1 es -5&lt;/p&gt;</code></pre>
@@ -313,7 +313,7 @@ print "&lt;p&gt;El cociente de -17.1 dividido entre 3.1 es " . ceil(-17.1 / 3.1)
 <code class="language-php">&lt;?php
 print "&lt;p&gt;El resto de 17 dividido entre 3.1 es " . fmod(17, 3.1) . "&lt;/p&gt;\n";
 ?&gt;</code>
-  </pre>
+</pre>
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3.1 es 1.5&lt;/p&gt;</code></pre>
@@ -1009,11 +1009,43 @@ print "&lt;p&gt;" . rand(0, 100 * 1000) / 1000 . "&lt;/p&gt;\n";
       </div>
     </div>
 
+    <p>Podemos utilizar un procedimiento parecido para generar números aleatorios no consecutivos pero regularmente espaciados, multiplicando <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> por el valor adecuado. Por ejemplo</p>
 
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto 10, 20, 30, 40, 50
+print "&lt;p&gt;" . <span class="codigo-resaltado">rand(1, 5) * 10</span> . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;20&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto 0, 2, 4, 6, 8, 10, 12, 14
+print "&lt;p&gt;" . <span class="codigo-resaltado">rand(0, 7) * 2</span> . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
