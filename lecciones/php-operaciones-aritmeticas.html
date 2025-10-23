@@ -523,11 +523,13 @@ print "&lt;p&gt;La raíz cuadrada de 25 es " . sqrt(25) . "&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 $valor = 9;
 print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
+print "&lt;p&gt;$valor&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;10&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;10&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;</code></pre>
       </div>
     </div>
 
@@ -537,11 +539,13 @@ print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 $valor = 9;
 print "&lt;p&gt;" . $valor++ . "&lt;/p&gt;\n";
+print "&lt;p&gt;$valor&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;9&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;</code></pre>
       </div>
     </div>
 
@@ -781,7 +785,7 @@ print "&lt;p&gt;-2.3 se redondea con ceil() a " . ceil(-2.3) . "&lt;/p&gt;\n";
   <section id="maxmin">
     <h2>Máximo y mínimo</h2>
 
-    <p>Las funciones <a href="https://www.php.net/manual/en/function.max.php"><span class="php-fun">max()</span></a> y <a href="https://www.php.net/manual/en/function.min.php"><span class="php-fun">min()</span></a> devuelven el máximo y el mínimo, respectivamente, de una lista o matriz de valores..</p>
+    <p>Las funciones <a href="https://www.php.net/manual/en/function.max.php"><span class="php-fun">max()</span></a> y <a href="https://www.php.net/manual/en/function.min.php"><span class="php-fun">min()</span></a> devuelven el máximo y el mínimo, respectivamente, de una lista de valores.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -809,17 +813,71 @@ print "&lt;p&gt;El mínimo es " . min(20, 40, 25.1, 14.7) . "&lt;/p&gt;\n";
       </div>
     </div>
 
+    <p>El argumento puede ser también una matriz de valores de una dimensión.</p>
+
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 $datos = [20, 40, 25.1, 14.7];
 print "&lt;p&gt;El mínimo es " . min($datos) . "&lt;/p&gt;\n";
+print "&lt;p&gt;El máximo es " . max($datos) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;El mínimo es 14.7&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;El mínimo es 14.7&lt;/p&gt;
+&lt;p&gt;El máximo es 40&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>Si el argumento es una matriz de valores de dos dimensiones, estas funciones devuelven una de las matrices de una dimensión (el mínimo parece ser la matriz más corta o la que tenga el primer valor más pequeño y el máximo parece ser la matriz más larga o la que tenga el primer valor más grande). Este tipo de comparaciones no parecen de mucha utilidad.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos = [[2, 2], [1, 1, 1]];
+print_r(min($datos));
+print "&lt;br&gt;";
+print_r(max($datos));
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">Array ( [0] =&gt; 2 [1] =&gt; 2 )<br>Array ( [0] =&gt; 1 [1] =&gt; 1 [2] =&gt; 1 ) </code></pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos = [[2, 2, 2], [1, 5, 9]];
+print_r(min($datos));
+print "&lt;br&gt;";
+print_r(max($datos));
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">Array ( [0] =&gt; 1 [1] =&gt; 5 [2] =&gt; 9  )<br>Array ( [0] =&gt; 2 [1] =&gt; 2 [2] =&gt; 2 ) </code></pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos = [[2, 2, 9], [2, 2, 5]];
+print_r(min($datos));
+print "&lt;br&gt;";
+print_r(max($datos));
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">Array ( [0] =&gt; 2 [1] =&gt; 2 [2] =&gt; 5  )<br>Array ( [0] =&gt; 2 [1] =&gt; 2 [2] =&gt; 9 ) </code></pre>
       </div>
     </div>
   </section>
@@ -960,63 +1018,14 @@ print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>Como <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> sólo genera números enteros, si queremos generar números aleatorios con decimales podemos utilizar el "truco" de generar números más grandes multiplicando por la potencia de 10 necesaria y dividiendo después por la misma potencia.</p>
-
-    <p>Por ejemplo, para generar números con uno, dos o tres decimales entre 0 y 100:</p>
+    <p>Podemos generar números aleatorios no consecutivos pero regularmente espaciados, utilizando el "truco" de multiplicar <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> por el valor adecuado. La diferencia entre los valores uqe queremos obtener es el valor por el que multiplicamos el rand(). Por ejemplo</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;" . rand(0, 100 <span class="codigo-resaltado">* 10</span>) <span class="codigo-resaltado">/ 10</span> . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre>
-<code class="language-html">&lt;p&gt;43.1&lt;/p&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;" . rand(0, 100 * 100) / 100 . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre>
-<code class="language-html">&lt;p&gt;27.63&lt;/p&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;" . rand(0, 100 * 1000) / 1000 . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre>
-<code class="language-html">&lt;p&gt;8.944&lt;/p&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <p>Podemos utilizar un procedimiento parecido para generar números aleatorios no consecutivos pero regularmente espaciados, multiplicando <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> por el valor adecuado. Por ejemplo</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Valor al azar del conjunto 10, 20, 30, 40, 50
-print "&lt;p&gt;" . <span class="codigo-resaltado">rand(1, 5) * 10</span> . "&lt;/p&gt;\n";
+// Valor al azar del conjunto <span class="codigo-resaltado">10</span>, 20, 30, 40, <span class="codigo-resaltado">50</span>
+print "&lt;p&gt;" . <span class="codigo-resaltado">rand(€1, 5) * 10</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1031,7 +1040,7 @@ print "&lt;p&gt;" . <span class="codigo-resaltado">rand(1, 5) * 10</span> . "&lt
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Valor al azar del conjunto 0, 2, 4, 6, 8, 10, 12, 14
+// Valor al azar del conjunto <span class="codigo-resaltado">0</span>, 2, 4, 6, 8, 10, 12, <span class="codigo-resaltado">14</span>
 print "&lt;p&gt;" . <span class="codigo-resaltado">rand(0, 7) * 2</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -1042,10 +1051,116 @@ print "&lt;p&gt;" . <span class="codigo-resaltado">rand(0, 7) * 2</span> . "&lt;
 </pre>
       </div>
     </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto <span class="codigo-resaltado">10</span>, 15, 20, 25, <span class="codigo-resaltado">30</span>
+print "&lt;p&gt;" . <span class="codigo-resaltado">rand(2, 6) * 5</span> . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Como <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> sólo genera números enteros, si queremos generar números aleatorios con decimales podemos utilizar el "truco" de generar números más grandes multiplicando por la potencia de 10 necesaria y dividiendo después por la misma potencia (o multiplicando por su inversa).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto <span class="codigo-resaltado">2.2</span>, 2.3, 2.4, 2.5, <span class="codigo-resaltado">2.6</span>
+print "&lt;p&gt;" . <span class="codigo-resaltado">rand(22, 26) / 10</span> . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand(22, 26) * 0.1 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;2.4&lt;/p&gt;
+&lt;p&gt;2.3&lt;/p&gt;
+</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto <span class="codigo-resaltado">10.34</span>, 10.35, 10.36, ... <span class="codigo-resaltado">10.57</span>
+print "&lt;p&gt;" . <span class="codigo-resaltado">rand(1034, 1057) / 100</span> . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand(1034, 1057) * 0.01 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;10.39&lt;/p&gt;
+&lt;p&gt;10.51&lt;/p&gt;
+</code>
+</pre>
+      </div>
+    </div>
+
+    <p>En general se trata de multiplicar los valores extremos por la potencia de 10 correspondiente al número de decimales que queremos obtener y de dividir el valor obtenido por la misma potencia de 10. Por ejemplo, para generar números con uno, dos o tres decimales entre 50 y 100:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto 50.0 al 100.0 (con 1 decimal)
+print "&lt;p&gt;" . rand(50 <span class="codigo-resaltado">* 10</span>, 100 <span class="codigo-resaltado">* 10</span>) <span class="codigo-resaltado">/ 10</span> . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;64.1&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto 50.00 al 100.00 (con 2 decimales)
+print "&lt;p&gt;" . rand(50 * 100, 100 * 100) / 100 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;77.63&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Valor al azar del conjunto 50.000 al 100.000 (con 3 decimales)
+print "&lt;p&gt;" . rand(50 * 1000, 100 * 1000) / 1000 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;88.944&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
