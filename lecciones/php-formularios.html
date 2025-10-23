@@ -127,7 +127,7 @@
         <pre>
 <code class="language-php">&lt;?php
 // form-2-2.php
-print "&lt;pre&gt;";
+print "&lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
@@ -145,21 +145,27 @@ print "&lt;/pre&gt;\n";
 
     <hr class="corta">
 
-    <p>Los valores que se reciben de un formulario son siempre de tipo cadena, aunque sean valores numéricos. Sin embargo, los nombres de los controles que se reciben de un formulario (y que se convierten en índices de la matriz $_REQUEST) pueden ser de tipo entero (si son números enteros) o de tipo cadena (si no son números enteros).</p>
+    <p>Los valores que se reciben de un formulario son siempre de tipo cadena, aunque sean valores numéricos. Sin embargo, los nombres de los controles que se reciben de un formulario (y que se convierten en índices de la matriz $_REQUEST) pueden ser de tipo entero (si son números enteros) o de tipo cadena (si no son números enteros). Los nombres de los controles pueden tener estructura de matriz, incluyendo corchetes.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-html">&lt;form action="form-6-2.php" method="get"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
 
-  &lt;p&gt;Edad: &lt;input type="number" name="1"&gt;&lt;/p&gt;
+  &lt;p&gt;Edad: &lt;input type="number" <span class="codigo-resaltado">name="1"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;
+    Aficiones:
+    &lt;input type="checkbox" <span class="codigo-resaltado">name="aficion[1]"</span>&gt; Deporte
+    &lt;input type="checkbox" <span class="codigo-resaltado">name="aficion[2]</span>"&gt; Lectura
+  &lt;/p&gt;
 
   &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
       </div>
-      <iframe src="ejemplos/formularios/form-6-1.php" style="height: 13em;"></iframe>
+      <iframe src="ejemplos/formularios/form-6-1.php" style="height: 17em;"></iframe>
       <div class="icono-enlace">
         <a href="ejemplos/formularios/form-6-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -169,7 +175,7 @@ print "&lt;/pre&gt;\n";
   <section id="visibilidad-datos">
     <h2>Visibilidad de los datos enviados: el atributo <span class="html-atri">method</span></h2>
 
-    <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la URL de llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se incluyen en las cabeceras HTTP (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si no se incluye el atributo, el comportamiento es el mismo que con <span class="html-atri-valor">get</span>.</p>
+    <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la URL de llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se incluyen en las cabeceras HTTP (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si no se incluye el atributo <span class="html-atri">method</span>, el comportamiento predeterminado es el mismo que con <span class="html-atri-valor">get</span>, es decir, los datos se incluyen en la URL.</p>
 
     <p>La diferencia es que con el valor <span class="html-atri-valor">get</span> se pueden ver en la barra de dirección los nombres de los controles y los valores introducidos por el usuario, mientras que con el valor <span class="html-atri-valor">post</span> no. Los datos recibidos son los mismos y desde el punto de vista de la seguridad ambos métodos son equivalentes (es decir, inseguros si se utiliza http y seguros si se utiliza https).</p>
 
@@ -208,7 +214,7 @@ print "&lt;/pre&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;";
+print "&lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
@@ -255,7 +261,7 @@ print "&lt;/pre&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;";
+print "&lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
@@ -304,7 +310,7 @@ print "&lt;/pre&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;";
+print "&lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
@@ -367,7 +373,7 @@ print "&lt;/pre&gt;\n";
     <p>Los programas que recogen datos de formularios necesitan protegerse de los ataques de inyección. En estos apuntes, se recomienda:</p>
 
     <ul>
-      <li>en primer lugar, no utilizar directamente la matriz $_REQUEST, sino recurrir a variables auxiliares creadas a partir de los valores de $_REQUEST, pero realizando sobre unas operaciones básicas que nos eviten problemas posteriores. En la lección <a href="php-recogida-datos.html">Recogida de datos</a> se comentan con detalle esas operaciones básicas y se propone el uso de una función recoge() para la creación de las variables auxiliares.</li>
+      <li>en primer lugar, no utilizar directamente la matriz $_REQUEST, sino recurrir a variables auxiliares creadas a partir de los valores de $_REQUEST, pero realizando sobre ellas unas operaciones básicas que nos eviten problemas posteriores. En la lección <a href="php-recogida-datos.html">Recogida de datos</a> se comentan con detalle esas operaciones básicas y se propone el uso de una función recoge() para la creación de las variables auxiliares.</li>
       <li>en segundo lugar, realizar comprobaciones sobre los valores recibidos, para asegurarse de que el programa no trabaja con valores problemáticos (por ejemplo, asegurarse de que se ha recibido un número si se esperaba recibir un número, etc.). Además, estas comprobaciones nos permitirán mostrar avisos al usuario para ayudarle a utilizar correctamente nuestros formularios. En la lección <a href="php-comprobacion-datos.html">Comprobación de datos</a> se comenta con detalle cómo estructurar los programas para realizar las comprobaciones y mostrar los avisos en su caso.</li>
     </ul>
 
@@ -375,7 +381,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 10 de diciembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

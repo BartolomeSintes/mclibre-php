@@ -121,7 +121,7 @@ funcion_de_matrices($matriz);
 <code class="language-php">&lt;?php
 $valores = range(1, 10, 3);
 
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -142,7 +142,7 @@ print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
 <code class="language-php">&lt;?php
 $valores = range(0.5, 1.5, 0.4);
 
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -172,7 +172,7 @@ $dos = [1, 3, 9];
 
 $final = array_merge($uno, $dos);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -199,7 +199,7 @@ $dos = [2 =&gt; 1, 3 =&gt; 3, 4 =&gt; 9];
 
 $final = array_merge($uno, $dos);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -227,7 +227,7 @@ $dos = ["b" =&gt; 10, "c" =&gt; 20, "d" =&gt; 40];
 
 $final = array_merge($uno, $dos);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -254,7 +254,7 @@ $dos = [2 =&gt; 100, "c" =&gt; 40, "d" =&gt; 60];
 
 $final = array_merge($uno, $dos);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -283,11 +283,11 @@ $dos = [1 =&gt; 30, "b" =&gt; 40];
 
 $final = array_merge($uno, $dos);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 
 $final = array_merge($dos, $uno);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -320,11 +320,11 @@ $dos = [1 =&gt; 30, "a" =&gt; 40];
 
 $final = array_merge($uno, $dos);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 
 $final = array_merge($dos, $uno);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -365,7 +365,7 @@ $elementos = count($nombres);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -396,7 +396,7 @@ $elementos = count($datos);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -441,7 +441,7 @@ $elementos = count($datos, COUNT_RECURSIVE);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -488,7 +488,7 @@ $elementos = count($datos, COUNT_RECURSIVE) - count($datos);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -535,7 +535,7 @@ $nombres = ["Ana", "Bernardo", "Bernardo", "Ana", "Carmen", "Ana"];
 
 $cuenta = array_count_values($nombres);
 
-print "&lt;pre&gt;\n"; print_r($cuenta); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($cuenta, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -564,7 +564,7 @@ $numeros = [10, 40, 15, -1];
 $maximo = max($numeros);
 $minimo = min($numeros);
 
-print "&lt;pre&gt;"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($numeros, true) . "&lt;/pre&gt;\n";
 print "\n";
 print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
 print "\n";
@@ -598,7 +598,7 @@ $valores = [10, "d", 40, "abc"];
 $maximo = max($valores);
 $minimo = min($valores);
 
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
 print "\n";
@@ -635,9 +635,9 @@ $valores2 = [19, 9, 2];
 $maximo = max(array_merge($valores1, $valores2));
 $minimo = min(array_merge($valores1, $valores2));
 
-print "&lt;pre&gt;\n"; print_r($valores1); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores1, true) . "&lt;/pre&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores2); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores2, true) . "&lt;/pre&gt;\n";
 print "\n";
 print "&lt;p&gt;El mínimo de las dos matrices es $minimo.&lt;/p&gt;\n";
 print "\n";
@@ -688,14 +688,14 @@ $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 sort($valores);
 
 print "&lt;p&gt;Matriz ordenada con sort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -728,14 +728,14 @@ $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 rsort($valores);
 
 print "&lt;p&gt;Matriz ordenada con rsort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -772,14 +772,14 @@ $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 asort($valores);
 
 print "&lt;p&gt;Matriz ordenada con asort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -812,14 +812,14 @@ $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 arsort($valores);
 
 print "&lt;p&gt;Matriz ordenada con arsort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -852,14 +852,14 @@ $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 ksort($valores);
 
 print "&lt;p&gt;Matriz ordenada con ksort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -892,14 +892,14 @@ $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 krsort($valores);
 
 print "&lt;p&gt;Matriz ordenada con krsort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -1016,17 +1016,17 @@ $valores = ["áb", "ab", "aá", "aa", "aáb", "aab", "aác", "aad", "aae", "aáf
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 sort($valores, SORT_LOCALE_STRING);
 
 print "&lt;p&gt;Matriz ordenada con sort():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
-        </pre>
+</pre>
       </div>
       <div class="resultado-html">
         <pre>
@@ -1077,33 +1077,38 @@ Array
 <code class="language-php">&lt;?php
 $valores = [10, 40, 15, -1];
 
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 
 if (in_array(15, $valores)) {
     print "&lt;p&gt;15 está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;15 no está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 }
-print "\n";
 
 if (in_array(25, $valores)) {
     print "&lt;p&gt;25 está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;25 no está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 }
-print "\n";
 
 if (in_array("15", $valores)) {
     print "&lt;p&gt;\"15\" está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;\"15\" no está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 }
-print "\n";
 
 if (in_array("15", $valores, true)) {
     print "&lt;p&gt;\"15\" está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;\"15\" no está en la matriz \$valores.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -1137,7 +1142,7 @@ if (in_array("15", $valores, true)) {
 <code class="language-php">&lt;?php
 $valores = [10, 40, 15, 30, 15, 40, 15];
 
-print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($valores, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 $encontrado = array_search(15, $valores);
@@ -1149,10 +1154,10 @@ print "&lt;p&gt;20: $encontrado&lt;/p&gt;\n";
 print "\n";
 
 $encontrados = array_keys($valores, 15);
-print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($encontrados, true) . "&lt;/pre&gt;\n";
 
 $encontrados = array_keys($valores, 20);
-print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($encontrados, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1197,14 +1202,14 @@ $nombres = ["a" =&gt; "Ana", "c" =&gt; "Carmen", 20 =&gt; "Bernardo", "c" =&gt; 
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 $reindexada = array_values($nombres);
 
 print "&lt;p&gt;Matriz reindexada con array_values():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($reindexada); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($reindexada, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -1221,7 +1226,7 @@ print "\n";
             [d] =&gt; David
             [40] =&gt; Carmen
         )
-        </pre>
+</pre>
 
         <p>Matriz reindexada con array_values():</p>
 
@@ -1251,14 +1256,14 @@ $numeros = [10, 20, 30, 40, 50, 60];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($numeros, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 shuffle($numeros);
 
 print "&lt;p&gt;Matriz barajada con shuffle():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($numeros, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -1302,14 +1307,14 @@ $numeros = ["a" =&gt; 10, "b" =&gt; 20, "c" =&gt; 30, "d" =&gt; 40];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($numeros, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 shuffle($numeros);
 
 print "&lt;p&gt;Matriz barajada con shuffle():&lt;/p&gt;\n";
 print "\n";
-print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($numeros, true) . "&lt;/pre&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
@@ -1351,7 +1356,7 @@ $cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
 
 $indice = array_rand($cuadrados);
 
-print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($cuadrados, true) . "&lt;/pre&gt;\n";
 print "\n";
 print "&lt;p&gt;Índice al azar: $indice&lt;/p&gt;\n";
 print "\n";
@@ -1368,7 +1373,7 @@ print "&lt;p&gt;Valor al azar: $cuadrados[$indice]&lt;/p&gt;\n";
       [7] =&gt; 49
       [10] =&gt; 100
   )
-  </pre>
+</pre>
             <p>Índice al azar: 7</p>
             <p>Valor al azar: 49</p>
           </div>
@@ -1383,7 +1388,7 @@ $cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100, 11 =&gt; 121, 15 =
 
 $indices = array_rand($cuadrados, 3);
 
-print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($cuadrados, true) . "&lt;/pre&gt;\n";
 print "\n";
 print "&lt;p&gt;Índices al azar: ";
 foreach ($indices as $indice) {
@@ -1410,7 +1415,7 @@ print "&lt;/p&gt;\n";
       [11] =&gt; 121
       [15] =&gt; 225
   )
-  </pre>
+</pre>
             <p>Índices al azar: 2 11 15</p>
             <p>Valores al azar: 4 121 225</p>
           </div>
@@ -1425,7 +1430,7 @@ $cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100, 11 =&gt; 121, 15 =
 
 $indice = array_rand($cuadrados, 1);
 
-print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($cuadrados, true) . "&lt;/pre&gt;\n";
 print "\n";
 print "&lt;p&gt;Índice al azar: $indice&lt;/p&gt;\n";
 print "\n";
@@ -1468,7 +1473,7 @@ $inicial = [0, 0, 1, 3, 1, 3, 2, 1];
 
 $final = array_unique($inicial);
 
-print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>

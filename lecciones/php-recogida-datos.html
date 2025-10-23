@@ -88,7 +88,9 @@
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
@@ -212,6 +214,59 @@ print "&lt;p&gt;Su nombre es " . $_REQUEST[nombre] . "&lt;/p&gt;\n";
           </div>
         </div>
       </li>
+      <li>Si se hace referencia entre llaves dentro de una cadena, el índice se debe escribir con comillas dobles o simples. Si se escribe sin comillas, se produce un aviso.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Su nombre es {$_REQUEST["nombre"]}&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <p>Su nombre es Pepito Conejo</p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Su nombre es {$_REQUEST['nombre']}&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <p>Su nombre es Pepito Conejo</p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Su nombre es {$_REQUEST[nombre]}&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <strong>Fatal error</strong>: Uncaught Error: Undefined constant &quot;nombre&quot; in ejemplo.php:2
+            Stack trace:
+            #0 {main}
+            thrown in <strong>ejemplo.php</strong> on line <strong>2</strong>
+          </div>
+        </div>
+      </li>
     </ul>
 
     <p>En ningún caso se pueden utilizar los caracteres especiales \" o \', ni dentro ni fuera de las cadenas.</p>
@@ -275,7 +330,9 @@ print "&lt;p&gt;Su nombre es " . $_REQUEST[\'nombre\'] . "&lt;/p&gt;\n";
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
@@ -306,7 +363,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
@@ -339,7 +398,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
@@ -398,7 +459,9 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
     print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
@@ -433,7 +496,9 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
     print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
@@ -468,7 +533,9 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
@@ -562,7 +629,9 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
@@ -590,7 +659,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
@@ -618,7 +689,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</span>&lt;/p&gt;\n";
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
@@ -648,7 +721,9 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
@@ -688,7 +763,9 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span></span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
@@ -726,7 +803,9 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
 if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
@@ -772,7 +851,9 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br><br>
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";</code><br>
 </pre>
         <pre class="codigo-resaltado">
 <code class="language-php">if (isset($_REQUEST["nombre"])) {
@@ -817,8 +898,9 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
-<br>
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";</code><br>
 </pre>
         <pre class="codigo-resaltado">
 <code class="language-php">if (isset($_REQUEST["nombre"])) {
@@ -864,7 +946,10 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br><br></pre>
+print "&lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";</code></pre>
+<br>
         <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
     : "";
@@ -1173,7 +1258,7 @@ if ($nombre == "") {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 3 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 14 de diciembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

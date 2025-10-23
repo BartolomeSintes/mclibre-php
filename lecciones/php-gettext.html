@@ -228,18 +228,22 @@ setlocale(LC_ALL, $language);
 bindtextdomain("messages", "./locale");
 textdomain("messages");
 
-print "&lt;p&gt;&lt;a href=\"" . $_SERVER["PHP_SELF"] . "?language=en_GB\"&gt;English&lt;/a&gt; -
-  &lt;a href=\""
-    . $_SERVER["PHP_SELF"] . "?language=es_ES\"&gt;Español&lt;/a&gt;&lt;/p&gt;\n";
-
+print "&lt;p&gt;\n";
+print "  &lt;a href=\"" . $_SERVER["PHP_SELF"] . "?language=en_GB\"&gt;English&lt;/a&gt; -\n";
+print "  &lt;a href=\"" . $_SERVER["PHP_SELF"] . "?language=es_ES\"&gt;Español&lt;/a&gt;\n";
+print "&lt;/p&gt;\n";
+print "\n";
 print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
         <pre>
-<code class="language-html">&lt;p&gt;&lt;a href="ejemplo.php?language=en_GB"&gt;English&lt;/a&gt; -
-  &lt;a href="ejemplo.php?language=es_ES"&gt;Español&lt;/a&gt;&lt;/p&gt;
+<code class="language-html">&lt;p&gt;
+  &lt;a href="ejemplo.php?language=en_GB"&gt;English&lt;/a&gt; -
+  &lt;a href="ejemplo.php?language=es_ES"&gt;Español&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;p&gt;Esta página está en castellano&lt;/p&gt;</code>
 </pre>
       </div>

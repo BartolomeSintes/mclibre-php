@@ -158,7 +158,7 @@
 
     <ul>
       <li>la función <span class="php-fun">is_numeric()</span>, que evalúa si el argumento se puede interpretar como número (aunque el tipo sea cadena). Por tanto esta función se puede utilizar para comprobar si un dato recibido de un formulario es un número o no.</li>
-      <li>la función <span class="php-fun">isset()</span>, que evalúa si el argumento está o no definido, independientemente de su tipo.</li>
+      <li>la función <span class="php-fun">isset()</span>, que evalúa si el argumento está o no definido, independientemente de su tipo. Se pueden escribir varios argumentos, en ese caso la función devuelve <span class="php-con">true</span> únicamente cuando todos los argumentos están definidos.</li>
     </ul>
 
     <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">is_numeric()</span>.</p>
@@ -356,7 +356,7 @@ if ($dato == "") {
     </table>
 
     <!--
-    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
     -->
 
     <hr class="corta">
@@ -455,7 +455,7 @@ if ($dato == "") {
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($_REQUEST, true) . "&lt;/pre&gt;\n";
 
 $numero = $_REQUEST["numero"];<br>
 if (function_exists("filter_var")) {
@@ -465,8 +465,7 @@ if (function_exists("filter_var")) {
         print "&lt;p&gt;NO ha escrito un número entero.&lt;/p&gt;\n";
     }
 } else {
-    print "&lt;p&gt;La función &lt;strong&gt;filter_var&lt;/strong&gt; "
-        . "no está disponible en este servidor.&lt;/p&gt;\n";
+    print "&lt;p&gt;La función &lt;strong&gt;filter_var&lt;/strong&gt; no está disponible en este servidor.&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -497,7 +496,7 @@ if (function_exists("filter_var")) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 31 de enero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

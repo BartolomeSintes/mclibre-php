@@ -546,7 +546,7 @@ $datos["pepe"]["peso"] = 80;
 $datos["juan"]["edad"] = 22;
 $datos["juan"]["peso"] = 75;
 
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -582,7 +582,7 @@ $datos[1]["nombre"] = "juan";
 $datos[1]["edad"] = 22;
 $datos[1]["peso"] = 75;
 
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -888,18 +888,19 @@ for ($i = 0; $i &lt; 3; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
-print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <pre>Array
+        <pre>
+Array
 (
     [0] =&gt; 2
     [1] =&gt; 4
     [2] =&gt; 6
 )
-        </pre>
+</pre>
       </div>
     </div>
 
@@ -911,7 +912,7 @@ for ($i = 0; $i &lt; 3; $i++) {
     $dados[] = rand(1, 6);
 }
 
-print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -922,7 +923,7 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
     [1] =&gt; 3
     [2] =&gt; 3
 )
-        </pre>
+</pre>
       </div>
     </div>
 
@@ -939,14 +940,14 @@ for ($i = 0; $i &lt; 3; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
-print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
 
 $dados = [];
 for ($i = 0; $i &lt; 3; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
-print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -957,14 +958,14 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
     [1] =&gt; 2
     [2] =&gt; 1
 )
-        </pre>
+</pre>
         <pre>Array
 (
     [0] =&gt; 4
     [1] =&gt; 5
     [2] =&gt; 2
 )
-        </pre>
+</pre>
       </div>
     </div>
 
@@ -976,13 +977,13 @@ for ($i = 0; $i &lt; 3; $i++) {
     $dados[] = rand(1, 6);
 }
 
-print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
 
 for ($i = 0; $i &lt; 3; $i++) {
     $dados[] = rand(1, 6);
 }
 
-print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -993,7 +994,7 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
     [1] =&gt; 4
     [2] =&gt; 4
 )
-        </pre>
+</pre>
         <pre>Array
 (
     [0] =&gt; 1
@@ -1003,7 +1004,7 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
     [4] =&gt; 3
     [5] =&gt; 2
 )
-        </pre>
+</pre>
       </div>
     </div>
 
@@ -1021,12 +1022,12 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
 <code class="language-php">&lt;?php
 $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 
 // Borramos un elemento de la matriz
 unset($matriz[5]);
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1052,12 +1053,12 @@ Array
 <code class="language-php">&lt;?php
 $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 
 // Borramos la matriz completa
 unset($matriz);
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1084,12 +1085,12 @@ print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
 <code class="language-php">&lt;?php
 $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 
 // Borramos dos elementos de la matriz de una vez
 unset($matriz[5], $matriz["número 1"]);
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1118,12 +1119,12 @@ Array
 <code class="language-php">&lt;?php
 $nombres = ["Alba", "Bernardo"];
 
-print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres, true) . "&lt;/pre&gt;\n";
 
 // "Borrramos" un elemento que no existe
 unset($matriz[3]);
 
-print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1152,11 +1153,11 @@ Array
 <code class="language-php">&lt;?php
 $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 
 $matriz = [];
 
-print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($matriz, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1191,11 +1192,11 @@ $cuadradosCopia = $cuadrados;
 $cuadrados[] = 100;
 
 print "&lt;p&gt;Matriz inicial (modificada):&lt;/p&gt;\n";
-print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($cuadrados, true) . "&lt;/pre&gt;\n";
 print "\n";
 
 print "&lt;p&gt;Copia de la matriz inicial (sin modificar):&lt;/p&gt;\n";
-print "&lt;pre&gt;\n"; print_r($cuadradosCopia); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($cuadradosCopia, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -1232,9 +1233,9 @@ $nombres_1 = ["Alba", "Bernardo"];
 
 $nombres_2 = ["Antonio", "Bárbara", "Carlos"];
 
-print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres_1 + $nombres_2, true) . "&lt;/pre&gt;\n";
 print "\n";
-print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres_2 + $nombres_1, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -1265,9 +1266,9 @@ $nombres_1 = [0 =&gt; "Alba", 2 =&gt; "Bernardo"];
 
 $nombres_2 = [1 =&gt; "Antonio", 3 =&gt; "Bárbara", 5 =&gt; "Carlos"];
 
-print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres_1 + $nombres_2, true) . "&lt;/pre&gt;\n";
 print "\n";
-print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres_2 + $nombres_1, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -1305,7 +1306,7 @@ $nombres_2 = ["Antonio", "Bárbara", "Carlos"];
 
 $nombres_1 += $nombres_2;
 
-print "&lt;pre&gt;"; print_r($nombres_1); print "&lt;/pre&gt;\n";
+print "&lt;pre&gt;\n" . print_r($nombres_1, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
           </div>

@@ -83,14 +83,25 @@ $nombreControl2Ok = false;
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-if (condicion_1) {
-    print "mensaje de error 1 (indicando porque el dato no es correcto)";
-} elseif (condicion_2) {
-    print "mensaje de error 2 (indicando porque el dato no es correcto)";
+if (condicion_1_1) {
+    print "mensaje de error 1_1 (indicando por qué el dato no es correcto)";
+} elseif (condicion_1_2) {
+    print "mensaje de error 1_2 (indicando por qué el dato no es correcto)";
 } ... {
 } else {
-    $nombreControlOk = true;
+    $nombreControl1Ok = true;
 }
+
+if (condicion_2_1) {
+  print "mensaje de error 2_1 (indicando por qué el dato no es correcto)";
+} elseif (condicion_2_2) {
+  print "mensaje de error 2_2 (indicando por qué el dato no es correcto)";
+} ... {
+} else {
+  $nombreControl2Ok = true;
+}
+
+...
 ?&gt;</code>
 </pre>
         </div>
@@ -231,7 +242,7 @@ if ($peso == "") {
       <li>Si no se escribe un número:
         <div class="codigo">
           <pre>
-    <code class="language-php">...
+<code class="language-php">    ...
 } elseif (!is_numeric($peso)) {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso como número.&lt;/p&gt;\n";
     print "\n";
@@ -242,7 +253,7 @@ if ($peso == "") {
       <li>Si el peso no está entre dos valores (por ejemplo, entre 40 y 150 kg):
         <div class="codigo">
           <pre>
-    <code class="language-php">...
+<code class="language-php">    ...
 } elseif ($peso &lt; 40 || $peso &gt; 150) {
     print "  &lt;p class=\"aviso\"&gt;¿Está seguro de que su peso es $peso kg?&lt;/p&gt;\n";
     print "\n";
@@ -516,6 +527,26 @@ if ($gustaOk) {
     print "\n";
 }
 ?&gt;</code>
+</pre>
+    </div>
+
+    <p>En caso de que haya muchas opciones posibles, la comprobación de que el valor recibido sea una de las opciones disponibles puede acortarse utilizando la función <a href="php-matrices-funciones.html#in-array"><span class="php-fun">in_array()</span></a>, como muestra el ejemplo siguiente en el que el valor recibido tiene que ser la cantidad de euros de un billete.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+  ...
+} elseif ($billete != 5 && $billete != 10 && $billete != 20 && $billete != 50 && $billete != 100 && $billete != 200 && $billete != 500) {
+  ... </code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+  ...
+} elseif (!in_array($billete, [5, 10, 20, 50, 100, 200, 500])) {
+  ... </code>
 </pre>
     </div>
   </section>
@@ -819,7 +850,7 @@ if ($operacionOk && $xOk && $yOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 13 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 31 de enero de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

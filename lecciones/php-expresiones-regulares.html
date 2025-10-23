@@ -59,14 +59,18 @@ $patron = "/^[[:digit:]]+$/";
 
 if (preg_match($patron, $cadena1)) {
     print "&lt;p&gt;La cadena $cadena1 son sólo números.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;La cadena $cadena1 no son sólo números.&lt;/p&gt;\n";
+    print "\n";
 }
 
 if (preg_match($patron, $cadena2)) {
     print "&lt;p&gt;La cadena $cadena2 son sólo números.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;La cadena $cadena2 no son sólo números.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -90,14 +94,18 @@ $patron2 = "/^[a-z]+$/i";
 
 if (preg_match($patron1, $cadena)) {
     print "&lt;p&gt;La cadena $cadena son sólo letras minúsculas.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;La cadena $cadena no son sólo letras minúsculas.&lt;/p&gt;\n";
+    print "\n";
 }
 
 if (preg_match($patron2, $cadena)) {
     print "&lt;p&gt;La cadena $cadena son sólo letras minúsculas o mayúsculas.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "&lt;p&gt;La cadena $cadena no son sólo letras minúsculas o mayúsculas.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
@@ -121,13 +129,17 @@ $patron = "/de/";
 $encontrado = preg_match_all($patron, $cadena, $coincidencias, PREG_OFFSET_CAPTURE);
 
 if ($encontrado) {
-    print "&lt;pre&gt;"; print_r($coincidencias); print "&lt;/pre&gt;\n";
+    print "&lt;pre&gt;\n" . print_r($coincidencias, true) . "&lt;/pre&gt;\n";
+    print "\n";
     print "&lt;p&gt;Se han encontrado $encontrado coincidencias.&lt;/p&gt;\n";
+    print "\n";
     foreach ($coincidencias[0] as $coincide) {
         print "&lt;p&gt;Cadena: '$coincide[0]' - Posición: $coincide[1]&lt;/p&gt;\n";
+        print "\n";
     }
 } else {
     print "&lt;p&gt;No se han encontrado coincidencias.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>

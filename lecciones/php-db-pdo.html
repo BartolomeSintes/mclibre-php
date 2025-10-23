@@ -74,7 +74,8 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
 
       <div class="codigo">
         <pre>
-<code class="language-php">        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";</code>
+<code class="language-php">        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "\n";</code>
 </pre>
       </div>
     </section>
@@ -190,7 +191,8 @@ if (!$resultado) {
 
       <div class="codigo">
         <pre>
-<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";</code>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";</code>
 </pre>
       </div>
 
@@ -217,6 +219,7 @@ $resultado = $pdo-&gt;query($consulta);</code>
         <pre>
 <code class="language-php">$consulta = "SELECT * FROM <i>tabla</i>";
 print "&lt;p&gt;Consulta: $consulta&lt;/p&gt;\n";
+print "\n";
 // var_dump($consulta);
 $resultado  = $pdo-&gt;query($consulta);</code>
 </pre>
@@ -240,8 +243,10 @@ $consulta  = "SELECT COUNT(*) FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {<span class="codigo-resaltado">$resultado-&gt;fetchColumn()</span>} registro(s).&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -260,8 +265,10 @@ $consulta  = "SELECT * FROM <i>tabla</i> WHERE <i>id</i>=<i>:id</i>";   // Norma
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute(["<i>:id</i>" =&gt; $id])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     $registro = <span class="codigo-resaltado">$resultado-&gt;fetch()</span>;
     print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;\n";
@@ -284,8 +291,10 @@ $consulta  = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
     print "    &lt;ul&gt;\n";
     <span class="codigo-resaltado">foreach ($resultado as $registro)</span> {
         print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
@@ -308,10 +317,13 @@ $consulta = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (count($registros = <span class="codigo-resaltado">$resultado-&gt;fetchAll()</span>) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
     print "    &lt;ul&gt;\n";
     <span class="codigo-resaltado">foreach ($registros as $registro)</span> {
         print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
@@ -377,8 +389,10 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute();) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -409,8 +423,10 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1, ":valor2" =&gt; $valor2])</span>;) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -439,8 +455,10 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;<span class="codigo-resaltado">execute([$valor1, $valor2])</span>;) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -494,8 +512,10 @@ $consulta = "SELECT * FROM <i>tabla</i>
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1])</span>;) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     ...</code>
 </pre>
@@ -613,6 +633,7 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "\n";
         exit;
     }
 }
@@ -653,6 +674,7 @@ function conectaDb()
         $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "\n";
         exit;
     } finally {
         $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
@@ -700,10 +722,11 @@ $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
-}
-print "\n";</code>
+    print "\n";
+}</code>
 </pre>
         </div>
 
@@ -721,10 +744,11 @@ $consulta = "CREATE TABLE $cfg[tablaPersonas] (
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-}
-print "\n";</code>
+    print "\n";
+}</code>
 </pre>
         </div>
       </section>
@@ -744,10 +768,11 @@ $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
-}
-print "\n";</code>
+    print "\n";
+}</code>
 </pre>
         </div>
 
@@ -763,6 +788,7 @@ $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -771,6 +797,7 @@ if (!$pdo-&gt;query($consulta)) {
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -796,8 +823,10 @@ $consulta = "CREATE TABLE $cfg[tablaPersonas] (
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
         </div>
@@ -826,8 +855,10 @@ $consulta = "INSERT INTO $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -852,8 +883,10 @@ $consulta = "UPDATE $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -879,8 +912,10 @@ foreach ($id as $indice =&gt; $valor) {
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
         print "\n";
@@ -905,10 +940,13 @@ foreach ($id as $indice =&gt; $valor) {
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, <span class="codigo-resaltado">":edad" =&gt; intval($edad)</span>])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
       </div>
@@ -931,6 +969,7 @@ $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -951,8 +990,10 @@ $consulta  = "SELECT * FROM $cfg[tablaPersonas] WHERE id=:id";
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     $registro = $resultado-&gt;fetch();
     print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;\n";
@@ -978,6 +1019,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
@@ -1000,8 +1042,10 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
     print "    &lt;ul&gt;\n";
     while ($registro = $resultado-&gt;fetch()) {
         print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
@@ -1025,16 +1069,20 @@ $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif ($resultado-&gt;fetchColumn() == 0) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
+    print "\n";
 } else {
     $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
+        print "\n";
         print "    &lt;ul&gt;\n";
         foreach ($resultado as $registro) {
             print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
@@ -1058,10 +1106,13 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (count($registros = $resultado-&gt;fetchAll()) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
     print "    &lt;ul&gt;\n";
     foreach ($registros as $registro) {
         print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
@@ -1098,8 +1149,10 @@ $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"%$apellidos%"</span>])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -1121,8 +1174,10 @@ $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"$apellidos%"</span>])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -1173,6 +1228,7 @@ $consulta = "SELECT
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
    ...</code>
 </pre>
@@ -1315,6 +1371,7 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "\n";
         exit;
     }
 }</code>
@@ -1340,6 +1397,7 @@ function conectaDb()
         $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "\n";
         exit;
     } finally {
         $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
@@ -1411,10 +1469,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
@@ -1424,10 +1483,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }</code>
 </pre>
           </div>
@@ -1449,10 +1509,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                  CHARACTER SET utf8mb4
@@ -1460,6 +1521,7 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -1468,6 +1530,7 @@ function borraTodo()
 
         if (!$pdo-&gt;query($consulta)) {
             print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } else {
             print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
             print "\n";
@@ -1481,8 +1544,10 @@ function borraTodo()
 
             if (!$pdo-&gt;query($consulta)) {
                 print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+                print "\n";
             } else {
                 print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+                print "\n";
             }
         }
     }
