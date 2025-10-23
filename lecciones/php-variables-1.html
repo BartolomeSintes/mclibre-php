@@ -52,8 +52,8 @@
 $edad   = 16;
 $edad1  = 17;
 $edad_1 = 18;
-// Ejemplos de nombres de variables (estilos NO redomendados)
-<span class="variable">$años</span> = 19;
+// Ejemplos de nombres de variables (estilos NO recomendados)
+<span class="variable">$años</span>   = 19;
 $_edad  = 20;
 $Edad   = 21;
 $__edad = 22;
@@ -92,7 +92,7 @@ $edadAbueloPaterno = 73;       // edad del abuelo paterno
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$edad = 15;                // La variable $edad tiene ahora el valor 15
+$edad   = 15;              // La variable $edad tiene ahora el valor 15
 $nombre = "Pepito Conejo"  // La variable $nombre tiene ahora el valor Pepito Conejo
 ?&gt;</code>
 </pre>
@@ -130,11 +130,32 @@ print $edad;
         <pre>
 <code class="language-php">&lt;?php
 $edad = 15;
+print $edad;
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">15</code></pre>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>No se puede utilizar el valor de una variable antes de haber guardado un valor en ella. En el ejemplo siguiente el mensaje de error es de tipo Warning (aviso) porque es un error que no impide a PHP ejecutar el programa. Cuando un programa utiliza una variable que no tiene un valor definido, PHP le asigna un valor vacío (0 si es un número, cadena vacía si es una cadena, etc.), genera el mensaje de error y continua la ejecución del programa.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print $edad;
+$edad = 15;
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado"><br><b>Warning</b>:  Undefined variable $edad in <b>prueba.php</b> on line <b>2</b><br>
       </div>
     </div>
 
@@ -234,7 +255,7 @@ print $edad;
       </div>
     </div>
 
-    <p>Lo que hace el ordenador es calcular el resultado de la expresión de la derecha utilizando el valor actual de la variable y finalmente guardar el resultado en la variable.</p>
+    <p>Lo que hace el ordenador es calcular el resultado de la expresión de la derecha utilizando el valor actual de la variable y finalmente guardar el resultado en la variable de la izquierda.</p>
 
     <hr class="corta">
 
@@ -263,9 +284,9 @@ print $Edad;
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$edad = 15;
+$edad = 15;             // $edad es un número entero
 print "&lt;p&gt;$edad&lt;/p&gt;\n";
-$edad = "quince";
+$edad = "quince";       // $edad es una cadena
 print "&lt;p&gt;$edad&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -282,35 +303,7 @@ print "&lt;p&gt;$edad&lt;/p&gt;\n";
   <section id="concatenar">
     <h2>Concatenar variables y cadenas</h2>
 
-    <p>En general se desaconseja escribir cadenas muy largas en un programa, porque tanto si el editor ajusta la línea como si no, el programa resulta incómodo de leer (si no se ajusta la línea porque hay que desplazarse a la derecha para poder leer el contenido, si se ajusta la línea porque el sangrado se pierde en la segunda línea y siguientes). Una manera de evitar cadenas demasiado largas podría consistir en escribir varias instrucciones <span class="php-res">print</span> consecutivas:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente "
-print "del programa resulta incómodo de leer, así que la partimos en varias cadenas escritas "
-print "en instrucciones print consecutivas.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <p>Pero también se puede utilizar el operador de concatenación . (punto), que permite concatenar cadenas.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente "
-    . "del programa resulta incómodo de leer, así que la partimos en varias cadenas concatenadas "
-    . "por el operador de concatenación: . (punto)&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <p>El operador . (punto) también permite concatenar cadenas o variables.</p>
+    <p>El operador . (punto) permite unir cadenas entre sí o unir cadenas con variables o expresiones.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -447,6 +440,48 @@ print "&lt;p&gt;1.5 + 1 = " . 1.5 + <span class="codigo-resaltado">1 .</span> "&
         <pre><code class="language-html">&lt;p&gt;1.5 + 1 = 2.5&lt;p&gt;</code></pre>
       </div>
     </div>
+
+    <hr class="corta">
+
+    <p>En general se desaconseja escribir cadenas muy largas en un programa, porque tanto si el editor ajusta la línea como si no, el programa resulta incómodo de leer (si no se ajusta la línea porque hay que desplazarse a la derecha para poder leer el contenido, si se ajusta la línea porque el sangrado se pierde en la segunda línea y siguientes).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente del programa resulta incómodo de leer, así que la podemos partir en varias cadenas escritas en instrucciones print consecutivas.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Una manera de evitar cadenas demasiado largas podría consistir en escribir varias instrucciones <span class="php-res">print</span> consecutivas:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente "
+print "del programa resulta incómodo de leer, así que la podemos partir en varias cadenas escritas "
+print "en instrucciones print consecutivas.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>También se puede utilizar el operador de concatenación . (punto), que permite concatenar cadenas.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente "
+    . "del programa resulta incómodo de leer, así que la podemos partir en varias cadenas concatenadas "
+    . "por el operador de concatenación: . (punto)&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+    </div>
   </section>
 
   <section id="cadenas">
@@ -541,7 +576,7 @@ print "&lt;p&gt;¡<span class="codigo-resaltado">{$saludos[0][1]}</span>, $nombr
     <section id="operaciones">
       <h3>Operaciones aritméticas y llamadas a funciones</h3>
 
-      <p>En el interior de las cadenas no se realizan operaciones aritméticas o llamadas a funciones.</p>
+      <p>En el interior de las cadenas no se pueden realizar operaciones aritméticas o llamadas a funciones.</p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -552,7 +587,7 @@ print "&lt;p&gt;¡<span class="codigo-resaltado">{$saludos[0][1]}</span>, $nombr
 <code class="language-php">&lt;?php
 $x = 3;
 $y = 4;
-print "&lt;p&gt;Suma: $x + $y = <span class="codigo-resaltado">$x + $y</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Suma: $x + $y     = <span class="codigo-resaltado">$x + $y</span>&lt;/p&gt;\n";
 print "&lt;p&gt;Multiplicación: $x x $y = <span class="codigo-resaltado">$x * $y</span>&lt;/p&gt;\n";
 print "&lt;p&gt;Potencia: $x ^ $y = <span class="codigo-resaltado">pow($x, $y)</span>&lt;/p&gt;\n";
 ?&gt;</code>
@@ -598,9 +633,9 @@ print "&lt;p&gt;Potencia: $x ^ $y = " <span class="codigo-resaltado">. pow($x, $
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$x = 3;
-$y = 4;
-$suma = $x + $y;
+$x        = 3;
+$y        = 4;
+$suma     = $x + $y;
 $producto = $x * $y;
 $potencia = pow($x, $y);
 print "&lt;p&gt;Suma: $x + $y = <span class="codigo-resaltado">$suma</span>&lt;/p&gt;\n";
@@ -677,7 +712,7 @@ print "&lt;p style=\"<span class="codigo-resaltado">font-size: $xpx</span>\"&gt;
         </div>
       </div>
 
-      <p>... pero se pueden utilizar llaves o sacar la variable de la cadena:</p>
+      <p>... pero se pueden utilizar llaves, sacar la variable de la cadena o concatenar cadenas:</p>
 
       <div class="filaflex">
         <div class="codigo">
@@ -727,24 +762,6 @@ print "&lt;p style=\"font-size: $x"<span class="codigo-resaltado"> . </span>"px\
 
       <div class="filaflex">
         <div class="icono-ok">
-          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
-        </div>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$x = 7;
-
-print "&lt;p&gt;{$x} por {$x} es {$x * $x}&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <p><b>Parse error</b>: syntax error, unexpected '*', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in <b>ejemplo.php</b> on line <b>4</b></p>
-        </div>
-      </div>
-
-      <div class="filaflex">
-        <div class="icono-ok">
           <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
         </div>
         <div class="codigo">
@@ -758,6 +775,24 @@ print "&lt;p&gt;2 por {$x} es {2 * $x}&lt;/p&gt;\n";
         </div>
         <div class="resultado-codigo">
           <p>2 por 7 es {2 * 7}</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$x = 7;
+
+print "&lt;p&gt;{$x} por {$x} es {$x * $x}&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <p><b>Parse error</b>: syntax error, unexpected '*', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in <b>ejemplo.php</b> on line <b>4</b></p>
         </div>
       </div>
 
@@ -830,7 +865,7 @@ var_dump($nombre, $edad);
           </div>
         </div>
       </li>
-      <li>La función <a href="https://www.php.net/manual/en/function.var-export.php"><span class="php-fun">var_export($var, $return)</span></a> puede imprimir o devolver el valor de una variable.
+      <li>La función <a href="https://www.php.net/manual/en/function.var-export.php"><span class="php-fun">var_export($var, $return = false)</span></a> puede imprimir o devolver el valor de una variable.
 
         <div class="filaflex">
           <div class="codigo">
@@ -881,7 +916,7 @@ var_export($estudiante);
             <pre>
 <code class="language-php">&lt;?php
 $estudiante = true;
-$variable = var_export($estudiante, true);
+$variable   = var_export($estudiante, true);
 print "&lt;p&gt;La variable \$estudiante tiene el valor $variable&lt;/p&gt;\n";
 print "\n";
 print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudiante, true) . "&lt;/p&gt;\n";
@@ -899,7 +934,7 @@ print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudian
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 24 de septiembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -193,22 +193,22 @@ tiene un área de 196 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 
       <p>Desde PHP 7.4 (publicado en noviembre de 2019), PHP permite utilizar el carácter subrayado (_) al escribir números. Este carácter no cambia el valor del número y no aparece al imprimir los valores, pero se suele utilizar para facilitar la legibilidad del código fuente en el caso de números con muchas cifras, por ejemplo como separador de miles, millones, etc.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $x = 123_456;
 $y = 123_456.789_012;
 print "&lt;p&gt;$x $y&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;123456 123456.789012&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
+      </div>
 
       <hr class="corta">
 
@@ -436,6 +436,75 @@ print "&lt;p&gt;$saludo&lt;/p&gt;\n";
     <h2>Conversiones de tipos</h2>
 
     <p>PHP permite convertir variables de un tipo en otro tipo o considerar variables de un tipo como otro.</p>
+
+    <section id="cadenas-numeros">
+      <h3>Cadenas y números</h3>
+
+      <p>Si una cadena es interpretable como número, PHP permite hacer operaciones aritméticas entres cadenas y números:</p>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "2" + 2;
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">4</div>
+      </div>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "   2.1   " * 2;
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">4.2</div>
+      </div>
+
+      <p>Si la cadena no es interpretable como número, PHP no permite hacer operaciones aritméticas entres cadenas y números. De hecho se genera un error fatal que interrumpe la ejecución del programa:</p>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "dos" + 2;
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html"><b>Fatal error</b>: Uncaught TypeError: Unsupported operand types: string + int in prueba.php:2 Stack trace: #0 {main} thrown in <b>prueba.php</b> on line <b>2</b><br></div>
+      </div>
+
+      <p>Un caso especial con el que hay que tener cuidado es que si el principio de la cadena es interpretable como número, PHP genera un aviso pero toma ese número, efectúa las operaciones y continua la ejecución del programa:</p>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "3xxx" * 4;
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html"><b>Warning</b>:  A non-numeric value encountered in <b>prueba.php</b> on line <b>2</b><br><p>Hola</p></div>
+      </div>
+    </section>
+
     <section id="como-logicas">
       <h3>Variables como variables lógicas</h3>
 
@@ -618,8 +687,9 @@ if ($autorizado == false) {
       </div>
     </section>
   </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -34,7 +34,7 @@
         <li><a href="#devolucion-con-tipo">Tipo del valor devuelto</a></li>
         <li><a href="#argumentos-predeterminados">Argumentos predeterminados</a></li>
         <li><a href="#argumentos-con-nombre">Argumentos con nombre</a></li>
-        <li><a href="#argumentos-indeterminados">Argumentos indeterminados</a></li>
+        <li><a href="#argumentos-indeterminados">Número indeterminado arg.</a></li>
       </ul>
     </div>
   </nav>
@@ -379,7 +379,16 @@ print "&lt;p&gt;En el programa principal, la variable a es $a.&lt;/p&gt;\n";
   </section>
 
   <section id="variables-globales">
-    <h2>Variables globales</h2>
+    <h2 class="con-aside">Variables globales</h2>
+
+    <aside class="enlace-norma">
+      <p>
+        Declaraciones de tipos<br>
+        <a href="https://www.php.net/manual/en/language.variables.scope.php#language.variables.scope.global">
+          <img src="../varios/iconos/icono-php-horizontal.svg" alt="Manual PHP" title="Manual PHP" width="90">
+        </a>
+      </p>
+    </aside>
 
     <p>Podemos hacer que una función tenga acceso a las variables del programa principal, indicando en el cuerpo de la función los nombres de las variables precedidas de la palabra reservada <span class="php-res">global</span>.</p>
 
@@ -835,11 +844,13 @@ function suma($arg1, $arg2)
 $a = 20;
 $b = 30;
 
+// Podemos guardar el dato devuelto por la función en una variable ...
 $suma = suma($a, $b);
-
+// ... y mostrar su valor
 print "&lt;p&gt;$a + $b = $suma&lt;/p&gt;\n";
 print "\n";
 
+// También podemos mostrar el valor directamente ...
 print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -861,7 +872,7 @@ function suma($arg1, $arg2)
 {
     return $arg1 + $arg2;
     // Esta instrucción no se ejecuta nunca.
-    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+    <span class="codigo-resaltado">print "&lt;p&gt;Hola&lt;/p&gt;\n";</span>
 }
 
 $a = 20;
@@ -890,17 +901,28 @@ function sumaProducto($arg1, $arg2)
 $a = 20;
 $b = 30;
 
-$sumaProducto = sumaProducto($a, $b);
-
-print "&lt;p&gt;$a + $b = <span class="codigo-resaltado">$sumaProducto[0]</span>&lt;/p&gt;\n";
+// Podemos guardar el dato devuelto por la función en una variable (que será de tipo matriz) ...
+$sp = sumaProducto($a, $b);
+// ... y mostrar los valores
+print "&lt;p&gt;$a + $b = <span class="codigo-resaltado">$sp[0]</span>&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;$a * $b = <span class="codigo-resaltado">$sp[1]</span>&lt;/p&gt;\n";
 print "\n";
 
-print "&lt;p&gt;$a * $b = <span class="codigo-resaltado">$sumaProducto[1]</span>&lt;/p&gt;\n";
+// También podemos mostrar los valores directamente (teniendo en cuenta que es una matriz) ...
+print "&lt;p&gt;$a + $b = " . <span class="codigo-resaltado">sumaProducto($a, $b)[0]</span> . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;$a * $b = " . <span class="codigo-resaltado">sumaProducto($a, $b)[1]</span> . "&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
             <pre><code class="language-html">&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;
+
+&lt;p&gt;20 * 30 = <span class="codigo-resaltado">600</span>&lt;/p&gt;
+
+&lt;p&gt;20 + 30 = <span class="codigo-resaltado">50</span>&lt;/p&gt;
 
 &lt;p&gt;20 * 30 = <span class="codigo-resaltado">600</span>&lt;/p&gt;
 </code></pre>
@@ -953,13 +975,24 @@ print "&lt;p&gt;$a * $b = $producto&lt;/p&gt;\n";
       </p>
     </aside>
 
-    <p>Al declarar una función, podemos indicar el tipo del valor devuelto por la función. De esta manera, al llamar a la función en un programa, PHP puede detectar si el tipo del valor devuelto es incorrecto y mostrar el error fatal correspondiente.</p>
+    <p>Al declarar una función, podemos indicar el tipo del valor devuelto por la función escribiendo : (dos puntos) y el tipo al final de la línea de definición de la función.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">function nombreDelaFuncion(): tipoDevuelto
+{
+    bloque_de_sentencias
+}</code>
+</pre>
+    </div>
+
+    <p>De esta manera, al llamar a la función en un programa, PHP puede detectar si el tipo del valor devuelto es incorrecto y mostrar el error fatal correspondiente.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-function une($x, $y): float
+function une($x, $y)<span class="codigo-resaltado">: float</span>
 {
     return $x . $y;
 }
@@ -983,7 +1016,7 @@ Stack trace:
 
     <p>Algunos de los tipos que se pueden indicar son los tipos <span class="php-tip">boolean</span>, <span class="php-tip">int</span>, <span class="php-tip">float</span>, <span class="php-tip">string</span> o <span class="php-tip">array</span>.</p>
 
-    <p>Si un argumento puede ser de varios tipos, se debe indicar como una expresión lógica de los tipos (utilizando el operador lógico |), como muestra el siguiente ejemplo.</p>
+    <p>Si el dato devuelto puede ser de varios tipos, se debe indicar como una expresión lógica de los tipos (utilizando el operador lógico |), como muestra el siguiente ejemplo.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -1008,9 +1041,9 @@ print "&lt;p&gt;" . une(6.5, 6.5) . "&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>Si un argumento puede ser de cualquier tipo, se debe indicar con el tipo <span class="php-tip">mixed</span>.</p>
+    <p>Si el dato devuelto puede ser de cualquier tipo, se debe indicar con el tipo <span class="php-tip">mixed</span>.</p>
 
-    <p>Si una función no devuelve ningún argumento, se puede indicar con el tipo <span class="php-tip">void</span>.</p>
+    <p>Si una función no devuelve ningún dato, se puede indicar con el tipo <span class="php-tip">void</span>.</p>
   </section>
 
   <section id="argumentos-predeterminados">
@@ -1173,34 +1206,49 @@ saludo(saludo: "Adios", nombre: "Don José");
   </section>
 
   <section id="argumentos-indeterminados">
-    <h2 class="con-aside">Funciones con un número de argumentos indeterminados</h2>
+    <h2 class="con-aside">Funciones con un número indeterminado de argumentos</h2>
 
     <aside class="enlace-norma">
       <p>
-        Argumentos indeterminados<br>
+        Número indeterminado de argumentos<br>
         <a href="https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list">
           <img src="../varios/iconos/icono-php-horizontal.svg" alt="Manual PHP" title="Manual PHP" width="90">
         </a>
       </p>
     </aside>
 
-    <p>Para indicar que una función puede tener un número indeterminado de argumentos, se debe utilizar la expresión <span class="php-ope">...</span> (tres puntos seguidos). Los argumentos se reciben en una matriz.</p>
+    <p>Para indicar que una función puede tener un número indeterminado de argumentos, se debe utilizar la expresión <span class="php-ope">...</span> (tres puntos seguidos).</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">function nombreDelaFuncion(<span class="codigo-resaltado">...$argumentos</span>)
+{
+    bloque_de_sentencias
+}</code>
+</pre>
+    </div>
+
+    <p>Los argumentos que se escriban al llamar a la función se reciben en una única matriz cuyos valores son los valores de los argumentos enviados, como muestra el siguiente ejemplo.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-function une(<span class="codigo-resaltado">...$elementos</span>)
+function une(<span class="codigo-resaltado">...$argumentos</span>)
 {
     $tmp = "";
-    foreach($elementos as $elemento) {
-        $tmp = $tmp . $elemento;
+    // Recorremos la matriz formada por todos los argumentos recibidos
+    foreach($argumentos as $argumento) {
+        // Vamos concatenando cada uno de los argumentos recibidos
+        $tmp = $tmp . $argumento;
     }
+    // Devolvemos la cadena resultante
     return $tmp;
 }
 
+// Podemos llamar a la función une() con tantos argumentos como queramos
 print une("&lt;p&gt;", "abc", "def", "ghi", "&lt;/p&gt;", "\n");
-print "\n";
+print une("\n");
 print une("&lt;p&gt;", 1, 2, 3, "&lt;/p&gt;", "\n");
 ?&gt;</code>
 </pre>
@@ -1215,7 +1263,7 @@ print une("&lt;p&gt;", 1, 2, 3, "&lt;/p&gt;", "\n");
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de diciembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 3 de diciembre de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
