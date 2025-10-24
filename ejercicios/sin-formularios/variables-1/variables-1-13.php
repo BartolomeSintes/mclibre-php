@@ -1,11 +1,11 @@
 <?php
 /**
- * Variables. Sin formularios.(1) 13 - variables-1-13.php
+ * Sin formularios. Variables (1) 13 - variables-1-13.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-10-24
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Tres círculos.
+    Doble rombo.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,24 +36,18 @@
 </head>
 
 <body>
-  <h1>Tres círculos</h1>
-
-  <p>Actualice la página para mostrar tres nuevos círculos.</p>
+  <h1>Doble rombo</h1>
 
 <?php
-$r1      = rand(50, 150);
-$r2      = rand(50, 150);
-$r3      = rand(50, 150);
-$ancho   = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
-$alto    = 2 * max($r1, $r2, $r3) + 20;
-$centros = max($r1, $r2, $r3);
+$lado = rand(20, 40) * 20;
+$t    = $lado / 4;
 
+print "  <p>Actualice la página para mostrar un nuevo doble rombo de $lado px de ancho.</p>\n";
+print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "         width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\">\n";
-print "      <circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
-print "      <circle cx=\"" . 2 * $r1 + $r2 . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
-print "      <circle cx=\"" . 2 * $r1 + 2 * $r2 + $r3 . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
+print "         width=\"" . 4 * $t . "\" height=\"" . 2 * $t . "\" viewBox=\"0 0 " . 4 * $t . " " . 2 * $t . "\" style=\"background-color: lightgray;\">\n";
+print "      <polygon points=\"0,$t $t,0 " . 3 * $t . "," . 2 * $t . " " . 4 * $t . ",$t " . 3 * $t . ",0 $t," . 2 * $t . "\"  stroke=\"green\" stroke-width=\"5\" fill=\"none\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 print "\n";
@@ -61,7 +55,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-10-24">14 de octubre de 2025</time>
     </p>
 
     <p class="licencia">

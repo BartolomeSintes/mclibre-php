@@ -1,6 +1,6 @@
 <?php
 /**
- * Variables. Sin formularios.(1) 15 - variables-1-15.php
+ * Variables. Sin formularios (1) 15 - variables-1-15.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Ataque alienígena.
+    Ruleta de la fortuna.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,71 +36,43 @@
 </head>
 
 <body>
-  <h1>Ataque alienígena</h1>
+  <h1>Ruleta de la fortuna</h1>
 
-  <p>Actualice la página para mostrar un nuevo bombardeo alienígena. Los dados determinan qué casillas son bombardeadas.</p>
-
-<?php
-$d1 = rand(1, 6);
-$d2 = rand(1, 6);
-$d3 = rand(1, 6);
-
-print "  <p>\n";
-print "    <img src=\"img/$d1.svg\" alt=\"$d1\" width=\"120\" height=\"120\">\n";
-print "    <img src=\"img/$d2.svg\" alt=\"$d2\" width=\"120\" height=\"120\">\n";
-print "    <img src=\"img/$d3.svg\" alt=\"$d3\" width=\"120\" height=\"120\">\n";
-print "  </p>\n";
-print "\n";
-?>
   <p>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-      width="830" height="160" viewBox="-40 -50 830 160" style="background-color: white;" font-family="sans-serif">
-      <polygon points="60,0 780,0 720,80 0,80" stroke="black" stroke-width="1" fill="none" />
-      <text x="180" y="105" text-anchor="middle" font-size="20" fill="black">5</text>
-      <text x="380" y="105" text-anchor="middle" font-size="20" fill="black">10</text>
-      <text x="580" y="105" text-anchor="middle" font-size="20" fill="black">15</text>
-      <line x1="100" y="0" x2="40" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="140" y="0" x2="80" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="180" y="0" x2="120" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="220" y="0" x2="160" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="260" y="0" x2="200" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="300" y="0" x2="240" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="340" y="0" x2="280" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="380" y="0" x2="320" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="420" y="0" x2="360" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="460" y="0" x2="400" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="500" y="0" x2="440" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="540" y="0" x2="480" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="580" y="0" x2="520" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="620" y="0" x2="560" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="660" y="0" x2="600" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="700" y="0" x2="640" y2="80" stroke="black" stroke-width="1" fill="none" />
-      <line x1="740" y="0" x2="680" y2="80" stroke="black" stroke-width="1" fill="none" />
+    <svg width="320" height="220" viewBox="-10 -10 320 220">
+      <path d="M 100,100 150,13 A 100,100 0 0,1 200,100 Z" fill="hwb(0 40% 0%)" />
+      <path d="M 100,100 200,100 A 100,100 0 0,1 150,187 Z" fill="hwb(60 40% 0%)" />
+      <path d="M 100,100 150,187 A 100,100 0 0,1 50,187 Z" fill="hwb(120 40% 0%)" />
+      <path d="M 100,100 50,187 A 100,100 0 0,1 0,100 Z" fill="hwb(180 40% 0%)" />
+      <path d="M 100,100 0,100 A 100,100 0 0,1 50,13 Z" fill="hwb(240 40% 0%)" />
+      <path d="M 100,100 50,13 A 100,100 0 0,1 150,13 Z" fill="hwb(300 40% 0%)" />
+      <text x="100" y="37" text-anchor="middle" font-family="sans-serif" font-size="40">1</text>
+      <text x="167" y="76" text-anchor="middle" font-family="sans-serif" font-size="40">2</text>
+      <text x="167" y="146" text-anchor="middle" font-family="sans-serif" font-size="40">3</text>
+      <text x="100" y="192" text-anchor="middle" font-family="sans-serif" font-size="40">4</text>
+      <text x="32" y="146" text-anchor="middle" font-family="sans-serif" font-size="40">5</text>
+      <text x="32" y="76" text-anchor="middle" font-family="sans-serif" font-size="40">6</text>
+      <circle cx="100" cy="100" r="100" stroke="black" stroke-width="4" fill="none" />
 <?php
-print "      <text x=\"" . $d1 * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\">\n";
-print "        &#x1f4a5;\n";
-print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . $d1 * 0.1 + 0.5 . "s\" fill=\"freeze\" />\n";
-print "      </text>\n";
-print "      <text x=\"" . ($d1 + $d2) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\">\n";
-print "        &#x1f4a5;\n";
-print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2) * 0.1 + 0.5 . "s\" fill=\"freeze\" />\n";
-print "      </text>\n";
-print "      <text x=\"" . ($d1 + $d2 + $d3) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\">\n";
-print "        &#x1f4a5;\n";
-print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2 + $d3) * 0.1 + 0.5 . "s\" fill=\"freeze\" />\n";
+$resultado = rand(1, 6);
+$angulo    = $resultado * 60 + 300;
+$tiempo    = $resultado * 0.2 + 1;
+print "      <g>\n";
+print "        <polygon points=\"100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55\" stroke=\"black\" stroke-width=\"2\" fill=\"white\" />\n";
+print "        <animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0 100 100\" to=\"$angulo 100 100\" dur=\"{$tiempo}s\" repeatCount=\"1\" fill=\"freeze\" />\n";
+print "      </g>\n";
+print "      <circle cx=\"100\" cy=\"100\" r=\"8\" stroke=\"black\" stroke-width=\"2\" fill=\"#888\" />\n";
+print "      <text x=\"250\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"90\" opacity=\"0\">$resultado\n";
+print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"{$tiempo}s\" fill=\"freeze\" />\n";
 print "      </text>\n";
 ?>
-      <text x="0" y="20" text-anchor="middle" font-size="60">
-        &#x1f6f8;
-        <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 -5" to="840 -5" begin="0.5s" dur="2s" repeatCount="1" fill="freeze" />
-      </text>
     </svg>
   </p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-10-23">23 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

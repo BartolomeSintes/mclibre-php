@@ -1,11 +1,11 @@
 <?php
 /**
- * Sin formularios. Variables (1) 12 - variables-1-12.php
+ * Sin formularios. Variables (1) 21 - variables-1-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-10-23
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos cuadrados.
+    Cuatro círculos.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,19 +36,22 @@
 </head>
 
 <body>
-  <h1>Dos cuadrados</h1>
+  <h1>Cuatro círculos</h1>
 
 <?php
-$lado  = rand(40, 120);
-$doble = 2 * $lado;
+$r     = rand(50, 150);
+$ancho = 8 * $r + 20;
+$alto  = 2 * $r + 20;
 
-print "  <p>Actualice la página para mostrar dos nuevos cuadrados de $lado px de lado.</p>\n";
+print "  <p>Estos círculos tienen $r px de radio. Actualice la página para mostrar cuatro nuevos círculos.</p>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "         width=\"$doble\" height=\"$doble\" viewBox=\"0 0 $doble $doble\" style=\"background-color: lightgray;\">\n";
-print "      <rect x=\"0\" y=\"0\" width=\"$lado\" height=\"$lado\" fill=\"red\" />\n";
-print "      <rect x=\"$lado\" y=\"$lado\" width=\"$lado\" height=\"$lado\" fill=\"green\" />\n";
+print "         width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\">\n";
+print "      <circle cx=\"$r\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"red\" />\n";
+print "      <circle cx=\"" . 3 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"yellow\" />\n";
+print "      <circle cx=\"" . 5 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"green\" />\n";
+print "      <circle cx=\"" . 7 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"blue\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 print "\n";
@@ -56,7 +59,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-10-23">23 de febrero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

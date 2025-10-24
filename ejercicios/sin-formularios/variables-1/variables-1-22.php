@@ -1,11 +1,11 @@
 <?php
 /**
- * Sin formularios. Variables (1) 12 - variables-1-12.php
+ * Sin formularios. Variables (1) 22 - variables-1-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-10-23
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos cuadrados.
+    Tres cuadrados.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,19 +36,23 @@
 </head>
 
 <body>
-  <h1>Dos cuadrados</h1>
+  <h1>Tres cuadrados</h1>
+
+  <p>Actualice la página para mostrar tres nuevos cuadrados.</p>
 
 <?php
-$lado  = rand(40, 120);
-$doble = 2 * $lado;
+$c1    = rand(50, 150);
+$c2    = rand(50, 150);
+$c3    = rand(50, 150);
+$ancho = $c1 + $c2 + $c3 + 20;
+$alto  = max($c1, $c2, $c3) + 20;
 
-print "  <p>Actualice la página para mostrar dos nuevos cuadrados de $lado px de lado.</p>\n";
-print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "         width=\"$doble\" height=\"$doble\" viewBox=\"0 0 $doble $doble\" style=\"background-color: lightgray;\">\n";
-print "      <rect x=\"0\" y=\"0\" width=\"$lado\" height=\"$lado\" fill=\"red\" />\n";
-print "      <rect x=\"$lado\" y=\"$lado\" width=\"$lado\" height=\"$lado\" fill=\"green\" />\n";
+print "         width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\">\n";
+print "      <rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
+print "      <rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
+print "      <rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 print "\n";
@@ -56,7 +60,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-10-23">23 de febrero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
