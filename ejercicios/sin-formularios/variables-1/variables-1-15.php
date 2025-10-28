@@ -57,6 +57,7 @@
 $resultado = rand(1, 6);
 $angulo    = $resultado * 60 + 300;
 $tiempo    = $resultado * 0.2 + 1;
+
 print "      <g>\n";
 print "        <polygon points=\"100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55\" stroke=\"black\" stroke-width=\"2\" fill=\"white\" />\n";
 print "        <animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0 100 100\" to=\"$angulo 100 100\" dur=\"{$tiempo}s\" repeatCount=\"1\" fill=\"freeze\" />\n";

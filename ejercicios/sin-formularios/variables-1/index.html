@@ -405,7 +405,7 @@
 
     <p>Escriba un programa que cada vez que se ejecute muestre dos círculos con un radio entre 30 y 100 píxeles, al azar, situados uno encima del otro.</p>
 
-    <details open>
+    <details>
       <summary><strong>Ayuda</strong></summary>
       <ul>
         <li>En el dibujo cambian muchos valores en cada ejecución. En muchos casos aparece el valor del radio, pero las coordenadas <span class="html-atri">cx</span> de los círculos y el tamaño de la imagen <span class="html-eti">svg</span> deben calcularse mediante fórmulas.
@@ -481,7 +481,7 @@
               <text x="25" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
               <polyline points="60,55 50,50 60,45" fill="black" stroke-width="1" stroke="black" />
               <polyline points="90,55 100,50 90,45" fill="black" stroke-width="1" stroke="black" />
-              <text x="25" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <text x="75" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
 
               <rect x="0" y="0" width="100" height="200" fill="none" stroke="white" stroke-width="3" />
               <rect x="0" y="0" width="100" height="200" fill="none" stroke="red" stroke-width="3" stroke-dasharray="5 5" />
@@ -539,6 +539,7 @@
 
     <details>
       <summary><strong>Ayuda</strong></summary>
+
       <ul>
         <li>En el dibujo cambian varios valores en cada ejecución. Por un lado aparecen los valores de los radios de los círculos, pero las coordenadas <span class="html-atri">cx</span> y <span class="html-atri">cy</span> de los círculos y el tamaño de la imagen <span class="html-eti">svg</span> deben calcularse mediante fórmulas.
           <div class="codigo">
@@ -553,6 +554,91 @@
   &lt;/p&gt;</code>
 </pre>
           </div>
+        </li>
+        <li>Los polígonos SVG se establecen dando las coordenadas de los vértices en orden consecutivo:
+          <p>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="560" height="260" viewBox="-40 -40 560 260" style="background-color: white;" font-family="sans-serif">
+              <polygon points="100,0 300,200 400,100 300,0 100,200 0,100" fill="none" stroke-width="3" stroke="hwb(120 0% 20%)" />
+
+              <line x1="-40" y1="0" x2="430" y2="0" stroke-width="2" stroke="black" />
+              <polyline points="420,5 430,0 420,-5" fill="black" stroke-width="1" stroke="black" />
+              <text x="410" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
+              <line x1="0" y1="-40" x2="0" y2="220" stroke-width="2" stroke="black" />
+              <polyline points="-5,210 0,220 5,210" fill="black" stroke-width="1" stroke="black" />
+              <text x="-20" y="215" font-family="sans-serif" font-size="20" fill="black">Y</text>
+
+              <line x1="0" y1="100" x2="400" y2="100" stroke-width="2" stroke="black" />
+              <polyline points="10,105 0,100 10,95" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="90,105 100,100 90,95" fill="black" stroke-width="1" stroke="black" />
+              <text x="50" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">d</text>
+              <polyline points="110,105 100,100 110,95" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="190,105 200,100 190,95" fill="black" stroke-width="1" stroke="black" />
+              <text x="150" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">d</text>
+              <polyline points="210,105 200,100 210,95" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="290,105 300,100 290,95" fill="black" stroke-width="1" stroke="black" />
+              <text x="250" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">d</text>
+              <polyline points="310,105 300,100 310,95" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="390,105 400,100 390,95" fill="black" stroke-width="1" stroke="black" />
+              <text x="350" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">d</text>
+
+              <line x1="100" y1="0" x2="100" y2="200" stroke-width="2" stroke="black" />
+              <polyline points="95,10 100,0 105,10" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="95,90 100,100 105,90" fill="black" stroke-width="1" stroke="black" />
+              <text x="-50" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" transform="rotate(-90)" fill="black">d</text>
+              <polyline points="95,110 100,100 105,110" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="95,190 100,200 105,190" fill="black" stroke-width="1" stroke="black" />
+              <text x="-150" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" transform="rotate(-90)" fill="black">d</text>
+              <line x1="300" y1="0" x2="300" y2="200" stroke-width="2" stroke="black" />
+              <polyline points="295,10 300,0 305,10" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="295,90 300,100 305,90" fill="black" stroke-width="1" stroke="black" />
+              <text x="-50" y="320" font-family="sans-serif" font-size="18" text-anchor="middle" transform="rotate(-90)" fill="black">d</text>
+              <polyline points="295,110 300,100 305,110" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="295,190 300,200 305,190" fill="black" stroke-width="1" stroke="black" />
+              <text x="-150" y="320" font-family="sans-serif" font-size="18" text-anchor="middle" transform="rotate(-90)" fill="black">d</text>
+
+              <circle cx="100" cy="0" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="300" cy="200" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="400" cy="100" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="300" cy="0" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="100" cy="200" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="0" cy="100" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+            </svg>
+          </p>
+        </li>
+        <li>El tamaño del dibujo SVG (<span class="html-atri">width</span>, <span class="html-atri">height</span> y <span class="html-atri">viewBox</span>) debe ser suficiente para abarcar el dibujo completo.
+
+          <p>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="560" height="260" viewBox="-40 -40 560 260" style="background-color: white;" font-family="sans-serif">
+              <polygon points="100,0 300,200 400,100 300,0 100,200 0,100" fill="none" stroke-width="3" stroke="hwb(120 0% 20%)" />
+
+              <line x1="-40" y1="0" x2="430" y2="0" stroke-width="2" stroke="black" />
+              <polyline points="420,5 430,0 420,-5" fill="black" stroke-width="1" stroke="black" />
+              <text x="410" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
+              <line x1="0" y1="-40" x2="0" y2="220" stroke-width="2" stroke="black" />
+              <polyline points="-5,210 0,220 5,210" fill="black" stroke-width="1" stroke="black" />
+              <text x="-20" y="215" font-family="sans-serif" font-size="20" fill="black">Y</text>
+
+              <line x1="0" y1="100" x2="400" y2="100" stroke-width="2" stroke="black" />
+              <polyline points="10,105 0,100 10,95" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="390,105 400,100 390,95" fill="black" stroke-width="1" stroke="black" />
+              <text x="200" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">width</text>
+
+              <line x1="100" y1="0" x2="100" y2="200" stroke-width="2" stroke="black" />
+              <polyline points="95,10 100,0 105,10" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="95,190 100,200 105,190" fill="black" stroke-width="1" stroke="black" />
+              <text x="-70" y="120" font-family="sans-serif" font-size="18" text-anchor="middle" transform="rotate(-90)" fill="black">height</text>
+
+              <rect x="0" y="0" width="400" height="200" fill="none" stroke="white" stroke-width="3" />
+              <rect x="0" y="0" width="400" height="200" fill="none" stroke="red" stroke-width="3" stroke-dasharray="5 5" />
+
+              <circle cx="100" cy="0" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="300" cy="200" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="400" cy="100" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="300" cy="0" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="100" cy="200" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+              <circle cx="0" cy="100" r="4" fill="hwb(120 80% 0%)" stroke="black" />
+            </svg>
+          </p>
         </li>
       </ul>
     </details>
@@ -601,7 +687,7 @@
 </pre>
           </div>
         </li>
-        <li>La posición de la ficha <span class="html-atri">cx</span> depende del valor obtenido en el dado:
+        <li>La posición de la ficha (atributo <span class="html-atri">cx</span>) depende del valor obtenido en el dado:
           <table class="tabla-con-borde">
             <tr>
               <th>Dado</th>
@@ -638,96 +724,70 @@
     <h2>Variables (1) 15 - Ruleta de la fortuna</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre el giro de una flecha en una ruleta dividida en seis sectores iguales numerados del 1 al 6. Al abrirse la página, la flecha de la ruleta debe girar una vuelta completa y en la segunda vuelta quedar apuntando a uno de los valores numéricos, al azar (para llegar al 1 dará una vuelta completa). La velocidad de rotación de la flecha será constante (1.2 segundos por vuelta, 0.2 segundos por sector). Al detenerse la flecha se mostrará a la derecha de la ruleta el valor obtenido. El argumento de la transformación CSS rotate es un valor entero entre 0 y 360 que representa el ángulo con la vertical (la posición de las 0 horas o de los 0 minutos).</p>
-    <!--
+
     <details>
       <summary><strong>Ayuda</strong></summary>
       <ul>
         <li>Los valores que cambian en cada ejecución son los valores de los dados, la coordenada <span class="html-atri">x</span> de la explosión y el instante <span class="html-atri">begin</span> en que se hace visible.
           <div class="codigo">
             <pre>
-<code class="language-html">  &lt;p&gt;
-    &lt;img src="img/<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="120" height="120"&gt;
-    &lt;img src="img/<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" width="120" height="120"&gt;
-    &lt;img src="img/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="120" height="120"&gt;
-  &lt;/p&gt;
-
-  &lt;p&gt;
-    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-      width="830" height="160" viewBox="-40 -50 830 160" style="background-color: white;" font-family="sans-serif"&gt;
-      &lt;polygon points="60,0 780,0 720,80 0,80" stroke="black" stroke-width="1" fill="none" /&gt;
-      &lt;text x="180" y="105" text-anchor="middle" font-size="20" fill="black"&gt;5&lt;/text&gt;
-      &lt;text x="380" y="105" text-anchor="middle" font-size="20" fill="black"&gt;10&lt;/text&gt;
-      &lt;text x="580" y="105" text-anchor="middle" font-size="20" fill="black"&gt;15&lt;/text&gt;
-      &lt;line x1="100" y="0" x2="40" y2="80" stroke="black" stroke-width="1" fill="none" /&gt;
-      ...
-      &lt;line x1="740" y="0" x2="680" y2="80" stroke="black" stroke-width="1" fill="none" /&gt;
-      &lt;text x="<span class="codigo-resaltado">130</span>" y="45" text-anchor="middle" font-size="20" fill="lightgray" opacity="0"&gt;
-        &amp;#x1f4a5;
-        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">0.8</span>s" fill="freeze" /&gt;
-      &lt;/text&gt;
-      &lt;text x="<span class="codigo-resaltado">290</span>" y="45" text-anchor="middle" font-size="20" fill="lightgray" opacity="0"&gt;
-        &amp;#x1f4a5;
-        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1.2</span>s" fill="freeze" /&gt;
-      &lt;/text&gt;
-      &lt;text x="<span class="codigo-resaltado">330</span>" y="45" text-anchor="middle" font-size="20" fill="lightgray" opacity="0"&gt;
-        &amp;#x1f4a5;
-        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1.3</span>s" fill="freeze" /&gt;
-      &lt;/text&gt;
-      &lt;text x="0" y="20" text-anchor="middle" font-size="60" fill="lightgray"&gt;
-        &amp;#x1f6f8;
-        &lt;animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 -5" to="840 -5" begin="0.5s" dur="2s" repeatCount="1" fill="freeze" /&gt;
-      &lt;/text&gt;
-    &lt;/svg&gt;
-  &lt;/p&gt;;</code>
+<code class="language-html">      &lt;g&gt;
+        &lt;polygon points="100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55" stroke="black" stroke-width="2" fill="white" /&gt;
+        &lt;animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="<span class="codigo-resaltado">540</span> 100 100" dur="<span class="codigo-resaltado">1.8</span>s" repeatCount="1" fill="freeze" /&gt;
+      &lt;/g&gt;
+      &lt;circle cx="100" cy="100" r="8" stroke="black" stroke-width="2" fill="#888" /&gt;
+      &lt;text x="250" y="130" text-anchor="middle" font-family="sans-serif" font-size="90" opacity="0"&gt;<span class="codigo-resaltado">4</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1.8</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</code>
 </pre>
           </div>
         </li>
-        <li>La posición de la explosión <span class="html-atri">x</span> depende del valor obtenido en el dado:
+        <li>La posición final de la flecha (atributo <span class="html-atri">to</span>) depende del valor a mostrar:
           <table class="tabla-con-borde">
             <tr>
-              <th>Dado</th>
+              <th>Resultado</th>
               <td>1</td>
               <td>2</td>
               <td>3</td>
               <td>4</td>
               <td>5</td>
-              <td>...</td>
+              <td>6</td>
             </tr>
             <tr>
               <th>Posición</th>
-              <td>50</td>
-              <td>90</td>
-              <td>130</td>
-              <td>170</td>
-              <td>210</td>
-              <td>...</td>
+              <td>360</td>
+              <td>420</td>
+              <td>480</td>
+              <td>540</td>
+              <td>600</td>
+              <td>660</td>
             </tr>
           </table>
         </li>
-        <li>El momento en que se hace visible la explosión <span class="html-atri">begin</span> depende del valor obtenido en el dado:
+        <li>El tiempo que dura la rotación de la flecha (atributo <span class="html-atri">dur</span>) y el tiempo que tarda en mostrarse el resultado (atributo <span class="html-atri">begin</span>) dependen del valor a mostrar:
           <table class="tabla-con-borde">
             <tr>
-              <th>Dado</th>
+              <th>Resultado</th>
               <td>1</td>
               <td>2</td>
               <td>3</td>
               <td>4</td>
               <td>5</td>
-              <td>...</td>
+              <td>6</td>
             </tr>
             <tr>
               <th>Tiempo</th>
-              <td>0.6</td>
-              <td>0.7</td>
-              <td>0.8</td>
-              <td>0.9</td>
-              <td>1</td>
-              <td>...</td>
+              <td>1.2</td>
+              <td>1.4</td>
+              <td>1.6</td>
+              <td>1.8</td>
+              <td>2.0</td>
+              <td>2.2</td>
             </tr>
           </table>
         </li>
       </ul>
-    </details> -->
+    </details>
 
     <div class="filaflex">
       <iframe src="variables-1-15.php" style="height: 26em;"></iframe>
@@ -1301,7 +1361,7 @@
 </pre>
           </div>
         </li>
-        <li>La posición de la explosión <span class="html-atri">x</span> depende del valor obtenido en el dado:
+        <li>La posición de la explosión (atributo <span class="html-atri">x</span>) depende del valor obtenido en el dado:
           <table class="tabla-con-borde">
             <tr>
               <th>Dado</th>
@@ -1323,7 +1383,7 @@
             </tr>
           </table>
         </li>
-        <li>El momento en que se hace visible la explosión <span class="html-atri">begin</span> depende del valor obtenido en el dado:
+        <li>El momento en que se hace visible la explosión (atributo <span class="html-atri">begin</span>) depende del valor obtenido en el dado:
           <table class="tabla-con-borde">
             <tr>
               <th>Dado</th>
@@ -1357,7 +1417,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
