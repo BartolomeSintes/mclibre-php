@@ -23,10 +23,236 @@
       <h2>if ... elseif ... else ...</h2>
 
       <ul>
+        <li><a href="#orden-casos">Orden de casos</a></li>
         <li><a href="#omision-comparaciones">Omisión de comparaciones</a></li>
       </ul>
     </div>
   </nav>
+
+  <section id="orden-casos">
+    <h2>Orden de los casos</h2>
+
+    <p>En las estructuras <span class="php-res">if</span> ... <span class="php-res">elseif</span> ... <span class="php-res">else</span> ... el orden en que se escriben los casos es importante y, a menudo, se pueden simplificar las condiciones ordenando adecuadamente los casos.</p>
+
+    <p>Podemos distinguir dos tipos de situaciones:</p>
+    <ol>
+      <li>Cuando los casos son mutuamente excluyentes</li>
+      <li>Cuando unos casos incluyen a otros</li>
+    </ol>
+
+    <h3>Casos mutuamente excluyentes</h3>
+
+    <p>Consideremos un programa que genera al azar un valor que corresponde a una edad y en función del valor escribe un mensaje diferente referente al plazo de renovación del carnet de conducir turismos en España. Se distinguen tres situaciones:</p>
+    <ul>
+      <li>con menos de 18 años, no se pueden conducir turismos</li>
+      <li>entre los 18 y 65 años, el carnet de conducir turismos se renueva en principio cada 10 años</li>
+      <li>a partir de los 65 años, el carnet de conducir turismos se renueva en principio cada 5 años</li>
+    </ul>
+
+    <p>Los casos son mutuamente excluyentes, ya que un valor de la edad sólo puede estar en uno de los casos.</p>
+    <ul>
+      <li>Un posible programa es el siguiente:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$edad = rand(0, 100);
+
+if ($edad &gt;= 65) {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 10 años.&lt;/p&gt;\n";
+} elseif ($edad &lt; 18) {
+    print "&lt;p&gt;Si tiene $edad años, no puede conducir turismos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 5 años.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>El programa anterior funciona correctamente, pero los casos están desordenados. En general se aconseja escribir los casos siguiendo un orden determinado, para asegurarnos de no olvidar ninguna de las posibles situaciones. En este caso, podríamos escribirlos de menor a mayor edad, aunque eso obliga a escribir otras condiciones:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$edad = rand(0, 100);
+
+if ($edad &lt; 18) {
+    print "&lt;p&gt;Si tiene $edad años, no puede conducir turismos.&lt;/p&gt;\n";
+} elseif <span class="codigo-resaltado">($edad &gt;= 18 &amp;&amp; $edad &lt; 65)</span> {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 5 años.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 10 años.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>Pero lo cierto es que en el programa anterior se puede simplificar la segunda condición:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$edad = rand(0, 100);
+
+if ($edad &lt; 18) {
+    print "&lt;p&gt;Si tiene $edad años, no puede conducir turismos.&lt;/p&gt;\n";
+} elseif <span class="codigo-resaltado">($edad &lt; 65)</span> {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 5 años.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 10 años.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+
+        <p>Estos dos últimos programas son equivalentes porque en una estructura <span class="php-res">if ... elseif .. else</span> cuando se cumple una de las comparaciones PHP ya no evalúa las siguientes condiciones. En este caso, si el programa tiene que comprobar la segunda comparación (la del <span class="php-res">elseif</span>), es porque no se ha cumplido la primera (la del <span class="php-res">if</span>). Y si no se ha cumplido la primera es que <var>$edad</var> es mayor o igual a 18, por lo que no es necesario comprobarlo en la segunda condición.</p>
+      </li>
+      <li>Una diferencia importante entre este último programa y los anteriores es que en el último programa las condiciones son válidas porque se evalúan en un orden determinado. Si en el último programa se intercanbiaran los dos primeros casos, el programa no funcionaría como se espera, puesto que para valores inferiores a 18, mostraría el mensaje "debe renovar el carnet de conducir turismos cada 5 años".
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+//  Este programa no funciona correctamente
+$edad = rand(0, 100);
+
+if ($edad &lt; 65) {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 5 años.&lt;/p&gt;\n";
+} elseif ($edad &lt; 18) {
+    print "&lt;p&gt;Si tiene $edad años, no puede conducir turismos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 10 años.&lt;/p&gt;\n";
+}</code>
+</pre>
+          </div>
+        </div>
+        <p>Sin embargo, en los dos primeros programas se pueden reordenar los dos primeros casos y los programas siguen funcionando correctamente.</p>
+      </li>
+    </ul>
+
+    <h3>Casos que se incluyen unos a otros</h3>
+
+    <p>Consideremos un programa que pide un valor y nos dice:</p>
+    <ul>
+      <li>si es múltiplo de dos,</li>
+      <li>si es múltiplo de cuatro (y de dos)</li>
+      <li>si no es múltiplo de dos</li>
+    </ul>
+    <p><strong>Nota</strong>: El valor 0 se considerará múltiplo de 4 y de 2.</p>
+    <p>Los casos no son mutuamente excluyentes, puesto que los múltiplos de cuatro son también múltiplos de dos.</p>
+    <ul>
+      <li>El siguiente programa no sería correcto:
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+//  Este programa no funciona correctamente
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
+} elseif ($numero % 4 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es múltiplo de dos.&lt;/p&gt;\n";
+}</code>
+</pre>
+          </div>
+        </div>
+        <p>El error de este programa es que si <var>$numero</var> cumple la segunda condición, cumple también la primera. Es decir, si <var>$numero</var> es un múltiplo de cuatro, como también es múltiplo de dos, cumple la primera condición y el programa ejecuta el primer bloque de instrucciones, sin llegar a comprobar el resto de condiciones.</p>
+      </li>
+      <li>Una manera de corregir ese error es añadir en la primera condición (la de <span class="php-res">if</span>) que <var>$numero</var> no sea múltiplo de cuatro.
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0 &amp;&amp; $numero % 4 != 0) {
+    print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
+} elseif ($numero % 4 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es múltiplo de dos.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>También se podría haber escrito el siguiente programa:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0 &amp;&amp; $numero % 4 !== 0) {
+    print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
+} elseif ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es múltiplo de dos.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+        <p>Este programa funciona porque los múltiplos de cuatro también son múltiplos de dos y el programa sólo evalúa la segunda condición (la de <span class="php-res">elseif</span>) si no se ha cumplido la primera.</p>
+      </li>
+      <li>Pero todavía podemos simplificar más el programa, ordenando de otra manera los casos:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 4 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
+} elseif ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es múltiplo de dos.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+
+        <p>Este programa funciona correctamente ya que aunque la segunda condición (la de <span class="php-res">elseif</span>) no distingue entre múltiplos de dos y de cuatro, si <var>$numero</var> es un múltiplo de cuatro, el programa no llega a evaluar la segunda condición porque se cumple la primera (la de <span class="php-res">if</span>).</p>
+      </li>
+    </ul>
+    <p>En general, el orden que permite simplificar más las expresiones suele ser considerar primero los casos particulares y después los casos generales.</p>
+
+    <hr class="corta">
+
+    <p>Si las condiciones <span class="php-res">if ... elseif ...</span> cubren todas las posibilidades, se puede no escribir el bloque <span class="php-res">else</span>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es par.&lt;/p&gt;\n";
+} elseif ($numero % 2 != 0) {
+    print "&lt;p&gt;$numero es impar.&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+
+    <p>Pero lo más habitual es sustituir el último bloque <span class="php-res">elseif ...</span> por un bloque <span class="php-res">else</span>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es par.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero es impar.&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
 
   <section id="omision-comparaciones">
     <h2>Omisión de comparaciones</h2>
@@ -215,11 +441,10 @@ if (<span class="codigo-resaltado">$nombre</span>) {
         </div>
       </li>
     </ul>
-
-
   </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 24 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 29 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
