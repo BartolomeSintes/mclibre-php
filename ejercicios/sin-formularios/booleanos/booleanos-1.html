@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Expresiones lógicas. Ejercicios (sin formularios). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body onload="e01_generaExpresion(2); e02_generaExpresion(2);">
+  <h1>Ejercicios (sin formularios) - Expresiones lógicas (1)</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Expresiones lógicas</h2>
+    </div>
+  </nav>
+
+  <p>Estos ejercicios corresponden a lo explicado en las lecciones <a href="../../../lecciones/php-variables-2.html#boolean">Variables lógicas</a> y <a href="../../../lecciones/php-operaciones-logicas.html">Operaciones lógicas</a>.</p>
+
+  <p>Estos ejercicios son ejercicios de tipo test, en los que se debe evaluar una expresión lógica, indicando si el resultado es <span class="php-res">true</span> o <span class="php-res">false</span>. Si la respuesta indicada es correcta, se muestra una nueva expresión para contestar. Si la respuesta indicada es incorrecta, se mantiene la expresión en la página. Unos contadores muestran el número de respuestas correctas e incorrectas acumuladas. Puede aumentar o reducir la longitud de la expresión a evaluar.</p>
+
+  <section id="ejercicio-1">
+    <h2>Ejercicio 1 - Evaluar expresiones lógicas</h2>
+
+    <p>Indique si la siguiente expresión lógica es <span class="php-res">true</span> o <span class="php-res">false</span>.</p>
+
+    <div class="enunciado-test">
+      <p>Expresión a evaluar: <span id="e01-sucesion" style="font-size: 150%;"></span></p>
+
+      <p>
+        Indique el resultado:
+        <button type="button" onclick="e01_comprueba(true)">true</button> -
+        <button type="button" onclick="e01_comprueba(false)">false</button>
+        <span id="e01-resultado"></span>
+      </p>
+
+      <table>
+        <tr>
+          <td>Correctas:</td>
+          <td style="text-align: right;"><span id="e01-t-correctas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#22B14C" id="e01-l-correctas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>Incorrectas:</td>
+          <td style="text-align: right;"><span id="e01-t-incorrectas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#ED1C24" id="e01-l-incorrectas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><button type="button" onclick="e01_reinicia_contador()">Reiniciar contador</button></td>
+        </tr>
+      </table>
+
+      <p>
+        Aumentar o reducir la longitud de la expresión:
+        <button type="button" onclick="e01_cambiaLongitud(+1)">Más larga</button> -
+        <button type="button" onclick="e01_cambiaLongitud(-1)">Más corta</button>
+      </p>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Ejercicio 2 - Evaluar expresiones lógicas con comparaciones</h2>
+
+    <p>Indique si la siguiente expresión lógica es <span class="php-res">true</span> o <span class="php-res">false</span> para un determinado valor de la variable que aparece en ella.</p>
+
+    <div class="enunciado-test">
+      <p>Expresión a evaluar: <span id="e02-sucesion" style="font-size: 150%;"></span></p>
+
+      <p>para el valor <span id="e02-valor" style="font-size: 150%;"></span></p>
+
+      <p>
+        Indique el resultado:
+        <button type="button" onclick="e02_comprueba(true)">true</button> -
+        <button type="button" onclick="e02_comprueba(false)">false</button>
+        <span id="e02-resultado"></span>
+      </p>
+
+      <table>
+        <tr>
+          <td>Correctas:</td>
+          <td style="text-align: right;"><span id="e02-t-correctas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#22B14C" id="e02-l-correctas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>Incorrectas:</td>
+          <td style="text-align: right;"><span id="e02-t-incorrectas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#ED1C24" id="e02-l-incorrectas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><button type="button" onclick="e02_reinicia_contador()">Reiniciar contador</button></td>
+        </tr>
+      </table>
+
+      <p>
+        Aumentar o reducir la longitud de la expresión:
+        <button type="button" onclick="e02_cambiaLongitud(+1)">Más larga</button> -
+        <button type="button" onclick="e02_cambiaLongitud(-1)">Más corta</button>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    ///////////////////////
+    // Funciones comunes //
+    ///////////////////////
+    var anchoContador = 200;
+
+    function dibujaContador(correctas, tCorrectas, lCorrectas, incorrectas, tIncorrectas, lIncorrectas) {
+      tCorrectas.textContent = correctas;
+      tIncorrectas.textContent = incorrectas;
+      var total = correctas + incorrectas;
+      if (total == 0) {
+        total = 1;
+      }
+      lCorrectas.setAttribute("width", Math.max(anchoContador * correctas / total, 1))
+      lIncorrectas.setAttribute("width", Math.max(anchoContador * incorrectas / total, 1))
+    }
+
+    ////////////////////////////////////////////////////
+    // Ejercicio 1: Evaluar expresiones lógicas puras //
+    ////////////////////////////////////////////////////
+
+    var e01_sucesion = document.getElementById("e01-sucesion");
+    var e01_resultado = document.getElementById("e01-resultado");
+    var e01_tCorrectas = document.getElementById("e01-t-correctas");
+    var e01_lCorrectas = document.getElementById("e01-l-correctas");
+    var e01_tIncorrectas = document.getElementById("e01-t-incorrectas");
+    var e01_lIncorrectas = document.getElementById("e01-l-incorrectas");
+    var e01_expresion = "";
+    var e01_nCorrectas = 0;
+    var e01_nIncorrectas = 0;
+    var e01_longitud = 2;
+
+    function e01_cambiaLongitud(subeBaja) {
+      if (subeBaja == 1) {
+        e01_longitud += 1;
+      } else if (e01_longitud > 2) {
+        e01_longitud -= 1;
+      }
+      e01_generaExpresion(e01_longitud);
+    }
+
+    function e01_miniExpresion() {
+      var tmp = "";
+      if (Math.random() > 0.33) {
+        tmp += "!";
+      }
+      if (Math.random() > 0.5) {
+        tmp += "true";
+      } else {
+        tmp += "false";
+      }
+      return tmp;
+    }
+
+    function e01_generaExpresion(n) {
+      e01_expresion = e01_miniExpresion();
+      e01_sucesion.innerHTML = "";
+      for (var i = 2; i < n + 1; i++) {
+        if (Math.random() > 0.5) {
+          e01_expresion += " && ";
+        } else {
+          e01_expresion += " || ";
+        }
+        e01_expresion += e01_miniExpresion();
+      }
+      e01_sucesion.innerHTML = e01_expresion;
+    }
+
+    function e01_comprueba(respuesta) {
+      if (respuesta == eval(e01_expresion)) {
+        e01_resultado.textContent = "¡Correcto!";
+        e01_nCorrectas++;
+        e01_generaExpresion(e01_longitud);
+      } else {
+        e01_resultado.textContent = "¡Incorrecto!";
+        e01_nIncorrectas++;
+      }
+      dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
+    }
+
+    function e01_reinicia_contador() {
+      e01_nCorrectas = e01_nIncorrectas = 0;
+      dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
+    }
+
+    ////////////////////////////////////////////////////////////
+    // Ejercicio 2: Evaluar expresiones lógicas comparaciones //
+    ////////////////////////////////////////////////////////////
+    var e02_longitud = 2;
+    var e02_maximo = 20;
+    var e02_comparaciones = [" < ", " <= ", "> ", ">= ", " == ", " != "];
+    var e02_variables = "abcdefghijklmnopqrstuvwxyz";
+    var e02_var = "";
+    var e02_val = "";
+    var e02_sucesion = document.getElementById("e02-sucesion");
+    var e02_valor = document.getElementById("e02-valor");
+    var e02_resultado = document.getElementById("e02-resultado");
+    var e02_tCorrectas = document.getElementById("e02-t-correctas");
+    var e02_lCorrectas = document.getElementById("e02-l-correctas");
+    var e02_tIncorrectas = document.getElementById("e02-t-incorrectas");
+    var e02_lIncorrectas = document.getElementById("e02-l-incorrectas");
+    var e02_expresion = "";
+    var e02_nCorrectas = 0;
+    var e02_nIncorrectas = 0;
+
+    function e02_cambiaLongitud(subeBaja) {
+      if (subeBaja == 1) {
+        e02_longitud += 1;
+      } else if (e02_longitud > 2) {
+        e02_longitud -= 1;
+      }
+      e02_generaExpresion(e02_longitud);
+    }
+
+    function e02_miniExpresion() {
+      var tmp = ""; // e02_var + " " + e02_comp + " ";
+      var e02_comp = e02_comparaciones[Math.floor(Math.random() * e02_comparaciones.length)];
+      if (Math.random() > 0.2) {
+        var e02_num = Math.floor(Math.random() * e02_maximo);
+      } else {
+        var e02_num = - Math.floor(Math.random() * e02_maximo);
+      }
+      if (Math.random() > 0.25) {
+        tmp += e02_var + " " + e02_comp + " " + e02_num;
+      } else {
+        tmp += e02_num + " " + e02_comp + " " + e02_var;
+      }
+      return tmp;
+    }
+
+    function e02_generaExpresion(n) {
+      e02_var = e02_variables.charAt(Math.floor(Math.random() * e02_variables.length));
+      e02_val = Math.floor(Math.random() * e02_maximo);
+      e02_expresion = e02_miniExpresion();
+      e02_sucesion.innerHTML = "";
+      for (var i = 2; i < n + 1; i++) {
+        if (Math.random() > 0.5) {
+          e02_expresion += " && ";
+        } else {
+          e02_expresion += " || ";
+        }
+        e02_expresion += e02_miniExpresion();
+      }
+      e02_sucesion.innerHTML = e02_expresion;
+      e02_valor.innerHTML = e02_var + " = " + e02_val;
+    }
+
+    function e02_comprueba(respuesta) {
+      // alert(e02_expresion + " === " + e02_var + " === " + e02_val);
+      if (respuesta == eval(e02_expresion.replaceAll(e02_var, e02_val))) {
+        e02_resultado.textContent = "¡Correcto!";
+        e02_nCorrectas++;
+        e02_generaExpresion(e02_longitud);
+      } else {
+        e02_resultado.textContent = "¡Incorrecto!";
+        e02_nIncorrectas++;
+      }
+      dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
+    }
+
+    function e02_reinicia_contador() {
+      e02_nCorrectas = e02_nIncorrectas = 0;
+      dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
+    }
+  </script>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 30 de octubre de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
