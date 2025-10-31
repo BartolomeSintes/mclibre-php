@@ -10,8 +10,8 @@
   <script src="../../../varios/prism.js"></script>
 </head>
 
-<body onload="e01_generaExpresion(2); e02_generaExpresion(2);">
-  <h1>Ejercicios (sin formularios) - Expresiones lógicas (1)</h1>
+<body onload="e01_generaExpresion(2); e02_generaExpresion(2); e03_generaSVG(1);">
+  <h1>Ejercicios (sin formularios) - Expresiones lógicas</h1>
 
   <nav>
     <p>
@@ -21,6 +21,11 @@
 
     <div class="toc">
       <h2>Expresiones lógicas</h2>
+      <ul>
+        <li><a href="#ejercicio-1">Evaluar expr. lógicas</a></li>
+        <li><a href="#ejercicio-2">Evaluar comparaciones</a></li>
+        <li><a href="#ejercicio-3">Escribir comparaciones</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -34,7 +39,7 @@
     <p>Indique si la siguiente expresión lógica es <span class="php-res">true</span> o <span class="php-res">false</span>.</p>
 
     <div class="enunciado-test">
-      <p>Expresión a evaluar: <span id="e01-sucesion" style="font-size: 150%;"></span></p>
+      <p>Expresión a evaluar: <span id="e01-enunciado" style="font-size: 150%;"></span></p>
 
       <p>
         Indique el resultado:
@@ -81,7 +86,7 @@
     <p>Indique si la siguiente expresión lógica es <span class="php-res">true</span> o <span class="php-res">false</span> para un determinado valor de la variable que aparece en ella.</p>
 
     <div class="enunciado-test">
-      <p>Expresión a evaluar: <span id="e02-sucesion" style="font-size: 150%;"></span></p>
+      <p>Expresión a evaluar: <span id="e02-enunciado" style="font-size: 150%;"></span></p>
 
       <p>para el valor <span id="e02-valor" style="font-size: 150%;"></span></p>
 
@@ -124,6 +129,58 @@
     </div>
   </section>
 
+  <section id="ejercicio-3">
+    <h2>Ejercicio 3 - Escribir expresiones lógicas con comparaciones</h2>
+
+    <p>El dibujo inferior representa la recta real. Escriba la expresión matemática que corresponde a la parte resaltada en rojo (la variable debe ser <strong>x</strong>). Un círculo rojo indica que el número está incluido, mientras que un círculo blanco indica que el número no está incluido.</p>
+
+    <p>En la parte inferior se muestra un contador de preguntas acertadas y falladas. Puede contestar tantas veces como desee. Si se pide un nuevo dibujo sin haber acertado antes, se cuenta como fallo. Haga clic en "Reiniciar contador" para devolver los contadores a cero.</p>
+
+    <div class="enunciado-test">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 300 60" style="background-color: lightgray; font-family: sans-serif;" id="e03-enunciado">
+      </svg>
+      <p id="e03-enunciado-texto"></p>
+
+      <p>Expresión:
+        <input type="text" id="e03-respuesta" size="50" value="x">
+        <button type="button" onclick="e03_comprueba()">Evaluar</button>
+        <span id="e03-resultado"></span>
+      </p>
+
+      <p><button type="button" id="e03-nuevo">Nuevo dibujo</button></p>
+
+      <table>
+        <tr>
+          <td>Correctas:</td>
+          <td style="text-align: right;"><span id="e03-t-correctas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#22B14C" id="e03-l-correctas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>Incorrectas:</td>
+          <td style="text-align: right;"><span id="e03-t-incorrectas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#ED1C24" id="e03-l-incorrectas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><button type="button" onclick="e03_reinicia_contador()">Reiniciar contador</button></td>
+        </tr>
+      </table>
+
+      <!-- <p>
+        Aumentar o reducir la longitud de la expresión:
+        <button type="button" onclick="e03_cambiaLongitud(+1)">Más larga</button> -
+        <button type="button" onclick="e03_cambiaLongitud(-1)">Más corta</button>
+      </p> -->
+    </div>
+  </section>
+
   <script>
     ///////////////////////
     // Funciones comunes //
@@ -145,7 +202,7 @@
     // Ejercicio 1: Evaluar expresiones lógicas puras //
     ////////////////////////////////////////////////////
 
-    var e01_sucesion = document.getElementById("e01-sucesion");
+    var e01_enunciado = document.getElementById("e01-enunciado");
     var e01_resultado = document.getElementById("e01-resultado");
     var e01_tCorrectas = document.getElementById("e01-t-correctas");
     var e01_lCorrectas = document.getElementById("e01-l-correctas");
@@ -180,7 +237,7 @@
 
     function e01_generaExpresion(n) {
       e01_expresion = e01_miniExpresion();
-      e01_sucesion.innerHTML = "";
+      e01_enunciado.innerHTML = "";
       for (var i = 2; i < n + 1; i++) {
         if (Math.random() > 0.5) {
           e01_expresion += " && ";
@@ -189,7 +246,7 @@
         }
         e01_expresion += e01_miniExpresion();
       }
-      e01_sucesion.innerHTML = e01_expresion;
+      e01_enunciado.innerHTML = e01_expresion;
     }
 
     function e01_comprueba(respuesta) {
@@ -218,7 +275,7 @@
     var e02_variables = "abcdefghijklmnopqrstuvwxyz";
     var e02_var = "";
     var e02_val = "";
-    var e02_sucesion = document.getElementById("e02-sucesion");
+    var e02_enunciado = document.getElementById("e02-enunciado");
     var e02_valor = document.getElementById("e02-valor");
     var e02_resultado = document.getElementById("e02-resultado");
     var e02_tCorrectas = document.getElementById("e02-t-correctas");
@@ -239,7 +296,7 @@
     }
 
     function e02_miniExpresion() {
-      var tmp = ""; // e02_var + " " + e02_comp + " ";
+      var tmp = "";
       var e02_comp = e02_comparaciones[Math.floor(Math.random() * e02_comparaciones.length)];
       if (Math.random() > 0.2) {
         var e02_num = Math.floor(Math.random() * e02_maximo);
@@ -258,7 +315,7 @@
       e02_var = e02_variables.charAt(Math.floor(Math.random() * e02_variables.length));
       e02_val = Math.floor(Math.random() * e02_maximo);
       e02_expresion = e02_miniExpresion();
-      e02_sucesion.innerHTML = "";
+      e02_enunciado.innerHTML = "";
       for (var i = 2; i < n + 1; i++) {
         if (Math.random() > 0.5) {
           e02_expresion += " && ";
@@ -267,12 +324,11 @@
         }
         e02_expresion += e02_miniExpresion();
       }
-      e02_sucesion.innerHTML = e02_expresion;
+      e02_enunciado.innerHTML = e02_expresion;
       e02_valor.innerHTML = e02_var + " = " + e02_val;
     }
 
     function e02_comprueba(respuesta) {
-      // alert(e02_expresion + " === " + e02_var + " === " + e02_val);
       if (respuesta == eval(e02_expresion.replaceAll(e02_var, e02_val))) {
         e02_resultado.textContent = "¡Correcto!";
         e02_nCorrectas++;
@@ -288,10 +344,120 @@
       e02_nCorrectas = e02_nIncorrectas = 0;
       dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
     }
+
+    /////////////////////////////////////////////////////////////
+    // Ejercicio 3: Escribir expresiones lógicas comparaciones //
+    /////////////////////////////////////////////////////////////
+    var e03_longitud = 1;
+    var e03_minimo = -20;
+    var e03_maximo = 100;
+    var e03_minimoSVG = 0;
+    var e03_maximoSVG = 300;
+    var e03_comparaciones = [" < ", " <= ", "> ", ">= ", " == ", " != "];
+    var e03_nums = [];
+    var e03_var = "x";
+    var e03_expresion = "";
+    var e03_enunciado = document.getElementById("e03-enunciado");
+    var e03_enunciadoTexto = document.getElementById("e03-enunciado-texto");
+    var e03_respuesta = document.getElementById("e03-respuesta");
+    var e03_resultado = document.getElementById("e03-resultado");
+    var e03_tCorrectas = document.getElementById("e03-t-correctas");
+    var e03_lCorrectas = document.getElementById("e03-l-correctas");
+    var e03_tIncorrectas = document.getElementById("e03-t-incorrectas");
+    var e03_lIncorrectas = document.getElementById("e03-l-incorrectas");
+    var e03_nCorrectas = 0;
+    var e03_nIncorrectas = 0;
+
+    function e03_cambiaLongitud(subeBaja) {
+      if (subeBaja == 1) {
+        e03_longitud += 1;
+      } else if (e03_longitud > 2) {
+        e03_longitud -= 1;
+      }
+      e03_generaExpresion(e03_longitud);
+    }
+
+    function e03_miniExpresion(n) {
+      var tmp = "";
+      var e03_comp = e03_comparaciones[Math.floor(Math.random() * e03_comparaciones.length)];
+      if (Math.random() > 0.25) {
+        tmp += e03_var + " " + e03_comp + " " + e03_nums[1 + n];
+      } else {
+        tmp += e03_nums[1 + n] + " " + e03_comp + " " + e03_var;
+      }
+      return tmp;
+    }
+
+    function e03_generaExpresion(n) {
+      e03_nums = [e03_minimo, e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo)), e03_maximo];
+      e03_expresion = e03_miniExpresion(0);
+      e03_enunciado.innerHTML = "";
+      for (var i = 1; i < n; i++) {
+        if (Math.random() > 0.5) {
+          e03_expresion += " && ";
+        } else {
+          e03_expresion += " || ";
+        }
+        e03_expresion += e03_miniExpresion(i);
+      }
+      // e03_enunciadoTexto.innerHTML = e03_expresion;
+    }
+
+    function e03_escala(x) {
+      e03_xSVG = Math.floor(e03_minimoSVG + (x - e03_minimo) / (e03_maximo - e03_minimo) * (e03_maximoSVG - e03_minimoSVG));
+      return (e03_xSVG)
+    }
+
+    function e03_generaSVG(n) {
+      e03_generaExpresion(n);
+      e03_enunciado.innerHTML = "<line x1=\"0\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"black\" stroke-width=\"4\" />\n";
+      if (eval(e03_expresion.replaceAll(e03_var, e03_nums[0]))) {
+        e03_enunciado.innerHTML += "<line x1=\"0\" y1=\"40\" x2=\"" + e03_escala(e03_nums[1]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+      }
+      if (eval(e03_expresion.replaceAll(e03_var, e03_nums[2]))) {
+        e03_enunciado.innerHTML += "<line x1=\"" + e03_escala(e03_nums[1]) + "\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+      }
+      e03_enunciado.innerHTML += "<text x=\"" + e03_escala(e03_nums[1]) + "\" y=\"25\" text-anchor=\"middle\" font-size=\"20\">" + e03_nums[1] + "</text>\n";
+      if (eval(e03_expresion.replaceAll(e03_var, e03_nums[1]))) {
+        e03_enunciado.innerHTML += "<circle cx=\"" + e03_escala(e03_nums[1]) + "\" cy=\"40\" r=\"6\" stroke=\"red\" stroke-width=\"2\" fill=\"red\" />\n";
+      } else {
+        e03_enunciado.innerHTML += "<circle cx=\"" + e03_escala(e03_nums[1]) + "\" cy=\"40\" r=\"6\" stroke=\"red\" stroke-width=\"2\" fill=\"white\" />\n";
+      }
+    }
+
+    function e03_comprueba(respuesta) {
+      e03_valoresComprueba = [];
+      for (var i = 0; i < e03_nums.length - 1; i++) {
+        e03_valoresComprueba.push(e03_nums[i]);
+        e03_valoresComprueba.push(Math.round(10 * (e03_nums[i] + Math.random() * (e03_nums[i + 1] - e03_nums[i]))) / 10);
+      }
+      e03_valoresComprueba.push(e03_nums[i]);
+
+      e03_tmp = true;
+      for (var i = 0; i < e03_valoresComprueba.length; i++) {
+        if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) != String(eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[i])))) {
+          e03_tmp = false;
+        }
+      }
+      if (e03_tmp) {
+        e03_resultado.textContent = "¡Correcto!";
+        e03_nCorrectas++;
+        e03_generaSVG(e03_longitud);
+      } else {
+        e03_resultado.textContent = "¡Incorrecto!";
+        e03_nIncorrectas++;
+      }
+      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+    }
+
+    function e03_reinicia_contador() {
+      e03_nCorrectas = e03_nIncorrectas = 0;
+      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+    }
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 31 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
