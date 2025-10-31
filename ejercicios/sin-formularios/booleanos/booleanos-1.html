@@ -173,11 +173,11 @@
         </tr>
       </table>
 
-      <!-- <p>
+      <p>
         Aumentar o reducir la longitud de la expresión:
         <button type="button" onclick="e03_cambiaLongitud(+1)">Más larga</button> -
         <button type="button" onclick="e03_cambiaLongitud(-1)">Más corta</button>
-      </p> -->
+      </p>
     </div>
   </section>
 
@@ -312,7 +312,7 @@
     }
 
     function e02_generaExpresion(n) {
-      e02_var = e02_variables.charAt(Math.floor(Math.random() * e02_variables.length));
+      e02_var = "$" + e02_variables.charAt(Math.floor(Math.random() * e02_variables.length));
       e02_val = Math.floor(Math.random() * e02_maximo);
       e02_expresion = e02_miniExpresion();
       e02_enunciado.innerHTML = "";
@@ -349,12 +349,15 @@
     // Ejercicio 3: Escribir expresiones lógicas comparaciones //
     /////////////////////////////////////////////////////////////
     var e03_longitud = 1;
+    var e03_longitudMaxima = 5;
     var e03_minimo = -20;
     var e03_maximo = 100;
+    var e03_separacionValores = 10;
     var e03_minimoSVG = 0;
     var e03_maximoSVG = 300;
     var e03_comparaciones = [" < ", " <= ", "> ", ">= ", " == ", " != "];
     var e03_nums = [];
+    var e03_valoresComprueba = [];
     var e03_var = "x";
     var e03_expresion = "";
     var e03_enunciado = document.getElementById("e03-enunciado");
@@ -369,12 +372,12 @@
     var e03_nIncorrectas = 0;
 
     function e03_cambiaLongitud(subeBaja) {
-      if (subeBaja == 1) {
+      if (subeBaja == 1 && e03_longitud < e03_longitudMaxima) {
         e03_longitud += 1;
-      } else if (e03_longitud > 2) {
+      } else if (subeBaja == -1 && e03_longitud > 1) {
         e03_longitud -= 1;
       }
-      e03_generaExpresion(e03_longitud);
+      e03_generaSVG(e03_longitud);
     }
 
     function e03_miniExpresion(n) {
@@ -389,18 +392,59 @@
     }
 
     function e03_generaExpresion(n) {
-      e03_nums = [e03_minimo, e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo)), e03_maximo];
-      e03_expresion = e03_miniExpresion(0);
-      e03_enunciado.innerHTML = "";
-      for (var i = 1; i < n; i++) {
-        if (Math.random() > 0.5) {
-          e03_expresion += " && ";
-        } else {
-          e03_expresion += " || ";
+      e03_nums = [e03_minimo, e03_maximo];
+      for (var i = 0; i < n; i++) {
+        e03_candidatoOk = false;
+        while (!e03_candidatoOk) {
+          e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo));
+          e03_candidatoOk = true;
+          for (var j = 0; j < e03_nums.length; j++) {
+            if (Math.abs(e03_nums[j] - e03_candidato) < e03_separacionValores) {
+              e03_candidatoOk = false;
+            }
+          }
         }
-        e03_expresion += e03_miniExpresion(i);
+        e03_nums.push(e03_candidato);
       }
-      // e03_enunciadoTexto.innerHTML = e03_expresion;
+      e03_nums.sort((a, b) => a - b);
+      e03_valoresComprueba = [];
+      e03_valoresComprueba.push(-100_000);
+      e03_valoresComprueba.push(e03_nums[0]);
+      for (var i = 0; i < e03_nums.length - 2; i++) {
+        e03_valoresComprueba.push(Math.round(10 * (e03_nums[i] + Math.random() * (e03_nums[i + 1] - e03_nums[i]))) / 10);
+        e03_valoresComprueba.push(e03_nums[i + 1] - 0.000001);
+        e03_valoresComprueba.push(e03_nums[i + 1]);
+        e03_valoresComprueba.push(e03_nums[i + 1] + 0.000001);
+      }
+      e03_valoresComprueba.push(Math.round(10 * (e03_nums[i] + Math.random() * (e03_nums[i + 1] - e03_nums[i]))) / 10);
+      e03_valoresComprueba.push(e03_nums[i + 1]);
+      e03_valoresComprueba.push(100_000);
+      e03_contadorTrue = 0;
+      e03_contadorFalse = 0;
+      while (!e03_contadorTrue || !e03_contadorFalse) {
+        e03_expresion = e03_miniExpresion(0);
+        e03_enunciado.innerHTML = "";
+        for (var i = 1; i < n; i++) {
+          if (Math.random() > 0.5) {
+            e03_expresion += " && ";
+          } else {
+            e03_expresion += " || ";
+          }
+          e03_expresion += e03_miniExpresion(i);
+        }
+        // Cuenta si la expresión es T o F para cada valor de prueba
+        e03_contadorTrue = 0;
+        e03_contadorFalse = 0;
+        for (var i = 0; i < e03_valoresComprueba.length; i++) {
+          if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) == "true") {
+            e03_contadorTrue += 1;
+          } else {
+            e03_contadorFalse += 1;
+          }
+        }
+      }
+      e03_enunciadoTexto.innerHTML = e03_expresion;
+      // alert(e03_nums + " => " + e03_valoresComprueba);
     }
 
     function e03_escala(x) {
@@ -411,28 +455,54 @@
     function e03_generaSVG(n) {
       e03_generaExpresion(n);
       e03_enunciado.innerHTML = "<line x1=\"0\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"black\" stroke-width=\"4\" />\n";
-      if (eval(e03_expresion.replaceAll(e03_var, e03_nums[0]))) {
-        e03_enunciado.innerHTML += "<line x1=\"0\" y1=\"40\" x2=\"" + e03_escala(e03_nums[1]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+      // alert(e03_nums + " => " + e03_valoresComprueba);
+      // alert(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0])) + " == " + eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1])) + " == " + eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[2])) + " == " + eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[3])) );
+      // alert(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0]) + " xxx " + e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1]) + " xxx " + e03_expresion.replaceAll(e03_var, e03_valoresComprueba[2]) + " xxx " + e03_expresion.replaceAll(e03_var, e03_valoresComprueba[3]));
+      if (
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0])) &&
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1])) &&
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[2])) &&
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[3]))
+      ) {
+        e03_enunciado.innerHTML += "<line x1=\"0\" y1=\"40\" x2=\"" + e03_escala(e03_valoresComprueba[4]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
       }
-      if (eval(e03_expresion.replaceAll(e03_var, e03_nums[2]))) {
-        e03_enunciado.innerHTML += "<line x1=\"" + e03_escala(e03_nums[1]) + "\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+      for (var i = 1; i < n; i++) {
+        if (
+          eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 1])) &&
+          eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 2])) &&
+          eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3]))
+        ) {
+          e03_enunciado.innerHTML += "<line x1=\"" + e03_escala(e03_valoresComprueba[4 * i]) + "\" y1=\"40\" x2=\"" + e03_escala(e03_valoresComprueba[4 * i + 4]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+        }
       }
-      e03_enunciado.innerHTML += "<text x=\"" + e03_escala(e03_nums[1]) + "\" y=\"25\" text-anchor=\"middle\" font-size=\"20\">" + e03_nums[1] + "</text>\n";
-      if (eval(e03_expresion.replaceAll(e03_var, e03_nums[1]))) {
-        e03_enunciado.innerHTML += "<circle cx=\"" + e03_escala(e03_nums[1]) + "\" cy=\"40\" r=\"6\" stroke=\"red\" stroke-width=\"2\" fill=\"red\" />\n";
-      } else {
-        e03_enunciado.innerHTML += "<circle cx=\"" + e03_escala(e03_nums[1]) + "\" cy=\"40\" r=\"6\" stroke=\"red\" stroke-width=\"2\" fill=\"white\" />\n";
+      if (
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 1])) &&
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 2])) &&
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) &&
+        eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 4]))
+      ) {
+        e03_enunciado.innerHTML += "<line x1=\"" + e03_escala(e03_valoresComprueba[4 * i]) + "\" y1=\"40\" x2=\"" + e03_escala(e03_valoresComprueba[4 * i + 4]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+      }
+
+      for (var i = 0; i < n; i++) {
+        if (
+          eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 4])) &&
+          (!eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) || !eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 5])))
+        ) {
+          e03_enunciado.innerHTML += "<text x=\"" + e03_escala(e03_valoresComprueba[4 * i + 4]) + "\" y=\"25\" text-anchor=\"middle\" font-size=\"20\">" + e03_valoresComprueba[4 * i + 4] + "</text>\n";
+          e03_enunciado.innerHTML += "<circle cx=\"" + e03_escala(e03_valoresComprueba[4 * i + 4]) + "\" cy=\"40\" r=\"6\" stroke=\"red\" stroke-width=\"2\" fill=\"red\" />\n";
+        } else if (
+          !eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 4])) &&
+          (eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) || eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 5])))
+        ) {
+          e03_enunciado.innerHTML += "<text x=\"" + e03_escala(e03_valoresComprueba[4 * i + 4]) + "\" y=\"25\" text-anchor=\"middle\" font-size=\"20\">" + e03_valoresComprueba[4 * i + 4] + "</text>\n";
+          e03_enunciado.innerHTML += "<circle cx=\"" + e03_escala(e03_valoresComprueba[4 * i + 4]) + "\" cy=\"40\" r=\"6\" stroke=\"red\" stroke-width=\"2\" fill=\"white\" />\n";
+        }
       }
     }
 
     function e03_comprueba(respuesta) {
-      e03_valoresComprueba = [];
-      for (var i = 0; i < e03_nums.length - 1; i++) {
-        e03_valoresComprueba.push(e03_nums[i]);
-        e03_valoresComprueba.push(Math.round(10 * (e03_nums[i] + Math.random() * (e03_nums[i + 1] - e03_nums[i]))) / 10);
-      }
-      e03_valoresComprueba.push(e03_nums[i]);
-
+      // alert(e03_nums + "===" + e03_valoresComprueba);
       e03_tmp = true;
       for (var i = 0; i < e03_valoresComprueba.length; i++) {
         if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) != String(eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[i])))) {
