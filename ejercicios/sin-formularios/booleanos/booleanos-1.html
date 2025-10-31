@@ -139,7 +139,7 @@
     <div class="enunciado-test">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 300 60" style="background-color: lightgray; font-family: sans-serif;" id="e03-enunciado">
       </svg>
-      <p id="e03-enunciado-texto"></p>
+      <!-- <p id="e03-enunciado-texto"></p> -->
 
       <p>Expresión:
         <input type="text" id="e03-respuesta" size="50" value="x">
@@ -147,7 +147,7 @@
         <span id="e03-resultado"></span>
       </p>
 
-      <p><button type="button" id="e03-nuevo">Nuevo dibujo</button></p>
+      <!-- <p><button type="button" id="e03-nuevo">Nuevo dibujo</button></p> -->
 
       <table>
         <tr>
@@ -419,9 +419,9 @@
       e03_valoresComprueba.push(Math.round(10 * (e03_nums[i] + Math.random() * (e03_nums[i + 1] - e03_nums[i]))) / 10);
       e03_valoresComprueba.push(e03_nums[i + 1]);
       e03_valoresComprueba.push(100_000);
-      e03_contadorTrue = 0;
-      e03_contadorFalse = 0;
-      while (!e03_contadorTrue || !e03_contadorFalse) {
+      var e03_contador = 0;
+      while (e03_contador != n) {
+        e03_contador = 0;
         e03_expresion = e03_miniExpresion(0);
         e03_enunciado.innerHTML = "";
         for (var i = 1; i < n; i++) {
@@ -432,18 +432,24 @@
           }
           e03_expresion += e03_miniExpresion(i);
         }
-        // Cuenta si la expresión es T o F para cada valor de prueba
-        e03_contadorTrue = 0;
-        e03_contadorFalse = 0;
-        for (var i = 0; i < e03_valoresComprueba.length; i++) {
-          if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) == "true") {
-            e03_contadorTrue += 1;
-          } else {
-            e03_contadorFalse += 1;
+        // Cuenta si se ven todos los números
+        for (var i = 0; i < n; i++) {
+          if (
+            eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 4])) &&
+            (!eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) || !eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 5])))
+          ) {
+            e03_contador += 1;
+            // alert(e03_contador);
+          } else if (
+            !eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 4])) &&
+            (eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) || eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 5])))
+          ) {
+            e03_contador += 1;
           }
         }
       }
-      e03_enunciadoTexto.innerHTML = e03_expresion;
+
+      // e03_enunciadoTexto.innerHTML = e03_expresion;
       // alert(e03_nums + " => " + e03_valoresComprueba);
     }
 
