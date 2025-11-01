@@ -31,12 +31,12 @@
 
   <p>Estos ejercicios corresponden a lo explicado en las lecciones <a href="../../../lecciones/php-variables-2.html#boolean">Variables lógicas</a> y <a href="../../../lecciones/php-operaciones-logicas.html">Operaciones lógicas</a>.</p>
 
-  <p>Estos ejercicios son ejercicios de tipo test, en los que se debe evaluar una expresión lógica, indicando si el resultado es <span class="php-res">true</span> o <span class="php-res">false</span>. Si la respuesta indicada es correcta, se muestra una nueva expresión para contestar. Si la respuesta indicada es incorrecta, se mantiene la expresión en la página. Unos contadores muestran el número de respuestas correctas e incorrectas acumuladas. Puede aumentar o reducir la longitud de la expresión a evaluar.</p>
+  <p>Estos ejercicios son ejercicios de tipo test, en los que se debe evaluar o escribir una expresión lógica. Si la respuesta indicada es correcta, se mostrará automáticamente un nuevo enunciado. Si la respuesta indicada es incorrecta, se mantendrá el enunciado para permitir un nuevo intento. Unos contadores que se pueden reiniciar en cualquier momento muestran el número de respuestas correctas e incorrectas acumuladas. Puede modificar la dificultad del ejercicio aumentando o reduciendo la longitud de las expresiones involucradas.</p>
 
   <section id="ejercicio-1">
     <h2>Ejercicio 1 - Evaluar expresiones lógicas</h2>
 
-    <p>Indique si la siguiente expresión lógica es <span class="php-res">true</span> o <span class="php-res">false</span>.</p>
+    <p>Indique si la expresión lógica que se muestra a continuación es <span class="php-res">true</span> o <span class="php-res">false</span>.</p>
 
     <div class="enunciado-test">
       <p>Expresión a evaluar: <span id="e01-enunciado" style="font-size: 150%;"></span></p>
@@ -83,7 +83,7 @@
   <section id="ejercicio-2">
     <h2>Ejercicio 2 - Evaluar expresiones lógicas con comparaciones</h2>
 
-    <p>Indique si la siguiente expresión lógica es <span class="php-res">true</span> o <span class="php-res">false</span> para un determinado valor de la variable que aparece en ella.</p>
+    <p>Indique si la expresión lógica que se muestra a continuación es <span class="php-res">true</span> o <span class="php-res">false</span> para el valor indicado de la variable que aparece en ella.</p>
 
     <div class="enunciado-test">
       <p>Expresión a evaluar: <span id="e02-enunciado" style="font-size: 150%;"></span></p>
@@ -132,14 +132,17 @@
   <section id="ejercicio-3">
     <h2>Ejercicio 3 - Escribir expresiones lógicas con comparaciones</h2>
 
-    <p>El dibujo inferior representa la recta real. Escriba la expresión matemática que corresponde a la parte resaltada en rojo (la variable debe ser <strong>x</strong>). Un círculo rojo indica que el número está incluido, mientras que un círculo blanco indica que el número no está incluido.</p>
+    <p>El dibujo que se muestra a continuación representa la recta real, en la que se muestran uno o más valores numéricos como círculos de borde rojo. Escriba una expresión lógica con comparaciones (similar a las del ejercicio 2) que corresponda a la parte de la recta resaltada en rojo (la variable debe ser <strong>x</strong>). Si el círculo tiene el interior de color blanco significa que el número no está incluido en la parte resaltada, pero si el círculo tiene el interior de color rojo significa que el número está incluido.</p>
 
-    <p>En la parte inferior se muestra un contador de preguntas acertadas y falladas. Puede contestar tantas veces como desee. Si se pide un nuevo dibujo sin haber acertado antes, se cuenta como fallo. Haga clic en "Reiniciar contador" para devolver los contadores a cero.</p>
+    <p>Se pueden escribir infinitas expresiones que correspondan a cualquiera de los dibujos. Intente escribir expresiones con el menor número de comparaciones posible, es decir, tantas comparaciones como valores numéricos aparecen en el dibujo.</p>
+
+    <p>Si se pide un nuevo dibujo o se muestra la solución, el contador lo contará como respuesta incorrecta. </p>
 
     <div class="enunciado-test">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 300 60" style="background-color: lightgray; font-family: sans-serif;" id="e03-enunciado">
-      </svg>
-      <!-- <p id="e03-enunciado-texto"></p> -->
+      <p>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 300 60" style="background-color: lightgray; font-family: sans-serif;" id="e03-enunciado">
+        </svg>
+      </p>
 
       <p>Expresión:
         <input type="text" id="e03-respuesta" size="50" value="x">
@@ -147,7 +150,7 @@
         <span id="e03-resultado"></span>
       </p>
 
-      <!-- <p><button type="button" id="e03-nuevo">Nuevo dibujo</button></p> -->
+      <p><button type="button" onclick="e03_nuevo()">Nuevo dibujo</button></p>
 
       <table>
         <tr>
@@ -174,10 +177,14 @@
       </table>
 
       <p>
-        Aumentar o reducir la longitud de la expresión:
+        Aumentar o reducir el número de valores (hasta 5):
         <button type="button" onclick="e03_cambiaLongitud(+1)">Más larga</button> -
         <button type="button" onclick="e03_cambiaLongitud(-1)">Más corta</button>
       </p>
+
+      <p><button type="button" id="e03-solucion" onclick="e03_muestraSolucion()">Mostrar solución</button></p>
+
+      <div id="e03-ayuda" style="display: none"></div>
     </div>
   </section>
 
@@ -269,6 +276,7 @@
     ////////////////////////////////////////////////////////////
     // Ejercicio 2: Evaluar expresiones lógicas comparaciones //
     ////////////////////////////////////////////////////////////
+
     var e02_longitud = 2;
     var e02_maximo = 20;
     var e02_comparaciones = [" < ", " <= ", "> ", ">= ", " == ", " != "];
@@ -348,6 +356,7 @@
     /////////////////////////////////////////////////////////////
     // Ejercicio 3: Escribir expresiones lógicas comparaciones //
     /////////////////////////////////////////////////////////////
+
     var e03_longitud = 1;
     var e03_longitudMaxima = 5;
     var e03_minimo = -20;
@@ -361,9 +370,10 @@
     var e03_var = "x";
     var e03_expresion = "";
     var e03_enunciado = document.getElementById("e03-enunciado");
-    var e03_enunciadoTexto = document.getElementById("e03-enunciado-texto");
     var e03_respuesta = document.getElementById("e03-respuesta");
     var e03_resultado = document.getElementById("e03-resultado");
+    var e03_solucion = document.getElementById("e03-solucion");
+    var e03_ayuda = document.getElementById("e03-ayuda");
     var e03_tCorrectas = document.getElementById("e03-t-correctas");
     var e03_lCorrectas = document.getElementById("e03-l-correctas");
     var e03_tIncorrectas = document.getElementById("e03-t-incorrectas");
@@ -392,6 +402,8 @@
     }
 
     function e03_generaExpresion(n) {
+      // Genera lista ordenada de los n valores (más mínimo y máximo) que se verán en el dibujo
+      // Los valores están separados entre ellos como mínimo e03_separacionValores para que se vean bien en el dibujo
       e03_nums = [e03_minimo, e03_maximo];
       for (var i = 0; i < n; i++) {
         e03_candidatoOk = false;
@@ -407,6 +419,9 @@
         e03_nums.push(e03_candidato);
       }
       e03_nums.sort((a, b) => a - b);
+      // Genera lista ordenada de valores con el que se comprobarán las expresiones.
+      // Aparte de los valores de la lista e03_nums se añade un valor aleatorio intermedio entre cada par de valores de e03_nums
+      // y dos valores muy próximos (a 0.0000001) de cada valor de e03_nums (menos e03_minimo y e03_maximo)
       e03_valoresComprueba = [];
       e03_valoresComprueba.push(-100_000);
       e03_valoresComprueba.push(e03_nums[0]);
@@ -420,6 +435,12 @@
       e03_valoresComprueba.push(e03_nums[i + 1]);
       e03_valoresComprueba.push(100_000);
       var e03_contador = 0;
+      // Genera una expresión. Para descartar expresiones redundantes (por ejemplo x > 1 && x > 2), comprueba
+      // que en cada uno de los números de e03_nums (menos e03_minimo y e03_maximo, que no se enseñan en el dibujo)
+      // o bien el punto está incluido y alguno de los dos segmentos laterales (inferior o superior) no está incluido
+      // o bien el punto no está incluido y alguno de los dos segmentos laterales (inferior o superior) está incluido
+      // así descarto que un punto esté incluido o no cuando los dos segmentos laterales también lo están o no lo que
+      // haría innecesario enseñar el número.
       while (e03_contador != n) {
         e03_contador = 0;
         e03_expresion = e03_miniExpresion(0);
@@ -439,7 +460,6 @@
             (!eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) || !eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 5])))
           ) {
             e03_contador += 1;
-            // alert(e03_contador);
           } else if (
             !eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 4])) &&
             (eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 3])) || eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[4 * i + 5])))
@@ -448,9 +468,6 @@
           }
         }
       }
-
-      // e03_enunciadoTexto.innerHTML = e03_expresion;
-      // alert(e03_nums + " => " + e03_valoresComprueba);
     }
 
     function e03_escala(x) {
@@ -459,11 +476,12 @@
     }
 
     function e03_generaSVG(n) {
+      e03_ayuda.innerHTML = "";
+      e03_solucion.textContent = "Mostrar solución";
+      e03_ayuda.style.display = "none";
+
       e03_generaExpresion(n);
       e03_enunciado.innerHTML = "<line x1=\"0\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"black\" stroke-width=\"4\" />\n";
-      // alert(e03_nums + " => " + e03_valoresComprueba);
-      // alert(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0])) + " == " + eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1])) + " == " + eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[2])) + " == " + eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[3])) );
-      // alert(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0]) + " xxx " + e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1]) + " xxx " + e03_expresion.replaceAll(e03_var, e03_valoresComprueba[2]) + " xxx " + e03_expresion.replaceAll(e03_var, e03_valoresComprueba[3]));
       if (
         eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0])) &&
         eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1])) &&
@@ -508,7 +526,6 @@
     }
 
     function e03_comprueba(respuesta) {
-      // alert(e03_nums + "===" + e03_valoresComprueba);
       e03_tmp = true;
       for (var i = 0; i < e03_valoresComprueba.length; i++) {
         if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) != String(eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[i])))) {
@@ -526,14 +543,41 @@
       dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
     }
 
+    function e03_nuevo() {
+      e03_nIncorrectas++;
+      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+      e03_generaSVG(e03_longitud);
+    }
+
     function e03_reinicia_contador() {
       e03_nCorrectas = e03_nIncorrectas = 0;
       dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
     }
+
+    function e03_muestraSolucion() {
+      if (e03_ayuda.style.display == "none") {
+        e03_ayuda.style.display = "block";
+        e03_ayuda.textContent = "";
+        e03_solucion.textContent = "Ocultar solución";
+
+        var parrafo = document.createElement('p')
+        parrafo.innerHTML = "Una posible solución es: ";
+        var tmp = document.createElement('strong')
+        tmp.innerHTML = e03_expresion;
+        parrafo.appendChild(tmp)
+        e03_ayuda.appendChild(parrafo);
+
+        e03_nIncorrectas++;
+        dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+      } else {
+        e03_ayuda.style.display = "none";
+        e03_solucion.textContent = "Mostrar solución";
+      }
+    }
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 31 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
