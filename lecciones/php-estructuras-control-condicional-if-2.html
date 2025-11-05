@@ -23,8 +23,9 @@
       <h2>if ... elseif ... else ...</h2>
 
       <ul>
-        <li><a href="#orden-casos">Orden de casos</a></li>
+        <li><a href="#orden-casos">Orden de los casos</a></li>
         <li><a href="#omision-comparaciones">Omisión de comparaciones</a></li>
+        <li><a href="#otros">Otros</a></li>
       </ul>
     </div>
   </nav>
@@ -42,7 +43,7 @@
 
     <h3>Casos mutuamente excluyentes</h3>
 
-    <p>Consideremos un programa que genera al azar un valor que corresponde a una edad y en función del valor escribe un mensaje diferente referente al plazo de renovación del carnet de conducir turismos. En España se distinguen tres situaciones:</p>
+    <p>Consideremos un programa que genera al azar un valor que corresponde a una edad y en función del valor escribe un mensaje diferente referente al plazo de renovación del carnet de conducir turismos. En España se distinguen tres situaciones (o casos):</p>
     <ul>
       <li>con menos de 18 años, no se pueden conducir turismos</li>
       <li>entre los 18 y 65 años, el carnet de conducir turismos se renueva en principio cada 10 años</li>
@@ -71,68 +72,7 @@
     <p>Los casos son mutuamente excluyentes, ya que un valor de la edad sólo puede estar en uno de los casos.</p>
 
     <ul>
-      <li>Un posible programa es el siguiente:
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$edad = rand(0, 100);
-
-if ($edad &gt;= 65) {
-    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 5 años.&lt;/p&gt;\n";
-} elseif ($edad &lt; 18) {
-    print "&lt;p&gt;Si tiene $edad años, no puede conducir turismos.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 10 años.&lt;/p&gt;\n";
-}</code>
-</pre>
-        </div>
-
-        <p>La siguiente imagen ilustra el orden en que el programa considera los distintos casos:</p>
-
-        <p>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewBox="-70 0 620 170" style="background-color: white;" font-family="sans-serif" font-size="14">
-            <line x1="0" y1="30" x2="500" y2="30" stroke="black" stroke-width="3" />
-            <polygon points="499,25 500,35 510,30" stroke="black" stroke-width="0" fill="black" />
-            <line x1="0" y1="35" x2="0" y2="20" stroke="black" stroke-width="2" />
-            <text x="0" y="15" text-anchor="middle">0</text>
-            <line x1="90" y1="35" x2="90" y2="20" stroke="black" stroke-width="2" />
-            <text x="90" y="15" text-anchor="middle">18</text>
-            <line x1="325" y1="35" x2="325" y2="20" stroke="black" stroke-width="2" />
-            <text x="325" y="15" text-anchor="middle">65</text>
-            <text x="515" y="34" text-anchor="begin">edad</text>
-            <text x="45" y="25" text-anchor="middle">sin carnet</text>
-            <text x="207" y="25" text-anchor="middle">renueva cada 10 años</text>
-            <text x="412" y="25" text-anchor="middle">renueva cada 5 años</text>
-
-            <rect x="-50" y="50" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
-            <text x="-60" y="70" text-anchor="end">1</text>
-            <text x="-15" y="70" text-anchor="end">if</text>
-            <line x1="325" y1="70" x2="500" y2="70" stroke="black" stroke-width="3" />
-            <polygon points="499,65 500,75 510,70" stroke="black" stroke-width="0" fill="black" />
-            <circle cx="325" cy="70" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <text x="412" y="65" text-anchor="middle">$edad &gt;= 65</text>
-
-            <rect x="-50" y="90" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
-            <text x="-60" y="110" text-anchor="end">2</text>
-            <text x="-15" y="110" text-anchor="end">elseif</text>
-            <line x1="0" y1="110" x2="90" y2="110" stroke="black" stroke-width="3" />
-            <polygon points="0,105 0,115 -10,110" stroke="black" stroke-width="0" fill="black" />
-            <circle cx="90" cy="110" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="90" y="104" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
-            <text x="45" y="105" text-anchor="middle">$edad &lt; 18</text>
-
-            <rect x="-50" y="130" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
-            <text x="-60" y="150" text-anchor="end">3</text>
-            <text x="-15" y="150" text-anchor="end">else</text>
-            <line x1="90" y1="150" x2="325" y2="150" stroke="black" stroke-width="3" />
-            <circle cx="90" cy="150" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="325" y="144" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
-          </svg>
-        </p>
-      </li>
-      <li>El programa anterior funciona correctamente, pero los casos están desordenados. En general se aconseja escribir los casos siguiendo un orden determinado, para asegurarnos de no olvidar ninguna de las posibles situaciones. En este caso, podríamos escribir los casos de menor a mayor edad, aunque eso obliga a escribir otras condiciones:
+      <li>En general se aconseja considerar los casos siguiendo un orden determinado, para asegurarnos de no olvidar ninguno de los casos. Por ejemplo, podríamos considerar los casos de menor a mayor edad:
 
         <div class="codigo">
           <pre>
@@ -172,16 +112,14 @@ if ($edad &lt; 18) {
             <line x1="0" y1="70" x2="90" y2="70" stroke="black" stroke-width="3" />
             <polygon points="0,65 0,75 -10,70" stroke="black" stroke-width="0" fill="black" />
             <circle cx="90" cy="70" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="90" y="64" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="45" y="65" text-anchor="middle">$edad &lt; 18</text>
 
             <rect x="-50" y="90" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="-60" y="110" text-anchor="end">2</text>
             <text x="-15" y="110" text-anchor="end">elseif</text>
             <line x1="90" y1="110" x2="325" y2="110" stroke="black" stroke-width="3" />
-            <circle cx="90" cy="110" r="4" stroke="black" stroke-width="2" fill="lightgray" />
+            <circle cx="90" cy="110" r="4" stroke="black" stroke-width="2" fill="black" />
             <circle cx="325" cy="110" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="325" y="104" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="212" y="105" text-anchor="middle">$edad &gt;= 18 &amp;&amp; $edad &lt; 65</text>
 
             <rect x="-50" y="130" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
@@ -189,11 +127,70 @@ if ($edad &lt; 18) {
             <text x="-15" y="150" text-anchor="end">else</text>
             <line x1="325" y1="150" x2="500" y2="150" stroke="black" stroke-width="3" />
             <polygon points="499,145 500,155 510,150" stroke="black" stroke-width="0" fill="black" />
+            <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="black" />
+          </svg>
+        </p>
+      </li>
+      <li>El caso central (entre 18 y 65 años) requiere una condición más compleja que el primer caso (menos de 18 años) o que el tercero (más de 65 años). Si una de las condiciones es más compleja que las demás, podemos simplificar el programa reservando ese caso más complejo para el <span class="php-res">else</span>, ya que entonces no necesitaremos escribirla. Así, el programa podría ser:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$edad = rand(0, 100);
+
+if ($edad &lt; 18) {
+    print "&lt;p&gt;Si tiene $edad años, no puede conducir turismos.&lt;/p&gt;\n";
+} elseif (<span class="codigo-resaltado">$edad &gt;= 65</span>) {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 5 años.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;Si tiene $edad años, debe renovar el carnet de conducir turismos cada 10 años.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+
+        <p>La siguiente imagen ilustra el orden en que el programa considera los distintos casos:</p>
+
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewBox="-70 0 620 170" style="background-color: white;" font-family="sans-serif" font-size="14">
+            <line x1="0" y1="30" x2="500" y2="30" stroke="black" stroke-width="3" />
+            <polygon points="499,25 500,35 510,30" stroke="black" stroke-width="0" fill="black" />
+            <line x1="0" y1="35" x2="0" y2="20" stroke="black" stroke-width="2" />
+            <text x="0" y="15" text-anchor="middle">0</text>
+            <line x1="90" y1="35" x2="90" y2="20" stroke="black" stroke-width="2" />
+            <text x="90" y="15" text-anchor="middle">18</text>
+            <line x1="325" y1="35" x2="325" y2="20" stroke="black" stroke-width="2" />
+            <text x="325" y="15" text-anchor="middle">65</text>
+            <text x="515" y="34" text-anchor="begin">edad</text>
+            <text x="45" y="25" text-anchor="middle">sin carnet</text>
+            <text x="207" y="25" text-anchor="middle">renueva cada 10 años</text>
+            <text x="412" y="25" text-anchor="middle">renueva cada 5 años</text>
+
+            <rect x="-50" y="50" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
+            <text x="-60" y="70" text-anchor="end">2</text>
+            <text x="-15" y="70" text-anchor="end">if</text>
+            <line x1="0" y1="70" x2="90" y2="70" stroke="black" stroke-width="3" />
+            <polygon points="0,65 0,75 -10,70" stroke="black" stroke-width="0" fill="black" />
+            <circle cx="90" cy="70" r="4" stroke="black" stroke-width="2" fill="lightgray" />
+            <text x="45" y="65" text-anchor="middle">$edad &lt; 18</text>
+
+            <rect x="-50" y="90" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
+            <text x="-60" y="110" text-anchor="end">1</text>
+            <text x="-15" y="110" text-anchor="end">elseif</text>
+            <line x1="325" y1="110" x2="500" y2="110" stroke="black" stroke-width="3" />
+            <polygon points="499,105 500,115 510,110" stroke="black" stroke-width="0" fill="black" />
+            <circle cx="325" cy="110" r="4" stroke="black" stroke-width="2" fill="black" />
+            <text x="412" y="105" text-anchor="middle">$edad &gt;= 65</text>
+
+            <rect x="-50" y="130" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
+            <text x="-60" y="150" text-anchor="end">3</text>
+            <text x="-15" y="150" text-anchor="end">else</text>
+            <line x1="90" y1="150" x2="325" y2="150" stroke="black" stroke-width="3" />
+            <circle cx="90" cy="150" r="4" stroke="black" stroke-width="2" fill="black" />
             <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="lightgray" />
           </svg>
         </p>
       </li>
-      <li>Pero lo cierto es que en el programa anterior se puede simplificar la segunda condición:
+      <li>Pero lo cierto es que en el programa inicial también se podría haber simplificado la segunda condición, sin necesidad de reordenar los casos:
 
         <div class="codigo">
           <pre>
@@ -233,7 +230,6 @@ if ($edad &lt; 18) {
             <line x1="0" y1="70" x2="90" y2="70" stroke="black" stroke-width="3" />
             <polygon points="0,65 0,75 -10,70" stroke="black" stroke-width="0" fill="black" />
             <circle cx="90" cy="70" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="90" y="64" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="45" y="65" text-anchor="middle">$edad &lt; 18</text>
 
             <rect x="-50" y="90" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
@@ -242,7 +238,6 @@ if ($edad &lt; 18) {
             <line x1="0" y1="110" x2="325" y2="110" stroke="black" stroke-width="3" />
             <polygon points="0,105 0,115 -10,110" stroke="black" stroke-width="0" fill="black" />
             <circle cx="325" cy="110" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="325" y="104" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="212" y="105" text-anchor="middle">$edad &lt; 65</text>
 
             <rect x="-50" y="130" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
@@ -250,7 +245,7 @@ if ($edad &lt; 18) {
             <text x="-15" y="150" text-anchor="end">else</text>
             <line x1="325" y1="150" x2="500" y2="150" stroke="black" stroke-width="3" />
             <polygon points="499,145 500,155 510,150" stroke="black" stroke-width="0" fill="black" />
-            <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="lightgray" />
+            <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="black" />
           </svg>
         </p>
 
@@ -302,7 +297,6 @@ if ($edad &lt; 65) {
             <line x1="0" y1="70" x2="325" y2="70" stroke="black" stroke-width="3" />
             <polygon points="0,65 0,75 -10,70" stroke="black" stroke-width="0" fill="black" />
             <circle cx="325" cy="70" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="325" y="64" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="212" y="65" text-anchor="middle">$edad &lt; 65</text>
 
             <rect x="-50" y="90" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
@@ -311,7 +305,6 @@ if ($edad &lt; 65) {
             <line x1="0" y1="110" x2="90" y2="110" stroke="black" stroke-width="3" />
             <polygon points="0,105 0,115 -10,110" stroke="black" stroke-width="0" fill="black" />
             <circle cx="90" cy="110" r="4" stroke="black" stroke-width="2" fill="lightgray" />
-            <rect x="90" y="104" width="5" height="12" stroke="white" stroke-width="0" fill="lightgray" />
             <text x="45" y="105" text-anchor="middle">$edad &lt; 18</text>
 
             <rect x="-50" y="130" width="565" height="30" stroke="white" stroke-width="0" fill="lightgray" />
@@ -319,11 +312,11 @@ if ($edad &lt; 65) {
             <text x="-15" y="150" text-anchor="end">else</text>
             <line x1="325" y1="150" x2="500" y2="150" stroke="black" stroke-width="3" />
             <polygon points="499,145 500,155 510,150" stroke="black" stroke-width="0" fill="black" />
-            <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="lightgray" />
+            <circle cx="325" cy="150" r="4" stroke="black" stroke-width="2" fill="black" />
           </svg>
         </p>
 
-        <p>Sin embargo, en los dos primeros programas se pueden reordenar los dos primeros casos y los programas siguen funcionando correctamente. En esos programas la segunda condición no se basa en que se hayan eliminado valores en la primera condición.</p>
+        <p>Sin embargo, en los dos primeros programas se pueden reordenar los dos primeros casos y los programas siguen funcionando correctamente, ya que en esos programas la segunda condición no se basa en que se hayan filtrado valores en la primera condición.</p>
       </li>
     </ul>
 
@@ -481,10 +474,26 @@ if ($numero % 2 == 0) {
 </pre>
           </div>
         </div>
-        <p>El error de este programa es que si <var>$numero</var> cumple la segunda condición, cumple también la primera. Es decir, si <var>$numero</var> es un múltiplo de cuatro, como también es múltiplo de dos, cumple la primera condición y el programa ejecuta el primer bloque de instrucciones, sin llegar a comprobar el resto de condiciones.</p>
+        <p>El error de este programa es que si <var>$numero</var> cumple la segunda condición (la de <span class="php-res">elseif</span>, ser múltiplo de cuatro), cumple también la primera (la de <span class="php-res">if</span>, ser múltiplo de dos). Entonces, si <var>$numero</var> es un múltiplo de cuatro, como también es múltiplo de dos, cumple la primera condición y el programa ejecuta el primer bloque de instrucciones, sin llegar a comprobar el resto de condiciones. Así, si por ejemplo <var>$numero</var> es 8, el programa dirá que es múltiplo de dos en vez de decir que es múltiplo de cuatro y de dos.</p>
       </li>
-      <li>Una manera de corregir ese error es añadir en la primera condición (la de <span class="php-res">if</span>) que <var>$numero</var> no sea múltiplo de cuatro.
+      <li>Una manera de corregir ese error es escribir condiciones que definan completamente los casos, es decir añadir en la primera condición que <var>$numero</var> no sea múltiplo de cuatro y en la segunda condición que <var>$numero</var> sea múltiplo de dos:
 
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0 &amp;&amp; $numero % 4 != 0) {
+    print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
+} elseif ($numero %2 == 0 &amp;&amp; $numero % 4 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es múltiplo de dos.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>Este programa se puede simplificar de varias maneras. Por ejemplo, como los múltiplos de cuatro también son múltiplos de dos, no hace falta comprobar que se cumplen las dos cosas simultáneamente, basta comprobar con que el número sea múltiplo de cuatro:
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -499,15 +508,15 @@ if ($numero % 2 == 0 &amp;&amp; $numero % 4 != 0) {
 }</code>
 </pre>
         </div>
-      </li>
-      <li>También se podría haber escrito el siguiente programa:
+
+        <p>De hecho, aunque sea menos evidente, también bastaría con comprobar en la segunda condición que el número sea múltiplo de dos, puesto que si el programa llega a la segunda condición es que no se ha cumplido la primera, es decir que el número si es múltiplo de dos también es múltiplo de cuatro.</p>
 
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 $numero = rand(0, 100);
 
-if ($numero % 2 == 0 &amp;&amp; $numero % 4 !== 0) {
+if ($numero % 2 == 0 &amp;&amp; $numero % 4 != 0) {
     print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
 } elseif ($numero % 2 == 0) {
     print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
@@ -516,7 +525,6 @@ if ($numero % 2 == 0 &amp;&amp; $numero % 4 !== 0) {
 }</code>
 </pre>
         </div>
-        <p>Este programa funciona porque los múltiplos de cuatro también son múltiplos de dos y el programa sólo evalúa la segunda condición (la de <span class="php-res">elseif</span>) si no se ha cumplido la primera.</p>
       </li>
       <li>Pero todavía podemos simplificar más el programa, ordenando de otra manera los casos:
 
@@ -539,8 +547,221 @@ if ($numero % 4 == 0) {
       </li>
     </ul>
     <p>En general, el orden que permite simplificar más las expresiones suele ser considerar primero los casos particulares y después los casos generales.</p>
+  </section>
 
-    <hr class="corta">
+  <section id="omision-comparaciones">
+    <h2>Omisión de comparaciones</h2>
+
+    <p>En algunos casos, podemos escribir una condición sin necesidad de escribir comparaciones.</p>
+
+    <h3>Comparaciones de variables lógicas</h3>
+
+    <p>Si trabajamos con variables lógicas, no es necesario compararlas con los valores <span class="php-con">true</span> o <span class="php-con">false</span>, sino que podemos utilizarlas directamente.</p>
+
+    <p>Por ejemplo, el programa siguiente define una variable lógica <span class="php-var">$esPepe</span> como el resultado de una comparación. Concretamente la variable será <span class="php-con">true</span> si la variable <span class="php-var">$nombre</span> es la cadena <span class="php-cad">"Pepe"</span> y <span class="php-con">false</span> si no.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Juan";
+$esPepe = $nombre == "Pepe";
+
+if (<span class="codigo-resaltado">$esPepe == true</span>) {
+  print "&lt;p&gt;Su nombre es Pepe.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$esPepe == false</span>) {
+  print "&lt;p&gt;Su nombre no es Pepe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Su nombre no es Pepe&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Pero si hacemos una tabla con los valores de las comparaciones en función de los posibles valores de <var>$esPepe</var>, podemos observar que la comparación de <var>$esPepe</var> con <span class="php-res">true</span> da el mismo resultado que la propia variable <var>$esPepe</var>, mientras que la comparación con <span class="php-res">false</span> da resultado contrario:</p>
+
+    <table style="border-collapse: collapse; text-align: center; margin-left: auto; margin-right: auto;">
+      <col style="border-right: black 2px solid">
+      <tr style="border-bottom: black 2px solid">
+        <th style="padding: 0 10px;">$esPepe</th>
+        <th style="padding: 0 10px;">$esPepe == true</th>
+        <th style="padding: 0 10px;">$esPepe == false</th>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>T</td>
+        <td>F</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>F</td>
+        <td>T</td>
+      </tr>
+    </table>
+
+    <p>Por tanto en las condiciones podemos utilizar directamente la variable o su negación en vez de las comparaciones:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+$esPepe = $nombre == "Pepe";
+
+if (<span class="codigo-resaltado">$esPepe</span>) {
+  print "&lt;p&gt;Su nombre es Pepe.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">!$esPepe</span>) {
+  print "&lt;p&gt;Su nombre no es Pepe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Su nombre es Pepe&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <h3>Comparaciones de variables numéricas</h3>
+
+    <p>Si trabajamos con variables numéricas, no es necesario compararlas con 0, sino que podemos utilizarlas directamente, aprovechando que PHP evalúa el valor 0 (o 0.0) como <span class="php-con">false</span> y cualquier valor distinto de cero como <span class="php-con">true</span>.</p>
+
+    <p><strong>Nota</strong>: Las conversiones implícitas de tipos deben utilizarse con cuidado, cuando estemos seguros de los valores que van a ser convertidos. El uso indiscriminado de conversiones implícitas puede producir errores imprevistos. En caso de duda, es preferible no utilizarlas.</p>
+
+    <p>Por ejemplo, el programa siguiente define un contador <span class="php-var">$cuenta</span> que contiene el número de cincos obtenidos al ejecutar el bucle <span class="php-res">for</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$cuenta = 0;
+
+for ($i = 0; $i &lt; 3; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $cuenta++;
+    }
+}
+
+if (<span class="codigo-resaltado">$cuenta == 0</span>) {
+    print "&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$cuenta &gt; 0</span>) {
+    print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Tirada de dado: 6&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Podemos escribir simplemente:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$cuenta = 0;
+
+for ($i = 0; $i &lt; 3; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $cuenta++;
+    }
+}
+
+if (<span class="codigo-resaltado">!$cuenta</span>) {
+    print "&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$cuenta</span>) {
+    print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Han salido 2 cinco(s).&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <h3>Comparaciones de variables de cadenas</h3>
+
+    <p>Si trabajamos con cadenas, no es necesario compararlas con la cadena vacía, sino que podemos utilizarlas directamente, aprovechando que PHP evalúa la cadena vacía como <span class="php-con">false</span> y cualquier valor distinto de la cadena vacía como <span class="php-con">true</span>.</p>
+
+    <p><strong>Nota</strong>: Las conversiones implícitas de tipos deben utilizarse con cuidado, cuando estemos seguros de los valores que van a ser convertidos. El uso indiscriminado de conversiones implícitas puede producir errores imprevistos. En caso de duda, es preferible no utilizarlas.</p>
+
+    <p>Por ejemplo, el programa siguiente define un contador <span class="php-var">$cuenta</span> que contiene el número de cincos obtenidos al ejecutar el bucle <span class="php-res">for</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "";
+
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
+    print "&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$nombre != ""</span>) {
+    print "&lt;p&gt;Su nombre es $nombre.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Podemos escribir simplemente:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Alberto";
+
+if (<span class="codigo-resaltado">!$nombre</span>) {
+    print "&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+}
+
+if (<span class="codigo-resaltado">$nombre</span>) {
+    print "&lt;p&gt;Su nombre es $nombre.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Su nombre es Alberto.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="otros">
+    <h2>Otros</h2>
 
     <p>Si las condiciones <span class="php-res">if ... elseif ...</span> cubren todas las posibilidades, se puede no escribir el bloque <span class="php-res">else</span>:</p>
 
@@ -573,197 +794,8 @@ if ($numero % 2 == 0) {
     </div>
   </section>
 
-  <section id="omision-comparaciones">
-    <h2>Omisión de comparaciones</h2>
-
-    <p>En algunos casos, podemos escribir una condición sin necesidad de escribir comparaciones.</p>
-
-    <ul>
-      <li>Si trabajamos con variables lógicas, no es necesario compararlas con los valores <span class="php-con">true</span> o <span class="php-con">false</span>, sino que podemos utilizarlas directamente.
-
-        <p>Por ejemplo, el programa siguiente define una variable lógica <span class="php-var">$esPepe</span> como el resultado de una comparación. Concretamente la variable será <span class="php-con">true</span> si la variable <span class="php-var">$nombre</span> es la cadena <span class="php-cad">"Pepe"</span> y <span class="php-con">false</span> si no.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombre = "Juan";
-$esPepe = $nombre == "Pepe";
-
-if (<span class="codigo-resaltado">$esPepe == false</span>) {
-  print "&lt;p&gt;Su nombre no es Pepe.&lt;/p&gt;\n";
-}
-
-if (<span class="codigo-resaltado">$esPepe == true</span>) {
-  print "&lt;p&gt;Su nombre es Pepe.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Su nombre no es Pepe&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-
-        <p>Podemos escribir simplemente:</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombre = "Pepe";
-$esPepe = $nombre == "Pepe";
-
-if (<span class="codigo-resaltado">!$esPepe</span>) {
-  print "&lt;p&gt;Su nombre no es Pepe.&lt;/p&gt;\n";
-}
-
-if (<span class="codigo-resaltado">$esPepe</span>) {
-  print "&lt;p&gt;Su nombre es Pepe.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Su nombre es Pepe&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
-
-      <li>Si trabajamos con variables numéricas, no es necesario compararlas con 0, sino que podemos utilizarlas directamente, aprovechando que PHP evalúa el valor 0 (o 0.0) como <span class="php-con">false</span> y cualquier valor distinto de cero como <span class="php-con">true</span>.
-
-        <p><strong>Nota</strong>: Las conversiones implícitas de tipos deben utilizarse con cuidado, cuando estemos seguros de los valores que van a ser convertidos. El uso indiscriminado de conversiones implícitas puede producir errores imprevistos. En caso de duda, es preferible no utilizarlas.</p>
-
-        <p>Por ejemplo, el programa siguiente define un contador <span class="php-var">$cuenta</span> que contiene el número de cincos obtenidos al ejecutar el bucle <span class="php-res">for</span>.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$cuenta = 0;
-
-for ($i = 0; $i &lt; 3; $i++) {
-    $dado = rand(1, 6);
-    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
-    if ($dado == 5) {
-        $cuenta++;
-    }
-}
-
-if (<span class="codigo-resaltado">$cuenta == 0</span>) {
-    print "&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;\n";
-}
-
-if (<span class="codigo-resaltado">$cuenta &gt; 0</span>) {
-    print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Tirada de dado: 6&lt;/p&gt;
-&lt;p&gt;Tirada de dado: 4&lt;/p&gt;
-&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
-&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-
-        <p>Podemos escribir simplemente:</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$cuenta = 0;
-
-for ($i = 0; $i &lt; 3; $i++) {
-    $dado = rand(1, 6);
-    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
-    if ($dado == 5) {
-        $cuenta++;
-    }
-}
-
-if (<span class="codigo-resaltado">!$cuenta</span>) {
-    print "&lt;p&gt;No ha salido ningún cinco.&lt;/p&gt;\n";
-}
-
-if (<span class="codigo-resaltado">$cuenta</span>) {
-    print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
-&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
-&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
-&lt;p&gt;Han salido 2 cinco(s).&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
-
-      <li>Si trabajamos con cadenas, no es necesario compararlas con la cadena vacía, sino que podemos utilizarlas directamente, aprovechando que PHP evalúa la cadena vacía como <span class="php-con">false</span> y cualquier valor distinto de la cadena vacía como <span class="php-con">true</span>.
-
-        <p><strong>Nota</strong>: Las conversiones implícitas de tipos deben utilizarse con cuidado, cuando estemos seguros de los valores que van a ser convertidos. El uso indiscriminado de conversiones implícitas puede producir errores imprevistos. En caso de duda, es preferible no utilizarlas.</p>
-
-        <p>Por ejemplo, el programa siguiente define un contador <span class="php-var">$cuenta</span> que contiene el número de cincos obtenidos al ejecutar el bucle <span class="php-res">for</span>.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombre = "";
-
-if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;\n";
-}
-
-if (<span class="codigo-resaltado">$nombre != ""</span>) {
-    print "&lt;p&gt;Su nombre es $nombre.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-
-        <p>Podemos escribir simplemente:</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombre = "Alberto";
-
-if (<span class="codigo-resaltado">!$nombre</span>) {
-    print "&lt;p&gt;No ha escrito su nombre.&lt;/p&gt;\n";
-}
-
-if (<span class="codigo-resaltado">$nombre</span>) {
-    print "&lt;p&gt;Su nombre es $nombre.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Su nombre es Alberto.&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </section>
-
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
