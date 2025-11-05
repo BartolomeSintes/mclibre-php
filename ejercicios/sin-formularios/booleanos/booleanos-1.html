@@ -132,15 +132,17 @@
   <section id="ejercicio-3">
     <h2>Ejercicio 3 - Escribir expresiones lógicas con comparaciones</h2>
 
-    <p>El dibujo que se muestra a continuación representa la recta real, en la que se muestran uno o más valores numéricos como círculos de borde rojo. Escriba una expresión lógica con comparaciones (similar a las del ejercicio 2) que corresponda a la parte de la recta resaltada en rojo (la variable debe ser <strong>x</strong>). Si el círculo tiene el interior de color blanco significa que el número no está incluido en la parte resaltada, pero si el círculo tiene el interior de color rojo significa que el número está incluido.</p>
+    <p>El dibujo que se muestra a continuación representa la recta real, en la que se muestran uno o más valores numéricos como círculos de borde rojo. Si el círculo tiene el interior de color blanco significa que el número no está incluido en la parte resaltada, pero si el círculo tiene el interior de color rojo significa que el número está incluido. Cuando se muestran uno o dos números los números pueden tener un decimal, pero cuando se muestran tres o más números, los números son enteros para facilitar la lectura del dibujo.</p>
 
-    <p>Se pueden escribir infinitas expresiones que correspondan a cualquiera de los dibujos. Intente escribir expresiones con el menor número de comparaciones posible, es decir, tantas comparaciones como valores numéricos aparecen en el dibujo.</p>
+    <p>Escriba una expresión lógica con comparaciones (similar a las del ejercicio 2) que corresponda a la parte de la recta resaltada en rojo. La variable a utilizar en las compraciones debe ser <strong>x</strong>.</p>
+
+    <p>Se pueden escribir infinitas expresiones que correspondan a cualquiera de los dibujos. Intente escribir expresiones lo más cortas posible, en particular con el menor número de comparaciones posible. En general, las expresiones pueden excribirse con tantas comparaciones como valores numéricos aparecen en el dibujo.</p>
 
     <p>Si se pide un nuevo dibujo o se muestra la solución, el contador lo contará como respuesta incorrecta. </p>
 
     <div class="enunciado-test">
       <p>
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="60" viewBox="0 0 300 60" style="background-color: lightgray; font-family: sans-serif;" id="e03-enunciado">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="360" height="60" viewBox="-30 0 360 60" style="background-color: lightgray; font-family: sans-serif;" id="e03-enunciado">
         </svg>
       </p>
 
@@ -485,14 +487,14 @@
       e03_ayuda.style.display = "none";
 
       e03_generaExpresion(n);
-      e03_enunciado.innerHTML = "<line x1=\"0\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"black\" stroke-width=\"4\" />\n";
+      e03_enunciado.innerHTML = "<line x1=\"-50\" y1=\"40\" x2=\"400\" y2=\"40\" stroke=\"black\" stroke-width=\"4\" />\n";
       if (
         eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[0])) &&
         eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[1])) &&
         eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[2])) &&
         eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[3]))
       ) {
-        e03_enunciado.innerHTML += "<line x1=\"0\" y1=\"40\" x2=\"" + e03_escala(e03_valoresComprueba[4]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
+        e03_enunciado.innerHTML += "<line x1=\"-50\" y1=\"40\" x2=\"" + e03_escala(e03_valoresComprueba[4]) + "\" y2=\"40\" stroke=\"red\" stroke-width=\"4\" />\n";
       }
       for (var i = 1; i < n; i++) {
         if (
@@ -531,9 +533,18 @@
 
     function e03_comprueba(respuesta) {
       e03_tmp = true;
-      for (var i = 0; i < e03_valoresComprueba.length; i++) {
-        if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) != String(eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[i])))) {
+      try {
+        eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[0]));
+      } catch (e) {
+        if (e instanceof Error) {
           e03_tmp = false;
+        }
+      }
+      if (e03_tmp) {
+        for (var i = 0; i < e03_valoresComprueba.length; i++) {
+          if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) != String(eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[i])))) {
+            e03_tmp = false;
+          }
         }
       }
       if (e03_tmp) {
