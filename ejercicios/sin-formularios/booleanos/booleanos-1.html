@@ -361,7 +361,7 @@
     var e03_longitudMaxima = 5;
     var e03_minimo = -20;
     var e03_maximo = 100;
-    var e03_separacionValores = 10;
+    var e03_separacionValores = 10; // Cuidado porque si se aumenta este valor puede que el programa se enganche cuando tiene que inventarse muchos números
     var e03_minimoSVG = 0;
     var e03_maximoSVG = 300;
     var e03_comparaciones = [" < ", " <= ", "> ", ">= ", " == ", " != "];
@@ -391,24 +391,28 @@
     }
 
     function e03_miniExpresion(n) {
-      var tmp = "";
       var e03_comp = e03_comparaciones[Math.floor(Math.random() * e03_comparaciones.length)];
-      if (Math.random() > 0.25) {
-        tmp += e03_var + " " + e03_comp + " " + e03_nums[1 + n];
-      } else {
-        tmp += e03_nums[1 + n] + " " + e03_comp + " " + e03_var;
-      }
-      return tmp;
+      // En estas expresiones la variable la pongo siempre a la izquierda
+      return e03_var + " " + e03_comp + " " + e03_nums[1 + n];
     }
 
     function e03_generaExpresion(n) {
       // Genera lista ordenada de los n valores (más mínimo y máximo) que se verán en el dibujo
       // Los valores están separados entre ellos como mínimo e03_separacionValores para que se vean bien en el dibujo
+      var decimales = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
       e03_nums = [e03_minimo, e03_maximo];
       for (var i = 0; i < n; i++) {
         e03_candidatoOk = false;
         while (!e03_candidatoOk) {
-          e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo));
+          if (n == 1 || n == 2) {
+            if (Math.random() > 0.25) {
+              e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo));
+            } else {
+              e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo)) + decimales[Math.floor(Math.random()* 10)];
+            }
+          } else {
+            e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo));
+          }
           e03_candidatoOk = true;
           for (var j = 0; j < e03_nums.length; j++) {
             if (Math.abs(e03_nums[j] - e03_candidato) < e03_separacionValores) {
@@ -577,7 +581,7 @@
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
