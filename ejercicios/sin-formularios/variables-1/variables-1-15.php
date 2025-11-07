@@ -63,7 +63,8 @@ print "        <polygon points=\"100,40 115,55 105,55 105,150 115,160 105,160 10
 print "        <animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0 100 100\" to=\"$angulo 100 100\" dur=\"{$tiempo}s\" repeatCount=\"1\" fill=\"freeze\" />\n";
 print "      </g>\n";
 print "      <circle cx=\"100\" cy=\"100\" r=\"8\" stroke=\"black\" stroke-width=\"2\" fill=\"#888\" />\n";
-print "      <text x=\"250\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"90\" opacity=\"0\">$resultado\n";
+print "      <text x=\"250\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"90\" opacity=\"0\">\n";
+print "        $resultado\n";
 print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"{$tiempo}s\" fill=\"freeze\" />\n";
 print "      </text>\n";
 ?>
