@@ -1,6 +1,6 @@
 <?php
 /**
- * if ... else ... (1) 4 - if-else-1-4.php
+ * if ... else ... (1) 1 B - if-else-1-1-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Tres dados.
+    Dos dados.
     if .. elseif ... else ... (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,35 +36,27 @@
 </head>
 
 <body>
-  <h1>Tres dados</h1>
+  <h1>Dos dados</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
 $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
-$dado3 = rand(1, 6);
+
+if ($dado1 == $dado2) {
+    $resultado = "Ha sacado una pareja de $dado1.";
+} else {
+    $resultado = "No ha sacado pareja. La suma obtenida es " . $dado1 + $dado2 . ".";
+}
 
 print "  <p>\n";
 print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140\">\n";
 print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\">\n";
-print "    <img src=\"img/$dado3.svg\" alt=\"$dado3\" width=\"140\" height=\"140\">\n";
 print "  </p>\n";
 print "\n";
-
-if ($dado1 == $dado2 && $dado1 == $dado3) {
-    print "  <p>Ha sacado un trío de $dado1.</p>\n";
-    print "\n";
-} elseif ($dado1 == $dado2 || $dado1 == $dado3) {
-    print "  <p>Ha sacado una pareja de $dado1.</p>\n";
-    print "\n";
-} elseif ($dado2 == $dado3) {
-    print "  <p>Ha sacado una pareja de $dado2.</p>\n";
-    print "\n";
-} else {
-    print "  <p>La suma obtenida es " . $dado1 + $dado2 + $dado3 . ".</p>\n";
-    print "\n";
-}
+print "  <p>$resultado</p>\n";
+print "\n";
 ?>
   <footer>
     <p class="ultmod">

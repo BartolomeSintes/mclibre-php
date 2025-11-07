@@ -65,9 +65,34 @@ if ($dado1 == $dado2) {
     print "  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "  &lt;p&gt;No ha sacado pareja. El valor más alto es " . max($dado1, $dado2) . ".&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha sacado pareja. La suma obtenida es " . $dado1 + $dado2 . ".&lt;/p&gt;\n";
     print "\n";
 }
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Este programa se podría escribir también separando los cálculos de la presentación.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$dado1 = rand(1, 6);
+$dado2 = rand(1, 6);
+
+if ($dado1 == $dado2) {
+    $resultado = "  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n";
+} else {
+    $resultado = "  &lt;p&gt;No ha sacado pareja. La suma obtenida es " . $dado1 + $dado2 . ".&lt;/p&gt;\n";
+}
+
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140\"&gt;\n";
+print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+print $resultado;
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -261,7 +286,7 @@ if ($dado1 == $dado2 && $dado1 == $dado3) {
     print "  &lt;p&gt;Ha sacado una pareja de $dado2.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "  &lt;p&gt;El valor más alto es " . max($dado1, $dado2, $dado3) . ".&lt;/p&gt;\n";
+    print "  &lt;p&gt;La suma obtenida es " . $dado1 + $dado2 + $dado3 . ".&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -384,7 +409,7 @@ if ($trio1 &gt; $trio2) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de febrero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 6 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

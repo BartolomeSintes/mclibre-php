@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-11-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -54,14 +54,14 @@ if ($dado1 == $dado2) {
     print "  <p>Ha sacado una pareja de $dado1.</p>\n";
     print "\n";
 } else {
-    print "  <p>No ha sacado pareja. El valor más alto es " . max($dado1, $dado2) . ".</p>\n";
+    print "  <p>No ha sacado pareja. La suma obtenida es " . $dado1 + $dado2 . ".</p>\n";
     print "\n";
 }
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-11-06">6 de noviembre de 2025</time>
     </p>
 
     <p class="licencia">
