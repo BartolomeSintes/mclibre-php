@@ -79,7 +79,8 @@ print "  &lt;p&gt;\n";
 print "    Queremos sacar un valor impar:\n";
 print "    &lt;img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\"&gt;\n";
 print "  &lt;/p&gt;\n";
-print "\n";</code>
+print "\n";
+?&gt;</code>
 </pre>
     </div>
 
@@ -126,6 +127,7 @@ if ($dado1 == 2 && $dado2 == 1) {   // Si sacamos 2 en el primer dado y 1 en el 
     print "\n";
 }
 
+//...
 // El programa continuaría con el resto de combinaciones posibles</code>
 </pre>
         </div>
@@ -153,7 +155,8 @@ if ($dado1 % 2 == 1 && $dado2 % 2 == 0) {       // Si el primer dado es impar y 
 if ($dado1 % 2 == 1 && $dado2 % 2 == 1) {       // Si el primer dado es impar y el segundo dado es impar
     print "  &lt;p&gt;!No lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
         </div>
       </li>
@@ -170,7 +173,8 @@ if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {       // Si el primer dado es par Y el
 if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O el segundo dado es par
     print "  &lt;p&gt;!No lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
         </div>
       </li>
@@ -188,7 +192,8 @@ if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {       // Si el primer dado es par Y el
 } else {                                        // En el resto de los casos
     print "  &lt;p&gt;!No lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
             </div>
           </li>
@@ -203,7 +208,8 @@ if ($dado1 % 2 == 1 || $dado2 % 2 == 0) {       // Si el primer dado es impar O 
 } else {                                        // En el resto de los casos
     print "  &lt;p&gt;¡Lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
             </div>
           </li>
@@ -254,7 +260,8 @@ if ($dado2 % 2 == 0) {
 if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
     print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -294,7 +301,8 @@ if ($dado2 % 2 == 0) {
 if ($dado1 % 2 == 0 && $dado2 % 2 == 1) {
     print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -334,11 +342,12 @@ if ($dado1 % 2 == 1) {
         print "  &lt;p&gt;!Lo hemos conseguido!&lt;/p&gt;\n";
         print "\n";
     }
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
 
-    <p>En las condiciones de la solución anterior comprobamos si los dados no tienen la paridad deseada. Si hubiéramos comprobado si los dados tienen la paridad deseada, los bloques de instrucciones simplemente se intercambiarían. Un criterio para elegir una opción u otra es la legibilidad del programa. En ese sentido, la primera solución sería preferible porque se reconoce más fácilmente la estructura <span class="php-res">if ... else ...</span> correspondiente al primer dado ya que el bloque de instrucciones del <span class="php-res">if ...</span> es más corto. En el caso del segundo dado, ese criterio no llevaría a preferir una forma u otra.</p>
+    <p>En las condiciones de la solución anterior comprobamos si los dados no tienen la paridad deseada (es decir, que no hemos conseguido el objetivo). Si hubiéramos comprobado si los dados tienen la paridad deseada (es decir, que hemos conseguido el objetivo), habría que intercambiar los bloques de instrucciones. Para elegir entre uno u otro, un criterio podría ser la legibilidad del programa. En ese sentido, la primera solución sería preferible porque se reconoce más fácilmente la estructura <span class="php-res">if ... else ...</span> correspondiente al primer dado ya que el bloque de instrucciones del <span class="php-res">if ...</span> es más corto. En el caso de la comprobación segundo dado, ese criterio no llevaría a preferir una forma u otra.</p>
 
     <div class="codigo">
       <pre>
@@ -370,7 +379,8 @@ if ($dado1 % 2 == 0) {
 } else {
     print "  &lt;p&gt;¡No lo hemos conseguido!&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -405,7 +415,8 @@ if ($year % 100 == 0 && $year % 400 != 0) {
 if ($year % 400 == 0) {
     print "  &lt;p&gt;$year es un año bisiesto porque es múltiplo de 400.&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
         </div>
       </li>
@@ -427,7 +438,8 @@ if ($year % 400 == 0) {
 } else {
     print "  &lt;p&gt;$year no es un año bisiesto porque no es múltiplo de 4.&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
         </div>
       </li>
@@ -436,7 +448,7 @@ if ($year % 400 == 0) {
         <p>Por tanto, podemos simplificar el programa hasta dejarlo así:</p>
         <div class="codigo">
           <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 $year = rand(1582, 2100);
 
 if ($year % 400 == 0) {
@@ -451,8 +463,9 @@ if ($year % 400 == 0) {
 } else {
     print "  &lt;p&gt;$year no es un año bisiesto porque no es múltiplo de 4.&lt;/p&gt;\n";
     print "\n";
-}</code>
-  </pre>
+}
+?&gt;</code>
+</pre>
         </div>
         <p>Es muy importante señalar que en este programa ya no podemos cambiar el orden de las comprobaciones, porque ha sido precisamente el orden específico (del caso más "especial" al más general) el que nos ha permitido simplificar las condiciones.</p>
         <p>En general, ordenar los casos de manera que evaluemos primero los casos particulares y después los más generales que incluyen a los particulares permite simplificar las condiciones de los casos más generales. El precio a pagar es obligarnos a mantener el orden de las comprobaciones y a que los programas sean un poco más complejos (porque es el programador el que tiene que darse cuenta que las condiciones posteriores incluyen la negación de las comprobaciones anteriores), aunque más cortos.</p>
@@ -505,7 +518,8 @@ $L = round($L, 3) * 100;
 $S = round($S, 3) * 100;
 
 print "  &lt;p&gt;El color &lt;strong&gt;rgb($red $green $blue)&lt;/strong&gt; es el color &lt;strong&gt;hsl($H $S% $L%)&lt;/strong&gt;.&lt;/p&gt;\n";
-print "\n";</code>
+print "\n";
+?&gt;</code>
 </pre>
     </div>
 
@@ -525,7 +539,8 @@ $m  = intdiv($cm, 100);
 $cm = $cm % 100;
 
 print "  &lt;p&gt;$centimetros centímetros son $km km $m m $cm cm.&lt;/p&gt;\n";
-print "\n";</code>
+print "\n";
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -566,7 +581,8 @@ if ($centimetros == 0) {
     }
     print ".&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -609,7 +625,8 @@ if ($centimetros == 0) {
     }
     print ".&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -659,7 +676,8 @@ if ($centimetros == 0) {
     }
     print ".&lt;/p&gt;\n";
     print "\n";
-}</code>
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
