@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-11-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,44 +48,50 @@
     </tr>
     <tr>
 <?php
-$dado1a = rand(1, 6);
-$dado1b = rand(1, 6);
-$dado2a = rand(1, 6);
-$dado2b = rand(1, 6);
+$j1d1 = rand(1, 6);
+$j1d2 = rand(1, 6);
+$j2d1 = rand(1, 6);
+$j2d2 = rand(1, 6);
 
 print "      <td style=\"padding: 10px; background-color: red;\">\n";
-print "        <img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j1d1.svg\" alt=\"$j1d1\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j1d2.svg\" alt=\"$j1d2\" width=\"140\" height=\"140\">\n";
 print "      </td>\n";
 print "      <td style=\"padding: 10px; background-color: blue;\">\n";
-print "        <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j2d1.svg\" alt=\"$j2d1\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j2d2.svg\" alt=\"$j2d2\" width=\"140\" height=\"140\">\n";
 print "      </td>\n";
 
-if ($dado1a == $dado1b) {
-    $pareja1 = $dado1a;
-} else {
-    $pareja1 = 0;
-}
-
-if ($dado2a == $dado2b) {
-    $pareja2 = $dado2a;
-} else {
-    $pareja2 = 0;
-}
-
-$total1 = $dado1a + $dado1b;
-$total2 = $dado2a + $dado2b;
-
-if ($pareja1 > $pareja2) {
-    print "      <td>Ha ganado el jugador 1</td>\n";
-} elseif ($pareja1 < $pareja2) {
-    print "      <td>Ha ganado el jugador 2</td>\n";
-} else {
-    if ($total1 > $total2) {
+// Si ambos jugadores sacan pareja ...
+if ($j1d1 == $j1d2 && $j2d1 == $j2d2) {
+    // Si el primer jugador saca la pareja más alta
+    if ($j1d1 > $j2d1) {
         print "      <td>Ha ganado el jugador 1</td>\n";
-    } elseif ($total1 < $total2) {
+    // Si el segundo jugador saca la pareja más alta
+    } elseif ($j1d1 < $j2d1) {
         print "      <td>Ha ganado el jugador 2</td>\n";
+    // Por descarte, ambos sacan la misma pareja
+    } else {
+        print "      <td>Han empatado</td>\n";
+    }
+// Si solo un jugador saca pareja ...
+} elseif ($j1d1 == $j1d2 && $j2d1 != $j2d2 || $j1d1 != $j1d2 && $j2d1 == $j2d2) {
+    // Si el primer jugador saca pareja
+    if ($j1d1 == $j1d2) {
+        print "      <td>Ha ganado el jugador 1</td>\n";
+    // Por descarte, el segundo jugador saca pareja
+    } else {
+        print "      <td>Ha ganado el jugador 2</td>\n";
+    }
+// Por descarte, nadie saca pareja
+} else {
+    // Si el primer jugador saca más puntos que el segundo
+    if ($j1d1 + $j1d2 > $j2d1 + $j2d2) {
+        print "      <td>Ha ganado el jugador 1</td>\n";
+    // Si el segundo jugador saca más puntos que el primero
+    } elseif ($j1d1 + $j1d2 < $j2d1 + $j2d2) {
+        print "      <td>Ha ganado el jugador 2</td>\n";
+    // Por descarte, ambos sacan los mismos puntos
     } else {
         print "      <td>Han empatado</td>\n";
     }
@@ -97,7 +103,7 @@ if ($pareja1 > $pareja2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-11-08">8 de noviembre de 2025</time>
     </p>
 
     <p class="licencia">

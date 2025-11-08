@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-11-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,55 +48,54 @@
     </tr>
     <tr>
 <?php
-$dado1a = rand(1, 6);
-$dado1b = rand(1, 6);
-$dado1c = rand(1, 6);
-$dado2a = rand(1, 6);
-$dado2b = rand(1, 6);
-$dado2c = rand(1, 6);
+$j1d1 = rand(1, 6);
+$j1d2 = rand(1, 6);
+$j1d3 = rand(1, 6);
+$j2d1 = rand(1, 6);
+$j2d2 = rand(1, 6);
+$j2d3 = rand(1, 6);
 
 print "      <td style=\"padding: 10px; background-color: red;\">\n";
-print "        <img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$dado1c.svg\" alt=\"$dado1c\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j1d1.svg\" alt=\"$j1d1\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j1d2.svg\" alt=\"$j1d2\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j1d3.svg\" alt=\"$j1d3\" width=\"140\" height=\"140\">\n";
 print "      </td>\n";
 print "      <td style=\"padding: 10px; background-color: blue;\">\n";
-print "        <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j2d1.svg\" alt=\"$j2d1\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j2d2.svg\" alt=\"$j2d2\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$j2d3.svg\" alt=\"$j2d3\" width=\"140\" height=\"140\">\n";
 print "      </td>\n";
 
-if ($dado1a == $dado1b && $dado1a == $dado1c) {
-    $trio1 = $dado1a;
+if ($j1d1 == $j1d2 && $j1d1 == $j1d3) {
+    $trio1 = $j1d1;
 } else {
     $trio1 = 0;
 }
 
-if ($dado2a == $dado2b && $dado2a == $dado2c) {
-    $trio2 = $dado2a;
+if ($j2d1 == $j2d2 && $j2d1 == $j2d3) {
+    $trio2 = $j2d1;
 } else {
     $trio2 = 0;
 }
 
-if ($dado1a == $dado1b || $dado1a == $dado1c) {
-    $pareja1 = $dado1a;
-} elseif ($dado1b == $dado1c) {
-    $pareja1 = $dado1b;
+if ($j1d1 == $j1d2 || $j1d1 == $j1d3) {
+    $pareja1 = $j1d1;
+} elseif ($j1d2 == $j1d3) {
+    $pareja1 = $j1d2;
 } else {
     $pareja1 = 0;
 }
 
-if ($dado2a == $dado2b || $dado2a == $dado2c) {
-    $pareja2 = $dado2a;
-} elseif ($dado2b == $dado2c) {
-    $pareja2 = $dado2b;
+if ($j2d1 == $j2d2 || $j2d1 == $j2d3) {
+    $pareja2 = $j2d1;
+} elseif ($j2d2 == $j2d3) {
+    $pareja2 = $j2d2;
 } else {
     $pareja2 = 0;
 }
 
-$total1 = $dado1a + $dado1b + $dado1c;
-
-$total2 = $dado2a + $dado2b + $dado2c;
+$total1 = $j1d1 + $j1d2 + $j1d3;
+$total2 = $j2d1 + $j2d2 + $j2d3;
 
 if ($trio1 > $trio2) {
     print "      <td>Ha ganado el jugador 1</td>\n";
@@ -124,7 +123,7 @@ if ($trio1 > $trio2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-11-08">8 de noviembre de 2025</time>
     </p>
 
     <p class="licencia">
