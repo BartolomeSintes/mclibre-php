@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de un juego de dados. La partida tiene entre 2 y 6 turnos, al azar. En cada turno cada jugador lanza un dado. Gana cada turno el jugador que haya acumulado más puntos desde el principio de la partida. Gana la partida el jugador que haya ganado más turnos.</p>
+
+  <section id="comentarios">
+    <h2>Juego de dados - Comentarios</h2>
+
+    <ul>
+      <li>Al actualizar la página, se mostrará una nueva partida, con un número de turnos entre 2 y 6, al azar.</li>
+      <li>Hay dos jugadores, un mago &amp;#129497;&amp;#8205;&amp;#9794;&amp;#65039;
+        <span style="font-size: 3rem;">&#129497;&#8205;&#9794;&#65039;</span> y una maga &amp;#129497;&amp;#8205;&amp;#9792;&amp;#65039;
+        <span style="font-size: 3rem;">&#129497;&#8205;&#9792;&#65039;</span>
+      </li>
+      <li>Se mostrará el dado obtenido por cada jugador en cada turno.</li>
+      <li>Se indicará quién ha ganado cada turno mostrando la maga, el mago o el símbolo de empate &amp;#10060; <span style="font-size: 3rem;">&#10060;</span>. Gana cada turno el que saque el dado más alto.</li>
+      <li>Al final, se indicará qué jugador ha ganado más turnos y qué jugador ha ganado más puntos.</li>
+      <li>Se indicará quién ha ganado la partida. Un jugador gana la partida si gana a turnos y a puntos.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-juego-dados-1-1.png" alt="Juego de dados" width="1184" height="490"></p>
+        <p class="captura"><img src="img/sf-juego-dados-1-2.png" alt="Juego de dados" width="1184" height="500"></p>
+        <p class="captura"><img src="img/sf-juego-dados-1-3.png" alt="Juego de dados" width="1184" height="670"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de dados - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;table style="text-align: center; font-size: 2.5em;"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Turno&lt;/th&gt;
+      &lt;th&gt;&amp;#129497;&amp;#8205;&amp;#9792;&amp;#65039;&lt;/th&gt;
+      &lt;th&gt;&amp;#129497;&amp;#8205;&amp;#9794;&amp;#65039;&lt;/th&gt;
+      &lt;th&gt;Ganador&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; <span class="codigo-resaltado">1</span>&lt;/td&gt;
+      &lt;td&gt;&lt;img src="img/dados/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="80" height="80"&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="img/dados/<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="80" height="80"&gt;&lt;/td&gt;
+      &lt;td&gt;&amp;<span class="codigo-resaltado">#129497;&amp;#8205;&amp;#9794;&amp;#65039;</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; <span class="codigo-resaltado">2</span>&lt;/td&gt;
+      &lt;td&gt;&lt;img src="img/dados/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="80" height="80"&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="img/dados/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="80" height="80"&gt;&lt;/td&gt;
+      &lt;td&gt;<span class="codigo-resaltado">&amp;#129497;&amp;#8205;&amp;#9794;&amp;#65039;</span>&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;p style="font-size: 1.5em; margin: 0;"&gt;
+    <span class="codigo-resaltado">El mago ha ganado a turnos (2 a 0)</span>.
+    <span class="codigo-resaltado">El mago ha ganado a puntos (2 a 2)</span>.
+    <span class="codigo-resaltado">Así que ha ganado el mago</span>.
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

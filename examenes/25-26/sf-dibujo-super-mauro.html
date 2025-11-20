@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Dibujo Super Mauro. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Dibujo Super Mauro</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Dibujo Super Mauro </h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre un dibujo SVG de un personaje dando saltos y recogiendo bolsas de dinero.</p>
+
+  <section id="comentarios">
+    <h2>Dibujo Super Mauro - Comentarios</h2>
+
+    <ul>
+      <li>El dibujo es una imagen SVG incluida en la página.</li>
+      <li>Al actualizar la página, el número de rebotes del personaje variará de 1 a 5.</li>
+      <li>El personaje es la entidad numérica &amp;#127939; <span style="font-size: 3rem;">&#127939;</span>.</li>
+      <li>Las bolsas de dinero son la entidad numérica &amp;#128176; <span style="font-size: 3rem;">&#128176;</span>.</li>
+      <li>En la captura se ha marcado el recorrido del personaje con una línea discontinua que no tiene por qué dibujar el alumno.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-dibujo-super-mauro-1.png" alt="Dibujo Super Mauro" width="1184" height="520"></p>
+        <p class="captura"><img src="img/sf-dibujo-super-mauro-2.png" alt="Dibujo Super Mauro" width="1184" height="520"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Dibujo Super Mauro - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;Actualice la página para ver a Super Mauro recogiendo <span class="codigo-resaltado">1 bolsa</span> de dinero.&lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;svg viewBox="0 0 1100 400" style="border: black 1px solid; background-color: lightblue;"&gt;
+      &lt;line x1="0" y1="355" x2="1100" y2="355" stroke="peru" stroke-width="40" /&gt;
+      &lt;text x="100" y="100" font-size="100"&gt;&amp;#9729;&amp;#65039;&lt;/text&gt;
+
+<div class="codigo-resaltado">      &lt;text x="<span class="codigo-resaltado">940</span>" y="160" font-size="24" style="text-decoration:underline 3px black;"&gt;
+        &amp;#128176;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">1</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</div>
+      &lt;text font-size="40"&gt;
+        &amp;#127939;
+        &lt;animateMotion dur="<span class="codigo-resaltado">1.5</span>s" fill="freeze"
+          path="M 1100,100 c 0,0 -50,-100 -50,250
+                <span class="codigo-resaltado">c -50,-250 -150,-250 -200,0</span>
+                " /&gt;
+      &lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;Actualice la página para ver a Super Mauro recogiendo <span class="codigo-resaltado">2 bolsas</span> de dinero.&lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;svg viewBox="0 0 1100 400" style="border: black 1px solid; background-color: lightblue;"&gt;
+      &lt;line x1="0" y1="355" x2="1100" y2="355" stroke="peru" stroke-width="40" /&gt;
+      &lt;text x="100" y="100" font-size="100"&gt;&amp;#9729;&amp;#65039;&lt;/text&gt;
+
+<div class="codigo-resaltado">      &lt;text x="<span class="codigo-resaltado">940</span>" y="160" font-size="24" style="text-decoration:underline 3px black;"&gt;
+        &amp;#128176;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">1</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div><div class="codigo-resaltado">      &lt;text x="<span class="codigo-resaltado">740</span>" y="160" font-size="24" style="text-decoration:underline 3px black;"&gt;
+        &amp;#128176;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">2</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</div>
+      &lt;text font-size="40"&gt;
+        &amp;#127939;
+        &lt;animateMotion dur="<span class="codigo-resaltado">2.5</span>s" fill="freeze"
+          path="M 1100,100 c 0,0 -50,-100 -50,250
+                <span class="codigo-resaltado">c -50,-250 -150,-250 -200,0</span>
+                <span class="codigo-resaltado">c -50,-250 -150,-250 -200,0</span>
+                " /&gt;
+      &lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;Actualice la página para ver a Super Mauro recogiendo <span class="codigo-resaltado">3 bolsas</span> de dinero.&lt;/p&gt;
+
+    &lt;p&gt;
+    &lt;svg viewBox="0 0 1100 400" style="border: black 1px solid; background-color: lightblue;"&gt;
+      &lt;line x1="0" y1="355" x2="1100" y2="355" stroke="peru" stroke-width="40" /&gt;
+      &lt;text x="100" y="100" font-size="100"&gt;&amp;#9729;&amp;#65039;&lt;/text&gt;
+
+<div class="codigo-resaltado">      &lt;text x="<span class="codigo-resaltado">940</span>" y="160" font-size="24" style="text-decoration:underline 3px black;"&gt;
+        &amp;#128176;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">1</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div><div class="codigo-resaltado">      &lt;text x="<span class="codigo-resaltado">740</span>" y="160" font-size="24" style="text-decoration:underline 3px black;"&gt;
+        &amp;#128176;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">2</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;
+</div><div class="codigo-resaltado">      &lt;text x="<span class="codigo-resaltado">540</span>" y="160" font-size="24" style="text-decoration:underline 3px black;"&gt;
+        &amp;#128176;
+        &lt;animate dur="0.1s" attributeName="opacity" from="1" to="0" begin="<span class="codigo-resaltado">3</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</div>
+      &lt;text font-size="40"&gt;
+        &amp;#127939;
+        &lt;animateMotion dur="<span class="codigo-resaltado">3.5</span>s" fill="freeze"
+          path="M 1100,100 c 0,0 -50,-100 -50,250
+                <span class="codigo-resaltado">c -50,-250 -150,-250 -200,0</span>
+                <span class="codigo-resaltado">c -50,-250 -150,-250 -200,0</span>
+                <span class="codigo-resaltado">c -50,-250 -150,-250 -200,0</span>
+                " /&gt;
+      &lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;
+</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

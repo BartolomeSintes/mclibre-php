@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Dibujo Balón rebotando . Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Dibujo Balón rebotando</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Dibujo Balón rebotando </h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre un dibujo SVG de un balón rebotando entre dos paredes.</p>
+
+  <section id="comentarios">
+    <h2>Dibujo Balón rebotando - Comentarios</h2>
+
+    <ul>
+      <li>El dibujo es una imagen SVG incluida en la página.</li>
+      <li>Al actualizar la página, el número de rebotes del balón en la pared inferior variará de 1 a 6.</li>
+      <li>El balón es la entidad numérica &amp;#9917; <span style="font-size: 3rem;">&#9917;</span>.</li>
+      <li>En la captura se ha marcado el recorrido del balón con una línea discontinua que no tiene por qué dibujar el alumno.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-dibujo-balon-rebotando-1.png" alt="Dibujo Balón rebotando" width="1184" height="350"></p>
+        <p class="captura"><img src="img/sf-dibujo-balon-rebotando-2.png" alt="Dibujo Balón rebotando" width="1184" height="350"></p>
+        <p class="captura"><img src="img/sf-dibujo-balon-rebotando-3.png" alt="Dibujo Balón rebotando" width="1184" height="350"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Dibujo Balón rebotando - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;Actualice la página para mostrar un balón rebotando <span class="codigo-resaltado">1 vez</span> en la pared de abajo.&lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;svg width="<span class="codigo-resaltado">250</span>" viewBox="50 -40 <span class="codigo-resaltado">250</span> 240" style="border-top: black 2px solid; border-bottom: black 2px solid"&gt;
+      &lt;text x="-25" y="-4" font-size="40"&gt;
+        &amp;#9917;
+        &lt;animateMotion dur="<span class="codigo-resaltado">1.25</span>s" fill="freeze"
+          path="M 100,100 <span class="codigo-resaltado">150</span>,200 <span class="codigo-resaltado">250</span>,0" /&gt;
+      &lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;Actualice la página para mostrar un balón rebotando <span class="codigo-resaltado">2 veces</span> en la pared de abajo.&lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;svg width="<span class="codigo-resaltado">450</span>" viewBox="50 -40 <span class="codigo-resaltado">450</span> 240" style="border-top: black 2px solid; border-bottom: black 2px solid"&gt;
+      &lt;text x="-25" y="-4" font-size="40"&gt;
+        &amp;#9917;
+        &lt;animateMotion dur="<span class="codigo-resaltado">2.25</span>s" fill="freeze"
+          path="M 100,100 <span class="codigo-resaltado">150</span>,200 <span class="codigo-resaltado">250</span>,0 <span class="codigo-resaltado">350</span>,200 <span class="codigo-resaltado">450</span>,0" /&gt;
+      &lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;Actualice la página para mostrar un balón rebotando <span class="codigo-resaltado">4 veces</span> en la pared de abajo.&lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;svg width="<span class="codigo-resaltado">850</span>" viewBox="50 -40 <span class="codigo-resaltado">850</span> 240" style="border-top: black 2px solid; border-bottom: black 2px solid"&gt;
+      &lt;text x="-25" y="-4" font-size="40"&gt;
+        &amp;#9917;
+        &lt;animateMotion dur="<span class="codigo-resaltado">4.25</span>s" fill="freeze"
+          path="M 100,100 <span class="codigo-resaltado">150</span>,200 <span class="codigo-resaltado">250</span>,0 <span class="codigo-resaltado">350</span>,200 <span class="codigo-resaltado">450</span>,0 <span class="codigo-resaltado">550</span>,200 <span class="codigo-resaltado">650</span>,0 <span class="codigo-resaltado">750</span>,200 <span class="codigo-resaltado">850</span>,0" /&gt;
+      &lt;/text&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
