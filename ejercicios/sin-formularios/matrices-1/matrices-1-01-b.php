@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 4 - matrices-1-04.php
+ * Matrices (1) 1 - matrices-1-01-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Gestos de manos.
+    Dado.
     Matrices (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,18 +36,18 @@
 </head>
 
 <body>
-  <h1>Gestos de manos</h1>
+  <h1>Dado</h1>
 
-  <p>Actualice la página para mostrar un nuevo dibujo.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$emojis = [128070, 128071, 128072, 128073, 128074, 128075, 128076, 128077, 128078, 128079, 128080, 128133, 128170, 128400, 128405, 128406, 128588, 128591, 129295, 129304, 129305, 129306, 129307, 129308, 129309, 129310, 129311, 129330];
-$pieles = [127995, 127996, 127997, 127998, 127999];
+$dado = rand(1, 6);
 
-$emoji = rand(0, count($emojis) - 1);
-$piel  = rand(0, 4);
+$nombre = ["uno", "dos", "tres", "cuatro", "cinco", "seis"];
 
-print "  <p><span style=\"font-size: 800%\">&#$emojis[$emoji];&#$pieles[$piel];</span></p>\n";
+print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"></p>\n";
+print "\n";
+print "  <p>Ha sacado un <strong>{$nombre[$dado - 1]}</strong>.</p>\n";
 print "\n";
 ?>
   <footer>

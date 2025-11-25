@@ -94,9 +94,9 @@
     <section id="ejercicio-01">
       <h3>Matrices (1) 01 - Números</h3>
 
-      <p>Almacenaremos las cadenas "uno", "dos", "tres", etc. en una matriz, de manera que el valor de los índices, corresponda con el significado de la cadena ($matriz[1] = "uno", $matriz[2] = "dos", etc.) </p>
+      <p>La solución más sencilla consiste en guardar las cadenas "uno", "dos", "tres", etc. en una matriz, de manera que el valor de los índices corresponda con el significado de la cadena (es decir, que $nombre[1] = "uno", $nombre[2] = "dos", etc.) </p>
       <ul>
-        <li>En esta solución en la que no indicamos los índices, al crear la matriz debemos añadir un primer elemento ya que PHP asigna los índices de forma correlativa a partir de 0 (0, 1, 2, etc.).
+        <li>Para que al ínidce 1 le corresponda el valor "uno", podemos añadir un primer elemento cualquiera, ya que PHP asigna los índices de forma correlativa a partir de 0 (0, 1, 2, etc.).
 
           <div class="codigo">
             <pre>
@@ -113,14 +113,14 @@ print "\n";
 </pre>
           </div>
         </li>
-        <li>El primer valor, que no se utiliza en el programa, podía haber sido una cadena no vacía.
+        <li>El primer valor, que no se utiliza en el programa, puede ser una cadena no vacía.
           <div class="codigo">
             <pre>
 <code class="language-php">$nombre = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis"];</code>
 </pre>
           </div>
         </li>
-        <li>Si creamos la matriz asignando nosotros los índices, no es necesario añadir un valor inicial.
+        <li>También podemos crear la matriz asignando nosotros los índices, de manera que no es necesario añadir un valor inicial.
           <div class="codigo">
             <pre>
 <code class="language-php">$nombre = [1 =&gt; "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis"];</code>
@@ -128,10 +128,53 @@ print "\n";
           </div>
         </li>
       </ul>
+
+      <p>Una solución más complicada es que la matriz contenga únicamente los nombres de las caras de los dados y los índices no correspondan con los valroes (es decir, que $nombre[0] = "uno", $nombre[1] = "dos", etc.). En este caso debemos ajustar el programa teniendo en cuenta que las palabras están "desplazadas" con respecto al valor del índice.</p>
+
+      <ul>
+        <li>Podríamos hacer el ajuste al escribir la palabra:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$dado = rand(1, 6);
+
+$nombre = ["uno", "dos", "tres", "cuatro", "cinco", "seis"];
+
+print "  &lt;p&gt;&lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;&lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;Ha sacado un &lt;strong&gt;{$nombre[$dado - 1]}&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          </div>
+        <p>En este caso generamos un valor del 1 al 6, que viene bien para mostrar la imagen, pero al indicar el elemento de la matriz a mostrar debemos pedir el elemento anterior al valor generado.</p>
+        </li>
+        <li>O podríamos hacer el ajuste al mostrar la imagen:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$dado = rand(0, 5);
+
+$nombre = ["uno", "dos", "tres", "cuatro", "cinco", "seis"];
+
+print "  &lt;p&gt;&lt;img src=\"img/" . $dado + 1 . ".svg\" alt=\"" . $dado + 1 . "\" width=\"140\" height=\"140\"&gt;&lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;Ha sacado un &lt;strong&gt;{$nombre[$dado]}&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          </div>
+        <p>En este caso generamos un valor del 0 al 5, que viene bien para mostrar la palabra que corresponde al valor, pero al indicar la imagen mostrar debemos pedir el valor siguiente al valor generado.</p>
+        </li>
+      </ul>
     </section>
 
     <section id="ejercicio-02">
       <h3>Matrices (1) 02 - Animales</h3>
+
+      <p>Podemos guardar los nombres de los archivos en una matriz y hacer que escriba uno de ellos al azar.</p>
 
       <div class="codigo">
         <pre>
@@ -146,6 +189,26 @@ $dibujos = [
 $animal = rand(0, count($dibujos) - 1);
 
 print "  &lt;p&gt;&lt;img src=\"img/animales/$dibujos[$animal]\" alt=\"Animal\" height=\"250\"&gt;&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+      </div>
+
+      <p>En este caso, como todas las imágenes son imágenes SVG, podemos obviar la extensión en la matriz.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$dibujos = [
+    "ballena", "caballito-mar", "camello", "cebra", "elefante",
+    "hipopotamo", "jirafa", "leon", "leopardo", "medusa",
+    "mono", "oso", "oso-blanco", "pajaro", "pinguino",
+    "rinoceronte", "serpiente", "tigre", "tortuga-marina", "tortuga",
+];
+
+$animal = rand(0, count($dibujos) - 1);
+
+print "  &lt;p&gt;&lt;img src=\"img/animales/$dibujos[$animal].svg\" alt=\"Animal\" height=\"250\"&gt;&lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 4 - matrices-1-04.php
+ * Matrices (1) 2 - matrices-1-02-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Gestos de manos.
+    Animales.
     Matrices (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,18 +36,21 @@
 </head>
 
 <body>
-  <h1>Gestos de manos</h1>
+  <h1>Animales</h1>
 
-  <p>Actualice la página para mostrar un nuevo dibujo.</p>
+  <p>Actualice la página para mostrar un nuevo animal.</p>
 
 <?php
-$emojis = [128070, 128071, 128072, 128073, 128074, 128075, 128076, 128077, 128078, 128079, 128080, 128133, 128170, 128400, 128405, 128406, 128588, 128591, 129295, 129304, 129305, 129306, 129307, 129308, 129309, 129310, 129311, 129330];
-$pieles = [127995, 127996, 127997, 127998, 127999];
+$dibujos = [
+    "ballena", "caballito-mar", "camello", "cebra", "elefante",
+    "hipopotamo", "jirafa", "leon", "leopardo", "medusa",
+    "mono", "oso", "oso-blanco", "pajaro", "pinguino",
+    "rinoceronte", "serpiente", "tigre", "tortuga-marina", "tortuga",
+];
 
-$emoji = rand(0, count($emojis) - 1);
-$piel  = rand(0, 4);
+$animal = rand(0, count($dibujos) - 1);
 
-print "  <p><span style=\"font-size: 800%\">&#$emojis[$emoji];&#$pieles[$piel];</span></p>\n";
+print "  <p><img src=\"img/animales/$dibujos[$animal].svg\" alt=\"Animal\" height=\"250\"></p>\n";
 print "\n";
 ?>
   <footer>
