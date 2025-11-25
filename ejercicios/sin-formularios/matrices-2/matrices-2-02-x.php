@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-11-25
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,8 @@
   <p>Actualice la página para mostrar una nueva palabra.</p>
 
 <?php
-$idiomas  = ["español", "inglés", "francés", "italiano"];
+$idiomas = ["español", "inglés", "francés", "italiano"];
+
 $palabras = [
     ["lunes",     "monday",     "lundi",    "lunedi"],
     ["martes",    "tuesday",    "mardi",    "martedi"],
@@ -50,18 +51,27 @@ $palabras = [
     ["viernes",   "friday",     "vendredi", "venerdì"],
     ["sábado",    "saturday",   "samedi",   "sabato"],
     ["domingo",   "sunday",     "dimanche", "domenica"],
+    ["cachimba",  "",           "",         ""],
 ];
 
 $idioma  = rand(1, count($idiomas) - 1);
 $palabra = rand(0, count($palabras) - 1);
 
-print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma]}</strong> quiere decir <strong>{$palabras[$palabra][0]}</strong> en $idiomas[$idioma].</p>\n";
-print "\n";
+if ($palabras[$palabra][$idioma] == "") {
+    print "  <p>Lo siento, pero no está disponible la traducción de <strong> ";
+    print "{$palabras[$palabra][0]}</strong> al $idiomas[$idioma].</p>\n";
+    print "\n";
+} else {
+    print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma]}";
+    print "</strong> quiere decir <strong>{$palabras[$palabra][0]}";
+    print "</strong> en $idiomas[$idioma].</p>\n";
+    print "\n";
+}
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-11-25">25 de noviembre de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

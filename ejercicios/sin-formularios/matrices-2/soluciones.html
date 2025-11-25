@@ -8,7 +8,8 @@
   <link rel="icon" href="../../../varios/favicon.svg">
   <link rel="stylesheet" href="../../../varios/prism.css">
   <script src="../../../varios/prism.js"></script>
-  <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script></head>
+  <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+</head>
 
 <body>
   <h1>Ejercicios (sin formularios) - Matrices (2) - Soluciones</h1>
@@ -53,7 +54,7 @@
   <p>Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-matrices-2-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
 
   <section id="dimension-2">
-    <h2>Dimensión 2 (tablas)</h2>
+    <h2>Matrices de dos dimensiones</h2>
 
     <section id="ejercicio-01">
       <h3>Matrices (2) 01 - Fichas de animales</h3>
@@ -62,26 +63,26 @@
         <pre>
 <code class="language-php">&lt;?php
 $animales = [
-    ["Ballena", "ballena.svg", "https://es.wikipedia.org/wiki/Balaenidae"],
-    ["Caballito de mar", "caballito-mar.svg", "https://es.wikipedia.org/wiki/Hippocampus"],
-    ["Camello", "camello.svg", "https://es.wikipedia.org/wiki/Camelus"],
-    ["Cebra", "cebra.svg", "https://es.wikipedia.org/wiki/Cebra"],
-    ["Elefante", "elefante.svg", "https://es.wikipedia.org/wiki/Elephantidae"],
-    ["Hipopótamo", "hipopotamo.svg", "https://es.wikipedia.org/wiki/Hippopotamidae"],
-    ["Jirafa", "jirafa.svg", "https://es.wikipedia.org/wiki/Giraffa_camelopardalis"],
-    ["León", "leon.svg", "https://es.wikipedia.org/wiki/Panthera_leo"],
-    ["Leopardo", "leopardo.svg", "https://es.wikipedia.org/wiki/Panthera_pardus"],
-    ["Medusa", "medusa.svg", "https://es.wikipedia.org/wiki/Medusa_(animal)"],
-    ["Mono", "mono.svg", "https://es.wikipedia.org/wiki/Mono"],
-    ["Oso", "oso.svg", "https://es.wikipedia.org/wiki/Ursidae"],
-    ["Oso blanco", "oso-blanco.svg", "https://es.wikipedia.org/wiki/Ursus_maritimus"],
-    ["Pájaro", "pajaro.svg", "https://es.wikipedia.org/wiki/Aves"],
-    ["Pingüino", "pinguino.svg", "https://es.wikipedia.org/wiki/Spheniscidae"],
-    ["Rinoceronte", "rinoceronte.svg", "https://es.wikipedia.org/wiki/Rhinocerotidae"],
-    ["Serpiente", "serpiente.svg", "https://es.wikipedia.org/wiki/Serpentes"],
-    ["Tigre", "tigre.svg", "https://es.wikipedia.org/wiki/Panthera_tigris"],
-    ["Tortuga marina", "tortuga-marina.svg", "https://es.wikipedia.org/wiki/Chelonioidea"],
-    ["Tortuga", "tortuga.svg", "https://es.wikipedia.org/wiki/Testudines"],
+    ["Ballena",          "ballena.svg",        "https://es.wikipedia.org/wiki/Balaenidae"],
+    ["Caballito de mar", "caballito-mar.svg",  "https://es.wikipedia.org/wiki/Hippocampus"],
+    ["Camello",          "camello.svg",        "https://es.wikipedia.org/wiki/Camelus"],
+    ["Cebra",            "cebra.svg",          "https://es.wikipedia.org/wiki/Cebra"],
+    ["Elefante",         "elefante.svg",       "https://es.wikipedia.org/wiki/Elephantidae"],
+    ["Hipopótamo",       "hipopotamo.svg",     "https://es.wikipedia.org/wiki/Hippopotamidae"],
+    ["Jirafa",           "jirafa.svg",         "https://es.wikipedia.org/wiki/Giraffa_camelopardalis"],
+    ["León",             "leon.svg",           "https://es.wikipedia.org/wiki/Panthera_leo"],
+    ["Leopardo",         "leopardo.svg",       "https://es.wikipedia.org/wiki/Panthera_pardus"],
+    ["Medusa",           "medusa.svg",         "https://es.wikipedia.org/wiki/Medusa_(animal)"],
+    ["Mono",             "mono.svg",           "https://es.wikipedia.org/wiki/Mono"],
+    ["Oso",              "oso.svg",            "https://es.wikipedia.org/wiki/Ursidae"],
+    ["Oso blanco",       "oso-blanco.svg",     "https://es.wikipedia.org/wiki/Ursus_maritimus"],
+    ["Pájaro",           "pajaro.svg",         "https://es.wikipedia.org/wiki/Aves"],
+    ["Pingüino",         "pinguino.svg",       "https://es.wikipedia.org/wiki/Spheniscidae"],
+    ["Rinoceronte",      "rinoceronte.svg",    "https://es.wikipedia.org/wiki/Rhinocerotidae"],
+    ["Serpiente",        "serpiente.svg",      "https://es.wikipedia.org/wiki/Serpentes"],
+    ["Tigre",            "tigre.svg",          "https://es.wikipedia.org/wiki/Panthera_tigris"],
+    ["Tortuga marina",   "tortuga-marina.svg", "https://es.wikipedia.org/wiki/Chelonioidea"],
+    ["Tortuga",          "tortuga.svg",        "https://es.wikipedia.org/wiki/Testudines"],
 ];
 
 $animal = rand(0, count($animales) - 1);
@@ -102,38 +103,60 @@ print "\n";
     <section id="ejercicio-02">
       <h3>Matrices (2) 02 - Diccionario</h3>
 
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$idiomas = ["español", "inglés", "francés", "italiano"];
+      <ul>
+        <li>Con dos matrices:
 
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$idiomas  = ["español", "inglés", "francés", "italiano"];
 $palabras = [
-    ["lunes", "monday", "lundi", "lunedi"],
-    ["martes", "tuesday", "mardi", "martedi"],
-    ["miércoles", "wednesday", "mercredi", "mercoledì"],
-    ["jueves", "thursday", "jeudi", "giovedì"],
-    ["viernes", "friday", "vendredi", "venerdì"],
-    ["sábado", "saturday", "samedi", "sabato"],
-    ["domingo", "sunday", "dimanche", "domenica"],
-    ["cachimba", "", "", ""],
+    ["lunes",     "monday",     "lundi",    "lunedi"],
+    ["martes",    "tuesday",    "mardi",    "martedi"],
+    ["miércoles", "wednesday",  "mercredi", "mercoledì"],
+    ["jueves",    "thursday",   "jeudi",    "giovedì"],
+    ["viernes",   "friday",     "vendredi", "venerdì"],
+    ["sábado",    "saturday",   "samedi",   "sabato"],
+    ["domingo",   "sunday",     "dimanche", "domenica"],
 ];
 
 $idioma  = rand(1, count($idiomas) - 1);
 $palabra = rand(0, count($palabras) - 1);
 
-if ($palabras[$palabra][$idioma] == "") {
-    print "  &lt;p&gt;Lo siento, pero no está disponible la traducción de &lt;strong&gt; ";
-    print "{$palabras[$palabra][0]}&lt;/strong&gt; al $idiomas[$idioma].&lt;/p&gt;\n";
-    print "\n";
-} else {
-    print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma]}";
-    print "&lt;/strong&gt; quiere decir &lt;strong&gt;{$palabras[$palabra][0]}";
-    print "&lt;/strong&gt; en $idiomas[$idioma].&lt;/p&gt;\n";
-    print "\n";
-}
+print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma]}&lt;/strong&gt; quiere decir &lt;strong&gt;{$palabras[$palabra][0]}&lt;/strong&gt; en $idiomas[$idioma].&lt;/p&gt;\n";
+print "\n";
+
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
+        </li>
+        <li>Con dos matrices:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$palabras = [
+    ["español",   "inglés",     "francés",  "italiano"],
+    ["lunes",     "monday",     "lundi",    "lunedi"],
+    ["martes",    "tuesday",    "mardi",    "martedi"],
+    ["miércoles", "wednesday",  "mercredi", "mercoledì"],
+    ["jueves",    "thursday",   "jeudi",    "giovedì"],
+    ["viernes",   "friday",     "vendredi", "venerdì"],
+    ["sábado",    "saturday",   "samedi",   "sabato"],
+    ["domingo",   "sunday",     "dimanche", "domenica"],
+];
+
+$idioma  = rand(1, count($palabras[0]) - 1);
+$palabra = rand(0, count($palabras) - 1);
+
+print "  &lt;p&gt;&lt;strong style=\"text-transform: capitalize\"&gt;{$palabras[$palabra][$idioma]}&lt;/strong&gt; quiere decir &lt;strong&gt;{$palabras[$palabra][0]}&lt;/strong&gt; en {$palabras[0][$idioma]}.&lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section id="ejercicio-03">
@@ -228,7 +251,7 @@ print "\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de febrero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 25 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

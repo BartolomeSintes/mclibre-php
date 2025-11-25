@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (2) 02 - matrices-2-02.php
+ * Matrices (2) 02 - matrices-2-02-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
@@ -41,8 +41,8 @@
   <p>Actualice la página para mostrar una nueva palabra.</p>
 
 <?php
-$idiomas  = ["español", "inglés", "francés", "italiano"];
 $palabras = [
+    ["español",   "inglés",     "francés",  "italiano"],
     ["lunes",     "monday",     "lundi",    "lunedi"],
     ["martes",    "tuesday",    "mardi",    "martedi"],
     ["miércoles", "wednesday",  "mercredi", "mercoledì"],
@@ -52,10 +52,10 @@ $palabras = [
     ["domingo",   "sunday",     "dimanche", "domenica"],
 ];
 
-$idioma  = rand(1, count($idiomas) - 1);
+$idioma  = rand(1, count($palabras[0]) - 1);
 $palabra = rand(0, count($palabras) - 1);
 
-print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma]}</strong> quiere decir <strong>{$palabras[$palabra][0]}</strong> en $idiomas[$idioma].</p>\n";
+print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma]}</strong> quiere decir <strong>{$palabras[$palabra][0]}</strong> en {$palabras[0][$idioma]}.</p>\n";
 print "\n";
 ?>
   <footer>
