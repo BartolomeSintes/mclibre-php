@@ -55,9 +55,8 @@ $palabras = [
 ];
 
 $mensajes = [
-    ["diccionario multilingüe", "multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"],
-    ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.",
-        "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
+    ["Diccionario multilingüe", "Multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"],
+    ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.", "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
     ["quiere decir", "means", "veut dire", "significa"],
     ["en", "in", "en", "in"],
 ];
