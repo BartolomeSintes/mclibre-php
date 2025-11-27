@@ -155,7 +155,7 @@ $edad = 15;
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado"><br><b>Warning</b>:  Undefined variable $edad in <b>prueba.php</b> on line <b>2</b><br>
+      <div class="resultado"><br><b>Warning</b>: Undefined variable $edad in <b>prueba.php</b> on line <b>2</b><br>
       </div>
     </div>
 
@@ -576,7 +576,7 @@ print "&lt;p&gt;¡<span class="codigo-resaltado">{$saludos[0][1]}</span>, $nombr
     <section id="operaciones">
       <h3>Operaciones aritméticas y llamadas a funciones</h3>
 
-      <p>En el interior de las cadenas no se pueden realizar operaciones aritméticas o llamadas a funciones.</p>
+      <p>En general, en el interior de las cadenas no se pueden realizar operaciones aritméticas o llamadas a funciones.</p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -602,7 +602,7 @@ print "&lt;p&gt;Potencia: $x ^ $y = <span class="codigo-resaltado">pow($x, $y)</
         </div>
       </div>
 
-      <p>Si se quiere mostrar el resultado de operaciones matemáticas o de llamadas a funciones, es necesario efectuar las operaciones fuera de las cadenas. </p>
+      <p>Si se quiere mostrar el resultado de operaciones matemáticas o de llamadas a funciones, es necesario efectuar las operaciones fuera de las cadenas, concatenando cadenas y operaciones.</p>
 
       <div class="filaflex">
         <div class="codigo">
@@ -758,7 +758,7 @@ print "&lt;p style=\"font-size: $x"<span class="codigo-resaltado"> . </span>"px\
 
       <hr class="corta">
 
-      <p>Dentro de las llaves no se pueden realizar operaciones. Si se realizan operaciones, se puede producir un error de sintaxis u obtener resultados no esperados:</p>
+      <p>En general, dentro de las llaves no se pueden realizar operaciones. Si se realizan operaciones, se puede producir un error de sintaxis u obtener resultados no esperados:</p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -798,6 +798,24 @@ print "&lt;p&gt;{$x} por {$x} es {$x * $x}&lt;/p&gt;\n";
 
       <p><strong>Nota</strong>: T_PAAMAYIM_NEKUDOTAYIM es el nombre en hebreo del signo :: (dos puntos duplicados).</p>
     </section>
+
+    <p>Uno de los casos en que sí se pueden realizar cálculos dentro de una llave es en índices de matrices, como muestra el ejemplo siguiente:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$valores = [10, 40, 70, 80, 100, 400];
+
+$n = 3;
+print "&lt;p&gt;En la matriz, después del valor $valores[$n] está el {$valores[$n + 1]}.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;En la matriz, después del valor 80 está el 100.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
   </section>
 
   <section id="mostrar-variables">
@@ -854,14 +872,35 @@ var_dump($estudiante);
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-$nombre = "Pepe";
-$edad = 25;
-var_dump($nombre, $edad);
+$datos = ["Pepe", 25, true];
+var_dump($datos);
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">string(4) "Pepe" int(25) </code></pre>
+            <pre><code class="language-html">array(3) {
+  [0]=&gt;
+  string(4) "Pepe"
+  [1]=&gt;
+  int(25)
+  [2]=&gt;
+  bool(true)
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+$estudiante = false;
+var_dump($nombre, $estudiante);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">string(4) "Pepe" bool(false)</code></pre>
           </div>
         </div>
       </li>
@@ -899,13 +938,31 @@ var_export($edad);
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-$estudiante = true;
+$datos = ["Pepe", 25, true];
+var_export($datos);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">array (
+  0 =&gt; 'Pepe',
+  1 =&gt; 25,
+  2 =&gt; true,
+)</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = false;
 var_export($estudiante);
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">true</code></pre>
+            <pre><code class="language-html">false</code></pre>
           </div>
         </div>
 
@@ -930,11 +987,111 @@ print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudian
           </div>
         </div>
       </li>
+      <li>La función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($var, $return = false)</span></a> también puede imprimir o devolver el valor de una variable, aunque con limitaciones.
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+print_r($nombre);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">Pepe</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$edad = 25;
+print_r($edad);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">25</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = true;
+print_r($estudiante);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">1</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$datos = ["Pepe", 25, true];
+print_r($datos);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">Array
+(
+    [0] =&gt; Pepe
+    [1] =&gt; 25
+    [2] =&gt; 1
+)</code></pre>
+          </div>
+        </div>
+
+        <p>Por ejemplo, en el caso de las variables lógicas, imprime o devuelve 1 si la variable es <span class="php-con">true</span>, pero no imprime nada si la variable es <span class="php-con">false</span>.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = false;
+print_r($estudiante);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>Si se añade como argumento final el valor <span class="php-con">true</span>, la función no imprime nada, sino que devuelve el valor de la variable, de manera que se puede asignar o concatenar en cadenas.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = true;
+$variable   = print_r($estudiante, true);
+print "&lt;p&gt;La variable \$estudiante tiene el valor $variable&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La variable \$estudiante tiene el valor " . print_r($estudiante, true) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable $estudiante tiene el valor 1&lt;/p&gt;
+
+&lt;p&gt;La variable $estudiante tiene el valor 1&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 27 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
