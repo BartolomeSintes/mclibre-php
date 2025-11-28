@@ -118,7 +118,7 @@ print "&lt;p&gt;$apellidos[0]&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>Una matriz puede almacenar datos de tipos distintos. </p>
+    <p>Una matriz puede almacenar datos de tipos distintos.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -242,7 +242,7 @@ print "&lt;p&gt;$matriz[3] $matriz[11] $matriz[12]&lt;p&gt;\n";
   <section id="asociativas">
     <h2>Matrices asociativas</h2>
 
-    <p>En PHP, los índices de las matrices pueden ser números enteros o cadenas. Este tipo de matrices se denominan <strong>matrices asociativas</strong>, ya que las matrices no son colecciones ordenadas de elementos a los que se acceden mediante números positivos correlativos, sino conjuntos de valores que se identifican mediante etiquetas. </p>
+    <p>En PHP, los índices de las matrices pueden ser números enteros o cadenas. Este tipo de matrices se denominan <strong>matrices asociativas</strong>, ya que las matrices no son colecciones ordenadas de elementos a los que se acceden mediante números positivos correlativos, sino conjuntos de valores que se identifican mediante etiquetas.</p>
 
     <p>Podemos crear una matriz asociativa indicando el valor de los índices o utilizando la notación <strong>$indice =&gt; $valor</strong>:</p>
 
@@ -455,7 +455,7 @@ print "&lt;p&gt;$nombres[-2]&lt;p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Definiciones equivalentes de una mismsa matriz
+// Definiciones equivalentes de una misma matriz
 // En una sola línea:
 $matriz = [[20, 30, 40], [100, 200, 300]];
 // En varias líneas para facilitar la lectura:
@@ -653,7 +653,7 @@ $datos["apellidos"] = "Ramón y Cajal";
 
     <hr class="corta">
 
-    <p>La función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
+    <p>La función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable , $devolver = false])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
 
     <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si la matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
 
@@ -1221,6 +1221,8 @@ print "&lt;pre&gt;\n" . print_r($cuadradosCopia, true) . "&lt;/pre&gt;\n";
 
   <section id="union">
     <h2>Unir matrices</h2>
+
+    <p><strong>Nota</strong>: La unión de matrices mediante el operador <strong>+</strong> (suma) que se comenta en este apartado no es realmente demasiado útil. Normalmente, querremos unir matrices conservando todos los valores de las matrices unidas, para lo que es preferible utilizar la función <a href="php-matrices-funciones.html#array-merge"><span class="php-fun">array_merge($matriz_1, $matriz_2, ...)</span> que se comenta en la lección Funciones de matrices</a>.</p>
 
     <p>Los operadores <strong>+</strong> (suma) <strong>+=</strong> (suma combinada) realizan la unión de dos matrices. La unión de dos matrices contiene todos los elementos de la primera matriz y únicamente los elementos de la segunda matriz cuyo índice no se encuentra en la primera matriz.</p>
     <ul>

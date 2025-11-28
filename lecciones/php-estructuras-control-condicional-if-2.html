@@ -23,12 +23,46 @@
       <h2>if ... elseif ... else ...</h2>
 
       <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
         <li><a href="#orden-casos">Orden de los casos</a></li>
         <li><a href="#omision-comparaciones">Omisión de comparaciones</a></li>
-        <li><a href="#otros">Otros</a></li>
       </ul>
     </div>
   </nav>
+
+  <section id="comentarios">
+    <h2>Comentarios</h2>
+
+    <p>Si las condiciones <span class="php-res">if ... elseif ...</span> cubren todas las posibilidades, se puede no escribir el bloque <span class="php-res">else</span>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es par.&lt;/p&gt;\n";
+} elseif ($numero % 2 != 0) {
+    print "&lt;p&gt;$numero es impar.&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+
+    <p>Pero lo más habitual es sustituir el último bloque <span class="php-res">elseif ...</span> por un bloque <span class="php-res">else</span>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 2 == 0) {
+    print "&lt;p&gt;$numero es par.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero es impar.&lt;/p&gt;\n";
+}</code>
+</pre>
+    </div>
+  </section>
 
   <section id="orden-casos">
     <h2>Orden de los casos</h2>
@@ -322,6 +356,8 @@ if ($edad &lt; 65) {
 
     <h3>Casos que se incluyen unos a otros</h3>
 
+    <p>En general, el orden que permite simplificar más las expresiones suele ser considerar primero los casos más particulares o más especiales y después los casos cada vez más generales.</p>
+
     <p>Consideremos un programa que pide un valor y nos dice:</p>
 
     <ul>
@@ -545,8 +581,26 @@ if ($numero % 4 == 0) {
 
         <p>Este programa funciona correctamente ya que aunque la segunda condición (la de <span class="php-res">elseif</span>) no distingue entre múltiplos de dos y de cuatro, si <var>$numero</var> es un múltiplo de cuatro, el programa no llega a evaluar la segunda condición porque se cumple la primera (la de <span class="php-res">if</span>).</p>
       </li>
+      <li>Otra posible programa es el siguiente:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(0, 100);
+
+if ($numero % 4 == 0) {
+    print "&lt;p&gt;$numero es múltiplo de cuatro y de dos.&lt;/p&gt;\n";
+} elseif ($numero % 2 != 0) {
+    print "&lt;p&gt;$numero no es múltiplo de dos.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero es múltiplo de dos.&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+
+        <p>Este programa funciona correctamente porque, como en el programa anterior, la primera condición filtra los múltiplos de cuatro, por lo que los números restantes son impares o múltiplos de dos que no son múltiplos de cuatro.</p>
+      </li>
     </ul>
-    <p>En general, el orden que permite simplificar más las expresiones suele ser considerar primero los casos particulares y después los casos generales.</p>
   </section>
 
   <section id="omision-comparaciones">
@@ -760,42 +814,8 @@ if (<span class="codigo-resaltado">$nombre</span>) {
     </div>
   </section>
 
-  <section id="otros">
-    <h2>Otros</h2>
-
-    <p>Si las condiciones <span class="php-res">if ... elseif ...</span> cubren todas las posibilidades, se puede no escribir el bloque <span class="php-res">else</span>:</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$numero = rand(0, 100);
-
-if ($numero % 2 == 0) {
-    print "&lt;p&gt;$numero es par.&lt;/p&gt;\n";
-} elseif ($numero % 2 != 0) {
-    print "&lt;p&gt;$numero es impar.&lt;/p&gt;\n";
-}</code>
-</pre>
-    </div>
-
-    <p>Pero lo más habitual es sustituir el último bloque <span class="php-res">elseif ...</span> por un bloque <span class="php-res">else</span>:</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$numero = rand(0, 100);
-
-if ($numero % 2 == 0) {
-    print "&lt;p&gt;$numero es par.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;$numero es impar.&lt;/p&gt;\n";
-}</code>
-</pre>
-    </div>
-  </section>
-
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 6 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
