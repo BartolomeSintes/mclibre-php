@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor los enteros ocupan " . PHP_INT_SIZE . " bytes.</p>\n";
+print "  <p>En este servidor los enteros ocupan " . PHP_INT_SIZE . " bytes.</p>\n";
 ?>
 </body>
 </html>

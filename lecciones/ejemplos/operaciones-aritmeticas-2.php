@@ -11,11 +11,11 @@
 
 <body>
 <?php
-print "<p>PHP_FLOAT_MAX = " . PHP_FLOAT_MAX . "</p>\n";
+print "  <p>PHP_FLOAT_MAX = " . PHP_FLOAT_MAX . "</p>\n";
 print "\n";
-print "<p>PHP_FLOAT_MAX - 1 = " . PHP_FLOAT_MAX - 1E292 . "</p>\n";
+print "  <p>PHP_FLOAT_MAX - 1 = " . PHP_FLOAT_MAX - 1E292 . "</p>\n";
 print "\n";
-print "<p>PHP_FLOAT_MAX + 1 = " . PHP_FLOAT_MAX + 1E292 . "</p>\n";
+print "  <p>PHP_FLOAT_MAX + 1 = " . PHP_FLOAT_MAX + 1E292 . "</p>\n";
 ?>
 </body>
 </html>

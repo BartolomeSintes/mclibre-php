@@ -11,9 +11,10 @@
 
 <body>
 <?php
-print "<pre>";
+print "  <pre>\n";
 print_r($_REQUEST);
 print "</pre>\n";
+print "\n";
 ?>
   <p><a href="form-3-1.php">Volver al formulario.</a></p>
 </body>

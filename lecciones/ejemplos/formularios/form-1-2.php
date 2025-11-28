@@ -42,17 +42,19 @@ print "\n";
 
 if (!$nombre) {
     print "  <p>No ha escrito su nombre</p>\n";
+    print "\n";
 } else {
     print "  <p>¡Hola, $nombre!</p>\n";
+    print "\n";
 }
-print "\n";
 
 if ($curso != "Primero" && $curso != "Segundo") {
     print "  <p>No ha indicado el curso que estudia.</p>\n";
+    print "\n";
 } else {
     print "  <p>Estudia $curso.</p>\n";
+    print "\n";
 }
-print "\n";
 ?>
   <p><a href="form-1-1.php">Volver al formulario.</a></p>
 </body>

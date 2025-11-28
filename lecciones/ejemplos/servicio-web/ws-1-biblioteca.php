@@ -22,6 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function genera_numero() {
+function genera_numero()
+{
     return rand(1, 10);
 }

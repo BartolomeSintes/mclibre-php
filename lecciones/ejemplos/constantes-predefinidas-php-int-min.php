@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor el menor entero posible es  " . PHP_INT_MIN . ".</p>\n";
+print "  <p>En este servidor el menor entero posible es  " . PHP_INT_MIN . ".</p>\n";
 ?>
 </body>
 </html>

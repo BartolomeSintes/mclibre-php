@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor el decimal más próximo a cero posible es  " . PHP_FLOAT_EPSILON . ".</p>\n";
+print "  <p>En este servidor el decimal más próximo a cero posible es  " . PHP_FLOAT_EPSILON . ".</p>\n";
 ?>
 </body>
 </html>

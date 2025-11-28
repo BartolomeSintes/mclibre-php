@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor el menor decimal posible es  " . PHP_FLOAT_MIN . ".</p>\n";
+print "  <p>En este servidor el menor decimal posible es  " . PHP_FLOAT_MIN . ".</p>\n";
 ?>
 </body>
 </html>

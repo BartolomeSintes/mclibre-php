@@ -38,10 +38,10 @@ function recoge($key, $type = "")
 $apellidos = recoge("apellidos", "[]");
 
 if ($apellidos[1] == "") {
-    print "<p>No ha escrito su primer apellido</p>";
+    print "  <p>No ha escrito su primer apellido</p>";
     print "\n";
 } else {
-    print "<p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
+    print "  <p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
     print "\n";
 }
 ?>

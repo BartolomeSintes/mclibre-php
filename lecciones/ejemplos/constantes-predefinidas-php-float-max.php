@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor el mayor decimal posible es  " . PHP_FLOAT_MAX . ".</p>\n";
+print "  <p>En este servidor el mayor decimal posible es  " . PHP_FLOAT_MAX . ".</p>\n";
 ?>
 </body>
 </html>

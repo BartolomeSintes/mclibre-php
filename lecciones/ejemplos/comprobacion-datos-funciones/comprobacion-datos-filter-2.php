@@ -59,7 +59,8 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-// print "  <pre>"; print_r(get_defined_functions()); print "</pre>"; print "\n";
+// print "  <pre>\n" . print_r(get_defined_functions(), true) . "</pre>\n";
+// print "\n";
 
 $dato = recoge("dato");
 

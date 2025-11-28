@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor el mayor entero posible es  " . PHP_INT_MAX . ".</p>\n";
+print "  <p>En este servidor el mayor entero posible es  " . PHP_INT_MAX . ".</p>\n";
 ?>
 </body>
 </html>

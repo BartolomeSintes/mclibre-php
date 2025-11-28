@@ -32,7 +32,7 @@ foreach ($_REQUEST as $indice => $valor) {
 }
 print "\n";
 print "<a href=\"form-name-cadena-numero-1.php\">Volver al formulario.</a>\n";
-print "  </pre>";
+print "</pre>\n";
 print "\n";
 ?>
 </body>

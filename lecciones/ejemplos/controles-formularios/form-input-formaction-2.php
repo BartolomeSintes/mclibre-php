@@ -15,7 +15,7 @@ print "  <p>Recibido en página 2</p>\n";
 print "  <pre>\n";
 print_r($_REQUEST);
 print "<a href=\"form-input-formaction-1.php\">Volver al formulario.</a>\n";
-print "  </pre>\n";
+print "</pre>\n";
 ?>
 </body>
 </html>

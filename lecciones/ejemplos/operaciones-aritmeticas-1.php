@@ -11,11 +11,11 @@
 
 <body>
 <?php
-print "<p>PHP_INT_MAX = " . PHP_INT_MAX . "</p>\n";
+print "  <p>PHP_INT_MAX = " . PHP_INT_MAX . "</p>\n";
 print "\n";
-print "<p>PHP_INT_MAX - 1 = " . PHP_INT_MAX - 1 . "</p>\n";
+print "  <p>PHP_INT_MAX - 1 = " . PHP_INT_MAX - 1 . "</p>\n";
 print "\n";
-print "<p>PHP_INT_MAX + 1 = " . PHP_INT_MAX + 1 . "</p>\n";
+print "  <p>PHP_INT_MAX + 1 = " . PHP_INT_MAX + 1 . "</p>\n";
 ?>
 </body>
 </html>

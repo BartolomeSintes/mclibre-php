@@ -14,7 +14,7 @@
 print "  <pre>\n";
 print_r($_REQUEST);
 print "<a href=\"form-name-caracteres-especiales-1.php\">Volver al formulario.</a>\n";
-print "  </pre>\n";
+print "</pre>\n";
 ?>
 </body>
 </html>

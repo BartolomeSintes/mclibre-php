@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<pre>";
+print "  <pre>\n";
 print_r($_REQUEST);
 print "</pre>\n";
 print "\n";

@@ -36,7 +36,8 @@
 
 <body>
 <?php
-function genera_numero() {
+function genera_numero()
+{
     return rand(1, 10);
 }
 

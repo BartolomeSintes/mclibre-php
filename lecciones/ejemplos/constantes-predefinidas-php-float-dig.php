@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>En este servidor un decimal se puede redondear " . PHP_FLOAT_DIG . " cifras sin pérdidas.</p>\n";
+print "  <p>En este servidor un decimal se puede redondear " . PHP_FLOAT_DIG . " cifras sin pérdidas.</p>\n";
 ?>
 </body>
 </html>
