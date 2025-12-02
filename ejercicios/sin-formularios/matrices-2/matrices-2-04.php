@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,25 +38,30 @@
 <body>
 <?php
 $idiomas = [
-    ["español", "spanish", "espagnol", "spagnolo"],
-    ["inglés", "engligh", "anglais", "inglese"],
-    ["francés", "french", "français", "francese"],
-    ["italiano", "italian", "italien", "italiano"],
+    ["español",  "spanish", "espagnol", "spagnolo"],
+    ["inglés",   "engligh", "anglais",  "inglese"],
+    ["francés",  "french",  "français", "francese"],
+    ["italiano", "italian", "italien",  "italiano"],
 ];
 
 $palabras = [
-    ["lunes", "monday", "lundi", "lunedi"],
-    ["martes", "tuesday", "mardi", "martedi"],
+    ["lunes",     "monday",    "lundi",    "lunedi"],
+    ["martes",    "tuesday",   "mardi",    "martedi"],
     ["miércoles", "wednesday", "mercredi", "mercoledì"],
-    ["jueves", "thursday", "jeudi", "giovedì"],
-    ["viernes", "friday", "vendredi", "venerdì"],
-    ["sábado", "saturday", "samedi", "sabato"],
-    ["domingo", "sunday", "dimanche", "domenica"],
+    ["jueves",    "thursday",  "jeudi",    "giovedì"],
+    ["viernes",   "friday",    "vendredi", "venerdì"],
+    ["sábado",    "saturday",  "samedi",   "sabato"],
+    ["domingo",   "sunday",    "dimanche", "domenica"],
 ];
 
 $mensajes = [
     ["Diccionario multilingüe", "Multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"],
-    ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.", "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
+    [
+        "Actualice la página para mostrar una nueva palabra.",
+        "Refresh the page to display a new word.",
+        "Rafraîchir la page pour afficher un nouveau mot.",
+        "Aggiornare la pagina per visualizzare una nuova parola.",
+    ],
     ["quiere decir", "means", "veut dire", "significa"],
     ["en", "in", "en", "in"],
 ];
@@ -81,7 +86,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-12-02">2 de diciembre de 2025</time>
     </p>
 
     <p class="licencia">

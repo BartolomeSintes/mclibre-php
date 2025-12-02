@@ -87,7 +87,7 @@ $animales = [
 
 $animal = rand(0, count($animales) - 1);
 
-print "  &lt;h2&gt;" . $animales[$animal][0] . "&lt;/h2&gt;\n";
+print "  &lt;h2&gt;{$animales[$animal][0]}&lt;/h2&gt;\n";
 print "\n";
 
 print "  &lt;p&gt;&lt;img src=\"img/animales/{$animales[$animal][1]}\" alt=\"{$animales[$animal][0]}\" height=\"250\"&gt;&lt;/p&gt;\n";
@@ -111,13 +111,13 @@ print "\n";
 <code class="language-php">&lt;?php
 $idiomas  = ["español", "inglés", "francés", "italiano"];
 $palabras = [
-    ["lunes",     "monday",     "lundi",    "lunedi"],
-    ["martes",    "tuesday",    "mardi",    "martedi"],
-    ["miércoles", "wednesday",  "mercredi", "mercoledì"],
-    ["jueves",    "thursday",   "jeudi",    "giovedì"],
-    ["viernes",   "friday",     "vendredi", "venerdì"],
-    ["sábado",    "saturday",   "samedi",   "sabato"],
-    ["domingo",   "sunday",     "dimanche", "domenica"],
+    ["lunes",     "monday",    "lundi",    "lunedi"],
+    ["martes",    "tuesday",   "mardi",    "martedi"],
+    ["miércoles", "wednesday", "mercredi", "mercoledì"],
+    ["jueves",    "thursday",  "jeudi",    "giovedì"],
+    ["viernes",   "friday",    "vendredi", "venerdì"],
+    ["sábado",    "saturday",  "samedi",   "sabato"],
+    ["domingo",   "sunday",    "dimanche", "domenica"],
 ];
 
 $idioma  = rand(1, count($idiomas) - 1);
@@ -136,14 +136,14 @@ print "\n";
             <pre>
 <code class="language-php">&lt;?php
 $palabras = [
-    ["español",   "inglés",     "francés",  "italiano"],
-    ["lunes",     "monday",     "lundi",    "lunedi"],
-    ["martes",    "tuesday",    "mardi",    "martedi"],
-    ["miércoles", "wednesday",  "mercredi", "mercoledì"],
-    ["jueves",    "thursday",   "jeudi",    "giovedì"],
-    ["viernes",   "friday",     "vendredi", "venerdì"],
-    ["sábado",    "saturday",   "samedi",   "sabato"],
-    ["domingo",   "sunday",     "dimanche", "domenica"],
+    ["español",   "inglés",    "francés",  "italiano"],
+    ["lunes",     "monday",    "lundi",    "lunedi"],
+    ["martes",    "tuesday",   "mardi",    "martedi"],
+    ["miércoles", "wednesday", "mercredi", "mercoledì"],
+    ["jueves",    "thursday",  "jeudi",    "giovedì"],
+    ["viernes",   "friday",    "vendredi", "venerdì"],
+    ["sábado",    "saturday",  "samedi",   "sabato"],
+    ["domingo",   "sunday",    "dimanche", "domenica"],
 ];
 
 $idioma  = rand(1, count($palabras[0]) - 1);
@@ -166,18 +166,22 @@ print "\n";
         <pre>
 <code class="language-php">&lt;?php
 $palabras = [
-    ["uno", "one", "un", "uno"],
-    ["dos", "two", "deux", "due"],
-    ["tres", "three", "trois", "tre"],
-    ["cuatro", "four", "quatre", "quattro"],
-    ["cinco", "five", "cinq", "cinque"],
-    ["seis", "six", "six", "sei"],
+    ["uno",    "one",   "un",     "uno"],
+    ["dos",    "two",   "deux",   "due"],
+    ["tres",   "three", "trois",  "tre"],
+    ["cuatro", "four",  "quatre", "quattro"],
+    ["cinco",  "five",  "cinq",   "cinque"],
+    ["seis",   "six",   "six",    "sei"],
 ];
 
 $mensajes = [
     ["Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"],
-    ["Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
-        "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."],
+    [
+        "Actualice la página para mostrar una nueva tirada.",
+        "Refresh the page to display a new dieroll.",
+        "Rafraîchir la page pour afficher un nouveau jet de dé.",
+        "Aggiornare la pagina per visualizzare un nuovo tiro di dado.",
+    ],
     ["Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un"],
 ];
 
@@ -204,26 +208,30 @@ print "\n";
         <pre>
 <code class="language-php">&lt;?php
 $idiomas = [
-    ["español", "spanish", "espagnol", "spagnolo"],
-    ["inglés", "engligh", "anglais", "inglese"],
-    ["francés", "french", "français", "francese"],
-    ["italiano", "italian", "italien", "italiano"],
+    ["español",  "spanish", "espagnol", "spagnolo"],
+    ["inglés",   "engligh", "anglais",  "inglese"],
+    ["francés",  "french",  "français", "francese"],
+    ["italiano", "italian", "italien",  "italiano"],
 ];
 
 $palabras = [
-    ["lunes", "monday", "lundi", "lunedi"],
-    ["martes", "tuesday", "mardi", "martedi"],
+    ["lunes",     "monday",    "lundi",    "lunedi"],
+    ["martes",    "tuesday",   "mardi",    "martedi"],
     ["miércoles", "wednesday", "mercredi", "mercoledì"],
-    ["jueves", "thursday", "jeudi", "giovedì"],
-    ["viernes", "friday", "vendredi", "venerdì"],
-    ["sábado", "saturday", "samedi", "sabato"],
-    ["domingo", "sunday", "dimanche", "domenica"],
+    ["jueves",    "thursday",  "jeudi",    "giovedì"],
+    ["viernes",   "friday",    "vendredi", "venerdì"],
+    ["sábado",    "saturday",  "samedi",   "sabato"],
+    ["domingo",   "sunday",    "dimanche", "domenica"],
 ];
 
 $mensajes = [
-    ["diccionario multilingüe", "multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"],
-    ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.",
-        "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
+    ["Diccionario multilingüe", "Multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"],
+    [
+        "Actualice la página para mostrar una nueva palabra.",
+        "Refresh the page to display a new word.",
+        "Rafraîchir la page pour afficher un nouveau mot.",
+        "Aggiornare la pagina per visualizzare una nuova parola.",
+    ],
     ["quiere decir", "means", "veut dire", "significa"],
     ["en", "in", "en", "in"],
 ];
@@ -251,7 +259,7 @@ print "\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de noviembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 2 de diciembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

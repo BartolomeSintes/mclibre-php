@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-11-25
+ * @version   2025-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -43,13 +43,13 @@
 <?php
 $idiomas  = ["español", "inglés", "francés", "italiano"];
 $palabras = [
-    ["lunes",     "monday",     "lundi",    "lunedi"],
-    ["martes",    "tuesday",    "mardi",    "martedi"],
-    ["miércoles", "wednesday",  "mercredi", "mercoledì"],
-    ["jueves",    "thursday",   "jeudi",    "giovedì"],
-    ["viernes",   "friday",     "vendredi", "venerdì"],
-    ["sábado",    "saturday",   "samedi",   "sabato"],
-    ["domingo",   "sunday",     "dimanche", "domenica"],
+    ["lunes",     "monday",    "lundi",    "lunedi"],
+    ["martes",    "tuesday",   "mardi",    "martedi"],
+    ["miércoles", "wednesday", "mercredi", "mercoledì"],
+    ["jueves",    "thursday",  "jeudi",    "giovedì"],
+    ["viernes",   "friday",    "vendredi", "venerdì"],
+    ["sábado",    "saturday",  "samedi",   "sabato"],
+    ["domingo",   "sunday",    "dimanche", "domenica"],
 ];
 
 $idioma  = rand(1, count($idiomas) - 1);
@@ -61,7 +61,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-11-25">25 de noviembre de 2025</time>
+      <time datetime="2025-12-02">2 de diciembre de 2025</time>
     </p>
 
     <p class="licencia">
