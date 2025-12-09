@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -71,9 +71,7 @@ $m = generaMatrizEnterosRand($n, 1, 10);
 
 print "  <h2>Producto de $n valores decimales</h2>\n";
 print "\n";
-print "  <pre>\n";
-print_r($m);
-print "</pre>\n";
+print "  <pre>\n" . print_r($m, true) . "</pre>\n";
 print   "\n";
 print   "  <p>Producto de valores: " . miArrayProduct($m) . "</p>\n";
 print   "\n";
@@ -83,9 +81,7 @@ $m = generaMatrizDecimalesRand($n, 1, 10);
 
 print "  <h2>Producto de $n valores decimales</h2>\n";
 print "\n";
-print "  <pre>\n";
-print_r($m);
-print "</pre>\n";
+print "  <pre>\n" . print_r($m, true) . "</pre>\n";
 print   "\n";
 print   "  <p>Producto de valores: " . miArrayProduct($m) . "</p>\n";
 print "\n";
@@ -93,7 +89,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-12-09">9 de diciembre de 2025</time>
     </p>
 
     <p class="licencia">

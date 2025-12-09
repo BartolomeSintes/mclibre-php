@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -59,11 +59,12 @@ $carasW11 = array_merge([129394, 129400, 129401], range(129760, 129765), [129768
 print count($carasW10);
 exit;
 
-print "<p style=\"font-size: 200%;\">";
+print "  <p style=\"font-size: 200%;\">";
 foreach ($carasW10 as $cara) {
     print "$cara: &#{$cara}; - ";
 }
 print "</p>\n";
+print "\n";
 
 print_r($carasW10);
 
@@ -72,20 +73,18 @@ $total  = 0;
 
 if ($numero == 1) {
     print "  <h2>$numero dado</h2>\n";
+    print "\n";
 } else {
     print "  <h2>$numero dados</h2>\n";
+    print "\n";
 }
-print "\n";
-print "  <p>\n";
-print "  </p>\n";
-print "\n";
 print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
 print "\n";
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

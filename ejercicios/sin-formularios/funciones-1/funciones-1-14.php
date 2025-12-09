@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -64,28 +64,26 @@ $longitud = rand(1, $n - $inicio);
 
 print "  <h2>Matriz de $n valores enteros</h2>\n";
 print "\n";
-print "  <pre>\n";
-print_r($m);
-print "</pre>\n";
+print "  <pre>\n" . print_r($m, true) . "</pre>\n";
 print   "\n";
 
 $m2 = miArraySlice($m, $inicio, $longitud);
 
 if ($longitud == 1) {
     print "  <h2>Submatriz de $longitud valor desde el valor $inicio</h2>\n";
+    print "\n";
 } else {
     print "  <h2>Submatriz de $longitud valores desde el valor $inicio</h2>\n";
+    print "\n";
 }
-print "\n";
-print "  <pre>\n";
-print_r($m2);
-print "</pre>\n";
+
+print "  <pre>\n" . print_r($m2, true) . "</pre>\n";
 print "\n";
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-12-09">9 de diciembre de 2025</time>
     </p>
 
     <p class="licencia">

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -81,27 +81,27 @@ function valoresComunesNoRepetidos($m1, $m2)
 }
 
 $m1 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
+print "  <p>generaMatriz: " . print_r($m1, true) . "</p>\n";
 print "\n";
 
 $m2 = invierteMatriz($m1);
-print "<p>invierteMatriz: " . print_r($m2, true) . "</p>";
+print "  <p>invierteMatriz: " . print_r($m2, true) . "</p>\n";
 print "\n";
 
 $m3 = extraeValores($m1, 5);
-print "<p>extraeValores: " . print_r($m3, true) . "</p>";
+print "  <p>extraeValores: " . print_r($m3, true) . "</p>\n";
 print "\n";
 
 $m1 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m1, true) . "</p>";
+print "  <p>generaMatriz: " . print_r($m1, true) . "</p>\n";
 print "\n";
 
 $m2 = generaMatrizRand(10, 10, 20);
-print "<p>generaMatriz: " . print_r($m2, true) . "</p>";
+print "  <p>generaMatriz: " . print_r($m2, true) . "</p>\n";
 print "\n";
 
 $m3 = valoresComunesNoRepetidos($m1, $m2);
-print "<p>valoresComunesNoRepetidos: " . print_r($m3, true) . "</p>";
+print "  <p>valoresComunesNoRepetidos: " . print_r($m3, true) . "</p>\n";
 print "\n";
 
 exit;
@@ -111,10 +111,11 @@ $total  = 0;
 
 if ($numero == 1) {
     print "  <h2>$numero dado</h2>\n";
+    print "\n";
 } else {
     print "  <h2>$numero dados</h2>\n";
+    print "\n";
 }
-print "\n";
 
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
@@ -130,7 +131,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -82,33 +82,27 @@ $m = generaMatrizEnterosRandRand($n, 1, 10);
 
 print "  <h2>Matriz de $n valores enteros</h2>\n";
 print "\n";
-print "  <pre>\n";
-print_r($m);
-print "</pre>\n";
+print "  <pre>\n" . print_r($m, true) . "</pre>\n";
 print   "\n";
 
 $m2 = miArrayReverse($m, true);
 
 print "  <h2>La misma matriz, al revés y manteniendo los índices</h2>\n";
 print "\n";
-print "  <pre>\n";
-print_r($m2);
-print "</pre>\n";
+print "  <pre>\n" . print_r($m2, true) . "</pre>\n";
 print   "\n";
 
 $m2 = miArrayReverse($m);
 
 print "  <h2>La misma matriz, al revés, pero sin mantener los índices</h2>\n";
 print "\n";
-print "  <pre>\n";
-print_r($m2);
-print "</pre>\n";
+print "  <pre>\n" . print_r($m2, true) . "</pre>\n";
 print "\n";
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-12-09">9 de diciembre de 2025</time>
     </p>
 
     <p class="licencia">
