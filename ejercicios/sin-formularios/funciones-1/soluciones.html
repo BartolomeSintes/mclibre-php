@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Funciones (1). Soluciones. Ejercicios (sin formularios). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (sin formularios) - Funciones (1) - Soluciones</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Funciones (1)</h2>
+
+      <h3><a href="index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="index.html#ejercicio-01">01 - Dibuja dados</a></li>
+        <li><a href="index.html#ejercicio-02">02 - Dibuja cartas</a></li>
+        <li><a href="index.html#ejercicio-03">03 - Dibuja bolas</a></li>
+        <li><a href="index.html#ejercicio-11">11 - miArrayFill()</a></li>
+        <li><a href="index.html#ejercicio-12">12 - miArraySum()</a></li>
+        <li><a href="index.html#ejercicio-13">13 - miArrayProduct()</a></li>
+        <li><a href="index.html#ejercicio-14">14 - miArraySlice()</a></li>
+        <li><a href="index.html#ejercicio-15">15 - miArrayUnshift()</a></li>
+        <li><a href="index.html#ejercicio-16">16 - miArrayReverse()</a></li>
+        <li><a href="index.html#ejercicio-21">21 - sumaValorMatriz()</a></li>
+        <li><a href="index.html#ejercicio-31">31 - Más funciones</a></li>
+      </ul>
+
+      <h3><a href="#">Soluciones</a></h3>
+      <ul>
+        <li><a href="#ejercicio-01">01 - Dibuja dados</a></li>
+        <li><a href="#ejercicio-02">02 - Dibuja cartas</a></li>
+        <li><a href="#ejercicio-03">03 - Dibuja bolas</a></li>
+        <li><a href="#ejercicio-11">11 - miArrayFill()</a></li>
+        <li><a href="#ejercicio-12">12 - miArraySum()</a></li>
+        <li><a href="#ejercicio-13">13 - miArrayProduct()</a></li>
+        <li><a href="#ejercicio-14">14 - miArraySlice()</a></li>
+        <li><a href="#ejercicio-15">15 - miArrayUnshift()</a></li>
+        <li><a href="#ejercicio-16">16 - miArrayReverse()</a></li>
+        <li><a href="#ejercicio-21">21 - sumaValorMatriz()</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="index.html">Funciones (1)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se pueden dejar en fragmentos HTML.</p>
+
+  <p>Si lo prefiere, puede <a href="../../../soluciones/sin-formularios/sf-funciones-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
+
+  <section id="ejercicio-01">
+    <h3>Funciones (1) 01 - Dibuja dados</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min, $max);
+    }
+    return $m;
+}
+
+function pintaDados(array $m): void
+{
+    print "  &lt;p&gt;\n";
+    foreach ($m as $valor) {
+        print "    &lt;img src=\"img/dados/$valor.svg\" alt=\"$valor\" width=\"60\" height=\"60\"&gt;\n";
+    }
+    print "  &lt;/p&gt;\n";
+}
+
+$n     = rand(5, 10);
+$dados = generaMatrizEnterosRand($n, 1, 6);
+
+print "  &lt;h2&gt;$n dados (sin ordenar)&lt;/h2&gt;\n";
+print "\n";
+pintaDados($dados);
+print "\n";
+
+print "  &lt;h2&gt;$n dados (los mismos $n, ordenados)&lt;/h2&gt;\n";
+print "\n";
+sort($dados);
+pintaDados($dados);
+print "\n";
+
+$dados = array_unique($dados);
+print "  &lt;h2&gt;" . count($dados) . " dados (los $n, sin repetir)&lt;/h2&gt;\n";
+print "\n";
+pintaDados($dados);
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-02">
+    <h3>Funciones (1) 02 - Dibuja cartas</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizCartasRand(int $n): array
+{
+    $palos = ["c", "d", "p", "t"];
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = $palos[rand(0, 3)] . rand(1, 13);
+    }
+    return $m;
+}
+
+function pintaCartas(array $m): void
+{
+    print "  &lt;p&gt;\n";
+    foreach ($m as $valor) {
+        print "    &lt;img src=\"img/cartas/$valor.svg\" alt=\"$valor\" width=\"70\"&gt;\n";
+    }
+    print "  &lt;/p&gt;\n";
+}
+
+$n = rand(5, 10);
+
+$cartas = generaMatrizCartasRand($n);
+print "  &lt;h2&gt;$n cartas&lt;/h2&gt;\n";
+print "\n";
+pintaCartas($cartas);
+print "\n";
+
+$cartas = generaMatrizCartasRand($n);
+print "  &lt;h2&gt;$n cartas más&lt;/h2&gt;\n";
+print "\n";
+pintaCartas($cartas);
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-03">
+    <h3>Funciones (1) 03 - Dibuja bolas</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizValoresRand(array $m, int $n): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $resultado[] = $m[array_rand($m)];
+    }
+    return $resultado;
+}
+
+function pintaCirculos(array $m): void
+{
+    print "  &lt;p&gt;";
+    foreach ($m as $valor) {
+        print "\n";
+        print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" viewbox=\"-5 -5 60 60\"&gt;\n";
+        print "      &lt;circle cx=\"25\" cy=\"25\" r=\"25\" fill=\"$valor\" stroke=\"black\" /&gt;\n";
+        print "    &lt;/svg&gt;\n";
+    }
+    print "  &lt;/p&gt;\n";
+}
+
+$nombreColores = ["black", "blue", "green", "gray", "red", "white", "yellow"];
+$n             = rand(5, 10);
+
+$colores = generaMatrizValoresRand($nombreColores, $n);
+print "  &lt;h2&gt;$n círculos de colores&lt;/h2&gt;\n";
+print "\n";
+pintaCirculos($colores);
+print "\n";
+
+$colores = generaMatrizValoresRand($nombreColores, $n);
+print "  &lt;h2&gt;$n círculos de colores&lt;/h2&gt;\n";
+print "\n";
+pintaCirculos($colores);
+print "\n";
+
+$colores = generaMatrizValoresRand($nombreColores, $n);
+print "  &lt;h2&gt;$n círculos de colores&lt;/h2&gt;\n";
+print "\n";
+pintaCirculos($colores);
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-11">
+    <h3>Funciones (1) 11 - miArrayFill()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function miArrayFill(int $startIndex, int $count, mixed $value): array
+{
+    for ($i = $startIndex; $i &lt; $startIndex + $count; $i++) {
+        $m[$i] = $value;
+    }
+    return $m;
+}
+
+$inicio = rand(0, 20);
+$n      = rand(1, 10);
+$valor  = rand(100, 1000);
+
+print "  &lt;h2&gt;Matriz de $n valores $valor, índice empieza en $inicio&lt;/h2&gt;\n";
+print "\n";
+
+print "  &lt;pre&gt;\n";
+print_r(miArrayFill($inicio, $n, $valor));
+print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-12">
+    <h3>Funciones (1) 12 - miArraySum()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min, $max);
+    }
+    return $m;
+}
+
+function generaMatrizDecimalesRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min * 10, $max * 10) / 10;
+    }
+    return $m;
+}
+
+function miArraySum(array $array): int|float
+{
+    $total = 0;
+    foreach ($array as $valor) {
+        $total += $valor;
+    }
+    return $total;
+}
+
+$n = rand(3, 7);
+$m = generaMatrizEnterosRand($n, 1, 10);
+
+print "  &lt;h2&gt;Suma de $n valores enteros&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+print   "  &lt;p&gt;Suma de valores: " . miArraySum($m) . "&lt;/p&gt;\n";
+print   "\n";
+
+$n = rand(3, 7);
+$m = generaMatrizDecimalesRand($n, 1, 10);
+
+print "  &lt;h2&gt;Suma de $n valores decimales&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+print   "  &lt;p&gt;Suma de valores: " . miArraySum($m) . "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h3>Funciones (1) 13 - miArrayProduct()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min, $max);
+    }
+    return $m;
+}
+
+function generaMatrizDecimalesRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min * 10, $max * 10) / 10;
+    }
+    return $m;
+}
+
+function miArrayProduct(array $array): int|float
+{
+    $total = 1;
+    foreach ($array as $valor) {
+        $total *= $valor;
+    }
+    return $total;
+}
+
+$n = rand(3, 7);
+$m = generaMatrizEnterosRand($n, 1, 10);
+
+print "  &lt;h2&gt;Producto de $n valores decimales&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+print   "  &lt;p&gt;Producto de valores: " . miArrayProduct($m) . "&lt;/p&gt;\n";
+print   "\n";
+
+$n = rand(3, 7);
+$m = generaMatrizDecimalesRand($n, 1, 10);
+
+print "  &lt;h2&gt;Producto de $n valores decimales&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+print   "  &lt;p&gt;Producto de valores: " . miArrayProduct($m) . "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-14">
+    <h3>Funciones (1) 14 - miArraySlice()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min, $max);
+    }
+    return $m;
+}
+
+function miArraySlice(array $array, int $offset, int $length): array
+{
+    for ($i = $offset; $i &lt; $offset + $length; $i++) {
+        $m[$i] = $array[$i];
+    }
+    return $m;
+}
+
+$n        = rand(7, 10);
+$m        = generaMatrizEnterosRand($n, 1, 10);
+$inicio   = rand(0, $n - 1);
+$longitud = rand(1, $n - $inicio);
+
+print "  &lt;h2&gt;Matriz de $n valores enteros&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+
+$m2 = miArraySlice($m, $inicio, $longitud);
+
+if ($longitud == 1) {
+    print "  &lt;h2&gt;Submatriz de $longitud valor desde el valor $inicio&lt;/h2&gt;\n";
+    print "\n";
+} else {
+    print "  &lt;h2&gt;Submatriz de $longitud valores desde el valor $inicio&lt;/h2&gt;\n";
+    print "\n";
+}
+
+print "  &lt;pre&gt;\n" . print_r($m2, true) . "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-15">
+    <h3>Funciones (1) 15 - miArrayUnshift()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min, $max);
+    }
+    return $m;
+}
+
+function miArrayUnshift(array $array, mixed $value): array
+{
+    $m[] = $value;
+    foreach ($array as $valor) {
+        $m[] = $valor;
+    }
+    return $m;
+}
+
+$n     = rand(7, 10);
+$m     = generaMatrizEnterosRand($n, 1, 10);
+$valor = rand(1, 10);
+
+print "  &lt;h2&gt;Matriz de $n valores enteros&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+
+$m2 = miArrayUnshift($m, $valor);
+
+print "  &lt;h2&gt;La misma matriz con el valor $valor al principio&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m2, true) . "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-16">
+    <h3>Funciones (1) 16 - miArrayReverse()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRandRand(int $n, int $min, int $max): array
+{
+    $indices = range(0, $n);
+    shuffle($indices);
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[$indices[$i]] = rand($min, $max);
+    }
+    return $m;
+}
+
+function miArrayReverseSimple(array $array): array
+{
+    $array = array_values($array);
+    $n     = count($array);
+    for ($i = 0; $i &lt; $n; $i++) {
+        $array2[$i] = $array[$n - $i - 1];
+    }
+    return $array2;
+}
+
+$n = rand(7, 10);
+$m = generaMatrizEnterosRandRand($n, 1, 10);
+
+print "  &lt;h2&gt;Matriz de $n valores enteros&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+
+$m2 = miArrayReverseSimple($m);
+
+print "  &lt;h2&gt;La misma matriz, al revés&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m2, true) . "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRandRand(int $n, int $min, int $max): array
+{
+    $indices = range(0, $n);
+    shuffle($indices);
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[$indices[$i]] = rand($min, $max);
+    }
+    return $m;
+}
+
+function insertaValorMatriz(array $array, $index, $value): array
+{
+    $m = [$index =&gt; $value];
+    foreach ($array as $indice =&gt; $valor) {
+        $m[$indice] = $valor;
+    }
+    return $m;
+}
+
+function miArrayReverse(array $array, bool $preserve_keys = false): array
+{
+    if ($preserve_keys) {
+        $array2 = [];
+        foreach ($array as $indice =&gt; $valor) {
+            $array2 = insertaValorMatriz($array2, $indice, $valor);
+        }
+    } else {
+        $array = array_values($array);
+        $n     = count($array);
+        for ($i = 0; $i &lt; $n; $i++) {
+            $array2[$i] = $array[$n - $i - 1];
+        }
+    }
+    return $array2;
+}
+
+$n = rand(7, 10);
+$m = generaMatrizEnterosRandRand($n, 1, 10);
+
+print "  &lt;h2&gt;Matriz de $n valores enteros&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+
+$m2 = miArrayReverse($m, true);
+
+print "  &lt;h2&gt;La misma matriz, al revés y manteniendo los índices&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m2, true) . "&lt;/pre&gt;\n";
+print   "\n";
+
+$m2 = miArrayReverse($m);
+
+print "  &lt;h2&gt;La misma matriz, al revés, pero sin mantener los índices&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m2, true) . "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-21">
+    <h3>Funciones (1) 21 - sumaValorMatriz()</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function generaMatrizEnterosRand(int $n, int $min, int $max): array
+{
+    for ($i = 0; $i &lt; $n; $i++) {
+        $m[] = rand($min, $max);
+    }
+    return $m;
+}
+
+function sumaValorMatriz(array $m, int|float $x): array
+{
+    foreach ($m as $valor) {
+        $m2[] = $valor + $x;
+    }
+    return $m2;
+}
+
+$n = rand(3, 7);
+$m = generaMatrizEnterosRand($n, 1, 10);
+
+print "  &lt;h2&gt;Matriz de $n números&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m, true) . "&lt;/pre&gt;\n";
+print   "\n";
+
+$valor = rand(1, 10);
+$m2    = sumaValorMatriz($m, $valor);
+
+print "  &lt;h2&gt;La misma matriz, sumando $valor a cada valor&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;pre&gt;\n" . print_r($m2, true) . "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 9 de diciembre de 2025</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
