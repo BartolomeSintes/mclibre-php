@@ -59,7 +59,7 @@
 
     <p>Cualquier control se envía solamente si está establecido su atributo <span class="html-atri">name</span>. El atributo <span class="html-atri">name</span> del control puede contener cualquier carácter (números, acentos, guiones, etc), pero si contiene espacios, los espacios se sustituyen por guiones bajos (_). Cada control crea un elemento de la matriz $_REQUEST, que se identifica como $_REQUEST[<span class="html-atri-valor">valor_del_atributo_name</span>] y que contiene el valor entregado por el formulario (en su caso).</p>
 
-    <p>El siguiente ejemplo muestra un ejemplo de formulario:</p>
+    <p>El siguiente ejemplo muestra el aspecto de un formulario con una caja de texto y un botón Enviar (aunque este ejemplo no envía el dato a ningún sitio):</p>
 
     <div class="filaflex">
       <div class="resultado-codigo">
@@ -76,23 +76,20 @@
       </div>
     </div>
 
-    <p>Mientras se está programando, para comprobar que el fichero php está recibiendo la información enviada por el control, lo más fácil es utilizar la función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($matriz)</span></a> para mostrar el contenido de la matriz $_REQUEST. Una vez se ha comprobado que la información llega correctamente, la línea se debe comentar o eliminar.</p>
+    <p>En los ejemplos de esta lección se utiliza la función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($matriz)</span></a> para mostrar el contenido de la matriz $_REQUEST y así comprobar la información enviada por el control. Se han añadido etiquetas <span class="html-eti">&lt;pre&gt;</span> alrededor del print_r($_REQUEST) para facilitar la visualización de los valores. Esto se puede hacer cuando se está programando y probando los programas, pero una vez comprobado que la información llega correctamente, se recomienda eliminar este fragmento.</p>
 
-    <p>El siguiente ejemplo muestra lo que escribiría el programa PHP si recibiera la información del formulario anterior.</p>
+    <p>El siguiente ejemplo muestra un programa PHP que que podría recibir la información del formulario anterior. Como este programa incluye sin modificaciones el texto recibido, en algunos casos el resultado puede ser problemático, como se comenta en apartados posteriores de esta lección.</p>
 
     <div class="filaflex">
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly></p>
-        <p><input type="submit" value="Enviar"></p>
-      </div>
+      <iframe src="ejemplos/controles-formularios/form-recogida-1-1.php" style="height: 11em;"></iframe>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -104,15 +101,16 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 
         <p>Su nombre es Pepito Conejo</p>
       </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-recogida-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
     </div>
-
-    <p>Conviene colocar etiquetas <span class="html-eti">&lt;pre&gt;</span> alrededor del print_r($_REQUEST) para facilitar la visualización de los valores.</p>
   </section>
 
   <section id="cadenas">
     <h2>Referencia a $_REQUEST dentro y fuera de cadenas</h2>
 
-    <p>Al hacer referencia a los elementos de la matriz $_REQUEST, hay que tener en cuenta si la referencia se encuentra dentro de una cadena o fuera de ella.</p>
+    <p>Al hacer referencia a los elementos de la matriz $_REQUEST, como con cualqueir otra matriz hay que tener en cuenta si la referencia se encuentra dentro de una cadena o fuera de ella.</p>
     <ul>
       <li>Si se hace referencia dentro de una cadena, el índice se debe escribir sin comillas. Si se escribe cualquier tipo de comillas (simples o dobles) se produce un error.
 
@@ -123,7 +121,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -139,7 +137,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es $_REQUEST["nombre"]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST["nombre"]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -155,7 +153,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST["nombre"]&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es $_REQUEST['nombre']&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST['nombre']&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -173,7 +171,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST['nombre']&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . $_REQUEST["nombre"] . "&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es " . $_REQUEST["nombre"] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -189,7 +187,7 @@ print "&lt;p&gt;Su nombre es " . $_REQUEST["nombre"] . "&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . $_REQUEST['nombre'] . "&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es " . $_REQUEST['nombre'] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -205,7 +203,7 @@ print "&lt;p&gt;Su nombre es " . $_REQUEST['nombre'] . "&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . $_REQUEST[nombre] . "&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es " . $_REQUEST[nombre] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -223,7 +221,7 @@ print "&lt;p&gt;Su nombre es " . $_REQUEST[nombre] . "&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es {$_REQUEST["nombre"]}&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es {$_REQUEST["nombre"]}&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -239,7 +237,7 @@ print "&lt;p&gt;Su nombre es {$_REQUEST["nombre"]}&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es {$_REQUEST['nombre']}&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es {$_REQUEST['nombre']}&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -255,7 +253,7 @@ print "&lt;p&gt;Su nombre es {$_REQUEST['nombre']}&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es {$_REQUEST[nombre]}&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es {$_REQUEST[nombre]}&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -278,7 +276,7 @@ print "&lt;p&gt;Su nombre es {$_REQUEST[nombre]}&lt;/p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es $_REQUEST[\"nombre\"]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[\"nombre\"]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -294,7 +292,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[\"nombre\"]&lt;/p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . $_REQUEST[\'nombre\'] . "&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es " . $_REQUEST[\'nombre\'] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -317,24 +315,21 @@ print "&lt;p&gt;Su nombre es " . $_REQUEST[\'nombre\'] . "&lt;/p&gt;\n";
       <p>En el programa de ejemplo del principio de esta lección, si el usuario ha utilizado el formulario y ha escrito un dato, el programa PHP recibe el control y funciona correctamente:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=Pepito+Conejo</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-1-1.php" style="height: 11em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
@@ -345,29 +340,29 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 )</pre>
           <p>Su nombre es Pepito Conejo</p>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-vacios-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
 
       <p>Pero si el usuario no escribe nada en el formulario, aunque el programa funcione correctamente, la respuesta del programa puede confundir al usuario:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-2-1.php" style="height: 11em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
@@ -378,6 +373,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 )</pre>
           <p><span class="codigo-resaltado">Su nombre es</span></p>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-vacios-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
 
       <hr class="corta">
@@ -385,27 +383,24 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       <p>Este problema se puede resolver incluyendo una estructura if ... else ... que considere la posibilidad de que no se haya escrito nada en el formulario:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-3-1.php" style="height: 16em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
 } else {
-    print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -417,15 +412,18 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
 )</pre>
           <p>No ha escrito ningún nombre</p>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-vacios-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
     </section>
 
     <section id="isset">
       <h3>Controles inexistentes: <span class="php-fun">isset()</span></h3>
 
-      <p>Un problema más grave es que el programa suponga que existe un control que en realidad no le ha llegado.</p>
+      <p>Un problema más grave es que el programa suponga que existe un control que en realidad no le ha llegado. Eso puede ocurrir, por ejemplo, en el caso de las casillas de verificación y los botones radio, ya que los formularios envían el control solamente cuando se han marcado.</p>
 
-      <p>Eso puede ocurrir, por ejemplo, en el caso de las casillas de verificación y los botones radio, ya que los formularios envían el control solamente cuando se han marcado.</p>
+      <p>El siguiente ejemplo muestra el aspecto de un formulario con una casilla de verificación y un botón Enviar (aunque este ejemplo no envía el dato a ningún sitio):</p>
 
       <div class="filaflex">
         <div class="resultado-codigo">
@@ -446,27 +444,24 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
       <p>Si en el formulario anterior el usuario marca la casilla, el siguiente programa funciona perfectamente:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?acepto=on</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Deseo recibir información: <input type="checkbox" checked readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-1-1.php" style="height: 16em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
-    print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;Desea recibir información&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;No desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;No desea recibir información&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -478,32 +473,32 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
 )</pre>
           <p><span class="codigo-resaltado">Desea recibir información</span></p>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
 
       <p>Pero si el usuario no marca la casilla, la matriz $_REQUEST no contiene el dato y el programa genera un aviso por hacer referencia a un índice no definido, aunque se haya incluido la estructura if ... else ... :</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Deseo recibir información: <input type="checkbox" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-2-1.php" style="height: 16em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
-    print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;Desea recibir información&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;No desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;No desea recibir información&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -515,32 +510,34 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
           <p class="codigo-resaltado"><strong>Warning</strong>: Undefined array key "acepto" in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
           <p>No desea recibir información</p>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-1-2.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
 
-      <p>Esto puede ocurrir en realidad en cualquier formulario (incluso en formularios con cajas de texto que en principio envían siempre el control) ya que el usuario puede escribir directamente la dirección del programa PHP en el navegador y ejecutar el programa PHP sin pasar por el formulario. En ese caso, el programa no recibe ningún control y el programa genera un aviso por hacer referencia a un índice no definido:</p>
+      <p>Esto puede ocurrir en realidad en cualquier formulario (incluso en formularios con cajas de texto que en principio envían siempre el control) ya que el usuario puede escribir directamente la dirección del programa PHP en el navegador y ejecutar el programa PHP sin pasar por el formulario. En ese caso, el programa no recibe ningún control y el programa genera un aviso por hacer referencia a un índice no definido.</p>
+
+      <p>Para conseguir este resultado en el ejemplo siguiente, abra el ejemplo en otra pestaña, envíe el formulario y modifique la URL eliminando la parte final que incluye el control (form-recogida-inexistentes-3-2.php<span class="codigo-resaltado">?nombre=...</span>).</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-3-1.php" style="height: 16em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
 } else {
-    print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -552,6 +549,9 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
           <p class="codigo-resaltado"><strong>Warning</strong>: Undefined array key "acepto" in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
           <p>No ha escrito ningún nombre</p>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
 
       <hr class="corta">
@@ -559,56 +559,72 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
       <p>Estos problemas se pueden resolver comprobando que el índice está definido antes de hacer referencia a él, utilizando la función <a href="https://www.php.net/manual/en/function.isset.php"><span class="php-fun">isset($variable)</span></a>, que admite como argumento una variable y devuelve <span class="php-ope">true</span> si existe y <span class="php-ope">false</span> si no existe.</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?acepto=on</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Deseo recibir información: <input type="checkbox" checked readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-4-1.php" style="height: 16em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
+print "  &lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+
 if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
-    print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;Desea recibir información&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;No desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;No desea recibir información&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-html">
+          <pre>Array
+(
+)
+</pre>
           <p>Desea recibir información</p>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-4-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Deseo recibir información: <input type="checkbox" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-5-1.php" style="height: 16em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
+print "  &lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+
 if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
-    print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;Desea recibir información&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;No desea recibir información&lt;/p&gt;\n";
+    print "  &lt;p&gt;No desea recibir información&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-html">
+          <pre>Array
+(
+)
+</pre>
           <p>No desea recibir información</p>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-5-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
 
@@ -622,18 +638,15 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
     <p>Un usuario puede insertar código html en la entrada de un formulario, lo que puede acarrear comportamientos inesperados y riesgos de seguridad. El siguiente ejemplo solamente perjudicaría al aspecto de la página:</p>
 
     <div class="filaflex">
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" readonly></p>
-        <p><input type="submit" value="Enviar"></p>
-      </div>
+      <iframe src="ejemplos/controles-formularios/form-recogida-seguridad-1-1.php" style="height: 11em;"></iframe>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -647,23 +660,23 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>&lt;/p&gt;</code>
 </pre>
       </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-recogida-seguridad-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
     </div>
 
     <p>El siguiente ejemplo muestra cómo puede utilizarse un formulario para inyectar en la página código JavaScript. En este caso el código genera una ventana emergente que sólo afecta al propio usuario, pero esta vía podría utilizarse para atacar al servidor.</p>
 
     <div class="filaflex">
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" value="&lt;body onload=&#34;alert('Hola')&#34;&gt;" readonly></p>
-        <p><input type="submit" value="Enviar"></p>
-      </div>
+      <iframe src="ejemplos/controles-formularios/form-recogida-seguridad-2-1.php" style="height: 11em;"></iframe>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -671,6 +684,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
         <p>
           <img src="../img/php/recogida-datos-1.png" alt="Recogida de datos. Inyección de JavaScript" width="250" height="150">
         </p>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-recogida-seguridad-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -689,12 +705,12 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</span>&lt;/p&gt;\n";
-print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</span>&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
@@ -721,11 +737,11 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
+print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
@@ -750,9 +766,9 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
       <p>En el programa de ejemplo del apartado anterior en el que se escribía una estructura if ... else ... para avisar al usuario si no escribía el nombre, si el usuario escribe únicamente espacios en blanco, el programa funciona, pero no da la respuesta adecuada ya que la cadena con espacios en blanco no es una cadena vacía.</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
@@ -763,14 +779,14 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
 if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span></span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
 } else {
-    print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -790,9 +806,9 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
       <p>Este problema se puede resolver utilizando la función <a href="https://www.php.net/manual/en/function.trim.php"><span class="php-fun">trim($cadena)</span></a>, que elimina los espacios en blanco iniciales y finales (además de saltos de línea y tabuladores) y devuelve la cadena sin esos espacios. Modificando el ejemplo anterior, la cadena introducida queda reducida a la cadena vacía y la comprobación la detecta:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo.html</div>
-        <div>ejemplo.php</div>
-        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-2.php (código fuente)</div>
+        <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
@@ -803,13 +819,13 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Su nombre es ". trim($_REQUEST["nombre"]) . "&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es ". trim($_REQUEST["nombre"]) . "&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -838,9 +854,9 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
     <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST. En los siguientes ejemplos, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
 
     <div class="filaflex cabecera">
-      <div>ejemplo.html</div>
-      <div>ejemplo.php</div>
-      <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=   </span></div>
+      <div>ejemplo-1.php (formulario)</div>
+      <div>ejemplo-2.php (código fuente)</div>
+      <div>ejemplo-2.php (resultado)</div>
     </div>
 
     <div class="filaflex">
@@ -851,7 +867,7 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";</code><br>
 </pre>
@@ -865,9 +881,9 @@ print "&lt;/pre&gt;\n";</code><br>
         <pre>
 <code class="language-php">
 if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -885,9 +901,9 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
     </div>
 
     <div class="filaflex cabecera">
-      <div>ejemplo.html</div>
-      <div>ejemplo.php</div>
-      <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span></div>
+      <div>ejemplo-1.php (formulario)</div>
+      <div>ejemplo-2.php (código fuente)</div>
+      <div>ejemplo-2.php (resultado)</div>
     </div>
 
     <div class="filaflex">
@@ -898,7 +914,7 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";</code><br>
 </pre>
@@ -911,9 +927,9 @@ print "&lt;/pre&gt;\n";</code><br>
 </pre>
         <pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -933,9 +949,9 @@ print "&lt;/pre&gt;\n";</code><br>
     <p>La asignación de la variable se puede realizar en una sola instrucción, utilizando la notación abreviada: condición ? valor_1 : valor_2; (que se explica en la lección de <a href="php-estructuras-control.html#if-else-abreviado">estructuras de control</a>):</p>
 
     <div class="filaflex cabecera">
-      <div>ejemplo.html</div>
-      <div>ejemplo.php</div>
-      <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span></div>
+      <div>ejemplo-1.php (formulario)</div>
+      <div>ejemplo-2.php (código fuente)</div>
+      <div>ejemplo-2.php (resultado)</div>
     </div>
 
     <div class="filaflex">
@@ -946,17 +962,17 @@ print "&lt;/pre&gt;\n";</code><br>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;pre&gt;\n";
+print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";</code></pre>
-<br>
+        <br>
         <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
     : "";
 if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1002,9 +1018,9 @@ $nombre = (isset($_REQUEST["nombre"]))
     : "";
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1033,9 +1049,9 @@ $nombre = (isset($_REQUEST["nombre"]))
 $nombre = str_replace('&amp;', '&amp;amp;', $nombre);
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1067,9 +1083,9 @@ $nombre = (isset($_REQUEST["nombre"]))
     : "";
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1106,9 +1122,9 @@ $nombre = (isset($_REQUEST["nombre"]))
 $nombre = str_replace('"', '&amp;quot;', $nombre);
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1137,9 +1153,9 @@ $nombre = (isset($_REQUEST["nombre"]))
     : "";
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1164,9 +1180,9 @@ $nombre = (isset($_REQUEST["nombre"]))
     : "";
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1191,9 +1207,9 @@ $nombre = (isset($_REQUEST["nombre"]))
     : "";
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1218,9 +1234,9 @@ $nombre = (isset($_REQUEST["nombre"]))
     : "";
 
 if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "&lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1258,7 +1274,7 @@ if ($nombre == "") {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de diciembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 11 de diciembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
