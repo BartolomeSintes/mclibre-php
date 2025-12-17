@@ -52,6 +52,8 @@
 
   <p>En esta lección se comentan algunos aspectos prácticos que debemos tener en cuenta en nuestros programas al recoger datos de formularios (entre ellos, el más importante, la seguridad ante ataques). En los ejercicios propuestos en estos apuntes (sección PHP, con formularios) se espera que se apliquen esas recomendaciones. Para facilitar su aplicación, se recomienda el uso de la función que se comenta en la lección <a href="php-funcion-recoge.html">Función recoge()</a>. También se recomienda implementar la comprobación de los datos recibidos, como se comenta en las lecciones <a href="php-comprobacion-datos-funciones.html">Funciones de comprobación de datos</a> y <a href="php-comprobacion-datos.html">Ejemplos de comprobación de datos</a>.</p>
 
+  <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Algunos ejemplos de esta lección describen programas que pueden generar mensajes de error o ilustran un valor de entrada concreto en el formulario. Por motivos de seguridad, esos programas no están operativos y en los ejemplos los botones Enviar están desactivados. El resto de programas de los ejemplos sí están operativos y se pueden probar y abrir en pestañas separadas.</p>
+
   <section id="request">
     <h2>Matriz $_REQUEST</h2>
 
@@ -59,7 +61,12 @@
 
     <p>Cualquier control se envía solamente si está establecido su atributo <span class="html-atri">name</span>. El atributo <span class="html-atri">name</span> del control puede contener cualquier carácter (números, acentos, guiones, etc), pero si contiene espacios, los espacios se sustituyen por guiones bajos (_). Cada control crea un elemento de la matriz $_REQUEST, que se identifica como $_REQUEST[<span class="html-atri-valor">valor_del_atributo_name</span>] y que contiene el valor entregado por el formulario (en su caso).</p>
 
-    <p>El siguiente ejemplo muestra el aspecto de un formulario con una caja de texto y un botón Enviar (aunque este ejemplo no envía el dato a ningún sitio):</p>
+    <p>El siguiente ejemplo muestra el aspecto de un formulario con una caja de texto y un botón Enviar (aunque este ejemplo no envía el dato a ningún sitio y la caja de texto no permite escribir en ella):</p>
+
+    <div class="filaflex cabecera">
+      <div>ejemplo-1.php (código HTML)</div>
+      <div>ejemplo-1.php (visualización del formulario NO operativo)</div>
+    </div>
 
     <div class="filaflex">
       <div class="resultado-codigo">
@@ -78,7 +85,13 @@
 
     <p>En los ejemplos de esta lección se utiliza la función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($matriz)</span></a> para mostrar el contenido de la matriz $_REQUEST y así comprobar la información enviada por el control. Se han añadido etiquetas <span class="html-eti">&lt;pre&gt;</span> alrededor del print_r($_REQUEST) para facilitar la visualización de los valores. Esto se puede hacer cuando se está programando y probando los programas, pero una vez comprobado que la información llega correctamente, se recomienda eliminar este fragmento.</p>
 
-    <p>El siguiente ejemplo muestra un programa PHP que que podría recibir la información del formulario anterior. Como este programa incluye sin modificaciones el texto recibido, en algunos casos el resultado puede ser problemático, como se comenta en apartados posteriores de esta lección.</p>
+    <p>El siguiente ejemplo muestra un programa PHP que podría recibir la información del formulario anterior. Como este programa incluye sin modificaciones el texto recibido, en algunos casos el resultado puede ser problemático, como se comenta en apartados posteriores de esta lección.</p>
+
+    <div class="filaflex cabecera">
+      <div>ejemplo-1.php (formulario)</div>
+      <div>ejemplo-2.php (código fuente)</div>
+      <div>ejemplo-2.php (resultado)</div>
+    </div>
 
     <div class="filaflex">
       <iframe src="ejemplos/controles-formularios/form-recogida-1-1.php" style="height: 11em;"></iframe>
@@ -305,23 +318,26 @@ print "  &lt;p&gt;Su nombre es " . $_REQUEST[\'nombre\'] . "&lt;/p&gt;\n";
   <section id="comprobacion">
     <h2>Comprobación de existencia</h2>
 
-    <p>Un programa PHP no debe suponer que los controles le van a llegar siempre porque cuando eso no ocurra, el programa no funcionará correctamente.</p>
+    <p>Un programa PHP que recibe datos provinientes de un formulario no debe suponer que los datos o las referencias a los controles le van a llegar siempre, porque cuando eso no ocurra el programa no funcionará correctamente.</p>
 
     <section id="controles-vacios">
       <h3>Controles vacíos</h3>
 
-      <p>La primera situación que los programas deben tener en cuenta es que los controles no contengan ningún valor.</p>
+      <p>La primera situación que los programas deben tener en cuenta es que lleguen las referencias a los controles, pero sin datos.</p>
 
       <p>En el programa de ejemplo del principio de esta lección, si el usuario ha utilizado el formulario y ha escrito un dato, el programa PHP recibe el control y funciona correctamente:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-1.php (formulario NO operativo)</div>
         <div>ejemplo-2.php (código fuente)</div>
         <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-1-1.php" style="height: 11em;"></iframe>
+        <div class="resultado-html">
+          <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly></p>
+          <p><input type="submit" value="Enviar" disabled></p>
+        </div>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -340,21 +356,21 @@ print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 )</pre>
           <p>Su nombre es Pepito Conejo</p>
         </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-vacios-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
       </div>
 
       <p>Pero si el usuario no escribe nada en el formulario, aunque el programa funcione correctamente, la respuesta del programa puede confundir al usuario:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-1.php (formulario NO operativo)</div>
         <div>ejemplo-2.php (código fuente)</div>
         <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-2-1.php" style="height: 11em;"></iframe>
+        <div class="resultado-html">
+          <p>Nombre: <input type="text" name="texto" readonly></p>
+          <p><input type="submit" value="Enviar" disabled></p>
+        </div>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -373,14 +389,9 @@ print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 )</pre>
           <p><span class="codigo-resaltado">Su nombre es</span></p>
         </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-vacios-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
       </div>
 
-      <hr class="corta">
-
-      <p>Este problema se puede resolver incluyendo una estructura if ... else ... que considere la posibilidad de que no se haya escrito nada en el formulario:</p>
+      <p>Esta situación se puede resolver incluyendo una estructura if ... else ... que considere la posibilidad de que no se haya escrito nada en el formulario:</p>
 
       <div class="filaflex cabecera">
         <div>ejemplo-1.php (formulario)</div>
@@ -389,7 +400,7 @@ print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       </div>
 
       <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-3-1.php" style="height: 16em;"></iframe>
+        <iframe src="ejemplos/controles-formularios/form-recogida-vacios-3-1.php" style="height: 17em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -405,12 +416,21 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
 ?&gt;</code>
 </pre>
         </div>
-        <div class="resultado-html">
-          <pre>Array
+        <div class="columnaflex">
+          <div class="resultado-html">
+            <pre>Array
 (
     [nombre] =&gt;
 )</pre>
-          <p>No ha escrito ningún nombre</p>
+            <p>No ha escrito ningún nombre</p>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+(
+    [nombre] =&gt; Pepito Conejo
+)</pre>
+            <p>Su nombre es Pepito Conejo</p>
+          </div>
         </div>
         <div class="icono-enlace">
           <a href="ejemplos/controles-formularios/form-recogida-vacios-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
@@ -421,9 +441,14 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
     <section id="isset">
       <h3>Controles inexistentes: <span class="php-fun">isset()</span></h3>
 
-      <p>Un problema más grave es que el programa suponga que existe un control que en realidad no le ha llegado. Eso puede ocurrir, por ejemplo, en el caso de las casillas de verificación y los botones radio, ya que los formularios envían el control solamente cuando se han marcado.</p>
+      <p>Un problema más grave es que el programa suponga que le ha llegado un control que en realidad no le ha llegado. Eso ocurre, por ejemplo, en el caso de las casillas de verificación y los botones radio, ya que los formularios envían estos controles solamente cuando se han marcado, pero puede ocurrir también con cualquier control.</p>
 
       <p>El siguiente ejemplo muestra el aspecto de un formulario con una casilla de verificación y un botón Enviar (aunque este ejemplo no envía el dato a ningún sitio):</p>
+
+      <div class="filaflex cabecera">
+        <div>ejemplo-1.php (código HTML)</div>
+        <div>ejemplo-1.php (visualización del formulario NO operativo)</div>
+      </div>
 
       <div class="filaflex">
         <div class="resultado-codigo">
@@ -441,16 +466,19 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
         </div>
       </div>
 
-      <p>Si en el formulario anterior el usuario marca la casilla, el siguiente programa funciona perfectamente:</p>
+      <p>El siguiente ejemplo muestra un programa PHP similar al programa del apartado anterior que incluía una estructura if ... else ... para tener en cuenta que el dato puede llegar o no llegar. Si en el formulario anterior el usuario marca la casilla, el programa funciona perfectamente:</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-1.php (formulario NO operativo)</div>
         <div>ejemplo-2.php (código fuente)</div>
         <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-1-1.php" style="height: 16em;"></iframe>
+        <div class="resultado-html">
+          <p>Deseo recibir información: <input type="checkbox" checked onclick="return false"></p>
+          <p><input type="submit" value="Enviar" disabled></p>
+        </div>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -473,21 +501,21 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
 )</pre>
           <p><span class="codigo-resaltado">Desea recibir información</span></p>
         </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
       </div>
 
       <p>Pero si el usuario no marca la casilla, la matriz $_REQUEST no contiene el dato y el programa genera un aviso por hacer referencia a un índice no definido, aunque se haya incluido la estructura if ... else ... :</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-1.php (formulario NO operativo)</div>
         <div>ejemplo-2.php (código fuente)</div>
         <div>ejemplo-2.php (resultado)</div>
       </div>
 
       <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-2-1.php" style="height: 16em;"></iframe>
+        <div class="resultado-html">
+          <p>Deseo recibir información: <input type="checkbox" onclick="return false"></p>
+          <p><input type="submit" value="Enviar" disabled></p>
+        </div>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -510,49 +538,9 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
           <p class="codigo-resaltado"><strong>Warning</strong>: Undefined array key "acepto" in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
           <p>No desea recibir información</p>
         </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-1-2.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
       </div>
 
-      <p>Esto puede ocurrir en realidad en cualquier formulario (incluso en formularios con cajas de texto que en principio envían siempre el control) ya que el usuario puede escribir directamente la dirección del programa PHP en el navegador y ejecutar el programa PHP sin pasar por el formulario. En ese caso, el programa no recibe ningún control y el programa genera un aviso por hacer referencia a un índice no definido.</p>
-
-      <p>Para conseguir este resultado en el ejemplo siguiente, abra el ejemplo en otra pestaña, envíe el formulario y modifique la URL eliminando la parte final que incluye el control (form-recogida-inexistentes-3-2.php<span class="codigo-resaltado">?nombre=...</span>).</p>
-
-      <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
-        <div>ejemplo-2.php (código fuente)</div>
-        <div>ejemplo-2.php (resultado)</div>
-      </div>
-
-      <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-3-1.php" style="height: 16em;"></iframe>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";
-
-if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
-} else {
-    print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html">
-          <pre>Array
-(
-)</pre>
-          <p class="codigo-resaltado"><strong>Warning</strong>: Undefined array key "acepto" in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
-          <p>No ha escrito ningún nombre</p>
-        </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
+      <p>Esto puede ocurrir también con cualquier tipo de control (incluso con cajas de texto que en principio envían siempre el control) ya que un usuario malintencionado puede escribir directamente la dirección del programa PHP en el navegador, sin pasar por el formulario y sin incluir los controles. En ese caso, el programa no recibe ningún control y el programa genera un aviso por hacer referencia a un índice no definido.</p>
 
       <hr class="corta">
 
@@ -581,50 +569,24 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
 ?&gt;</code>
 </pre>
         </div>
-        <div class="resultado-html">
-          <pre>Array
+        <div class="columnaflex">
+          <div class="resultado-html">
+            <pre>Array
+(
+    [acepto] =&gt; on
+)</pre>
+            <p>Desea recibir información</p>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
 (
 )
 </pre>
-          <p>Desea recibir información</p>
+            <p>No desea recibir información</p>
+          </div>
         </div>
         <div class="icono-enlace">
           <a href="ejemplos/controles-formularios/form-recogida-inexistentes-4-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
-
-      <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
-        <div>ejemplo-2.php (código fuente)</div>
-        <div>ejemplo-2.php (resultado)</div>
-      </div>
-
-      <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-inexistentes-5-1.php" style="height: 16em;"></iframe>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";
-
-if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
-    print "  &lt;p&gt;Desea recibir información&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;No desea recibir información&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html">
-          <pre>Array
-(
-)
-</pre>
-          <p>No desea recibir información</p>
-        </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-inexistentes-5-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
 
@@ -635,10 +597,12 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
   <section id="seguridad">
     <h2>Seguridad en las entradas</h2>
 
-    <p>Un usuario puede insertar código html en la entrada de un formulario, lo que puede acarrear comportamientos inesperados y riesgos de seguridad. El siguiente ejemplo solamente perjudicaría al aspecto de la página:</p>
+    <p>Otro aspecto problemático a considerar es que un usuario malintencionado puede insertar código html en la entrada de un formulario, lo que puede acarrear comportamientos inesperados y riesgos de seguridad.</p>
+
+    <p>En el siguiente ejemplo, el código html insertado incluye un enlace a otra página web que acaba incorporado en la página final:</p>
 
     <div class="filaflex">
-      <iframe src="ejemplos/controles-formularios/form-recogida-seguridad-1-1.php" style="height: 11em;"></iframe>
+      <iframe src="ejemplos/controles-formularios/form-recogida-seguridad-1-1.php" style="height: 13em;"></iframe>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -652,12 +616,14 @@ print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       </div>
       <div class="resultado-codigo">
         <pre>
-<code class="language-html">&lt;pre&gt;Array
+<code class="language-html">Array
 (
-    [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
+    [nombre] =&gt; <span class="codigo-resaltado">&lt;a href='https://mclibre.org' target='blank'&gt;Pepito Conejo&lt;/a&gt;</span>
 )
 &lt;/pre&gt;
-&lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>&lt;/p&gt;</code>
+
+  &lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;a href='https://mclibre.org' target='blank'&gt;Pepito Conejo&lt;/a&gt;</span>&lt;/p&gt;
+</code>
 </pre>
       </div>
       <div class="icono-enlace">
@@ -682,7 +648,7 @@ print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       </div>
       <div class="resultado-captura">
         <p>
-          <img src="../img/php/recogida-datos-1.png" alt="Recogida de datos. Inyección de JavaScript" width="250" height="150">
+          <img src="../img/php/recogida-datos-1.png" alt="Recogida de datos. Inyección de JavaScript" width="370" height="150">
         </p>
       </div>
       <div class="icono-enlace">
@@ -698,10 +664,7 @@ print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       <p>Una manera de resolver el problema anterior es utilizar la función <a href="https://www.php.net/manual/en/function.strip-tags.php"><span class="php-fun">strip_tags($cadena)</span></a>, que devuelve la cadena sin etiquetas, como muestra el siguiente ejemplo.</p>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" readonly value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;"></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-strip-tags-1-1.php" style="height: 13em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -721,19 +684,20 @@ print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_R
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
 &lt;/pre&gt;
+
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>&lt;/p&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;</code>
 </pre>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-strip-tags-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
       </div>
 
-      <p>Aunque hay que tener en cuenta que esta función elimina cualquier cosa que se interprete como una etiqueta, es decir, que empiece por "&lt;".</p>
+      <p>Aunque hay que tener en cuenta que esta función elimina cualquier cosa que se interprete como una etiqueta, es decir, que empiece por "&lt;" (sin espacio a continuación).</p>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" readonly value="&lt;pepe&gt;"></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-strip-tags-2-1.php" style="height: 13em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -741,19 +705,26 @@ print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
+print "  &lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</span>&lt;/p&gt;\n";
 print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-codigo">
           <pre>
-<code class="language-html">&lt;pre&gt;Array
+<code class="language-html">Array
 (
-    [nombre] =&gt; <span class="codigo-resaltado">&lt;pepe&gt;</span>
+    [nombre] =&gt;<span class="codigo-resaltado"> &lt;i&gt;bbb&lt;/i&gt; aaa &lt;pepe&gt;Pérez &lt; pepe&gt;Pérez</span>
 )
 &lt;/pre&gt;
-&lt;p&gt;Su nombre es&lt;/p&gt;</code>
+
+&lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;i&gt;bbb&lt;/i&gt; aaa &lt;pepe&gt;Pérez &lt; pepe&gt;Pérez&lt;/p&gt;</span>
+&lt;p&gt;Su nombre es <span class="codigo-resaltado">bbb aaa Pérez &lt; pepe&gt;Pérez&lt;/p&gt;</span>
+</code>
 </pre>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-strip-tags-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
     </section>
@@ -766,7 +737,7 @@ print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_R
       <p>En el programa de ejemplo del apartado anterior en el que se escribía una estructura if ... else ... para avisar al usuario si no escribía el nombre, si el usuario escribe únicamente espacios en blanco, el programa funciona, pero no da la respuesta adecuada ya que la cadena con espacios en blanco no es una cadena vacía.</p>
 
       <div class="filaflex cabecera">
-        <div>ejemplo-1.php (formulario)</div>
+        <div>ejemplo-1.php (formulario NO operativo)</div>
         <div>ejemplo-2.php (código fuente)</div>
         <div>ejemplo-2.php (resultado)</div>
       </div>
@@ -774,7 +745,7 @@ print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_R
       <div class="filaflex">
         <div class="resultado-html">
           <p>Nombre: <input type="text" name="texto" readonly value="   "></p>
-          <p><input type="submit" value="Enviar"></p>
+          <p><input type="submit" value="Enviar" disabled></p>
         </div>
         <div class="codigo">
           <pre>
@@ -812,10 +783,7 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
       </div>
 
       <div class="filaflex">
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" readonly value="      "></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-trim-1-1.php" style="height: 17em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -830,12 +798,27 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
 ?&gt;</code>
 </pre>
         </div>
-        <div class="resultado-html">
-          <pre>Array
+        <div class="columnaflex">
+          <div class="resultado-html">
+            <pre>Array
 (
     [nombre] =&gt;
 )</pre>
-          <p><span class="codigo-resaltado">No ha escrito ningún nombre</span></p>
+            <p><span class="codigo-resaltado">No ha escrito ningún nombre</span></p>
+          </div>
+          <div class="resultado-html">
+            <pre>
+Array
+(
+    [nombre] => <span class="codigo-resaltado">    pepe</span>
+)
+</pre>
+
+            <p>Su nombre es <span class="codigo-resaltado">pepe</span></p>
+          </div>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-trim-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
     </section>
@@ -851,7 +834,7 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
       <li>eliminar los espacios en blanco iniciales y finales con la función <span class="php-fun">trim()</span></li>
     </ul>
 
-    <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST. En los siguientes ejemplos, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
+    <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST. En el ejemplo siguiente, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
 
     <div class="filaflex cabecera">
       <div>ejemplo-1.php (formulario)</div>
@@ -860,10 +843,7 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
     </div>
 
     <div class="filaflex">
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" readonly value="   "></p>
-        <p><input type="submit" value="Enviar"></p>
-      </div>
+      <iframe src="ejemplos/controles-formularios/form-recogida-variables-1-1.php" style="height: 23em;"></iframe>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -888,8 +868,9 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-codigo">
-        <pre>
+      <div class="columnaflex">
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;pre&gt;Array
 (
     [nombre] =&gt;
@@ -897,52 +878,23 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
 &lt;/pre&gt;
 &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</code>
 </pre>
-      </div>
-    </div>
-
-    <div class="filaflex cabecera">
-      <div>ejemplo-1.php (formulario)</div>
-      <div>ejemplo-2.php (código fuente)</div>
-      <div>ejemplo-2.php (resultado)</div>
-    </div>
-
-    <div class="filaflex">
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" readonly value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;"></p>
-        <p><input type="submit" value="Enviar"></p>
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";</code><br>
-</pre>
-        <pre class="codigo-resaltado">
-<code class="language-php">if (isset($_REQUEST["nombre"])) {
-    $nombre = trim(strip_tags($_REQUEST["nombre"]));
-} else {
-    $nombre = "";
-}</code>
-</pre>
-        <pre>
-<code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre>
-<code class="language-html">&lt;pre&gt;Array
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">  &lt;pre&gt;
+Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
 &lt;/pre&gt;
-&lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;</code>
+
+  &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
+</code>
 </pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-recogida-variables-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -955,10 +907,7 @@ print "&lt;/pre&gt;\n";</code><br>
     </div>
 
     <div class="filaflex">
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" readonly value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;"></p>
-        <p><input type="submit" value="Enviar"></p>
-      </div>
+      <iframe src="ejemplos/controles-formularios/form-recogida-variables-2-1.php" style="height: 23em;"></iframe>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -977,15 +926,33 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-codigo">
-        <pre>
+      <div class="columnaflex">
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;pre&gt;Array
+(
+    [nombre] =&gt;
+)
+&lt;/pre&gt;
+&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">  &lt;pre&gt;
+Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
 &lt;/pre&gt;
-&lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;</code>
+
+  &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
+</code>
 </pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-recogida-variables-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -1000,7 +967,7 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
 
       <p>Si el usuario escribe en una entrada el carácter &amp; (ampersand, entidad de carácter &amp;amp;) y esa cadena se escribe en una página, la página se verá correctamente en el navegador, pero la página no será válida (el html será inválido).</p>
 
-      <p>La página es inválida porque el carácter &amp; indica el comienzo de una <a href="https://www.mclibre.org/consultar/htmlcss/html/html-entidades-caracter.html">entidad de carácter</a>, así que no el código fuente no puede haber un &amp; sin nada a continuación. Si se quiere mostrar un carácter &amp; en el navegador, en el código fuente debe escribirse la entidad de carácter &amp;amp;.</p>
+      <p>La página de salida del ejemplo siguiente es inválida porque el carácter &amp; indica el comienzo de una <a href="https://www.mclibre.org/consultar/htmlcss/html/html-entidades-caracter.html">entidad de carácter</a>, así que no el código fuente no puede haber un &amp; sin nada a continuación. Si se quiere mostrar un carácter &amp; en el navegador, en el código fuente debe escribirse la entidad de carácter &amp;amp;.</p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -1008,7 +975,7 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
         </div>
         <div class="resultado-html">
           <p>Nombre: <input type="text" name="texto" readonly value="Pepito &amp; Company"></p>
-          <p><input type="submit" value="Enviar"></p>
+          <p><input type="submit" value="Enviar" onclick="return false"></p>
         </div>
         <div class="codigo">
           <pre>
@@ -1030,19 +997,50 @@ if ($nombre == "") {
         </div>
       </div>
 
+      <p>La página de salida del ejemplo siguiente no es inválida, pero no corresponde a la salida esperada. Lo que ocurre es que el navegador interpreta el carácter &amp; como el principio de una entidad de carácter, que en este caso casualmente existe (la entidad de carácter correspondiente a la letra griega <i>micro</i> &amp;micro &micro).</p>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        </div>
+        <div class="resultado-html">
+          <p>Nombre: <input type="text" name="texto" readonly value="intel&amp;microsoft"></p>
+          <p><input type="submit" value="Enviar" onclick="return false"></p>
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$nombre = (isset($_REQUEST["nombre"]))
+    ? trim(strip_tags($_REQUEST["nombre"]))
+    : "";
+
+if ($nombre == "") {
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <p>Su nombre es intel&microsoft</p>
+        </div>
+      </div>
+
       <p>La solución es sustituir el carácter &amp; por su entidad de carácter correspondiente (&amp;amp;). Eso se puede hacer con la función <a href="https://www.php.net/manual/en/function.str-replace.php" class="php-fun">str_replace()</a></p>
 
       <div class="filaflex">
         <div class="icono-ok">
           <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
         </div>
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" readonly value="Pepito &amp; Company"></p>
-          <p><input type="submit" value="Enviar"></p>
-        </div>
+        <iframe src="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php" style="height: 23em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
+print "  &lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+
 $nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
     : "";
@@ -1057,7 +1055,17 @@ if ($nombre == "") {
 </pre>
         </div>
         <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Su nombre es Pepito <span class="codigo-resaltado">&amp;amp;</span> Company&lt;/p&gt;</code></pre>
+          <pre><code class="language-html">  &lt;pre&gt;
+Array
+(
+    [nombre] =&gt; intel&amp;microsoft
+)
+&lt;/pre&gt;
+
+  &lt;p&gt;Su nombre es intel&amp;amp;microsoft&lt;/p&gt;</code></pre>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
     </section>
@@ -1274,7 +1282,7 @@ if ($nombre == "") {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de diciembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 17 de diciembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -13,7 +13,7 @@
   <form action="form-recogida-inexistentes-4-2.php" method="get">
     <p>
       Deseo recibir información:
-      <input type="checkbox" name="acepto" checked>
+      <input type="checkbox" name="acepto">
     </p>
 
     <p><input type="submit" value="Enviar"></p>

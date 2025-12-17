@@ -13,7 +13,7 @@
   <form action="form-recogida-vacios-3-2.php" method="get">
     <p>
       Nombre:
-      <input type="text" name="nombre" value="">
+      <input type="text" name="nombre">
     </p>
 
     <p><input type="submit" value="Enviar"></p>

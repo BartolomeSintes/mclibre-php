@@ -13,7 +13,7 @@
   <form action="form-recogida-seguridad-1-2.php" method="get">
     <p>
       Nombre:
-      <input type="text" name="nombre" value="<body onload=alert('Hola')>" readonly>
+      <input type="text" name="nombre" size="25" value="<body onload=alert('Hola')>" readonly>
     </p>
 
     <p><input type="submit" value="Enviar"></p>
