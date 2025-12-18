@@ -13,7 +13,7 @@
   <form action="form-recogida-strip-tags-2-2.php" method="get">
     <p>
       Nombre:
-      <input type="text" name="nombre" size="52" value="<i>bbb</i> aaa <pepe>Pérez < pepe>Pérez">
+      <input type="text" name="nombre" size="52" value="<i>bbb</i> aaa <pepe>Pérez < pepa>Pérez <Pepito Conejo">
     </p>
 
     <p><input type="submit" value="Enviar"></p>

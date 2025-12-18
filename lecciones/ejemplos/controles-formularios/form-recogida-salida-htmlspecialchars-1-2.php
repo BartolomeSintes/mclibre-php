@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Salida de datos: ampersand. Recogida de datos.
+    Salida de datos: htmlspecialchars (1). Recogida de datos.
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +17,16 @@ print "</pre>\n";
 print "\n";
 
 $nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
+    ? htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])))
     : "";
-$nombre = str_replace('&', '&amp;', $nombre);
 
 if ($nombre == "") {
     print "  <p>No ha escrito ningún nombre</p>\n";
 } else {
-    print "  <p>Su nombre es $nombre</p>\n";
+    print "  <p>Corrija: <input type=\"text\" value=\"$nombre\" size=\"35\"></p>\n";
 }
 print "\n";
-print "  <p><a href=\"form-recogida-salida-ampersand-1-1.php\">Volver al formulario.</a></p>\n";
+print "  <p><a href=\"form-recogida-salida-htmlspecialchars-1-1.php\">Volver al formulario.</a></p>\n";
 print "\n";
 ?>
 </body>
