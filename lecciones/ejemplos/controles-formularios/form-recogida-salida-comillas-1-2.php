@@ -16,15 +16,10 @@ print_r($_REQUEST);
 print "</pre>\n";
 print "\n";
 
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-$nombre = str_replace('"', '&quot;', $nombre);
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  <p>No ha escrito ningún nombre</p>\n";
 } else {
-    print "  <p>Corrija: <input type=\"text\" value=\"$nombre\"></p>\n";
+    print "  <p>Corrija: <input type=\"text\" value=\"" . str_replace('"', '&quot;', $_REQUEST["nombre"]) . "\"></p>\n";
 }
 print "\n";
 print "  <p><a href=\"form-recogida-salida-comillas-1-1.php\">Volver al formulario.</a></p>\n";

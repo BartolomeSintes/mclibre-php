@@ -16,15 +16,10 @@ print_r($_REQUEST);
 print "</pre>\n";
 print "\n";
 
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-$nombre = str_replace('&', '&amp;', $nombre);
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  <p>No ha escrito ningún nombre</p>\n";
 } else {
-    print "  <p>Su nombre es $nombre</p>\n";
+    print "  <p>Su nombre es " . str_replace('&', '&amp;', $_REQUEST["nombre"]) . "</p>\n";
 }
 print "\n";
 print "  <p><a href=\"form-recogida-salida-ampersand-1-1.php\">Volver al formulario.</a></p>\n";

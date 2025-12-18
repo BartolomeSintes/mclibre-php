@@ -37,7 +37,6 @@
             <li><a href="#trim"><span class="php-fun">trim($cadena)</span></a></li>
           </ul>
         </li>
-        <li><a href="#variables">Utilización de variables</a></li>
         <li><a href="#salida">Salida de datos</a>
           <ul>
             <li><a href="#ampersand">carácter &amp; (ampersand)</a></li>
@@ -45,6 +44,7 @@
             <li><a href="#htmlspecialchars"><span class="php-fun">htmlspecialchars()</span></a></li>
           </ul>
         </li>
+        <li><a href="#variables">Utilización de variables</a></li>
         <li><a href="#funcion">Función recoge()</a></li>
       </ul>
     </div>
@@ -826,140 +826,6 @@ Array
     </section>
   </section>
 
-  <section id="variables">
-    <h2>Utilización de variables</h2>
-
-    <p>Hemos visto que para resolver los problemas comentados en los apartados anteriores, al incluir cualquier referencia a $_REQUEST[control] habría que:</p>
-    <ul>
-      <li>comprobar que el control esté definido con la función <span class="php-fun">isset()</span></li>
-      <li>eliminar las etiquetas con la función <span class="php-fun">strip_tags()</span></li>
-      <li>eliminar los espacios en blanco iniciales y finales con la función <span class="php-fun">trim()</span></li>
-    </ul>
-
-    <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST. En el ejemplo siguiente, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
-
-    <div class="filaflex cabecera">
-      <div>ejemplo-1.php (formulario)</div>
-      <div>ejemplo-2.php (código fuente)</div>
-      <div>ejemplo-2.php (resultado)</div>
-    </div>
-
-    <div class="filaflex">
-      <iframe src="ejemplos/controles-formularios/form-recogida-variables-1-1.php" style="height: 23em;"></iframe>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";</code><br>
-</pre>
-        <pre class="codigo-resaltado">
-<code class="language-php">if (isset($_REQUEST["nombre"])) {
-    $nombre = trim(strip_tags($_REQUEST["nombre"]));
-} else {
-    $nombre = "";
-}</code>
-</pre>
-        <pre>
-<code class="language-php">
-if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-      <div class="columnaflex">
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;pre&gt;Array
-(
-    [nombre] =&gt;
-)
-&lt;/pre&gt;
-
-  <span class="codigo-resaltado">&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</span></code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">  &lt;pre&gt;
-Array
-(
-    [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
-)
-&lt;/pre&gt;
-
-  &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
-</code>
-</pre>
-        </div>
-      </div>
-      <div class="icono-enlace">
-        <a href="ejemplos/controles-formularios/form-recogida-variables-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-
-    <p>La asignación de la variable se puede realizar en una sola instrucción, utilizando la notación abreviada: condición ? valor_1 : valor_2; (que se explica en la lección de <a href="php-estructuras-control.html#if-else-abreviado">estructuras de control</a>):</p>
-
-    <div class="filaflex cabecera">
-      <div>ejemplo-1.php (formulario)</div>
-      <div>ejemplo-2.php (código fuente)</div>
-      <div>ejemplo-2.php (resultado)</div>
-    </div>
-
-    <div class="filaflex">
-      <iframe src="ejemplos/controles-formularios/form-recogida-variables-2-1.php" style="height: 23em;"></iframe>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";</code></pre>
-        <br>
-        <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-if (<span class="codigo-resaltado">$nombre == ""</span>) {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-      <div class="columnaflex">
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;pre&gt;Array
-(
-    [nombre] =&gt;
-)
-&lt;/pre&gt;
-&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">  &lt;pre&gt;
-Array
-(
-    [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
-)
-&lt;/pre&gt;
-
-  &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
-</code>
-</pre>
-        </div>
-      </div>
-      <div class="icono-enlace">
-        <a href="ejemplos/controles-formularios/form-recogida-variables-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-  </section>
-
   <section id="salida">
     <h2>Salida de datos</h2>
 
@@ -983,11 +849,7 @@ Array
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
     print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
@@ -1013,11 +875,7 @@ if ($nombre == "") {
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
     print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
@@ -1041,7 +899,7 @@ if ($nombre == "") {
         <div class="icono-ok">
           <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
         </div>
-        <iframe src="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php" style="height: 23em;"></iframe>
+        <iframe src="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php" style="height: 20em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -1049,15 +907,10 @@ print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-<span class="codigo-resaltado">$nombre = str_replace('&amp;', '&amp;amp;', $nombre);</span>
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es " . <span class="codigo-resaltado">str_replace('&amp;', '&amp;amp;', $_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1094,11 +947,7 @@ Array
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
     print "  &lt;p&gt;Corrija: &lt;input type=\"text\" <span class="codigo-resaltado">value=\"$nombre\"</span>&gt;&lt;/p&gt;\n";
@@ -1130,23 +979,14 @@ if ($nombre == "") {
         <div class="icono-ok">
           <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
         </div>
-        <iframe src="ejemplos/controles-formularios/form-recogida-salida-comillas-1-1.php" style="height: 22em;"></iframe>
+        <iframe src="ejemplos/controles-formularios/form-recogida-salida-comillas-1-1.php" style="height: 20em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";
-
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
-<span class="codigo-resaltado">$nombre = str_replace('"', '&amp;quot;', $nombre);</span>
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"" . <span class="codigo-resaltado">str_replace('"', '&amp;quot;', $_REQUEST["nombre"])</span> . "\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -1186,119 +1026,246 @@ print "  &lt;pre&gt;\n";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 
-$nombre = (isset($_REQUEST["nombre"]))
-    ? <span class="codigo-resaltado">htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])))</span>
-    : "";
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\" size=\"35\"&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"" . <span class="codigo-resaltado">htmlspecialchars($_REQUEST["nombre"])</span> . "\" size=\"35\"&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-html">
-          <p>Corrija: <input type="text" name="texto" readonly value="Me llamo &#34;Pepe&#34;" size="35"></p>
+          <p>Corrija: <input type="text" name="texto" readonly value="Me llamo &quot;intel&amp;microsoft&quot;" size="35"></p>
         </div>
         <div class="icono-enlace">
           <a href="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
-
-      <p>En el ejemplo anterior la primera función que se aplica es <a href="https://www.php.net/manual/en/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se eliminarán las etiquetas HTML.</p>
-
-      <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-2-1.php" style="height: 23em;"></iframe>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";
-
-$nombre = (isset($_REQUEST["nombre"]))
-    ? <span class="codigo-resaltado">htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])))</span>
-    : "";
-
-if ($nombre == "") {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\" size=\"35\"&gt;&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html">
-          <p>Corrija: <input type="text" name="texto" readonly value="Me llamo Pepe" size="35"></p>
-        </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
-
-      <p>Si no queremos quitar etiquetas pero no queremos que se consideren como etiquetas sino como texto, habría que aplicar primero la función <a href="https://www.php.net/manual/en/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a>, como en el ejemplo siguiente.</p>
-
-      <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-3-1.php" style="height: 23em;"></iframe>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";
-
-$nombre = (isset($_REQUEST["nombre"]))
-    ? <span class="codigo-resaltado">strip_tags(trim(htmlspecialchars($_REQUEST["nombre"])))</span>
-    : "";
-
-if ($nombre == "") {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\" size=\"35\"&gt;&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html">
-          <p>Corrija: <input type="text" name="texto" readonly value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" size="35"></p>
-        </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
-
-      <p>En el ejemplo anterior la función <a href="https://www.php.net/manual/en/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> no hace nada puesto que las marcas &lt; y &gt; se han cambiado antes por las entidades de carácter &amp;lt; y &amp;gt; así que se podría simplificar el programa eliminando la función <span class="php-fun">strip_tags()</span>:</p>
-
-      <div class="filaflex">
-        <iframe src="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-4-1.php" style="height: 23em;"></iframe>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "  &lt;pre&gt;\n";
-print_r($_REQUEST);
-print "&lt;/pre&gt;\n";
-
-$nombre = (isset($_REQUEST["nombre"]))
-    ? <span class="codigo-resaltado">trim(htmlspecialchars($_REQUEST["nombre"]))</span>
-    : "";
-
-if ($nombre == "") {
-    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" value=\"$nombre\"&gt;&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html">
-          <p>Corrija: <input type="text" name="texto" readonly value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" size="35"></p>
-        </div>
-        <div class="icono-enlace">
-          <a href="ejemplos/controles-formularios/form-recogida-salida-htmlspecialchars-4-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
     </section>
+  </section>
+
+  <section id="variables">
+    <h2>Utilización de variables</h2>
+
+    <p>Hemos visto que para resolver los problemas comentados en los apartados anteriores, al incluir cualquier referencia a $_REQUEST[control] habría que:</p>
+    <ul>
+      <li>comprobar que el control esté definido con la función <span class="php-fun">isset()</span></li>
+      <li>eliminar las etiquetas con la función <span class="php-fun">strip_tags()</span></li>
+      <li>eliminar los espacios en blanco iniciales y finales con la función <span class="php-fun">trim()</span></li>
+      <li>sustituir los caracteres especiales del HTML por las entidades de carácter corrrespondientes con la función <span class="php-fun">htmlspecialchars()</span></li>
+    </ul>
+
+    <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST.</p>
+
+    <p>En el ejemplo siguiente, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
+
+    <div class="filaflex cabecera">
+      <div>ejemplo-1.php (formulario)</div>
+      <div>ejemplo-2.php (código fuente)</div>
+      <div>ejemplo-2.php (resultado)</div>
+    </div>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/controles-formularios/form-recogida-variables-1-1.php" style="height: 30em;"></iframe>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "  &lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";</code><br>
+</pre>
+        <pre class="codigo-resaltado">
+<code class="language-php">if (isset($_REQUEST["nombre"])) {
+    $nombre = trim(htmlspecialchars(strip_tags($_REQUEST["nombre"])));
+} else {
+    $nombre = "";
+}</code>
+</pre>
+        <pre>
+<code class="language-php">
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="columnaflex">
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;pre&gt;Array
+(
+    [nombre] =&gt;
+)
+&lt;/pre&gt;
+
+  <span class="codigo-resaltado">&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</span></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">  &lt;pre&gt;
+Array
+(
+    [nombre] =&gt;      &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;
+)
+&lt;/pre&gt;
+
+  &lt;p&gt;Su nombre es intel&amp;amp;microsoft&lt;/p&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+  <pre>
+Array
+(
+    [nombre] =>      <strong>intel&microsoft</strong>
+)
+</pre>
+
+  <p>Su nombre es intel&amp;microsoft</p>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-recogida-variables-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+      <p>En el ejemplo anterior la primera función que se aplica es <a href="https://www.php.net/manual/en/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se eliminan las etiquetas HTML. Si aplicaramos primero la función <a href="https://www.php.net/manual/en/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a>, la función <span class="php-fun">strip_tags()</span> ya no eliminaría las etiquetas puesto que los caracteres de marcas &lt; y &gt; se habrán sustituido antes por las entidades de carácter &amp:lt; y &amp;gt;, como muestra el ejemplo siguiente,</p>
+
+      <div class="filaflex">
+        <iframe src="ejemplos/controles-formularios/form-recogida-variables-2-1.php" style="height: 30em;"></iframe>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "  &lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";</code><br>
+</pre>
+        <pre class="codigo-resaltado">
+<code class="language-php">if (isset($_REQUEST["nombre"])) {
+    $nombre = trim(strip_tags(htmlspecialchars($_REQUEST["nombre"])));
+} else {
+    $nombre = "";
+}</code>
+</pre>
+        <pre>
+<code class="language-php">
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="columnaflex">
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;pre&gt;Array
+(
+    [nombre] =&gt;
+)
+&lt;/pre&gt;
+
+  <span class="codigo-resaltado">&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</span></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">  &lt;pre&gt;
+Array
+(
+    [nombre] =&gt;       &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;
+)
+&lt;/pre&gt;
+
+  &lt;p&gt;Su nombre es &amp;lt;strong&amp;gt;intel&amp;amp;microsoft&amp;lt;/strong&amp;gt;&lt;/p&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+  <pre>
+Array
+(
+    [nombre] =>       <strong>intel&microsoft</strong>
+)
+</pre>
+
+  <p>Su nombre es &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;</p>
+        </div>
+      </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-variables-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p>Ya que la función <a href="https://www.php.net/manual/en/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> no hace nada, el ejemplo anterior se podría simplificar eliminando la función <span class="php-fun">strip_tags()</span>:</p>
+
+      <div class="filaflex">
+        <iframe src="ejemplos/controles-formularios/form-recogida-variables-3-1.php" style="height: 30em;"></iframe>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "  &lt;pre&gt;\n";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";</code><br>
+</pre>
+        <pre class="codigo-resaltado">
+<code class="language-php">if (isset($_REQUEST["nombre"])) {
+    $nombre = trim(htmlspecialchars($_REQUEST["nombre"]));
+} else {
+    $nombre = "";
+}</code>
+</pre>
+        <pre>
+<code class="language-php">
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
+    print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="columnaflex">
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;pre&gt;Array
+(
+    [nombre] =&gt;
+)
+&lt;/pre&gt;
+
+  <span class="codigo-resaltado">&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;</span></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">  &lt;pre&gt;
+Array
+(
+    [nombre] =&gt;       &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;
+)
+&lt;/pre&gt;
+
+  &lt;p&gt;Su nombre es &amp;lt;strong&amp;gt;intel&amp;amp;microsoft&amp;lt;/strong&amp;gt;&lt;/p&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+  <pre>
+Array
+(
+    [nombre] =>       <strong>intel&microsoft</strong>
+)
+</pre>
+
+  <p>Su nombre es &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;</p>
+        </div>
+      </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles-formularios/form-recogida-variables-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
   </section>
 
   <section id="funcion">

@@ -16,14 +16,10 @@ print_r($_REQUEST);
 print "</pre>\n";
 print "\n";
 
-$nombre = (isset($_REQUEST["nombre"]))
-    ? htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])))
-    : "";
-
-if ($nombre == "") {
+if ($_REQUEST["nombre"] == "") {
     print "  <p>No ha escrito ningún nombre</p>\n";
 } else {
-    print "  <p>Corrija: <input type=\"text\" value=\"$nombre\" size=\"35\"></p>\n";
+    print "  <p>Corrija: <input type=\"text\" value=\"" . htmlspecialchars($_REQUEST["nombre"]) . "\" size=\"35\"></p>\n";
 }
 print "\n";
 print "  <p><a href=\"form-recogida-salida-htmlspecialchars-1-1.php\">Volver al formulario.</a></p>\n";

@@ -16,9 +16,12 @@ print_r($_REQUEST);
 print "</pre>\n";
 print "\n";
 
-$nombre = (isset($_REQUEST["nombre"]))
-    ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";
+if (isset($_REQUEST["nombre"])) {
+    $nombre = trim(strip_tags(htmlspecialchars($_REQUEST["nombre"])));
+} else {
+    $nombre = "";
+}
+
 if ($nombre == "") {
     print "  <p>No ha escrito ningún nombre</p>\n";
 } else {
