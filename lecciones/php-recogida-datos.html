@@ -852,7 +852,7 @@ Array
 if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -878,14 +878,14 @@ if ($_REQUEST["nombre"] == "") {
 if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "  &lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
         </div>
         <div class="columnaflex">
           <div class="resultado-codigo">
-            <p>Su nombre es intel&microsoft</p>
+            <p>Su nombre es <span class="codigo-resaltado">intel&microsoft</span></p>
           </div>
           <div class="resultado-codigo">
             <pre><code class="language-html">  &lt;p&gt;Su nombre es <span class="codigo-resaltado">intel&amp;microsoft</span>&lt;/p&gt;</code></pre>
@@ -899,7 +899,7 @@ if ($_REQUEST["nombre"] == "") {
         <div class="icono-ok">
           <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
         </div>
-        <iframe src="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php" style="height: 20em;"></iframe>
+        <iframe src="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php" style="height: 17em;"></iframe>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
@@ -915,6 +915,10 @@ if ($_REQUEST["nombre"] == "") {
 ?&gt;</code>
 </pre>
         </div>
+        <div class="columnaflex">
+          <div class="resultado-codigo">
+            <p>Su nombre es <span class="codigo-resaltado">intel&amp;microsoft</span></p>
+          </div>
         <div class="resultado-codigo">
           <pre><code class="language-html">  &lt;pre&gt;
 Array
@@ -924,6 +928,7 @@ Array
 &lt;/pre&gt;
 
   &lt;p&gt;Su nombre es <span class="codigo-resaltado">intel&amp;amp;microsoft</span>&lt;/p&gt;</code></pre>
+        </div>
         </div>
         <div class="icono-enlace">
           <a href="ejemplos/controles-formularios/form-recogida-salida-ampersand-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
@@ -950,7 +955,7 @@ Array
 if ($_REQUEST["nombre"] == "") {
     print "  &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" <span class="codigo-resaltado">value=\"$nombre\"</span>&gt;&lt;/p&gt;\n";
+    print "  &lt;p&gt;Corrija: &lt;input type=\"text\" <span class="codigo-resaltado">value=\"$_REQUEST[nombre]\"</span>&gt;&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
@@ -960,7 +965,7 @@ if ($_REQUEST["nombre"] == "") {
             <p>Corrija: <input type="text" name="texto" readonly value="Me llamo "></p>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Corrija: &lt;input type="text" value="Me llamo "Pepe""&gt;&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">&lt;p&gt;Corrija: &lt;input type="text" value=<span class="codigo-resaltado">"Me llamo "Pepe""</span>&gt;&lt;/p&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -1112,7 +1117,7 @@ Array
 )
 &lt;/pre&gt;
 
-  &lt;p&gt;Su nombre es intel&amp;amp;microsoft&lt;/p&gt;</code>
+  &lt;p&gt;Su nombre es <span class="codigo-resaltado">intel&amp;amp;microsoft</span>&lt;/p&gt;</code>
 </pre>
         </div>
         <div class="resultado-html">
@@ -1123,7 +1128,7 @@ Array
 )
 </pre>
 
-  <p>Su nombre es intel&amp;microsoft</p>
+  <p>Su nombre es <span class="codigo-resaltado">intel&amp;microsoft</span></p>
         </div>
       </div>
       <div class="icono-enlace">
@@ -1180,7 +1185,7 @@ Array
 )
 &lt;/pre&gt;
 
-  &lt;p&gt;Su nombre es &amp;lt;strong&amp;gt;intel&amp;amp;microsoft&amp;lt;/strong&amp;gt;&lt;/p&gt;</code>
+  &lt;p&gt;Su nombre es <span class="codigo-resaltado">&amp;lt;strong&amp;gt;intel&amp;amp;microsoft&amp;lt;/strong&amp;gt;</span>&lt;/p&gt;</code>
 </pre>
         </div>
         <div class="resultado-html">
@@ -1191,7 +1196,7 @@ Array
 )
 </pre>
 
-  <p>Su nombre es &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;</p>
+  <p>Su nombre es <span class="codigo-resaltado">&lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;</span></p>
         </div>
       </div>
         <div class="icono-enlace">
@@ -1248,7 +1253,7 @@ Array
 )
 &lt;/pre&gt;
 
-  &lt;p&gt;Su nombre es &amp;lt;strong&amp;gt;intel&amp;amp;microsoft&amp;lt;/strong&amp;gt;&lt;/p&gt;</code>
+  &lt;p&gt;Su nombre es <span class="codigo-resaltado">&amp;lt;strong&amp;gt;intel&amp;amp;microsoft&amp;lt;/strong&amp;gt;</span>&lt;/p&gt;</code>
 </pre>
         </div>
         <div class="resultado-html">
@@ -1259,7 +1264,7 @@ Array
 )
 </pre>
 
-  <p>Su nombre es &lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;</p>
+  <p>Su nombre es <span class="codigo-resaltado">&lt;strong&gt;intel&amp;microsoft&lt;/strong&gt;</span></p>
         </div>
       </div>
         <div class="icono-enlace">
@@ -1294,7 +1299,7 @@ Array
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de diciembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 19 de diciembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
