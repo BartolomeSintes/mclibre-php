@@ -33,15 +33,18 @@
         <li><a href="#hidden">Control oculto (<span class="html-eti">input</span> <span class="html-atri-valor">hidden</span>)</a></li>
         <li><a href="#image">Imagen (<span class="html-eti">input</span> <span class="html-atri-valor">image</span>)</a></li>
         <li><a href="#file">Archivo (<span class="html-eti">input</span> <span class="html-atri-valor">file</span>)</a></li>
+        <li><a href="#number">Número (<span class="html-eti">input</span> <span class="html-atri-valor">number</span>)</a></li>
+        <li><a href="#date">Fecha (<span class="html-eti">input</span> <span class="html-atri-valor">date</span>)</a></li>
+        <li><a href="#date">Hora (<span class="html-eti">input</span> <span class="html-atri-valor">time</span>)</a></li>
       </ul>
     </div>
   </nav>
 
-  <p>Esta lección comenta los aspectos de los formularios con respecto al procesamiento de los datos. Para conocer los aspectos de los formularios con respecto a su apariencia y navegación, se puede consultar la <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html">lección sobre formularios en los apuntes de HTML y CSS</a>.</p>
+  <p>Esta lección comenta aspectos de los formularios con respecto a los datos enviados. Para conocer los aspectos de los formularios con respecto a su apariencia y navegación, se puede consultar la <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html">lección sobre formularios en los apuntes de HTML y CSS</a>.</p>
 
   <p>Los ejemplos incluidos en los apartados dedicados a los diferentes controles se componen de cuatro elementos: la etiqueta html, una página de ejemplo que se puede probar, el contenido de la matriz $_REQUEST cuando se recibe la información y un enlace al ejemplo para ejecutarlo en una pestaña aparte.</p>
 
-  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48"> Falta comentar los controles introducidos en HTML 5.</p>
+  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48"> Falta comentar algunos controles introducidos en HTML 5.</p>
 
   <section id="previa">
     <h2>Cómo se recibe la información enviada por los controles de los formularios</h2>
@@ -60,17 +63,17 @@
 
     <div class="filaflex">
       <div class="columnaflex">
-      <div class="codigo">
-        <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-html">&lt;!-- Formulario (form-input-1.php) --&gt;
 &lt;form action="form-input-2.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-      </div>
-      <div class="codigo">
-        <pre>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Página que recibe los datos del formulario (form-input-2.php)
 print "&lt;pre&gt;\n";
@@ -78,7 +81,7 @@ print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
+        </div>
       </div>
       <iframe src="ejemplos/controles-formularios/form-input-1.php" style="height: 18em;"></iframe>
       <div class="icono-enlace">
@@ -994,8 +997,193 @@ print "&lt;/pre&gt;\n";
     <p>En la lección <a href="php-cargar-archivos.html">Cargar archivos</a> se comenta un poco más el uso de este control.</p>
   </section>
 
+  <section id="number">
+    <h2>Número (<span class="html-eti">input</span> <span class="html-atri-valor">number</span>)</h2>
+
+    <p>Los controles numéricos se envían siempre, aunque estén vacíos. El valor enviado es el contenido del control. Los números decimales se envían con el separador . (punto) aunque se escriba coma (,).</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="number" name="cajaNumero1" step="any"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-number-1-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [cajaNumero1] =&gt;
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [cajaNumero1] =&gt; 3.14
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-number-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="date">
+    <h2>Fecha (<span class="html-eti">input</span> <span class="html-atri-valor">date</span>)</h2>
+
+    <p>Los controles de fecha se envían siempre, aunque estén vacíos. El valor enviado es el contenido del control. La fecha se envía con el formato AAAA-MM-DD, donde AAAA es el año, MM el mes y DD el día.</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="date" name="cajaFecha1"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-date-1-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [cajaFecha1] =&gt;
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [cajaFecha1] =&gt; 2026-01-08
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-date-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="time">
+    <h2>Hora (<span class="html-eti">input</span> <span class="html-atri-valor">time</span>)</h2>
+
+    <p>Los controles de hora se envían siempre, aunque estén vacíos. El valor enviado es el contenido del control. La hora de envía con el formato HH-MM, donde HH son las horas y MM los minutos.</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="time" name="cajaHora1"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-time-1-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [cajaHora1] =&gt;
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [cajaHora1] =&gt; 08:15
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-time-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: Firefox no muestra un control específico para seleccionar la hora, pero limita como Chrome los valores que pueden escribirse en el control.</p>
+  </section>
+
+  <section id="color">
+    <h2>Color (<span class="html-eti">input</span> <span class="html-atri-valor">color</span>)</h2>
+
+    <p>Los controles selector de color se envían siempre. El valor enviado es el color seleccionado o el valor predeterminado. El color se envía en formato hexadecimal (#RRGGBB), en minúsculas.</p>
+
+    <p>Si el control no incluye el atributo <span class="html-atri">value</span>, el color predeterminado es el negro (#000000).</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="color" name="color1"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-color-1-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [color1] =&gt; #000000
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [color1] =&gt; #ff0000
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-color-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>El atributo <span class="html-atri">value</span> permite especificar un color inicial. El color se debe indicar en formato hexadecimal (#RRGGBB).</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="color" name="color2" value="#ff0000"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-color-2-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [color2] =&gt; #ff0000
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [color2] =&gt; #00ff00
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-color-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 7 de enero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 8 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
