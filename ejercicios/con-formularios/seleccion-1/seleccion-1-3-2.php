@@ -119,7 +119,7 @@ if ($cantidadOk && $cuadranteOk) {
     print "\n";
 
     if ($hayPuntos) {
-        print "  <p>Hay puntos $cuadrante.</p>\n";
+        print "  <p>Hay al menos un punto $cuadrante.</p>\n";
         print "\n";
     } else {
         print "  <p>No hay puntos $cuadrante.</p>\n";
