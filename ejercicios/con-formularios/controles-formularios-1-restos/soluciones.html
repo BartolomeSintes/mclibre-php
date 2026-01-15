@@ -24,26 +24,18 @@
 
       <h3><a href="index.html">Enunciados</a></h3>
       <ul>
-        <li><a href="index.html#ejercicio-1">1 - Caja de texto</a></li>
-        <li><a href="index.html#ejercicio-2">2 - Texto. Dibuja cuadrado (1)</a></li>
         <li><a href="index.html#ejercicio-3">3 - Texto. Dibuja cuadrado (2)</a></li>
         <li><a href="index.html#ejercicio-4">4 - Botón radio - Fruta (1)</a></li>
-        <li><a href="index.html#ejercicio-5">5 - Botón radio - Fruta (2)</a></li>
         <li><a href="index.html#ejercicio-6">6 - Casilla - Colores (1)</a></li>
-        <li><a href="index.html#ejercicio-7">7 - Casilla - Colores (2)</a></li>
         <li><a href="index.html#ejercicio-8">8 - Casilla - Colores (3)</a></li>
         <li><a href="index.html#ejercicio-9">9 - Texto. Dibuja cuadrado (3)</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Caja de texto</a></li>
-        <li><a href="#ejercicio-2">2 - Texto. Dibuja cuadrado (1)</a></li>
         <li><a href="#ejercicio-3">3 - Texto. Dibuja cuadrado (2)</a></li>
         <li><a href="#ejercicio-4">4 - Botón radio - Fruta (1)</a></li>
-        <li><a href="#ejercicio-5">5 - Botón radio - Fruta (2)</a></li>
         <li><a href="#ejercicio-6">6 - Casilla - Colores (1)</a></li>
-        <li><a href="#ejercicio-7">7 - Casilla - Colores (2)</a></li>
         <li><a href="#ejercicio-8">8 - Casilla - Colores (3)</a></li>
         <li><a href="#ejercicio-9">9 - Texto. Dibuja cuadrado (3)</a></li>
       </ul>
@@ -54,81 +46,6 @@
   <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="index.html">Controles en formularios (1)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se pueden dejar en fragmentos HTML.</p>
 
   <p>Si lo prefiere, puede <a href="../../../soluciones/con-formularios/cf-controles-formularios-1-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
-
-  <section id="ejercicio-1">
-    <h2>Controles en formularios (1) 1 - Caja de texto</h2>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-$nombre = recoge("nombre");
-
-print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-2">
-    <h2>Controles en formularios (1) 2 - Caja de texto - Dibuja cuadrado (1)</h2>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-$ancho = recoge("ancho");
-
-print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "    width=\"{$ancho}px\" height=\"{$ancho}px\"&gt;\n";
-print "    &lt;rect x=\"0\" y=\"0\" width=\"$ancho\" height=\"$ancho\" fill=\"black\" /&gt;\n";
-print "  &lt;/svg&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
 
   <section id="ejercicio-3">
     <h2>Controles en formularios (1) 3 - Caja de texto - Dibuja cuadrado (2)</h2>
@@ -160,11 +77,12 @@ function recoge($key, $type = "")
 
 $ancho = recoge("ancho");
 
-print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "    width=\"" . $ancho + 8 . "px\" height=\"" . $ancho + 8 . "px\"&gt;\n";
-print "    &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"4\" "
-    . "x=\"2\" y=\"2\" width=\"" . $ancho + 4 . "\" height=\"" . $ancho + 4 . "\" /&gt;\n";
+print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "       width=\"" . $ancho + 8 . "px\" height=\"" . $ancho + 8 . "px\"&gt;\n";
+print "    &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"4\"\n";
+print "          x=\"2\" y=\"2\" width=\"" . $ancho + 4 . "\" height=\"" . $ancho + 4 . "\" /&gt;\n";
 print "  &lt;/svg&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -200,43 +118,8 @@ function recoge($key, $type = "")
 
 $fruta = recoge("fruta");
 
-print "  &lt;p&gt;Su fruta preferida es $fruta.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-5">
-    <h2>Controles en formularios (1) 5 - Botón radio - Fruta favorita (2)</h2>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-$fruta = recoge("fruta");
-
-print "  &lt;p&gt;&lt;img src=\"img/frutas/$fruta\" width=\"300\"&gt;&lt;/p&gt;\n";
+print "  &lt;p&gt;Su fruta preferida es &lt;strong&gt;$fruta&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -273,65 +156,19 @@ function recoge($key, $type = "")
 $fondo = recoge("fondo");
 $letra = recoge("letra");
 
-if ($fondo != "" && $letra != "") {
+if ($fondo != "" &amp;&amp; $letra != "") {
     print "  &lt;p&gt;Usted quiere cambiar: $fondo y $letra&lt;/p&gt;\n";
+    print "\n";
 } elseif ($fondo != "") {
     print "  &lt;p&gt;Usted quiere cambiar: $fondo&lt;/p&gt;\n";
+    print "\n";
 } elseif ($letra != "") {
     print "  &lt;p&gt;Usted quiere cambiar: $letra&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "  &lt;p&gt;Usted no quiere cambiar nada&lt;/p&gt;\n";
+    print "\n";
 }
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-7">
-    <h2>Controles en formularios (1) 7 - Casilla de verificación - Colores (2)</h2>
-
-    <p>Primera página (formulario):</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$color = rand(0, 360);
-print "  &lt;label&gt;&lt;input type=\"checkbox\" name=\"fondo\" value=\"hwb($color 80% 0%)\"&gt; Color del fondo de la página&lt;/label&gt;&lt;br&gt;\n";
-print "  &lt;label&gt;&lt;input type=\"checkbox\" name=\"letra\" value=\"hwb($color 0% 40%)\"&gt; Color de la letra de la página&lt;/label&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-
-    <p>Segunda página (resultado):</p>
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-$fondo = recoge("fondo");
-$letra = recoge("letra");
-
-print "  &lt;style&gt;body { background-color: $fondo; color: $letra; }&lt;/style&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -405,11 +242,13 @@ function recoge($key, $type = "")
 $ancho  = recoge("ancho");
 $grosor = recoge("grosor");
 
-print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "    width=\"" . $ancho + 2 * $grosor . "px\" height=\"" . $ancho + 2 * $grosor . "px\"&gt;\n";
-print "    &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"$grosor\" "
-  . "x=\"" . $grosor / 2 . "\" y=\"" . $grosor / 2 . "\" width=\"" . $ancho + $grosor . "\" height=\"" . $ancho + $grosor . "\" /&gt;\n";
+print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "       width=\"" . $ancho + 2 * $grosor . "px\" height=\"" . $ancho + 2 * $grosor . "px\"&gt;\n";
+print "    &lt;rect fill=\"white\" stroke=\"black\"\n";
+print "          stroke-width=\"$grosor\" " . "x=\"" . $grosor / 2 . "\" y=\"" . $grosor / 2 . "\"\n";
+print "          width=\"" . $ancho + $grosor . "\" height=\"" . $ancho + $grosor . "\" /&gt;\n";
 print "  &lt;/svg&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
