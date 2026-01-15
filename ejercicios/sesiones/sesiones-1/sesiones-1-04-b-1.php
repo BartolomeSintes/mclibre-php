@@ -3,9 +3,9 @@
  * Sesiones (1) 04 - sesiones-1-04-b-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-21
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Accedemos a la sesión
 session_name("sesiones-1-04-b");
 session_start();
@@ -42,10 +43,9 @@ session_start();
   <h1>Formulario Palabras en mayúsculas y minúsculas (Formulario)</h1>
 
   <form action="sesiones-1-04-b-2.php" method="get">
-
 <?php
 //Si están guardadas en la sesión las dos palabras ...
-if (isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
+if (isset($_SESSION["mayusculas"], $_SESSION["minusculas"])) {
     // ... mostramos las dos palabras
     print "    <p>Ha escrito una palabra en mayúsculas: <strong>$_SESSION[mayusculas]</strong>.</p>\n";
     print "\n";
@@ -56,49 +56,56 @@ if (isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
 print "    <p>Escriba una palabra en mayúsculas y otra en minúsculas:</p>\n";
 print "\n";
 
-print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" ";
+print "    <p>\n";
+print "      <label>\n";
+print "        Mayúsculas:\n";
+print "        <input type=\"text\" name=\"mayusculas\" ";
 
 if (isset($_SESSION["mayusculasIntento"])) {
     // Si hemos detectado un intento incorrecto en la palabra en mayúsculas, incluimos el intento en el control
     print "value=\"$_SESSION[mayusculasIntento]\" ";
-} elseif (isset($_SESSION["minusculasError"]) && isset($_SESSION["mayusculas"])) {
+} elseif (isset($_SESSION["minusculasError"], $_SESSION["mayusculas"])) {
     // Si la palabra en mayúsculas es correcta, pero hemos detectado un error en la palabra en minúsculas, incluimos la palabra correcta en el control
     print "value=\"$_SESSION[mayusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"></label> ";
+print "size=\"20\" maxlength=\"20\">\n";
+print "      </label>\n";
 
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
     // Escribimos el aviso
-    print "<span class=\"aviso\">$_SESSION[mayusculasError]</span>";
+    print "      <span class=\"aviso\">$_SESSION[mayusculasError]</span>\n";
 }
 
-print "</p>\n";
+print "    </p>\n";
 print "\n";
 
-print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" ";
+print "    <p>\n";
+print "      <label>\n";
+print "        Minúsculas:\n";
+print "        <input type=\"text\" name=\"minusculas\" ";
 
 if (isset($_SESSION["minusculasIntento"])) {
     // Si hemos detectado un intento incorrecto en la palabra en minúsculas, incluimos el intento en el control
     print "value=\"$_SESSION[minusculasIntento]\" ";
-} elseif (isset($_SESSION["mayusculasError"]) && isset($_SESSION["minusculas"])) {
+} elseif (isset($_SESSION["mayusculasError"], $_SESSION["minusculas"])) {
     // Si la palabra en minúsculas es correcta, pero hemos detectado un error en la palabra en mayúsculas, incluimos la palabra correcta en el control
     print "value=\"$_SESSION[minusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"></label> ";
+print "size=\"20\" maxlength=\"20\">\n";
+print "      </label>\n";
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos el aviso
-    print "<span class=\"aviso\">$_SESSION[minusculasError]</span>";
+    print "      <span class=\"aviso\">$_SESSION[minusculasError]</span>\n";
 }
 
-print "</p>\n";
+print "    </p>\n";
 print "\n";
 ?>
-
     <p>
       <input type="submit" value="Comprobar">
       <input type="reset">
@@ -108,7 +115,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-06">6 de diciembre de 2023</time>
+      <time datetime="2025-02-21">21 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

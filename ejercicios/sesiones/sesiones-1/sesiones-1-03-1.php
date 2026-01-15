@@ -3,9 +3,9 @@
  * Sesiones (1) 03 - sesiones-1-03-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Accedemos a la sesión
 session_name("sesiones-1-03");
 session_start();
@@ -42,9 +43,8 @@ session_start();
   <h1>Formulario Palabra en mayúsculas (Formulario)</h1>
 
   <form action="sesiones-1-03-2.php" method="get">
-
 <?php
-//Si no hemos detectado un error y hay guardada una palabra en la sesión ...
+// Si no hemos detectado un error y hay guardada una palabra en la sesión ...
 if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
     // ... mostramos la palabra
     print "    <p>Ha escrito una palabra en mayúsculas: <strong>$_SESSION[palabra]</strong>.</p>\n";
@@ -73,7 +73,6 @@ if (isset($_SESSION["error"])) {
     print "\n";
 }
 ?>
-
     <p>
       <input type="submit" value="Comprobar">
       <input type="reset">
@@ -83,7 +82,7 @@ if (isset($_SESSION["error"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-06">6 de diciembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

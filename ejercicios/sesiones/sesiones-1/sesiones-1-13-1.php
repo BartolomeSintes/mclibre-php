@@ -3,9 +3,9 @@
  * Sesiones (1) 13 - sesiones-1-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@ session_start();
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,7 +73,7 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
         </td>
         <td>
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-            width="400" height="400" viewBox="-200 -200 400 400" style="border: black 2px solid">
+               width="400" height="400" viewBox="-200 -200 400 400" style="border: black 2px solid">
 <?php
 // Dibujamos el círculo en su posición
 print "            <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" />\n";
@@ -88,7 +87,7 @@ print "            <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-06">6 de diciembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

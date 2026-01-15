@@ -3,9 +3,9 @@
  * Sesiones (1) 02 - sesiones-1-03-c-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Accedemos a la sesión
 session_name("sesiones-1-03-c");
 session_start();
@@ -61,7 +62,7 @@ if ($palabra == "") {
     $_SESSION["error"] = "No ha escrito ninguna palabra";
 } elseif (!ctype_upper($palabra)) {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior
-    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
+    $_SESSION["error"]   = "No ha escrito la palabra en mayúsculas";
     $_SESSION["intento"] = $palabra;
 } else {
     // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión
@@ -70,4 +71,3 @@ if ($palabra == "") {
 
 // Volvemos al formulario
 header("Location:sesiones-1-03-c-1.php");
-?>

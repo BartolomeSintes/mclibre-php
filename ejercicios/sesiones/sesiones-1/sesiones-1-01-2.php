@@ -3,9 +3,9 @@
  * Sesiones (1) 01 - sesiones-1-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Accedemos a la sesión
 session_name("sesiones-1-01");
 session_start();
@@ -65,25 +66,26 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el texto
-$texto   = recoge("texto");
+$texto = recoge("texto");
 
 // Comprobamos el texto y escribimos avisos si es necesario
 if ($texto == "") {
     print "  <p class=\"aviso\">No ha escrito texto.</p>\n";
+    print "\n";
 } else {
     // Si el texto es válido guardamos el texto en la sesión
     $_SESSION["texto"] = $texto;
     // y lo mostramos
     print "  <p>El texto es: <strong>$texto</strong>.</p>\n";
+    print "\n";
 }
 ?>
-
   <p><a href="sesiones-1-01-1.php">Volver a la primera página.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-06">6 de diciembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

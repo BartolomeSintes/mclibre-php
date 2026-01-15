@@ -3,9 +3,9 @@
  * Sesiones (1) 14 - sesiones-1-14-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@ session_start();
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,8 +56,8 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
         <td>
 <?php
 // Dibujamos la primera barra
-print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"$_SESSION[a]\" height=\"50\">\n";
+print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "               width=\"$_SESSION[a]\" height=\"50\">\n";
 print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hwb(200 0% 0%)\" stroke-width=\"50\" />\n";
 print "          </svg>\n";
 ?>
@@ -69,8 +68,8 @@ print "          </svg>\n";
 <?php
 // Dibujamos la segunda barra
 print "        <td>\n";
-print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"$_SESSION[b]\" height=\"50\">\n";
+print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "               width=\"$_SESSION[b]\" height=\"50\">\n";
 print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hwb(35 0% 0%)\" stroke-width=\"50\" />\n";
 print "          </svg>\n";
 print "        </td>\n";
@@ -86,7 +85,7 @@ print "        </td>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-06">6 de diciembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

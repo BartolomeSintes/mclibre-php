@@ -3,9 +3,9 @@
  * Sesiones (1) 04 - sesiones-1-04-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Accedemos a la sesión
 session_name("sesiones-1-04-b");
 session_start();
@@ -61,7 +62,7 @@ if ($mayusculas == "") {
 } elseif (!ctype_upper($mayusculas)) {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y la palabra
     $_SESSION["mayusculasIntento"] = $mayusculas;
-    $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
+    $_SESSION["mayusculasError"]   = "No ha escrito la palabra en mayúsculas";
 } else {
     // Si la palabra es correcta, guardamos en la sesión la palabra
     $_SESSION["mayusculas"] = $mayusculas;
@@ -74,7 +75,7 @@ if ($minusculas == "") {
 } elseif (!ctype_lower($minusculas)) {
     // Si la palabra está en mayúsculas, guardamos en la sesión el mensaje de error y la palabra
     $_SESSION["minusculasIntento"] = $minusculas;
-    $_SESSION["minusculasError"] = "No ha escrito la palabra en minúsculas";
+    $_SESSION["minusculasError"]   = "No ha escrito la palabra en minúsculas";
 } else {
     // Si la palabra es correcta, guardamos en la sesión la palabra
     $_SESSION["minusculas"] = $minusculas;
@@ -82,4 +83,3 @@ if ($minusculas == "") {
 
 // Volvemos al formulario
 header("Location:sesiones-1-04-b-1.php");
-?>
