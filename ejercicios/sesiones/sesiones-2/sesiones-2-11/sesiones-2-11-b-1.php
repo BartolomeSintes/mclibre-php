@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@ session_start();
 if (!isset($_SESSION["cartas"])) {
     $_SESSION["cartas"] = rand(3, 10);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -52,20 +51,22 @@ if (!isset($_SESSION["cartas"])) {
 if ($_SESSION["cartas"] == 0) {
     // Si no quedan cartas, lo dice
     print "  <p>No quedan cartas. Haga clic en el dibujo para volver a poner cartas.</p>\n";
+    print "\n";
 } elseif ($_SESSION["cartas"] == 1) {
     // Si no queda una sola carta, lo dice
     print "  <p>Queda $_SESSION[cartas] sola carta. Haga clic en el dibujo para eliminarla.</p>\n";
+    print "\n";
 } else {
     // Si quedan varias cartas, lo dice
     print "  <p>Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.</p>\n";
+    print "\n";
 }
 ?>
-
   <form action="sesiones-2-11-b-2.php">
     <p>
       <button type="submit" name="quita" value="quita" style="background-color: #eee;">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-          width="210" height="250" viewBox="-10 -10 210 250">
+             width="210" height="250" viewBox="-10 -10 210 250">
           <defs>
             <pattern id="patron-1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" >
               <rect x="0" y="0" width="10" height="10" fill="hwb(0 60% 0%)" />
@@ -73,7 +74,6 @@ if ($_SESSION["cartas"] == 0) {
               <line x1="0" y1="0" x2="10" y2="10" stroke="hwb(0 80% 0%)" stroke-width="1" />
             </pattern>
           </defs>
-
 <?php
 for ($i = 0; $i < $_SESSION["cartas"]; $i++) {
     $pos = 10 * $i;
@@ -88,7 +88,7 @@ for ($i = 0; $i < $_SESSION["cartas"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-31">31 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

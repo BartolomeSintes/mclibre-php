@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -43,29 +43,32 @@ session_start();
   <h1>Ver datos</h1>
 
 <?php
-if (!isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
+if (!isset($_SESSION["nombre"]) && !isset($_SESSION["apellidos"])) {
     // Si no hay nombre ni apellidos en la sesión, lo dice
     print "  <p>Usted no ha escrito todavía ni su nombre ni sus apellidos</p>\n";
-} elseif (isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
+    print "\n";
+} elseif (isset($_SESSION["nombre"]) && !isset($_SESSION["apellidos"])) {
     // Si hay nombre pero no hay apellidos en la sesión, lo dice
     print "  <p>Usted <strong>sólo</strong> ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
-} elseif (!isset($_SESSION["nombre"]) and isset($_SESSION["apellidos"])) {
+    print "\n";
+} elseif (!isset($_SESSION["nombre"]) && isset($_SESSION["apellidos"])) {
     // Si no hay nombre pero sí apellidos en la sesión, lo dice
     print "  <p>Usted <strong>sólo</strong> ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
+    print "\n";
 } else {
     // Si hay nombre y apellidos en la sesión, lo dice
     print "  <p>Usted ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
     print "\n";
     print "  <p>Usted ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
+    print "\n";
 }
 ?>
-
   <p><a href="index.php">Volver al inicio.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-31">31 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

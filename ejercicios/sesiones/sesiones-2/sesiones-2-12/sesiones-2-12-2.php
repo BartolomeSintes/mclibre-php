@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -59,10 +59,8 @@ $moneda = recoge("moneda");
 $accion = recoge("accion");
 
 if ($accion == "Vaciar hucha") {
-    // Si la acción es vacíar la hucha, se vacía
+    // Si la acción es vaciar la hucha, se vacía
     $_SESSION["ahorro"] = 0;
-    // } elseif ($moneda == 0.01 || $moneda == 0.02 || $moneda == 0.05 || $moneda == 0.10
-    //                                              || $moneda == 0.20 || $moneda == 0.50 || $moneda == 1 || $moneda == 2) {
 } elseif (in_array($moneda, [0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1, 2])) {
     // Si llega una moneda, se añade
     $_SESSION["ahorro"] += $moneda;

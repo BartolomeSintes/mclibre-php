@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -59,13 +59,13 @@ $nombre = recoge("nombre");
 
 if ($nombre == "") {
     $_SESSION["avisoNombre"] = "No ha escrito su nombre";
-    $_SESSION["paso"] = 1;
+    $_SESSION["paso"]        = 1;
     header("Location:sesiones-2-03-1.php");
     exit;
 } else {
     unset($_SESSION["avisoNombre"]);
     $_SESSION["nombre"] = $nombre;
-    $_SESSION["paso"] = 3;
+    $_SESSION["paso"]   = 3;
     header("Location:sesiones-2-03-3.php");
     exit;
 }

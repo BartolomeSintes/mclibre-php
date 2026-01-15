@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 session_name("sesiones-2-13");
 session_start();
 
-// Si falta una de los dos variables de sesión, reiniciamos los valores
+// Si falta una de las tres variables de sesión, reiniciamos los valores
 if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
     $_SESSION["puntosG"] = 0;
     $_SESSION["puntosM"] = 0;
@@ -34,7 +34,6 @@ if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
     $_SESSION["caraG"]   = "&#128572;";
     $_SESSION["caraM"]   = "&#128586;";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -72,6 +71,7 @@ print "    <tr style=\"font-size: 400%\">\n";
 
 // Mostramos la puntuación del gato
 print "      <td>$_SESSION[puntosG]</td>\n";
+
 print "      <td></td>\n";
 
 // Mostramos la puntuación del mono
@@ -97,7 +97,7 @@ print "    </tr>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-31">31 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

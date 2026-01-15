@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,8 +50,8 @@ if (!isset($_SESSION["nombre"]) || !isset($_SESSION["apellidos"])) {
   <h1>Formulario en dos pasos (Resultado)</h1>
 
 <?php
-    // Mostramos los datos recibidos
-    print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $_SESSION[apellidos]</strong>.</p>\n";
+// Mostramos los datos recibidos
+print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $_SESSION[apellidos]</strong>.</p>\n";
 print "\n";
 ?>
   <p><a href="sesiones-2-01-1.php">Volver al principio.</a></p>
@@ -59,7 +59,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-31">31 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

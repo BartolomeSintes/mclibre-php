@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,6 @@ if (!isset($_SESSION["paso"])) {
 } else {
     $_SESSION["paso"] = 1;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,15 +52,15 @@ if (!isset($_SESSION["paso"])) {
   <h1>Formulario seguro en tres pasos (Resultado)</h1>
 
 <?php
-    print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $_SESSION[apellido1] $_SESSION[apellido2]</strong>.</p>\n";
-    print "\n";
+print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $_SESSION[apellido1] $_SESSION[apellido2]</strong>.</p>\n";
+print "\n";
 ?>
   <p><a href="sesiones-2-03-1.php">Volver al principio.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-01-31">31 de enero de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

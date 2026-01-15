@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-01-31
+ * @version   2025-02-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 session_name("sesiones-2-11");
 session_start();
 
-// Si falta una de los dos variables de sesión, redirigimos a la primera página
+// Si falta una de las dos variables de sesión, redirigimos a la primera página
 if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
     header("Location:sesiones-2-11-1.php");
     exit;
