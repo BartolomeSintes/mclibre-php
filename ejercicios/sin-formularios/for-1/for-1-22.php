@@ -1,11 +1,11 @@
 <?php
 /**
- * for (1) 21 - for-1-21.php
+ * for (1) 22 - for-1-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-11-11
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Diana de un disparo.
+    Diana.
     for (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Diana de un disparo</h1>
+  <h1>Diana</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
@@ -54,32 +54,31 @@ for ($i = 0; $i < 10; $i++) {
     print "      <text x=\"0\" y=\"" . 195 - 20 * $i . "\" text-anchor=\"middle\" font-size=\"13\">" . $i + 1 . "</text>\n";
 }
 
-$x = rand(-200, 200);
-$y = rand(-200, 200);
-
-if (10 - floor(sqrt($x ** 2 + $y ** 2) / 20) > 0) {
-    $puntos = 10 - floor(sqrt($x ** 2 + $y ** 2) / 20);
-} else {
-    $puntos = 0;
+$puntos   = 0;
+$disparos = rand(1, 10);
+for ($i = 0; $i < $disparos; $i++) {
+    $x = rand(-200, 200);
+    $y = rand(-200, 200);
+    $puntos += (10 - floor(sqrt($x ** 2 + $y ** 2) / 20) > 0) ? 10 - floor(sqrt($x ** 2 + $y ** 2) / 20) : 0;
+    print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\"\n";
+    print "            d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 -0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" />\n";
 }
-
-print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\"\n";
-print "            d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 -0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 print "\n";
 
-print "  <p>Ha obtenido <strong>$puntos</strong> punto";
-if ($puntos != 1) {
-    print "s";
-}
-print ".</p>\n";
+print "  <h2>Estadísticas</h2>\n";
+print "\n";
+print "  <ul>\n";
+print "    <li>Número de disparos: <strong>$disparos</strong>.</li>\n";
+print "    <li>Puntuación obtenida: <strong>$puntos</strong>.</li>\n";
+print "  </ul>\n";
 print "\n";
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-11-11">11 de noviembre de 2025</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

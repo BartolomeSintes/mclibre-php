@@ -35,7 +35,8 @@
         <li><a href="index.html#ejercicio-13">13 - Dado máximo</a></li>
         <li><a href="index.html#ejercicio-14">14 - Dado mínimo</a></li>
         <li><a href="index.html#ejercicio-15">15 - Contar dados máximos</a></li>
-        <li><a href="index.html#ejercicio-21">21 - Diana</a></li>
+        <li><a href="index.html#ejercicio-21">21 - Diana de un disparo</a></li>
+        <li><a href="index.html#ejercicio-22">22 - Diana</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
@@ -50,7 +51,8 @@
         <li><a href="#ejercicio-13">13 - Dado máximo</a></li>
         <li><a href="#ejercicio-14">14 - Dado mínimo</a></li>
         <li><a href="#ejercicio-15">15 - Contar dados máximos</a></li>
-        <li><a href="#ejercicio-21">21 - Diana</a></li>
+        <li><a href="#ejercicio-21">21 - Diana de un disparo</a></li>
+        <li><a href="#ejercicio-22">22 - Diana</a></li>
       </ul>
     </div>
   </nav>
@@ -378,10 +380,12 @@ $minimo = 7;
 
 if ($numero == 1) {
     print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+    print "\n";
 } else {
     print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+    print "\n";
 }
-print "\n";
+
 print "  &lt;p&gt;\n";
 for ($i = 0; $i &lt; $numero; $i++) {
     $dado = rand(1, 6);
@@ -448,7 +452,56 @@ print "\n";
   </section>
 
   <section id="ejercicio-21">
-    <h3>for (1) 21 - Diana (1)</h3>
+    <h3>for (1) 21 - Diana de un disparo</h3>
+
+    <p>En esta solución, el dibujo de los círculos de la diana se hace mediante dos bucles.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+print "  &lt;p&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "         width=\"420\" height=\"420\" viewBox=\"-210 -210 420 420\"&gt;\n";
+
+for ($i = 0; $i &lt; 5; $i++) {
+    print "      &lt;circle cx=\"0\" cy=\"0\" r=\"" . 200 - 40 * $i . "\" fill=\"red\" /&gt;\n";
+    print "      &lt;circle cx=\"0\" cy=\"0\" r=\"" . 200 - 40 * $i - 20 . "\" fill=\"#ddd\" /&gt;\n";
+}
+
+for ($i = 0; $i &lt; 10; $i++) {
+    print "      &lt;text x=\"0\" y=\"" . 195 - 20 * $i . "\" text-anchor=\"middle\" font-size=\"13\"&gt;" . $i + 1 . "&lt;/text&gt;\n";
+}
+
+$x = rand(-200, 200);
+$y = rand(-200, 200);
+
+if (10 - floor(sqrt($x ** 2 + $y ** 2) / 20) &gt; 0) {
+    $puntos = 10 - floor(sqrt($x ** 2 + $y ** 2) / 20);
+} else {
+    $puntos = 0;
+}
+
+print "      &lt;path fill=\"black\" stroke=\"white\" stroke-width=\"2\"\n";
+print "            d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 -0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" /&gt;\n";
+print "    &lt;/svg&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+print "  &lt;p&gt;Ha obtenido &lt;strong&gt;$puntos&lt;/strong&gt; punto";
+if ($puntos != 1) {
+    print "s";
+}
+print ".&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-22">
+    <h3>for (1) 22 - Diana</h3>
+
+    <p>En esta solución, el cálculo de la puntuación utiliza el operador ternario.</p>
 
     <div class="codigo">
       <pre>
@@ -492,7 +545,7 @@ print "\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de enero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
