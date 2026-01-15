@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-02-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -59,7 +59,7 @@ print "\n";
 $eliminar = max($cartas);
 
 // Mostramos el valor máximo
-print "<p>La carta más alta es un $eliminar.</p>\n";
+print "  <p>La carta más alta es un $eliminar.</p>\n";
 print "\n";
 
 // Mostramos la carta de valor máximo
@@ -88,13 +88,13 @@ print "  </p>\n";
 print "\n";
 
 // Calculamos y mostramos el valor máximo actual
-print "<p>La carta más alta es ahora un " . max($cartas) . ".</p>\n";
+print "  <p>La carta más alta es ahora un " . max($cartas) . ".</p>\n";
 print "\n";
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

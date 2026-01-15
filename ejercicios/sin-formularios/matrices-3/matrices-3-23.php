@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,10 +47,11 @@ print "\n";
 $numero1 = rand(1, 3);
 if ($numero1 == 1) {
     print "  <p>El atacante ataca con $numero1 dado:</p>\n";
+    print "\n";
 } else {
     print "  <p>El atacante ataca con $numero1 dados:</p>\n";
+    print "\n";
 }
-print "\n";
 
 // Guardamos los valores del Atacante en la matriz $dados1
 $dados1 = [];
@@ -73,10 +74,11 @@ print "\n";
 $numero2 = rand(1, 2);
 if ($numero2 == 1) {
     print "  <p>El defensor defiende con $numero2 dado:</p>\n";
+    print "\n";
 } else {
     print "  <p>El defensor defiende con $numero2 dados:</p>\n";
+    print "\n";
 }
-print "\n";
 
 // Guardamos los valores del Defensor en la matriz $dados2
 $dados2 = [];
@@ -123,7 +125,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
