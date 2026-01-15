@@ -3,9 +3,9 @@
  * Validación de formulario - validacion-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2010 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2010-03-25
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,21 +63,20 @@ function cabecera($texto)
     print "\n";
 }
 
-define("FORM_METHOD",  "get");
-define("TAM_NOMBRE",   40);
+define("FORM_METHOD", "get");
+define("TAM_NOMBRE", 40);
 define("TAM_TELEFONO", 9);
-define("TAM_CORREO",   40);
+define("TAM_CORREO", 40);
 
-$nombre   = recoge("nombre");
-$telefono = recoge("telefono");
-$correo   = recoge("correo");
-$nombrePatron    = "/^[[:alpha:]]+$/";
-$telefonoPatron  = "/^[0-9]{9}$/";
-$correoPatron    = "/^[0-9abcdefghijklmnopqrstuvwxyz\._-]+@"
-    . "[0-9abcdefghijklmnopqrstuvwxyz]+(\.[abcdefghijklmnopqrstuvwxyz]+){1,2}$/";
-$nombreOk   = preg_match($nombrePatron,   $nombre);
-$telefonoOk = preg_match($telefonoPatron, $telefono);
-$correoOk   = preg_match($correoPatron,   $correo);
+$nombre         = recoge("nombre");
+$telefono       = recoge("telefono");
+$correo         = recoge("correo");
+$nombrePatron   = "/^[[:alpha:]]+$/";
+$telefonoPatron = "/^[0-9]{9}$/";
+$correoPatron   = "/^[0-9abcdefghijklmnopqrstuvwxyz\._-]+@[0-9abcdefghijklmnopqrstuvwxyz]+(\.[abcdefghijklmnopqrstuvwxyz]+){1,2}$/";
+$nombreOk       = preg_match($nombrePatron, $nombre);
+$telefonoOk     = preg_match($telefonoPatron, $telefono);
+$correoOk       = preg_match($correoPatron, $correo);
 
 if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     cabecera("Validación de formulario (Resultado válido)");
@@ -93,19 +92,18 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
 } else {
     if (isset($_REQUEST["enviar"])) {
         cabecera("Validación de formulario (Resultado inválido)");
-        print"  <p>Por favor, corrija los datos incorrectos:</p>\n";
+        print "  <p>Por favor, corrija los datos incorrectos:</p>\n";
         print "\n";
     } else {
         cabecera("Validación de formulario (Formulario)");
-        print"  <p>Escriba los datos siguientes:</p>\n";
+        print "  <p>Escriba los datos siguientes:</p>\n";
         print "\n";
     }
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tr>\n";
     print "        <td>Nombre:</td>\n";
-    print "        <td><input type=\"text\" name=\"nombre\" size=\""
-        . TAM_NOMBRE . "\" maxlength=\"" . TAM_NOMBRE . "\" value=\"$nombre\">";
+    print "        <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" maxlength=\"" . TAM_NOMBRE . "\" value=\"$nombre\">";
     if (isset($_REQUEST["nombre"]) && !$nombreOk) {
         print " <span class=\"aviso\">El nombre no es correcto</span>";
     }
@@ -113,8 +111,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     print "      </tr>\n";
     print "      <tr>\n";
     print "        <td>Teléfono:</td>\n";
-    print "        <td><input type=\"text\" name=\"telefono\" size=\""
-        . TAM_TELEFONO . "\" maxlength=\"" . TAM_TELEFONO . "\" value=\"$telefono\">";
+    print "        <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" maxlength=\"" . TAM_TELEFONO . "\" value=\"$telefono\">";
     if (isset($_REQUEST["telefono"]) && !$telefonoOk) {
         print " <span class=\"aviso\">El teléfono no es correcto</span>";
     }
@@ -122,8 +119,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     print "      </tr>\n";
     print "      <tr>\n";
     print "        <td>Correo:</td>\n";
-    print "        <td><input type=\"text\" name=\"correo\" size=\""
-        . TAM_CORREO . "\" maxlength=\"" . TAM_CORREO . "\" value=\"$correo\">";
+    print "        <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" maxlength=\"" . TAM_CORREO . "\" value=\"$correo\">";
     if (isset($_REQUEST["correo"]) && !$correoOk) {
         print " <span class=\"aviso\">El correo no es correcto</span>";
     }
@@ -137,13 +133,13 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     }
     print "    <p class=\"der\"><input type=\"submit\" name=\"enviar\" value=\"Enviar\"></p>\n";
     print "  </form>\n";
+    print "\n";
 }
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2010-03-25">25 de marzo de 2010</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

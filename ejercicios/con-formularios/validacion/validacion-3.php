@@ -3,9 +3,9 @@
  *  Entrada de datos - validacion-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2010 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2010-03-25
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -151,7 +151,7 @@ for ($i = 1; $i <= $numeroValores; $i++) {
 
 if ($valoresTodoOk) {
     cabecera("Resultado válido");
-    print"  <p>Los valores introducidos son correctos.</p>\n";
+    print "  <p>Los valores introducidos son correctos.</p>\n";
     print "\n";
     for ($i = 1; $i <= $numeroValores; $i++) {
         print "  <p>Valor $i: <strong>$valores[$i]</strong></p>\n";
@@ -160,15 +160,14 @@ if ($valoresTodoOk) {
     pie(CON_ENLACE, SIN_BOTONES, $numeroValores);
 } elseif (!$valoresTodoVacio && (isset($_REQUEST["enviar"]) || isset($_REQUEST["anyadir"]) || isset($_REQUEST["quitar"]))) {
     cabecera("Resultado inválido");
-    print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
+    print "  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     for ($i = 1; $i <= $numeroValores; $i++) {
         print "      <tr>\n";
         print "        <td>Valor $i:</td>\n";
-        print "        <td><input type=\"text\" name=\"valores[$i]\" size=\""
-            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"" . $valores[$i] . "\">";
+        print "        <td><input type=\"text\" name=\"valores[$i]\" size=\"" . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"" . $valores[$i] . "\">";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         } elseif ($valores[$i] == "") {
@@ -180,15 +179,14 @@ if ($valoresTodoOk) {
     pie(CON_ENLACE, CON_BOTONES, $numeroValores);
 } else {
     cabecera("Formulario");
-    print"  <p>Escriba $numeroValores números:</p>\n";
+    print "  <p>Escriba $numeroValores números:</p>\n";
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     for ($i = 1; $i <= $numeroValores; $i++) {
         print "      <tr>\n";
         print "        <td>Valor $i:</td>\n";
-        print "        <td><input type=\"text\" name=\"valores[$i]\" size=\""
-            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\">";
+        print "        <td><input type=\"text\" name=\"valores[$i]\" size=\"" . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\">";
         print "</td>\n";
         print "      </tr>\n";
     }
