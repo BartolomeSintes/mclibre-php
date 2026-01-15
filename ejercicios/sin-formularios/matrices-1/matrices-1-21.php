@@ -42,7 +42,6 @@
 
 <?php
 $numero = rand(1, 10);
-$numero = 1;
 
 // Guardamos los valores de los dados en la matriz $dados
 $dados = [];

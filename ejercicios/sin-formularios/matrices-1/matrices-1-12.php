@@ -61,7 +61,11 @@ print "\n";
 // Creamos la matriz con los valores complementarios
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] = $inicial[$i] == 1 ? 0 : 1;
+    if ($inicial[$i] == 1) {
+        $resultado[$i] = 0;
+    } else {
+        $resultado[$i] = 1;
+    }
 }
 
 // Otra forma de calcular los valores complementarios
