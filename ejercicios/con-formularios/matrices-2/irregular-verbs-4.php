@@ -3,9 +3,9 @@
  * Irregular verbs 4 - irregular-verbs-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-07
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,6 @@
   <h1>Irregular verbs 4</h1>
 
   <form action="irregular-verbs-4.php" method="get">
-
 <?php
 // Función de recogida de datos
 function recoge($key, $type = "")
@@ -131,7 +130,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-07">7 de noviembre de 2016</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
