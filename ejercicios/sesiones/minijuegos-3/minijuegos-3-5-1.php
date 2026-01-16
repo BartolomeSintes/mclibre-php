@@ -3,9 +3,9 @@
  * Mueve fichas - minijuegos-3-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-23
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 
 session_name("minijuegos-3-5");
@@ -33,7 +34,6 @@ if (!isset($_SESSION["mensaje"])) {
     $_SESSION["b"]       = 0;
     $_SESSION["mensaje"] = "";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,10 +56,9 @@ if (!isset($_SESSION["mensaje"])) {
 <body>
   <h1>Mueve fichas</h1>
 
-  <p>El objetivo del juego es mover las tres fichas hasta la casilla de la derecha. Elija en cada turno una ficha y se desplazará hacia la meta tantas casillas como marque el dado.</p>
+  <p>El objetivo del juego es mover las tres fichas hasta la casilla de la derecha. Elija en cada ronda una ficha y se desplazará hacia la meta tantas casillas como marque el dado.</p>
 
   <form action="minijuegos-3-5-2.php" method="get">
-
 <?php
 print "    <p>Movimiento: <img src=\"img/dados/$_SESSION[dado].svg\" alt=\"$_SESSION[dado]\" width=\"60\" height=\"60\"></p>\n";
 print "\n";
@@ -68,7 +67,7 @@ print "      <tr>\n";
 for ($i = 0; $i < 8; $i++) {
     if ($i == $_SESSION["r"]) {
         print "        <td>\n";
-        print "          <button type=\"input\" name=\"ficha\" value=\"r\" />\n";
+        print "          <button type=\"input\" name=\"ficha\" value=\"r\">\n";
         print "            <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" viewBox=\"-25 -25 50 50\">\n";
         print "              <circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"red\" stroke=\"black\" />\n";
         print "            </svg>\n";
@@ -83,7 +82,7 @@ print "      <tr>\n";
 for ($i = 0; $i < 8; $i++) {
     if ($i == $_SESSION["g"]) {
         print "        <td>\n";
-        print "          <button type=\"input\" name=\"ficha\" value=\"g\" />\n";
+        print "          <button type=\"input\" name=\"ficha\" value=\"g\">\n";
         print "            <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" viewBox=\"-25 -25 50 50\">\n";
         print "              <circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"green\" stroke=\"black\" />\n";
         print "            </svg>\n";
@@ -94,12 +93,11 @@ for ($i = 0; $i < 8; $i++) {
     }
 }
 print "      </tr>\n";
-print "      </tr>\n";
 print "      <tr>\n";
 for ($i = 0; $i < 8; $i++) {
     if ($i == $_SESSION["b"]) {
         print "        <td>\n";
-        print "          <button type=\"input\" name=\"ficha\" value=\"b\" />\n";
+        print "          <button type=\"input\" name=\"ficha\" value=\"b\">\n";
         print "            <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" viewBox=\"-25 -25 50 50\">\n";
         print "              <circle cx=\"0\" cy=\"0\" r=\"20\" fill=\"blue\" stroke=\"black\" />\n";
         print "            </svg>\n";
@@ -111,22 +109,22 @@ for ($i = 0; $i < 8; $i++) {
 }
 print "      </tr>\n";
 print "    </table>\n";
-print "    <p>\n";
+print "\n";
 if ($_SESSION["mensaje"] != "") {
     print "    <p>$_SESSION[mensaje]</p>\n";
     print "\n";
 }
-print "        <input type=\"submit\" name=\"ficha\" value=\"Reiniciar\">\n";
+print "    <p>\n";
+print "      <input type=\"submit\" name=\"ficha\" value=\"Reiniciar\">\n";
 print "    </p>\n";
 print "\n";
-
 ?>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-02-08">8 de febrero de 2023</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

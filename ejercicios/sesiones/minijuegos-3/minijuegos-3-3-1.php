@@ -3,9 +3,9 @@
  * Quita cartas en orden (1) - minijuegos-3-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-23
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("minijuegos-3-3");
 session_start();
@@ -30,7 +31,6 @@ if (!isset($_SESSION["nCartas"])) {
     $_SESSION["cartas"]  = range(1, $_SESSION["nCartas"]);
     shuffle($_SESSION["cartas"]);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,14 +50,16 @@ if (!isset($_SESSION["nCartas"])) {
 
   <form action="minijuegos-3-3-2.php" method="get">
     <p>Haga clic en las cartas en orden numérico creciente:</p>
+
 <?php
-print "        <p>\n";
+print "    <p>\n";
 foreach ($_SESSION["cartas"] as $carta) {
-    print "        <button type=\"submit\" name=\"carta\" value=\"$carta\" style=\"border: none; background-color: transparent;\" >\n";
-    print "          <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
-    print "        </button>\n";
+    print "      <button type=\"submit\" name=\"carta\" value=\"$carta\" style=\"border: none; background-color: transparent;\" >\n";
+    print "        <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+    print "      </button>\n";
 }
-print "        </p\n";
+print "    </p>\n";
+print "\n";
 ?>
     <p><input type="submit" name="accion" value="Reiniciar"></p>
   </form>
@@ -65,7 +67,7 @@ print "        </p\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-23">23 de noviembre de 2021</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

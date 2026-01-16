@@ -3,9 +3,9 @@
  * Minijuegos (3) 1 - minijuegos-3-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -52,7 +52,6 @@ for ($i = 1; $i <= $_SESSION["dados"]; $i++) {
 }
 print "</p>\n";
 print "\n";
-
 ?>
   <form action="minijuegos-3-1-2.php" method="get">
     <p>Haga clic en los botones para aumentar o disminuir el número de dados o para volver a tirarlos:</p>
@@ -73,7 +72,7 @@ print "      <span style=\"font-size: 2rem\">$_SESSION[dados]</span>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Juego infinito de dados: alcanzar puntuación - minijuegos-3-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-23
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("minijuegos-3-4");
 session_start();
@@ -29,7 +30,6 @@ if (!isset($_SESSION["nDados"])) {
     $_SESSION["nDados"]   = 1;
     $_SESSION["objetivo"] = 4;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,44 +48,44 @@ if (!isset($_SESSION["nDados"])) {
   <h1>El juego infinito de dados: alcanzar puntuación</h1>
 
   <form action="minijuegos-3-4-2.php" method="get">
-
 <?php
-print "     <p>Objetivo a conseguir: $_SESSION[objetivo]</p>\n";
+print "    <p>Objetivo a conseguir: $_SESSION[objetivo]</p>\n";
 print "\n";
-print "<p>Tirada de dados:</p>\n";
+print "    <p>Tirada de dados:</p>\n";
 print "\n";
-print "     <p>\n";
+print "    <p>\n";
 $total = 0;
 for ($i = 0; $i < $_SESSION["nDados"]; $i++) {
     $dado = rand(1, 6);
     $total += $dado;
     print "      <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"90\" height=\"90\">\n";
 }
-print "    </p\n";
+print "    </p>\n";
+print "\n";
 if ($total == $_SESSION["objetivo"]) {
     print "    <p>¡Objetivo conseguido! ¡A por el próximo!</p>\n";
     print "\n";
     print "    <p>\n";
-    print "        <input type=\"submit\" name=\"accion\" value=\"Siguiente objetivo\">\n";
-    print "        <input type=\"submit\" name=\"accion\" value=\"Reiniciar\">\n";
+    print "      <input type=\"submit\" name=\"accion\" value=\"Siguiente objetivo\">\n";
+    print "      <input type=\"submit\" name=\"accion\" value=\"Reiniciar\">\n";
     print "    </p>\n";
+    print "\n";
 } else {
     print "    <p>¡Inténtalo de nuevo!</p>\n";
     print "\n";
     print "    <p>\n";
-    print "        <input type=\"submit\" name=\"accion\" value=\"Volver a lanzar\">\n";
-    print "        <input type=\"submit\" name=\"accion\" value=\"Reiniciar\">\n";
+    print "      <input type=\"submit\" name=\"accion\" value=\"Volver a lanzar\">\n";
+    print "      <input type=\"submit\" name=\"accion\" value=\"Reiniciar\">\n";
     print "    </p>\n";
-
+    print "\n";
 }
-print "\n";
 ?>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-23">23 de noviembre de 2021</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
