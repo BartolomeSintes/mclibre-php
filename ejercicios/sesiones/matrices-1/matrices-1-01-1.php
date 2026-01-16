@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones Matrices (1) 1 - matrices-1-01-1.php
+ * Sesiones Matrices (1) 01-1 - matrices-1-01-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-04
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -62,16 +62,19 @@ if (!count($_SESSION["nombres"])) {
     // ... lo indicamos
     print "    <p>Todavía no se han introducido nombres.</p>\n";
 } else {
-    // si lo hay, los mostramos
+    // Si lo hay, los mostramos
     print "    <p>Datos introducidos:</p>\n";
+    print "\n";
     print "    <ul>\n";
     foreach ($_SESSION["nombres"] as $valor) {
         print "      <li>$valor</li>\n";
     }
     print "    </ul>\n";
     print "\n";
-    print "    <p><input type=\"submit\" name=\"accion\" value=\"Cerrar sesión\"> "
-        . "(se perderán los datos almacenados).</p>\n";
+    print "    <p>\n";
+    print "      <input type=\"submit\" name=\"accion\" value=\"Cerrar sesión\">\n";
+    print "      (se perderán los datos almacenados).\n";
+    print "    </p>\n";
 }
 ?>
   </form>
@@ -79,7 +82,7 @@ if (!count($_SESSION["nombres"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-12-04">4 de diciembre de 2021</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -1,11 +1,11 @@
 <?php
 /**
- * Descubra dibujos - matrices-1-14-1.php
+ * Sesiones Matrices (1) 14-1 - Descubra dibujos - matrices-1-14-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ if (!isset($_SESSION["dibujos"])) {
     // ... creamos todas las variables de sesión
     $_SESSION["numeroDibujos"] = 7;
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = rand(128336, 128359);
+        $_SESSION["dibujos"][$i]    = rand(128336, 128359);
         $_SESSION["destapados"][$i] = false;
     }
 }
@@ -70,7 +70,7 @@ print "\n";
 print "  <form action=\"matrices-1-14-2.php\">\n";
 print "    <p>\n";
 // Escribimos los emojis en botones de formulario ...
-for ($i = 0; $i< $_SESSION["numeroDibujos"]; $i++) {
+for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
     print "      <button name=\"invierte\" value=\"$i\" style=\"font-size: 4rem; width: 6rem;\">\n";
     // Si está destapado ...
     if ($_SESSION["destapados"][$i]) {
@@ -84,12 +84,12 @@ for ($i = 0; $i< $_SESSION["numeroDibujos"]; $i++) {
 }
 print "    </p>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

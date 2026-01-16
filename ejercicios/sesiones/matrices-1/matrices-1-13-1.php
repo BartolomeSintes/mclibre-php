@@ -1,11 +1,11 @@
 <?php
 /**
- * Elimine dibujos en orden - matrices-1-13-1.php
+ * Sesiones Matrices (1) 13-1 - Elimine dibujos en orden - matrices-1-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -35,7 +35,6 @@ if (!isset($_SESSION["dibujos"])) {
     }
     $_SESSION["deseado"] = $_SESSION["dibujos"][array_rand($_SESSION["dibujos"])];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,8 +58,10 @@ if (!isset($_SESSION["dibujos"])) {
 print "  <h1>$_SESSION[numeroDibujos] dibujos</h1>\n";
 print "\n";
 // Escribimos el emoji que hay que seleccionar
-print "  <p>Haga clic en el siguiente dibujo: <span style=\"font-size: 400%\">"
-     . "&#$_SESSION[deseado];</span>.</p>\n";
+print "  <p>\n";
+print "    Haga clic en el siguiente dibujo:\n";
+print "    <span style=\"font-size: 400%\">&#$_SESSION[deseado];</span>.\n";
+print "  </p>\n";
 print "\n";
 print "  <form action=\"matrices-1-13-2.php\">\n";
 print "    <p>\n";
@@ -72,12 +73,12 @@ foreach ($_SESSION["dibujos"] as $indice => $valor) {
 }
 print "    </p>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-05">5 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

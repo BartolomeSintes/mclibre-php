@@ -1,6 +1,6 @@
 <?php
 /**
- * Elimine dibujos - matrices-1-11-2.php
+ * Sesiones Matrices (1) 11-2 - Elimine dibujos - matrices-1-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
