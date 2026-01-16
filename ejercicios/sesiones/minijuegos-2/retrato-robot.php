@@ -3,9 +3,9 @@
  * Retrato Robot - retrato-robot.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"]) || !isset($_SESSION["c"])) 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
   <style>
-    table { border-collapse: collapse; ; margin-left: auto; margin-right: auto; }
+    table { border-collapse: collapse; margin-left: auto; margin-right: auto; }
     td { padding: 0; }
     img { vertical-align: bottom; }
   </style>
@@ -97,20 +97,28 @@ if ($mod == 1) {
 
 print "      <tr>\n";
 print "        <td><img src=\"img/retratos/retratos-$_SESSION[c]-3.jpg\" alt=\"ojos\"></td>\n";
-print "        <td><button type=\"submit\" name=\"mod\" value=\"3\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
+print "        <td>\n";
+print "          <button type=\"submit\" name=\"mod\" value=\"3\">\n";
+print "            <img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\">\n";
+print "          </button>\n";
+print "        </td>\n";
 print "      </tr>\n";
 print "      <tr>\n";
 print "        <td><img src=\"img/retratos/retratos-$_SESSION[b]-2.jpg\" alt=\"nariz\"></td>\n";
-print "        <td><button type=\"submit\" name=\"mod\" value=\"2\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
+print "        <td>\n";
+print "          <button type=\"submit\" name=\"mod\" value=\"2\">\n";
+print "            <img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\">\n";
+print "          </button>\n";
+print "        </td>\n";
 print "      </tr>\n";
 print "      <tr>\n";
 print "        <td><img src=\"img/retratos/retratos-$_SESSION[a]-1.jpg\" alt=\"boca\"></td>\n";
-print "        <td><button type=\"submit\" name=\"mod\" value=\"1\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
+print "        <td>\n";
+print "          <button type=\"submit\" name=\"mod\" value=\"1\">\n";
+print "            <img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\">\n";
+print "          </button>\n";
+print "        </td>\n";
 print "      </tr>\n";
-
 ?>
     </table>
   </form>
@@ -118,7 +126,7 @@ print "      </tr>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Multiplicar 1-2 - multiplicar-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -90,8 +90,10 @@ if ($respuestaOk) {
         print "  <p class=\"aviso\">¡Respuesta incorrecta!</p>\n";
         print "\n";
 
-        print "  <p>La respuesta correcta no es <strong>$respuesta</strong>. "
-            . "La respuesta correcta es <strong>$respuestaCorrecta</strong>.</p>\n";
+        print "  <p>\n";
+        print "    La respuesta correcta no es <strong>$respuesta</strong>.\n";
+        print "    La respuesta correcta es <strong>$respuestaCorrecta</strong>.\n";
+        print "  </p>\n";
         print "\n";
 
         print "  <table class=\"grande\">\n";
@@ -104,20 +106,19 @@ if ($respuestaOk) {
         print "      <td>$_SESSION[b]</td>\n";
         print "    </tr>\n";
         print "    <tr>\n";
-        print "      <td colspan=\"2\" style=\"border-top: black 2px solid;\">"
-            . "$respuestaCorrecta</td>\n";
+        print "      <td colspan=\"2\" style=\"border-top: black 2px solid;\">$respuestaCorrecta</td>\n";
         print "    </tr>\n";
         print "  </table>\n";
+        print "\n";
     }
 }
 ?>
-
   <p><a href="multiplicar-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

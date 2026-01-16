@@ -3,9 +3,9 @@
  * Puntería 1-2 - punteria-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-08
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,12 +25,10 @@ session_name("punteria");
 session_start();
 
 // Si algún número no está guardado en la sesión, vuelve al formulario
-if (!isset($_SESSION["ancho"]) || !isset($_SESSION["r"])
-    || !isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
+if (!isset($_SESSION["ancho"], $_SESSION["r"], $_SESSION["x"], $_SESSION["y"])) {
     header("Location:punteria-1-1.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -79,20 +77,20 @@ $yuOk = false;
 
 if ($xu == "" || !is_numeric($xu) || !ctype_digit($xu)) {
     print "  <p class=\"aviso\">Por favor, indique la coordenada X del punto.</p>\n";
+    print "\n";
 } else {
     $xuOk = true;
 }
 
 if ($yu == "" || !is_numeric($yu) || !ctype_digit($yu)) {
     print "  <p class=\"aviso\">Por favor, indique la coordenada Y del punto.</p>\n";
+    print "\n";
 } else {
     $yuOk = true;
 }
 
 if ($xuOk && $yuOk) {
-    if ( ($xu - $_SESSION["x"]) * ($xu - $_SESSION["x"])
-        + ($yu - $_SESSION["y"]) * ($yu - $_SESSION["y"])
-        <= $_SESSION["r"] * $_SESSION["r"]) {
+    if (($xu - $_SESSION["x"]) ** 2 + ($yu - $_SESSION["y"]) ** 2 <= $_SESSION["r"] * 2) {
         print "  <p>¡Enhorabuena! Ha acertado.</p>\n";
         print "\n";
     } else {
@@ -101,13 +99,12 @@ if ($xuOk && $yuOk) {
     }
 }
 ?>
-
   <p><a href="punteria-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-08">8 de noviembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
      <p class="licencia">
