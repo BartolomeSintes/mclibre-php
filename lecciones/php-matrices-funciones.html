@@ -303,9 +303,9 @@ Array
 Array
 (
     [0] =&gt; 30
-    [a] =&gt; 40
+    [b] =&gt; 40
     [1] =&gt; 10
-    [b] =&gt; 20
+    [a] =&gt; 20
 )</pre>
           </div>
         </div>
@@ -425,7 +425,7 @@ print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>Para contar todos los elementos de una matriz multidimensional, se puede utilizar la función <span class="php-fun"><span class="php-fun">count($matriz, COUNT_RECURSIVE)</span></span>.</p>
+    <p>Para contar todos los elementos de una matriz multidimensional, se puede llamar a la función añadiendo un segundo argumento: <span class="php-fun"><span class="php-fun">count($matriz, COUNT_RECURSIVE)</span></span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -525,7 +525,7 @@ print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 
     <p>La función <a href="https://www.php.net/manual/en/function.array-count-values.php"><span class="php-fun">array_count_values($matriz)</span></a> cuenta cuántos valores hay de cada valor de una matriz.</p>
 
-    <p>La matriz devuelta tiene como índices los valores de la matriz original y como valores la cantidad de veces que aparece el valor.</p>
+    <p>La matriz devuelta tiene como índices los valores de la matriz original y como valores la cantidad de veces que aparece cada valor.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -593,7 +593,7 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$valores = [10, "d", 40, "abc"];
+$valores = [10, "d", 4, "abc"];
 
 $maximo = max($valores);
 $minimo = min($valores);
@@ -1421,7 +1421,7 @@ print "&lt;/p&gt;\n";
           </div>
         </div>
 
-        <p>Si el segundo argumento es 1 (es decir, si sólo se extrae un valor), la función <span class="php-fun">array_rand($matriz, 1)</span> no devuelve una matriz, sino una variable escalar:</p>
+        <p>Si el segundo argumento es 1 (es decir, si sólo se extrae un valor), la función <span class="php-fun">array_rand($matriz, 1)</span> no devuelve una matriz, sino una variable escalar. Es decir <span class="php-fun">array_rand($matriz, 1)</span> es equivalente a <span class="php-fun">array_rand($matriz).</span></p>
         <div class="filaflex">
           <div class="codigo">
             <pre>
@@ -1458,6 +1458,30 @@ Array
         </div>
       </li>
     </ul>
+
+      <p>Como la función extrae elementos sin repetición, no se pueden extraer más elementos de los que contiene la matriz. Si lo hacemos, PHP produce un error que interrumpe la ejecución del programa.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$valores = [1, 10, 100];
+
+$indice = array_rand($valores, 4);
+
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html"><b>Fatal error</b>:  Uncaught ValueError: array_rand(): Argument #2 ($num) must be between 1 and the number of elements in argument #1 ($array) in ejemplo.php:4
+Stack trace:
+#0 ejemplo.php(4): array_rand(Array, 4)
+#1 {main}
+  thrown in <b>ejemplo.php</b> on line <b>4</b><br></code>
+</pre>
+      </div>
+    </div>
   </section>
 
   <section id="array-unique">
@@ -1490,7 +1514,7 @@ print "&lt;pre&gt;\n" . print_r($final, true) . "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 20 de noviembre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 3 de diciembre de 202</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

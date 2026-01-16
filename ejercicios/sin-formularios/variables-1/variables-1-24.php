@@ -54,7 +54,7 @@ print "\n";
 ?>
   <p>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-      width="830" height="160" viewBox="-40 -50 830 160" style="background-color: white;" font-family="sans-serif">
+         width="830" height="160" viewBox="-40 -50 830 160" style="background-color: white;" font-family="sans-serif">
       <polygon points="60,0 780,0 720,80 0,80" stroke="black" stroke-width="1" fill="none" />
       <text x="180" y="105" text-anchor="middle" font-size="20" fill="black">5</text>
       <text x="380" y="105" text-anchor="middle" font-size="20" fill="black">10</text>
