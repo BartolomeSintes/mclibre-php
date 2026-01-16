@@ -3,9 +3,9 @@
  * Sesiones Minijuegos (1) 5 - minijuegos-1-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-21
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -52,7 +52,7 @@ if (!isset($_SESSION["carta1"])) {
   <form action="minijuegos-1-5-2.php">
 <?php
 print "    <p>\n";
-print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\">\n";
 // Mostramos las tres cartas, guardadas en la sesión
 print "        <image href=\"img/cartas/c$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/>\n";
@@ -66,14 +66,17 @@ print "\n";
 // y mostramos la jugada obtenida en cada caso
 if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
     print "    <p>Ha obtenido un trío de $_SESSION[carta1].<p>\n";
+    print "\n";
 } elseif ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
     print "    <p>Ha obtenido una pareja de $_SESSION[carta1].<p>\n";
+    print "\n";
 } elseif ($_SESSION["carta2"] == $_SESSION["carta3"]) {
     print "    <p>Ha obtenido una pareja de $_SESSION[carta2].<p>\n";
+    print "\n";
 } else {
     print "    <p>Ha obtenido un " . max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]) . ".<p>\n";
+    print "\n";
 }
-print "\n";
 ?>
     <p><button type="submit" name="accion" value="nuevas">Nuevas cartas</button></p>
   </form>
@@ -81,7 +84,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-21">21 de noviembre de 2022</time>
+      <time datetime="2025-02-14">14 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

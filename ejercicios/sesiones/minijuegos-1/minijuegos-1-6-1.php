@@ -3,9 +3,9 @@
  * Sesiones Minijuegos (1) 6 - minijuegos-1-6-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-21
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,7 +51,7 @@ if (!isset($_SESSION["cartaR1"])) {
   <form action="minijuegos-1-6-2.php">
 <?php
 print "    <p>\n";
-print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "           width=\"400\" height=\"190\" viewBox=\"-50 -10 400 190\">\n";
 // Mostramos las seis cartas, guardadas en la sesión
 print "        <image href=\"img/cartas/p$_SESSION[cartaN1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/>\n";
@@ -73,7 +73,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-21">21 de noviembre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

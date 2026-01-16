@@ -54,6 +54,7 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
+// Recogemos accion
 $accion = recoge("accion");
 
 // Si recibimos "reiniciar", reiniciamos los valores de sesión

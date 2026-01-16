@@ -235,12 +235,13 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
+// Recogemos accion
 $accion = recoge("accion");
 
 // Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo" tooltip-id="li-2-7">7</span>
 if ($accion == "reiniciar") {
     $_SESSION["maximo"] = $_SESSION["carta"] = 1;
-    // Si recibimos "nueva", modificamos el número de carta ... <span class="numero-circulo" tooltip-id="li-2-8">8</span>
+// Si recibimos "nueva", modificamos el número de carta ... <span class="numero-circulo" tooltip-id="li-2-8">8</span>
 } elseif ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
     //  ... y comprobamos si se ha superado el máximo anterior <span class="numero-circulo" tooltip-id="li-2-9">9</span>
@@ -251,8 +252,7 @@ if ($accion == "reiniciar") {
 }
 
 // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-2-10">10</span>
-header("Location:minijuegos-1-2-1.php");
-</code>
+header("Location:minijuegos-1-2-1.php");</code>
 </pre>
     </div>
   </section>
@@ -273,7 +273,7 @@ header("Location:minijuegos-1-2-1.php");
       </li>
       <li id="li-3-7">Si recibimos el valor "reiniciar", damos a las variables de sesión los valores iniciales (1 en las dos).</li>
       <li id="li-3-8">Si recibimos el valor "nueva", cambiamos el valor de la carta ...</li>
-      <li id="li-3-9">... comprobamos si todavía no hemos sacado un 10 (que es la carta más alta posible), en cuyo caso aumentamos el contador de cartas mostradas. Es importante realizar esta comprobación antes de comprobar si la carta es superior al máximo, porque si no no contaríamos el turno en que obtenemos un 10.</li>
+      <li id="li-3-9">... comprobamos si todavía no hemos sacado un 10 (que es la carta más alta posible), en cuyo caso aumentamos el contador de cartas mostradas. Es importante realizar esta comprobación antes de comprobar si la carta es superior al máximo, porque si no no contaríamos la ronda en que obtenemos un 10.</li>
       <li id="li-3-10">... y comprobamos si la nueva carta es superior al máximo anterior, en cuyo caso lo actualizamos al nuevo valor.</li>
       <li id="li-3-11">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
@@ -347,6 +347,7 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
+// Recogemos accion
 $accion = recoge("accion");
 
 // Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo" tooltip-id="li-3-7">7</span>
@@ -369,8 +370,7 @@ if ($accion == "reiniciar") {
 }
 
 // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-3-11">11</span>
-header("Location:minijuegos-1-3-1.php");
-</code>
+header("Location:minijuegos-1-3-1.php");</code>
 </pre>
     </div>
   </section>
@@ -412,7 +412,7 @@ if (!isset($_SESSION["carta1"])) {
   &lt;form action="minijuegos-1-4-2.php"&gt;
 &lt;?php
 print "    &lt;p&gt;\n";
-print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\"&gt;\n";
 // Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-4-3">3</span>
 print "        &lt;image href=\"img/cartas/t$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
@@ -532,7 +532,7 @@ if (!isset($_SESSION["carta1"])) {
   &lt;form action="minijuegos-1-5-2.php"&gt;
 &lt;?php
 print "    &lt;p&gt;\n";
-print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\"&gt;\n";
 // Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-5-a-3">3</span>
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
@@ -541,18 +541,22 @@ print "        &lt;image href=\"img/cartas/c$_SESSION[carta3].svg\" x=\"0\" y=\"
 print "      &lt;/svg&gt;\n";
 print "    &lt;/p&gt;\n";
 print "\n";
+
 // Comprobamos si se ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo" tooltip-id="li-5-a-4">4</span>
 // y mostramos la jugada obtenida en cada caso
 if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
     print "    &lt;p&gt;Ha obtenido un trío de $_SESSION[carta1].&lt;p&gt;\n";
+    print "\n";
 } elseif ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
     print "    &lt;p&gt;Ha obtenido una pareja de $_SESSION[carta1].&lt;p&gt;\n";
+    print "\n";
 } elseif ($_SESSION["carta2"] == $_SESSION["carta3"]) {
     print "    &lt;p&gt;Ha obtenido una pareja de $_SESSION[carta2].&lt;p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Ha obtenido un " . max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]) . ".&lt;p&gt;\n";
+    print "\n";
 }
-print "\n";
 ?&gt;
     &lt;p&gt;&lt;button type="submit" name="accion" value="nuevas"&gt;Nuevas cartas&lt;/button&gt;&lt;/p&gt;
   &lt;/form&gt;
@@ -653,7 +657,7 @@ if (!isset($_SESSION["carta1"])) {
   &lt;form action="minijuegos-1-5-2-b.php"&gt;
 &lt;?php
 print "    &lt;p&gt;\n";
-print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\"&gt;\n";
 // Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-5-b-3">3</span>
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
@@ -780,7 +784,7 @@ if (!isset($_SESSION["cartaR1"])) {
   &lt;form action="minijuegos-1-6-2.php"&gt;
 &lt;?php
 print "    &lt;p&gt;\n";
-print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "           width=\"400\" height=\"190\" viewBox=\"-50 -10 400 190\"&gt;\n";
 // Mostramos las seis cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-6-2">3</span>
 print "        &lt;image href=\"img/cartas/p$_SESSION[cartaN1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
