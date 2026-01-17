@@ -3,9 +3,9 @@
  * Cambio de cartas (1) - cartas-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -55,7 +55,7 @@ function recoge($key, $type = "")
 
 $accion = recoge("accion");
 if (in_array($accion, ["0", "1", "2", "3", "4"]) && $_SESSION["cambios"] < 5) {
-    $azar = array_rand($_SESSION["baraja"]);
+    $azar                         = array_rand($_SESSION["baraja"]);
     $_SESSION["jugador"][$accion] = $_SESSION["baraja"][$azar];
     unset($_SESSION["baraja"][$azar]);
     $_SESSION["cambios"] += 1;
@@ -64,7 +64,7 @@ if (in_array($accion, ["0", "1", "2", "3", "4"]) && $_SESSION["cambios"] < 5) {
         $jugador2[$i] = substr($_SESSION["jugador"][$i], 1);
     }
     foreach (array_count_values($jugador2) as $indice => $valor) {
-        $_SESSION["puntos"] +=  $indice * $valor * $valor;
+        $_SESSION["puntos"] += $indice * $valor * $valor;
     }
 } elseif ($accion == "Reiniciar") {
     session_destroy();

@@ -3,9 +3,9 @@
  * Distribuye cartas (1) - cartas-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -55,7 +55,7 @@ function recoge($key, $type = "")
 
 $accion = recoge("accion");
 if (count($_SESSION["baraja"]) > 0 && in_array($accion, ["picas", "corazones", "diamantes", "treboles"])) {
-    $_SESSION[$accion][]  = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
+    $_SESSION[$accion][] = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
     unset($_SESSION["baraja"][count($_SESSION["baraja"]) - 1]);
 } elseif ($accion == "reiniciar") {
     session_destroy();

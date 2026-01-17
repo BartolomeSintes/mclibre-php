@@ -3,9 +3,9 @@
  * Siete y medio (1) - cartas-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("cartas-3");
 session_start();
@@ -37,9 +38,8 @@ if (!isset($_SESSION["baraja"])) {
     }
     shuffle($_SESSION["baraja"]);
     $_SESSION["jugador"] = [];
-    $_SESSION["total"] = 0;
+    $_SESSION["total"]   = 0;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,15 +74,15 @@ if ($_SESSION["total"] > 7.5) {
     print "      <span style=\"font-size: 7rem; vertical-align: text-bottom;\">&#x1f60e;&#xfe0f;</span>\n";
 }
 print "    </p>\n";
+print "\n";
 ?>
-
     <p><input type="submit" name="accion" value="reiniciar"></p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-12-02">2 de diciembre de 2021</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

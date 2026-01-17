@@ -3,9 +3,9 @@
  * Cambio de cartas (1) - cartas-7-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("cartas-7");
 session_start();
@@ -33,20 +34,19 @@ if (!isset($_SESSION["baraja"])) {
         }
     }
     for ($i = 0; $i < 5; $i++) {
-        $azar = array_rand($_SESSION["baraja"]);
+        $azar                  = array_rand($_SESSION["baraja"]);
         $_SESSION["jugador"][] = $_SESSION["baraja"][$azar];
         unset($_SESSION["baraja"][$azar]);
     }
     $_SESSION["cambios"] = 0;
-    $_SESSION["puntos"] = 0;
+    $_SESSION["puntos"]  = 0;
     for ($i = 0; $i < 5; $i++) {
         $jugador2[$i] = substr($_SESSION["jugador"][$i], 1);
     }
     foreach (array_count_values($jugador2) as $indice => $valor) {
-        $_SESSION["puntos"] +=  $indice * $valor * $valor;
+        $_SESSION["puntos"] += $indice * $valor * $valor;
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -79,15 +79,15 @@ for ($i = 0; $i < 5; $i++) {
 print "    </p>\n";
 print "\n";
 print "    <p>Cambios realizados: $_SESSION[cambios]. Puntuación: $_SESSION[puntos]</p>\n";
+print "\n";
 ?>
-
     <p><input type="submit" name="accion" value="Reiniciar"></p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-12-02">2 de diciembre de 2021</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Muestra y oculta cartas (1) - cartas-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-01-08
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@
 session_name("cartas-5");
 session_start();
 
-if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
+if (!isset($_SESSION["baraja"]) || !isset($_SESSION["cartas"])) {
     $_SESSION["baraja"] = [];
     foreach (["c", "d", "p", "t"] as $palo) {
         for ($i = 1; $i <= 13; $i++) {
@@ -41,7 +41,6 @@ if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
     shuffle($_SESSION["baraja"]);
     $_SESSION["cartas"] = [];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,7 +80,7 @@ print "        </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-01-08">8 de enero de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Siete y medio (1) - cartas-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -55,8 +55,8 @@ function recoge($key, $type = "")
 
 $accion = recoge("accion");
 if ($accion == "otra" && $_SESSION["total"] < 7.5) {
-    $carta = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
-    $_SESSION["jugador"][]  = $carta;
+    $carta                 = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
+    $_SESSION["jugador"][] = $carta;
     unset($_SESSION["baraja"][count($_SESSION["baraja"]) - 1]);
     $tmp = substr($carta, 1);
     if ($tmp == "11" || $tmp == "12" || $tmp == "13") {
