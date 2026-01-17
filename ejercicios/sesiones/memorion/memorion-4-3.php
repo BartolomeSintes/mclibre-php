@@ -3,9 +3,9 @@
  * Memorión (4) - memorion-4-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -54,8 +54,8 @@ if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
 <?php
 // Mostramos el control numérico con el número de dibujos actual
 print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\"></p>\n";
+print "\n";
 ?>
-
     <p>
       <input type="submit" value="Actualizar">
       <input type="reset" value="Reiniciar">
@@ -65,7 +65,7 @@ print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[nu
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-12-02">2 de diciembre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

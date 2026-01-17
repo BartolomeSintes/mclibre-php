@@ -3,9 +3,9 @@
  * Memorión (1) - memorion-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ session_name("memorion-1");
 session_start();
 
 // Si no están definidas las variables de sesión, redirigimos a la segunda página
-if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
+if (!isset($_SESSION["numeroDibujos"], $_SESSION["dibujos"])) {
     header("Location:memorion-1-2.php");
     exit;
 }
@@ -66,7 +66,7 @@ for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-12-02">2 de diciembre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -61,7 +61,7 @@ session_start();</code>
         <div class="codigo">
           <pre>
 <code class="language-php">// Si no están definidas las variables de sesión, redirigimos a la segunda página
-if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
+if (!isset($_SESSION["numeroDibujos"], $_SESSION["dibujos"])) {
     header("Location:memorion-1-2.php");
     exit;
 }</code>
@@ -73,7 +73,7 @@ if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Si no están definidas las variables de sesión, las definimos
-if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
+if (!isset($_SESSION["numeroDibujos"], $_SESSION["dibujos"])) {
     // Número de dibujos en la sesión
     $_SESSION["numeroDibujos"] = rand(4, 20);
 
@@ -109,6 +109,16 @@ if ($accion == "nueva") {
         </div>
       </li>
 
+      <li>Muestre las imágenes en la primera página.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Mostramos los dibujos seleccionados
+for ($i = 0; $i &lt; $_SESSION["numeroDibujos"]; $i++) {
+    print "      &amp;#{$_SESSION["dibujos"][$i]}; \n";
+}</code>
+</pre>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -155,6 +165,7 @@ if (!isset($_SESSION["dibujos"])) {
 <code class="language-php">// Mostramos los dibujos seleccionados en botones
 for ($i = 0; $i &lt; $_SESSION["numeroDibujos"]; $i++) {
     print "      &lt;button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\"&gt;&#{$_SESSION["dibujos"][$i]};&lt;/button&gt; \n";
+print "\n";
 }</code>
 </pre>
         </div>
@@ -177,7 +188,8 @@ if ($accion == "numero") {
         <div class="codigo">
           <pre>
 <code class="language-php">// Mostramos el control numérico con el número de dibujos actual
-print "    &lt;p&gt;&lt;input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\"&gt;&lt;/p&gt;\n";</code>
+print "    &lt;p&gt;&lt;input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\"&gt;&lt;/p&gt;\n";
+print "\n";</code>
 </pre>
         </div>
       </li>
@@ -224,8 +236,7 @@ if ($numeroDibujosOk) {
 }
 
 // Redirigimos a la tercera página
-header("Location:memorion-2-3.php");
-</code>
+header("Location:memorion-2-3.php");</code>
 </pre>
         </div>
       </li>
@@ -310,8 +321,7 @@ if ($giraOk || $accionOk) {
 }
 
 // Redirigimos a la primera página
-header("Location:memorion-3-1.php");
-</code>
+header("Location:memorion-3-1.php");</code>
 </pre>
         </div>
       </li>

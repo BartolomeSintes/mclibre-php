@@ -3,9 +3,9 @@
  * Memorión (5) - memorion-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-12-02
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,9 +27,7 @@ session_name("memorion-5");
 session_start();
 
 // Si no están definidas las variables de sesión, redirigimos a la segunda página
-if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"]) || !isset($_SESSION["lado"])
-                                       || !isset($_SESSION["primera"]) || !isset($_SESSION["segunda"])
-                                       || !isset($_SESSION["jugadas"])) {
+if (!isset($_SESSION["numeroDibujos"], $_SESSION["dibujos"], $_SESSION["lado"], $_SESSION["primera"], $_SESSION["segunda"], $_SESSION["jugadas"])) {
     header("Location:memorion-5-2.php");
     exit;
 }
@@ -62,9 +60,9 @@ print "    <p>\n";
 for ($i = 0; $i < 2 * $_SESSION["numeroDibujos"]; $i++) {
     // La ficha puede estar boca arriba (se ve el dibujo del animal) ...
     if ($_SESSION["lado"][$i] == "dibujo") {
-        print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";
+        print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button>\n";
     } else { // ... o boca abajo (se ve el dibujo del dorso)
-        print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\">&#10026;</button> \n";
+        print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\">&#10026;</button>\n";
     }
 }
 print "    </p>\n";
@@ -77,7 +75,7 @@ print "    <p>Jugadas realizadas: $_SESSION[jugadas]</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-12-02">2 de diciembre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
