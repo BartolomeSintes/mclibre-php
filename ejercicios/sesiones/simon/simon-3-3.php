@@ -3,9 +3,9 @@
  * Simon (3) - simon-3-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("simon-3");
 session_start();
@@ -67,7 +68,7 @@ if ($_SESSION["completado"] || $_SESSION["fallo"]) {
 
 if (in_array($eleccion, ["red", "yellow", "green", "blue"])) {
     $_SESSION["jugador"][] = $eleccion;
-    $_SESSION["fallo"] = false;
+    $_SESSION["fallo"]     = false;
     for ($i = 0; $i < count($_SESSION["jugador"]); $i++) {
         if ($_SESSION["jugador"][$i] != $_SESSION["objetivo"][$i]) {
             $_SESSION["fallo"] = true;

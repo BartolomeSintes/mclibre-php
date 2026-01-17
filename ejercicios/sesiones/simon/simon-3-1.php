@@ -3,9 +3,9 @@
  * Simon (3) - simon-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,16 @@ session_name("simon-3");
 session_start();
 
 $longitud = rand(2, 7);
-$colores = ["red", "yellow", "green", "blue"];
+$colores  = ["red", "yellow", "green", "blue"];
 
-if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SESSION["fallo"]) || !isset($_SESSION["completado"])) {
+if (!isset($_SESSION["objetivo"], $_SESSION["jugador"], $_SESSION["fallo"], $_SESSION["completado"])) {
     for ($i = 0; $i < $longitud; $i++) {
         $_SESSION["objetivo"][] = $colores[array_rand($colores)];
     }
-    $_SESSION["jugador"] = [];
-    $_SESSION["fallo"] = false;
+    $_SESSION["jugador"]    = [];
+    $_SESSION["fallo"]      = false;
     $_SESSION["completado"] = false;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,15 +57,14 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
   <p>Secuencia a reproducir:</p>
 
 <?php
-    print "  <p>\n";
-    foreach ($_SESSION["objetivo"] as $color) {
-        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-        print "         width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
-        print "    </svg>\n";
-    }
-    print "  </p>\n";
-    print "\n";
-
+print "  <p>\n";
+foreach ($_SESSION["objetivo"] as $color) {
+    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "         width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
+    print "    </svg>\n";
+}
+print "  </p>\n";
+print "\n";
 ?>
   <form action="simon-3-2.php" method="get">
     <p>Haga clic para comenzar el juego:</p>
@@ -77,7 +75,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-05">5 de diciembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

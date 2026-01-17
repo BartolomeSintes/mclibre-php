@@ -3,9 +3,9 @@
  * Simon (4) - simon-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-05
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,14 +29,14 @@ session_start();
 $colores = ["red", "yellow", "green", "blue"];
 
 // Reinicia cuando falta alguno o cuando fallo es true
-if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SESSION["fallo"]) || !isset($_SESSION["completado"]) || $_SESSION["fallo"]) {
+if (!isset($_SESSION["longitud"], $_SESSION["objetivo"], $_SESSION["jugador"], $_SESSION["fallo"], $_SESSION["completado"])) {
     $_SESSION["longitud"] = 3;
     unset($_SESSION["objetivo"]);
     for ($i = 0; $i < $_SESSION["longitud"]; $i++) {
         $_SESSION["objetivo"][] = $colores[array_rand($colores)];
     }
-    $_SESSION["jugador"] = [];
-    $_SESSION["fallo"] = false;
+    $_SESSION["jugador"]    = [];
+    $_SESSION["fallo"]      = false;
     $_SESSION["completado"] = false;
 }
 
@@ -46,11 +46,10 @@ if ($_SESSION["completado"]) {
     for ($i = 0; $i < $_SESSION["longitud"]; $i++) {
         $_SESSION["objetivo"][] = $colores[array_rand($colores)];
     }
-    $_SESSION["jugador"] = [];
-    $_SESSION["fallo"] = false;
+    $_SESSION["jugador"]    = [];
+    $_SESSION["fallo"]      = false;
     $_SESSION["completado"] = false;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -69,16 +68,15 @@ if ($_SESSION["completado"]) {
   <h1>Simon (4)</h1>
 
 <?php
-    print "  <p>Secuencia a reproducir:</p>\n";
-    print "\n";
-    print "  <p>\n";
-    foreach ($_SESSION["objetivo"] as $color) {
-        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-        print "         width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
-        print "    </svg>\n";
-    }
-    print "  </p>\n";
-
+print "  <p>Secuencia a reproducir:</p>\n";
+print "\n";
+print "  <p>\n";
+foreach ($_SESSION["objetivo"] as $color) {
+    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+    print "         width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
+    print "    </svg>\n";
+}
+print "  </p>\n";
 ?>
   <form action="simon-4-2.php" method="get">
     <p>Haga clic para comenzar el juego:</p>
@@ -89,7 +87,7 @@ if ($_SESSION["completado"]) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-12-05">5 de diciembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
