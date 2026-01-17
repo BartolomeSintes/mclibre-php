@@ -131,7 +131,7 @@ $cfg["pgsqlPassword"] = "";                                 // Contraseña de us
         </div>
       </li>
       <li>[comunes/biblioteca-postgresql.php]
-        <p>En PostgreSQL, cuando nos conectamos a la base de datos nos conectamos con alguna base de datos ya existente. Esa base de datos no la podemos borrar puesto que es la base de datos activa y la que nos permite estar conectados. Por eso la función borraTodo() para PostgreSQL es como la función borraTodo() para SQLite, que borra y crea las tablas, y no como la función borraTodo() para MySQL, que borra y crea la base de datos. </p>
+        <p>En PostgreSQL, cuando nos conectamos a la base de datos nos conectamos con alguna base de datos ya existente. Esa base de datos no la podemos borrar puesto que es la base de datos activa y la que nos permite estar conectados. Por eso la función borraTodo() para PostgreSQL es como la función borraTodo() para SQLite, que borra y crea las tablas, y no como la función borraTodo() para MySQL, que borra y crea la base de datos.</p>
         <p>Esta puede ser la función de conexión para PostgreSQL:</p>
         <div class="codigo">
           <pre>
@@ -181,8 +181,7 @@ function conectaDb()
         <p>Para que después de insertar los registros de prueba, el contador autonumérico de las claves principales se actualice, realice las siguientes consultas:</p>
         <div class="codigo">
           <pre>
-  <code class="language-php">
-    if ($cfg["dbMotor"] == POSTGRESQL) {
+<code class="language-php">    if ($cfg["dbMotor"] == POSTGRESQL) {
         foreach ($cfg["dbTablas"] as $tabla) {
             $consulta  = "SELECT setval(pg_get_serial_sequence('$tabla', 'id'), coalesce(max(id),0) + 1, false) FROM $tabla";
             $resultado = $pdo-&gt;query($consulta);
@@ -194,7 +193,7 @@ function conectaDb()
             }
         }
     }</code>
-  </pre>
+</pre>
         </div>
       </li>
       <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y creando registros de Personas.</li>

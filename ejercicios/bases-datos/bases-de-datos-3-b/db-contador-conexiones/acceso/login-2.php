@@ -94,7 +94,7 @@ if ($usuarioOk && $passwordOk && $passwordCorrectoOk && $conectadoOk) {
     if ($registro["conexiones"] + 1 > $cfg["numeroConexionesAviso"] && $usuario != $cfg["rootName"]) {
         cabecera("Login 2", MENU_VOLVER, PROFUNDIDAD_1);
 
-        print "  <p>Se ha conectado ya " . ($registro["conexiones"] + 1) . " veces. Se recomienda cambiar la contraseña.</p>\n";
+        print "  <p>Se ha conectado ya " . $registro["conexiones"] + 1 . " veces. Se recomienda cambiar la contraseña.</p>\n";
 
         pie();
     } else {

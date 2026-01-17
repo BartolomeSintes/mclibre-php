@@ -359,10 +359,13 @@ if (mb_strlen($nombre, "UTF-8") &gt; $cfg["formPersonasMaxNombre"]) {
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+        print "\n";
     }</code>
 </pre>
         </div>
@@ -467,6 +470,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
 } else {
     print "    &lt;p&gt;Listado completo de registros:&lt;/p&gt;\n";
     ...
@@ -598,6 +602,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
 } else {
     print "    &lt;form action=\"borrar-2.php\" method=\"$cfg[formMethod]\"&gt;\n";
     print "      &lt;p&gt;Marque los registros que quiera borrar:&lt;/p&gt;\n";
@@ -637,10 +642,13 @@ if ($idOk) {
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
             print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } else {
             print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
+            print "\n";
         }
     }
 }</code>
@@ -791,8 +799,10 @@ if ($nombreOk && $apellidosOk) {
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registros encontrados:&lt;/p&gt;\n";
         ...
@@ -960,6 +970,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;form action=\"modificar-2.php\" method=\"$cfg[formMethod]\"&gt;\n";
     print "      &lt;p&gt;Indique el registro que quiera modificar:&lt;/p&gt;\n";
@@ -991,8 +1002,10 @@ if ($id == "") {
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         $registro = $resultado-&gt;fetch();
         ...</code>
@@ -1032,10 +1045,13 @@ if ($id == "") {
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+        print "\n";
     }</code>
 </pre>
         </div>

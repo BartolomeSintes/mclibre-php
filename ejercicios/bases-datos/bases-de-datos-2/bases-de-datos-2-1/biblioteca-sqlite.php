@@ -38,10 +38,11 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Tabla borrada correctamente (si existía).</p>\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
@@ -51,7 +52,9 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Tabla creada correctamente.</p>\n";
+        print "\n";
     }
 }

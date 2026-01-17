@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>PDO. Soluciones. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
-  <link rel="icon" href="../../../varios/favicon.svg">
-  <link rel="stylesheet" href="../../../varios/prism.css">
-  <script src="../../../varios/prism.js"></script>
+    <meta charset="utf-8">
+    <title>PDO. Soluciones. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+    <link rel="icon" href="../../../varios/favicon.svg">
+    <link rel="stylesheet" href="../../../varios/prism.css">
+    <script src="../../../varios/prism.js"></script>
 </head>
 
 <body>
-  <h1>Ejercicios (bases de datos) - PDO - Soluciones</h1>
+    <h1>Ejercicios (bases de datos) - PDO - Soluciones</h1>
 
-  <nav>
-    <p>
-      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
-      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
-    </p>
+    <nav>
+        <p>
+            <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+            <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+        </p>
 
-    <div class="toc">
-      <h2>PDO</h2>
+        <div class="toc">
+            <h2>PDO</h2>
 
-      <h3><a href="index.html">Enunciados</a></h3>
-      <ul>
-        <li><a href="index.html#ejercicio-1">1 - SQLite: único</a></li>
-        <li><a href="index.html#ejercicio-2">2 - SQLite: funciones</a></li>
-        <li><a href="index.html#ejercicio-3">3 - SQLite: biblioteca</a></li>
-        <li><a href="index.html#ejercicio-4">4 - MySQL: biblioteca</a></li>
-        <li><a href="index.html#ejercicio-5">5 - DB configurable</a></li>
-      </ul>
+            <h3><a href="index.html">Enunciados</a></h3>
+            <ul>
+                <li><a href="index.html#ejercicio-1">1 - SQLite: único</a></li>
+                <li><a href="index.html#ejercicio-2">2 - SQLite: funciones</a></li>
+                <li><a href="index.html#ejercicio-3">3 - SQLite: biblioteca</a></li>
+                <li><a href="index.html#ejercicio-4">4 - MySQL: biblioteca</a></li>
+                <li><a href="index.html#ejercicio-5">5 - DB configurable</a></li>
+            </ul>
 
-      <h3><a href="#">Soluciones</a></h3>
-      <ul>
-        <li><a href="#ejercicio-1">1 - SQLite: único</a></li>
-        <li><a href="#ejercicio-2">2 - SQLite: funciones</a></li>
-        <li><a href="#ejercicio-3">3 - SQLite: biblioteca</a></li>
-        <li><a href="#ejercicio-4">4 - MySQL: biblioteca</a></li>
-        <li><a href="#ejercicio-5">5 - DB configurable</a></li>
-      </ul>
-    </div>
-  </nav>
+            <h3><a href="#">Soluciones</a></h3>
+            <ul>
+                <li><a href="#ejercicio-1">1 - SQLite: único</a></li>
+                <li><a href="#ejercicio-2">2 - SQLite: funciones</a></li>
+                <li><a href="#ejercicio-3">3 - SQLite: biblioteca</a></li>
+                <li><a href="#ejercicio-4">4 - MySQL: biblioteca</a></li>
+                <li><a href="#ejercicio-5">5 - DB configurable</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="index.html">PDO</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se pueden dejar en fragmentos HTML.</p>
+    <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="index.html">PDO</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se pueden dejar en fragmentos HTML.</p>
 
-  <p>Si lo prefiere, puede <a href="../../../soluciones/bases-de-datos/db-pdo-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
+    <p>Si lo prefiere, puede <a href="../../../soluciones/bases-de-datos/db-pdo-soluciones.zip">descargar unas posibles soluciones completas</a> de estos ejercicios.</p>
 
-  <section id="ejercicio-1">
-    <h2>PDO 1 - SQLite: programa único</h2>
+    <section id="ejercicio-1">
+        <h2>PDO 1 - SQLite: programa único</h2>
 
-    <div class="codigo">
-      <pre>
+        <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 //
 //
@@ -109,10 +109,11 @@ $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
+    print "\n";
 }
-print "\n";
 
 //
 //
@@ -128,10 +129,11 @@ $consulta = "CREATE TABLE $cfg[tablaPersonas] (
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    print "\n";
 }
-print "\n";
 
 //
 //
@@ -149,8 +151,10 @@ $consulta = "INSERT INTO $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -167,6 +171,7 @@ $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -183,6 +188,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
@@ -210,8 +216,10 @@ $consulta = "UPDATE $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -228,6 +236,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
@@ -254,8 +263,10 @@ $consulta = "INSERT INTO $cfg[tablaPersonas]
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -272,6 +283,7 @@ $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -288,6 +300,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
@@ -313,8 +326,10 @@ foreach ($id as $indice =&gt; $valor) {
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
     } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
     } else {
         print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
         print "\n";
@@ -332,6 +347,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
@@ -343,14 +359,14 @@ if (!$resultado) {
 }
 ?&gt;</code>
 </pre>
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <section id="ejercicio-2">
-    <h2>PDO 2 - SQLite: programa con funciones</h2>
+    <section id="ejercicio-2">
+        <h2>PDO 2 - SQLite: programa con funciones</h2>
 
-    <div class="codigo">
-      <pre>
+        <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
@@ -380,10 +396,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
@@ -393,10 +410,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 
 // FUNCIÓN DE INSERCIÓN DE REGISTRO
@@ -412,8 +430,10 @@ function insertaRegistro($nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -431,6 +451,7 @@ function cuentaRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
         print "\n";
@@ -448,6 +469,7 @@ function muestraRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
         print "    &lt;ul&gt;\n";
@@ -472,8 +494,10 @@ function modificaRegistro($id, $nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -493,8 +517,10 @@ function borraRegistros($id)
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
             print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } else {
             print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
             print "\n";
@@ -543,16 +569,16 @@ muestraRegistros();
 
 ?&gt;</code>
 </pre>
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <section id="ejercicio-3">
-    <h2>PDO 3 - SQLite: programa con biblioteca</h2>
+    <section id="ejercicio-3">
+        <h2>PDO 3 - SQLite: programa con biblioteca</h2>
 
-    <ul>
-      <li>config.php:
-        <div class="codigo">
-          <pre>
+        <ul>
+            <li>config.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // Variables configurables por el administrador de la aplicación
 
@@ -565,12 +591,12 @@ $cfg["sqliteDatabase"] = "/tmp/pdo-3.sqlite";           // Ubicación de la base
 $cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>biblioteca.php:
-        <div class="codigo">
-          <pre>
+            <li>biblioteca.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // Variables configurables por el administrador de la aplicación
 
@@ -610,10 +636,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
@@ -623,10 +650,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }
 
 // FUNCIÓN DE INSERCIÓN DE REGISTRO
@@ -642,11 +670,12 @@ function insertaRegistro($nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
-        print "\n";
     }
 }
 
@@ -661,6 +690,7 @@ function cuentaRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
         print "\n";
@@ -678,6 +708,7 @@ function muestraRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
         print "    &lt;ul&gt;\n";
@@ -702,8 +733,10 @@ function modificaRegistro($id, $nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -723,8 +756,10 @@ function borraRegistros($id)
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
             print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } else {
             print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
             print "\n";
@@ -732,12 +767,12 @@ function borraRegistros($id)
     }
 }</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>index.php:
-        <div class="codigo">
-          <pre>
+            <li>index.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 require_once "biblioteca.php";
 
@@ -766,18 +801,18 @@ borraRegistros([1 =&gt; "on"]);
 muestraRegistros();
 ?&gt;</code>
 </pre>
-        </div>
-      </li>
-    </ul>
-  </section>
+                </div>
+            </li>
+        </ul>
+    </section>
 
-  <section id="ejercicio-4">
-    <h2>PDO 4 - MySQL: programa con biblioteca</h2>
+    <section id="ejercicio-4">
+        <h2>PDO 4 - MySQL: programa con biblioteca</h2>
 
-    <ul>
-      <li>config.php:
-        <div class="codigo">
-          <pre>
+        <ul>
+            <li>config.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // Variables configurables por el administrador de la aplicación
 
@@ -793,12 +828,12 @@ $cfg["mysqlDatabase"] = "";                    // Nombre de la base de datos
 $cfg["tablaPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas &gt; Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>biblioteca.php:
-        <div class="codigo">
-          <pre>
+            <li>biblioteca.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // Variables configurables por el administrador de la aplicación
 
@@ -842,10 +877,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                  CHARACTER SET utf8mb4
@@ -853,6 +889,7 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -862,6 +899,7 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -876,8 +914,10 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "\n";
     }
 }
 
@@ -894,8 +934,10 @@ function insertaRegistro($nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -913,6 +955,7 @@ function cuentaRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
         print "\n";
@@ -930,6 +973,7 @@ function muestraRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
         print "    &lt;ul&gt;\n";
@@ -954,8 +998,10 @@ function modificaRegistro($id, $nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -975,8 +1021,10 @@ function borraRegistros($id)
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
             print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } else {
             print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
             print "\n";
@@ -984,12 +1032,12 @@ function borraRegistros($id)
     }
 }</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>index.php:
-        <div class="codigo">
-          <pre>
+            <li>index.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 require_once "biblioteca.php";
 
@@ -1018,18 +1066,18 @@ borraRegistros([1 =&gt; "on"]);
 muestraRegistros();
 ?&gt;</code>
 </pre>
-        </div>
-      </li>
-    </ul>
-  </section>
+                </div>
+            </li>
+        </ul>
+    </section>
 
-  <section id="ejercicio-5">
-    <h2>PDO 5 - Base de datos configurable: SQLite o MySQL</h2>
+    <section id="ejercicio-5">
+        <h2>PDO 5 - Base de datos configurable: SQLite o MySQL</h2>
 
-    <ul>
-      <li>config.php:
-        <div class="codigo">
-          <pre>
+        <ul>
+            <li>config.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // Variables configurables por el administrador de la aplicación
 
@@ -1053,12 +1101,12 @@ $cfg["mysqlDatabase"] = "";                             // Nombre de la base de 
 $cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>biblioteca.php:
-        <div class="codigo">
-          <pre>
+            <li>biblioteca.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // Constantes configurables por el programador de la aplicación
 
@@ -1098,8 +1146,10 @@ function insertaRegistro($nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -1117,6 +1167,7 @@ function cuentaRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
         print "\n";
@@ -1134,6 +1185,7 @@ function muestraRegistros()
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
         print "    &lt;ul&gt;\n";
@@ -1158,8 +1210,10 @@ function modificaRegistro($id, $nombre, $apellidos)
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -1179,8 +1233,10 @@ function borraRegistros($id)
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
             print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "\n";
         } else {
             print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
             print "\n";
@@ -1188,12 +1244,12 @@ function borraRegistros($id)
     }
 }</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>biblioteca-sqlite.php:
-        <div class="codigo">
-          <pre>
+            <li>biblioteca-sqlite.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // SQLITE: FUNCIONES ESPECÍFICAS
 
@@ -1228,10 +1284,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
@@ -1241,18 +1298,19 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 }</code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>biblioteca-mysql.php:
-        <div class="codigo">
-          <pre>
+            <li>biblioteca-mysql.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 // MYSQL: FUNCIONES ESPECÍFICAS
 
@@ -1289,10 +1347,11 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                  CHARACTER SET utf8mb4
@@ -1300,6 +1359,7 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -1309,6 +1369,7 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -1323,18 +1384,19 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
     }
 }
 </code>
 </pre>
-        </div>
-      </li>
+                </div>
+            </li>
 
-      <li>index.php:
-        <div class="codigo">
-          <pre>
+            <li>index.php:
+                <div class="codigo">
+                    <pre>
 <code class="language-php">&lt;?php
 require_once "biblioteca.php";
 
@@ -1363,19 +1425,19 @@ borraRegistros([1 =&gt; "on"]);
 muestraRegistros();
 ?&gt;</code>
 </pre>
-        </div>
-      </li>
-    </ul>
-  </section>
+                </div>
+            </li>
+        </ul>
+    </section>
 
-  <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de diciembre de 2023</p>
+    <footer>
+        <p class="ultmod">Última modificación de esta página: 18 de diciembre de 2023</p>
 
-    <p class="licencia">
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
-      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
-      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
-    </p>
-  </footer>
+        <p class="licencia">
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+            Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+            que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+        </p>
+    </footer>
 </body>
 </html>

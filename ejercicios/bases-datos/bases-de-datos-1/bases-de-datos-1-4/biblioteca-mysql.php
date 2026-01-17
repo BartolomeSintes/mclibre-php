@@ -40,10 +40,11 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Base de datos borrada correctamente (si existía).</p>\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                  CHARACTER SET utf8mb4
@@ -51,6 +52,7 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
@@ -59,6 +61,7 @@ function borraTodo()
 
         if (!$pdo->query($consulta)) {
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "\n";
         } else {
             print "    <p>Base de datos seleccionada correctamente.</p>\n";
             print "\n";
@@ -72,8 +75,10 @@ function borraTodo()
 
             if (!$pdo->query($consulta)) {
                 print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                print "\n";
             } else {
                 print "    <p>Tabla creada correctamente.</p>\n";
+                print "\n";
             }
         }
     }

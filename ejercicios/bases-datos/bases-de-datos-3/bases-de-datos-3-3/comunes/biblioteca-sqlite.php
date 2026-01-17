@@ -89,6 +89,7 @@ function borraTodo()
     } else {
         print "    <p>Tabla Personas creada correctamente.</p>\n";
     }
+    print "\n";
 }
 
 // SQLITE: Comprobación de existencia de las tablas

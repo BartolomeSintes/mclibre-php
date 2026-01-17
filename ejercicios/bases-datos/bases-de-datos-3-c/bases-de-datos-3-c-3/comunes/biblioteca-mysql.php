@@ -105,6 +105,7 @@ function borraTodo()
             } else {
                 print "    <p>Tabla Personas creada correctamente.</p>\n";
             }
+            print "\n";
         }
     }
 }

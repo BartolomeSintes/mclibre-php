@@ -47,10 +47,11 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Tabla borrada correctamente (si existía).</p>\n";
+        print "\n";
     }
-    print "\n";
 
     $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
@@ -60,10 +61,11 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Tabla creada correctamente.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 
 // FUNCIÓN DE INSERCIÓN DE REGISTRO
@@ -79,8 +81,10 @@ function insertaRegistro($nombre, $apellidos)
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Registro creado correctamente.</p>\n";
         print "\n";
@@ -98,6 +102,7 @@ function cuentaRegistros()
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>La tabla contiene {$resultado->fetchColumn()} registro(s).</p>\n";
         print "\n";
@@ -115,6 +120,7 @@ function muestraRegistros()
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p><strong>Registro(s) obtenido(s):</strong></p>\n";
         print "    <ul>\n";
@@ -139,8 +145,10 @@ function modificaRegistro($id, $nombre, $apellidos)
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
         print "    <p>Registro modificado correctamente.</p>\n";
         print "\n";
@@ -160,8 +168,10 @@ function borraRegistros($id)
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
             print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "\n";
         } elseif (!$resultado->execute([":indice" => $indice])) {
             print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "\n";
         } else {
             print "    <p>Registro borrado correctamente (si existía).</p>\n";
             print "\n";
