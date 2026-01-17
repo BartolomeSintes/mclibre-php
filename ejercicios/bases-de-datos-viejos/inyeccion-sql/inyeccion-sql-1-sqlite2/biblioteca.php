@@ -134,7 +134,8 @@ function quitaComillasExteriores($var)
     return $var;
 }
 
-function sqlite_query_multi($db, $query) {
+function sqlite_query_multi($db, $query)
+{
     $pattern = "/^(.*;)(.*;)/s";
     if (preg_match($pattern, $query, $match)) {
      // multi-statement query

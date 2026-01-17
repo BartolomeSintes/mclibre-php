@@ -50,7 +50,7 @@ if (!$result) {
     } else {
         print "Todavía no se ha escrito la entrada de este día.";
     }
-    print"</p>\n";
+    print "</p>\n";
     print "    </div>\n";
     print "\n";
 }

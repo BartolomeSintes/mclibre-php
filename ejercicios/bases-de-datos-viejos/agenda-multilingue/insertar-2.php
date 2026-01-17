@@ -81,5 +81,4 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
     }
         pie();
 }
-
 ?>

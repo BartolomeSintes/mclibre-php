@@ -43,10 +43,10 @@ if ($usuario == "" || $contraseña == "") {
         AND password='$contraseña'";
 print $consulta;
     $result = sqlite_query_multi($db, $consulta);
-    print "    <pre>RESULT"; print($result);print "</pre>";
+    print "    <pre>\nRESULT\n"; print($result);print "</pre>\n";
     print "\n";
     $valor = sqlite_fetch_array($result);
-    print "    <pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "    <pre>\nRESULTADO\n" . print_r($valor, true) . "</pre>\n";
     print "\n";
     if (!$result) {
         print "    <p>Error en la consulta.</p>\n";
@@ -59,7 +59,7 @@ print $consulta;
             WHERE user='$usuario'";
         $result = sqlite_query_multi($db, $consulta);
         $valor = sqlite_fetch_array($result);
-    print "    <pre>RESULTADO"; print_r($valor);print "</pre>";
+        print "    <pre>\nRESULTADO\n" . print_r($valor, true) . "</pre>\n";
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
@@ -86,7 +86,7 @@ pie();
 print $consulta;
     $result = sqlite_query($db, $consulta);
     $valor = sqlite_fetch_array($result);
-    print "  <pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "    <pre>\nRESULTADO\n" . print_r($valor, true) . "</pre>\n";
     if (!$result) {
         print "  <p>Error en la consulta.</p>\n";
     } elseif ($valor[0]>0) {
@@ -96,7 +96,7 @@ print $consulta;
             WHERE user='$usuario'";
         $result = sqlite_query($db, $consulta);
         $valor = sqlite_fetch_array($result);
-    print "  <pre>RESULTADO"; print_r($valor);print "</pre>";
+        print "    <pre>\nRESULTADO\n" . print_r($valor, true) . "</pre>\n";
         if (!$result) {
             print "  <p>Error en la consulta.</p>\n";
         } elseif ($valor[0]>0) {

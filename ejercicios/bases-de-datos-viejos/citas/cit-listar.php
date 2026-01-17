@@ -71,7 +71,7 @@ if (!$result) {
                 }
                 print ")";
             }
-            print"</li>\n";
+            print "</li>\n";
         }
         print "    </ul>\n";
     }
