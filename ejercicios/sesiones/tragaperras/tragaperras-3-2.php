@@ -1,11 +1,11 @@
 <?php
 /**
- * Minijuegos: Tragaperras (3) - tragaperras-3-2.php
+ * Tragaperras 3-2 - tragaperras-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-30
+ * @version   2026-01-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,8 +21,20 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+// Accedemos a la sesión
 session_name("tragaperras-3");
 session_start();
+
+$simbolosNumero = 8;   // Número de frutas
+
+// Valores iniciales variables sesión
+if (!isset($_SESSION["monedas"], $_SESSION["fruta1"], $_SESSION["fruta2"], $_SESSION["fruta3"])) {
+    $_SESSION["monedas"] = 0;
+    $_SESSION["fruta1"]  = rand(1, $simbolosNumero);
+    $_SESSION["fruta2"]  = rand(1, $simbolosNumero);
+    $_SESSION["fruta3"]  = rand(1, $simbolosNumero);
+}
 
 // Función de recogida de datos
 function recoge($key, $type = "")
@@ -46,32 +58,23 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$simbolosNumero = 8;   // Número de frutas
-
-// Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
-    !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])) {
-    $_SESSION["monedas"] = 0;
-    $_SESSION["fruta1"] = rand(1, $simbolosNumero);
-    $_SESSION["fruta2"] = rand(1, $simbolosNumero);
-    $_SESSION["fruta3"] = rand(1, $simbolosNumero);
-}
-
 // Recogida de datos
-$accion  = recoge("accion");
+$accion = recoge("accion");
 
-// Si se ha insertado moneda, se aumenta la cantidad de monedas
+// Si se ha insertado moneda ...
 if ($accion == "moneda") {
+    // Se aumenta la cantidad de monedas
     $_SESSION["monedas"] += 1;
 }
 
-// Si se ha jugado y hay monedas insertadas,
-// se genera una nueva combinación y se pierde una moneda
+// Si se ha jugado y hay monedas insertadas ..
 if ($accion == "jugar" && $_SESSION["monedas"] > 0) {
+    // Se genera una nueva combinación
     $_SESSION["fruta1"] = rand(1, $simbolosNumero);
     $_SESSION["fruta2"] = rand(1, $simbolosNumero);
     $_SESSION["fruta3"] = rand(1, $simbolosNumero);
 
+    // Se pierde una moneda
     $_SESSION["monedas"] -= 1;
 }
 

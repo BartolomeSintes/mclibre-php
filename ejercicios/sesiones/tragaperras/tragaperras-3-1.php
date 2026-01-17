@@ -1,11 +1,11 @@
 <?php
 /**
- * Minijuegos: Tragaperras (3) - tragaperras-3-1.php
+ * Tragaperras 3-1 - tragaperras-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-30
+ * @version   2026-01-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,11 +21,13 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+// Accedemos a la sesión
 session_name("tragaperras-3");
 session_start();
 
 // Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) || !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])) {
+if (!isset($_SESSION["monedas"], $_SESSION["fruta1"], $_SESSION["fruta2"], $_SESSION["fruta3"])) {
     header("Location:tragaperras-3-2.php");
     exit;
 }
@@ -52,28 +54,33 @@ print "  <form action=\"tragaperras-3-2.php\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
 print "      <tr>\n";
 // Se muestran las tres imágenes de la combinación actual
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\"></td>\n";
+print "        <td style=\"border: black 4px solid; padding: 10px\">\n";
+print "          <img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\">\n";
+print "        </td>\n";
+print "        <td style=\"border: black 4px solid; padding: 10px\">\n";
+print "          <img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\">\n";
+print "        </td>\n";
+print "        <td style=\"border: black 4px solid; padding: 10px\">\n";
+print "          <img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\">\n";
+print "        </td>\n";
 print "        <td style=\"vertical-align: top; text-align: center\">\n";
 // Se muestra el contador de monedas
 print "          <p><button type=\"submit\" name=\"accion\" value=\"moneda\">Meter moneda</button></p>\n";
+print "\n";
 print "          <p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\">$_SESSION[monedas]</p>\n";
+print "\n";
 // Se muestra el botón de Jugar
 print "          <p><button type=\"submit\" name=\"accion\" value=\"jugar\">Jugar</button></p>\n";
 print "        </td>\n";
 print "      </tr>\n";
 print "    </table>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-30">30 de noviembre de 2022</time>
+      <time datetime="2026-01-17">17 de enero de 2026</time>
     </p>
 
     <p class="licencia">

@@ -65,13 +65,15 @@ $fruta3 = rand(1, $simbolosNumero);</code>
       <li>Se dibujan las tres frutas:
         <div class="codigo">
           <pre>
-<code class="language-php">// Se muestran las tres imágenes de la combinación actual
-print "        &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;"
-    . "&lt;img src=\"img/frutas/$fruta1.svg\" width=\"160\" alt=\"Imagen\"&gt;&lt;/td&gt;\n";
-print "        &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;"
-    . "&lt;img src=\"img/frutas/$fruta2.svg\" width=\"160\" alt=\"Imagen\"&gt;&lt;/td&gt;\n";
-print "        &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;"
-    . "&lt;img src=\"img/frutas/$fruta3.svg\" width=\"160\" alt=\"Imagen\"&gt;&lt;/td&gt;\n";</code>
+<code class="language-php">print "      &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;\n";
+print "        &lt;img src=\"img/frutas/$fruta1.svg\" width=\"160\" alt=\"Imagen\"&gt;\n";
+print "      &lt;/td&gt;\n";
+print "      &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;\n";
+print "        &lt;img src=\"img/frutas/$fruta2.svg\" width=\"160\" alt=\"Imagen\"&gt;\n";
+print "      &lt;/td&gt;\n";
+print "      &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;\n";
+print "        &lt;img src=\"img/frutas/$fruta3.svg\" width=\"160\" alt=\"Imagen\"&gt;\n";
+print "      &lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -140,7 +142,8 @@ print "  &lt;form action=\"tragaperras-2-2.php\" method=\"get\"&gt;\n";</code>
       <li>Añada en el formulario un botón "Meter moneda" que represente el haber metido una moneda en la máquina tragaperras y que envíe el formulario.
         <div class="codigo">
           <pre>
-<code class="language-php"></code>print "            &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"moneda\"&gt;Meter moneda&lt;/button&gt;&lt;/p&gt;\n";
+<code class="language-php">print "          &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"moneda\"&gt;Meter moneda&lt;/button&gt;&lt;/p&gt;\n";
+print "\n";</code>
 </pre>
         </div>
       </li>
@@ -148,7 +151,7 @@ print "  &lt;form action=\"tragaperras-2-2.php\" method=\"get\"&gt;\n";</code>
       <li>En el formulario, muestre la cantidad de monedas introducidas.
         <div class="codigo">
           <pre>
-<code class="language-php">print "            &lt;p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\"&gt;$_SESSION[monedas]&lt;/p&gt;\n";</code>
+<code class="language-php">print "          &lt;p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\"&gt;$_SESSION[monedas]&lt;/p&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -156,8 +159,9 @@ print "  &lt;form action=\"tragaperras-2-2.php\" method=\"get\"&gt;\n";</code>
       <li>Cada vez que se mete una moneda, en la segunda página la cantidad de monedas debe aumentar en 1.
         <div class="codigo">
           <pre>
-<code class="language-php">// Si se ha insertado moneda, se aumenta la cantidad de monedas
+<code class="language-php">// Si se ha insertado moneda ...
 if ($accion == "moneda") {
+    // Se aumenta la cantidad de monedas
     $_SESSION["monedas"] += 1;
 }</code>
 </pre>
@@ -176,13 +180,14 @@ if ($accion == "moneda") {
       <li>Como las frutas sólo se deben renovar cuando se haga clic en "Jugar" (lo que se detecta en la segunda página), se deben guardar como variables de sesión. Por tanto se les debe dar un valor inicial en la segunda página.
         <div class="codigo">
           <pre>
-<code class="language-php">// Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
-    !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])) {
+<code class="language-php">$simbolosNumero = 8;   // Número de frutas
+
+// Valores iniciales variables sesión
+if (!isset($_SESSION["monedas"], $_SESSION["fruta1"], $_SESSION["fruta2"], $_SESSION["fruta3"])) {
     $_SESSION["monedas"] = 0;
-    $_SESSION["fruta1"] = rand(1, $simbolosNumero);
-    $_SESSION["fruta2"] = rand(1, $simbolosNumero);
-    $_SESSION["fruta3"] = rand(1, $simbolosNumero);
+    $_SESSION["fruta1"]  = rand(1, $simbolosNumero);
+    $_SESSION["fruta2"]  = rand(1, $simbolosNumero);
+    $_SESSION["fruta3"]  = rand(1, $simbolosNumero);
 }</code>
 </pre>
         </div>
@@ -191,7 +196,7 @@ if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
         <div class="codigo">
           <pre>
 <code class="language-php">// Se muestra el botón de Jugar
-print "            &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"jugar\"&gt;Jugar&lt;/button&gt;&lt;/p&gt;\n";</code>
+print "          &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"jugar\"&gt;Jugar&lt;/button&gt;&lt;/p&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -200,26 +205,30 @@ print "            &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"j
         <div class="codigo">
           <pre>
 <code class="language-php">// Se muestran las tres imágenes de la combinación actual
-print "          &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;"
-    . "&lt;img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\"&gt;&lt;/td&gt;\n";
-print "          &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;"
-    . "&lt;img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\"&gt;&lt;/td&gt;\n";
-print "          &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;"
-    . "&lt;img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\"&gt;&lt;/td&gt;\n";
-print "          &lt;td style=\"vertical-align: top; text-align: center\"&gt;\n";</code>
+print "        &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;\n";
+print "          &lt;img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\"&gt;\n";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;\n";
+print "          &lt;img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\"&gt;\n";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"border: black 4px solid; padding: 10px\"&gt;\n";
+print "          &lt;img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\"&gt;\n";
+print "        &lt;/td&gt;\n";
+print "        &lt;td style=\"vertical-align: top; text-align: center\"&gt;\n";</code>
 </pre>
         </div>
       </li>
       <li>Sólo se puede jugar si el contador de monedas es positivo. Sólo se debe renovar la combinación de frutas cuando se juega, no cuando se mete una moneda. Y cada vez que se juega, se pierde una moneda.
         <div class="codigo">
           <pre>
-<code class="language-php">// Si se ha jugado y hay monedas insertadas,
-// se genera una nueva combinación y se pierde una moneda
-if ($accion == "jugar" && $_SESSION["monedas"] &gt; 0) {
+<code class="language-php">// Si se ha jugado y hay monedas insertadas ..
+if ($accion == "jugar" &amp;&amp; $_SESSION["monedas"] &gt; 0) {
+    // Se genera una nueva combinación
     $_SESSION["fruta1"] = rand(1, $simbolosNumero);
     $_SESSION["fruta2"] = rand(1, $simbolosNumero);
     $_SESSION["fruta3"] = rand(1, $simbolosNumero);
 
+    // Se pierde una moneda
     $_SESSION["monedas"] -= 1;
 }</code>
 </pre>
@@ -233,7 +242,22 @@ if ($accion == "jugar" && $_SESSION["monedas"] &gt; 0) {
 
     <p>Añada al programa anterior la capacidad de detectar que se ha ganado un premio.</p>
     <ul>
-      <li>Añada dos nuevas variables de sesión, que guarden el premio obtenido y la cara que se muestra.</li>
+      <li>Añada dos nuevas variables de sesión, que guarden el premio obtenido y la cara que se muestra, que se reiniciarán al insertar una moneda.</li>
+      <li>Si se meten monedas o se aumenta la apuesta, muestre una cara indiferente.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Si se ha insertado moneda ...
+if ($accion == "moneda") {
+    // Se aumenta la cantidad de monedas
+    $_SESSION["monedas"] += 1;
+    // Se reinicia el premio
+    $_SESSION["premio"] = 0;
+    // Se reinicia la cara
+    $_SESSION["cara"]   = "plain";
+}</code>
+</pre>
+        </div>
+      </li>
       <li>El orden de comprobación de la jugada obtenida podría ser el siguiente (los casos más especiales se escriben antes que los generales, lo que permite simplificar las condiciones):
         <ul>
           <li>Si salen tres cerezas, se ganan <strong>diez</strong> monedas.</li>
@@ -250,37 +274,50 @@ if ($accion == "jugar" && $_SESSION["monedas"] &gt; 0) {
         <div class="codigo">
           <pre>
 <code class="language-php">    // Se comprueba cuál es el premio
+
     $cereza = 1;   // Número de imagen de la cereza (1.svg)
 
     // Si han salido tres cerezas
-    if ($_SESSION["fruta1"] == $cereza &&
-        $_SESSION["fruta2"] == $cereza &&
-        $_SESSION["fruta3"] == $cereza) {
+    if (
+        $_SESSION["fruta1"] == $cereza
+        &amp;&amp; $_SESSION["fruta2"] == $cereza
+        &amp;&amp; $_SESSION["fruta3"] == $cereza
+    ) {
         $_SESSION["premio"] = 10;
     // Si han salido dos cerezas
-    } elseif (($_SESSION["fruta1"] == $cereza && $_SESSION["fruta2"] == $cereza) ||
-        ($_SESSION["fruta2"] == $cereza && $_SESSION["fruta3"] == $cereza) ||
-        ($_SESSION["fruta1"] == $cereza && $_SESSION["fruta3"] == $cereza)) {
+    } elseif (
+        ($_SESSION["fruta1"] == $cereza &amp;&amp; $_SESSION["fruta2"] == $cereza)
+        || ($_SESSION["fruta2"] == $cereza &amp;&amp; $_SESSION["fruta3"] == $cereza)
+        || ($_SESSION["fruta1"] == $cereza &amp;&amp; $_SESSION["fruta3"] == $cereza)
+    ) {
         $_SESSION["premio"] = 4;
     // Si ha salido una cereza
-    } elseif ($_SESSION["fruta1"] == $cereza ||
-        $_SESSION["fruta2"] == $cereza ||
-        $_SESSION["fruta3"] == $cereza) {
+    } elseif (
+        $_SESSION["fruta1"] == $cereza
+        || $_SESSION["fruta2"] == $cereza
+        || $_SESSION["fruta3"] == $cereza
+    ) {
         $_SESSION["premio"] = 1;
         // Si además de una cereza hay dos frutas iguales
-        if ($_SESSION["fruta1"] == $_SESSION["fruta2"] ||
-            $_SESSION["fruta2"] == $_SESSION["fruta3"] ||
-            $_SESSION["fruta1"] == $_SESSION["fruta3"]) {
+        if (
+            $_SESSION["fruta1"] == $_SESSION["fruta2"]
+            || $_SESSION["fruta2"] == $_SESSION["fruta3"]
+            || $_SESSION["fruta1"] == $_SESSION["fruta3"]
+        ) {
             $_SESSION["premio"] = 3;
         }
     // Si han salido tres frutas iguales (que no son cerezas)
-    } elseif ($_SESSION["fruta1"] == $_SESSION["fruta2"] &&
-        $_SESSION["fruta2"] == $_SESSION["fruta3"]) {
+    } elseif (
+        $_SESSION["fruta1"] == $_SESSION["fruta2"]
+        &amp;&amp; $_SESSION["fruta2"] == $_SESSION["fruta3"]
+    ) {
         $_SESSION["premio"] = 5;
     // Si han salido dos frutas iguales (que no son cerezas)
-    } elseif ($_SESSION["fruta1"] == $_SESSION["fruta2"] ||
-        $_SESSION["fruta2"] == $_SESSION["fruta3"] ||
-        $_SESSION["fruta1"] == $_SESSION["fruta3"]) {
+    } elseif (
+        $_SESSION["fruta1"] == $_SESSION["fruta2"]
+        || $_SESSION["fruta2"] == $_SESSION["fruta3"]
+        || $_SESSION["fruta1"] == $_SESSION["fruta3"]
+    ) {
         $_SESSION["premio"] = 2;
     // En cualquier otro caso
     } else {
@@ -316,9 +353,11 @@ if ($accion == "jugar" && $_SESSION["monedas"] &gt; 0) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">if (isset($_SESSION["cara"])) {
-    print "            &lt;p style=\"margin: 1px; font-size: 300%; border: black 4px solid; padding: 2px\"&gt;";
-    print "&lt;img src=\"img/face-$_SESSION[cara].svg\" alt=\"Mal\" height=\"50\"&gt;$_SESSION[premio]&lt;/p&gt;\n";
+<code class="language-php">// Se muestra la cara
+if (isset($_SESSION["cara"])) {
+    print "          &lt;p style=\"margin: 1px; font-size: 300%; border: black 4px solid; padding: 2px\"&gt;\n";
+    print "            &lt;img src=\"img/face-$_SESSION[cara].svg\" alt=\"Mal\" height=\"50\"&gt;$_SESSION[premio]\n";
+    print "          &lt;/p&gt;\n";
 }</code>
 </pre>
         </div>
@@ -337,7 +376,8 @@ if ($accion == "jugar" && $_SESSION["monedas"] &gt; 0) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Se muestra la apuesta
-print "            &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"apostar\"&gt;Aumentar apuesta&lt;/button&gt;&lt;/p&gt;\n";</code>
+print "          &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"apostar\"&gt;Aumentar apuesta&lt;/button&gt;&lt;/p&gt;\n";
+print "\n";</code>
 </pre>
         </div>
       </li>
@@ -345,10 +385,16 @@ print "            &lt;p&gt;&lt;button type=\"submit\" name=\"accion\" value=\"a
       <li>Al apostar una moneda más, se debe disminuir el contador de monedas.
         <div class="codigo">
           <pre>
-<code class="language-php">// Si se ha apostado una moneda, se aumenta la cantidad apostada y se disminuye las monedas
-if ($accion == "apostar" && $_SESSION["monedas"] &gt; 0) {
+<code class="language-php">// Si se ha apostado y hay monedas insertadas ...
+if ($accion == "apostar" &amp;&amp; $_SESSION["monedas"] &gt; 0) {
+    // Se aumenta la cantidad apostada
     $_SESSION["apuesta"] += 1;
+    // Se disminuye las monedas
     $_SESSION["monedas"] -= 1;
+    // Se reinicia el premio
+    $_SESSION["premio"] = 0;
+    // Se reinicia la cara
+    $_SESSION["cara"]   = "plain";
 }</code>
 </pre>
         </div>
@@ -357,7 +403,10 @@ if ($accion == "apostar" && $_SESSION["monedas"] &gt; 0) {
       <li>Los premios se multiplican por el número de monedas apostadas
         <div class="codigo">
           <pre>
-<code class="language-php">    // Si han salido tres cerezas
+<code class="language-php">// Si se ha jugado y hay monedas apostadas ...
+if ($accion == "jugar" &amp;&amp; $_SESSION["apuesta"] &gt; 0) {
+// ...
+    // Si han salido tres cerezas
     if ($_SESSION["fruta1"] == $cereza &&
         $_SESSION["fruta2"] == $cereza &&
         $_SESSION["fruta3"] == $cereza) {
@@ -398,32 +447,8 @@ if ($accion == "apostar" && $_SESSION["monedas"] &gt; 0) {
       <li>La cantidad apostada se pierde siempre.
         <div class="codigo">
           <pre>
-<code class="language-php">    // Se añade el premio a las monedas
-    $_SESSION["apuesta"] = 0;
-    $_SESSION["monedas"] += $_SESSION["premio"];</code>
-</pre>
-        </div>
-      </li>
-
-      <li>Si se meten monedas o se aumenta la apuesta, muestre una cara indiferente.
-        <div class="codigo">
-          <pre>
-<code class="language-php">// Si se ha insertado moneda, se aumenta la cantidad de monedas
-  // y se reinician el premio y la cara
-if ($accion == "moneda") {
-    $_SESSION["monedas"] += 1;
-    $_SESSION["premio"] = 0;
-    $_SESSION["cara"] = "plain";
-}
-
-// Si se ha apostado una moneda, se aumenta la cantidad apostada, se disminuye las monedas
-// y se reinician el premio y la cara
-if ($accion == "apostar" && $_SESSION["monedas"] &gt; 0) {
-    $_SESSION["apuesta"] += 1;
-    $_SESSION["monedas"] -= 1;
-    $_SESSION["premio"] = 0;
-    $_SESSION["cara"] = "plain";
-}</code>
+<code class="language-php">    // Se pierde la apuesta
+    $_SESSION["apuesta"] = 0;</code>
 </pre>
         </div>
       </li>
@@ -431,7 +456,7 @@ if ($accion == "apostar" && $_SESSION["monedas"] &gt; 0) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 17 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

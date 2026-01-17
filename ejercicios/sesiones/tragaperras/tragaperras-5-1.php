@@ -1,11 +1,11 @@
 <?php
 /**
- * Minijuegos: Tragaperras (5) - tragaperras-5-1.php
+ * Tragaperras 5-1 - tragaperras-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-30
+ * @version   2026-01-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,14 +21,13 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+// Accedemos a la sesión
 session_name("tragaperras-5");
 session_start();
 
 // Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"])
-    || !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])
-    || !isset($_SESSION["apuesta"])  || !isset($_SESSION["premio"])
-    || !isset($_SESSION["cara"])) {
+if (!isset($_SESSION["monedas"], $_SESSION["fruta1"], $_SESSION["fruta2"], $_SESSION["fruta3"], $_SESSION["apuesta"], $_SESSION["premio"], $_SESSION["cara"])) {
     header("Location:tragaperras-5-2.php");
     exit;
 }
@@ -55,41 +54,50 @@ print "  <form action=\"tragaperras-5-2.php\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
 print "      <tr>\n";
 // Se muestran las tres imágenes de la combinación actual
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\"></td>\n";
+print "        <td style=\"border: black 4px solid; padding: 10px\">\n";
+print "          <img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\">\n";
+print "        </td>\n";
+print "        <td style=\"border: black 4px solid; padding: 10px\">\n";
+print "          <img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\">\n";
+print "        </td>\n";
+print "        <td style=\"border: black 4px solid; padding: 10px\">\n";
+print "          <img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\">\n";
+print "        </td>\n";
 print "        <td style=\"vertical-align: top; text-align: center\">\n";
 // Se muestra la apuesta
 print "          <p><button type=\"submit\" name=\"accion\" value=\"apostar\">Aumentar apuesta</button></p>\n";
+print "\n";
 print "          <p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\">$_SESSION[apuesta]</p>\n";
+print "\n";
 // Se muestra el botón de Jugar
 print "          <p><button type=\"submit\" name=\"accion\" value=\"jugar\">Jugar</button></p>\n";
+print "\n";
 // Si se ha jugado se muestra cara y resultado, si no cara neutra
-print "          <p style=\"margin: 1px; font-size: 300%; border: black 4px solid; padding: 2px\">";
+print "          <p style=\"margin: 1px; font-size: 300%; border: black 4px solid; padding: 2px\">\n";
 if (isset($_SESSION["cara"])) {
-    print "<img src=\"img/face-$_SESSION[cara].svg\" alt=\"Mal\" height=\"50\">";
-    print "$_SESSION[premio]</p>\n";
+    print "            <img src=\"img/face-$_SESSION[cara].svg\" alt=\"Mal\" height=\"50\">\n";
+    print "            $_SESSION[premio]\n";
+    print "          </p>\n";
 } else {
-    print "<img src=\"img/face-plain.svg\" alt=\"Normal\" height=\"50\"></p>\n";
+    print "            <img src=\"img/face-plain.svg\" alt=\"Normal\" height=\"50\">\n";
+    print "          </p>\n";
 }
 print "        </td>\n";
 print "        <td style=\"vertical-align: top; text-align: center\">\n";
 // Se muestra el contador de monedas
 print "          <p><button type=\"submit\" name=\"accion\" value=\"moneda\">Meter moneda</button></p>\n";
+print "\n";
 print "          <p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\">$_SESSION[monedas]</p>\n";
 print "        </td>\n";
 print "      </tr>\n";
 print "    </table>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-30">30 de noviembre de 2022</time>
+      <time datetime="2026-01-17">17 de enero de 2026</time>
     </p>
 
     <p class="licencia">

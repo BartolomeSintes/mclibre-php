@@ -1,11 +1,11 @@
 <?php
 /**
- * Minijuegos: Tragaperras (2) - tragaperras-2-2.php
+ * Tragaperras 2-2 - tragaperras-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-30
+ * @version   2026-01-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,8 +21,15 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+// Accedemos a la sesión
 session_name("tragaperras-2");
 session_start();
+
+// Valores iniciales variables sesión
+if (!isset($_SESSION["monedas"])) {
+    $_SESSION["monedas"] = 0;
+}
 
 // Función de recogida de datos
 function recoge($key, $type = "")
@@ -46,16 +53,12 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-// Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"])) {
-    $_SESSION["monedas"] = 0;
-}
-
 // Recogida de datos
-$accion  = recoge("accion");
+$accion = recoge("accion");
 
-// Si se ha insertado moneda, se aumenta la cantidad de monedas
+// Si se ha insertado moneda ...
 if ($accion == "moneda") {
+    // Se aumenta la cantidad de monedas
     $_SESSION["monedas"] += 1;
 }
 
