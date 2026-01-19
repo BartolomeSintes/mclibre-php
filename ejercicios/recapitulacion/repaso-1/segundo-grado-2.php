@@ -3,9 +3,9 @@
  * Ecuación de segundo grado - segundo-grado-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -103,7 +103,8 @@ if ($c == "") {
 
 // Si los valores recibidos son correctos ...
 if ($aOk && $bOk && $cOk) {
-    print "  <p>La ecuación <span style=\"font-size: 200%\">";
+    print "  <p>\n";
+    print "    La ecuación <span style=\"font-size: 200%\">";
     if ($a == 1) {
         print "x<sup>2</sup>";
     } elseif ($a == -1) {
@@ -136,33 +137,44 @@ if ($aOk && $bOk && $cOk) {
     } elseif ($a == 0 && $b == 0 && $c == 0) {
         print "0";
     }
-    print " = 0</span> ";
+    print " = 0</span>\n";
 
     if ($a == 0) {
         if ($b == 0) {
             if ($c == 0) {
-                print "tiene infinitas soluciones. Todos los números son solución</p>\n";
+                print "    tiene infinitas soluciones. Todos los números son solución.\n";
+                print "  </p>\n";
+                print "\n";
             } else {
-                print "no tiene solución.</p>\n";
+                print "    no tiene solución.\n";
+                print "  </p>\n";
+                print "\n";
             }
         } else {
-            print "tiene una única solución: <span style=\"font-size: 200%\">x = " . -$c/$b . "</span></p>\n";
+            print "    tiene una única solución:\n";
+            print "    <span style=\"font-size: 200%\">x = " . -$c / $b . "</span>\n";
+            print "  </p>\n";
+            print "\n";
         }
     } else {
         $d = $b * $b - 4 * $a * $c;
         if ($d > 0) {
             $d2 = sqrt($d);
-            print "tiene dos soluciones: <span style=\"font-size: 200%\">x"
-                 . "<sub>1</sub> = " . (-$b + $d2) / (2 * $a) . " ; x<sub>2</sub> = "
-                 . (-$b - $d2) / (2 * $a) . "</span></p>\n";
-        } else if ($d == 0) {
-            print "tiene una única solución: <span style=\"font-size: 200%\">x = "
-                 . -$b / (2 * $a) . "</span></p>\n";
+            print "    tiene dos soluciones:\n";
+            print "    <span style=\"font-size: 200%\">x<sub>1</sub> = " . (-$b + $d2) / (2 * $a) . " ; x<sub>2</sub> = " . (-$b - $d2) / (2 * $a) . "</span>\n";
+            print "  </p>\n";
+            print "\n";
+        } elseif ($d == 0) {
+            print "    tiene una única solución:\n";
+            print "    <span style=\"font-size: 200%\">x = " . -$b / (2 * $a) . "</span>\n";
+            print "  </p>\n";
+            print "\n";
         } else {
-            print "no tiene soluciones reales.</p>\n";
+            print "    no tiene soluciones reales.\n";
+            print "  </p>\n";
+            print "\n";
         }
     }
-    print "\n";
 }
 ?>
   <p><a href="segundo-grado-1.php">Volver al formulario.</a></p>
@@ -170,7 +182,7 @@ if ($aOk && $bOk && $cOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

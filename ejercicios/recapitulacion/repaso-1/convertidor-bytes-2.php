@@ -3,9 +3,9 @@
  * Convertidor de bytes - convertidor-bytes-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-04
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,7 @@ function recoge($key, $type = "")
 $bytes   = recoge("bytes");
 $bytesOk = false;
 
-$maximo  = 1999999999;
+$maximo = 1999999999;
 
 // Comprobación de $bytes
 if ($bytes == "") {
@@ -77,10 +77,9 @@ if ($bytes == "") {
     print "  <p class=\"aviso\">No ha escrito los bytes como número entero positivo (sin parte decimal)</p>\n";
     print "\n";
 } elseif ($bytes > $maximo) {
-    print "  <p class=\"aviso\">Los bytes deben ser inferiores a "
-        . number_format($maximo, 0, ",", ".") . ".</p>\n";
+    // Es mejor no mostrar $maximo directamente porque si es superior a PHP_INT_MAX se muestra como float
+    print "  <p class=\"aviso\">Los bytes deben ser inferiores a " . number_format($maximo, 0, ",", ".") . ".</p>\n";
     print "\n";
-    // Es mejor no mostrar $maximo porque si es superior a PHP_INT_MAX se muestra como float
 } else {
     $bytesOk = true;
 }
@@ -90,17 +89,17 @@ if ($bytesOk) {
     $bytesOriginal = $bytes;
 
     if ($bytes >= 1024 * 1024 * 1024) {
-        $gb = intdiv($bytes, 1024 * 1024 * 1024);
+        $gb    = intdiv($bytes, 1024 * 1024 * 1024);
         $bytes = $bytes % (1024 * 1024 * 1024);
     }
 
     if ($bytes >= 1024 * 1024) {
-        $mb = intdiv($bytes, 1024 * 1024);
+        $mb    = intdiv($bytes, 1024 * 1024);
         $bytes = $bytes % (1024 * 1024);
     }
 
     if ($bytes >= 1024) {
-        $kb = intdiv($bytes, 1024);
+        $kb    = intdiv($bytes, 1024);
         $bytes = $bytes % 1024;
     }
 
@@ -112,7 +111,7 @@ if ($bytesOk) {
 
     if (isset($gb)) {
         print number_format($gb, 0, ",", ".") . " GB";
-        if ((isset($mb) && isset($kb)) || (isset($mb) && $bytes != 0) ||
+        if ((isset($mb, $kb)) || (isset($mb) && $bytes != 0) ||
             (isset($kb) && $bytes != 0)) {
             print ", ";
         } elseif (isset($mb) || isset($kb) || $bytes != 0) {
@@ -151,7 +150,7 @@ if ($bytesOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-04">4 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

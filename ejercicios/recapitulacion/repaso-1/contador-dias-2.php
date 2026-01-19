@@ -3,9 +3,9 @@
  * Contador de días (Resultado 1) - contador-dias-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -74,12 +74,10 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito un número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el número de semanas "
-         . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de semanas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $minimo || $numero > $maximo) {
-    print "  <p class=\"aviso\">El número de semanas debe estar entre $minimo "
-        . " y $maximo.</p>\n";
+    print "  <p class=\"aviso\">El número de semanas debe estar entre $minimo y $maximo.</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -120,14 +118,13 @@ if ($numeroOk) {
     print "  </form>\n";
     print "\n";
 }
-
 ?>
   <p><a href="contador-dias-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

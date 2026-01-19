@@ -3,9 +3,9 @@
  * RGB Test - rgb-test.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-09-26
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("rgb_test");
 session_start();
 ?>
@@ -85,7 +86,7 @@ for ($i = 1; $i <= 4; $i++) {
     $color[$i] = "rgb(" . rand(0, 255) . " " . rand(0, 255) . " " . rand(0, 255) . ")";
 }
 
-$solucion = rand(1, 4);
+$solucion             = rand(1, 4);
 $_SESSION["solucion"] = $solucion;
 
 // Se genera el formulario
@@ -94,8 +95,9 @@ print "    <p>¿Qué color corresponde al código <strong>$color[$solucion]</str
 print "\n";
 print "    <p>\n";
 for ($i = 1; $i <= 4; $i++) {
-    print "      <button type=\"submit\" name=\"respuesta\" value=\"$i\"> "
-        . "<span style=\"background-color: $color[$i];\"></span></button>\n";
+    print "      <button type=\"submit\" name=\"respuesta\" value=\"$i\">\n";
+    print "        <span style=\"background-color: $color[$i];\"></span>\n";
+    print "      </button>\n";
 }
 print "    </p>\n";
 print "  </form>\n";
@@ -104,7 +106,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-09-26">26 de septiembre de 2023</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

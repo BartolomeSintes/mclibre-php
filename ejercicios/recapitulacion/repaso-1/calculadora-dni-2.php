@@ -3,9 +3,9 @@
  * Calculadora de letra del DNI - calculadora-dni-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-11-04
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,8 +61,8 @@ function recoge($key, $type = "")
 }
 
 // Recogida de datos
-$dni       = recoge("dni");
-$dniOk     = false;
+$dni   = recoge("dni");
+$dniOk = false;
 
 $maximo    = 9999999999;
 $letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
@@ -78,15 +78,14 @@ if ($dni == "") {
     print "  <p class=\"aviso\">No ha escrito el número de DNI como número entero positivo (sin parte decimal)</p>\n";
     print "\n";
 } elseif ($dni > $maximo) {
-    print "  <p class=\"aviso\">El número de DNI no es inferior o igual a "
-         . number_format($maximo, 0, ",", ".") . ".</p>\n";
+    print "  <p class=\"aviso\">El número de DNI no es inferior o igual a " . number_format($maximo, 0, ",", ".") . ".</p>\n";
     print "\n";
 } else {
     $dniOk = true;
 }
 
 if ($dniOk) {
-    print "  <p>El DNI completo es $dni{$letrasDNI[$dni%23]}</p>\n";
+    print "  <p>El DNI completo es $dni{$letrasDNI[$dni % 23]}</p>\n";
     print "\n";
 }
 ?>
@@ -95,7 +94,7 @@ if ($dniOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Contador de días (Resultado 2) - contador-dias-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -75,16 +75,13 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No se ha recibido el número de semanas.</p>\n";
     print "\n";
 } elseif (!is_numeric($numero)) {
-    print "  <p class=\"aviso\">No se ha recibido el número de semanas "
-        . "como número.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el número de semanas como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No se ha recibido el número de semanas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el número de semanas como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $minimo || $numero > $maximo) {
-    print "  <p class=\"aviso\">El número de semanas debe estar entre $minimo "
-        . "y $maximo.</p>\n";
+    print "  <p class=\"aviso\">El número de semanas debe estar entre $minimo y $maximo.</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
@@ -127,8 +124,7 @@ if ($numeroOk && $casillasOk) {
         if (!isset($casillas[$i])) {
             print "    <li>En la semana $i no ha marcado ninguna día.</li>\n";
         } else {
-            print "    <li>En la semana $i ha marcado <strong>"
-                . count($casillas[$i]) . "</strong> día";
+            print "    <li>En la semana $i ha marcado <strong>" . count($casillas[$i]) . "</strong> día";
             if (count($casillas[$i]) > 1) {
                 print "s";
             }
@@ -146,7 +142,7 @@ if ($numeroOk && $casillasOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
