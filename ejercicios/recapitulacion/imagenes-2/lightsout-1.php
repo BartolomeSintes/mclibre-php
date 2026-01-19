@@ -3,9 +3,9 @@
  * Lights Out de una fila - lightsout-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-10-28
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -66,13 +66,13 @@ $juegaOk = false;
 $total   = 7;
 
 if ($juega == "") {
-    $partida = [];
+    $partida    = [];
     $partida[0] = 0;
     for ($i = 1; $i <= $total; $i++) {
         $partida[$i] = rand(0, 1);
     }
     $partida[$total + 1] = 0;
-    $juegaOk = true;
+    $juegaOk             = true;
 } elseif (!ctype_digit($juega)) {
     print "  <p class=\"aviso\">No ha indicado su jugada correctamente.</p>\n";
     print "\n";
@@ -80,19 +80,19 @@ if ($juega == "") {
     print "  <p class=\"aviso\">No ha indicado su jugada correctamente.</p>\n";
     print "\n";
 } else {
-    $juegaOk = true;
-    $partida[0] = 0;
+    $juegaOk             = true;
+    $partida[0]          = 0;
     $partida[$total + 1] = 0;
 }
 
 if ($juegaOk) {
     if ($juega != "") {
-        $partida[$juega - 1] = (int)!(bool)$partida[$juega - 1];
-        $partida[$juega    ] = (int)!(bool)$partida[$juega    ];
-        $partida[$juega + 1] = (int)!(bool)$partida[$juega + 1];
+        $partida[$juega - 1] = 1 - $partida[$juega - 1];
+        $partida[$juega]     = 1 - $partida[$juega];
+        $partida[$juega + 1] = 1 - $partida[$juega + 1];
     }
     $todasBlancas = true;
-    $todasNegras = true;
+    $todasNegras  = true;
     for ($i = 1; $i <= $total; $i++) {
         if ($partida[$i] == 0) {
             $todasBlancas = false;
@@ -132,17 +132,18 @@ if ($juegaOk) {
 
     print "    <p><input type=\"submit\" value=\"Reiniciar partida\"></p>\n";
     print "  </form>\n";
+    print "\n";
 } else {
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <p><input type=\"submit\" value=\"Reiniciar partida\"></p>\n";
     print "  </form>\n";
+    print "\n";
 }
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-28">28 de octubre de 2014</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
