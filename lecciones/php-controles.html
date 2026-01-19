@@ -36,6 +36,8 @@
         <li><a href="#number">Número (<span class="html-eti">input</span> <span class="html-atri-valor">number</span>)</a></li>
         <li><a href="#date">Fecha (<span class="html-eti">input</span> <span class="html-atri-valor">date</span>)</a></li>
         <li><a href="#date">Hora (<span class="html-eti">input</span> <span class="html-atri-valor">time</span>)</a></li>
+        <li><a href="#color">Color (<span class="html-eti">input</span> <span class="html-atri-valor">color</span>)</a></li>
+        <li><a href="#range">Rango (<span class="html-eti">input</span> <span class="html-atri-valor">range</span>)</a></li>
       </ul>
     </div>
   </nav>
@@ -895,7 +897,7 @@ print "&lt;/pre&gt;\n";
   <section id="image">
     <h2>Imagen (<span class="html-eti">input</span> <span class="html-atri-valor">image</span>)</h2>
 
-    <p>El control de tipo imagen inserta una imagen que funciona como un botón (aunque Firefox no le da relieve como a los botones). Al hacer clic en un punto de la imagen es como si se hubiera pulsado a un botón submit y se envían las coordenadas del punto en el que se ha hecho clic (junto con los valores de los otros controles del formulario).</p>
+    <p>El control de tipo imagen inserta una imagen que funciona como un botón (aunque los navegadores no le dan relieve como a los botones). Al hacer clic en un punto de la imagen es como si se hubiera pulsado a un botón submit y se envían las coordenadas del punto en el que se ha hecho clic (junto con los valores de los otros controles del formulario).</p>
 
     <p>El origen de las coordenadas es el extremo superior izquierdo de la imagen. El valor X aumenta a medida que nos desplazamos a la derecha y el valor Y aumenta a medida que nos desplazamos hacia abajo.</p>
 
@@ -1074,7 +1076,7 @@ print "&lt;/pre&gt;\n";
   <section id="time">
     <h2>Hora (<span class="html-eti">input</span> <span class="html-atri-valor">time</span>)</h2>
 
-    <p>Los controles de hora se envían siempre, aunque estén vacíos. El valor enviado es el contenido del control. La hora de envía con el formato HH-MM, donde HH son las horas y MM los minutos.</p>
+    <p>Los controles de hora se envían siempre, aunque estén vacíos. El valor enviado es el contenido del control. La hora se envía con el formato HH-MM, donde HH son las horas y MM los minutos.</p>
 
     <div class="filaflex cabecera">
       <div>Etiqueta html</div>
@@ -1113,7 +1115,7 @@ print "&lt;/pre&gt;\n";
   <section id="color">
     <h2>Color (<span class="html-eti">input</span> <span class="html-atri-valor">color</span>)</h2>
 
-    <p>Los controles selector de color se envían siempre. El valor enviado es el color seleccionado o el valor predeterminado. El color se envía en formato hexadecimal (#RRGGBB), en minúsculas.</p>
+    <p>Los controles de selector de color se envían siempre. El valor enviado es el color seleccionado o el valor predeterminado. El color se envía en formato hexadecimal (#RRGGBB), en minúsculas.</p>
 
     <p>Si el control no incluye el atributo <span class="html-atri">value</span>, el color predeterminado es el negro (#000000).</p>
 
@@ -1148,7 +1150,7 @@ print "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>El atributo <span class="html-atri">value</span> permite especificar un color inicial. El color se debe indicar en formato hexadecimal (#RRGGBB).</p>
+    <p>El atributo <span class="html-atri">value</span> permite especificar un color inicial, que se enviará de forma predeterminada si el usuario no elige otro color. El color se debe indicar en formato hexadecimal (#RRGGBB).</p>
 
     <div class="filaflex cabecera">
       <div>Etiqueta html</div>
@@ -1182,8 +1184,105 @@ print "&lt;/pre&gt;\n";
     </div>
   </section>
 
+  <section id="range">
+    <h2>Rango (<span class="html-eti">input</span> <span class="html-atri-valor">range</span>)</h2>
+
+    <p>Los controles de rango se envían siempre. El valor enviado, un número entero o decimal, es el valor seleccionado o el valor predeterminado.</p>
+
+    <p>Si el control no incluye el atributo <span class="html-atri">value</span>, el valor predeterminado es el valor central. El rango de valores predeterminado es de 0 a 100 (valores enteros).</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="range" name="range1"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-range-1-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [range1] =&gt; 50
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [range1] =&gt; 80
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-range-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>El atributo <span class="html-atri">value</span> permite especificar el valor (y por tanto, la posición) inicial, que se enviará de forma predeterminada si el usuario no elige otro valor..</p>
+
+    <div class="filaflex cabecera">
+      <div>Etiqueta html</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="range" name="range2" value="20"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-range-2-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [range2] =&gt; 20
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [range2] =&gt; 90
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-range-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="range" name="range3"
+       min="0" max="1" step="0.1"value="0.7"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-range-3-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [range3] =&gt; 0.7
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [range3] =&gt; 0.1
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-input-range-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de enero de 2026</p>
+    <p class="ultmod">Última modificación de esta página: 12 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

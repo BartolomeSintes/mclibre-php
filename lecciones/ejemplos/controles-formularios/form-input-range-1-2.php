@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>
-    input time (1). Controles en Formularios.
+    input range (1). Controles en Formularios.
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  <form action="form-input-time-1-2.php" method="get">
-    <p><input type="time" name="cajaHora1" step="1"></p>
-
-    <p><input type="submit" value="Enviar"></p>
-  </form>
+<?php
+print "  <pre>\n";
+print_r($_REQUEST);
+print "<a href=\"form-input-range-1-1.php\">Volver al formulario.</a>\n";
+print "</pre>\n";
+?>
 </body>
 </html>
