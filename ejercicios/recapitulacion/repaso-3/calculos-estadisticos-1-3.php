@@ -3,9 +3,9 @@
  * Cálculos estadísticos (Resultado 2) calculos-estadisticos-1-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-11-16
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,8 +61,8 @@ function recoge($key, $type = "")
 }
 
 define("FORM_METHOD", "get");
-define("NUM_MINIMO",  1);
-define("NUM_MAXIMO",  20);
+define("NUM_MINIMO", 1);
+define("NUM_MAXIMO", 20);
 
 $numeros          = recoge("n", []);
 $numerosOk        = false;
@@ -85,9 +85,8 @@ if (!$numerosOk) {
 } elseif ($numerosRecibidos == 0) {
     print "  <p>No ha indicado ningún valor.</p>";
     print "\n";
-} elseif ($numerosRecibidos>NUM_MAXIMO) {
-    print "  <p class=\"aviso\">El número de valores debe estar entre "
-        . NUM_MINIMO . " y " . NUM_MAXIMO . ".</p>\n";
+} elseif ($numerosRecibidos > NUM_MAXIMO) {
+    print "  <p class=\"aviso\">El número de valores debe estar entre " . NUM_MINIMO . " y " . NUM_MAXIMO . ".</p>\n";
     print "\n";
 } else {
     $sumaTotal = 0;
@@ -103,8 +102,7 @@ if (!$numerosOk) {
         print "\n";
     }
     if ($media) {
-        print "  <p>La media de los valores es <strong>"
-            . round($sumaTotal / $numerosRecibidos, 2) . "</strong>.</p>\n";
+        print "  <p>La media de los valores es <strong>" . round($sumaTotal / $numerosRecibidos, 2) . "</strong>.</p>\n";
         print "\n";
     }
     if ($maximo) {
@@ -122,7 +120,7 @@ if (!$numerosOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2011-11-16">16 de noviembre de 2011</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

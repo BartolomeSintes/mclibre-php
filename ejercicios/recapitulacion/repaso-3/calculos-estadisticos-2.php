@@ -3,9 +3,9 @@
  * Cálculos estadísticos 2 (Formulario) calculos-estadisticos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-11-16
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,10 +63,10 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-define("FORM_METHOD",         "get");
+define("FORM_METHOD", "get");
 define("NUM_VALORES_INICIAL", 4);
-define("NUM_VALORES_MINIMO",  2);
-define("NUM_VALORES_MAXIMO",  15);
+define("NUM_VALORES_MINIMO", 2);
+define("NUM_VALORES_MAXIMO", 15);
 
 $valores       = recoge("valor", []);
 $valoresOk     = [];
@@ -79,24 +79,24 @@ $minimo        = (recoge("minimo") == "on");
 // Recoge el número de datos y lo valida, aumenta o reduce
 $numeroValores = recoge("numeroValores");
 
-if ($numeroValores<NUM_VALORES_MINIMO) {
+if ($numeroValores < NUM_VALORES_MINIMO) {
     $numeroValores = NUM_VALORES_MINIMO;
-} elseif ($numeroValores>NUM_VALORES_MAXIMO) {
+} elseif ($numeroValores > NUM_VALORES_MAXIMO) {
     $numeroValores = NUM_VALORES_MAXIMO;
 }
 
-if (isset($_REQUEST["anyadir"]) && ($numeroValores<NUM_VALORES_MAXIMO)) {
+if (isset($_REQUEST["anyadir"]) && ($numeroValores < NUM_VALORES_MAXIMO)) {
     $numeroValores++;
     $valores[$numeroValores] = "";  // Al añdir se crea un nuevo valor vacío
-} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>NUM_VALORES_MINIMO)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores > NUM_VALORES_MINIMO)) {
     $numeroValores--;
 }
 
-for ($i=1; $i<=$numeroValores; $i++) {
+for ($i = 1; $i <= $numeroValores; $i++) {
     $valoresOk[$i] = true;
     if (!isset($valores[$i])) {  // Por si falta un valor en la matriz
         $valoresTodoOk = false;
-        $valores[$i] = "";
+        $valores[$i]   = "";
     } elseif ($valores[$i] == "") {  // Por si un valor es vacío
         $valoresTodoOk = false;
     } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {  // Por si un valor no es numérico
@@ -106,7 +106,7 @@ for ($i=1; $i<=$numeroValores; $i++) {
 }
 
 $valoresTodoVacio = true;
-for ($i=1; $i<=$numeroValores; $i++) {
+for ($i = 1; $i <= $numeroValores; $i++) {
     if ($valores[$i] != "") {
         $valoresTodoVacio = false;
     }
@@ -128,8 +128,7 @@ if ($valoresTodoOk) {
         print "\n";
     }
     if ($media) {
-        print "  <p>La media de los valores es <strong>"
-            . round($sumaTotal/$numeroValores, 2) . "</strong>.</p>\n";
+        print "  <p>La media de los valores es <strong>" . round($sumaTotal / $numeroValores, 2) . "</strong>.</p>\n";
         print "\n";
     }
     if ($maximo) {
@@ -142,14 +141,16 @@ if ($valoresTodoOk) {
     }
     print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
     print "\n";
-} elseif (!$valoresTodoVacio&&(isset($_REQUEST["enviar"])||
-        isset($_REQUEST["anyadir"])||isset($_REQUEST["quitar"]))) {
+} elseif (
+    !$valoresTodoVacio
+    && (isset($_REQUEST["enviar"]) || isset($_REQUEST["anyadir"]) || isset($_REQUEST["quitar"]))
+) {
     cabecera("Resultado inválido");
-    print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
+    print "  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         print "      <tr>\n";
         print "        <td>Valor $i:</td>\n";
         print "        <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
@@ -200,11 +201,11 @@ if ($valoresTodoOk) {
     print "  </form>\n";
 } else {
     cabecera("Formulario");
-    print"  <p>Escriba $numeroValores números:</p>\n";
+    print "  <p>Escriba $numeroValores números:</p>\n";
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">";
     print "    <table>\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         print "      <tr>\n";
         print "        <td>Valor $i:</td>\n";
         print "        <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
@@ -269,4 +270,3 @@ print "    </p>\n";
 print "  </footer>\n";
 print "</body>\n";
 print "</html>\n";
-?>

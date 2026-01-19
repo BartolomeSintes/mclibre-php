@@ -3,9 +3,9 @@
  * Cálculos estadísticos (Resultado 1) calculos-estadisticos-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-11-16
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,8 +61,8 @@ function recoge($key, $type = "")
 }
 
 define("FORM_METHOD", "get");
-define("NUM_MINIMO",  1);
-define("NUM_MAXIMO",  20);
+define("NUM_MINIMO", 1);
+define("NUM_MAXIMO", 20);
 
 $numero   = recoge("numero");
 $numeroOk = false;
@@ -71,28 +71,24 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito el número de valores.</p>\n";
     print "\n";
 } elseif (!is_numeric($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el número de valores "
-        . "como número.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de valores como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el número de valores "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de valores como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < NUM_MINIMO || $numero > NUM_MAXIMO) {
-    print "  <p class=\"aviso\">El número de valores debe estar entre "
-        . NUM_MINIMO . " y " . NUM_MAXIMO . ".</p>\n";
+    print "  <p class=\"aviso\">El número de valores debe estar entre " . NUM_MINIMO . " y " . NUM_MAXIMO . ".</p>\n";
     print "\n";
 } else {
     $numeroOk = true;
 }
 
 if ($numeroOk) {
-    print "  <p>Escriba todos los valores y marque las casillas correspondientes "
-        . "a los cálculos que quiere.</p>\n";
+    print "  <p>Escriba todos los valores y marque las casillas correspondientes a los cálculos que quiere.</p>\n";
     print "\n";
     print "  <form action=\"calculos-estadisticos-1-3.php\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    for ($i=1; $i<=$numero; $i++) {
+    for ($i = 1; $i <= $numero; $i++) {
         print "      <tr>\n";
         print "        <td><strong>Número $i</strong>:</td>\n";
         print "        <td><input type=\"text\" name=\"n[$i]\" size=\"6\" maxlength=\"4\"></td>\n";
@@ -120,7 +116,7 @@ if ($numeroOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2011-11-16">16 de noviembre de 2011</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
