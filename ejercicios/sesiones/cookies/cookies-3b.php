@@ -3,9 +3,9 @@
  * Cookies 3 - cookies-3b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-05-19
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$compruebaCookie = isset($_COOKIE["cookiePrueba"]) ? $_COOKIE["cookiePrueba"] : "";
+$compruebaCookie = $_COOKIE["cookiePrueba"] ?? "";
 if ($compruebaCookie == "X") {
     header("Location:cookies-3a.php?admiteCookies=1");
+    exit;
 } else {
     header("Location:cookies-3a.php?admiteCookies=0");
+    exit;
 }
-exit;
-?>

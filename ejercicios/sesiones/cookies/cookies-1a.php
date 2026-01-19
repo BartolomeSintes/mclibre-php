@@ -3,9 +3,9 @@
  * Cookies 1 - cookies-1a.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-05-19
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,13 +44,13 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$color  = recoge("color");
+$color = recoge("color");
 // Si se envía un color se crea la cookie
 if ($color == "rojo" || $color == "azul" || $color == "verde") {
     setcookie("cookieColor", $color);
 // Si se envía el color ninguno se destruye la cookie
 } elseif ($color == "ninguno") {
-    setcookie ("cookieColor", "", time() - 3600);
+    setcookie("cookieColor", "", time() - 3600);
 // Si no se envía ningún color se mira si hay cookie con un color
 } elseif (isset($_COOKIE["cookieColor"])) {
     $color = $_COOKIE["cookieColor"];
@@ -106,4 +106,3 @@ print "    </p>\n";
 print "  </footer>\n";
 print "</body>\n";
 print "</html>\n";
-?>

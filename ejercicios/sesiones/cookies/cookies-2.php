@@ -3,9 +3,9 @@
  * Cookies 2 - cookies-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-05-28
+ * @version   2025-02-14
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,13 +50,13 @@ define("DURACION_MAX", 60);
 $accion   = recoge("accion");
 $duracion = recoge("duracion");
 
-$duracionOk = ctype_digit($duracion) && (DURACION_MIN<=$duracion) && ($duracion <= DURACION_MAX);
+$duracionOk = ctype_digit($duracion) && DURACION_MIN <= $duracion && $duracion <= DURACION_MAX;
 $accionOk   = ($accion == "Crear" || $accion == "Destruir" || $accion == "Comprobar");
 
 if ($accion == "Crear" && $duracionOk) {
-    setcookie("cookieTemporal", time()+$duracion, time()+$duracion);
+    setcookie("cookieTemporal", time() + $duracion, time() + $duracion);
 } elseif ($accion == "Destruir") {
-    setcookie ("cookieTemporal", "", time() - 3600);
+    setcookie("cookieTemporal", "", time() - 3600);
 }
 
 print "<!DOCTYPE html>\n";
@@ -81,7 +81,7 @@ if ($accion == "Crear") {
         if ($duracion == 1) {
             print "segundo.</p>\n";
             print "\n";
-        } else{
+        } else {
             print "segundos.</p>\n";
             print "\n";
         }
@@ -96,7 +96,7 @@ if ($accion == "Crear") {
         if ($tiempoRestante == 1) {
             print "segundo.</p>\n";
             print "\n";
-        } else{
+        } else {
             print "segundos.</p>\n";
             print "\n";
         }
@@ -129,13 +129,12 @@ print "        <input type=\"submit\" value=\"Destruir\" name=\"accion\">\n";
 print "      </li>\n";
 print "    </ul>\n";
 print "  </form>\n";
-print "
-";
+print "\n";
 
 print "  <footer>\n";
 print "    <p class=\"ultmod\">\n";
 print "      Última modificación de esta página:\n";
-print "      <time datetime=\"2011-05-28\">28 de mayo de 2011</time>\n";
+print "      <time datetime=\"2015-02-14\">14 de febrero de 2025</time>\n";
 print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";
@@ -147,4 +146,3 @@ print "    </p>\n";
 print "  </footer>\n";
 print "</body>\n";
 print "</html>\n";
-?>
