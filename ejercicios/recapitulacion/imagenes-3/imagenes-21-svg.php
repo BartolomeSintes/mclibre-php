@@ -3,9 +3,9 @@
  * Imágenes - imagenes-21-svg.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ $ancho = recoge("ancho");
 $color = recoge("color");
 
 $anchoPredeterminado = 100;
-$colores = [
+$colores             = [
     "black",
     "blue",
     "fuchsia",
@@ -57,7 +57,7 @@ $colores = [
     "orange",
     "red",
     "white",
-    "yellow"
+    "yellow",
 ];
 
 if ($ancho == "") {
@@ -74,11 +74,7 @@ if (!in_array($color, $colores)) {
 
 header("Content-type: image/svg+xml");
 print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-print "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \n"
-    . "  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
-print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "  width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
-print "<path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" "
-    . "d=\"M 2,2 l" . $ancho - 4 . ",0 l0," . $ancho - 4 . "l-" . $ancho - 4 . ",0z\" />\n";
+print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "     width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
+print "  <path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" d=\"M 2,2 l" . $ancho - 4 . ",0 l0," . $ancho - 4 . " l-" . $ancho - 4 . ",0z\" />\n";
 print "</svg>\n";
-?>

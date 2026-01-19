@@ -3,9 +3,9 @@
  * Imágenes - imagenes-32.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-10-27
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -62,20 +62,20 @@ function recoge($key, $type = "")
 
 function microtime_float()
 {
-    list($usec, $sec) = explode(" ", microtime());
-    return ((float)$usec + (float)$sec);
+    [$usec, $sec] = explode(" ", microtime());
+    return (float)$usec + (float)$sec;
 }
 
-$tiroX     = recoge("tiro_x");
-$tiroY     = recoge("tiro_y");
-$circuloX  = recoge("circuloX");
-$circuloY  = recoge("circuloY");
-$circuloR  = recoge("circuloR");
-$tiempo    = recoge("tiempo");
-$tamX      = 800;
-$tamY      = 400;
-$minRadio  = 5;
-$maxRadio  = 20;
+$tiroX    = recoge("tiro_x");
+$tiroY    = recoge("tiro_y");
+$circuloX = recoge("circuloX");
+$circuloY = recoge("circuloY");
+$circuloR = recoge("circuloR");
+$tiempo   = recoge("tiempo");
+$tamX     = 800;
+$tamY     = 400;
+$minRadio = 5;
+$maxRadio = 20;
 
 if ($tiempo == "") {
     $tiempo = microtime_float();
@@ -83,16 +83,20 @@ if ($tiempo == "") {
 
 // print "  <p>" . microtime_float() . " " . $tiempo . "</p>\n";
 
-if ($tiroX == "" && $tiroY == "" && $circuloX == "" && $circuloY == ""
-    && $circuloR == "") {
+if ($tiroX == "" && $tiroY == "" && $circuloX == "" && $circuloY == "" && $circuloR == "") {
     print "  <p>Haga clic en el punto negro.</p>\n";
+    print "\n";
 } else {
-    if ($circuloX - $circuloR <= $tiroX && $tiroX <= $circuloX + $circuloR
-        && $circuloY - $circuloR <= $tiroY && $tiroY <= $circuloY + $circuloR) {
-        print "  <p><strong>¡Correcto!</strong> Ha tardado "
-            . round(microtime_float() - $tiempo, 1) . " s. Haga clic en el punto negro.</p>\n";
+    if (
+        $circuloX - $circuloR <= $tiroX && $tiroX <= $circuloX + $circuloR
+        && $circuloY - $circuloR <= $tiroY && $tiroY <= $circuloY + $circuloR
+    ) {
+        print "  <p><strong>¡Correcto!</strong> Ha tardado " . round(microtime_float() - $tiempo, 1) . " s. ";
+        print "Haga clic en el punto negro.</p>\n";
+        print "\n";
     } else {
         print "  <p><strong>¡Ha fallado!</strong> Haga clic en el punto negro.</p>\n";
+        print "\n";
     }
 }
 
@@ -102,9 +106,9 @@ $circuloY = rand(2 + $circuloR, $tamY - 4 - $circuloR);
 
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <p>\n";
-print "      <input type=\"image\" name=\"tiro\" alt=\"Tiro al plato\" "
-    . "src=\"imagenes-32-img.php?tamX=$tamX&tamY=$tamY&circuloR=$circuloR"
-    . "&circuloX=$circuloX&circuloY=$circuloY\" height=\"$tamY\">\n";
+print "      <input type=\"image\" name=\"tiro\" alt=\"Tiro al plato\"\n";
+print "             src=\"imagenes-32-img.php?tamX=$tamX&tamY=$tamY&circuloR=$circuloR&circuloX=$circuloX&circuloY=$circuloY\"\n";
+print "             height=\"$tamY\">\n";
 print "    </p>\n";
 print "\n";
 print "    <p>\n";
@@ -116,12 +120,12 @@ print "    </p>\n";
 print "\n";
 print "    <p><input type=\"submit\" value=\"Reiniciar partida\"></p>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-27">27 de octubre de 2014</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

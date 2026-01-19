@@ -3,9 +3,9 @@
  * Imágenes - imagenes_6.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -52,11 +52,8 @@ $circuloY = recoge("circuloY");
 
 header("Content-type: image/svg+xml");
 print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-print "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
-print "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" "
-    . "width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\">\n";
-print "<path fill=\"white\" stroke=\"black\" stroke-width=\"3\" "
-        . "d=\"M 2,2 l" . $tamX - 4 . ",0 l0," . $tamY - 4 . " l-" . $tamX - 4 . ",0z\" />\n";
-print "<circle cx=\"$circuloX\" cy=\"$circuloY\" r=\"$circuloR\" style=\"stroke:black; fill:black\" />\n";
+print "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "     width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\">\n";
+print "  <rect fill=\"white\" stroke=\"black\" stroke-width=\"3\" x=\"2\" y=\"2\" width=\"" . $tamX - 4 . "\" height =\"" . $tamY - 4 . "\" />\n";
+print "  <circle cx=\"$circuloX\" cy=\"$circuloY\" r=\"$circuloR\" style=\"stroke:black; fill:black\" />\n";
 print "</svg>";
-?>

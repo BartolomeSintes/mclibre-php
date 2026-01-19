@@ -3,9 +3,9 @@
  * Imágenes - imagenes-31.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -60,10 +60,10 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-$tiroX     = recoge("tiro_x");
-$tiroY     = recoge("tiro_y");
-$tamX      = 800;
-$tamY      = 400;
+$tiroX = recoge("tiro_x");
+$tiroY = recoge("tiro_y");
+$tamX  = 800;
+$tamY  = 400;
 
 $minRadio = 5;
 $maxRadio = 20;
@@ -74,21 +74,20 @@ $circuloY = rand(2 + $circuloR, $tamY - 4 - $circuloR);
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <p>\n";
 print "      <button type=\"image\" name=\"tiro\">\n";
-print "        <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" "
-    . "width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\">\n";
-print "          <path fill=\"white\" stroke=\"black\" stroke-width=\"3\" "
-    . "d=\"M 2,2 l" . $tamX - 4 . ",0 l0," . $tamY - 4 . " l-" . $tamX - 4 . ",0z\" />\n";
+print "        <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "             width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\">\n";
+print "          <rect fill=\"white\" stroke=\"black\" stroke-width=\"3\" x=\"2\" y=\"2\" width=\"" . $tamX - 4 . "\" height =\"" . $tamY - 4 . "\" />\n";
 print "          <circle cx=\"$circuloX\" cy=\"$circuloY\" r=\"$circuloR\" style=\"stroke:black; fill:black\" />\n";
 print "        </svg>\n";
 print "      </button>\n";
 print "    </p>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

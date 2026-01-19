@@ -3,9 +3,9 @@
  * Imágenes - imagenes-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-10-27
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,24 +47,23 @@ $colores = [
     ["orange",  "naranja"],
     ["red",     "rojo"],
     ["white",   "blanco"],
-    ["yellow",  "amarillo"]
+    ["yellow",  "amarillo"],
 ];
 
 $numeroColores = count($colores);
 
 $numeroCuadros = 3;
-$ancho = 100;
+$ancho         = 100;
 
 $color = rand(0, $numeroColores - 1);
 
-print "  <p><img src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" "
-     . "alt=\"Cuadro al azar\"></p>\n";
+print "  <p><img src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" alt=\"Cuadro al azar\"></p>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-27">27 de octubre de 2014</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

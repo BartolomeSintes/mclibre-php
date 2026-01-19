@@ -3,9 +3,9 @@
  * Imágenes - imagenes-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-09-26
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -92,16 +92,13 @@ for ($i = 1; $i <= $cuadros; $i++) {
     $colorG = rand(1, 255);
     $colorB = rand(1, 255);
     $color  = "rgb($colorR $colorG $colorB)";
-    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
-        . "width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
-    print "      <path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" "
-    . "d=\"M 2,2 l" . $ancho - 4 . ",0 l0," . $ancho - 4 . "l-" . $ancho - 4 . ",0z\" />\n";
+    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
+    print "      <path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" d=\"M 2,2 l" . $ancho - 4 . ",0 l0," . $ancho - 4 . "l-" . $ancho - 4 . ",0z\" />\n";
     print "    </svg>\n";
 }
 print "  </p>\n";
-
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
