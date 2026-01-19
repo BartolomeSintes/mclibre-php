@@ -3,9 +3,9 @@
  * Tabla con casillas de verificación (Resultado) - foreach-2-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("cs-foreach-2-5");
 session_start();
@@ -73,7 +74,7 @@ function recoge($key, $type = "")
 // Recogida de datos
 $c      = recoge("c", []);
 $cOk    = false;
-$cValor = "on";;
+$cValor = "on";
 
 // Comprobación de $c (casillas de verificación)
 // Se cuenta el número de elementos en la matriz $c
@@ -84,8 +85,8 @@ if ($casillasMarcadas == 0) {
     print "\n";
 // Si se han recibido demasiadas casillas
 } elseif ($casillasMarcadas > $_SESSION["numero"] * $_SESSION["numero"]) {
-        print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
-        print "\n";
+    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -97,7 +98,7 @@ if ($casillasMarcadas == 0) {
         // o si el valor no es "on"
             || $valor != $cValor) {
             $cOk = false;
-       }
+        }
     }
     if (!$cOk) {
         print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
@@ -127,7 +128,7 @@ if ($cOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

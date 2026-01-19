@@ -3,9 +3,9 @@
  * Palabras repetidas (Resultado) - foreach-2-2-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("cs-foreach-2-2");
 session_start();
@@ -124,11 +125,11 @@ if ($cOk) {
             // ... y los compara con todos los valores de las cajas
             foreach ($c as $indice2 => $valor2) {
                 // Si los valores son iguales (pero distintos de la cadena vacía) hay repeticiones
-                if ($valor1 == $valor2 && $valor1 != "" && // pero como compara todos con todos también comparará cada elemento consigo mismo
+                // pero como compara todos con todos también comparará cada elemento consigo mismo
                 // así que hay que decirle que los índices sean distintos (para que
                 // no tenga en cuenta el caso en que los valores son iguales porque
                 // los índices también lo son)
-                $indice1 != $indice2) {
+                if ($valor1 == $valor2 && $valor1 != "" && $indice1 != $indice2) {
                     $repeticion = true;
                 }
             }
@@ -143,7 +144,6 @@ if ($cOk) {
     }
 }
 ?>
-
   <p><a href="foreach-2-2-2.php">Volver a la tabla</a></p>
 
   <p><a href="foreach-2-2-1.php">Volver al formulario inicial.</a></p>
@@ -151,7 +151,7 @@ if ($cOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-01">1 de noviembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

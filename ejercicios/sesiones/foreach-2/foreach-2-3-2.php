@@ -3,9 +3,9 @@
  * Encuesta (Formulario 2) - foreach-2-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
 session_name("cs-foreach-2-3");
 session_start();
@@ -65,14 +66,14 @@ function recoge($key, $type = "")
 }
 
 // Recogida de datos
-$preguntas        = recoge("preguntas");
+$preguntas = recoge("preguntas");
 // Si no se ha recogido preguntas pero hay preguntas en la sesión
 // (es decir, si se viene de la tercera página)
 // coge el número de la sesión
 if (isset($_SESSION["preguntas"]) and $preguntas == "") {
     $preguntas = $_SESSION["preguntas"];
 }
-$respuestas       = recoge("respuestas");
+$respuestas = recoge("respuestas");
 // Si no se ha recogido respuestas pero hay respuestas en la sesión
 // (es decir, si se viene de la tercera página)
 // coge el número de la sesión
@@ -88,12 +89,13 @@ $numeroMaximo     = 10;
 // Comprobación de $preguntas (entero entre 2 y 10)
 if ($preguntas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($preguntas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de preguntas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de preguntas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($preguntas < $preguntasMinimo || $preguntas > $numeroMaximo) {
-    print "  <p class=\"aviso\">El número de preguntas debe estar entre "
-        . "$preguntasMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de preguntas debe estar entre $preguntasMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $preguntasOk = true;
 }
@@ -101,12 +103,13 @@ if ($preguntas == "") {
 // Comprobación de $respuestas (entero entre 2 y 10)
 if ($respuestas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de respuestas.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($respuestas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de respuestas "
-        . "como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de respuestas como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($respuestas < $respuestasMinimo || $respuestas > $numeroMaximo) {
-    print "  <p class=\"aviso\">El número de respuestas debe estar entre "
-        . "$respuestasMinimo y $numeroMaximo.</p>\n";
+    print "  <p class=\"aviso\">El número de respuestas debe estar entre $respuestasMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $respuestasOk = true;
 }
@@ -151,15 +154,15 @@ if ($preguntasOk && $respuestasOk) {
     print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "  </form>\n";
+    print "\n";
 }
 ?>
-
   <p><a href="foreach-2-3-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-01">1 de noviembre de 2018</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
