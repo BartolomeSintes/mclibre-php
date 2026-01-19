@@ -3,9 +3,9 @@
  * Convertidor de bytes 2 - convertidor-bytes-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -76,10 +76,9 @@ if ($bytes == "") {
     print "  <p class=\"aviso\">No ha escrito los bytes como número entero positivo (sin parte decimal)</p>\n";
     print "\n";
 } elseif ($bytes >= $maximo) {
-    print "  <p class=\"aviso\">Los bytes deben ser inferiores a "
-        . number_format($maximo, 0, ",", ".") . ".</p>\n";
-    print "\n";
     // Es mejor no mostrar $maximo porque si es superior a PHP_INT_MAX se muestra como float
+    print "  <p class=\"aviso\">Los bytes deben ser inferiores a " . number_format($maximo, 0, ",", ".") . ".</p>\n";
+    print "\n";
 } else {
     $bytesOk = true;
 }
@@ -102,7 +101,7 @@ if ($bytesOk) {
 
     if ($tb) {
         print number_format($tb, 0, ",", ".") . " TB";
-        if (($gb && $mb) || ($gb && $kb) || ($gb && $b) || ($mb && $kb) || ($mb && $b)|| ($kb && $b)) {
+        if (($gb && $mb) || ($gb && $kb) || ($gb && $b) || ($mb && $kb) || ($mb && $b) || ($kb && $b)) {
             print ", ";
         } elseif ($gb || $mb || $kb || $b) {
             print " y ";
@@ -111,7 +110,7 @@ if ($bytesOk) {
 
     if ($gb) {
         print number_format($gb, 0, ",", ".") . " GB";
-        if (($mb && $kb) || ($mb && $b)|| ($kb && $b)) {
+        if (($mb && $kb) || ($mb && $b) || ($kb && $b)) {
             print ", ";
         } elseif ($mb || $kb || $b) {
             print " y ";
@@ -149,7 +148,7 @@ if ($bytesOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

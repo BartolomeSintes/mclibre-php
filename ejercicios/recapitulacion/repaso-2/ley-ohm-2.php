@@ -3,9 +3,9 @@
  * Ley de Ohm - ley-ohm-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -74,8 +74,8 @@ if (($tension == "" && $intensidad == "") || ($tension == "" && $resistencia == 
     print "  <p class=\"aviso\">Se necesitan al menos rellenar dos datos.</p>\n";
     print "\n";
 } else {
-// Comprobación de $tension
-if ($tension == "") {
+    // Comprobación de $tension
+    if ($tension == "") {
         $tensionOk = true;
     } elseif (!is_numeric($tension)) {
         print "  <p class=\"aviso\">No ha escrito la tensión como número.</p>\n";
@@ -84,7 +84,7 @@ if ($tension == "") {
         $tensionOk = true;
     }
 
-// Comprobación de $intensidad
+    // Comprobación de $intensidad
     if ($intensidad == "") {
         $intensidadOk = true;
     } elseif (!is_numeric($intensidad)) {
@@ -94,13 +94,13 @@ if ($tension == "") {
         $intensidadOk = true;
     }
 
-// Comprobación de $resistencia
+    // Comprobación de $resistencia
     if ($resistencia == "") {
         $resistenciaOk = true;
     } elseif (!is_numeric($resistencia)) {
         print "  <p class=\"aviso\">No ha escrito la resistencia como número.</p>\n";
         print "\n";
-    } elseif ($resistencia<0) {
+    } elseif ($resistencia < 0) {
         print "  <p class=\"aviso\">La resistencia no puede ser negativa.</p>\n";
         print "\n";
     } else {
@@ -163,7 +163,7 @@ if ($tensionOk && $intensidadOk && $resistenciaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

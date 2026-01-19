@@ -3,9 +3,9 @@
  * Convertidor de divisas 2 - convertidor-divisas-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -68,7 +68,7 @@ $cantidadOk = false;
 $origenOk   = false;
 $destinoOk  = false;
 
-$maximo       = 1000000;
+$maximo = 1000000;
 
 // Comprobación de $cantidad
 if ($cantidad == "") {
@@ -78,20 +78,20 @@ if ($cantidad == "") {
     print "  <p class=\"aviso\">No ha escrito la cantidad de dinero como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($cantidad)) {
-    print "  <p class=\"aviso\">No ha escrito la cantidad de dinero "
-        . " como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la cantidad de dinero como número entero positivo.</p>\n";
     print "\n";
 } elseif ($cantidad > $maximo) {
-    print "  <p class=\"aviso\">La cantidad de dinero no es inferior o igual a "
-         . number_format($maximo, 0, ",", ".") . ".</p>\n";
+    print "  <p class=\"aviso\">La cantidad de dinero no es inferior o igual a " . number_format($maximo, 0, ",", ".") . ".</p>\n";
     print "\n";
 } else {
     $cantidadOk = true;
 }
 
 // Comprobación de $origen
-if ($origen != "EUR" &&  $origen != "USD" && $origen != "GBP" && $origen != "JPY"
-    && $origen != "ESP") {
+if (
+    $origen != "EUR" && $origen != "USD" && $origen != "GBP"
+    && $origen != "JPY" && $origen != "ESP"
+) {
     print "  <p class=\"aviso\">No ha escrito correctamente la moneda de origen.</p>\n";
     print "\n";
 } else {
@@ -99,8 +99,10 @@ if ($origen != "EUR" &&  $origen != "USD" && $origen != "GBP" && $origen != "JPY
 }
 
 // Comprobación de $destino
-if ($destino != "EUR" && $destino != "USD" && $destino != "GBP" && $destino != "JPY"
-    && $destino != "ESP") {
+if (
+    $destino != "EUR" && $destino != "USD" && $destino != "GBP"
+    && $destino != "JPY" && $destino != "ESP"
+) {
     print "  <p class=\"aviso\">No ha escrito correctamente la moneda de destino.</p>\n";
     print "\n";
 } else {
@@ -110,41 +112,40 @@ if ($destino != "EUR" && $destino != "USD" && $destino != "GBP" && $destino != "
 // Si los valores recibidos son correctos ...
 if ($cantidadOk && $origenOk && $destinoOk) {
     if ($origen == "EUR") {
-        $intermedio = $cantidad;
+        $intermedio         = $cantidad;
         $nombreMonedaOrigen = "euros";
     } elseif ($origen == "USD") {
-        $intermedio = $cantidad / 1.31481;
+        $intermedio         = $cantidad / 1.31481;
         $nombreMonedaOrigen = "dólares USA";
     } elseif ($origen == "GBP") {
-        $intermedio = $cantidad / 0.89807;
+        $intermedio         = $cantidad / 0.89807;
         $nombreMonedaOrigen = "libras esterlinas";
     } elseif ($origen == "JPY") {
-        $intermedio = $cantidad / 132.113;
+        $intermedio         = $cantidad / 132.113;
         $nombreMonedaOrigen = "yenes";
     } elseif ($origen == "ESP") {
-        $intermedio = $cantidad / 166.366;
+        $intermedio         = $cantidad / 166.366;
         $nombreMonedaOrigen = "pesetas españolas";
     }
 
     if ($destino == "EUR") {
-        $result = $intermedio;
+        $result              = $intermedio;
         $nombreMonedaDestino = "euros";
     } elseif ($destino == "USD") {
-        $result = $intermedio * 1.31481;
+        $result              = $intermedio * 1.31481;
         $nombreMonedaDestino = "dólares USA";
     } elseif ($destino == "GBP") {
-        $result = $intermedio * 0.89807;
+        $result              = $intermedio * 0.89807;
         $nombreMonedaDestino = "libras esterlinas";
     } elseif ($destino == "JPY") {
-        $result = $intermedio * 132.113;
+        $result              = $intermedio * 132.113;
         $nombreMonedaDestino = "yenes";
     } elseif ($destino == "ESP") {
-        $result = $intermedio * 166.366;
+        $result              = $intermedio * 166.366;
         $nombreMonedaDestino = "pesetas españolas";
     }
 
-    print "  <p>$cantidad $nombreMonedaOrigen son " . number_format($result, 2, ",", ".")
-            . " $nombreMonedaDestino.</p>\n";
+    print "  <p>$cantidad $nombreMonedaOrigen son " . number_format($result, 2, ",", ".") . " $nombreMonedaDestino.</p>\n";
     print "\n";
     print "  <p>Gracias por utilizar este convertidor.</p>\n";
     print "\n";
@@ -155,7 +156,7 @@ if ($cantidadOk && $origenOk && $destinoOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

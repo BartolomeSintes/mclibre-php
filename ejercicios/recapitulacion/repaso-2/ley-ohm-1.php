@@ -14,7 +14,6 @@
   <h1>Ley de Ohm (Formulario)</h1>
 
   <form action="ley-ohm-2.php" method="get">
-
     <p>Dado este circuito <img src="circuito.png" alt="Ley de Ohm" width="200" height="135">, escriba la tensión, la intensidad o la resistencia y comprobaré si los valores son correctos o completaré el valor que falte:</p>
 
     <table>
@@ -41,7 +40,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
