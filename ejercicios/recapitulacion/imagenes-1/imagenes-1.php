@@ -3,9 +3,9 @@
  * Imágenes - imagenes-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ function recoge($key, $type = "")
 }
 
 // Recogida de datos
-$imagen      = recoge("imagen");
+$imagen = recoge("imagen");
 
 // Variables auxiliares
 $valorMinimo = 1;
@@ -76,7 +76,7 @@ if ($imagen == "" || !is_numeric($imagen) || !ctype_digit($imagen)) {
 } elseif ($imagen < $valorMinimo) {
     $imagen = $valorMinimo;
 // Si el número de imagen es superior a 5, se mostrará la última imagen
-} else if($imagen > $valorMaximo) {
+} elseif ($imagen > $valorMaximo) {
     $imagen = $valorMaximo;
 }
 
@@ -86,20 +86,28 @@ if ($imagen == "" || !is_numeric($imagen) || !ctype_digit($imagen)) {
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tr>\n";
-print "        <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen - 1 . "\">"
-     . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\"></button></td>\n";
-print "        <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\"></td>\n";
-print "        <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen + 1 . "\">"
-     . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\"></button></td>\n";
+print "        <td>\n";
+print "          <button type=\"submit\" name=\"imagen\" value=\"" . $imagen - 1 . "\">\n";
+print "            <img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\">\n";
+print "          </button>\n";
+print "        </td>\n";
+print "        <td>\n";
+print "          <img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\">\n";
+print "        </td>\n";
+print "        <td>\n";
+print "          <button type=\"submit\" name=\"imagen\" value=\"" . $imagen + 1 . "\">\n";
+print "            <img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\">\n";
+print "          </button>\n";
+print "        </td>\n";
 print "      </tr>\n";
 print "    </table>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">

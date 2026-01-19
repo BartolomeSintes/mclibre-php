@@ -3,9 +3,9 @@
  * Imágenes - imagenes-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-11-01
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,35 +61,35 @@ function recoge($key, $type = "")
 }
 
 // Recogida de datos
-$imagenX     = recoge("imagen_x");
-$imagenY     = recoge("imagen_y");
+$imagenX = recoge("imagen_x");
+$imagenY = recoge("imagen_y");
 
 // Variables auxiliares
 $valorMinimo = 1;
 $valorMaximo = 150;
 
 // Calcula los límites de cada zona de colores
-$unidad          = $valorMaximo / 15;
+$unidad = $valorMaximo / 15;
 
-$minimoAzulX     =  1 * $unidad;
-$maximoAzulX     =  7 * $unidad;
-$minimoAzulY     =  1 * $unidad;
-$maximoAzulY     =  7 * $unidad;
+$minimoAzulX = 1 * $unidad;
+$maximoAzulX = 7 * $unidad;
+$minimoAzulY = 1 * $unidad;
+$maximoAzulY = 7 * $unidad;
 
-$minimoRojoX     =  1 * $unidad;
-$maximoRojoX     =  7 * $unidad;
-$minimoRojoY     =  8 * $unidad;
-$maximoRojoY     = 14 * $unidad;
+$minimoRojoX = 1 * $unidad;
+$maximoRojoX = 7 * $unidad;
+$minimoRojoY = 8 * $unidad;
+$maximoRojoY = 14 * $unidad;
 
-$minimoVerdeX    =  8 * $unidad;
-$maximoVerdeX    = 14 * $unidad;
-$minimoVerdeY    =  8 * $unidad;
-$maximoVerdeY    = 14 * $unidad;
+$minimoVerdeX = 8 * $unidad;
+$maximoVerdeX = 14 * $unidad;
+$minimoVerdeY = 8 * $unidad;
+$maximoVerdeY = 14 * $unidad;
 
-$minimoAmarilloX =  8 * $unidad;
+$minimoAmarilloX = 8 * $unidad;
 $maximoAmarilloX = 14 * $unidad;
-$minimoAmarilloY =  1 * $unidad;
-$maximoAmarilloY =  7 * $unidad;
+$minimoAmarilloY = 1 * $unidad;
+$maximoAmarilloY = 7 * $unidad;
 
 // Cuerpo del programa
 
@@ -111,20 +111,28 @@ if ($imagenX == "" && $imagenY == "") {
     }
 
     // Se comprueba si se ha hecho clic en alguna de las zonas de colores
-    if ($imagenX > $minimoAzulX && $imagenX < $maximoAzulX
-        && $imagenY > $minimoAzulY && $imagenY < $maximoAzulY) {
+    if (
+        $imagenX > $minimoAzulX && $imagenX < $maximoAzulX
+        && $imagenY > $minimoAzulY && $imagenY < $maximoAzulY
+    ) {
         print "  <p>Ha elegido el color <strong>Azul</strong>. Elija de nuevo:</p>\n";
         print "\n";
-    } elseif ($imagenX > $minimoRojoX && $imagenX < $maximoRojoX
-        && $imagenY > $minimoRojoY && $imagenY < $maximoRojoY) {
+    } elseif (
+        $imagenX > $minimoRojoX && $imagenX < $maximoRojoX
+        && $imagenY > $minimoRojoY && $imagenY < $maximoRojoY
+    ) {
         print "  <p>Ha elegido el color <strong>Rojo</strong>. Elija de nuevo:</p>\n";
         print "\n";
-    } elseif ($imagenX > $minimoVerdeX && $imagenX < $maximoVerdeX
-        && $imagenY > $minimoVerdeY && $imagenY < $maximoVerdeY) {
+    } elseif (
+        $imagenX > $minimoVerdeX && $imagenX < $maximoVerdeX
+        && $imagenY > $minimoVerdeY && $imagenY < $maximoVerdeY
+    ) {
         print "  <p>Ha elegido el color <strong>Verde</strong>. Elija de nuevo:</p>\n";
         print "\n";
-    } elseif ($imagenX > $minimoAmarilloX && $imagenX < $maximoAmarilloX
-        && $imagenY > $minimoAmarilloY && $imagenY < $maximoAmarilloY) {
+    } elseif (
+        $imagenX > $minimoAmarilloX && $imagenX < $maximoAmarilloX
+        && $imagenY > $minimoAmarilloY && $imagenY < $maximoAmarilloY
+    ) {
         print "  <p>Ha elegido el color <strong>Amarillo</strong>. Elija de nuevo:</p>\n";
         print "\n";
     } else {
@@ -135,15 +143,14 @@ if ($imagenX == "" && $imagenY == "") {
 
 // Se genera el formulario
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "    <p><input type=\"image\" name=\"imagen\" alt=\"Cuatro colores\" "
-     . "src=\"img/juegos/cuatro-colores.svg\" height=\"$valorMaximo\"></p>\n";
+print "    <p><input type=\"image\" name=\"imagen\" alt=\"Cuatro colores\" src=\"img/juegos/cuatro-colores.svg\" height=\"$valorMaximo\"></p>\n";
 print "  </form>\n";
+print "\n";
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-11-01">1 de noviembre de 2014</time>
+      <time datetime="2025-02-08">8 de febrero de 2025</time>
     </p>
 
     <p class="licencia">
