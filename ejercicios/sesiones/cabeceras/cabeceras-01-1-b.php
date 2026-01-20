@@ -15,7 +15,12 @@
   <h1>Formulario 1 (Formulario)</h1>
 
   <form action="cabeceras-01-2-b.php" method="get">
-    <p><label>Escriba su nombre: <input type="text" name="nombre" size="20" maxlength="20"></label></p>
+    <p>
+      <label>
+        Escriba su nombre:
+        <input type="text" name="nombre" size="20" maxlength="20">
+      </label>
+    </p>
 
     <p>
       <input type="submit" value="Comprobar">
@@ -26,7 +31,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-11-10">10 de noviembre de 2019</time>
+      <time datetime="2026-01-20">20 de enero de 2026</time>
     </p>
 
     <p class="licencia">

@@ -67,12 +67,18 @@ $aviso = recoge("aviso");
 $edad  = recoge("edad");
 
 print "    <p>\n";
-print "      <label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" ";
+print "      <label>\n";
+print "        Escriba su edad (entre 18 y 130 años):\n";
+
 // Si hemos recibido la edad, la incluimos en el control
-if ($edad != "") {
-    print "value=\"$edad\" ";
+if ($edad == "") {
+    print "        <input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"5\">\n";
+} else {
+    print "        <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"5\">\n";
 }
-print "size=\"5\" maxlength=\"5\"></label>\n";
+
+print "      </label>\n";
+
 // Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
     print "      <span class=\"aviso\">$aviso</span>\n";
@@ -83,14 +89,14 @@ print "\n";
     <p>
       <input type="submit" value="Comprobar">
       <input type="reset">
-      <a href="cabeceras-04-1.php">Mostrar formulario vacío</a>
+      <a href="cabeceras-04-1.php">Eliminar aviso</a>
     </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-20">20 de enero de 2026</time>
     </p>
 
     <p class="licencia">

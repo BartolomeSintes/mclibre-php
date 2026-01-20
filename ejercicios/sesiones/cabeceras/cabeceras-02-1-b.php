@@ -39,6 +39,11 @@
   <h1>Formulario 2 (Formulario)</h1>
 
   <form action="cabeceras-02-2-b.php" method="get">
+    <p>
+      <label>
+        Escriba su nombre:
+        <input type="text" name="nombre" size="20" maxlength="20">
+      </label>
 <?php
 // Función de recogida de datos
 function recoge($key, $type = "")
@@ -66,30 +71,23 @@ function recoge($key, $type = "")
 $aviso = recoge("aviso");
 
 // Si hemos recibido un aviso, lo mostramos
-if ($aviso == "") {
-    print "    <p>\n";
-    print "      <label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
-    print "    </p>\n";
-    print "\n";
-} else {
-    print "    <p>\n";
-    print "      <label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+if ($aviso != "") {
     print "      <span class=\"aviso\">$aviso</span>\n";
-    print "    </p>\n";
-    print "\n";
 }
 ?>
+    </p>
+
     <p>
       <input type="submit" value="Comprobar">
       <input type="reset">
-      <a href="cabeceras-02-1.php">Mostrar formulario vacío</a>
+      <a href="cabeceras-02-1.php">Eliminar aviso</a>
     </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-14">14 de febrero de 2025</time>
+      <time datetime="2026-01-20">20 de enero de 2026</time>
     </p>
 
     <p class="licencia">

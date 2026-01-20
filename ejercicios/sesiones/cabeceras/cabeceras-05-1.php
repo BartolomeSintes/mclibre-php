@@ -97,14 +97,14 @@ print "\n";
     <p>
       <input type="submit" value="Comprobar">
       <input type="reset">
-      <a href="cabeceras-05-1.php">Mostrar formulario vacío</a>
+      <a href="cabeceras-05-1.php">Eliminar avisos</a>
     </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-20">20 de enero de 2026</time>
     </p>
 
     <p class="licencia">

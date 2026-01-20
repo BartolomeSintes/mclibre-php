@@ -85,7 +85,7 @@ if ($nombreOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-21">21 de febrero de 2025</time>
+      <time datetime="2026-01-20">20 de enero de 2026</time>
     </p>
 
     <p class="licencia">

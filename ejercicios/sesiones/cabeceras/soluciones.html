@@ -93,57 +93,7 @@
 
       <p>cabeceras-01-2.php</p>
       <ul>
-        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($nombreOk en este caso).
-
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos el nombre
-$nombre = recoge("nombre");
-
-// Comprobamos el nombre. Si es vacío volvemos al formulario
-if ($nombre == "") {
-    header("Location:cabeceras-01-1.php");
-    exit;
-}
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-  &lt;h1&gt;Formulario 1 (Resultado)&lt;/h1&gt;
-
-&lt;?php
-// Mostramos el nombre
-print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
-print "\n";
-?&gt;
-  &lt;p&gt;&lt;a href="cabeceras-01-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
-// ...</code>
-</pre>
-          </div>
-        </li>
-        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+        <li>Si utilizamos la estructura de los programas de recogida y comprobación de datos vistos anteriormente, el programa podría ser el siguiente:
 
           <div class="codigo">
             <pre>
@@ -199,101 +149,7 @@ if ($nombreOk) {
 </pre>
           </div>
         </li>
-      </ul>
-    </section>
-
-    <section id="ejercicio-2">
-      <h3>Cabeceras 2 - Formulario 2</h3>
-
-      <p>cabeceras-02-1.php</p>
-      <ul>
-        <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
-
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
-print "    &lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-        </li>
-        <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
-
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos el aviso
-$aviso = recoge("aviso");
-
-print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
-// Si hemos recibido un aviso, lo mostramos
-if ($aviso != "") {
-    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
-}
-print "    &lt;/p&gt;\n";
-print "\n";
-?&gt;</code>
-</pre>
-          </div>
-        </li>
-        <li>Podemos conseguir el mismo resultado con este código, en el que se repiten líneas, pero que puede ser más fácil de entender.
-          <div class="codigo">
-            <pre>
-<code class="language-php">// Si hemos recibido un aviso, lo mostramos
-if ($aviso == "") {
-    print "    &lt;p&gt;\n";
-    print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
-    print "    &lt;/p&gt;\n";
-} else {
-    print "    &lt;p&gt;\n";
-    print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
-    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
-    print "    &lt;/p&gt;\n";
-}</code>
-</pre>
-          </div>
-        </li>
-        <li>En realidad, podemos incluso prescindir de la condición e incluir siempre el <span class="html-eti">&lt;span&gt;</span> con el aviso. Si se recibe un aviso, se mostrará, pero si no se recibe nada, la variable $aviso es una cadena vacía, de manera que únicamente estaremos añadiendo un <span class="html-eti">&lt;span&gt;</span> vacío, que no se verá en la página. Si el <span class="html-eti">&lt;span&gt;</span> de clase aviso se resaltara de otra manera, por ejemplo con un borde, entonces no deberíamos utilizar este código, porque se vería en la página un rectángulo vacío.
-          <div class="codigo">
-            <pre>
-<code class="language-php">print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
-print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
-print "    &lt;/p&gt;\n";
-print "\n";</code>
-</pre>
-          </div>
-        </li>
-      </ul>
-
-      <p>cabeceras-02-2.php</p>
-      <ul>
-        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($nombreOk en este caso).
+        <li>Aunque si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($nombreOk en este caso).
 
           <div class="codigo">
             <pre>
@@ -323,27 +179,45 @@ function recoge($key, $type = "")
 // Recogemos el nombre
 $nombre = recoge("nombre");
 
-// Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
+// Comprobamos el nombre. Si es vacío volvemos al formulario
 if ($nombre == "") {
-    header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
+    header("Location:cabeceras-01-1.php");
     exit;
 }
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
-  &lt;h1&gt;Formulario 2 (Resultado)&lt;/h1&gt;
+  &lt;h1&gt;Formulario 1 (Resultado)&lt;/h1&gt;
 
 &lt;?php
 // Mostramos el nombre
 print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
 print "\n";
 ?&gt;
-  &lt;p&gt;&lt;a href="cabeceras-02-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href="cabeceras-01-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
 </pre>
           </div>
         </li>
-        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h3>Cabeceras 2 - Formulario 2</h3>
+
+      <p>cabeceras-02-2.php</p>
+      <ul>
+        <li>La diferencia de este ejercicio con el ejercicio anterior es que al hacer la redirección incluiremos el aviso, para que la página 1 pueda recogerlo.
+          <div class="codigo">
+            <pre>
+<code class="language-php">// Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
+if ($nombre == "") {
+    header("<span class="codigo-resaltado">Location:cabeceras-02-1.php?aviso=No ha escrito su nombre</span>");
+    exit;
+} ...</code>
+</pre>
+          </div></li>
+        <li>Si utilizamos la estructura de los programas de recogida y comprobación de datos vistos anteriormente, el programa podría ser el siguiente:
 
           <div class="codigo">
             <pre>
@@ -376,7 +250,7 @@ $nombreOk = false;
 
 // Comprobamos el nombre. Si es vacío, volvemos al formulario enviando un aviso
 if ($nombre == "") {
-    header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
+    header("<span class="codigo-resaltado">Location:cabeceras-02-1.php?aviso=No ha escrito su nombre</span>");
     exit;
 } else {
     $nombreOk = true;
@@ -398,26 +272,60 @@ if ($nombreOk) {
 </pre>
           </div>
         </li>
-      </ul>
-    </section>
-
-    <section id="ejercicio-3">
-      <h3>Cabeceras 3 - Formulario 3</h3>
-
-      <p>cabeceras-03-1.php</p>
-      <ul>
-        <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
+        <li>Aunque si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($nombreOk en este caso).
 
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"5\"&gt;&lt;/label&gt;\n";
-print "    &lt;/p&gt;\n";
-print "\n";</code>
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos el nombre
+$nombre = recoge("nombre");
+
+// Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
+if ($nombre == "") {
+    header("<span class="codigo-resaltado">Location:cabeceras-02-1.php?aviso=No ha escrito su nombre</span>");
+    exit;
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 2 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos el nombre
+print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-02-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
 </pre>
           </div>
         </li>
+      </ul>
+
+      <p>cabeceras-02-1.php</p>
+      <ul>
         <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
 
           <div class="codigo">
@@ -448,42 +356,33 @@ function recoge($key, $type = "")
 // Recogemos el aviso
 $aviso = recoge("aviso");
 
-print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"5\"&gt;&lt;/label&gt;\n";
 // Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
     print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
 }
-print "    &lt;/p&gt;\n";
-print "\n";
 ?&gt;</code>
 </pre>
           </div>
         </li>
-      </ul>
-
-      <p>cabeceras-03-2.php</p>
-      <ul>
-        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($edadOk en este caso).
-
+        <li>Aunque no sea muy recomendable, podríamos escribir siempre el <span class="html-eti">&lt;span&gt;</span> con el aviso. Si se recibe un aviso se mostrará, pero si no se recibe nada la variable $aviso es una cadena vacía, de manera que únicamente estaremos añadiendo un <span class="html-eti">&lt;span&gt;</span> vacío, que no se verá en la página. El motivo para no recomendarlo es que si el <span class="html-eti">&lt;span&gt;</span> de clase aviso se resaltara de otra manera, por ejemplo con un borde, se vería en la página un rectángulo vacío.
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
-    if (!is_string($key) && !is_int($key) || $key == "") {
+    if (!is_string($key) &amp;&amp; !is_int($key) || $key == "") {
         trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
+    } elseif ($type !== "" &amp;&amp; $type !== []) {
         trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
     }
     $tmp = $type;
     if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+        if (!is_array($_REQUEST[$key]) &amp;&amp; !is_array($type)) {
             $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+        } elseif (is_array($_REQUEST[$key]) &amp;&amp; is_array($type)) {
             $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
+            array_walk_recursive($tmp, function (&amp;$value) {
                 $value = trim(htmlspecialchars($value));
             });
         }
@@ -491,41 +390,44 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-// Recogemos la edad
-$edad = recoge("edad");
+// Recogemos el aviso
+$aviso = recoge("aviso");
 
-$edadOk = false;
-
-// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
-if ($edad == "") {
-    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
-    exit;
-} elseif (!is_numeric($edad)) {
-    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
-    exit;
-} elseif (!ctype_digit($edad)) {
-    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
-    exit;
-} elseif ($edad &lt; 18 || $edad &gt; 130) {
-    header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
-    exit;
-}
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-  &lt;h1&gt;Formulario 3 (Resultado)&lt;/h1&gt;
-
-&lt;?php
-// Mostramos la edad
-print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
-print "\n";
-?&gt;
-  &lt;p&gt;&lt;a href="cabeceras-03-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
-// ...</code>
+// Incluimos siempre el aviso (si no hemos recibido aviso, no se verá nada,
+// únicamente en el código fuente se verá un &lt;span&gt; sin contenido)
+print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
+?&gt;</code>
 </pre>
           </div>
         </li>
-        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h3>Cabeceras 3 - Formulario 3</h3>
+
+      <p>cabeceras-03-2.php</p>
+      <ul>
+        <li>La diferencia de este ejercicio con el ejercicio anterior es que en la comprobación podemos hacer varias redirecciones incluyendo avisos diferentes, que recogerá la página 1.
+          <div class="codigo">
+            <pre>
+<code class="language-php">correspondiente
+if ($edad == "") {
+    header("<span class="codigo-resaltado">Location:cabeceras-03-1.php?aviso=No ha escrito su edad</span>");
+    exit;
+} elseif (!is_numeric($edad)) {
+    header("<span class="codigo-resaltado">Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número</span>");
+    exit;
+} elseif (!ctype_digit($edad)) {
+    header("<span class="codigo-resaltado">Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero</span>");
+    exit;
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("<span class="codigo-resaltado">Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años</span>");
+    exit;
+} ...</code>
+</pre>
+          </div></li>
+        <li>Si utilizamos la estructura de los programas de recogida y comprobación de datos vistos anteriormente, el programa podría ser el siguiente:
 
           <div class="codigo">
             <pre>
@@ -590,6 +492,109 @@ if ($edadOk) {
 </pre>
           </div>
         </li>
+        <li>Aunque si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($edadOk en este caso).
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la edad
+$edad = recoge("edad");
+
+$edadOk = false;
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
+if ($edad == "") {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
+    exit;
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
+    exit;
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
+    exit;
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
+    exit;
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 3 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos la edad
+print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+print "\n";
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-03-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+
+      <p>cabeceras-03-1.php</p>
+      <ul>
+        <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos el aviso
+$aviso = recoge("aviso");
+
+// Si hemos recibido un aviso, lo mostramos
+if ($aviso != "") {
+    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -604,7 +609,10 @@ if ($edadOk) {
             <pre>
 <code class="language-php">&lt;?php
 print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"5\"&gt;&lt;/label&gt;\n";
+print "      &lt;label&gt;\n";
+print "        Escriba su edad (entre 18 y 130 años):\n";
+print "        &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"5\"&gt;\n";
+print "      &lt;/label&gt;\n";
 print "    &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
@@ -643,18 +651,24 @@ $aviso = recoge("aviso");
 $edad  = recoge("edad");
 
 print "    &lt;p&gt;\n";
-print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" ";
+print "      &lt;label&gt;\n";
+print "        Escriba su edad (entre 18 y 130 años):\n";
+print "        &lt;input type=\"text\" name=\"edad\" ";
+
 // Si hemos recibido la edad, la incluimos en el control
-if ($edad != "") {
-    print "value=\"$edad\" ";
+if ($edad == "") {
+    print "        &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"5\"&gt;\n";
+} else {
+    print "        &lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"5\"&gt;\n";
 }
-print "size=\"5\" maxlength=\"5\"&gt;&lt;/label&gt;\n";
+
+print "      &lt;/label&gt;\n";
+
 // Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
     print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
 }
 print "    &lt;/p&gt;\n";
-print "\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -663,65 +677,6 @@ print "\n";
 
       <p>cabeceras-04-2.php</p>
       <ul>
-        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($edadOk en este caso).
-
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos la edad
-$edad = recoge("edad");
-
-// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
-if ($edad == "") {
-    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
-    exit;
-} elseif (!is_numeric($edad)) {
-    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
-    exit;
-} elseif (!ctype_digit($edad)) {
-    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
-    exit;
-} elseif ($edad &lt; 18 || $edad &gt; 130) {
-    header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
-    exit;
-}
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-  &lt;h1&gt;Formulario 4 (Resultado)&lt;/h1&gt;
-
-&lt;?php
-// Mostramos la edad
-print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
-print "\n";
-?&gt;
-  &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
-// ...</code>
-</pre>
-          </div>
-        </li>
         <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
 
           <div class="codigo">
@@ -781,6 +736,65 @@ if ($edadOk) {
     print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
     print "\n";
 }
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($edadOk en este caso).
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la edad
+$edad = recoge("edad");
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
+if ($edad == "") {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
+    exit;
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
+    exit;
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
+    exit;
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
+    exit;
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 4 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos la edad
+print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+print "\n";
 ?&gt;
   &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
@@ -1037,7 +1051,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de febrero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 20 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

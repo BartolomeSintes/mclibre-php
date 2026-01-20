@@ -248,6 +248,30 @@
             </p>
           </li>
           <li>Al hacer las redirecciones debemos enviar tanto el aviso como el valor recibido, utilizando la notación .php?aviso=XXX&edad=YYY.</li>
+          <li>En este ejercicio, el formulario debe enseñar en caso necesario tanto el valor de la edad como el aviso.
+            <div class="codigo">
+              <pre>
+<code class="language-html">    &lt;p&gt;
+      &lt;label&gt;
+        Escriba su edad (entre 18 y 130 años):
+        &lt;input type="text" name="edad" <span class="codigo-resaltado">value="abc"</span> size="5" maxlength="5"&gt;
+      &lt;/label&gt;
+      <span class="codigo-resaltado">&lt;span class="aviso"&gt;No ha escrito su edad como número&lt;/span&gt;</span>
+    &lt;/p&gt;</code>
+</pre>
+            </div>
+            <p>Por ese motivo, el párrafo del control no está incluido en la plantilla.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-html">    &lt;p&gt;
+      &lt;label&gt;
+        Escriba su edad (entre 18 y 130 años):
+        &lt;input type="text" name="edad" size="5" maxlength="5"&gt;
+      &lt;/label&gt;
+    &lt;/p&gt;</code>
+</pre>
+            </div>
+          </li>
         </ul>
       </details>
 
@@ -306,7 +330,7 @@
               </svg>
             </p>
           </li>
-          <li>Al hacer las redirecciones debemos enviar los dos avisos y los dos valores recibidos. Como la redirección debe hacerse después de comprobar los dos valores recibidos, tendremos que almacenar los avisos en dos variables auxiliares e incluirlos posteriormente en la redirección .</li>
+          <li>Al hacer las redirecciones debemos enviar los dos avisos y los dos valores recibidos. Como la redirección debe hacerse después de comprobar los dos valores recibidos, podemos almacenar los avisos en dos variables auxiliares e incluirlos posteriormente en la redirección .</li>
         </ul>
       </details>
 
@@ -354,7 +378,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 20 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
