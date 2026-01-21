@@ -3,9 +3,9 @@
  * Google Chart 3 - google-chart-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2008-02-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -149,11 +149,10 @@ for ($i = 1; $i <= $numeroValores; $i++) {
 if (!isset($_REQUEST["enviar"]) || !$okValores) {
     if (isset($_REQUEST["enviar"])) {
         cabecera("Resultado inválido");
-        print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print "  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
     } else {
         cabecera("Formulario");
-        print"  <p>Escribe los valores numéricos (puedes escribir entre "
-            . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print "  <p>Escribe los valores numéricos (puedes escribir entre $numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
     }
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <table>\n";
@@ -161,16 +160,12 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "        <td valign=\"top\">\n";
     print "          <table>\n";
     print "            <tr>\n";
-    print "              <td>Tamaño gráfica (ancho, entre "
-        . "$tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
-    print "              <td><input type=\"text\" name=\"tamanyoGraficaX\" "
-        . "value=\"$tamanyoGraficaX\" size=\"5\"> px</td>\n";
+    print "              <td>Tamaño gráfica (ancho, entre $tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
+    print "              <td><input type=\"text\" name=\"tamanyoGraficaX\" value=\"$tamanyoGraficaX\" size=\"5\"> px</td>\n";
     print "            </tr>\n";
     print "            <tr>\n";
-    print "              <td>Tamaño gráfica (alto, entre "
-        . "$tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
-    print "              <td><input type=\"text\" name=\"tamanyoGraficaY\" "
-        . "value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
+    print "              <td>Tamaño gráfica (alto, entre $tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
+    print "              <td><input type=\"text\" name=\"tamanyoGraficaY\" value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
     print "            </tr>\n";
     print "            <tr>\n";
     print "              <td>Tipo de gráfica:</td>\n";
@@ -189,8 +184,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     for ($i = 1; $i <= $numeroValores; $i++) {
         print "            <tr>\n";
         print "              <td>Número $i:</td>\n";
-        print "              <td><input type=\"text\" name=\"valores[$i]\" size=\"10\" "
-            . "value=\"$valores[$i]\"></td>\n";
+        print "              <td><input type=\"text\" name=\"valores[$i]\" size=\"10\" value=\"$valores[$i]\"></td>\n";
         print "            </tr>\n";
     }
     print "            </table>\n";
@@ -289,12 +283,10 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
     print "\n";
 
-    $cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}"
-        . "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
-    print "  <p>Gráfica correspondiente:</p\n";
+    $cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
+    print "  <p>Gráfica correspondiente:</p>\n";
     print "\n";
-    print "  <p style=\"text-align:center; border: black solid 1px\"><img "
-        . "src=\"$cadenaGrafica\" alt=\"Gráfica\"></p>\n";
+    print "  <p style=\"text-align:center; border: black solid 1px\"><img src=\"$cadenaGrafica\" alt=\"Gráfica\"></p>\n";
     print "\n";
 }
 

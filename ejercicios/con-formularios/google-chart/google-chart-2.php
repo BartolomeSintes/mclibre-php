@@ -3,9 +3,9 @@
  * Crea gráfica de líneas - google-chart-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2008-02-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -169,19 +169,17 @@ for ($i = 1; $i < $numeroValores; $i++) {
 if (!isset($_REQUEST["enviar"]) || !$okValores) {
     if (isset($_REQUEST["enviar"])) {
         cabecera("Resultado inválido");
-        print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print "  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
         print "\n";
     } else {
         cabecera("Formulario");
-        print"  <p>Escribe los valores numéricos (puedes escribir entre "
-            . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print "  <p>Escribe los valores numéricos (puedes escribir entre $numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
         print "\n";
     }
 } else {
     // Si los valores son correctos se convierten a cadena
     cabecera("Resultado válido");
-    print"  <p>Escribe los valores numéricos (puedes escribir entre "
-        . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+    print "  <p>Escribe los valores numéricos (puedes escribir entre $numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
     print "\n";
 }
 
@@ -192,18 +190,15 @@ print "        <td valign=\"top\">\n";
 print "          <table>\n";
 print "            <tr>\n";
 print "              <td>Tamaño gráfica (ancho, entre $tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
-print "              <td><input type=\"text\" name=\"tamanyoGraficaX\" "
-    . "value=\"$tamanyoGraficaX\" size=\"5\"> px</td>\n";
+print "              <td><input type=\"text\" name=\"tamanyoGraficaX\" value=\"$tamanyoGraficaX\" size=\"5\"> px</td>\n";
 print "            </tr>\n";
 print "            <tr>\n";
 print "              <td>Tamaño gráfica (alto, entre $tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
-print "              <td><input type=\"text\" name=\"tamanyoGraficaY\" "
-    . "value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
+print "              <td><input type=\"text\" name=\"tamanyoGraficaY\" value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
 print "            </tr>\n";
 print "            <tr>\n";
 print "              <td colspan=\"2\">Título gráfica: ";
-print "<input type=\"text\" name=\"tituloGrafica\" "
-    . "value=\"$tituloGrafica\" size=\"40\"></td>\n";
+print "<input type=\"text\" name=\"tituloGrafica\" value=\"$tituloGrafica\" size=\"40\"></td>\n";
 print "            </tr>\n";
 print "            <tr>\n";
 print "              <td colspan=\"2\">Números en eje Y: ";
@@ -220,8 +215,7 @@ print "          <table>\n";
 for ($i = 1; $i <= $numeroValores; $i++) {
     print "            <tr>\n";
     print "              <td>Número $i:</td>\n";
-    print "              <td><input type=\"text\" "
-        . "name=\"valores[$i]\" size=\"10\" value=\"";
+    print "              <td><input type=\"text\" name=\"valores[$i]\" size=\"10\" value=\"";
     if (isset($valores[$i])) {
         print "$valores[$i]";
     }
@@ -290,8 +284,7 @@ if (!$okValores) {
     }
 }
 
-$cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}"
-    . "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
+$cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
 if ($tituloGrafica != "") {
     $tituloGrafica = str_replace(" ", "+", $tituloGrafica);
     $cadenaGrafica .= "&amp;chtt=$tituloGrafica";
@@ -307,8 +300,7 @@ if (!$okValores) {
     print "\n";
 }
 print "  <p style=\"text-align:center\">\n";
-print "    <img style=\"padding:10px;border:black solid 2px\" "
-    . "src=\"$cadenaGrafica\" alt=\"Gráfica\">\n";
+print "    <img style=\"padding:10px;border:black solid 2px\" src=\"$cadenaGrafica\" alt=\"Gráfica\">\n";
 print "  </p>\n";
 print "\n";
 

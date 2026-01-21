@@ -3,9 +3,9 @@
  * Google Chart 1 - google-chart-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @copyright 2025 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2008-02-10
+ * @version   2025-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,7 +63,8 @@ function recoge($key, $type = "")
     return $tmp;
 }
 
-function recogeNumero($var, $inicial, $minimo, $maximo) {
+function recogeNumero($var, $inicial, $minimo, $maximo)
+{
     $tmp = recoge($var);
     if (!is_numeric($tmp)) {
         return $inicial;
@@ -80,21 +81,20 @@ function recogeNumero($var, $inicial, $minimo, $maximo) {
 $numeroValoresInicial = 4;
 $numeroValoresMinimo  = 2;
 $numeroValoresMaximo  = 15;
-$numeroValores = recogeNumero("numeroValores", $numeroValoresInicial,
-    $numeroValoresMinimo, $numeroValoresMaximo);
-if (isset($_REQUEST["anyadir"]) && ($numeroValores<$numeroValoresMaximo)) {
+$numeroValores        = recogeNumero("numeroValores", $numeroValoresInicial, $numeroValoresMinimo, $numeroValoresMaximo);
+if (isset($_REQUEST["anyadir"]) && ($numeroValores < $numeroValoresMaximo)) {
     $numeroValores++;
-} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>$numeroValoresMinimo)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores > $numeroValoresMinimo)) {
     $numeroValores--;
 }
 
 // Recoge valores numéricos y los valida
-$valores = recoge("valores", []);
+$valores   = recoge("valores", []);
 $okValores = true;
-$valores = recoge("valores", []);
+$valores   = recoge("valores", []);
 $okValores = true;
 
-for ($i=1; $i<$numeroValores; $i++) {
+for ($i = 1; $i < $numeroValores; $i++) {
     if (!isset($valores[$i])) {
         $okValores = false;
     } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {
@@ -114,19 +114,17 @@ for ($i=1; $i<$numeroValores; $i++) {
 if (!isset($_REQUEST["enviar"]) || !$okValores) {
     if (isset($_REQUEST["enviar"])) {
         cabecera("Resultado inválido");
-        print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print "  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
         print "\n";
     } else {
         cabecera("Formulario");
-        print"  <p>Escribe los valores numéricos (puedes escribir entre "
-            . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print "  <p>Escribe los valores numéricos (puedes escribir entre $numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
         print "\n";
     }
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <table>\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
-        print "      <tr><td>Número $i:</td><td><input type=\"text\" "
-            . "name=\"valores[$i]\" size=\"10\" value=\"";
+    for ($i = 1; $i <= $numeroValores; $i++) {
+        print "      <tr><td>Número $i:</td><td><input type=\"text\" name=\"valores[$i]\" size=\"10\" value=\"";
         if (isset($valores[$i])) {
             print "$valores[$i]";
         }
@@ -143,13 +141,13 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "    </p>\n";
     print "  </form>\n";
     print "\n";
-} else {
 // Si los valores son correctos se convierten a cadena
+} else {
     cabecera("Resultado válido");
     print "  <p>Los datos introducidos son correctos.</p>\n";
     print "\n";
     print "  <p>Datos introducidos (* si falta un dato): ";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         if ($valores[$i] == "") {
             print "* ";
         } else {
@@ -161,7 +159,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
 
     $simpleEncoding = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     // Empiezo buscando un valor cualquiera en la lista de valores
-    $minimo = $maximo = 0;
+    $minimo        = $maximo = 0;
     $patronValores = "/^[+-]?[0-9]{1,6}$/"; // Este patrón NO admite la cadena vacía
     foreach ($valores as $valor) {
         if (preg_match($patronValores, $valor)) {
@@ -172,10 +170,10 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     // no sirven porque puede haber valores vacíos
     foreach ($valores as $valor) {
         if ($valor != "") {
-            if ($valor>$maximo) {
+            if ($valor > $maximo) {
                 $maximo = $valor;
             }
-            if ($valor<$minimo) {
+            if ($valor < $minimo) {
                 $minimo = $valor;
             }
         }
@@ -187,7 +185,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
             if ($valor == "") {
                 $cadena .= "_";
             } else {
-               $cadena .= "f";
+                $cadena .= "f";
             }
         }
     } else {
@@ -195,7 +193,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
             if ($valor == "") {
                 $cadena .= "_";
             } else {
-                $letra = round(($valor-$minimo)/($maximo-$minimo)*61);
+                $letra = round(($valor - $minimo) / ($maximo - $minimo) * 61);
                 $cadena .= $simpleEncoding[$letra];
             }
         }
@@ -221,4 +219,3 @@ print "    </p>\n";
 print "  </footer>\n";
 print "</body>\n";
 print "</html>\n";
-?>
