@@ -105,6 +105,22 @@ print "\n";
 </pre>
     </div>
 
+    <p>El cálculo del IMC lo podemos hacer en dos pasos: primero el cálculo y luego el redondeo.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$peso   = rand(50, 100);
+$altura = rand(150, 200) / 100;
+$imc    = $peso / $altura ** 2;
+$imc    = round($imc, 1);
+
+print "  &lt;p&gt;Con un peso de $peso kg y una altura de $altura m, el IMC es $imc.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+    </div>
+
     <p>También podemos resolverlo con sólo dos variables, una para cada uno de los valores aleatorios. En ese caso, deberíamos concatenar el cálculo del resultado al escribir la frase.</p>
 
     <div class="codigo">
@@ -147,11 +163,17 @@ print "\n";
 </pre>
     </div>
 
-    <p>En matemáticas, se suele escribir primero los números y después las variables:</p>
+    <p>Podemos escribir las fórmulas como se suele hacer en matemáticas, escribiendo primero los números y después las variables:</p>
 
     <div class="codigo">
       <pre>
-<code class="language-php">$total    = 60 * 60 * horas + 60 * $minutos + $segundos;</code>
+<code class="language-php">$total    = 60 * 60 * $horas + 60 * $minutos + $segundos;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$total    = 3600 * $horas + 60 * $minutos + $segundos;</code>
 </pre>
     </div>
 
@@ -387,6 +409,12 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">$centimetros = $pies * 12 * 2.54 + $pulgadas * 2.54;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$centimetros = $pies * 30.48 + $pulgadas * 2.54;</code>
 </pre>
     </div>
 
@@ -737,7 +765,7 @@ print "\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2025</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
