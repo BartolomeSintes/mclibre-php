@@ -23,50 +23,26 @@
     <div class="toc">
       <h2>Sesiones (1)</h2>
 
-      <h3><a href="index.html">Enunciados</a></h3>
+      <h3><a href="#">Enunciados</a></h3>
       <ul>
-        <li><a href="index.html#formularios">Formularios</a>
-          <ul>
-            <li><a href="index.html#ejercicio-01">01 - Texto (1)</a></li>
-            <li><a href="index.html#ejercicio-02">02 - Texto (2)</a></li>
-            <li><a href="index.html#ejercicio-03">03 - Mayúsculas</a></li>
-            <li><a href="index.html#ejercicio-04">04 - Mayúsc. y minúsculas</a></li>
-          </ul>
-        </li>
-        <li><a href="index.html#graficos">Gráficos</a>
-          <ul>
-            <li><a href="index.html#ejercicio-11">11 - Subir y bajar número</a></li>
-            <li><a href="index.html#ejercicio-12">12 - Mover un punto</a></li>
-            <li><a href="index.html#ejercicio-13">13 - Mover un punto 2D</a></li>
-            <li><a href="index.html#ejercicio-14">14 - Votar una opción</a></li>
-          </ul>
-        </li>
+        <li><a href="index.html#ejercicio-1">1 - Mover un punto</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Mover un punto 2D</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Votar una opción</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Hucha de monedas</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Cara o cruz</a></li>
+        <li><a href="index.html#ejercicio-6">6 - Quita cartas</a></li>
       </ul>
 
-      <h3><a href="#">Soluciones</a></h3>
+      <h3><a href="soluciones.html">Soluciones</a></h3>
       <ul>
-        <li><a href="#formularios">Formularios</a>
-          <ul>
-            <li><a href="#ejercicio-01">01 - Texto (1) - A</a></li>
-            <li><a href="#ejercicio-01-b">01 - Texto (1) - B</a></li>
-            <li><a href="#ejercicio-02">02 - Texto (2) - A</a></li>
-            <li><a href="#ejercicio-02-b">02 - Texto (2) - B</a></li>
-            <li><a href="#ejercicio-03">03 - Mayúsculas - A</a></li>
-            <li><a href="#ejercicio-03-b">03 - Mayúsculas - B</a></li>
-            <li><a href="#ejercicio-03-c">03 - Mayúsculas - C</a></li>
-            <li><a href="#ejercicio-03-d">03 - Mayúsculas - D</a></li>
-            <li><a href="#ejercicio-04">04 - Mayúsc. y minúsc. - A</a></li>
-            <li><a href="#ejercicio-04-b">04 - Mayúsc. y minúsc. - B</a></li>
-          </ul>
-        </li>
-        <li><a href="#graficos">Gráficos</a>
-          <ul>
-            <li><a href="#ejercicio-11">11 - Subir y bajar número</a></li>
-            <li><a href="#ejercicio-12">12 - Mover un punto</a></li>
-            <li><a href="#ejercicio-13">13 - Mover un punto 2D</a></li>
-            <li><a href="#ejercicio-14">14 - Votar una opción</a></li>
-          </ul>
-        </li>
+        <li><a href="#ejercicio-1">1 - Mover un punto</a></li>
+        <li><a href="#ejercicio-2">2 - Mover un punto 2D</a></li>
+        <li><a href="#ejercicio-3">3 - Votar una opción</a></li>
+        <li><a href="#ejercicio-4">4 - Hucha de monedas</a></li>
+        <li><a href="#ejercicio-5-a">5 - Cara o cruz - A</a></li>
+        <li><a href="#ejercicio-5-b">5 - Cara o cruz - B</a></li>
+        <li><a href="#ejercicio-6-a">6 - Quita cartas - A</a></li>
+        <li><a href="#ejercicio-6-b">6 - Quita cartas - B</a></li>
       </ul>
     </div>
   </nav>
@@ -77,1242 +53,38 @@
 
   <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para hacer estos ejercicios, se recomienda seguir el recorrido de la aplicación, suponiendo que el usuario introduce datos. Pero una vez completada la aplicación hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
 
-  <section id="formularios">
-    <h2>Comprobación de formularios</h2>
-
-    <section id="ejercicio-01">
-      <h3>Sesiones (1) 01 - Formulario Texto (1) - Solución A</h3>
-
-      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que la solución B sigue el procedimiento recomendado en estos apuntes de crear una variable auxiliar $xxOk por cada variable que recoge un control del formulario, mientras que la solución A no utiliza esa variable auxiliar ya que en este caso solamente se recoge un control.</p>
-
-      <p>La página 1 del ejercicio debe mostrar el último texto escrito por el usuario, texto que es recogido por la segunda página. Para compartir esa información (el texto) entre ambas páginas recurriremos a una variable de sesión, por ejemplo $_SESSION["texto"].</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol>
-        <li id="li-1-1">Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. En este caso caso, como solo recibimos un dato, podemos simplificar el procedimiento habitual, ahorrándonos la variable auxiliar y realizar los pasos: función recoge(); variable para recoger el dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.</li>
-        <li id="li-1-2">Si el dato es correcto, debemos guardarlo en una variable de sesión, para que la página 1 pueda acceder a él.</li>
-        <li id="li-1-3">Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-1-4">La página 1 muestra el nombre guardado en $_SESSION.</li>
-        <li id="li-1-5">Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li id="li-1-6">Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.</li>
-      </ol>
-
-      <p>sesiones-1-01-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión<span class="numero-circulo" tooltip-id="li-1-5">5</span>
-session_name("sesiones-1-01");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Texto 1 (Formulario)&lt;/h1&gt;
-
-&lt;?php
-// Si hay un texto guardado en la sesión, <span class="numero-circulo" tooltip-id="li-1-6" title="Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.">6</span>
-if (isset($_SESSION["texto"])) {
-    // se muestra <span class="numero-circulo" tooltip-id="li-1-4">4</span>
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-  &lt;form action="sesiones-1-01-2.php" method="get"&gt;
-    &lt;p&gt;Escriba texto:&lt;/p&gt;
-// ...
-</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-01-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-1-3">3</span>
-session_name("sesiones-1-01");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Texto 1 (Resultado)&lt;/h1&gt;
-
-&lt;?php
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-1-1">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos el texto
-$texto   = recoge("texto");
-
-// Comprobamos el texto y escribimos avisos si es necesario
-if ($texto == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
-    print "\n";
-} else {<span class="numero-circulo" tooltip-id="li-1-2">2</span>
-    // Si el texto es válido, guardamos el texto en la sesión ...
-    $_SESSION["texto"] = $texto;
-    // y lo mostramos
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-    &lt;p&gt;&lt;a href="sesiones-1-01-1.php"&gt;Volver a la primera página.&lt;/a&gt;&lt;/p&gt;
-// ...</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-01-b">
-      <h3>Sesiones (1) 01 - Formulario Texto (1) - Solución B</h3>
-
-      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que la solución B sigue el procedimiento recomendado en estos apuntes de crear una variable auxiliar $xxOk por cada variable que recoge un control del formulario, mientras que la solución A no utiliza esa variable auxiliar ya que en este caso solamente se recoge un control.</p>
-
-      <p>Se muestra únicamente la parte de la segunda página en la que aparece la variable auxiliar $textoOk.</p>
-
-      <p>sesiones-1-01-b-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// ...
-
-// Recogemos el texto
-$texto   = recoge("texto");
-$textoOk = false;
-
-// Comprobamos el texto y escribimos avisos si es necesario
-if ($texto == "") {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
-    print "\n";
-} else {
-    $textoOk = true;
-}
-
-// Si el texto es válido,
-if ($textoOk) {
-  // guardamos el texto en la sesión
-    $_SESSION["texto"] = $texto;
-    // y lo mostramos
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-    &lt;p&gt;&lt;a href="sesiones-1-01-b-1.php"&gt;Volver a la primera página.&lt;/a&gt;&lt;/p&gt;
-// ...</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-02">
-      <h3>Sesiones (1) 02 - Formulario Texto (2) - Solución A</h3>
-
-      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que en la solución A $_SESSION["texto"] nunca es vacío, es decir, antes de que el usuario escriba texto en el formulario $_SESSION["texto"] no existe, mientras que en la solución B $_SESSION["texto"] existe siempre, pero tiene un valor vacío hasta que el usuario escribe texto en el formulario.</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol start="0">
-        <li id="li-2-a-0">Puesto que la página 2 redirige a la página 1, la página 2 no debe tener nada de HTML, ni ningún <span class="php-res">print</span>.</li>
-        <li id="li-2-a-1">Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. Al principio es el procedimiento habitual: función recoge(); variable para recoger el dato; variable auxiliar que indica la corrección del dato, ...</li>
-        <li id="li-2-a-2">... pero en la comprobación si no se recibe nada, no escribe ningún mensaje.</li>
-        <li id="li-2-a-3">Finalmente, si el dato recibido no es correcto, volvemos a la primera página.</li>
-        <li id="li-2-a-4">Y si el dato es correcto, el dato se guarda en una variable de sesión, para que la página 1 pueda acceder a él.</li>
-        <li id="li-2-a-5">Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-2-a-6">Finalmente, la página 2 redirige a la página 1.</li>
-        <li id="li-2-a-7">La página 1 muestra el nombre guardado en $_SESSION.</li>
-        <li id="li-2-a-8">Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li id="li-2-a-9">Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.</li>
-      </ol>
-
-      <p>sesiones-1-02-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-a-8">8</span>
-session_name("sesiones-1-02");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
-
-&lt;?php
-// Si hay un texto guardado en la sesión, lo mostramos <span class="numero-circulo" tooltip-id="li-2-a-9">9</span>
-if (isset($_SESSION["texto"])) {
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n"; <span class="numero-circulo" tooltip-id="li-2-a-7">7</span>
-    print "\n";
-}
-?&gt;
-  &lt;form action="sesiones-1-02-2.php" method="get"&gt;
-    &lt;p&gt;Escriba texto:&lt;/p&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-02-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-a-5">5</span>
-session_name("sesiones-1-02");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-2-a-1">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos el texto
-$texto   = recoge("texto");
-$textoOk = false;
-
-// Comprobamos el texto
-if ($texto == "") {
-    // Si el texto es vacío, no es correcto, pero no hacemos nada especial <span class="numero-circulo" tooltip-id="li-2-a-2">2</span>
-} else {
-    $textoOk = true;
-}
-
-// Si el texto no es válido ...
-if (!$textoOk) {
-    // ... volvemos al formulario <span class="numero-circulo" tooltip-id="li-2-a-3">3</span>
-    header("Location:sesiones-1-02-1.php");
-    exit;
-} else {
-    // ... guardamos el texto en la sesión <span class="numero-circulo" tooltip-id="li-2-a-4">4</span>
-    $_SESSION["texto"] = $texto;
-    // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-2-a-6">6</span>
-    header("Location:sesiones-1-02-1.php");
-    exit;
-}
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-02-b">
-      <h3>Sesiones (1) 02 - Formulario Texto (2) - Solución B</h3>
-
-      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que en la solución A $_SESSION["texto"] nunca es vacío, es decir, antes de que el usuario escriba texto en el formulario $_SESSION["texto"] no existe, mientras que en la solución B $_SESSION["texto"] existe siempre, pero tiene un valor vacío hasta que el usuario escribe texto en el formulario.</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol>
-        <li id="li-2-b-1">Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-2-b-2">La primera vez que se abre la página, $_SESSION no contiene ningún dato, por lo que al acceder a él provocaríamos un error. Para evitar ese problema, creamos la variable de sesión si esta no existe, dándole el valor vacío.</li>
-        <li id="li-2-b-3">Si hay un valor no vacío en la variable de sesión, lo mostramos.</li>
-        <li id="li-2-b-4">Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li id="li-2-b-5">Si alguien accediera a la segunda página directamente, sin pasar por la página 1, $_SESSION no contendría ningún dato, por lo que al acceder a él provocaríamos un error. Para evitar ese problema, creamos la variable de sesión si esta no existe, dándole el valor vacío. En este caso, en realidad, esta precaución no es necesaria, porque no accedemos al valor sino que simplemente lo establecemos si es necesario, pero en general suele ser necesario.</li>
-        <li id="li-2-b-6">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
-        <li id="li-2-b-7">Si se ha recibido algo, el dato se guarda en una variable de sesión, para que la página 1 pueda acceder a él.</li>
-        <li id="li-2-b-8">Finalmente, la página 2 redirige siempre a la página 1.</li>
-      </ol>
-
-      <p>sesiones-1-02-b-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-b-1">1</span>
-session_name("sesiones-1-02-b");
-session_start();
-// Si no existe la variable de sesión, la creamos vacía <span class="numero-circulo" tooltip-id="li-2-b-2">2</span>
-if (!isset($_SESSION["texto"])) {
-    $_SESSION["texto"] = "";
-}
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
-
-&lt;?php// Si hay un texto no vacío guardado en la sesión, lo mostramos <span class="numero-circulo" tooltip-id="li-2-b-3">3</span>
-if ($_SESSION["texto"] != "") {
-    print "  &lt;p&gt;El último texto escrito es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-  &lt;form action="sesiones-1-02-b-2.php" method="get"&gt;
-    &lt;p&gt;Escriba texto:&lt;/p&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-02-b-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-b-4">4</span>
-session_name("sesiones-1-02-b");
-session_start();
-// Si no existe la variable de sesión, la creamos vacía <span class="numero-circulo" tooltip-id="li-2-b-5">5</span>
-if (!isset($_SESSION["texto"])) {
-    $_SESSION["texto"] = "";
-}
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-2-b-6">6</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos el texto
-$texto = recoge("texto");
-
-// Comprobamos el texto
-if ($texto != "") { <span class="numero-circulo" tooltip-id="li-2-b-7">7</span>
-    // Si el texto no es vacío, lo guardamos en la sesión
-    $_SESSION["texto"] = $texto;
-}
-
-header("Location:sesiones-1-02-1.php"); <span class="numero-circulo" tooltip-id="li-2-b-8">8</span>
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-03">
-      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución A</h3>
-
-      <p>Este ejercicio es parecido al anterior. La diferencia es que si la palabra escrita por el usuario es incorrecta, el formulario muestra un mensaje de error y la palabra incorrecta en la caja de texto para su corrección.</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol>
-        <li id="li-3-a-1">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
-        <li id="li-3-a-2">Como la primera página muestra siempre la palabra (si es correcta al principio de la página, si es incorrecta en la caja de texto), la guardamos en la sesión.</li>
-        <li id="li-3-a-3">Por tanto, la página 2 debe conectarse a la sesión.</li>
-        <li id="li-3-a-4">En la comprobación, si el dato es vacío, se guarda el aviso correspondiente.</li>
-        <li id="li-3-a-5">Si la palabra no está en mayúsculas, se guarda el aviso correspondiente.</li>
-        <li id="li-3-a-6">Si la palabra es correcta, se borran los avisos que pudiera haber de intentos anteriores.</li>
-        <li id="li-3-a-7">Finalmente, volvemos a la primera página.</li>
-        <li id="li-3-a-8">La página 1 debe conectarse a la sesión.</li>
-        <li id="li-3-a-9">Si hay un error guardado en la sesión, el formulario muestra el aviso y la palabra en la caja de texto.</li>
-        <li id="li-3-a-10">Si no hay un error guardado en la sesión, el formulario muestra la caja de texto.</li>
-        <li id="li-3-a-11">La palabra correcta debe mostrarse cuando no hay error, pero cuando además hay alguna palabra guardada (ya que la primera vez que se accede a la primera página no hay error, pero no debe mostrarse nada).</li>
-      </ol>
-
-      <p>sesiones-1-03-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-a-8">8</span>
-session_name("sesiones-1-03");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
-
-  &lt;form action="sesiones-1-03-2.php" method="get"&gt;
-
-&lt;?php
-// Si no hemos detectado un error y hay guardada una palabra en la sesión ... <span class="numero-circulo" tooltip-id="li-3-a-11">11</span>
-if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
-    // ... mostramos la palabra
-    print "  &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-
-print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
-print "\n";
-
-// Si hemos detectado un error <span class="numero-circulo" tooltip-id="li-3-a-9">9</span>
-if (isset($_SESSION["error"])) {
-    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-        . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-    print "\n";
-} else {
-    // Si no hemos detectado un error, lo mostramos... <span class="numero-circulo" tooltip-id="li-3-a-10">10</span>
-    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-03-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-a-3">3</span>
-session_name("sesiones-1-03");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-a-1">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos la palabra
-$palabra   = recoge("palabra");
-
-// Guardamos la palabra en la sesión <span class="numero-circulo" tooltip-id="li-3-a-2">2</span>
-$_SESSION["palabra"] = $palabra;
-
-// Comprobamos la palabra
-if ($palabra == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo" tooltip-id="li-3-a-4">4</span>
-    $_SESSION["error"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($palabra)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error <span class="numero-circulo" tooltip-id="li-3-a-5">5</span>
-    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
-} else {
-    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión <span class="numero-circulo" tooltip-id="li-3-a-6">6</span>
-    unset($_SESSION["error"]);
-}
-
-// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-3-a-7">7</span>
-header("Location:sesiones-1-03-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-03-b">
-      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución B</h3>
-
-      <p>Esta solución establece tres variables de sesión en vez de las dos de la solución anterior: el mensaje de error, la palabra correcta y la palabra incorrecta.</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol>
-        <li id="li-3-b-1">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
-        <li id="li-3-b-2">Borramos todas las variables de sesión establecidas anteriormente.</li>
-        <li id="li-3-b-3">Por tanto, la página 2 debe conectarse a la sesión.</li>
-        <li id="li-3-b-4">En la comprobación, si el dato es vacío, se guarda el aviso correspondiente.</li>
-        <li id="li-3-b-5">Si la palabra no está en mayúsculas, se guarda el aviso correspondiente y la palabra escrita por el usuario (para mostrarla en la caja de texto).</li>
-        <li id="li-3-b-6">Si la palabra es correcta, se guarda la palabra escrita por el usuario.</li>
-        <li id="li-3-b-7">Finalmente, volvemos a la primera página.</li>
-        <li id="li-3-b-8">La página 1 debe conectarse a la sesión.</li>
-        <li id="li-3-b-9">Si hay un error y un intento guardados en la sesión, el formulario muestra el aviso y la palabra en la caja de texto.</li>
-        <li id="li-3-b-10">Si hay un error guardado en la sesión, el formulario muestra el aviso.</li>
-        <li id="li-3-b-11">Si no hay un error guardado en la sesión, el formulario muestra la caja de texto.</li>
-        <li id="li-3-b-12">Si hay una palabra guardada en la sesión, la palabra correcta debe mostrarse antes del formulario (ya que la palabra sólo se guarda cuando es correcta).</li>
-      </ol>
-
-      <p>sesiones-1-03-b-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">8</span>
-session_name("sesiones-1-03-b");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
-
-  &lt;form action="sesiones-1-03-b-2.php" method="get"&gt;
-
-&lt;?php
-//Si hay guardada una palabra en la sesión ... <span class="numero-circulo" tooltip-id="li-3-b-12">12</span>
-if (isset($_SESSION["palabra"])) {
-    // ... mostramos la palabra
-    print "  &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-
-print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
-print "\n";
-
-if (isset($_SESSION["error"], $_SESSION["intento"])) {
-    // Si hemos detectado un error y el usuario había escrito una palabra para corregir <span class="numero-circulo" tooltip-id="li-3-b-9">9</span>
-    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-    . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-    print "\n";
-} elseif (isset($_SESSION["error"])) {
-    // Si hemos detectado un error, pero no hay palabra para corregir <span class="numero-circulo" tooltip-id="li-3-b-10">10</span>
-    // Mostramos el control, añadiendo el aviso
-    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-        . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-    print "\n";
-} else {
-    // Si no hemos detectado un error, mostramos simplemente el control <span class="numero-circulo" tooltip-id="li-3-b-11">11</span>
-    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-03-b-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-b-3">3</span>
-session_name("sesiones-1-03-b");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-b-1">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos la palabra
-$palabra   = recoge("palabra");
-
-// Borramos todos los datos anteriores <span class="numero-circulo" tooltip-id="li-3-b-2">2</span>
-unset($_SESSION["intento"]);
-unset($_SESSION["error"]);
-unset($_SESSION["palabra"]);
-
-// Comprobamos la palabra
-if ($palabra == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo" tooltip-id="li-3-b-4">4</span>
-    $_SESSION["error"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($palabra)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior <span class="numero-circulo" tooltip-id="li-3-b-5">5</span>
-    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
-    $_SESSION["intento"] = $palabra;
-} else {
-    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión <span class="numero-circulo" tooltip-id="li-3-b-6">6</span>
-    $_SESSION["palabra"] = $palabra;
-}
-
-// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-3-b-7">7</span>
-header("Location:sesiones-1-03-b-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-03-c">
-      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución C</h3>
-
-      <p>Esta solución es una variante de la anterior. La segunda página es igual, la diferencia está en la primera página. En vez de escribir un control completo distinto dependiendo de las variables guardadas en la sesión de la solución B, en esta solución el control se escribe en varios <span class="php-res">print</span> y entre medias se escriben bloques <span class="php-res">if</span> que añaden texto en caso necesario.</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol>
-        <li id="li-3-c-1">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
-        <li id="li-3-c-2">Borramos todas las variables de sesión establecidas anteriormente.</li>
-        <li id="li-3-c-3">Por tanto, la página 2 debe conectarse a la sesión.</li>
-        <li id="li-3-c-4">En la comprobación, si el dato es vacío, se guarda el aviso correspondiente.</li>
-        <li id="li-3-c-5">Si la palabra no está en mayúsculas, se guarda el aviso correspondiente y la palabra escrita por el usuario (para mostrarla en la caja de texto).</li>
-        <li id="li-3-c-6">Si la palabra es correcta, se guarda la palabra escrita por el usuario.</li>
-        <li id="li-3-c-7">Finalmente, volvemos a la primera página.</li>
-        <li id="li-3-c-8">La página 1 debe conectarse a la sesión.</li>
-        <li id="li-3-c-9">Si hay un intento guardados en la sesión, añadimos el atributo <span class="html-atri">value</span>.</li>
-        <li id="li-3-c-10">Si hay un error guardado en la sesión, añadimos el error.</li>
-        <li id="li-3-c-11">Si hay una palabra guardada en la sesión, la palabra correcta debe mostrarse antes del formulario (ya que la palabra sólo se guarda cuando es correcta).</li>
-      </ol>
-
-      <p>sesiones-1-03-c-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-c-8">8</span>
-session_name("sesiones-1-03-c");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
-
-  &lt;form action="sesiones-1-03-c-2.php" method="get"&gt;
-
-&lt;?php
-//Si hay guardada una palabra en la sesión ... <span class="numero-circulo" tooltip-id="li-3-c-11">11</span>
-if (isset($_SESSION["palabra"])) {
-    // ... mostramos la palabra
-    print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-
-print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
-print "\n";
-
-print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" ";
-
-// Si hay que incluir el intento anterior en value, lo incluimos <span class="numero-circulo" tooltip-id="li-3-c-9">9</span>
-if (isset($_SESSION["intento"])) {
-    print "value=\"$_SESSION[intento]\" ";
-}
-
-print "size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; ";
-
-// Si hay que incluir un aviso, lo incluimos <span class="numero-circulo" tooltip-id="li-3-c-10">10</span>
-if (isset($_SESSION["error"])) {
-    print "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-}
-
-print "\n";
-?&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-03-c-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-c-3">3</span>
-session_name("sesiones-1-03-c");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-c-1">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos la palabra
-$palabra   = recoge("palabra");
-
-// Borramos todos los datos anteriores <span class="numero-circulo" tooltip-id="li-3-c-2">2</span>
-unset($_SESSION["intento"]);
-unset($_SESSION["error"]);
-unset($_SESSION["palabra"]);
-
-// Comprobamos la palabra
-if ($palabra == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo" tooltip-id="li-3-c-4">4</span>
-    $_SESSION["error"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($palabra)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior <span class="numero-circulo" tooltip-id="li-3-c-5">5</span>
-    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
-    $_SESSION["intento"] = $palabra;
-} else {
-    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión <span class="numero-circulo" tooltip-id="li-3-c-6">6</span>
-    $_SESSION["palabra"] = $palabra;
-}
-
-// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-3-c-7">7</span>
-header("Location:sesiones-1-03-c-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-03-d">
-      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución D</h3>
-
-      <p>Esta solución es una variante de la anterior, en la que sólo cambia la segunda página. En vez de borrar todas las variables de sesión anteriores y en el bloque <span class="php-res">if elseif else</span> establecer las variables necesarias, en esta solución en cada opción del bloque <span class="php-res">if elseif else</span> se borran o establecen cada una de las variables de la sesión.</p>
-
-      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
-
-      <ol>
-        <li id="li-3-d-1">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
-        <li id="li-3-d-2">En la comprobación, si el dato es vacío, se guarda el aviso correspondiente y se borran el intento y la palabra anteriores.</li>
-        <li id="li-3-d-3">Si la palabra no está en mayúsculas, se guarda el aviso correspondiente y el intento y se borra la palabra anterior.</li>
-        <li id="li-3-d-4">Si la palabra es correcta, se guarda la palabra escrita por el usuario y se borran el intento y el error anteriores.</li>
-        <li id="li-3-d-5">Por tanto, la página 2 debe conectarse a la sesión.</li>
-        <li id="li-3-d-6">Finalmente, volvemos a la primera página.</li>
-      </ol>
-
-      <p>sesiones-1-03-d-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-d-5">5</span>
-session_name("sesiones-1-03-d");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-d-1">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos la palabra
-$palabra   = recoge("palabra");
-
-// Comprobamos la palabra, guardamos el dato que queremos enseñar y borramos el resto
-if ($palabra == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo" tooltip-id="li-3-d-2">2</span>
-    unset($_SESSION["intento"]);
-    $_SESSION["error"] = "No ha escrito ninguna palabra";
-    unset($_SESSION["palabra"]);
-} elseif (!ctype_upper($palabra)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior <span class="numero-circulo" tooltip-id="li-3-d-3">3</span>
-    $_SESSION["intento"] = $palabra;
-    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
-    unset($_SESSION["palabra"]);
-} else {
-    // Si la palabra es correcta, guardamos en la sesión la palabra <span class="numero-circulo" tooltip-id="li-3-d-4">4</span>
-    unset($_SESSION["intento"]);
-    unset($_SESSION["error"]);
-    $_SESSION["palabra"] = $palabra;
-}
-
-// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-3-d-6">6</span>
-header("Location:sesiones-1-03-d-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-04">
-      <h3>Sesiones (1) 04 - Formulario Palabras en mayúsculas y minúsculas - Solución A</h3>
-
-      <p>Este ejercicio es parecido al anterior. La diferencia es que como hay dos controles, tenemos el doble de variables de sesión. Además, hay que tener en cuenta que si un control se escribe bien, pero el otro se escribe mal, el valor correcto se debe incluir en el control para que el usuario no lo tenga que volver a escribir.</p>
-
-      <p>sesiones-1-04-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">9</span>
-session_name("sesiones-1-04");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
-
-  &lt;form action="sesiones-1-04-2.php" method="get"&gt;
-
-&lt;?php
-//Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ... <span class="numero-circulo">14</span>
-if (
-    !isset($_SESSION["mayusculasError"]) && !isset($_SESSION["minusculasError"])
-    && isset($_SESSION["mayusculas"], $_SESSION["minusculas"])
-) {
-    // ... mostramos la palabra
-    print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[mayusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-    print "    &lt;p&gt;Ha escrito una palabra en minúsculas: &lt;strong&gt;$_SESSION[minusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-
-print "    &lt;p&gt;Escriba una palabra en mayúsculas y otra en minúsculas:&lt;/p&gt;\n";
-print "\n";
-
-// Si hemos detectado un error en la palabra en mayúsculas
-if (isset($_SESSION["mayusculasError"])) {
-    // Escribimos un aviso e incluimos el valor incorrecto en el control <span class="numero-circulo">10</span>
-    print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-        . "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;&lt;/p&gt;\n";
-    print "\n";
-} elseif (isset($_SESSION["minusculasError"])) {
-    // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control <span class="numero-circulo">11</span>
-    print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-    print "\n";
-} else {
-    // Si no hemos detectado un error, escribimos el control vacío <span class="numero-circulo">12</span>
-    print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-    print "\n";
-}
-
-// Si hemos detectado un error en la palabra en minúsculas <span class="numero-circulo">13</span>
-if (isset($_SESSION["minusculasError"])) {
-    // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-    . "&lt;span class=\"aviso\"&gt;$_SESSION[minusculasError]&lt;/span&gt;&lt;/p&gt;\n";
-    print "\n";
-} elseif (isset($_SESSION["mayusculasError"])) {
-    // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
-    print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-    print "\n";
-} else {
-    // Si no hemos detectado un error, escribimos el control vacío
-    print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-    print "\n";
-}
-?&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-04-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
-session_name("sesiones-1-04");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos las dos palabras
-$mayusculas = recoge("mayusculas");
-$minusculas = recoge("minusculas");
-
-// Guardamos las palabras en la sesión <span class="numero-circulo">2</span>
-$_SESSION["mayusculas"] = $mayusculas;
-$_SESSION["minusculas"] = $minusculas;
-
-// Comprobamos la palabra en mayúsculas
-if ($mayusculas == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
-    $_SESSION["mayusculasError"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($mayusculas)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error <span class="numero-circulo">5</span>}
-    $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
-} else {
-    // Si la palabra es correcta, borramos los posibles errores anteriores <span class="numero-circulo">6</span>
-    unset($_SESSION["mayusculasError"]);
-}
-
-// Comprobamos la palabra en minúsculas <span class="numero-circulo">7</span>
-if ($minusculas == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error
-    $_SESSION["minusculasError"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_lower($minusculas)) {
-    // Si la palabra está en mayúsculas, guardamos en la sesión el mensaje de error
-    $_SESSION["minusculasError"] = "No ha escrito la palabra en minúsculas";
-} else {
-    // Si la palabra es correcta, borramos los posibles errores anteriores
-    unset($_SESSION["minusculasError"]);
-}
-
-// Volvemos al formulario <span class="numero-circulo">8</span>
-header("Location:sesiones-1-04-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-04-b">
-      <h3>Sesiones (1) 04 - Formulario Palabras en mayúsculas y minúsculas - Solución B</h3>
-
-      <p>Como en el caso del ejercicio 3, en el que se han ofrecido varias soluciones, esta solución es algo distinta a la anterior.</p>
-
-      <p>sesiones-1-04-b-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">9</span>
-session_name("sesiones-1-04-b");
-session_start();
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-&lt;body&gt;
-  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
-
-  &lt;form action="sesiones-1-04-b-2.php" method="get"&gt;
-
-&lt;?php
-//Si están guardadas en la sesión las dos palabras ... <span class="numero-circulo">14</span>
-if (isset($_SESSION["mayusculas"], $_SESSION["minusculas"]) ) {
-    // ... mostramos las dos palabras
-    print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[mayusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-    print "    &lt;p&gt;Ha escrito una palabra en minúsculas: &lt;strong&gt;$_SESSION[minusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
-    print "\n";
-}
-
-print "    &lt;p&gt;Escriba una palabra en mayúsculas y otra en minúsculas:&lt;/p&gt;\n";
-print "\n";
-
-print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" ";
-
-if (isset($_SESSION["mayusculasIntento"])) {
-    // Si hemos detectado un intento incorrecto en la palabra en mayúsculas, incluimos el intento en el control <span class="numero-circulo">10</span>
-    print "value=\"$_SESSION[mayusculasIntento]\" ";
-} elseif (isset($_SESSION["minusculasError"], $_SESSION["mayusculas"])) {
-    // Si la palabra en mayúsculas es correcta, pero hemos detectado un error en la palabra en minúsculas, incluimos la palabra correcta en el control <span class="numero-circulo">11</span>
-    print "value=\"$_SESSION[mayusculas]\" ";
-}
-
-print "size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; ";
-
-// Si hemos detectado un error en la palabra en mayúsculas <span class="numero-circulo">12</span>
-if (isset($_SESSION["mayusculasError"])) {
-    // Escribimos el aviso
-    print "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;";
-}
-
-print "&lt;/p&gt;\n";
-print "\n";
-
-print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" ";
-
-if (isset($_SESSION["minusculasIntento"])) {
-    // Si hemos detectado un intento incorrecto en la palabra en minúsculas, incluimos el intento en el control <span class="numero-circulo">13</span>
-    print "value=\"$_SESSION[minusculasIntento]\" ";
-} elseif (isset($_SESSION["mayusculasError"], $_SESSION["minusculas"])) {
-    // Si la palabra en minúsculas es correcta, pero hemos detectado un error en la palabra en mayúsculas, incluimos la palabra correcta en el control
-    print "value=\"$_SESSION[minusculas]\" ";
-}
-
-print "size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; ";
-
-// Si hemos detectado un error en la palabra en minúsculas
-if (isset($_SESSION["minusculasError"])) {
-    // Escribimos el aviso
-    print "&lt;span class=\"aviso\"&gt;$_SESSION[minusculasError]&lt;/span&gt;";
-}
-
-print "&lt;/p&gt;\n";
-print "\n";
-?&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-04-b-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
-session_name("sesiones-1-04-b");
-session_start();
-
-// Función de recogida de datos <span class="numero-circulo">1</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos las dos palabras
-$mayusculas = recoge("mayusculas");
-$minusculas = recoge("minusculas");
-
-// Borramos los valores anteriores <span class="numero-circulo">2</span>
-session_unset();
-
-// Comprobamos la palabra en mayúsculas
-if ($mayusculas == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
-    $_SESSION["mayusculasError"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($mayusculas)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y la palabra <span class="numero-circulo">5</span>
-    $_SESSION["mayusculasIntento"] = $mayusculas;
-    $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
-} else {
-    // Si la palabra es correcta, guardamos en la sesión la palabra <span class="numero-circulo">6</span>
-    $_SESSION["mayusculas"] = $mayusculas;
-}
-
-// Comprobamos la palabra en minúsculas <span class="numero-circulo">7</span>
-if ($minusculas == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error
-    $_SESSION["minusculasError"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_lower($minusculas)) {
-    // Si la palabra está en mayúsculas, guardamos en la sesión el mensaje de error y la palabra
-    $_SESSION["minusculasIntento"] = $minusculas;
-    $_SESSION["minusculasError"] = "No ha escrito la palabra en minúsculas";
-} else {
-    // Si la palabra es correcta, guardamos en la sesión la palabra
-    $_SESSION["minusculas"] = $minusculas;
-}
-
-// Volvemos al formulario <span class="numero-circulo">8</span>
-header("Location:sesiones-1-04-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-  </section>
-
-  <section id="graficos">
-    <h2>Gráficos</h2>
-
-    <section id="ejercicio-11">
-      <h3>Sesiones (1) 11 - Subir y bajar número</h3>
-
-      <p>Es importante recordar que el usuario sólo va a ver la página 1 del programa, ya que la página 2 va a redirigir siempre automáticamente a la página 1. Por ello, la página 2 no debe tener ningún fragmento de HTML, ni ningún <span class="php-res">print</span>.</p>
-
-      <ol>
-        <li id="li-11-1">Para que las dos páginas del programa puedan utilizar el número que hay que mostrar en pantalla (en la página 1 el número se muestra y en la página 2 se modifica), guardaremos ese número en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-11-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
-        <li id="li-11-3">La página 1 muestra el número guardado en $_SESSION.</li>
-        <li id="li-11-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-        <li id="li-11-5">Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
-        <li id="li-11-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones, pero los tres tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
-        </li>
-        <li id="li-11-7">En la página 2 modificamos el valor guardado en la sesión, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
-        <li id="li-11-8">Finalmente, la página 2 redirige a la página 1.</li>
-      </ol>
-
-      <p>sesiones-1-11-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-11-1">1</span>
-session_name("sesiones-1-11");
-session_start();
-
-// Si el número no está guardado en la sesión, ponemos el valor a cero
-if (!isset($_SESSION["numero"])) {<span class="numero-circulo" tooltip-id="li-11-2">2</span>
-    $_SESSION["numero"] = 0;
-}
-?&gt;
-&lt;!DOCTYPE html&gt;
-// ...
-    &lt;p&gt;
-      &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
-
-&lt;?php
-// Mostramos el número, guardado en la sesión <span class="numero-circulo" tooltip-id="li-11-3">3</span>
-print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
-?&gt;
-      &lt;button type="submit" name="accion" value="subir" style="font-size: 4rem"&gt;+&lt;/button&gt;
-    &lt;/p&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-11-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-11-4">4</span>
-session_name("sesiones-1-11");
-session_start();
-
-// Si el número no está guardado en la sesión, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-11-5">5</span>
-if (!isset($_SESSION["numero"])) {
-    header("Location:sesiones-1-11-1.php");
-    exit;
-}
-
-// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-11-6">6</span>
-function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
-        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
-    } elseif ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
-    }
-    $tmp = $type;
-    if (isset($_REQUEST[$key])) {
-        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
-        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
-            $tmp = $_REQUEST[$key];
-            array_walk_recursive($tmp, function (&$value) {
-                $value = trim(htmlspecialchars($value));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Recogemos accion
-$accion = recoge("accion");
-
-// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo" tooltip-id="li-11-7">7</span>
-if ($accion == "cero") {
-    $_SESSION["numero"] = 0;
-} elseif ($accion == "subir") {
-    $_SESSION["numero"]++;
-} elseif ($accion == "bajar") {
-    $_SESSION["numero"]--;
-}
-
-// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-11-8">8</span>
-header("Location:sesiones-1-11-1.php");</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-12">
-      <h3>Sesiones (1) 12 - Mover un punto a derecha e izquierda</h3>
-
-      <p>Este ejercicio es muy similar al anterior: mediante dos botones se aumenta o disminuye un valor. La diferencia es que en este ejercicio el valor no se muestra, pero se utiliza para situar un punto en una línea.</p>
-
-      <ol>
-        <li id="li-12-1">Para que las dos páginas del programa puedan utilizar la coordenada del punto (en la página 1 el número se incluye en el dibujo y en la página 2 se modifica), guardaremos el número en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-12-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
-        <li id="li-12-3">La página 1 coloca el punto rojo en el valor guardado en $_SESSION.</li>
-        <li id="li-12-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-        <li id="li-12-5">Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
-        <li id="li-12-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
-        </li>
-        <li id="li-12-7">En la página 2 modificamos el valor guardado en la sesión, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
-        <li id="li-12-8">Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
-        <li id="li-12-9">Finalmente, la página 2 redirige a la página 1.</li>
-      </ol>
-
-      <p>sesiones-1-12-1.php</p>
-
-      <div class="codigo">
-        <pre>
+  <section id="ejercicio-1">
+    <h3>Sesiones (1) 1 - Mover un punto a derecha e izquierda</h3>
+
+    <p>Este ejercicio es muy similar al anterior: mediante dos botones se aumenta o disminuye un valor. La diferencia es que en este ejercicio el valor no se muestra, pero se utiliza para situar un punto en una línea.</p>
+
+    <ol>
+      <li id="li-12-1">Para que las dos páginas del programa puedan utilizar la coordenada del punto (en la página 1 el número se incluye en el dibujo y en la página 2 se modifica), guardaremos el número en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-12-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
+      <li id="li-12-3">La página 1 coloca el punto rojo en el valor guardado en $_SESSION.</li>
+      <li id="li-12-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-12-5">Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+      <li id="li-12-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+        <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+      </li>
+      <li id="li-12-7">En la página 2 modificamos el valor guardado en la sesión, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
+      <li id="li-12-8">Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
+      <li id="li-12-9">Finalmente, la página 2 redirige a la página 1.</li>
+    </ol>
+
+    <p>sesiones-1-1-1.php</p>
+
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-12-1">1</span>
-session_name("sesiones-1-12");
+session_name("sesiones-1-1");
 session_start();
 
-// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo" tooltip-id="li-12-2">2</span>
+// Si la posición no está guardada en la sesión, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-12-5">5</span>
 if (!isset($_SESSION["posicion"])) {
-    $_SESSION["posicion"] = 0;
+    header("Location:sesiones-1-1-1.php");
+    exit;
 }
 ?&gt;
 &lt;!DOCTYPE html&gt;
@@ -1325,21 +97,20 @@ print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=
           &lt;/svg&gt;
 // ...</code>
 </pre>
-      </div>
+    </div>
 
-      <p>sesiones-1-12-2.php</p>
+    <p>sesiones-1-1-2.php</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-12-4">4</span>
-session_name("sesiones-1-12");
+session_name("sesiones-1-11");
 session_start();
 
-// Si la posición no está guardada en la sesión, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-12-5">5</span>
+// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo" tooltip-id="li-12-2">2</span>
 if (!isset($_SESSION["posicion"])) {
-    header("Location:sesiones-1-12-1.php");
-    exit;
+    $_SESSION["posicion"] = 0;
 }
 
 // Función de recogida de datos <span class="numero-circulo" tooltip-id="li-12-6">6</span>
@@ -1384,37 +155,37 @@ if ($_SESSION["posicion"] &gt; 300) {
 }
 
 // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-12-9">9</span>
-header("Location:sesiones-1-12-1.php");</code>
+header("Location:sesiones-1-1-1.php");</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="ejercicio-13">
-      <h3>Sesiones (1) 13 - Mover un punto en dos dimensiones</h3>
+  <section id="ejercicio-2">
+    <h3>Sesiones (1) 2 - Mover un punto en dos dimensiones</h3>
 
-      <p>Este ejercicio es muy similar al anterior. La diferencia es que en este ejercicio se tendrán que guardar dos valores (coordenada X y coordenada Y) para situar el punto en el plano.</p>
+    <p>Este ejercicio es muy similar al anterior. La diferencia es que en este ejercicio se tendrán que guardar dos valores (coordenada X y coordenada Y) para situar el punto en el plano.</p>
 
-      <ol >
-        <li id="li-13-1">Para que las dos páginas del programa puedan utilizar las coordenadas del punto (en la página 1 los valores se incluyen en el dibujo y en la página 2 se modifican), guardaremos ambos números en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-13-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a las dos variables si no existe alguna de ellas.</li>
-        <li id="li-13-3">La página 1 coloca el punto rojo mediante los dos valores guardados en $_SESSION.</li>
-        <li id="li-13-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-        <li id="li-13-5">Si alguna variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
-        <li id="li-13-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 5 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
-        </li>
-        <li id="li-13-7">En la página 2 modificamos el valor o los valores guardados en la sesión, dependiendo del dato recibido (se aumenta uno u otro, se reduce uno u otro o se ponen a cero ambos).</li>
-        <li id="li-13-8">Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
-        <li id="li-13-9">Finalmente, la página 2 redirige a la página 1.</li>.
-      </ol>
+    <ol>
+      <li id="li-13-1">Para que las dos páginas del programa puedan utilizar las coordenadas del punto (en la página 1 los valores se incluyen en el dibujo y en la página 2 se modifican), guardaremos ambos números en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-13-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a las dos variables si no existe alguna de ellas.</li>
+      <li id="li-13-3">La página 1 coloca el punto rojo mediante los dos valores guardados en $_SESSION.</li>
+      <li id="li-13-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-13-5">Si alguna variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+      <li id="li-13-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 5 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+        <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+      </li>
+      <li id="li-13-7">En la página 2 modificamos el valor o los valores guardados en la sesión, dependiendo del dato recibido (se aumenta uno u otro, se reduce uno u otro o se ponen a cero ambos).</li>
+      <li id="li-13-8">Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
+      <li id="li-13-9">Finalmente, la página 2 redirige a la página 1.</li>.
+    </ol>
 
-      <p>sesiones-1-13-1.php</p>
+    <p>sesiones-1-2-1.php</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-13-1">1</span>
-session_name("sesiones-1-13");
+session_name("sesiones-1-2");
 session_start();
 
 // Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero <span class="numero-circulo" tooltip-id="li-13-2">2</span>
@@ -1436,20 +207,20 @@ print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fi
   &lt;/td&gt;
 // ...</code>
 </pre>
-      </div>
+    </div>
 
-      <p>sesiones-1-13-2.php</p>
+    <p>sesiones-1-2-2.php</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-13-4">4</span>
-session_name("sesiones-1-13");
+session_name("sesiones-1-2");
 session_start();
 
 // Si alguna posición no está guardada en la sesión, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-13-5">5</span>
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    header("Location:sesiones-1-13-1.php");
+    header("Location:sesiones-1-2-1.php");
     exit;
 }
 
@@ -1506,37 +277,37 @@ if ($_SESSION["y"] &gt; 200) {
 }
 
 // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-13-9">9</span>
-header("Location:sesiones-1-13-1.php");</code>
+header("Location:sesiones-1-2-1.php");</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="ejercicio-14">
-      <h3>Sesiones (1) 14 - Votar una opción</h3>
+  <section id="ejercicio-3">
+    <h3>Sesiones (1) 3 - Votar una opción</h3>
 
-      <p>Este ejercicio es muy similar al anterior. La diferencia es que cada valor se utiliza en un dibujo distinto.</p>
+    <p>Este ejercicio es muy similar al anterior. La diferencia es que cada valor se utiliza en un dibujo distinto.</p>
 
-      <ol>
-        <li id="li-14-1">Los datos clave de este programa son las longitudes de las barras de colores. Para que las dos páginas del programa puedan utilizar o modificar estos valores, guardaremos ambos números en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-14-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a las dos variables si no existe alguna de ellas.</li>
-        <li id="li-14-3">La página 1 dibuja la primera barra a partir de uno de los valores guardado en $_SESSION. El valor se utiliza en dos atributos.</li>
-        <li id="li-14-4">La página 1 dibuja la segunda barra a partir del otro valor guardado en $_SESSION. El valor se utiliza en dos atributos.</li>
-        <li id="li-14-5">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-        <li id="li-14-6">Si alguna variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
-        <li id="li-14-7">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
-        </li>
-        <li id="li-14-8">En la página 2 modificamos uno o los dos valores, dependiendo del dato recibido (se aumenta uno, se aumenta el otro, o se ponen a cero ambos).</li>
-        <li id="li-14-9">Finalmente, la página 2 redirige a la página 1.</li>.
-      </ol>
+    <ol>
+      <li id="li-14-1">Los datos clave de este programa son las longitudes de las barras de colores. Para que las dos páginas del programa puedan utilizar o modificar estos valores, guardaremos ambos números en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-14-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a las dos variables si no existe alguna de ellas.</li>
+      <li id="li-14-3">La página 1 dibuja la primera barra a partir de uno de los valores guardado en $_SESSION. El valor se utiliza en dos atributos.</li>
+      <li id="li-14-4">La página 1 dibuja la segunda barra a partir del otro valor guardado en $_SESSION. El valor se utiliza en dos atributos.</li>
+      <li id="li-14-5">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-14-6">Si alguna variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+      <li id="li-14-7">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+        <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+      </li>
+      <li id="li-14-8">En la página 2 modificamos uno o los dos valores, dependiendo del dato recibido (se aumenta uno, se aumenta el otro, o se ponen a cero ambos).</li>
+      <li id="li-14-9">Finalmente, la página 2 redirige a la página 1.</li>.
+    </ol>
 
-      <p>sesiones-1-14-1.php</p>
+    <p>sesiones-1-3-1.php</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-14-1">1</span>
-session_name("sesiones-1-14");
+session_name("sesiones-1-3");
 session_start();
 
 // Si algún contador no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo" tooltip-id="li-14-2">2</span>
@@ -1572,15 +343,15 @@ print "          &lt;/svg&gt;\n";
     &lt;/table&gt;
 // ...</code>
 </pre>
-      </div>
+    </div>
 
-      <p>sesiones-1-14-2.php</p>
+    <p>sesiones-1-3-2.php</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-14-5">5</span>
-session_name("sesiones-1-14");
+session_name("sesiones-1-3");
 session_start();
 
 // Si alguno de los números de votos no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo" tooltip-id="li-14-6">6</span>
@@ -1623,15 +394,610 @@ if ($accion == "a") {
 }
 
 // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-14-9">9</span>
-header("Location:sesiones-1-14-1.php");
+header("Location:sesiones-1-3-1.php");
 ?&gt;</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h3>Sesiones (2) 4 - Hucha de monedas (ejercicio examen curso 2017/18)</h3>
+
+    <p>sesiones-1-4-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-4-1");
+session_start();
+
+// Si el ahorro no está guardado en la sesión, inicializamos el valor a cero
+if (!isset($_SESSION["ahorro"])) {
+    $_SESSION["ahorro"] = 0;
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+        &lt;/g&gt;
+&lt;?php
+// Mostramos la cantidad ahorrada
+print "        &lt;text x=\"170\" y=\"110\" font-size=\"60\" text-anchor=\"middle\"&gt;$_SESSION[ahorro]&lt;/text&gt;\n";
+?&gt;
+// ...</code>
+</pre>
+    </div>
+
+    <p>sesiones-1-4-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-4-1");
+session_start();
+
+// Si el ahorro no está guardado en la sesión, redirigimos a la primera página
+if (!isset($_SESSION["ahorro"])) {
+    header("Location:sesiones-1-4-1.php");
+    exit;
+}
+
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la moneda y la acción
+$moneda = recoge("moneda");
+$accion = recoge("accion");
+
+if ($accion == "Vaciar hucha") {
+    // Si la acción es vaciar la hucha, se vacía
+    $_SESSION["ahorro"] = 0;
+} elseif (in_array($moneda, [0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1, 2])) {
+    // Si llega una moneda, se añade
+    $_SESSION["ahorro"] += $moneda;
+}
+
+// Volvemos a la primera página
+header("Location:sesiones-1-4-1.php");</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5-a">
+    <h3>Sesiones (2) 5 - Cara o cruz (ejercicio examen curso 2017/18) - Solución A</h3>
+
+    <p>En esta solución se utilizan cinco variables de sesión (el número de rondas ganadas por cada jugador, los dos emojis y la moneda a mostrar). De esta manera, la primera página sólo escribe los valores de las variables de sesión. Toda la "lógica" del programa está en la segunda página.</p>
+
+    <p>sesiones-1-5-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-5");
+session_start();
+
+// Si falta una de las tres variables de sesión, reiniciamos los valores
+if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
+    $_SESSION["puntosG"] = 0;
+    $_SESSION["puntosM"] = 0;
+    $_SESSION["moneda"]  = "";
+    $_SESSION["caraG"]   = "&amp;#128572;";
+    $_SESSION["caraM"]   = "&amp;#128586;";
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ..
+  &lt;table style="text-align: center;"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Jugador A&lt;/th&gt;
+      &lt;th&gt;Resultado&lt;/th&gt;
+      &lt;th&gt;Jugador B&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;?php
+print "    &lt;tr style=\"font-size: 400%\"&gt;\n";
+
+// Mostramos la puntuación del gato
+print "      &lt;td&gt;$_SESSION[puntosG]&lt;/td&gt;\n";
+
+print "      &lt;td&gt;&lt;/td&gt;\n";
+
+// Mostramos la puntuación del mono
+print "      &lt;td&gt;$_SESSION[puntosM]&lt;/td&gt;\n";
+
+print "    &lt;/tr&gt;\n";
+
+print "    &lt;tr style=\"font-size: 400%\"&gt;\n";
+
+// Mostramos la cara del gato
+print "      &lt;td&gt;$_SESSION[caraG]&lt;/td&gt;\n";
+
+// Mostramos la moneda
+print "      &lt;td&gt;$_SESSION[moneda]&lt;/td&gt;\n";
+
+// Mostramos la cara del mono
+print "      &lt;td&gt;$_SESSION[caraM]&lt;/td&gt;\n";
+
+print "    &lt;/tr&gt;\n";
+?&gt;
+// ...</code>
+</pre>
+    </div>
+
+    <p>sesiones-1-5-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-5");
+session_start();
+
+// Si falta una de las tres variables de sesión, redirigimos a la primera página
+if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
+    header("Location:sesiones-1-5-1.php");
+    exit;
+}
+
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la acción
+$siguiente = recoge("siguiente");
+
+if ($siguiente == "Lanzar moneda") {
+    // Si la acción es lanzar la moneda ...
+
+    // Lanzamos la moneda
+    $moneda = rand(1, 2);
+
+    // Calculamos quién gana la ronda y la imagen de la moneda
+    if ($moneda == 1) {
+        $_SESSION["puntosG"] += 1;
+        $_SESSION["moneda"] = "&lt;img src=\"img/a.svg\" alt=\"A\" width=\"100\" height=\"100\"&gt;";
+    } else {
+        $_SESSION["puntosM"] += 1;
+        $_SESSION["moneda"] = "&lt;img src=\"img/b.svg\" alt=\"B\" width=\"100\" height=\"100\"&gt;";
+    }
+
+    // Calculamos la cara del gato y del mono
+    if ($_SESSION["puntosG"] &gt; $_SESSION["puntosM"]) {
+        $_SESSION["caraG"] = "&amp;#128568;";
+        $_SESSION["caraM"] = "&amp;#128584;";
+    } elseif ($_SESSION["puntosG"] &lt; $_SESSION["puntosM"]) {
+        $_SESSION["caraG"] = "&amp;#128576;";
+        $_SESSION["caraM"] = "&amp;#128053;";
+    } else {
+        $_SESSION["caraG"] = "&amp;#128572;";
+        $_SESSION["caraM"] = "&amp;#128586;";
+    }
+} elseif ($siguiente == "Volver a empezar") {
+    // Si la acción es volver a empezar, destruimos la sesión
+    session_destroy();
+}
+
+// Volvemos a la primera página
+header("Location:sesiones-1-5-1.php");</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5-b">
+    <h3>Sesiones (2) 5 - Cara o cruz (ejercicio examen curso 2017/18) - Solución B</h3>
+
+    <p>En esta solución se utilizan únicamente tres variables de sesión (el número de rondas ganadas por cada jugador y quién ha ganado la ronda). Eso obliga a que en la primera página se tenga que decidir los emojis y la imagen de la moneda a mostrar.</p>
+
+    <p>sesiones-1-5-b-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-5-b");
+session_start();
+
+// Si falta una de las tres variables de sesión, reiniciamos los valores
+if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
+    $_SESSION["moneda"] = 0;
+    $_SESSION["g"]      = 0;
+    $_SESSION["m"]      = 0;
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;table style="text-align: center;"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Jugador A&lt;/th&gt;
+      &lt;th&gt;Resultado&lt;/th&gt;
+      &lt;th&gt;Jugador B&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;?php
+// Mostramos las puntuaciones de cada jugador
+print "    &lt;tr style=\"font-size: 400%\"&gt;\n";
+print "      &lt;td&gt;$_SESSION[g]&lt;/td&gt;\n";
+print "      &lt;td&gt;&lt;/td&gt;\n";
+print "      &lt;td&gt;$_SESSION[m]&lt;/td&gt;\n";
+print "    &lt;/tr&gt;\n";
+
+// Calculamos la cara del gato
+print "    &lt;tr style=\"font-size: 400%\"&gt;\n";
+if ($_SESSION["g"] &gt; $_SESSION["m"]) {
+    print "      &lt;td&gt;&amp;#128568;&lt;/td&gt;\n";
+} elseif ($_SESSION["g"] &lt; $_SESSION["m"]) {
+    print "      &lt;td&gt;&amp;#128576;&lt;/td&gt;\n";
+} else {
+    print "      &lt;td&gt;&amp;#128572;&lt;/td&gt;\n";
+}
+
+// Enseñamos la moneda
+if ($_SESSION["moneda"] == 0) {
+    print "      &lt;td&gt;&lt;/td&gt;\n";
+} elseif ($_SESSION["moneda"] == 1) {
+    print "      &lt;td&gt;&lt;img src=\"img/a.svg\" alt=\"A\" width=\"100\" height=\"100\"&gt;&lt;/td&gt;\n";
+} else {
+    print "      &lt;td&gt;&lt;img src=\"img/b.svg\" alt=\"B\" width=\"100\" height=\"100\"&gt;&lt;/td&gt;\n";
+}
+
+// Calculamos la cara del mono
+if ($_SESSION["g"] &gt; $_SESSION["m"]) {
+    print "      &lt;td&gt;&amp;#128584;&lt;/td&gt;\n";
+} elseif ($_SESSION["g"] &lt; $_SESSION["m"]) {
+    print "      &lt;td&gt;&amp;#128053;&lt;/td&gt;\n";
+} else {
+    print "      &lt;td&gt;&amp;#128586;&lt;/td&gt;\n";
+}
+print "    &lt;/tr&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>sesiones-1-5-b-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-5-b");
+session_start();
+
+// Si falta una de las tres variables de sesión, redirigimos a la primera página
+if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
+    header("Location:sesiones-1-5-b-1.php");
+    exit;
+}
+
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la acción
+$siguiente = recoge("siguiente");
+
+if ($siguiente == "Lanzar moneda") {
+    // Si la acción es lanzar la moneda ...
+    // Lanzamos la moneda
+    $_SESSION["moneda"] = rand(1, 2);
+    // Calculamos quién gana la ronda
+    if ($_SESSION["moneda"] == 1) {
+        $_SESSION["g"] += 1;
+    } else {
+        $_SESSION["m"] += 1;
+    }
+} elseif ($siguiente == "Volver a empezar") {
+    // Si la acción es volver a empezar, reiniciamos las variables de sesión
+    $_SESSION["moneda"] = 0;
+    $_SESSION["g"]      = 0;
+    $_SESSION["m"]      = 0;
+}
+
+// Volvemos a la primera página
+header("Location:sesiones-1-5-b-1.php");</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-6-a">
+    <h3>Sesiones (2) 6 - Quita cartas (ejercicio examen curso 2017/18) - Solución A</h3>
+
+    <p>En esta solución se utilizan dos variables de sesión (el número de cartas a mostrar y el mensaje a mostrar). De esta manera, la primera página sólo escribe los valores de las variables de sesión. Toda la "lógica" del programa está en la segunda página.</p>
+
+    <p>sesiones-1-6-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-6");
+session_start();
+
+// Si falta una de las dos variables de sesión, reiniciamos los valores
+if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
+    $_SESSION["cartas"]  = rand(3, 10);
+    $_SESSION["mensaje"] = "  &lt;p&gt;Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.&lt;/p&gt;\n";
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+
+&lt;body&gt;
+  &lt;h1&gt;Quita cartas&lt;/h1&gt;
+
+&lt;?php
+// Escribimos el mensaje
+print $_SESSION["mensaje"];
+print "\n";
+?&gt;
+  &lt;form action="sesiones-1-6-2.php"&gt;
+    &lt;p&gt;
+      &lt;button type="submit" name="quita" value="quita" style="background-color: #eee;"&gt;
+        &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+             width="210" height="250" viewBox="-10 -10 210 250"&gt;
+          &lt;defs&gt;
+            &lt;pattern id="patron-1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" &gt;
+              &lt;rect x="0" y="0" width="10" height="10" fill="hwb(0 60% 0%)" /&gt;
+              &lt;line x1="0" y1="10" x2="10" y2="0" stroke="hwb(0 80% 0%)" stroke-width="1" /&gt;
+              &lt;line x1="0" y1="0" x2="10" y2="10" stroke="hwb(0 80% 0%)" stroke-width="1" /&gt;
+            &lt;/pattern&gt;
+          &lt;/defs&gt;
+
+&lt;?php
+// Hacemos un bucle para dibujar el número de cartas guardado en la sesión
+for ($i = 0; $i &lt; $_SESSION["cartas"]; $i++) {
+    $pos = 10 * $i;
+    print "          &lt;rect x=\"$pos\" y=\"$pos\" width=\"100\" height=\"140\" rx=\"5\" ry=\"5\" style=\"stroke: black; fill: url(#patron-1);\" /&gt;\n";
+}
+?&gt;
+// ...</code>
+</pre>
+    </div>
+
+    <p>sesiones-1-6-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-6");
+session_start();
+
+// Si falta una de las dos variables de sesión, redirigimos a la primera página
+if (!isset($_SESSION["cartas"], $_SESSION["mensaje"])) {
+    header("Location:sesiones-1-6-1.php");
+    exit;
+}
+
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la orden de quitar una carta
+$quita = recoge("quita");
+
+// Si hemos recibido la orden de quitar una carta ...
+if ($quita == "quita") {
+    // reducimos el número de cartas a mostrar guardado
+    $_SESSION["cartas"] -= 1;
+    // Si el número de cartas a mostrar guardado era cero y al reducirlo se hace negativo ...
+    if ($_SESSION["cartas"] &lt; 0) {
+        // lo generamos al azar
+        $_SESSION["cartas"] = rand(3, 10);
+    }
+    // Guardamos el mensaje correspondiente al número de cartas
+    if ($_SESSION["cartas"] == 0) {
+        $_SESSION["mensaje"] = "  &lt;p&gt;No quedan cartas. Haga clic en el dibujo para volver a poner cartas.&lt;/p&gt;\n";
+    } elseif ($_SESSION["cartas"] == 1) {
+        $_SESSION["mensaje"] = "  &lt;p&gt;Queda $_SESSION[cartas] sola carta. Haga clic en el dibujo para eliminarla.&lt;/p&gt;\n";
+    } else {
+        $_SESSION["mensaje"] = "  &lt;p&gt;Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.&lt;/p&gt;\n";
+    }
+}
+
+// Volvemos a la primera página
+header("Location:sesiones-1-6-1.php");</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-6-b">
+    <h3>Sesiones (2) 6 - Quita cartas (ejercicio examen curso 2017/18) - Solución B</h3>
+
+    <p>En esta solución se utiliza únicamente una variable de sesión (el número de cartas a mostrar). Eso obliga a que en la primera página se tenga que decidir el mensaje a mostrar.</p>
+
+    <p>sesiones-1-6-b-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-6-b");
+session_start();
+
+// Si el número de cartas no está guardado en la sesión, lo generamos al azar
+if (!isset($_SESSION["cartas"])) {
+    $_SESSION["cartas"] = rand(3, 10);
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+
+&lt;body&gt;
+  &lt;h1&gt;Quita cartas&lt;/h1&gt;
+
+&lt;?php
+if ($_SESSION["cartas"] == 0) {
+    // Si no quedan cartas, lo dice
+    print "  &lt;p&gt;No quedan cartas. Haga clic en el dibujo para volver a poner cartas.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($_SESSION["cartas"] == 1) {
+    // Si no queda una sola carta, lo dice
+    print "  &lt;p&gt;Queda $_SESSION[cartas] sola carta. Haga clic en el dibujo para eliminarla.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    // Si quedan varias cartas, lo dice
+    print "  &lt;p&gt;Quedan $_SESSION[cartas] cartas. Haga clic en el dibujo para eliminar una carta.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;
+  &lt;form action="sesiones-1-6-b-2.php"&gt;
+    &lt;p&gt;
+      &lt;button type="submit" name="quita" value="quita" style="background-color: #eee;"&gt;
+        &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+             width="210" height="250" viewBox="-10 -10 210 250"&gt;
+          &lt;defs&gt;
+            &lt;pattern id="patron-1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" &gt;
+              &lt;rect x="0" y="0" width="10" height="10" fill="hwb(0 60% 0%)" /&gt;
+              &lt;line x1="0" y1="10" x2="10" y2="0" stroke="hwb(0 80% 0%)" stroke-width="1" /&gt;
+              &lt;line x1="0" y1="0" x2="10" y2="10" stroke="hwb(0 80% 0%)" stroke-width="1" /&gt;
+            &lt;/pattern&gt;
+          &lt;/defs&gt;
+&lt;?php
+for ($i = 0; $i &lt; $_SESSION["cartas"]; $i++) {
+    $pos = 10 * $i;
+    print "          &lt;rect x=\"$pos\" y=\"$pos\" width=\"100\" height=\"140\" rx=\"5\" ry=\"5\" style=\"stroke: black; fill: url(#patron-1);\" /&gt;\n";
+}
+?&gt;
+// ...</code>
+</pre>
+    </div>
+
+    <p>sesiones-1-6-b-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("sesiones-1-6-b");
+session_start();
+
+// Si el número de cartas no está guardado en la sesión, redirigimos a la primera página
+if (!isset($_SESSION["cartas"])) {
+    header("Location:sesiones-1-6-1.php");
+    exit;
+}
+
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos la orden de quitar una carta
+$quita = recoge("quita");
+
+// Si hemos recibido la orden de quitar una carta ...
+if ($quita == "quita") {
+    // reducimos el número de cartas a mostrar guardado
+    $_SESSION["cartas"] -= 1;
+    // Si el número de cartas a mostrar guardado era cero y al reducirlo se hace negativo ...
+    if ($_SESSION["cartas"] &lt; 0) {
+        // lo generamos al azar
+        $_SESSION["cartas"] = rand(3, 10);
+    }
+}
+
+// Volvemos a la primera página
+header("Location:sesiones-1-6-b-1.php");</code>
+</pre>
+    </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de enero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 27 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

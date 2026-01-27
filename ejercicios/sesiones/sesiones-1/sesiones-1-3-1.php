@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 14 - sesiones-1-14-1.php
+ * Sesiones (1) 3-1 - sesiones-1-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-1-14");
+session_name("sesiones-1-3");
 session_start();
 
-// Si algún contador no está guardado en la sesión, ponemos ambos a cero
-if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
-    $_SESSION["a"] = $_SESSION["b"] = 0;
+// Si alguno de los números de votos no está guardado en la sesión, redirigimos a la segunda página
+if (!isset($_SESSION["a"], $_SESSION["b"])) {
+    header("Location:sesiones-1-3-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -47,7 +48,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
 <body>
   <h1>Votar una opción</h1>
 
-  <form action="sesiones-1-14-2.php" method="get">
+  <form action="sesiones-1-3-2.php" method="get">
     <p>Haga clic en los botones para votar por una opción:</p>
 
     <table>
@@ -85,7 +86,7 @@ print "        </td>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-27">27 de enero de 2026</time>
     </p>
 
     <p class="licencia">

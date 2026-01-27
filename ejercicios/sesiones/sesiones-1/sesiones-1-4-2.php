@@ -1,11 +1,11 @@
 <?php
 /**
- * Hucha de monedas - sesiones-2-12-2.php
+ * Sesiones (1) 4-2 - sesiones-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,13 +23,12 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-12-1");
+session_name("sesiones-1-4");
 session_start();
 
-// Si el ahorro no está guardado en la sesión, redirigimos a la primera página
+// Si el ahorro no está guardado en la sesión, inicializamos el valor a cero
 if (!isset($_SESSION["ahorro"])) {
-    header("Location:sesiones-2-12-1.php");
-    exit;
+    $_SESSION["ahorro"] = 0;
 }
 
 // Función de recogida de datos
@@ -67,4 +66,4 @@ if ($accion == "Vaciar hucha") {
 }
 
 // Volvemos a la primera página
-header("Location:sesiones-2-12-1.php");
+header("Location:sesiones-1-4-1.php");

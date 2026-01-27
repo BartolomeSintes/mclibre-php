@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 13 - sesiones-1-13-2.php
+ * Sesiones (1) 2-2 - sesiones-1-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2023 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-12-06
+ * @version   2026-01-27
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,13 +23,12 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-1-13");
+session_name("sesiones-1-2");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, redirigimos a la primera página
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    header("Location:sesiones-1-13-1.php");
-    exit;
+// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero
+if (!isset($_SESSION["x"], $_SESSION["y"])) {
+    $_SESSION["x"] = $_SESSION["y"] = 0;
 }
 
 // Función de recogida de datos
@@ -85,4 +84,4 @@ if ($_SESSION["y"] > 200) {
 }
 
 // Volvemos al formulario
-header("Location:sesiones-1-13-1.php");
+header("Location:sesiones-1-2-1.php");

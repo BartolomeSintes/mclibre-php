@@ -1,11 +1,11 @@
 <?php
 /**
- * Cara o cruz - sesiones-2-13-2.php
+ * Sesiones (1) 5-b-2 - sesiones-1-5-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,13 +23,14 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-13");
+session_name("sesiones-1-5-b");
 session_start();
 
-// Si falta una de las tres variables de sesión, redirigimos a la primera página
+// Si falta una de las tres variables de sesión, reiniciamos los valores
 if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
-    header("Location:sesiones-2-13-b-1.php");
-    exit;
+    $_SESSION["moneda"] = 0;
+    $_SESSION["g"]      = 0;
+    $_SESSION["m"]      = 0;
 }
 
 // Función de recogida de datos
@@ -75,4 +76,4 @@ if ($siguiente == "Lanzar moneda") {
 }
 
 // Volvemos a la primera página
-header("Location:sesiones-2-13-b-1.php");
+header("Location:sesiones-1-5-b-1.php");

@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 12 - sesiones-1-12-1.php
+ * Sesiones (1) 1-1 - sesiones-1-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-1-12");
+session_name("sesiones-1-1");
 session_start();
 
-// Si la posición no está guardada en la sesión, ponemos el valor a cero
+// Si la posición no está guardada en la sesión, redirigimos a la segunda página
 if (!isset($_SESSION["posicion"])) {
-    $_SESSION["posicion"] = 0;
+    header("Location:sesiones-1-1-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -47,7 +48,7 @@ if (!isset($_SESSION["posicion"])) {
 <body>
   <h1>Mover un punto a derecha e izquierda</h1>
 
-  <form action="sesiones-1-12-2.php" method="get">
+  <form action="sesiones-1-1-2.php" method="get">
     <p>Haga clic en los botones para mover el punto:</p>
 
     <table>
@@ -79,7 +80,7 @@ print "            <circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"r
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-27">27 de enero de 2026</time>
     </p>
 
     <p class="licencia">

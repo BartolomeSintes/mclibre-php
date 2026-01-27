@@ -1,11 +1,11 @@
 <?php
 /**
- * Cara o cruz - sesiones-2-13-1.php
+ * Sesiones (1) 5-1 - sesiones-1-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,16 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-13");
+session_name("sesiones-1-5");
 session_start();
 
-// Si falta una de las tres variables de sesión, reiniciamos los valores
-if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
-    $_SESSION["puntosG"] = 0;
-    $_SESSION["puntosM"] = 0;
-    $_SESSION["moneda"]  = "";
-    $_SESSION["caraG"]   = "&#128572;";
-    $_SESSION["caraM"]   = "&#128586;";
+// Si falta una de las variables de sesión, redirigimos a la segunda página
+if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"], $_SESSION["caraG"], $_SESSION["caraM"])) {
+    header("Location:sesiones-1-5-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -53,7 +50,7 @@ if (!isset($_SESSION["puntosG"], $_SESSION["puntosM"], $_SESSION["moneda"])) {
 
   <p>Haga clic en uno de los botones:</p>
 
-  <form action="sesiones-2-13-2.php">
+  <form action="sesiones-1-5-2.php">
     <p>
       <input type="submit" name="siguiente" value="Lanzar moneda">
       <input type="submit" name="siguiente" value="Volver a empezar">
@@ -97,7 +94,7 @@ print "    </tr>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-27">27 de enero de 2026</time>
     </p>
 
     <p class="licencia">

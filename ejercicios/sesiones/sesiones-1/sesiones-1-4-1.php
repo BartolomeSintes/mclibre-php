@@ -1,11 +1,11 @@
 <?php
 /**
- * Hucha de monedas- sesiones-2-12-1.php
+ * Sesiones (1) 4-1 - sesiones-1-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-12-1");
+session_name("sesiones-1-4");
 session_start();
 
-// Si el ahorro no está guardado en la sesión, inicializamos el valor a cero
+// Si el ahorro no está guardado en la sesión, redirigimos a la segunda página
 if (!isset($_SESSION["ahorro"])) {
-    $_SESSION["ahorro"] = 0;
+    header("Location:sesiones-1-4-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -52,31 +53,31 @@ if (!isset($_SESSION["ahorro"])) {
 
   <p>Haga clic en una moneda para añadirla al total.</p>
 
-  <form action="sesiones-2-12-2.php">
+  <form action="sesiones-1-4-2.php">
     <p>
       <button name="moneda" value="0.01">
-        <img src="img/euro-cent-01.svg" alt="1 céntimo" title="1 céntimo" width="100">
+        <img src="img/monedas/euro-cent-01.svg" alt="1 céntimo" title="1 céntimo" width="100">
       </button>
       <button name="moneda" value="0.02">
-        <img src="img/euro-cent-02.svg" alt="2 céntimos" title="2 céntimos" width="100">
+        <img src="img/monedas/euro-cent-02.svg" alt="2 céntimos" title="2 céntimos" width="100">
       </button>
       <button name="moneda" value="0.05">
-        <img src="img/euro-cent-05.svg" alt="5 céntimos" title="5 céntimos" width="100">
+        <img src="img/monedas/euro-cent-05.svg" alt="5 céntimos" title="5 céntimos" width="100">
       </button>
       <button name="moneda" value="0.10">
-        <img src="img/euro-cent-10.svg" alt="10 céntimos" title="10 céntimos" width="100">
+        <img src="img/monedas/euro-cent-10.svg" alt="10 céntimos" title="10 céntimos" width="100">
       </button>
       <button name="moneda" value="0.20">
-        <img src="img/euro-cent-20.svg" alt="20 céntimos" title="20 céntimos" width="100">
+        <img src="img/monedas/euro-cent-20.svg" alt="20 céntimos" title="20 céntimos" width="100">
       </button>
       <button name="moneda" value="0.50">
-        <img src="img/euro-cent-50.svg" alt="50 céntimos" title="50 céntimos" width="100">
+        <img src="img/monedas/euro-cent-50.svg" alt="50 céntimos" title="50 céntimos" width="100">
       </button>
       <button name="moneda" value="1">
-        <img src="img/euro-1.svg" alt="1 euro" title="1 euro" width="100">
+        <img src="img/monedas/euro-1.svg" alt="1 euro" title="1 euro" width="100">
       </button>
       <button name="moneda" value="2">
-        <img src="img/euro-2.svg" alt="2 euros" title="2 euros" width="100">
+        <img src="img/monedas/euro-2.svg" alt="2 euros" title="2 euros" width="100">
       </button>
     </p>
 
@@ -101,7 +102,7 @@ print "        <text x=\"170\" y=\"110\" font-size=\"60\" text-anchor=\"middle\"
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-27">27 de enero de 2026</time>
     </p>
 
     <p class="licencia">

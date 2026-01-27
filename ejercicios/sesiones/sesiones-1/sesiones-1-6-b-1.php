@@ -1,11 +1,11 @@
 <?php
 /**
- * Quita cartas - sesiones-2-11-1.php
+ * Sesiones (1) 6-b-1 - sesiones-1-6-b-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-11-b");
+session_name("sesiones-1-6-b");
 session_start();
 
-// Si el número de cartas no está guardado en la sesión, lo generamos al azar
+// Si el número de cartas no está guardado en la sesión, redirigimos a la segunda página
 if (!isset($_SESSION["cartas"])) {
-    $_SESSION["cartas"] = rand(3, 10);
+    header("Location:sesiones-1-6-b-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -62,7 +63,7 @@ if ($_SESSION["cartas"] == 0) {
     print "\n";
 }
 ?>
-  <form action="sesiones-2-11-b-2.php">
+  <form action="sesiones-1-6-b-2.php">
     <p>
       <button type="submit" name="quita" value="quita" style="background-color: #eee;">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +89,7 @@ for ($i = 0; $i < $_SESSION["cartas"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-27">27 de enero de 2026</time>
     </p>
 
     <p class="licencia">

@@ -1,11 +1,11 @@
 <?php
 /**
- * Cara o cruz - sesiones-2-13-1.php
+ * Sesiones (1) 5-b-1 - sesiones-1-5-b-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,14 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-13");
+session_name("sesiones-1-5-b");
 session_start();
 
-// Si falta una de las tres variables de sesión, reiniciamos los valores
+// Si falta una de las tres variables de sesión, redirigimos a la segunda página
 if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
-    $_SESSION["moneda"] = 0;
-    $_SESSION["g"]      = 0;
-    $_SESSION["m"]      = 0;
+    header("Location:sesiones-1-5-b-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -51,7 +50,7 @@ if (!isset($_SESSION["g"], $_SESSION["m"], $_SESSION["moneda"])) {
 
   <p>Haga clic en uno de los botones:</p>
 
-  <form action="sesiones-2-13-b-2.php">
+  <form action="sesiones-1-5-b-2.php">
     <p>
       <input type="submit" name="siguiente" value="Lanzar moneda">
       <input type="submit" name="siguiente" value="Volver a empezar">
@@ -86,9 +85,9 @@ if ($_SESSION["g"] > $_SESSION["m"]) {
 if ($_SESSION["moneda"] == 0) {
     print "      <td></td>\n";
 } elseif ($_SESSION["moneda"] == 1) {
-    print "      <td><img src=\"img/a.svg\" alt=\"A\" width=\"100\" height=\"100\"></td>\n";
+    print "      <td><img src=\"img/monedas/a.svg\" alt=\"A\" width=\"100\" height=\"100\"></td>\n";
 } else {
-    print "      <td><img src=\"img/b.svg\" alt=\"B\" width=\"100\" height=\"100\"></td>\n";
+    print "      <td><img src=\"img/monedas/b.svg\" alt=\"B\" width=\"100\" height=\"100\"></td>\n";
 }
 
 // Calculamos la cara del mono
@@ -106,7 +105,7 @@ print "    </tr>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-27">27 de enero de 2026</time>
     </p>
 
     <p class="licencia">

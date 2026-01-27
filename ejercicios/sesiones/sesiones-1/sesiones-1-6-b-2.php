@@ -1,11 +1,11 @@
 <?php
 /**
- * Quita cartas - sesiones-2-11-2.php
+ * Sesiones (1) 6-b-2 - sesiones-1-6-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,13 +23,12 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-11-b");
+session_name("sesiones-1-6-b");
 session_start();
 
-// Si el número de cartas no está guardado en la sesión, redirigimos a la primera página
+// Si el número de cartas no está guardado en la sesión, lo generamos al azar
 if (!isset($_SESSION["cartas"])) {
-    header("Location:sesiones-2-11-1.php");
-    exit;
+    $_SESSION["cartas"] = rand(3, 10);
 }
 
 // Función de recogida de datos
@@ -69,4 +68,4 @@ if ($quita == "quita") {
 }
 
 // Volvemos a la primera página
-header("Location:sesiones-2-11-b-1.php");
+header("Location:sesiones-1-6-b-1.php");
