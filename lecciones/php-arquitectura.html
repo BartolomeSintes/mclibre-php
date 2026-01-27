@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Arquitectura de dos niveles. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+  <script src="../varios/mclibre.js"></script>
+</head>
+
+<body>
+  <h1>Arquitectura de dos niveles</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Arquitectura dos niveles</h2>
+
+      <ul>
+        <li><a href="#sesiones-introduccion">Introducción</a></li>
+        <li><a href="#ejemplo-enunciado">Ejemplo arquitect. dos capas</a></li>
+        <li><a href="#ejemplo-solucion">Solución del ejemplo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta lección se describe una arquitectura de dos niveles que se puede utilizar para resolver los ejercicios del apartado "Con sesiones" de estos apuntes.</p>
+
+  <section id="introduccion">
+    <h2>Introducción</h2>
+
+    <p>La "arquitectura del software" es la rama de la informática que establece modelos generales para estructurar las aplicaciones o sistemas, de manera que se puedan desarrollar e implementar de forma coherente. Unos de los modelos más extendidos son los llamados modelos multinivel o multicapa, en los que cada nivel se ocupa de un aspecto de la aplicación.</p>
+
+    <p>Por ejemplo, una aplicación se podría estructurar mediante tres capas:</p>
+    <ul>
+      <li>una capa se encargaría del interfaz de usuario (la capa de presentación, también llamada Vista)</li>
+      <li>otra capa se encargaría de los cálculos (la capa lógica, también llamada Controlador)</li>
+      <li>otra capa se encargaría del almacenamiento de los datos (la capa de persistencia, también llamada Modelo)</li>
+    </ul>
+
+    <p>Por supuesto, existen muchos modelos alternativos con más o menos capas, definidas atenidiendo a distintos criterios y en los que determinadas partes pueden encontrarse concentradas o distribuidas en unas capas u otras. Y obviamente, seguir un modelo no garantiza que un programa sea correcto o que un programa no pueda ser correcto por seguir un determinado modelo o por no seguir ninguno. Es importante señalar que hay términos que en un modelo de arquitectura significan una cosa y en otro modelo significan otra, lo que a veces induce a la confusión.</p>
+
+    <p>Los ejercicios propuestos en este curso en los apartados de Sin formularios o Con formularios son programas cortos que consisten en una única página web (o como mucho dos, siendo una de las páginas un simple formulario) que se ocupa tanto de los cálculos como la presentación de los resultados. Estos programas son programas "monolíticos" en los que las capas no están claramente separadas y el programa va intercalando la realización de los cálculos y la presentación de los resultados, sin intervención del usuario (en el caso de los ejercicios Sin formularios) o con apenas intervención (en el caso de los ejercicios Con formularios).</p>
+
+    <p>En estos programas cortos seguramente no se obtendrían demasiados beneficios separando las capas, pero a medida que se va añadiendo interactividad a los programas o que los programas hacen más tareas sí que se pueden obtener beneficios, tanto al escribir el código como al reutilizarlo.</p>
+
+    <p>Los ejercicios propuestos en este curso en el apartado Con sesiones se pueden resolver con una arquitectura de dos capas:</p>
+    <ul>
+      <li>una capa se encargaría del interfaz de usuario (la capa de presentación)</li>
+      <li>otra capa se encargaría de los cálculos (la capa lógica)</li>
+    </ul>
+
+    <p>Estos ejercicios no conservan los datos a largo plazo por lo que no requieren la cada de persistencia.</p>
+
+    <p>Dependiendo del ejercicio, cada una de estas dos capas estará formada por una o varias páginas web, pero la idea es que las páginas de cada capa se ocupen solamente de una tarea: o bien mostrar contenido al usuario, o bien hacer cálculos para determinar el contenido que se mostrará al usuario. Para cumplir el ideal del modelo, las páginas de la capa de presentación no deberían contener nada de lógica, pero lo hacen eso no significa que la aplicación sea incorrecta, simplemente significa no que se ajusta estrictamente al modelo.</p>
+  </section>
+
+  <section id="ejemplo-enunciado">
+    <h2>Ejemplo de arquitectura de dos capas</h2>
+
+    <p>Como ejemplo de aplicación con una arquitectura de dos capas consideremos este programa:</p>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/arquitectura/arquitectura-1-1.php" style="height: 22em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/arquitectura/arquitectura-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Este programa muestra un número entero que el usuario puede aumentar y disminuir o poner a cero haciendo clic en los botones.</p>
+
+    <p>El usuario visualiza siempre la misma página, pero esta página contiene un formulario que envía los datos a una segunda página. Si el usuario sólo ve la primera página es que la segunda página redirige automáticamente a la primera, como ilustra la imagen siguiente.</p>
+
+    <p class="mcl-centrado">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="240" viewBox="0 -10 250 170" style="background-color: white;" font-family="sans-serif">
+        <defs>
+          <marker id="flechaNegra2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+          </marker>
+          <marker id="flechaRoja2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+          </marker>
+        </defs>
+
+        <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+        <text x="55" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+        <rect x="38" y="60" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
+        <text x="43" y="73" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
+        <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra2)" />
+        <text x="130" y="10" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">action</text>
+
+        <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+        <text x="205" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+        <!-- <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+        <text x="195" y="90" text-anchor="middle" font-family="sans-serif" font-size="10">calcula</text> -->
+        <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja2)" />
+        <text x="130" y="155" text-anchor="middle" font-family="sans-serif" fill="red" font-size="10">header</text>
+      </svg>
+    </p>
+
+    <p>Siguiendo el modelo de aplicación en dos capas, la página 1 contendrá la capa de presentación y la página 2 contendrá la capa lógica. Es decir, la página 1 es la que generará (mediante instrucciones <span class="php-res">print</span>) la página web que ve el usuario, mientras que la página 2 es la que modificará el valor numérico.</p>
+
+    <p>Para que ambas páginas puedan compartir el valor numérico utilizaremos sesiones. la sesión contendrá únicamente una variable de sesión, el número a mostrar.</p>
+
+    <p>Con respecto al formulario, este no contiene controles específicos, sino tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span> y diferentes atributos <span class="html-atri">value</span>. Independientemente del botón que pulse el usuario, se enviará siempre el mimsmo control, con diferentes valores según el botón pulsado. Por tanto la página recibirá un control con tres posibles valores. Dependiendo del valor recibido, modificará la variable de sesión (aumentándola, reduciéndola o dejándola a 0).</p>
+
+    <p>La segunda página contiene únicamente la capa lógica, es decir, que no presenta ningún resultado (no contiene instrucciones <span class="php-res">print</span>) al usuario, por lo que debe acabar redirigiendo a la primera página.</p>
+
+    <p>Un detalle importante es cómo se asigna el valor inicial de la variable de sesión. La idea es que cualquier página debe asignar el valor 0 si la variable de sesión no está definida. Eso se podría hacer de la misma manera en las dos páginas, pero la experiencia indica que hacerlo así puede ser una fuente de errores ya que si se modifica la asignación de valores iniciales en una de las páginas hay que acordarse de cambiarlo en la otra. Además si establecemos el valor inicial en la página 1, de alguna manera estamos incumpliendo el principio del modelo que dice que la capa de presentación sólo utiliza las datos definidos por la capa lógica, no los establece o modifica. Para evitar esa situación, lo que haremos será que en la primera página si se detecta que no hay variable de sesión, se redirige a la segunda página, que es la que si detecta que no hay variable de sesión asigna el valor inicial.</p>
+
+    <p>Otro detalle importante es que la segunda página en este caso no necesita hacer ninguna comprobación de los datos recibidos, sino simplemente efectuar la operación solicitada si el valor recibido es correcto (es decir, uno de los esperados). En el caso de aplicaciones en las que la página 2 sí recibe datos que necesitan ser comprobados, la página 2 debe comprobar esos datos y modificar las variables de sesión como corresponda en cada caso. Si se quiere notificar el problema al usuario, debería hacerse también a través de variables de sesión para que sea siempre la página 1 la que presente la información.</p>
+
+    <p>Por último, debemos comprobar siempre la corrección y robustez de la aplicación ante ataques de inyección, cerrando todas las ventanas del navegador y probando siempre qué ocurre:</p>
+    <ul>
+      <li>cuando se abre directamente la primera página del ejercicio (esta prueba correspondería al uso "normal" de la aplicación)</li>
+      <li>cuando se abre directamente la segunda página del ejercicio (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
+      <li>cuando se abre directamente la segunda página del ejercicio añadiendo en la URL el control con alguno de los valores posibles (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-solucion">
+    <h2>Solución del ejemplo</h2>
+
+    <p>Es importante recordar que el usuario sólo va a ver la página 1 del programa, ya que la página 2 va a redirigir siempre automáticamente a la página 1. Por ello, la página 2 no debe tener ningún fragmento de HTML, ni ningún <span class="php-res">print</span>.</p>
+
+    <ol>
+      <li id="li-11-1">La página 1 completa el interfaz de usuario mostrando el número. Como ese número se establece y modifica en la página 2, debe compartirse mediante sesiones, por ejemplo con el nombre $_SESSION["numero"].</li>
+      <li id="li-11-2">Para que la página 1 acceda a la sesión para recuperar el número que hay que mostrar en pantalla, debemos unir la página 1 a la sesión. Conviene que la sesión tenga nombre para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto de ejercicios.</li>
+      <li id="li-11-3">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimir alguno provocaría un error. Por ello, en caso de que no exista la variable de sesión $_SESSION["numero"], redirigimos a la página 2 para que establezca su valor inicial.</li>
+      <li id="li-11-4">Para que la página 2 pueda establecer o modificar los datos guardados en la sesión, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-11-5">Si la variable de sesión $_SESSION["numero"] no está definida, establecemos su valor inicial, en este caso 0.</li>
+      <li id="li-11-6">La página 2 debe terminar redirigiendo siempre a la página 1.</li>
+      <li id="li-11-7">La página 2 debe recoger el control enviado por el formulario de la página 1. En la página 1 hay 3 botones, pero los tres tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un control.
+        <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el control.</p>
+      </li>
+      <li id="li-11-8">Dependiendo del dato recibido, aumentamos, reducimos o ponemos a cero la variable de sesión.</li>
+    </ol>
+
+    <p>arquitectura-1-1-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-11-2">2</span>
+session_name("arquitectura-1-1");
+session_start();
+
+// Si el número no está guardado en la sesión, redirigimos a la segunda página <span class="numero-circulo" tooltip-id="li-11-3">3</span>
+if (!isset($_SESSION["numero"])) {
+    header("Location:arquitectura-1-1-2.php");
+    exit;
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+    &lt;p&gt;
+      &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
+
+&lt;?php
+// Mostramos el número, guardado en la sesión <span class="numero-circulo" tooltip-id="li-11-1">1</span>
+print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
+?&gt;
+      &lt;button type="submit" name="accion" value="subir" style="font-size: 4rem"&gt;+&lt;/button&gt;
+    &lt;/p&gt;
+// ...</code>
+</pre>
+    </div>
+
+    <p>arquitectura-1-1-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-11-4">4</span>
+session_name("arquitectura-1-1");
+session_start();
+
+// Si el número no está guardado en la sesión, ponemos el valor a cero
+if (!isset($_SESSION["numero"])) {<span class="numero-circulo" tooltip-id="li-11-5">5</span>
+    $_SESSION["numero"] = 0;
+}
+
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-11-7">7</span>
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos accion
+$accion = recoge("accion");
+
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo" tooltip-id="li-11-8">8</span>
+if ($accion == "cero") {
+    $_SESSION["numero"] = 0;
+} elseif ($accion == "subir") {
+    $_SESSION["numero"]++;
+} elseif ($accion == "bajar") {
+    $_SESSION["numero"]--;
+}
+
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-11-6">6</span>
+header("Location:arquitectura-1-1-1.php");</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 27 de enero de 2026</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
