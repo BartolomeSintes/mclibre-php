@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 01 - sesiones-2-01-1.php
+ * Sesiones (2) 5-1 - sesiones-2-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-01");
+session_name("sesiones-2-5");
 session_start();
 
 // Borrramos los datos guardados en intentos anteriores
@@ -48,7 +48,7 @@ unset($_SESSION["avisoApellidos"]);
 <body>
   <h1>Formulario en dos pasos (Formulario 1)</h1>
 
-  <form action="sesiones-2-01-2.php" method="get">
+  <form action="sesiones-2-5-2.php" method="get">
     <p>Escriba su nombre:</p>
 
 <?php
@@ -77,7 +77,7 @@ if (isset($_SESSION["avisoNombre"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-28">28 de enero de 2026</time>
     </p>
 
     <p class="licencia">

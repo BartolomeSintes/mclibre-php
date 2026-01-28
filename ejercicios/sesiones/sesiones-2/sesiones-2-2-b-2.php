@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 02 - sesiones-1-02-b-2.php
+ * Sesiones (2) 2-b-2 - sesiones-2-2-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-1-02-b");
+session_name("sesiones-2-2-b");
 session_start();
 // Si no existe la variable de sesión, la creamos vacía
 if (!isset($_SESSION["texto"])) {
@@ -61,4 +61,4 @@ if ($texto != "") {
     $_SESSION["texto"] = $texto;
 }
 
-header("Location:sesiones-1-02-1.php");
+header("Location:sesiones-2-2-b-1.php");

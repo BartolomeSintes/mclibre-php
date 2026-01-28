@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 02 - sesiones-2-02-2.php
+ * Sesiones (2) 02 - sesiones-2-6-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-02");
+session_name("sesiones-2-6");
 session_start();
 
 // Función de recogida de datos
@@ -56,13 +56,13 @@ if ($palabra1 == "") {
     // Si no hay palabra1, guardamos el aviso en la sesión
     $_SESSION["aviso1"] = "No ha escrito nada";
     // y volvemos a la página 1
-    header("Location:sesiones-2-02-1.php");
+    header("Location:sesiones-2-6-1.php");
     exit;
 } elseif (!ctype_alnum($palabra1)) {
     // Si la palabra1 no son todo letras o números, guardamos el aviso en la sesión
     $_SESSION["aviso1"] = "No ha escrito una sola palabra con letras y números";
     // y volvemos a la página 1
-    header("Location:sesiones-2-02-1.php");
+    header("Location:sesiones-2-6-1.php");
     exit;
 } else {
     // Si hay palabra1, borramos el aviso que se podría haber generado en intentos anteriores,
@@ -70,6 +70,6 @@ if ($palabra1 == "") {
     // guardamos la palabra1 en la sesión
     $_SESSION["palabra1"] = $palabra1;
     // y pasamos a la página 3
-    header("Location:sesiones-2-02-3.php");
+    header("Location:sesiones-2-6-3.php");
     exit;
 }

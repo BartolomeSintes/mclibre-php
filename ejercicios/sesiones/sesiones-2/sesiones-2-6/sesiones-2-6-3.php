@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 02 - sesiones-2-02-3.php
+ * Sesiones (2) 02 - sesiones-2-6-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,13 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-02");
+session_name("sesiones-2-6");
 session_start();
 
 // Si accedemos a esta página sin haber guardado antes la palabra1 en la sesión ...
 if (!isset($_SESSION["palabra1"])) {
     // volvemos a la página 1
-    header("Location:sesiones-2-02-1.php");
+    header("Location:sesiones-2-6-1.php");
     exit;
 }
 ?>
@@ -49,7 +49,7 @@ if (!isset($_SESSION["palabra1"])) {
 <body>
   <h1>Formulario de confirmación (Formulario 2)</h1>
 
-  <form action="sesiones-2-02-4.php" method="get">
+  <form action="sesiones-2-6-4.php" method="get">
     <p>Repita la palabra que acaba de escribir:</p>
 
 <?php
@@ -78,7 +78,7 @@ if (isset($_SESSION["aviso2"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-28">28 de enero de 2026</time>
     </p>
 
     <p class="licencia">

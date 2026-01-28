@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 04 - sesiones-1-04-b-2.php
+ * Sesiones (2) 4-b-2 - sesiones-2-4-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-1-04-b");
+session_name("sesiones-2-4-b");
 session_start();
 
 // Función de recogida de datos
@@ -82,4 +82,4 @@ if ($minusculas == "") {
 }
 
 // Volvemos al formulario
-header("Location:sesiones-1-04-b-1.php");
+header("Location:sesiones-2-4-b-1.php");

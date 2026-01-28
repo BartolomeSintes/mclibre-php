@@ -3,9 +3,9 @@
  * Sesiones (2) 03 - apellidos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-03");
+session_name("sesiones-2-7");
 session_start();
 
 // Función de recogida de datos

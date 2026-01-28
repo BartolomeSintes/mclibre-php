@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 02 - sesiones-1-02-1.php
+ * Sesiones (2) 2-1 - sesiones-2-2-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-1-02");
+session_name("sesiones-2-2");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ session_start();
   <meta charset="utf-8">
   <title>
     Formulario Texto 2 (Formulario).
-    Sesiones (1). Sesiones.
+    Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,7 @@ if (isset($_SESSION["texto"])) {
     print "\n";
 }
 ?>
-  <form action="sesiones-1-02-2.php" method="get">
+  <form action="sesiones-2-2-2.php" method="get">
     <p>
       <label>
         Escriba texto:
@@ -66,7 +66,7 @@ if (isset($_SESSION["texto"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-28">28 de enero de 2026</time>
     </p>
 
     <p class="licencia">

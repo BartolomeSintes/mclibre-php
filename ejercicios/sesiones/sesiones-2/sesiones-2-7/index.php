@@ -26,7 +26,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-01-28">28 de enero de 2026</time>
     </p>
 
     <p class="licencia">

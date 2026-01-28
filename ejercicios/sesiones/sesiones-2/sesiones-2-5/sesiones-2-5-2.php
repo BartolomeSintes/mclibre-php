@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 01 - sesiones-2-01-2.php
+ * Sesiones (2) 5-2 - sesiones-2-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-01-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
  */
 
 // Accedemos a la sesión
-session_name("sesiones-2-01");
+session_name("sesiones-2-5");
 session_start();
 
 // Función de recogida de datos
@@ -56,7 +56,7 @@ if ($nombre == "") {
     // Si no hay nombre, guardamos el aviso en la sesión
     $_SESSION["avisoNombre"] = "No ha escrito su nombre";
     // y volvemos a la página 1
-    header("Location:sesiones-2-01-1.php");
+    header("Location:sesiones-2-5-1.php");
     exit;
 } else {
     // Si hay nombre, borramos el aviso que se podría haber generado en intentos anteriores,
@@ -64,6 +64,6 @@ if ($nombre == "") {
     // guardamos el nombre en la sesión
     $_SESSION["nombre"] = $nombre;
     // y pasamos a la página 3
-    header("Location:sesiones-2-01-3.php");
+    header("Location:sesiones-2-5-3.php");
     exit;
 }
