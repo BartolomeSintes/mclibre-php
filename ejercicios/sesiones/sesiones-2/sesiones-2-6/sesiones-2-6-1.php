@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2026-01-28
+ * @version   2026-01-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -49,25 +49,21 @@ unset($_SESSION["aviso2"]);
   <h1>Formulario de confirmación (Formulario 1)</h1>
 
   <form action="sesiones-2-6-2.php" method="get">
-    <p>Escriba una palabra (con letras mayúsculas, letras minúsculas y números):</p>
+    <p>Escriba una palabra (con letras mayúsculas, letras minúsculas o números):</p>
 
+    <p>
+      <label>
+        Palabra:
+        <input type="text" name="palabra1" size="20" maxlength="20">
+      </label>
 <?php
-// Si hay un aviso guardado en la sesión, ...
+// Si hay un aviso guardado en la sesión, lo mostramos
 if (isset($_SESSION["aviso1"])) {
-    // lo mostramos
-    print "    <p>\n";
-    print "      <label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label>\n";
     print "      <span class=\"aviso\">$_SESSION[aviso1]</span>\n";
-    print "    </p>\n";
-    print "\n";
-} else {
-    // si no, no mostramos el aviso
-    print "    <p>\n";
-    print "      <label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label>\n";
-    print "    </p>\n";
-    print "\n";
 }
 ?>
+    </p>
+
     <p>
       <input type="submit" value="Siguiente">
       <input type="reset">

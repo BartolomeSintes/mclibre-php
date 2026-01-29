@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Sesiones (2) 2-2 - sesiones-2-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2026-01-28
+ * @version   2026-01-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,10 +52,10 @@ function recoge($key, $type = "")
 // Recogemos el texto
 $texto = recoge("texto");
 
-// Comprobamos el texto
+// Si el texto no es vacío, lo guardamos en la sesión
 if ($texto != "") {
-    // Si el texto no es vacío, lo guardamos en la sesión
     $_SESSION["texto"] = $texto;
 }
 
+// Volvemos al formulario
 header("Location:sesiones-2-2-1.php");

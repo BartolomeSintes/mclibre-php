@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2026-01-28
+ * @version   2026-01-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,23 +53,19 @@ if (isset($_SESSION["nombre"])) {
   <form action="nombre-2.php" method="get">
     <p>Escriba su nombre:</p>
 
+    <p>
+      <label>
+        Nombre:
+        <input type="text" name="nombre" size="20" maxlength="20">
+      </label>
 <?php
-// Si hay un aviso guardado en la sesión, ...
+// Si hay un aviso guardado en la sesión, lo mostramos
 if (isset($_SESSION["avisoNombre"])) {
-    // lo mostramos
-    print "    <p>\n";
-    print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
     print "      <span class=\"aviso\">$_SESSION[avisoNombre]</span>\n";
-    print "    </p>\n";
-    print "\n";
-} else {
-    // si no, no mostramos el aviso
-    print "    <p>\n";
-    print "      <label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
-    print "    </p>\n";
-    print "\n";
 }
 ?>
+    </p>
+
     <p>
       <input type="submit" value="Guardar">
       <input type="reset">

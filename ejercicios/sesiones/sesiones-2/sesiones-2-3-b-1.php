@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2026-01-28
+ * @version   2026-01-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,24 +53,31 @@ if (isset($_SESSION["palabra"])) {
 
 if (isset($_SESSION["error"], $_SESSION["intento"])) {
     // Si hemos detectado un error y el usuario había escrito una palabra para corregir
-    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-    print "    <p>\n";
-    print "      <label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"></label>\n";
+    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control;
+    print "      <label>\n";
+    print "        Escriba una palabra en mayúsculas:\n";
+    print "        <input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
     print "      <span class=\"aviso\">$_SESSION[error]</span>\n";
     print "    </p>\n";
     print "\n";
 } elseif (isset($_SESSION["error"])) {
     // Si hemos detectado un error, pero no hay palabra para corregir
     // Mostramos el control, añadiendo el aviso
-    print "    <p>\n";
-    print "      <label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "      <label>\n";
+    print "        Escriba una palabra en mayúsculas:\n";
+    print "        <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
     print "      <span class=\"aviso\">$_SESSION[error]</span>\n";
     print "    </p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, mostramos simplemente el control
     print "    <p>\n";
-    print "      <label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "      <label>\n";
+    print "        Escriba una palabra en mayúsculas:\n";
+    print "        <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
     print "    </p>\n";
     print "\n";
 }
