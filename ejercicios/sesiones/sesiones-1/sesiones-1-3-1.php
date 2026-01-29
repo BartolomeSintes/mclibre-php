@@ -53,7 +53,9 @@ if (!isset($_SESSION["a"], $_SESSION["b"])) {
 
     <table>
       <tr>
-        <td style="vertical-align: top;"><button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hwb(200 0% 0%);">&#x2714;</button></td>
+        <td style="vertical-align: top;">
+          <button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hwb(200 0% 0%);">&#x2714;</button>
+        </td>
         <td>
 <?php
 // Dibujamos la primera barra
@@ -65,16 +67,18 @@ print "          </svg>\n";
         </td>
       </tr>
       <tr>
-        <td><button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hwb(35 0% 0%)">&#x2714;</button></td>
+        <td>
+          <button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hwb(35 0% 0%)">&#x2714;</button>
+        </td>
+        <td>
 <?php
 // Dibujamos la segunda barra
-print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "               width=\"$_SESSION[b]\" height=\"50\">\n";
 print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hwb(35 0% 0%)\" stroke-width=\"50\" />\n";
 print "          </svg>\n";
-print "        </td>\n";
 ?>
+        </td>
       </tr>
     </table>
 
