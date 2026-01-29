@@ -16,3 +16,19 @@ function muestra() {
     }
 }
 window.onload = muestra;
+
+// Esto es para que copie el contenido de los details cerrados que se hayan seleccionado
+// Por ejemplo, el contenido de la función recoge()
+// El summary no se copia porque en la css hay summary { user-select: none; }
+document.addEventListener("copy", (event) => {
+    const details = document.querySelectorAll("details");
+    details.forEach(d => { d.open = true; });
+    setTimeout(() => {
+        details.forEach(d => { d.open = false; });
+    }, 100); // 100ms es suficiente para que el sistema complete la copia
+});
+
+// Esta versión también funciona, pero deja los details abiertos
+// document.addEventListener("copy", () => {
+//     document.querySelectorAll("details").forEach(d => { d.open = true; });
+// });
