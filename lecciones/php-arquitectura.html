@@ -51,7 +51,7 @@
 
     <p>En estos programas cortos seguramente no se obtendrían demasiados beneficios separando las capas, pero a medida que se va añadiendo interactividad a los programas o que los programas hacen más tareas sí que se pueden obtener beneficios, tanto al escribir el código como al reutilizarlo.</p>
 
-    <p>Los ejercicios propuestos en este curso en el apartado Con sesiones se pueden resolver con una arquitectura de dos capas:</p>
+    <p>Gran parte de los ejercicios propuestos en este curso en el apartado Con sesiones se pueden resolver con una arquitectura de dos capas:</p>
     <ul>
       <li>una capa se encargaría del interfaz de usuario (la capa de presentación)</li>
       <li>otra capa se encargaría de los cálculos (la capa lógica)</li>
@@ -76,59 +76,211 @@
 
     <p>Este programa muestra un número entero que el usuario puede aumentar y disminuir o poner a cero haciendo clic en los botones.</p>
 
-    <p>El usuario visualiza siempre la misma página, pero esta página contiene un formulario que envía los datos a una segunda página. Si el usuario sólo ve la primera página es que la segunda página redirige automáticamente a la primera, como ilustra la imagen siguiente.</p>
+    <section id="ejemplo-arquitectura">
+      <h3>Páginas y capas</h3>
 
-    <p class="mcl-centrado">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="240" viewBox="0 -10 250 170" style="background-color: white;" font-family="sans-serif">
-        <defs>
-          <marker id="flechaNegra2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
-            <path d="M0,4 L0,8 L6,6" style="fill: black;" />
-          </marker>
-          <marker id="flechaRoja2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
-            <path d="M0,4 L0,8 L6,6" style="fill: red;" />
-          </marker>
-        </defs>
+      <p>El usuario visualiza siempre la misma página, pero esta página contiene un formulario que envía los datos a una segunda página. Si el usuario sólo ve la primera página es que la segunda página redirige automáticamente a la primera, como ilustra la imagen siguiente.</p>
 
-        <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
-        <text x="55" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
-        <rect x="38" y="60" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
-        <text x="43" y="73" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
-        <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra2)" />
-        <text x="130" y="10" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">action</text>
+      <p class="mcl-centrado">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="250" viewBox="0 -10 250 190" style="background-color: white;" font-family="sans-serif">
+          <defs>
+            <marker id="flechaNegra2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+              <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+            </marker>
+            <marker id="flechaRoja2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+              <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+            </marker>
+          </defs>
 
-        <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
-        <text x="205" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
-        <!-- <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+          <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+          <text x="55" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+          <rect x="38" y="60" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
+          <text x="43" y="73" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
+          <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra2)" />
+          <text x="130" y="10" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">action</text>
+
+          <text x="65" y="160" text-anchor="middle" font-family="sans-serif" font-size="14">Capa de</text>
+          <text x="65" y="175" text-anchor="middle" font-family="sans-serif" font-size="14">presentación</text>
+
+          <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+          <text x="205" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+          <!-- <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
         <text x="195" y="90" text-anchor="middle" font-family="sans-serif" font-size="10">calcula</text> -->
-        <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja2)" />
-        <text x="130" y="155" text-anchor="middle" font-family="sans-serif" fill="red" font-size="10">header</text>
-      </svg>
-    </p>
+          <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja2)" />
+          <text x="130" y="155" text-anchor="middle" font-family="sans-serif" fill="red" font-size="10">header</text>
 
-    <p>Siguiendo el modelo de aplicación en dos capas, la página 1 contendrá la capa de presentación y la página 2 contendrá la capa lógica. Es decir, la página 1 es la que generará (mediante instrucciones <span class="php-res">print</span>) la página web que ve el usuario, mientras que la página 2 es la que modificará el valor numérico.</p>
+          <text x="195" y="160" text-anchor="middle" font-family="sans-serif" font-size="14">Capa</text>
+          <text x="195" y="175" text-anchor="middle" font-family="sans-serif" font-size="14">lógica</text>
+        </svg>
+      </p>
 
-    <p>Para que ambas páginas puedan compartir el valor numérico utilizaremos sesiones. la sesión contendrá únicamente una variable de sesión, el número a mostrar.</p>
+      <p>Siguiendo el modelo de aplicación en dos capas, la página 1 contendrá la capa de presentación y la página 2 contendrá la capa lógica. Es decir, la página 1 es la que generará (mediante instrucciones <span class="php-res">print</span>) la página web que verá el usuario, mientras que la página 2 es la que modificará el valor numérico y no se mostrará nunca al usuario (no contendrá ningún fragmento HTML ni ninguna instrucción <span class="php-res">print</span>).</p>
+    </section>
 
-    <p>Con respecto al formulario, este no contiene controles específicos, sino tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span> y diferentes atributos <span class="html-atri">value</span>. Independientemente del botón que pulse el usuario, se enviará siempre el mimsmo control, con diferentes valores según el botón pulsado. Por tanto la página recibirá un control con tres posibles valores. Dependiendo del valor recibido, modificará la variable de sesión (aumentándola, reduciéndola o dejándola a 0).</p>
+    <section id="ejemplo-sesiones">
+      <h3>Sesiones</h3>
 
-    <p>La segunda página contiene únicamente la capa lógica, es decir, que no presenta ningún resultado (no contiene instrucciones <span class="php-res">print</span>) al usuario, por lo que debe acabar redirigiendo a la primera página.</p>
+      <p>Para que ambas páginas puedan compartir el valor numérico utilizaremos sesiones. la sesión contendrá únicamente una variable de sesión, el número a mostrar.</p>
+    </section>
 
-    <p>Un detalle importante es cómo se asigna el valor inicial de la variable de sesión. La idea es que cualquier página debe asignar el valor 0 si la variable de sesión no está definida. Eso se podría hacer de la misma manera en las dos páginas, pero la experiencia indica que hacerlo así puede ser una fuente de errores ya que si se modifica la asignación de valores iniciales en una de las páginas hay que acordarse de cambiarlo en la otra. Además si establecemos el valor inicial en la página 1, de alguna manera estamos incumpliendo el principio del modelo que dice que la capa de presentación sólo utiliza las datos definidos por la capa lógica, no los establece o modifica. Para evitar esa situación, lo que haremos será que en la primera página si se detecta que no hay variable de sesión, se redirige a la segunda página, que es la que si detecta que no hay variable de sesión asigna el valor inicial.</p>
+    <section id="ejemplo-formulario">
+      <h3>Formulario</h3>
 
-    <p>Otro detalle importante es que la segunda página en este caso no necesita hacer ninguna comprobación de los datos recibidos, sino simplemente efectuar la operación solicitada si el valor recibido es correcto (es decir, uno de los esperados). En el caso de aplicaciones en las que la página 2 sí recibe datos que necesitan ser comprobados, la página 2 debe comprobar esos datos y modificar las variables de sesión como corresponda en cada caso. Si se quiere notificar el problema al usuario, debería hacerse también a través de variables de sesión para que sea siempre la página 1 la que presente la información.</p>
+      <p>Con respecto al formulario, este no contiene controles específicos, sino tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span> y diferentes atributos <span class="html-atri">value</span>. Independientemente del botón que pulse el usuario, se enviará siempre el mimsmo control, con diferentes valores según el botón pulsado. Por tanto la página recibirá un control con tres posibles valores. Dependiendo del valor recibido, modificará la variable de sesión (aumentándola, reduciéndola o dejándola a 0).</p>
+    </section>
 
-    <p>Por último, debemos comprobar siempre la corrección y robustez de la aplicación ante ataques de inyección, cerrando todas las ventanas del navegador y probando siempre qué ocurre:</p>
-    <ul>
-      <li>cuando se abre directamente la primera página del ejercicio (esta prueba correspondería al uso "normal" de la aplicación)</li>
-      <li>cuando se abre directamente la segunda página del ejercicio (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
-      <li>cuando se abre directamente la segunda página del ejercicio añadiendo en la URL el control con alguno de los valores posibles (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
-    </ul>
+    <section id="ejemplo-inicializacion-variables">
+      <h3>Valores iniciales de las variables de sesión</h3>
+
+      <p>Puede haber aplicaciones en los que no sea necesario disponer de unos valores iniciales en las variables de sesión, pero normalmente sí que son necesarios puesto que el interfaz de la aplicación se genera usando las variables de sesión. En la aplicación de ejemplo, la variable de sesión debería tener el valor 0.</p>
+
+      <p>Podemos asignar el valor de varias formas, pero la idea es que cualquier página debe asignar valores iniciales si las variables de sesión no están definidas, de manera que no se produzcan errores.</p>
+
+      <p>La manera más simple es hacerlo en todas las páginas que utilicen la sesión, como podríamos hacer en la aplicación de ejemplo.</p>
+
+      <div class="filaflex cabecera">
+        <div>página 1 (presentación)</div>
+        <div>página 2 (lógica)</div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("arquitectura-1");
+session_start();
+
+// Si el número no está guardado en la sesión, ponemos el valor a cero
+if (!isset($_SESSION["numero"])) {
+    $_SESSION["numero"] = 0;
+}
+
+// ...</code></pre>
+        </div>
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("arquitectura-1");
+session_start();
+
+// Si el número no está guardado en la sesión, ponemos el valor a cero
+if (!isset($_SESSION["numero"])) {
+    $_SESSION["numero"] = 0;
+}
+
+// ...</code></pre>
+        </div>
+      </div>
+
+      <p>Este código es correcto, pero la experiencia indica que hacerlo así puede ser una fuente de errores ya que si posteriormente se modifica la asignación de valores iniciales en una de las páginas hay que acordarse de cambiarlo en la otra y es fácil acabar con incilizaciones distintas. Por ello, puede ser aconsejable que las variables de sesión se inicialicen solamente en una página y que el resto de páginas redirijan a ella en caso necesario, como muestra el siguiente ejemplo.</p>
+
+      <div class="filaflex cabecera">
+        <div>página 1 (presentación)</div>
+        <div>página 2 (lógica)</div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("arquitectura-1-1");
+session_start();
+
+// Si el número no está guardado en la sesión, ponemos el valor a cero
+if (!isset($_SESSION["numero"])) {
+    $_SESSION["numero"] = 0;
+}
+
+// ...</code></pre>
+        </div>
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("arquitectura-1-1");
+session_start();
+
+// Si el número no está guardado en la sesión, redirigimos a la primera página
+if (!isset($_SESSION["numero"])) {
+    header("Location:arquitectura-1-1.php");
+    exit;
+}
+
+// ...</code></pre>
+        </div>
+      </div>
+
+      <p>El hecho de que la página 2 redirija a la página 1 si las variables de sesión no están definidas nos proteje de paso frente ante atacantes que llamen directamente a la página 2 sin pasar por el formulario, que lo único que consiguen ahora es que se les muestre la página 1.</p>
+
+      <p>El único pero que se puede plantear a este código es que al establecer el valor inicial en la página 1, de alguna manera estamos incumpliendo el principio del modelo que dice que la capa de presentación sólo debe utilizar los datos definidos por la capa lógica, no establecerlos o modificarlos. Para evitar esa situación, lo tendríamos que hacer al revés, como muestra el siguiente ejemplo.</p>
+
+      <div class="filaflex cabecera">
+        <div>página 1 (presentación)</div>
+        <div>página 2 (lógica)</div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("arquitectura-1-1");
+session_start();
+
+// Si el número no está guardado en la sesión, redirigimos a la segunda página
+if (!isset($_SESSION["numero"])) {
+    header("Location:arquitectura-1-2.php");
+    exit;
+}
+
+// ...</code></pre>
+        </div>
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php
+// Accedemos a la sesión
+session_name("arquitectura-1-1");
+session_start();
+
+// Si el número no está guardado en la sesión, ponemos el valor a cero
+if (!isset($_SESSION["numero"])) {
+    $_SESSION["numero"] = 0;
+}
+
+// ...
+
+// Volvemos al formulario
+header("Location:arquitectura-1-1.php");</code></pre>
+        </div>
+      </div>
+
+      <p>Este código también es correcto, aunque la primera vez que se abra la página 1 (y por tanto no esté definida la variable de sesión), la página 1 redirigirá a la página 2, que establecerá la variable de sesión y finalmente redirigirá a la página 1, que ya podrá mostrar el interfaz.</p>
+    </section>
+
+    <section id="ejemplo-datos-recibidos">
+      <h3>Datos recibidos desde el formulario</h3>
+
+      <p>Otro detalle importante es que la segunda página en este caso no necesita hacer ninguna comprobación de los datos recibidos, sino simplemente efectuar la operación solicitada si el valor recibido es correcto (es decir, uno de los esperados). En el caso de aplicaciones en las que la página 2 sí recibe datos que necesitan ser comprobados, la página 2 debe comprobar esos datos y modificar las variables de sesión como corresponda en cada caso. Si se quiere notificar el problema al usuario, debería hacerse también a través de variables de sesión para que sea siempre la página 1 la que presente la información.</p>
+    </section>
+
+    <section id="ejemplo-comprobación">
+      <h3>Comprobación del funcionamiento de la aplicación</h3>
+
+      <p>Por último, debemos comprobar siempre la corrección y robustez de la aplicación ante ataques de inyección, cerrando todas las ventanas del navegador y probando siempre qué ocurre:</p>
+      <ul>
+        <li>cuando se abre directamente la primera página del ejercicio (esta prueba correspondería al uso "normal" de la aplicación)</li>
+        <li>cuando se abre directamente la segunda página del ejercicio (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
+        <li>cuando se abre directamente la segunda página del ejercicio añadiendo en la URL el control con alguno de los valores posibles (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
+        <li>cuando se abre directamente la segunda página del ejercicio añadiendo en la URL el control con un valor distinto a los esperado (esta prueba correspondería a un intento de ataque puesto que no se ha pasado por el formulario)</li>
+      </ul>
+    </section>
   </section>
 
   <section id="ejemplo-solucion">
     <h2>Solución del ejemplo</h2>
 
-    <p>Es importante recordar que el usuario sólo va a ver la página 1 del programa, ya que la página 2 va a redirigir siempre automáticamente a la página 1. Por ello, la página 2 no debe tener ningún fragmento de HTML, ni ningún <span class="php-res">print</span>.</p>
+    <p>La arquitectura comentada en los ejercicios anteriores se puede conseguir con una estructura del código en las dos páginas bastante sencilla, como la que se comenta a continuación.</p>
+
+    <p>Los fragmentos de código incluyen unos números situados en círculos que indican el orden en que se puede ir completando el programa. Los fragmentos del 1 al 6 implementan el funcionamiento básico de la aplicación, es decir, que al pulsar los botones se vuelva a mostrar la misma página, aunque sin modificaciones. Los fragmentos 7 y 8 implementan las modificaciones solicitadas con los diferentes botones.</p>
+
+    <p>Los comentarios de cada fragmento que se pueden leer antes del código también se pueden visualixzar situando el cursor encima del número situado en el círculo.</p>
 
     <ol>
       <li id="li-11-1">La página 1 completa el interfaz de usuario mostrando el número. Como ese número se establece y modifica en la página 2, debe compartirse mediante sesiones, por ejemplo con el nombre $_SESSION["numero"].</li>
@@ -143,7 +295,7 @@
       <li id="li-11-8">Dependiendo del dato recibido, aumentamos, reducimos o ponemos a cero la variable de sesión.</li>
     </ol>
 
-    <p>arquitectura-1-1-1.php</p>
+    <p>arquitectura-1-1.php</p>
 
     <div class="codigo">
       <pre>
@@ -154,7 +306,7 @@ session_start();
 
 // Si el número no está guardado en la sesión, redirigimos a la segunda página <span class="numero-circulo" tooltip-id="li-11-3">3</span>
 if (!isset($_SESSION["numero"])) {
-    header("Location:arquitectura-1-1-2.php");
+    header("Location:arquitectura-1-2.php");
     exit;
 }
 ?&gt;
@@ -162,7 +314,6 @@ if (!isset($_SESSION["numero"])) {
 // ...
     &lt;p&gt;
       &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
-
 &lt;?php
 // Mostramos el número, guardado en la sesión <span class="numero-circulo" tooltip-id="li-11-1">1</span>
 print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
@@ -173,7 +324,7 @@ print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt
 </pre>
     </div>
 
-    <p>arquitectura-1-1-2.php</p>
+    <p>arquitectura-1-2.php</p>
 
     <div class="codigo">
       <pre>
@@ -189,8 +340,7 @@ if (!isset($_SESSION["numero"])) {<span class="numero-circulo" tooltip-id="li-11
 
 // Función de recogida de datos <span class="numero-circulo" tooltip-id="li-11-7">7</span>
 function recoge($key, $type = "")
-{
-    if (!is_string($key) && !is_int($key) || $key == "") {
+{<details><summary>. . .</summary>    if (!is_string($key) && !is_int($key) || $key == "") {
         trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
     } elseif ($type !== "" && $type !== []) {
         trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
@@ -207,7 +357,7 @@ function recoge($key, $type = "")
         }
     }
     return $tmp;
-}
+</details>}
 
 // Recogemos accion
 $accion = recoge("accion");
@@ -222,13 +372,13 @@ if ($accion == "cero") {
 }
 
 // Volvemos al formulario <span class="numero-circulo" tooltip-id="li-11-6">6</span>
-header("Location:arquitectura-1-1-1.php");</code>
+header("Location:arquitectura-1-1.php");</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de enero de 2026</p>
+    <p class="ultmod">Última modificación de esta página: 29 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

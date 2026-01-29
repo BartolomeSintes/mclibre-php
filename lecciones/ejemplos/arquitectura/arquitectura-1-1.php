@@ -26,7 +26,7 @@
 session_name("arquitectura-1");
 session_start();
 
-// Si el número no está guardado en la sesión, redirigimos a la primera página
+// Si el número no está guardado en la sesión, redirigimos a la segunda página
 if (!isset($_SESSION["numero"])) {
     header("Location:arquitectura-1-2.php");
     exit;
