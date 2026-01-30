@@ -377,7 +377,8 @@ print "\n";</code>
       <li>compruebe que la cookie ha sido eliminada
 
         <p class="captura">
-          <img src="../img/php/sesiones-borrar-cookie-6.png" alt="Borrar cookie en Chrome" width="1024" height="315">        </p>
+          <img src="../img/php/sesiones-borrar-cookie-6.png" alt="Borrar cookie en Chrome" width="1024" height="315">
+        </p>
       </li>
     </ul>
 
@@ -426,7 +427,7 @@ if (isset($_SESSION["nombre"])) {
 
     <hr class="corta">
 
-    <p>Tras destruir una sesión, una página puede volver a unirse a una sesión.</p>
+    <p>Tras destruir una sesión, una página puede volver a unirse a una sesión y guardar o leer valores en ella.</p>
 
     <div class="filaflex">
       <div class="columnaflex">
@@ -480,7 +481,7 @@ if (isset($_SESSION["apellido"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-session_name("ejemplo1");
+session_name("ejemplo");
 session_start();
 
 $_SESSION["nombre"] = "Pepito Conejo";
@@ -496,7 +497,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-session_name("ejemplo2");
+session_name("ejemplo-2");
 session_start();
 
 $_SESSION["nombre"] = "Juan Fulánez";
@@ -514,7 +515,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-session_name("ejemplo1");
+session_name("ejemplo");
 session_start();
 
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
@@ -529,7 +530,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-session_name("ejemplo2");
+session_name("ejemplo-2");
 session_start();
 
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
@@ -544,9 +545,9 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
 
     <p>El nombre de sesión distingue entre minúsculas y mayúsculas, es decir, dos sesiones con el mismo nombre, pero uno en minúsculas y otro en mayúsculas, son dos sesiones distintas.</p>
 
-    <p>El nombre de la sesión no puede contener únicamente números, ni tampoco puede contener los caracteres espacio ( ), punto (.), ampersand (&amp;), más (+), corchete izquierdo ([) ni almohadilla (#).</p>
+    <p>El nombre de la sesión no puede contener únicamente números, ni tampoco puede contener los caracteres igual (=), coma ( ), punto y coma (;), punto (.), corchete izquierdo ([), espacio ( ), salto de línea (\013) ni el carácter \014. En estos aputnes se utiliza el carácter guión (-) como separador de papalbras, como muestra el ejemplo anterior.</p>
 
-    <p><strong>Nota</strong>: No he encontrado una lista oficial de caracteres no admitidos. Los caracteres . &amp; + [ y # los he encontrado probando manualmente, pero es posible que haya otros caracteres problemáticos.</p>
+    <p><strong>Nota</strong>: No he encontrado una lista oficial de caracteres no admitidos, más allá de los carácteres que se nombran en el mensaje de aviso que se muestra cuando se utiliza alguno de los caracteres no permitidos.</p>
 
     <p>Referencia:</p>
     <ul>
@@ -557,79 +558,45 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";</code>
   <section id="sesiones-borrar">
     <h2>Borrar elementos de la sesión</h2>
 
-    <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
+    <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a>, que permite borrar uno o varios valores simultáneamente.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-session_start();
+$_SESSION["nombre"]   = "Pepito";
+$_SESSION["apellido"] = "Conejo";
 
-$_SESSION["nombre"] = "Pepito Conejo";
+print "&lt;p&gt;Su nombre es $_SESSION[nombre] $_SESSION[apellido].&lt;/p&gt;\n";
 
-print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
-
-unset($_SESSION["nombre"]);
+<span class="codigo-resaltado">unset($_SESSION["nombre"], $_SESSION["apellido"]);</span>
 
 if (isset($_SESSION["nombre"])) {
     print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No sé su nombre.&lt;/p&gt;\n";
+}
+
+if (isset($_SESSION["apellido"])) {
+    print "&lt;p&gt;Su apellido es $_SESSION[apellido].&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No sé su apellido.&lt;/p&gt;\n";
 }</code>
 </pre>
       </div>
       <div class="resultado-codigo">
         <pre>
 <code class="language-html">&lt;p&gt;Su nombre es Pepito Conejo.&lt;/p&gt;
-&lt;p&gt;No sé su nombre.&lt;/p&gt;</code>
+&lt;p&gt;No sé su nombre.&lt;/p&gt;
+&lt;p&gt;No sé su apellido.&lt;/p&gt;</code>
 </pre>
       </div>
     </div>
 
     <hr class="corta">
 
-    <p>Para borrar todos los valores de $_SESSION se pueden borrar uno a uno o utilizar la función <a href="https://www.php.net/manual/en/function.session-unset.php"><span class="php-fun">session_unset()</span></a>, pero normalmente no se debe utilizar <span class="php-fun">unset</span>():</p>
+    <p>Para borrar todos los valores de $_SESSION se pueden borrar mediante <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a> nombrándolos todos o utilizar la función <a href="https://www.php.net/manual/en/function.session-unset.php"><span class="php-fun">session_unset()</span></a>, pero normalmente no se debe utilizar <span class="php-fun">unset</span>():</p>
     <ul>
-      <li><span class="php-fun">unset</span>($_SESSION) impide que el resto de la página escriba o lea valores en $_SESSION, pero la sesión conserva los valores, por lo que otras páginas seguirían viendo esos valores.
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
-          </div>
-          <div class="columnaflex">
-            <div class="codigo">
-              <pre>
-<code class="language-php">&lt;?php
-session_start();
-$_SESSION["nombre"] = "Pepito";
-<span class="codigo-resaltado">unset($_SESSION);</span>
-$_SESSION["apellidos"] = "Conejo";
-header("Location:pagina-2.php");</code>
-</pre>
-            </div>
-            <div class="codigo">
-              <pre>
-<code class="language-php">&lt;?php
-session_start();
-$_SESSION["saludo"] = "Hola";
-print "&lt;pre&gt;\n";
-print_r ($_SESSION);
-print "&lt;/pre&gt;\n";</code>
-</pre>
-            </div>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
-<code class="language-html">&lt;pre&gt;
-Array
-(
-    [nombre] =&gt; Pepito
-    [saludo] =&gt; Hola
-)
-&lt;/pre&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
       <li>la función <a href="https://www.php.net/manual/en/function.session-unset.php"><span class="php-fun">session_unset()</span></a> borra todos los valores pero permite que el resto de la página (y otras páginas) escriba o lea valores en $_SESSION.
 
         <div class="filaflex">
@@ -664,6 +631,46 @@ print "&lt;/pre&gt;\n";</code>
 Array
 (
     [apellidos] =&gt; Conejo
+    [saludo] =&gt; Hola
+)
+&lt;/pre&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li><span class="php-fun">unset</span>($_SESSION) impide que el resto de la página escriba o lea valores en $_SESSION, pero la sesión conserva los valores para otras páginas, por lo que otras páginas seguirían viendo esos valores y los elementos creados por la primera página no los verían.
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+          </div>
+          <div class="columnaflex">
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["nombre"] = "Pepito";
+<span class="codigo-resaltado">unset($_SESSION);</span>
+$_SESSION["apellidos"] = "Conejo";
+header("Location:pagina-2.php");</code>
+</pre>
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["saludo"] = "Hola";
+print "&lt;pre&gt;\n";
+print_r ($_SESSION);
+print "&lt;/pre&gt;\n";</code>
+</pre>
+            </div>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [nombre] =&gt; Pepito
     [saludo] =&gt; Hola
 )
 &lt;/pre&gt;</code>
@@ -710,7 +717,7 @@ print "&lt;h1&gt;Prueba de sesión&lt;/h1&gt;\n";</code>
           <img src="../img/php/sesiones-3.png" alt="Implementación de las sesiones (3)" width="1024" height="210">
         </p>
       </li>
-      <li>El fichero contiene los nombres y valores de las variables de sesión:
+      <li>El fichero contiene los nombres, tipos y valores de las variables de sesión:
         <p class="mcl-centrado">
           <img src="../img/php/sesiones-4.png" alt="Implementación de las sesiones (4)" width="1024" height="243">
         </p>
@@ -748,7 +755,7 @@ session_start();</code></pre>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de enero de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 23 de enero de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
