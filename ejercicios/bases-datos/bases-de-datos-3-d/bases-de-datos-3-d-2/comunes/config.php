@@ -22,9 +22,9 @@ $cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-d-2.sqlite";    // Ubicació
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "localhost";                        // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_c_2";         // Nombre de usuario
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_d_2";         // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_2";         // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_d_2";         // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
 
