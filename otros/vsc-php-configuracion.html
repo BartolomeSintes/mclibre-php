@@ -42,9 +42,9 @@
   <section id="temas">
     <h2>Tema de color recomendado para el curso de PHP</h2>
 
-    <p>El tema de color es un aspecto muy personal por lo que se deja a elección del alumno el tema de color empleado.</p>
+    <p>La elección del tema de color es un aspecto muy personal, por lo que se deja a elección del alumno el tema de color empleado.</p>
 
-    <p>En las capturas de los apuntes se empleará el Tema Dark Modern (Moderno oscuro).</p>
+    <p>Pero como en las capturas de pantalla de Visual Studio Code incluidas en estos apuntes se utiliza el tema Dark Modern (el tema oscuro predeterminado de Visual Studio Code hasta marzo de 2026), se recomienda utilizar este tema, que se ha incluido en la configuración recomendada.</p>
 
     <p class="captura">
       <img src="../img/vscode/vsc-tema-dark-modern.png" alt="VSC. Tema Dark Modern" width="1024" height="576">
@@ -303,7 +303,7 @@
   // Iniciación a la programación de páginas web en PHP
   // https://www.mclibre.org/consultar/php/
   //
-  // Versión 2025-10-12
+  // Versión 2026-03-31
   //
   //
   // ATENCIÓN:
@@ -377,13 +377,21 @@
   },
   //
   // Window: Command Center
-  // Muestra el iniciador de comandos junto con el título de la ventana. Esta configuración solo tiene efecto cuando Window: Custom Title Bar Visibility no se establece en never.
+  // Muestra el iniciador de comandos junto con el título de la ventana. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
   "window.commandCenter": false,
   //
-  // Workbench &gt; Layout Control: Enabled
-  // Controla si el control de diseño se muestra en la barra de título personalizada. Esta configuración solo tiene efecto cuando Window: Custom Title Bar Visibility no se establece en never.
-  "workbench.layoutControl.enabled": false,
+  // Workbench: colorTheme
+  // Especifica el tema de color que se usa en el área de trabajo cuando Window: Auto Detect Color Scheme no está habilitado.
+  "workbench.colorTheme": "Dark Modern",
   //
+  // Workbench &gt; Editor: useModal
+  // Controla si los editores se abren en una superposición modal.
+  "workbench.editor.useModal": "off",
+  //
+  // Workbench &gt; Layout Control: Enabled
+  // Controla si el control de diseño se muestra en la barra de título personalizada. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
+  "workbench.layoutControl.enabled": false,
+    //
   //
   // Configuraciones de extensiones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
   //
@@ -607,11 +615,19 @@
   },
   //
   // Window: Command Center
-  // Muestra el iniciador de comandos junto con el título de la ventana. Esta configuración solo tiene efecto cuando Window: Custom Title Bar Visibility no se establece en never.
+  // Muestra el iniciador de comandos junto con el título de la ventana. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
   "window.commandCenter": false,
   //
+  // Workbench: colorTheme
+  // Especifica el tema de color que se usa en el área de trabajo cuando Window: Auto Detect Color Scheme no está habilitado.
+  "workbench.colorTheme": "Dark Modern",
+  //
+  // Workbench &gt; Editor: useModal
+  // Controla si los editores se abren en una superposición modal.
+  "workbench.editor.useModal": "off",
+  //
   // Workbench &gt; Layout Control: Enabled
-  // Controla si el control de diseño se muestra en la barra de título personalizada. Esta configuración solo tiene efecto cuando Window: Custom Title Bar Visibility no se establece en never.
+  // Controla si el control de diseño se muestra en la barra de título personalizada. Esta configuración solo tiene efecto cuandoWindow: Custom Title Bar Visibility no se establece en never.
   "workbench.layoutControl.enabled": false,
   //</code>
 </pre>
@@ -678,6 +694,12 @@
               </li>
               <li>"window.commandCenter": false
                 <p>Muestra el iniciador de comandos junto con el título de la ventana</p>
+              </li>
+              <li>"workbench.colorTheme": "Dark Modern",
+                <p>El tema elegido es "Dark Modern".</p>
+              </li>
+              <li>"workbench.editor.useModal": "off",
+                <p>Desactiva el uso de ventanas modales (flotantes) en las ventanas de editores.</p>
               </li>
               <li>"workbench.layoutControl.enabled": false
                 <p>Muestra el control de diseño en la barra de título personalizada.</p>
@@ -968,24 +990,36 @@ return (new PhpCsFixer\Config())
       <div class="codigo copy">
         <pre>
 <code class="language-json">{
-  // Tareas de VSCode recomendadas para el curso Programación web en PHP de www.mclibre.org
+  // Tareas de VSCode recomendadas para el curso recomendados para el curso
+  // Iniciación a la programación de páginas web en PHP
+  // https://www.mclibre.org/consultar/php/
+  //
+  // Versión 2026-03-31
   //
   "version": "2.0.0",
   "tasks": [
     {
       "label": "Abrir en localhost (Firefox)",
-      "command": "explorer",
+      "type": "process",
       "windows": {
-        "command": "<span class="codigo-resaltado">C:/Program Files/Mozilla Firefox/firefox.exe</span>"
+        "command": "cmd",
+        "args": [
+          "/c",
+          "start",
+          "",
+          <span class="codigo-resaltado">"C:/Program Files/Mozilla Firefox/firefox.exe</span>",
+          "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
+        ]
       },
       "linux": {
-        "command": "firefox"
+        "command": "firefox",
+        "args": [
+          "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
+        ]
       },
-      "args": [
-        "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
-      ],
       "presentation": {
-        "reveal": "never"
+        "reveal": "never",
+        "close": true
       },
       "problemMatcher": []
     },
@@ -993,16 +1027,24 @@ return (new PhpCsFixer\Config())
       "label": "Abrir en localhost (Chrome)",
       "command": "explorer",
       "windows": {
-        "command": "<span class="codigo-resaltado">C:/Program Files/Google/Chrome/Application/chrome.exe</span>"
+        "command": "cmd",
+        "args": [
+          "/c",
+          "start",
+          "",
+          "<span class="codigo-resaltado">C:/Program Files/Google/Chrome/Application/chrome.exe</span>",
+          "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
+        ]
       },
       "linux": {
-        "command": "google-chrome"
+        "command": "google-chrome",
+        "args": [
+          "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
+        ]
       },
-      "args": [
-        "localhost/<span class="codigo-resaltado">iaw/php/</span>${relativeFile}"
-      ],
       "presentation": {
-        "reveal": "never"
+        "reveal": "never",
+        "close": true
       },
       "problemMatcher": []
     }
@@ -1023,14 +1065,14 @@ return (new PhpCsFixer\Config())
       <p>Compruebe los campos enmarcados de las tareas recomendadas, por si necesita modificarlas:</p>
 
       <ul>
-        <li>"windows" &gt; "command": debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows 10.
+        <li>"windows" &gt; "command" &gt; "args": el tercer elemento de la lista debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows.
 
-          <p>En particular, compruebe la ubicación del ejecutable de Chrome, ya que desde Chrome 85 (publicado en agosto de 2020) Chrome se instala en "C:\Archivos de programa\" y no en "C:\Archivos de programa (x86)" como hacía antes, pero las actualizaciones no cambian la ubicación del programa, por lo que si tiene Chrome instalado desde antes de 2020 la ruta seguramente será "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe".</p>
+          <p>En particular, compruebe la ubicación del ejecutable de Chrome, ya que desde Chrome 85 (publicado en agosto de 2020) Chrome se instala en "C:\Archivos de programa\" y no en "C:\Archivos de programa (x86)" como hacía antes. Como las actualizaciones no cambian la ubicación del programa, si tiene Chrome instalado desde antes de 2020 la ruta seguramente será "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe".</p>
 
           <p>Si en su ordenador los programas se encuentran en otra ubicación, escriba la ubicación separando los directorios con barras (/) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</p>
         </li>
         <li>"linux" &gt; "command": debe indicar el comando de terminal necesario para abrir el navegador en su distribución Linux.</li>
-        <li>"args": debe indicar el alias definido en Apache para acceder a la carpeta abierta en Visual Studio Code como área de trabajo (el del ejemplo corresponde a lo propuesto en el <a href="../ejercicios/puesta-en-marcha/apache-1/index.html#ejercicio-5">ejercicio Apache (1) 5</a>).
+        <li>"args": indica la estructura de la URL que se envía al navegador. En este caso tras la referencia al servidor localhost, incluye el alias definido en Apache para acceder al área de trabajo (véase la lección <a href="php-configuracion-1.html#alias">Configuración de PHP (1)</a> y el resto del camino hasta el archivo).
 
           <p>En general, en los valores de "args" pueden utilizarse las variables que se comentan en la página <a href="https://code.visualstudio.com/docs/editor/variables-reference">Listado de variables</a> de la documentación oficial de Visual Studio Code.</p>
         </li>
@@ -1183,7 +1225,7 @@ return (new PhpCsFixer\Config())
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de octubre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 31 de marzo de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
