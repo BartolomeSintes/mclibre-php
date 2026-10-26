@@ -48,6 +48,8 @@
         <span id="e01-resultado"></span>
       </p>
 
+      <p><button type="button" onclick="e01_nuevo()">Nueva expresión</button></p>
+
       <table>
         <tr>
           <td>Correctas:</td>
@@ -96,6 +98,8 @@
         <button type="button" onclick="e02_comprueba(false)">false</button>
         <span id="e02-resultado"></span>
       </p>
+
+      <p><button type="button" onclick="e02_nuevo()">Nueva expresión</button></p>
 
       <table>
         <tr>
@@ -179,9 +183,9 @@
       </table>
 
       <p>
-        Aumentar o reducir el número de valores (hasta 5):
-        <button type="button" onclick="e03_cambiaLongitud(+1)">Más larga</button> -
-        <button type="button" onclick="e03_cambiaLongitud(-1)">Más corta</button>
+        Aumentar o reducir el número de valores en el dibujo (hasta 5):
+        <button type="button" onclick="e03_cambiaLongitud(+1)">Aumentar</button> -
+        <button type="button" onclick="e03_cambiaLongitud(-1)">Reducir</button>
       </p>
 
       <p><button type="button" id="e03-solucion" onclick="e03_muestraSolucion()">Mostrar solución</button></p>
@@ -270,6 +274,12 @@
       dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
     }
 
+    function e01_nuevo() {
+      e01_nIncorrectas++;
+      dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
+      e01_generaExpresion(e01_longitud);
+    }
+
     function e01_reinicia_contador() {
       e01_nCorrectas = e01_nIncorrectas = 0;
       dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
@@ -348,6 +358,12 @@
         e02_nIncorrectas++;
       }
       dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
+    }
+
+    function e02_nuevo() {
+      e02_nIncorrectas++;
+      dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
+      e02_generaExpresion(e02_longitud);
     }
 
     function e02_reinicia_contador() {
@@ -559,6 +575,7 @@
     }
 
     function e03_nuevo() {
+      e03_respuesta.value = e03_respuesta.defaultValue;
       e03_nIncorrectas++;
       dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
       e03_generaSVG(e03_longitud);
@@ -592,7 +609,7 @@
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
