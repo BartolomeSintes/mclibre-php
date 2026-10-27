@@ -31,7 +31,16 @@
 
   <p>Estos ejercicios corresponden a lo explicado en las lecciones <a href="../../../lecciones/php-variables-2.html#boolean">Variables lógicas</a> y <a href="../../../lecciones/php-operaciones-logicas.html">Operaciones lógicas</a>.</p>
 
-  <p>Estos ejercicios son ejercicios de tipo test, en los que se debe evaluar o escribir una expresión lógica. Si la respuesta indicada es correcta, se mostrará automáticamente un nuevo enunciado. Si la respuesta indicada es incorrecta, se mantendrá el enunciado para permitir un nuevo intento. Unos contadores que se pueden reiniciar en cualquier momento muestran el número de respuestas correctas e incorrectas acumuladas. Puede modificar la dificultad del ejercicio aumentando o reduciendo la longitud de las expresiones involucradas.</p>
+  <p>Estos ejercicios son ejercicios de tipo test, en los que se debe evaluar o escribir una expresión lógica.</p>
+  <ul>
+    <li>Inicialmente, se puede modificar la dificultad de cada ejercicio aumentando o reduciendo la longitud de las expresiones o el número de valores involucrados. Una vez se ha contestado un ejercicio, sólo se puede modificar la dificultad si se ha contestado una vez al enunciado actual.</li>
+    <li>Si la respuesta indicada es incorrecta, se mantendrá el enunciado para permitir un nuevo intento.</li>
+    <li>En los ejercicios 1 y 2, si la respuesta indicada es correcta, se mantendrá también el enunciado, pero ya no se evaluarán más respuestas. En el ejercicio 3 sí que se podrán evaluar otras expresiones, aunque ya no se modificarán los contadores de respuestas correctas o incorrectas.</li>
+    <li>Unos contadores muestran el número de respuestas correctas e incorrectas acumuladas.</li>
+    <li>Si se pide un nuevo enunciado del mismo nivel sin haber acertado el enunciado actual, se contará como respuesta incorrecta.</li>
+    <li>Si se muestra la solución antes de haber acertado la respuesta, se contará una respuesta incorrecta. Una vez mostrada la solución, evaluar nuevas respuestas o volver a mostrar la solución no modifica los contadores.</li>
+    <li>Al reiniciar un ejercicio, este vuelve a la situación inicial menos su nivel, que se conserva.</li>
+  </ul>
 
   <section id="ejercicio-1">
     <h2>Ejercicio 1 - Evaluar expresiones lógicas</h2>
@@ -43,8 +52,8 @@
 
       <p>
         Indique el resultado:
-        <button type="button" onclick="e01_comprueba(true)">true</button> -
-        <button type="button" onclick="e01_comprueba(false)">false</button>
+        <button type="button" id="e01-true" onclick="e01_comprueba(true)">true</button> -
+        <button type="button" id="e01-false" onclick="e01_comprueba(false)">false</button>
         <span id="e01-resultado"></span>
       </p>
 
@@ -70,15 +79,20 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3"><button type="button" onclick="e01_reinicia_contador()">Reiniciar contador</button></td>
+          <td colspan="3"><button type="button" onclick="e01_reinicia_contador()">Reiniciar ejercicio</button></td>
         </tr>
       </table>
 
       <p>
         Aumentar o reducir la longitud de la expresión:
-        <button type="button" onclick="e01_cambiaLongitud(+1)">Más larga</button> -
-        <button type="button" onclick="e01_cambiaLongitud(-1)">Más corta</button>
+        <button type="button" id="e01-aumentar" onclick="e01_cambiaLongitud(+1)" disabled>Aumentar</button> -
+        <button type="button" id="e01-reducir" onclick="e01_cambiaLongitud(-1)" disabled>Reducir</button>
+        <span id="e01-aviso-dificultad">Conteste el enunciado antes de aumentar o reducir la dificultad</span>
       </p>
+
+      <p><button type="button" id="e01-solucion" onclick="e01_muestraSolucion()">Mostrar solución</button></p>
+
+      <div id="e01-ayuda" style="display: none"></div>
     </div>
   </section>
 
@@ -94,8 +108,8 @@
 
       <p>
         Indique el resultado:
-        <button type="button" onclick="e02_comprueba(true)">true</button> -
-        <button type="button" onclick="e02_comprueba(false)">false</button>
+        <button type="button" id="e02-true" onclick="e02_comprueba(true)">true</button> -
+        <button type="button" id="e02-false" onclick="e02_comprueba(false)">false</button>
         <span id="e02-resultado"></span>
       </p>
 
@@ -121,15 +135,20 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3"><button type="button" onclick="e02_reinicia_contador()">Reiniciar contador</button></td>
+          <td colspan="3"><button type="button" onclick="e02_reinicia_contador()">Reiniciar ejercicio</button></td>
         </tr>
       </table>
 
       <p>
         Aumentar o reducir la longitud de la expresión:
-        <button type="button" onclick="e02_cambiaLongitud(+1)">Más larga</button> -
-        <button type="button" onclick="e02_cambiaLongitud(-1)">Más corta</button>
+        <button type="button" id="e02-aumentar" onclick="e02_cambiaLongitud(+1)" disabled>Aumentar</button> -
+        <button type="button" id="e02-reducir" onclick="e02_cambiaLongitud(-1)" disabled>Reducir</button>
+        <span id="e02-aviso-dificultad">Conteste el enunciado antes de aumentar o reducir la dificultad</span>
       </p>
+
+      <p><button type="button" id="e02-solucion" onclick="e02_muestraSolucion()">Mostrar solución</button></p>
+
+      <div id="e02-ayuda" style="display: none"></div>
     </div>
   </section>
 
@@ -138,11 +157,9 @@
 
     <p>El dibujo que se muestra a continuación representa la recta real, en la que se muestran uno o más valores numéricos como círculos de borde rojo. Si el círculo tiene el interior de color blanco significa que el número no está incluido en la parte resaltada, pero si el círculo tiene el interior de color rojo significa que el número está incluido. Cuando se muestran uno o dos números los números pueden tener un decimal, pero cuando se muestran tres o más números, los números son enteros para facilitar la lectura del dibujo.</p>
 
-    <p>Escriba una expresión lógica con comparaciones (similar a las del ejercicio 2) que corresponda a la parte de la recta resaltada en rojo. La variable a utilizar en las compraciones debe ser <strong>x</strong>.</p>
+    <p>Escriba una expresión lógica con comparaciones (similar a las del ejercicio 2) que corresponda a la parte de la recta resaltada en rojo. La variable a utilizar en las comparaciones debe ser <strong id="e03-variable">$x</strong>.</p>
 
-    <p>Se pueden escribir infinitas expresiones que correspondan a cualquiera de los dibujos. Intente escribir expresiones lo más cortas posible, en particular con el menor número de comparaciones posible. En general, las expresiones pueden excribirse con tantas comparaciones como valores numéricos aparecen en el dibujo.</p>
-
-    <p>Si se pide un nuevo dibujo o se muestra la solución, el contador lo contará como respuesta incorrecta.</p>
+    <p>Se pueden escribir infinitas expresiones que correspondan a cualquiera de los dibujos. Intente escribir expresiones lo más cortas posible, en particular con el menor número de comparaciones posible. Las expresiones siempre pueden escribirse con tantas comparaciones como valores numéricos aparecen en el dibujo.</p>
 
     <div class="enunciado-test">
       <p>
@@ -151,8 +168,8 @@
       </p>
 
       <p>Expresión:
-        <input type="text" id="e03-respuesta" size="50" value="x">
-        <button type="button" onclick="e03_comprueba()">Evaluar</button>
+        <input type="text" id="e03-respuesta" size="50" value="$x">
+        <button type="button" id="e03-evaluar" onclick="e03_comprueba()">Evaluar</button>
         <span id="e03-resultado"></span>
       </p>
 
@@ -178,14 +195,15 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3"><button type="button" onclick="e03_reinicia_contador()">Reiniciar contador</button></td>
+          <td colspan="3"><button type="button" onclick="e03_reinicia_contador()">Reiniciar ejercicio</button></td>
         </tr>
       </table>
 
       <p>
         Aumentar o reducir el número de valores en el dibujo (hasta 5):
-        <button type="button" onclick="e03_cambiaLongitud(+1)">Aumentar</button> -
-        <button type="button" onclick="e03_cambiaLongitud(-1)">Reducir</button>
+        <button type="button" id="e03-aumentar" onclick="e03_cambiaLongitud(+1)" disabled>Aumentar</button> -
+        <button type="button" id="e03-reducir" onclick="e03_cambiaLongitud(-1)" disabled>Reducir</button>
+        <span id="e03-aviso-dificultad">Conteste el enunciado antes de aumentar o reducir la dificultad</span>
       </p>
 
       <p><button type="button" id="e03-solucion" onclick="e03_muestraSolucion()">Mostrar solución</button></p>
@@ -199,6 +217,17 @@
     // Funciones comunes //
     ///////////////////////
     var anchoContador = 200;
+    var ejerciciosContestados = {};
+
+    function actualizaDificultad(ejercicio, contestado, longitud, minima, maxima) {
+      if (contestado) {
+        ejerciciosContestados[ejercicio] = true;
+      }
+      var bloqueado = !contestado && ejerciciosContestados[ejercicio] === true;
+      document.getElementById(ejercicio + "-aumentar").disabled = bloqueado || longitud >= maxima;
+      document.getElementById(ejercicio + "-reducir").disabled = bloqueado || longitud <= minima;
+      document.getElementById(ejercicio + "-aviso-dificultad").hidden = !bloqueado;
+    }
 
     function dibujaContador(correctas, tCorrectas, lCorrectas, incorrectas, tIncorrectas, lIncorrectas) {
       tCorrectas.textContent = correctas;
@@ -217,6 +246,8 @@
 
     var e01_enunciado = document.getElementById("e01-enunciado");
     var e01_resultado = document.getElementById("e01-resultado");
+    var e01_true = document.getElementById("e01-true");
+    var e01_false = document.getElementById("e01-false");
     var e01_tCorrectas = document.getElementById("e01-t-correctas");
     var e01_lCorrectas = document.getElementById("e01-l-correctas");
     var e01_tIncorrectas = document.getElementById("e01-t-incorrectas");
@@ -225,13 +256,18 @@
     var e01_nCorrectas = 0;
     var e01_nIncorrectas = 0;
     var e01_longitud = 2;
+    var e01_solucion = document.getElementById("e01-solucion");
+    var e01_ayuda = document.getElementById("e01-ayuda");
+    var e01_solucionConsultada = false;
 
     function e01_cambiaLongitud(subeBaja) {
+      e01_resultado.textContent = "";
       if (subeBaja == 1) {
         e01_longitud += 1;
       } else if (e01_longitud > 2) {
         e01_longitud -= 1;
       }
+      document.getElementById("e01-reducir").disabled = e01_longitud <= 2;
       e01_generaExpresion(e01_longitud);
     }
 
@@ -249,6 +285,13 @@
     }
 
     function e01_generaExpresion(n) {
+      e01_ayuda.textContent = "";
+      e01_ayuda.style.display = "none";
+      e01_solucion.textContent = "Mostrar solución";
+      e01_solucionConsultada = false;
+      actualizaDificultad("e01", false, n, 2, Infinity);
+      e01_true.disabled = false;
+      e01_false.disabled = false;
       e01_expresion = e01_miniExpresion();
       e01_enunciado.innerHTML = "";
       for (var i = 2; i < n + 1; i++) {
@@ -263,25 +306,75 @@
     }
 
     function e01_comprueba(respuesta) {
+      actualizaDificultad("e01", true, e01_longitud, 2, Infinity);
       if (respuesta == eval(e01_expresion)) {
-        e01_resultado.textContent = "¡Correcto!";
-        e01_nCorrectas++;
-        e01_generaExpresion(e01_longitud);
+        e01_resultado.innerHTML = "¡Correcto! La expresión es <strong>" + respuesta + "</strong>";
+        if (!e01_solucionConsultada) {
+          e01_nCorrectas++;
+        }
+        e01_true.disabled = true;
+        e01_false.disabled = true;
       } else {
-        e01_resultado.textContent = "¡Incorrecto!";
-        e01_nIncorrectas++;
+        e01_resultado.innerHTML = "¡Incorrecto! La expresión no es <strong>" + respuesta + "</strong>";
+        if (!e01_solucionConsultada) {
+          e01_nIncorrectas++;
+        }
       }
       dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
     }
 
     function e01_nuevo() {
-      e01_nIncorrectas++;
+      if (!e01_true.disabled && !e01_solucionConsultada) {
+        e01_nIncorrectas++;
+      }
+      e01_resultado.textContent = "";
       dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
       e01_generaExpresion(e01_longitud);
     }
 
+    function e01_muestraSolucion() {
+      if (e01_ayuda.style.display == "none") {
+        e01_ayuda.style.display = "block";
+        e01_solucion.textContent = "Ocultar solución";
+        e01_ayuda.textContent = "";
+
+        var pasos = [];
+        var expresion = e01_expresion;
+        if (expresion.includes("!")) {
+          expresion = expresion.replace(/!false/g, "true").replace(/!true/g, "false");
+          pasos.push(expresion);
+        }
+        if (expresion.includes("&&") && expresion.includes("||")) {
+          expresion = expresion.split(" || ").map(function (parte) {
+            return String(eval(parte));
+          }).join(" || ");
+          pasos.push(expresion);
+        }
+        pasos.push(String(eval(expresion)));
+          pasos.unshift("La expresión se puede evaluar en " + pasos.length + (pasos.length == 1 ? " paso:" : " pasos:"));
+          pasos.splice(1, 0, e01_expresion);
+          pasos.forEach(function (paso) {
+          var parrafo = document.createElement("p");
+          parrafo.textContent = paso;
+          e01_ayuda.appendChild(parrafo);
+        });
+
+        if (!e01_solucionConsultada && !e01_true.disabled) {
+          e01_nIncorrectas++;
+        }
+        e01_solucionConsultada = true;
+        dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
+      } else {
+        e01_ayuda.style.display = "none";
+        e01_solucion.textContent = "Mostrar solución";
+      }
+    }
+
     function e01_reinicia_contador() {
       e01_nCorrectas = e01_nIncorrectas = 0;
+      ejerciciosContestados.e01 = false;
+      e01_resultado.textContent = "";
+      e01_generaExpresion(e01_longitud);
       dibujaContador(e01_nCorrectas, e01_tCorrectas, e01_lCorrectas, e01_nIncorrectas, e01_tIncorrectas, e01_lIncorrectas);
     }
 
@@ -298,6 +391,8 @@
     var e02_enunciado = document.getElementById("e02-enunciado");
     var e02_valor = document.getElementById("e02-valor");
     var e02_resultado = document.getElementById("e02-resultado");
+    var e02_true = document.getElementById("e02-true");
+    var e02_false = document.getElementById("e02-false");
     var e02_tCorrectas = document.getElementById("e02-t-correctas");
     var e02_lCorrectas = document.getElementById("e02-l-correctas");
     var e02_tIncorrectas = document.getElementById("e02-t-incorrectas");
@@ -305,6 +400,9 @@
     var e02_expresion = "";
     var e02_nCorrectas = 0;
     var e02_nIncorrectas = 0;
+    var e02_solucion = document.getElementById("e02-solucion");
+    var e02_ayuda = document.getElementById("e02-ayuda");
+    var e02_solucionConsultada = false;
 
     function e02_cambiaLongitud(subeBaja) {
       if (subeBaja == 1) {
@@ -312,6 +410,7 @@
       } else if (e02_longitud > 2) {
         e02_longitud -= 1;
       }
+      document.getElementById("e02-reducir").disabled = e02_longitud <= 2;
       e02_generaExpresion(e02_longitud);
     }
 
@@ -332,6 +431,14 @@
     }
 
     function e02_generaExpresion(n) {
+      e02_ayuda.textContent = "";
+      e02_ayuda.style.display = "none";
+      e02_solucion.textContent = "Mostrar solución";
+      e02_solucionConsultada = false;
+      actualizaDificultad("e02", false, n, 2, Infinity);
+      e02_resultado.textContent = "";
+      e02_true.disabled = false;
+      e02_false.disabled = false;
       e02_var = "$" + e02_variables.charAt(Math.floor(Math.random() * e02_variables.length));
       e02_val = Math.floor(Math.random() * e02_maximo);
       e02_expresion = e02_miniExpresion();
@@ -349,25 +456,74 @@
     }
 
     function e02_comprueba(respuesta) {
+      actualizaDificultad("e02", true, e02_longitud, 2, Infinity);
       if (respuesta == eval(e02_expresion.replaceAll(e02_var, e02_val))) {
-        e02_resultado.textContent = "¡Correcto!";
-        e02_nCorrectas++;
-        e02_generaExpresion(e02_longitud);
+        e02_resultado.innerHTML = "¡Correcto! La expresión es <strong>" + respuesta + "</strong>";
+        if (!e02_solucionConsultada) {
+          e02_nCorrectas++;
+        }
+        e02_true.disabled = true;
+        e02_false.disabled = true;
       } else {
-        e02_resultado.textContent = "¡Incorrecto!";
-        e02_nIncorrectas++;
+        e02_resultado.innerHTML = "¡Incorrecto! La expresión no es <strong>" + respuesta + "</strong>";
+        if (!e02_solucionConsultada) {
+          e02_nIncorrectas++;
+        }
       }
       dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
     }
 
     function e02_nuevo() {
-      e02_nIncorrectas++;
+      if (!e02_true.disabled && !e02_solucionConsultada) {
+        e02_nIncorrectas++;
+      }
       dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
       e02_generaExpresion(e02_longitud);
     }
 
+    function e02_muestraSolucion() {
+      if (e02_ayuda.style.display == "none") {
+        e02_ayuda.style.display = "block";
+        e02_solucion.textContent = "Ocultar solución";
+        e02_ayuda.textContent = "";
+
+        var expresion = e02_expresion.replaceAll(e02_var, e02_val);
+        var pasos = [expresion];
+        expresion = expresion.replace(/-?\d+\s*(?:<=|>=|==|!=|<|>)\s*-?\d+/g, function (comparacion) {
+          return String(eval(comparacion));
+        });
+        pasos.push(expresion);
+        if (expresion.includes("&&") && expresion.includes("||")) {
+          expresion = expresion.split(" || ").map(function (parte) {
+            return String(eval(parte));
+          }).join(" || ");
+          pasos.push(expresion);
+        }
+        pasos.push(String(eval(expresion)));
+        pasos.unshift("La expresión se puede evaluar en " + pasos.length + " pasos:");
+        pasos.splice(1, 0, e02_expresion);
+        pasos.forEach(function (paso) {
+          var parrafo = document.createElement("p");
+          parrafo.textContent = paso;
+          e02_ayuda.appendChild(parrafo);
+        });
+
+        if (!e02_solucionConsultada && !e02_true.disabled) {
+          e02_nIncorrectas++;
+        }
+        e02_solucionConsultada = true;
+        dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
+      } else {
+        e02_ayuda.style.display = "none";
+        e02_solucion.textContent = "Mostrar solución";
+      }
+    }
+
     function e02_reinicia_contador() {
       e02_nCorrectas = e02_nIncorrectas = 0;
+      ejerciciosContestados.e02 = false;
+      e02_resultado.textContent = "";
+      e02_generaExpresion(e02_longitud);
       dibujaContador(e02_nCorrectas, e02_tCorrectas, e02_lCorrectas, e02_nIncorrectas, e02_tIncorrectas, e02_lIncorrectas);
     }
 
@@ -385,10 +541,13 @@
     var e03_comparaciones = [" < ", " <= ", "> ", ">= ", " == ", " != "];
     var e03_nums = [];
     var e03_valoresComprueba = [];
-    var e03_var = "x";
+    var e03_variables = "abcdefghijklmnopqrstuvwxyz";
+    var e03_var = "$x";
+    var e03_variable = document.getElementById("e03-variable");
     var e03_expresion = "";
     var e03_enunciado = document.getElementById("e03-enunciado");
     var e03_respuesta = document.getElementById("e03-respuesta");
+    var e03_evaluar = document.getElementById("e03-evaluar");
     var e03_resultado = document.getElementById("e03-resultado");
     var e03_solucion = document.getElementById("e03-solucion");
     var e03_ayuda = document.getElementById("e03-ayuda");
@@ -398,13 +557,19 @@
     var e03_lIncorrectas = document.getElementById("e03-l-incorrectas");
     var e03_nCorrectas = 0;
     var e03_nIncorrectas = 0;
+    var e03_acertado = false;
+    var e03_solucionConsultada = false;
 
     function e03_cambiaLongitud(subeBaja) {
+      e03_respuesta.value = e03_respuesta.defaultValue;
+      e03_resultado.textContent = "";
       if (subeBaja == 1 && e03_longitud < e03_longitudMaxima) {
         e03_longitud += 1;
       } else if (subeBaja == -1 && e03_longitud > 1) {
         e03_longitud -= 1;
       }
+      document.getElementById("e03-reducir").disabled = e03_longitud <= 1;
+      document.getElementById("e03-aumentar").disabled = e03_longitud >= e03_longitudMaxima;
       e03_generaSVG(e03_longitud);
     }
 
@@ -426,7 +591,7 @@
             if (Math.random() > 0.25) {
               e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo));
             } else {
-              e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo)) + decimales[Math.floor(Math.random()* 10)];
+              e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo)) + decimales[Math.floor(Math.random() * decimales.length)];
             }
           } else {
             e03_candidato = e03_minimo + Math.floor(Math.random() * (e03_maximo - e03_minimo));
@@ -498,6 +663,14 @@
     }
 
     function e03_generaSVG(n) {
+      e03_var = "$" + e03_variables.charAt(Math.floor(Math.random() * e03_variables.length));
+      e03_variable.textContent = e03_var;
+      e03_respuesta.defaultValue = e03_var;
+      e03_respuesta.value = e03_var;
+      actualizaDificultad("e03", false, n, 1, e03_longitudMaxima);
+      e03_acertado = false;
+      e03_solucionConsultada = false;
+      e03_evaluar.disabled = false;
       e03_ayuda.innerHTML = "";
       e03_solucion.textContent = "Mostrar solución";
       e03_ayuda.style.display = "none";
@@ -548,41 +721,52 @@
     }
 
     function e03_comprueba(respuesta) {
+      actualizaDificultad("e03", true, e03_longitud, 1, e03_longitudMaxima);
       e03_tmp = true;
       try {
-        eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[0]));
-      } catch (e) {
-        if (e instanceof Error) {
-          e03_tmp = false;
-        }
-      }
-      if (e03_tmp) {
         for (var i = 0; i < e03_valoresComprueba.length; i++) {
-          if (String(eval(e03_expresion.replaceAll(e03_var, e03_valoresComprueba[i]))) != String(eval(e03_respuesta.value.replaceAll(e03_var, e03_valoresComprueba[i])))) {
+            var valor = e03_valoresComprueba[i];
+            var esperado = eval(e03_expresion.replaceAll(e03_var, valor));
+            var resultado = eval(e03_respuesta.value.replaceAll(e03_var, valor));
+            if (String(esperado) != String(resultado)) {
             e03_tmp = false;
+              break;
           }
         }
+        } catch (e) {
+          e03_tmp = false;
       }
       if (e03_tmp) {
         e03_resultado.textContent = "¡Correcto!";
-        e03_nCorrectas++;
-        e03_generaSVG(e03_longitud);
+          if (!e03_acertado && !e03_solucionConsultada) {
+            e03_nCorrectas++;
+          }
+        e03_acertado = true;
       } else {
         e03_resultado.textContent = "¡Incorrecto!";
-        e03_nIncorrectas++;
+          if (!e03_acertado && !e03_solucionConsultada) {
+            e03_nIncorrectas++;
+          }
       }
       dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
     }
 
     function e03_nuevo() {
       e03_respuesta.value = e03_respuesta.defaultValue;
-      e03_nIncorrectas++;
+      e03_resultado.textContent = "";
+      if (!e03_acertado && !e03_solucionConsultada) {
+        e03_nIncorrectas++;
+      }
       dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
       e03_generaSVG(e03_longitud);
     }
 
     function e03_reinicia_contador() {
       e03_nCorrectas = e03_nIncorrectas = 0;
+      ejerciciosContestados.e03 = false;
+      e03_respuesta.value = e03_respuesta.defaultValue;
+      e03_resultado.textContent = "";
+      e03_generaSVG(e03_longitud);
       dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
     }
 
@@ -599,7 +783,10 @@
         parrafo.appendChild(tmp)
         e03_ayuda.appendChild(parrafo);
 
-        e03_nIncorrectas++;
+            if (!e03_solucionConsultada && !e03_acertado) {
+            e03_nIncorrectas++;
+          }
+        e03_solucionConsultada = true;
         dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
       } else {
         e03_ayuda.style.display = "none";
@@ -609,7 +796,7 @@
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2026</p>
+    <p class="ultmod">Última modificación de esta página: 27 de octubre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
