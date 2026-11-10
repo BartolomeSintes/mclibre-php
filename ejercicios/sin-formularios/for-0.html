@@ -10,7 +10,7 @@
   <script src="../../varios/prism.js"></script>
 </head>
 
-<body onload="e01_generaExpresion(); e02_generaExpresion(); e03_generaExpresion(); e04_generaExpresion();">
+<body onload="e01_generaExpresion(); e02_generaExpresion(); e03_generaExpresion(); e04_generaExpresion(); e05_generaExpresion(); e06_generaExpresion();">
   <h1>Ejercicios (sin formularios) - for (0)</h1>
 
   <nav>
@@ -23,16 +23,18 @@
       <h2>for (0)</h2>
       <ul>
         <li><a href="#ejercicio-1">Resultado de un bucle for</a></li>
-        <li><a href="#ejercicio-2">Resultado con operaciones</a></li>
-        <li><a href="#ejercicio-3">Control de un bucle for</a></li>
-        <li><a href="#ejercicio-4">Expresión del print</a></li>
+        <li><a href="#ejercicio-2">Resultado fórmula</a></li>
+        <li><a href="#ejercicio-3">Resultado cálculo iterativo</a></li>
+        <li><a href="#ejercicio-4">Control de bucle for</a></li>
+        <li><a href="#ejercicio-5">Bucle for fórmula</a></li>
+        <li><a href="#ejercicio-6">Bucle for cálculo iterativo</a></li>
       </ul>
     </div>
   </nav>
 
   <p>Estos ejercicios corresponden a lo explicado en la lección <a href="../../lecciones/php-estructuras-control-bucle-for.html">Estructuras de control: bucle for</a>.</p>
 
-  <p>En los ejercicios 1 y 2, escriba el resultado del bucle con los números separados por espacios. En el ejercicio 3, complete el control del bucle. En el ejercicio 4, complete la expresión que imprime los valores.</p>
+  <p>En los ejercicios 1, 2 y 3, escriba el resultado del bucle con los números separados por espacios. En los ejercicios 4, 5 y 6 complete las distintas expresiones que aparecen en el bucle para imprimir los valores deseados.</p>
 
   <p>Escriba las tres partes del control del bucle: inicialización, condición y modificación de <var>$i</var>, separadas por punto y coma.</p>
   <p>Utilice números enteros; comparaciones con &lt;, &lt;=, &gt;, &gt;=, ==, !=, === o !==; y modificaciones con ++, --, +=, -= o asignaciones como $i = $i + 2. Por ejemplo: <code>$i = 1; $i &lt;= 5; $i++</code>.</p>
@@ -94,7 +96,7 @@
   </section>
 
   <section id="ejercicio-2">
-    <h2>Ejercicio 2 - Escribir el resultado de un bucle for con operaciones</h2>
+    <h2>Ejercicio 2 - Escribir el resultado de un bucle for con fórmula</h2>
 
     <p>Escriba los números que imprime el siguiente bucle <span class="php-res">for</span>, separados por espacios:</p>
 
@@ -145,22 +147,18 @@
   </section>
 
   <section id="ejercicio-3">
-    <h2>Ejercicio 3 - Escribir el control de un bucle for</h2>
+    <h2>Ejercicio 3 - Escribir el resultado de un bucle for con c´lculo iterativo</h2>
 
-    <p>Escriba la expresión de control del siguiente bucle <span class="php-res">for</span> de manera que produzca el siguiente resultado:</p>
+    <p>Escriba los números que imprime el siguiente bucle <span class="php-res">for</span>, separados por espacios:</p>
 
     <div class="enunciado-test">
-      <p>Resultado: <span id="e03-enunciado" style="font-size: 150%;"></span></p>
-
       <div class="codigo" style="font-size: 150%;">
         <pre>
-<code class="language-php">&lt;?php
-for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control del bucle for" placeholder="$i = ...; $i ...; $i ..." style="font: inherit;"><code class="language-php">) {
-    print "$i ";
-}
-?&gt;</code>
+<code class="language-php" id="e03-enunciado"></code>
 </pre>
       </div>
+
+      <p><label for="e03-respuesta">Resultado:</label> <input type="text" id="e03-respuesta" size="50" placeholder="Escriba los números separados por espacios"></p>
 
       <p>
         <button type="button" id="e03-evaluar" onclick="e03_comprueba()">Corregir</button>
@@ -200,16 +198,18 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
   </section>
 
   <section id="ejercicio-4">
-    <h2>Ejercicio 4 - Escribir la expresión de un bucle for</h2>
+    <h2>Ejercicio 4 - Control de bucle for</h2>
 
-    <p>Complete la expresión del <span class="php-res">print</span> con la forma <code>A * $i + B</code>, donde A y B son enteros, para obtener el resultado indicado. El número de iteraciones ya aparece en el bucle. Puede escribir <code>$i</code> o <code>- $i</code> cuando A es 1 o -1 y omitir B si es cero.</p>
+    <p>Escriba la expresión de control del siguiente bucle <span class="php-res">for</span> de manera que produzca el siguiente resultado:</p>
 
     <div class="enunciado-test">
       <p>Resultado: <span id="e04-enunciado" style="font-size: 150%;"></span></p>
 
       <div class="codigo" style="font-size: 150%;">
         <pre>
-<code class="language-php" id="e04-control"></code><input type="text" id="e04-respuesta" size="15" aria-label="Expresión del print" placeholder="A * $i + B" style="font: inherit;"><code class="language-php"> . " ";
+<code class="language-php">&lt;?php
+for (</code><input type="text" id="e04-respuesta" size="30" aria-label="Control del bucle for" placeholder="$i = ...; $i ...; $i ..." style="font: inherit;"><code class="language-php">) {
+    print "$i ";
 }
 ?&gt;</code>
 </pre>
@@ -249,6 +249,118 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
       <p><button type="button" id="e04-solucion" onclick="e04_muestraSolucion()">Mostrar solución</button></p>
 
       <div id="e04-ayuda" style="display: none"></div>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Ejercicio 5 - Bucle for con fórmula</h2>
+
+    <p>Complete el límite N del bucle y la expresión del <span class="php-res">print</span> con la forma <code>A * $i + B</code>, donde A y B son enteros, para obtener el resultado indicado. Puede escribir <code>$i</code> o <code>- $i</code> cuando A es 1 o -1 y omitir B si es cero. Al corregir, los campos incorrectos se señalan con un contorno rojo.</p>
+
+    <div class="enunciado-test">
+      <p>Resultado: <span id="e05-enunciado" style="font-size: 150%;"></span></p>
+
+      <div class="codigo" style="font-size: 150%;">
+        <pre>
+<code class="language-php">&lt;?php
+for ($i = 0; $i &lt; </code><input type="text" id="e05-respuesta-n" size="3" aria-label="Límite N del bucle" placeholder="N" style="font: inherit;"><code class="language-php">; $i++) {
+    print </code><input type="text" id="e05-respuesta" size="15" aria-label="Expresión del print" placeholder="A * $i + B" style="font: inherit;"><code class="language-php"> . " ";
+}
+?&gt;</code>
+</pre>
+      </div>
+
+      <p>
+        <button type="button" id="e05-evaluar" onclick="e05_comprueba()">Corregir</button>
+        <span id="e05-resultado"></span>
+      </p>
+
+      <p><button type="button" onclick="e05_nuevo()">Nuevo ejercicio</button></p>
+
+      <table>
+        <tr>
+          <td>Correctas:</td>
+          <td style="text-align: right;"><span id="e05-t-correctas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#22B14C" id="e05-l-correctas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>Incorrectas:</td>
+          <td style="text-align: right;"><span id="e05-t-incorrectas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#ED1C24" id="e05-l-incorrectas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><button type="button" onclick="e05_reinicia_contador()">Reiniciar ejercicio</button></td>
+        </tr>
+      </table>
+
+      <p><button type="button" id="e05-solucion" onclick="e05_muestraSolucion()">Mostrar solución</button></p>
+
+      <div id="e05-ayuda" style="display: none"></div>
+    </div>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>Ejercicio 6 - Bucle for con cálculo iterativo</h2>
+
+    <p>Complete los valores iniciales de <var>$x</var> y el límite del bucle, y la operación que modifica <var>$x</var>, para obtener el resultado indicado. En el último campo, escriba el signo y el número (por ejemplo, <code>+ 3</code> o <code>- 2</code>). Si no cambia el valor, puede escribir <code>+ 0</code>, <code>- 0</code> o dejarlo vacío. Los espacios no importan. Al corregir, los campos incorrectos se señalan con un borde rojo.</p>
+
+    <div class="enunciado-test">
+      <p>Resultado: <span id="e06-enunciado" style="font-size: 150%;"></span></p>
+
+      <div class="codigo" style="font-size: 150%;">
+        <pre>
+<code class="language-php">&lt;?php
+$x = </code><input type="text" id="e06-respuesta-b" size="4" aria-label="Valor inicial B" placeholder="B" style="font: inherit;"><code class="language-php">;
+for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" aria-label="Número de iteraciones N" placeholder="N" style="font: inherit;"><code class="language-php">; $i++) {
+    print "$x ";
+    $x = $x </code><input type="text" id="e06-respuesta-a" size="6" aria-label="Operación y valor A" placeholder="+/- A" style="font: inherit;"><code class="language-php">;
+}
+?&gt;</code>
+</pre>
+      </div>
+
+      <p>
+        <button type="button" id="e06-evaluar" onclick="e06_comprueba()">Corregir</button>
+        <span id="e06-resultado"></span>
+      </p>
+
+      <p><button type="button" onclick="e06_nuevo()">Nuevo ejercicio</button></p>
+
+      <table>
+        <tr>
+          <td>Correctas:</td>
+          <td style="text-align: right;"><span id="e06-t-correctas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#22B14C" id="e06-l-correctas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>Incorrectas:</td>
+          <td style="text-align: right;"><span id="e06-t-incorrectas">0</span></td>
+          <td>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="10">
+              <rect x="0" y="0" rx="4" ry="4" width="1" height="10" fill="#ED1C24" id="e06-l-incorrectas" />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><button type="button" onclick="e06_reinicia_contador()">Reiniciar ejercicio</button></td>
+        </tr>
+      </table>
+
+      <p><button type="button" id="e06-solucion" onclick="e06_muestraSolucion()">Mostrar solución</button></p>
+
+      <div id="e06-ayuda" style="display: none"></div>
     </div>
   </section>
 
@@ -453,9 +565,9 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
     }
 
 
-    ///////////////////////////////////////////////////
-    // Ejercicio 3: Escribir el control de un bucle for //
-    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    // Ejercicio 3: Escribir el resultado con una variable auxiliar //
+    ///////////////////////////////////////////////////////////////
     var e03_enunciado = document.getElementById("e03-enunciado");
     var e03_respuesta = document.getElementById("e03-respuesta");
     var e03_resultado = document.getElementById("e03-resultado");
@@ -473,17 +585,18 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
     var e03_solucionConsultada = false;
 
     function e03_generaExpresion() {
-      var inicio = Math.floor(Math.random() * 41) - 20;
-      var paso = (1 + Math.floor(Math.random() * 10)) * (Math.random() < 1 / 3 ? -1 : 1);
-      var longitudes = [2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6];
-      var longitud = longitudes[Math.floor(Math.random() * longitudes.length)];
+      var longitud = 2 + Math.floor(Math.random() * 5);
+      // Cada positivo tiene peso 4, cada negativo peso 2 y el cero peso 1.
+      var coeficientes = [-5, -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5];
+      var a = coeficientes[Math.floor(Math.random() * coeficientes.length)];
+      var b = Math.floor(Math.random() * 11) - 5;
       e03_nums = [];
       for (var i = 0; i < longitud; i++) {
-        e03_nums.push(inicio + i * paso);
+        e03_nums.push(a * i + b);
       }
-      e03_expresion = "$i = " + inicio + "; $i " + (paso > 0 ? "<= " : ">= ") +
-        e03_nums[longitud - 1] + "; $i " + (paso > 0 ? "+= " : "-= ") + Math.abs(paso);
-      e03_enunciado.textContent = e03_nums.join(" \u00a0");
+      e03_expresion = "$x = $x " + (a < 0 ? "- " + Math.abs(a) : "+ " + a) + ";";
+      e03_enunciado.textContent = '<?php\n$x = ' + b + ';\nfor ($i = 0; $i < ' + longitud + '; $i++) {\n    print "$x ";\n    ' + e03_expresion + '\n}\n?>';
+      Prism.highlightElement(e03_enunciado);
       e03_respuesta.value = "";
       e03_resultado.textContent = "";
       e03_ayuda.textContent = "";
@@ -493,8 +606,98 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
       e03_solucionConsultada = false;
     }
 
+    function e03_comprueba() {
+      var correcto = false;
+      var respuesta = e03_respuesta.value.trim();
+      var numeros = respuesta ? respuesta.split(/\s+/) : [];
+      correcto = numeros.length == e03_nums.length && numeros.every(function (numero, indice) {
+        return /^[+-]?\d+$/.test(numero) && Number(numero) === e03_nums[indice];
+      });
+      e03_resultado.textContent = correcto ? "¡Correcto!" : "¡Incorrecto!";
+      if (!e03_acertado && !e03_solucionConsultada) {
+        if (correcto) {
+          e03_nCorrectas++;
+        } else {
+          e03_nIncorrectas++;
+        }
+      }
+      e03_acertado = e03_acertado || correcto;
+      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+    }
+
+    function e03_nuevo() {
+      if (!e03_acertado && !e03_solucionConsultada) {
+        e03_nIncorrectas++;
+      }
+      e03_generaExpresion();
+      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+    }
+
+    function e03_reinicia_contador() {
+      e03_nCorrectas = e03_nIncorrectas = 0;
+      e03_generaExpresion();
+      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+    }
+
+    function e03_muestraSolucion() {
+      if (e03_ayuda.style.display == "none") {
+        e03_ayuda.style.display = "block";
+        e03_solucion.textContent = "Ocultar solución";
+        e03_ayuda.textContent = e03_nums.length ? "El resultado es: " + e03_nums.join(" \u00a0") : "El bucle no imprime ningún número.";
+        if (!e03_solucionConsultada && !e03_acertado) {
+          e03_nIncorrectas++;
+        }
+        e03_solucionConsultada = true;
+        dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
+      } else {
+        e03_ayuda.style.display = "none";
+        e03_solucion.textContent = "Mostrar solución";
+      }
+    }
+
+
+    ///////////////////////////////////////////////////
+    // Ejercicio 4: Escribir el control de un bucle for //
+    ///////////////////////////////////////////////////
+    var e04_enunciado = document.getElementById("e04-enunciado");
+    var e04_respuesta = document.getElementById("e04-respuesta");
+    var e04_resultado = document.getElementById("e04-resultado");
+    var e04_solucion = document.getElementById("e04-solucion");
+    var e04_ayuda = document.getElementById("e04-ayuda");
+    var e04_tCorrectas = document.getElementById("e04-t-correctas");
+    var e04_lCorrectas = document.getElementById("e04-l-correctas");
+    var e04_tIncorrectas = document.getElementById("e04-t-incorrectas");
+    var e04_lIncorrectas = document.getElementById("e04-l-incorrectas");
+    var e04_expresion = "";
+    var e04_nums = [];
+    var e04_nCorrectas = 0;
+    var e04_nIncorrectas = 0;
+    var e04_acertado = false;
+    var e04_solucionConsultada = false;
+
+    function e04_generaExpresion() {
+      var inicio = Math.floor(Math.random() * 41) - 20;
+      var paso = (1 + Math.floor(Math.random() * 10)) * (Math.random() < 1 / 3 ? -1 : 1);
+      var longitudes = [2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6];
+      var longitud = longitudes[Math.floor(Math.random() * longitudes.length)];
+      e04_nums = [];
+      for (var i = 0; i < longitud; i++) {
+        e04_nums.push(inicio + i * paso);
+      }
+      e04_expresion = "$i = " + inicio + "; $i " + (paso > 0 ? "<= " : ">= ") +
+        e04_nums[longitud - 1] + "; $i " + (paso > 0 ? "+= " : "-= ") + Math.abs(paso);
+      e04_enunciado.textContent = e04_nums.join(" \u00a0");
+      e04_respuesta.value = "";
+      e04_resultado.textContent = "";
+      e04_ayuda.textContent = "";
+      e04_ayuda.style.display = "none";
+      e04_solucion.textContent = "Mostrar solución";
+      e04_acertado = false;
+      e04_solucionConsultada = false;
+    }
+
     // Se reconoce un subconjunto de PHP sin ejecutar el código introducido.
-    function e03_evaluaControl(texto) {
+    function e04_evaluaControl(texto) {
       texto = texto.trim();
       if (texto.startsWith("(") && texto.endsWith(")")) {
         texto = texto.slice(1, -1);
@@ -531,7 +734,7 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
       var numeros = [];
       // Basta comprobar un término más que los pedidos: así un bucle infinito
       // o una sucesión demasiado larga se rechaza sin bloquear la página.
-      for (var i = 0; i <= e03_nums.length; i++) {
+      for (var i = 0; i <= e04_nums.length; i++) {
         var izquierda = condicion[1] == "$i" ? valor : Number(condicion[1]);
         var derecha = condicion[3] == "$i" ? valor : Number(condicion[3]);
         var cumple;
@@ -555,129 +758,11 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
       return numeros;
     }
 
-    function e03_comprueba() {
-      var correcto = false;
-      var mensaje = "";
-      try {
-        var numeros = e03_evaluaControl(e03_respuesta.value);
-        correcto = numeros.length == e03_nums.length && numeros.every(function (numero, indice) {
-          return numero === e03_nums[indice];
-        });
-      } catch (error) {
-        mensaje = " " + error.message;
-      }
-      e03_resultado.textContent = correcto ? "¡Correcto!" : "¡Incorrecto!" + mensaje;
-      if (!e03_acertado && !e03_solucionConsultada) {
-        if (correcto) {
-          e03_nCorrectas++;
-        } else {
-          e03_nIncorrectas++;
-        }
-      }
-      e03_acertado = e03_acertado || correcto;
-      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
-    }
-
-    function e03_nuevo() {
-      if (!e03_acertado && !e03_solucionConsultada) {
-        e03_nIncorrectas++;
-      }
-      e03_generaExpresion();
-      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
-    }
-
-    function e03_reinicia_contador() {
-      e03_nCorrectas = e03_nIncorrectas = 0;
-      e03_generaExpresion();
-      dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
-    }
-
-    function e03_muestraSolucion() {
-      if (e03_ayuda.style.display == "none") {
-        e03_ayuda.style.display = "block";
-        e03_solucion.textContent = "Ocultar solución";
-        e03_ayuda.textContent = "Una posible solución es: (" + e03_expresion + ")";
-        if (!e03_solucionConsultada && !e03_acertado) {
-          e03_nIncorrectas++;
-        }
-        e03_solucionConsultada = true;
-        dibujaContador(e03_nCorrectas, e03_tCorrectas, e03_lCorrectas, e03_nIncorrectas, e03_tIncorrectas, e03_lIncorrectas);
-      } else {
-        e03_ayuda.style.display = "none";
-        e03_solucion.textContent = "Mostrar solución";
-      }
-    }
-    ///////////////////////////////////////////////////////
-    // Ejercicio 4: Escribir la expresion que imprime el for //
-    ///////////////////////////////////////////////////////
-    var e04_enunciado = document.getElementById("e04-enunciado");
-    var e04_respuesta = document.getElementById("e04-respuesta");
-    var e04_resultado = document.getElementById("e04-resultado");
-    var e04_solucion = document.getElementById("e04-solucion");
-    var e04_ayuda = document.getElementById("e04-ayuda");
-    var e04_tCorrectas = document.getElementById("e04-t-correctas");
-    var e04_lCorrectas = document.getElementById("e04-l-correctas");
-    var e04_tIncorrectas = document.getElementById("e04-t-incorrectas");
-    var e04_lIncorrectas = document.getElementById("e04-l-incorrectas");
-    var e04_expresion = "";
-    var e04_nums = [];
-    var e04_nCorrectas = 0;
-    var e04_nIncorrectas = 0;
-    var e04_acertado = false;
-    var e04_solucionConsultada = false;
-
-    function e04_generaExpresion() {
-      var longitud = 3 + Math.floor(Math.random() * 4);
-      var coeficientes = [-5, -4, -3, -2, -1, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
-      var a = coeficientes[Math.floor(Math.random() * coeficientes.length)];
-      var b = Math.floor(Math.random() * 11) - 5;
-      e04_nums = [];
-      for (var i = 0; i < longitud; i++) {
-        e04_nums.push(a * i + b);
-      }
-      e04_expresion = a == 1 ? "$i" : a == -1 ? "- $i" : a + " * $i";
-      e04_expresion += b < 0 ? " - " + Math.abs(b) : " + " + b;
-      e04_enunciado.textContent = e04_nums.join(" \u00a0");
-      var control = document.getElementById("e04-control");
-      control.textContent = '<?php\nfor ($i = 0; $i < ' + longitud + '; $i++) {\n    print ';
-      Prism.highlightElement(control);
-      e04_respuesta.value = "";
-      e04_resultado.textContent = "";
-      e04_ayuda.textContent = "";
-      e04_ayuda.style.display = "none";
-      e04_solucion.textContent = "Mostrar solución";
-      e04_acertado = false;
-      e04_solucionConsultada = false;
-    }
-
-    // Reconoce expresiones lineales sin ejecutar el texto introducido.
-    function e04_evaluaExpresion(texto) {
-      texto = texto.replace(/\s+/g, "");
-      var a = 0;
-      var b = 0;
-      if (/^[+-]?\d+$/.test(texto)) {
-        b = Number(texto);
-      } else {
-        var partes = texto.match(/^(?:([+-]?\d+)\*)?([+-]?\$i)(?:([+-])([+-]?\d+))?$/);
-        if (!partes) {
-          throw new Error("Utilice la forma A * $i + B con enteros, o $i, - $i o una constante.");
-        }
-        a = (partes[1] === undefined ? 1 : Number(partes[1])) * (partes[2][0] == "-" ? -1 : 1);
-        b = partes[4] === undefined ? 0 : Number(partes[4]) * (partes[3] == "-" ? -1 : 1);
-      }
-      if (!Number.isSafeInteger(a) || !Number.isSafeInteger(b)) {
-        throw new Error("Utilice enteros dentro del rango seguro.");
-      }
-      return e04_nums.map(function (numero, i) {
-        return a * i + b;
-      });
-    }
-
     function e04_comprueba() {
       var correcto = false;
       var mensaje = "";
       try {
-        var numeros = e04_evaluaExpresion(e04_respuesta.value);
+        var numeros = e04_evaluaControl(e04_respuesta.value);
         correcto = numeros.length == e04_nums.length && numeros.every(function (numero, indice) {
           return numero === e04_nums[indice];
         });
@@ -714,7 +799,7 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
       if (e04_ayuda.style.display == "none") {
         e04_ayuda.style.display = "block";
         e04_solucion.textContent = "Ocultar solución";
-        e04_ayuda.textContent = "Una posible solución es: " + e04_expresion;
+        e04_ayuda.textContent = "Una posible solución es: (" + e04_expresion + ")";
         if (!e04_solucionConsultada && !e04_acertado) {
           e04_nIncorrectas++;
         }
@@ -725,6 +810,232 @@ for (</code><input type="text" id="e03-respuesta" size="30" aria-label="Control 
         e04_solucion.textContent = "Mostrar solución";
       }
     }
+    ///////////////////////////////////////////////////////
+    // Ejercicio 5: Escribir la expresion que imprime el for //
+    ///////////////////////////////////////////////////////
+    var e05_enunciado = document.getElementById("e05-enunciado");
+    var e05_respuesta = document.getElementById("e05-respuesta");
+    var e05_respuestaN = document.getElementById("e05-respuesta-n");
+    var e05_resultado = document.getElementById("e05-resultado");
+    var e05_solucion = document.getElementById("e05-solucion");
+    var e05_ayuda = document.getElementById("e05-ayuda");
+    var e05_tCorrectas = document.getElementById("e05-t-correctas");
+    var e05_lCorrectas = document.getElementById("e05-l-correctas");
+    var e05_tIncorrectas = document.getElementById("e05-t-incorrectas");
+    var e05_lIncorrectas = document.getElementById("e05-l-incorrectas");
+    var e05_expresion = "";
+    var e05_nums = [];
+    var e05_nCorrectas = 0;
+    var e05_nIncorrectas = 0;
+    var e05_acertado = false;
+    var e05_solucionConsultada = false;
+
+    function e05_generaExpresion() {
+      var longitud = 3 + Math.floor(Math.random() * 4);
+      var coeficientes = [-5, -4, -3, -2, -1, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
+      var a = coeficientes[Math.floor(Math.random() * coeficientes.length)];
+      var b = Math.floor(Math.random() * 11) - 5;
+      e05_nums = [];
+      for (var i = 0; i < longitud; i++) {
+        e05_nums.push(a * i + b);
+      }
+      e05_expresion = a == 1 ? "$i" : a == -1 ? "- $i" : a + " * $i";
+      e05_expresion += b < 0 ? " - " + Math.abs(b) : " + " + b;
+      e05_enunciado.textContent = e05_nums.join(" \u00a0");
+      [e05_respuestaN, e05_respuesta].forEach(function (campo) {
+        campo.value = "";
+        campo.style.outline = "";
+      });
+      e05_resultado.textContent = "";
+      e05_ayuda.textContent = "";
+      e05_ayuda.style.display = "none";
+      e05_solucion.textContent = "Mostrar solución";
+      e05_acertado = false;
+      e05_solucionConsultada = false;
+    }
+
+    // Reconoce expresiones lineales sin ejecutar el texto introducido.
+    function e05_evaluaExpresion(texto) {
+      texto = texto.replace(/\s+/g, "");
+      var a = 0;
+      var b = 0;
+      if (/^[+-]?\d+$/.test(texto)) {
+        b = Number(texto);
+      } else {
+        var partes = texto.match(/^(?:([+-]?\d+)\*)?([+-]?\$i)(?:([+-])([+-]?\d+))?$/);
+        if (!partes) {
+          throw new Error("Utilice la forma A * $i + B con enteros, o $i, - $i o una constante.");
+        }
+        a = (partes[1] === undefined ? 1 : Number(partes[1])) * (partes[2][0] == "-" ? -1 : 1);
+        b = partes[4] === undefined ? 0 : Number(partes[4]) * (partes[3] == "-" ? -1 : 1);
+      }
+      if (!Number.isSafeInteger(a) || !Number.isSafeInteger(b)) {
+        throw new Error("Utilice enteros dentro del rango seguro.");
+      }
+      return e05_nums.map(function (numero, i) {
+        return a * i + b;
+      });
+    }
+
+    function e05_comprueba() {
+      var textoN = e05_respuestaN.value.replace(/\s+/g, "");
+      var correctoN = /^[+-]?\d+$/.test(textoN) && Number(textoN) === e05_nums.length;
+      var correcto = false;
+      var mensaje = "";
+      try {
+        var numeros = e05_evaluaExpresion(e05_respuesta.value);
+        correcto = numeros.length == e05_nums.length && numeros.every(function (numero, indice) {
+          return numero === e05_nums[indice];
+        });
+      } catch (error) {
+        mensaje = " " + error.message;
+      }
+      e05_respuestaN.style.outline = correctoN ? "" : "1px solid red";
+      e05_respuesta.style.outline = correcto ? "" : "1px solid red";
+      correcto = correcto && correctoN;
+      e05_resultado.textContent = correcto ? "¡Correcto!" : "¡Incorrecto!" + mensaje;
+      if (!e05_acertado && !e05_solucionConsultada) {
+        if (correcto) {
+          e05_nCorrectas++;
+        } else {
+          e05_nIncorrectas++;
+        }
+      }
+      e05_acertado = e05_acertado || correcto;
+      dibujaContador(e05_nCorrectas, e05_tCorrectas, e05_lCorrectas, e05_nIncorrectas, e05_tIncorrectas, e05_lIncorrectas);
+    }
+
+    function e05_nuevo() {
+      if (!e05_acertado && !e05_solucionConsultada) {
+        e05_nIncorrectas++;
+      }
+      e05_generaExpresion();
+      dibujaContador(e05_nCorrectas, e05_tCorrectas, e05_lCorrectas, e05_nIncorrectas, e05_tIncorrectas, e05_lIncorrectas);
+    }
+
+    function e05_reinicia_contador() {
+      e05_nCorrectas = e05_nIncorrectas = 0;
+      e05_generaExpresion();
+      dibujaContador(e05_nCorrectas, e05_tCorrectas, e05_lCorrectas, e05_nIncorrectas, e05_tIncorrectas, e05_lIncorrectas);
+    }
+
+    function e05_muestraSolucion() {
+      if (e05_ayuda.style.display == "none") {
+        e05_ayuda.style.display = "block";
+        e05_solucion.textContent = "Ocultar solución";
+        e05_ayuda.textContent = "Una posible solución es: N = " + e05_nums.length + ", expresión del print: " + e05_expresion;
+        if (!e05_solucionConsultada && !e05_acertado) {
+          e05_nIncorrectas++;
+        }
+        e05_solucionConsultada = true;
+        dibujaContador(e05_nCorrectas, e05_tCorrectas, e05_lCorrectas, e05_nIncorrectas, e05_tIncorrectas, e05_lIncorrectas);
+      } else {
+        e05_ayuda.style.display = "none";
+        e05_solucion.textContent = "Mostrar solución";
+      }
+    }
+    // Ejercicio 6: Completar los parámetros de un bucle for
+    var e06_enunciado = document.getElementById("e06-enunciado");
+    var e06_respuestaB = document.getElementById("e06-respuesta-b");
+    var e06_respuestaN = document.getElementById("e06-respuesta-n");
+    var e06_respuestaA = document.getElementById("e06-respuesta-a");
+    var e06_a = 0;
+    var e06_b = 0;
+    var e06_resultado = document.getElementById("e06-resultado");
+    var e06_solucion = document.getElementById("e06-solucion");
+    var e06_ayuda = document.getElementById("e06-ayuda");
+    var e06_tCorrectas = document.getElementById("e06-t-correctas");
+    var e06_lCorrectas = document.getElementById("e06-l-correctas");
+    var e06_tIncorrectas = document.getElementById("e06-t-incorrectas");
+    var e06_lIncorrectas = document.getElementById("e06-l-incorrectas");
+    var e06_expresion = "";
+    var e06_nums = [];
+    var e06_nCorrectas = 0;
+    var e06_nIncorrectas = 0;
+    var e06_acertado = false;
+    var e06_solucionConsultada = false;
+
+    function e06_generaExpresion() {
+      var longitud = 2 + Math.floor(Math.random() * 5);
+      // Cada positivo tiene peso 4, cada negativo peso 2 y el cero peso 1.
+      var coeficientes = [-5, -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5];
+      var a = coeficientes[Math.floor(Math.random() * coeficientes.length)];
+      var b = Math.floor(Math.random() * 11) - 5;
+      e06_nums = [];
+      for (var i = 0; i < longitud; i++) {
+        e06_nums.push(a * i + b);
+      }
+      e06_a = a;
+      e06_b = b;
+      e06_expresion = "B = " + b + ", N = " + longitud + ", operación: " + (a < 0 ? "- " + Math.abs(a) : "+ " + a);
+      e06_enunciado.textContent = e06_nums.join(" \u00a0");
+      [e06_respuestaB, e06_respuestaN, e06_respuestaA].forEach(function (campo) {
+        campo.value = "";
+        campo.style.outline = "";
+      });
+      e06_resultado.textContent = "";
+      e06_ayuda.textContent = "";
+      e06_ayuda.style.display = "none";
+      e06_solucion.textContent = "Mostrar solución";
+      e06_acertado = false;
+      e06_solucionConsultada = false;
+    }
+
+    function e06_comprueba() {
+      var campos = [e06_respuestaB, e06_respuestaN, e06_respuestaA];
+      var esperados = [e06_b, e06_nums.length, e06_a];
+      var correctos = campos.map(function (campo, indice) {
+        var texto = campo.value.replace(/\s+/g, "");
+        var valido = indice == 2 ? /^[+-]\d+$/.test(texto) : /^[+-]?\d+$/.test(texto);
+        var correcto = (valido && Number(texto) === esperados[indice]) ||
+          (indice == 2 && texto === "" && e06_a === 0);
+        campo.style.outline = correcto ? "" : "1px solid red";
+        return correcto;
+      });
+      var correcto = correctos.every(function (valor) { return valor; });
+      e06_resultado.textContent = correcto ? "¡Correcto!" : "¡Incorrecto!";
+      if (!e06_acertado && !e06_solucionConsultada) {
+        if (correcto) {
+          e06_nCorrectas++;
+        } else {
+          e06_nIncorrectas++;
+        }
+      }
+      e06_acertado = e06_acertado || correcto;
+      dibujaContador(e06_nCorrectas, e06_tCorrectas, e06_lCorrectas, e06_nIncorrectas, e06_tIncorrectas, e06_lIncorrectas);
+    }
+
+    function e06_nuevo() {
+      if (!e06_acertado && !e06_solucionConsultada) {
+        e06_nIncorrectas++;
+      }
+      e06_generaExpresion();
+      dibujaContador(e06_nCorrectas, e06_tCorrectas, e06_lCorrectas, e06_nIncorrectas, e06_tIncorrectas, e06_lIncorrectas);
+    }
+
+    function e06_reinicia_contador() {
+      e06_nCorrectas = e06_nIncorrectas = 0;
+      e06_generaExpresion();
+      dibujaContador(e06_nCorrectas, e06_tCorrectas, e06_lCorrectas, e06_nIncorrectas, e06_tIncorrectas, e06_lIncorrectas);
+    }
+
+    function e06_muestraSolucion() {
+      if (e06_ayuda.style.display == "none") {
+        e06_ayuda.style.display = "block";
+        e06_solucion.textContent = "Ocultar solución";
+        e06_ayuda.textContent = "La solución es: " + e06_expresion;
+        if (!e06_solucionConsultada && !e06_acertado) {
+          e06_nIncorrectas++;
+        }
+        e06_solucionConsultada = true;
+        dibujaContador(e06_nCorrectas, e06_tCorrectas, e06_lCorrectas, e06_nIncorrectas, e06_tIncorrectas, e06_lIncorrectas);
+      } else {
+        e06_ayuda.style.display = "none";
+        e06_solucion.textContent = "Mostrar solución";
+      }
+    }
+
+
   </script>
 
   <footer>
