@@ -98,7 +98,7 @@
   <section id="ejercicio-2">
     <h2>Ejercicio 2 - Escribir el resultado de un bucle for con fórmula</h2>
 
-    <p>Escriba los números que imprime el siguiente bucle <span class="php-res">for</span>, separados por espacios:</p>
+    <p>Escriba los números que imprime el siguiente bucle <span class="php-res">for</span>, separados por espacios. Si no imprime ningún número, deje la respuesta vacía:</p>
 
     <div class="enunciado-test">
       <div class="codigo" style="font-size: 150%;">
@@ -147,9 +147,9 @@
   </section>
 
   <section id="ejercicio-3">
-    <h2>Ejercicio 3 - Escribir el resultado de un bucle for con c´lculo iterativo</h2>
+    <h2>Ejercicio 3 - Escribir el resultado de un bucle for con cálculo iterativo</h2>
 
-    <p>Escriba los números que imprime el siguiente bucle <span class="php-res">for</span>, separados por espacios:</p>
+    <p>Escriba los números que imprime el siguiente bucle <span class="php-res">for</span>, separados por espacios. Si no imprime ningún número, deje la respuesta vacía:</p>
 
     <div class="enunciado-test">
       <div class="codigo" style="font-size: 150%;">
@@ -462,7 +462,32 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
       if (e01_ayuda.style.display == "none") {
         e01_ayuda.style.display = "block";
         e01_solucion.textContent = "Ocultar solución";
-        e01_ayuda.textContent = e01_nums.length ? "El resultado es: " + e01_nums.join(" \u00a0") : "El bucle no imprime ningún número.";
+        var partes = e01_expresion.split("; ");
+        var inicio = Number(partes[0].split(" = ")[1]);
+        var cambio = partes[2].split(" ");
+        var paso = Number(cambio[2]) * (cambio[1] == "+=" ? 1 : -1);
+        var condicion = partes[1].replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var explicacion = "<p>Los valores que imprime el bucle son los valores de la variable de control.</p>" +
+          "<p>La asignación <code>" + partes[0] + "</code> establece el valor inicial de la variable de control: <strong>" + inicio + "</strong>.</p>";
+        if (!e01_nums.length) {
+          explicacion += "<p>Como el valor inicial <strong>" + inicio + "</strong> no cumple la condición de continuación <code>" + condicion + "</code>, el bucle no imprime ningún número y termina.</p>";
+        } else {
+          explicacion += "<p>Como el valor inicial cumple la condición de continuación <code>" + condicion + "</code>, el bucle imprime el valor: <strong>" + inicio + "</strong>.</p>" +
+            "<p>El cambio de la variable de control <code>" + partes[2] + "</code> establece los siguientes valores de la variable de control hasta que deje de cumplirse la condición de continuación <code>" + condicion + "</code>.</p>";
+          var ordinales = ["segundo", "tercer", "cuarto", "quinto", "sexto", "séptimo"];
+          for (var i = 1; i <= e01_nums.length; i++) {
+            var anterior = e01_nums[i - 1];
+            var siguiente = anterior + paso;
+            explicacion += "<p>El " + ordinales[i - 1] + " valor sería " + anterior + (paso > 0 ? " + " : " - ") + Math.abs(paso) + " = <strong>" + siguiente + "</strong>. ";
+            explicacion += i == e01_nums.length ?
+              "Este valor ya no cumple la condición de continuación, por lo que no se imprime y el bucle termina.</p>" :
+              "Este valor cumple la condición de continuación y por tanto se imprime.</p>";
+          }
+          explicacion += "<p>El resultado del bucle es por tanto: " + e01_nums.map(function (numero) {
+            return "<strong>" + numero + "</strong>";
+          }).join(" &nbsp;") + "</p>";
+        }
+        e01_ayuda.innerHTML = explicacion;
         if (!e01_solucionConsultada && !e01_acertado) {
           e01_nIncorrectas++;
         }
@@ -494,7 +519,9 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
     var e02_solucionConsultada = false;
 
     function e02_generaExpresion() {
-      var longitud = 2 + Math.floor(Math.random() * 5);
+      // Las longitudes 0 y 1 tienen peso 1; cada longitud de 2 a 6, peso 10.
+      var sorteoLongitud = Math.floor(Math.random() * 52);
+      var longitud = sorteoLongitud < 2 ? sorteoLongitud : 2 + Math.floor((sorteoLongitud - 2) / 10);
       var coeficientes = [-5, -4, -3, -2, -1, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
       var a = coeficientes[Math.floor(Math.random() * coeficientes.length)];
       var b = Math.floor(Math.random() * 11) - 5;
@@ -552,7 +579,27 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
       if (e02_ayuda.style.display == "none") {
         e02_ayuda.style.display = "block";
         e02_solucion.textContent = "Ocultar solución";
-        e02_ayuda.textContent = e02_nums.length ? "El resultado es: " + e02_nums.join(" \u00a0") : "El bucle no imprime ningún número.";
+        var expresion = e02_expresion.replace(/ \+ 0$/, "");
+        var condicion = "$i &lt; " + e02_nums.length;
+        var explicacion = "<p>Los valores que imprime el bucle son el resultado de la expresión <code>" + expresion + "</code> para los sucesivos valores de la variable de control.</p>" +
+          "<p>La asignación <code>$i = 0</code> establece el valor inicial de la variable de control: <strong>0</strong>.</p>";
+        if (!e02_nums.length) {
+          explicacion += "<p>Como el valor inicial <strong>0</strong> no cumple la condición de continuación <code>" + condicion + "</code>, el bucle no imprime ningún número y termina.</p>";
+        } else {
+          explicacion += "<p>Como el valor inicial cumple la condición de continuación <code>" + condicion + "</code>, el bucle calcula e imprime el valor: " + expresion.replace(/\$i/g, "0") + " = <strong>" + e02_nums[0] + "</strong>.</p>" +
+            "<p>El cambio de la variable de control <code>$i++</code> aumenta de uno en uno el valor de la variable de control hasta que deje de cumplirse la condición de continuación <code>" + condicion + "</code>.</p>";
+          var ordinales = ["segundo", "tercer", "cuarto", "quinto", "sexto", "séptimo"];
+          for (var i = 1; i <= e02_nums.length; i++) {
+            explicacion += "<p>El " + ordinales[i - 1] + " valor de la variable de control es <strong>" + i + "</strong>. ";
+            explicacion += i == e02_nums.length ?
+              "Este valor ya no cumple la condición de continuación, por lo que no se calcula ni se imprime el resultado y el bucle termina.</p>" :
+              "Este valor cumple la condición de continuación y por tanto el bucle calcula e imprime el valor: " + expresion.replace(/\$i/g, String(i)) + " = <strong>" + e02_nums[i] + "</strong>.</p>";
+          }
+          explicacion += "<p>El resultado del bucle es por tanto: " + e02_nums.map(function (numero) {
+            return "<strong>" + numero + "</strong>";
+          }).join(" &nbsp;") + "</p>";
+        }
+        e02_ayuda.innerHTML = explicacion;
         if (!e02_solucionConsultada && !e02_acertado) {
           e02_nIncorrectas++;
         }
@@ -578,6 +625,8 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
     var e03_tIncorrectas = document.getElementById("e03-t-incorrectas");
     var e03_lIncorrectas = document.getElementById("e03-l-incorrectas");
     var e03_expresion = "";
+    var e03_inicio = 0;
+    var e03_paso = 0;
     var e03_nums = [];
     var e03_nCorrectas = 0;
     var e03_nIncorrectas = 0;
@@ -585,7 +634,9 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
     var e03_solucionConsultada = false;
 
     function e03_generaExpresion() {
-      var longitud = 2 + Math.floor(Math.random() * 5);
+      // Las longitudes 0 y 1 tienen peso 1; cada longitud de 2 a 6, peso 10.
+      var sorteoLongitud = Math.floor(Math.random() * 52);
+      var longitud = sorteoLongitud < 2 ? sorteoLongitud : 2 + Math.floor((sorteoLongitud - 2) / 10);
       // Cada positivo tiene peso 4, cada negativo peso 2 y el cero peso 1.
       var coeficientes = [-5, -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5];
       var a = coeficientes[Math.floor(Math.random() * coeficientes.length)];
@@ -595,6 +646,8 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
         e03_nums.push(a * i + b);
       }
       e03_expresion = "$x = $x " + (a < 0 ? "- " + Math.abs(a) : "+ " + a) + ";";
+      e03_inicio = b;
+      e03_paso = a;
       e03_enunciado.textContent = '<?php\n$x = ' + b + ';\nfor ($i = 0; $i < ' + longitud + '; $i++) {\n    print "$x ";\n    ' + e03_expresion + '\n}\n?>';
       Prism.highlightElement(e03_enunciado);
       e03_respuesta.value = "";
@@ -643,7 +696,28 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
       if (e03_ayuda.style.display == "none") {
         e03_ayuda.style.display = "block";
         e03_solucion.textContent = "Ocultar solución";
-        e03_ayuda.textContent = e03_nums.length ? "El resultado es: " + e03_nums.join(" \u00a0") : "El bucle no imprime ningún número.";
+        var cambio = e03_paso == 0 ? "" : (e03_paso < 0 ? " - " : " + ") + Math.abs(e03_paso);
+        var condicion = "$i &lt; " + e03_nums.length;
+        var explicacion = "<p>Los valores que imprime el bucle son los valores que va tomando la variable auxiliar $x, que se modifica en cada iteración de acuerdo con la expresión <code>$x" + cambio + "</code>.</p>" +
+          "<p>La asignación <code>$x = " + e03_inicio + "</code> establece el valor inicial de la variable auxiliar: <strong>" + e03_inicio + "</strong>.</p>" +
+          "<p>La asignación <code>$i = 0</code> establece el valor inicial de la variable de control: <strong>0</strong>.</p>";
+        if (!e03_nums.length) {
+          explicacion += "<p>Como el valor inicial de la variable de control <strong>0</strong> no cumple la condición de continuación <code>" + condicion + "</code>, el cuerpo del bucle no se ejecuta y termina.</p>";
+        } else {
+          explicacion += "<p>Como el valor inicial de la variable de control cumple la condición de continuación <code>" + condicion + "</code>, el bucle imprime el valor de la variable auxiliar <strong>" + e03_inicio + "</strong> y modifica la variable auxiliar " + e03_inicio + cambio + " = <strong>" + (e03_inicio + e03_paso) + "</strong>.</p>" +
+            "<p>El cambio de la variable de control <code>$i++</code> aumenta de uno en uno el valor de la variable de control hasta que deje de cumplirse la condición de continuación <code>" + condicion + "</code>.</p>";
+          var ordinales = ["segundo", "tercer", "cuarto", "quinto", "sexto", "séptimo"];
+          for (var i = 1; i <= e03_nums.length; i++) {
+            explicacion += "<p>El " + ordinales[i - 1] + " valor de la variable de control es <strong>" + i + "</strong>. ";
+            explicacion += i == e03_nums.length ?
+              "Este valor ya no cumple la condición de continuación, por lo que el cuerpo del bucle no se ejecuta y termina.</p>" :
+              "Este valor cumple la condición de continuación y por tanto el bucle imprime el valor de la variable auxiliar <strong>" + e03_nums[i] + "</strong> y modifica la variable auxiliar " + e03_nums[i] + cambio + " = <strong>" + (e03_nums[i] + e03_paso) + "</strong>.</p>";
+          }
+          explicacion += "<p>El resultado del bucle es por tanto: " + e03_nums.map(function (numero) {
+            return "<strong>" + numero + "</strong>";
+          }).join(" &nbsp;") + "</p>";
+        }
+        e03_ayuda.innerHTML = explicacion;
         if (!e03_solucionConsultada && !e03_acertado) {
           e03_nIncorrectas++;
         }
@@ -799,7 +873,22 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
       if (e04_ayuda.style.display == "none") {
         e04_ayuda.style.display = "block";
         e04_solucion.textContent = "Ocultar solución";
-        e04_ayuda.textContent = "Una posible solución es: (" + e04_expresion + ")";
+        var inicio = e04_nums[0];
+        var ultimo = e04_nums[e04_nums.length - 1];
+        var diferencia = e04_nums[1] - inicio;
+        var asignacion = "$i = " + inicio;
+        var cambio = "$i = $i " + (diferencia > 0 ? "+ " : "- ") + Math.abs(diferencia);
+        var condicion = "$i " + (diferencia > 0 ? "&lt;= " : "&gt;= ") + ultimo;
+        var diferencias = [];
+        for (var i = 1; i < e04_nums.length; i++) {
+          var anterior = e04_nums[i - 1];
+          diferencias.push(e04_nums[i] + " - " + (anterior < 0 ? "(" + anterior + ")" : anterior));
+        }
+        e04_ayuda.innerHTML = "<p>Los valores que imprime el bucle son los valores de la variable de control.</p>" +
+          "<p>El primer valor que imprime el bucle es el primer valor de la variable de control, por tanto la asignación de la variable de control es: <strong><code>" + asignacion + "</code></strong></p>" +
+          "<p>La diferencia entre valores impresos consecutivos es siempre la misma: " + diferencias.join(" = ") + " = <strong>" + diferencia + "</strong>, por tanto la expresión del cambio de la variable de control es: <strong><code>" + cambio + "</code></strong></p>" +
+          "<p>El último valor impreso es <strong>" + ultimo + "</strong>, por tanto la expresión de continuación es: <code>" + condicion + "</code></p>" +
+          "<p>El control del bucle es: <strong><code>(" + asignacion + "; " + condicion + "; " + cambio + ")</code></strong></p>";
         if (!e04_solucionConsultada && !e04_acertado) {
           e04_nIncorrectas++;
         }
@@ -1039,7 +1128,7 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de noviembre de 2026</p>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
