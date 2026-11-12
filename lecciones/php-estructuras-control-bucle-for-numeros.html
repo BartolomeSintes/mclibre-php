@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Generación de secuencias numéricas. Estructuras de control: bucle for. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Generación de secuencias numéricas</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Secuencias numéricas</h2>
+      <ul>
+        <li><a href="#variable-control">Variable de control</a></li>
+        <li><a href="#formula">Fórmula</a></li>
+        <li><a href="#calculo-iterativo">Cálculo iterativo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En la lección <a href="php-estructuras-control-bucle-for.html">Bucles for</a> se explica la sintaxis del bucle <span class="php-res">for</span>. En esta lección se explican tres maneras de utilizar un bucle <span class="php-res">for</span> para generar una secuencia de números en sucesión aritmética.</p>
+
+  <p>En una sucesión aritmética, la diferencia entre dos términos consecutivos es siempre la misma. Por ejemplo, en la sucesión 3, 7, 11, 15, 19, cada número se obtiene sumando 4 al anterior.</p>
+
+  <p>Los tres ejemplos de esta lección imprimen esa misma sucesión. En el primero se imprime la variable de control del bucle, en el segundo se calcula cada número mediante una fórmula y en el tercero se utiliza una variable auxiliar que se modifica en cada iteración.</p>
+
+  <p>Los tres métodos permiten generar también sucesiones decrecientes. En ese caso, se resta la diferencia en el primer y tercer método, o se utiliza un coeficiente negativo en la fórmula. En el primer método también hay que adaptar la condición de continuación para que el bucle termine.</p>
+
+  <p>Puede practicar estos tres métodos en los <a href="../ejercicios/sin-formularios/for-0.html">ejercicios de bucles for (0)</a>.</p>
+
+  <section id="variable-control">
+    <h2>Imprimir la variable de control</h2>
+
+    <p>La primera manera consiste en hacer que la variable de control tome los valores de la sucesión. En el cuerpo del bucle se imprime directamente esa variable.</p>
+
+    <p>En el ejemplo siguiente, la variable <span class="php-var">$i</span> empieza valiendo 3 y aumenta de 4 en 4 mientras sea menor o igual que 19.</p>
+
+    <div class="mcl-diapo" style="height: 18em">
+      <div id="d1000">
+        <p><strong>Ejemplo de variable de control</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <p class="control">
+          <a href="#d1001"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1001">
+        <p><strong>Ejemplo de variable de control - Paso 1</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for (<span class="codigo-resaltado">$i = 3</span>; $i &lt;= 19; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>La asignación <code>$i = 3</code> establece el valor inicial de la variable de control: <strong>3</strong>.</p>
+        <p class="control">
+          <a href="#d1000"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1002"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1002">
+        <p><strong>Ejemplo de variable de control - Paso 2</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; <span class="codigo-resaltado">$i &lt;= 19</span>; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 3. La condición <code>$i &lt;= 19</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d1001"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1003"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1003">
+        <p><strong>Ejemplo de variable de control - Paso 3</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; $i = $i + 4) {
+    <span class="codigo-resaltado">print "$i ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$i</span>, <strong>3</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d1002"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1004"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1004">
+        <p><strong>Ejemplo de variable de control - Paso 4</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; <span class="codigo-resaltado">$i = $i + 4</span>) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i = $i + 4</code> aumenta en 4 el valor de la variable de control, que pasa de 3 a <strong>7</strong>.</p>
+        <p class="control">
+          <a href="#d1003"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1005"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1005">
+        <p><strong>Ejemplo de variable de control - Paso 5</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; <span class="codigo-resaltado">$i &lt;= 19</span>; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 7. La condición <code>$i &lt;= 19</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d1004"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1006"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1006">
+        <p><strong>Ejemplo de variable de control - Paso 6</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; $i = $i + 4) {
+    <span class="codigo-resaltado">print "$i ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$i</span>, <strong>7</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d1005"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1007"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1007">
+        <p><strong>Ejemplo de variable de control - Paso 7</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; <span class="codigo-resaltado">$i = $i + 4</span>) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i = $i + 4</code> aumenta en 4 el valor de la variable de control, que pasa de 7 a <strong>11</strong>.</p>
+        <p class="control">
+          <a href="#d1006"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1008"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1008">
+        <p><strong>Ejemplo de variable de control - Paso 8</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; <span class="codigo-resaltado">$i &lt;= 19</span>; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 11. La condición <code>$i &lt;= 19</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d1007"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1009"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1009">
+        <p><strong>Ejemplo de variable de control - Paso 9</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; $i = $i + 4) {
+    <span class="codigo-resaltado">print "$i ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$i</span>, <strong>11</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d1008"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1010"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1010">
+        <p><strong>Ejemplo de variable de control - Paso 10</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; <span class="codigo-resaltado">$i = $i + 4</span>) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i = $i + 4</code> aumenta en 4 el valor de la variable de control, que pasa de 11 a <strong>15</strong>.</p>
+        <p class="control">
+          <a href="#d1009"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1011"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1011">
+        <p><strong>Ejemplo de variable de control - Paso 11</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; <span class="codigo-resaltado">$i &lt;= 19</span>; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 15. La condición <code>$i &lt;= 19</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d1010"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1012"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1012">
+        <p><strong>Ejemplo de variable de control - Paso 12</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; $i = $i + 4) {
+    <span class="codigo-resaltado">print "$i ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$i</span>, <strong>15</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d1011"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1013"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1013">
+        <p><strong>Ejemplo de variable de control - Paso 13</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; <span class="codigo-resaltado">$i = $i + 4</span>) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i = $i + 4</code> aumenta en 4 el valor de la variable de control, que pasa de 15 a <strong>19</strong>.</p>
+        <p class="control">
+          <a href="#d1012"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1014"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1014">
+        <p><strong>Ejemplo de variable de control - Paso 14</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; <span class="codigo-resaltado">$i &lt;= 19</span>; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 19. La condición <code>$i &lt;= 19</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d1013"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1015"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1015">
+        <p><strong>Ejemplo de variable de control - Paso 15</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; $i = $i + 4) {
+    <span class="codigo-resaltado">print "$i ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$i</span>, <strong>19</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d1014"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1016"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1016">
+        <p><strong>Ejemplo de variable de control - Paso 16</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; $i &lt;= 19; <span class="codigo-resaltado">$i = $i + 4</span>) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i = $i + 4</code> aumenta en 4 el valor de la variable de control, que pasa de 19 a <strong>23</strong>.</p>
+        <p class="control">
+          <a href="#d1015"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1017"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1017">
+        <p><strong>Ejemplo de variable de control - Paso 17</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 3; <span class="codigo-resaltado">$i &lt;= 19</span>; $i = $i + 4) {
+    print "$i ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 23. La condición <code>$i &lt;= 19</code> ya no se cumple y el bucle termina. El valor 23 no se imprime.</p>
+        <p class="control">
+          <a href="#d1016"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48">
+        </p>
+      </div>
+
+    </div>
+
+    <p>Detalles importantes:</p>
+    <ul>
+      <li>El valor inicial de la variable de control es el primer término de la sucesión.</li>
+      <li>La modificación de la variable de control suma la diferencia entre términos consecutivos.</li>
+      <li>La condición de continuación permite imprimir el último término y hace que el bucle termine antes de imprimir el siguiente.</li>
+    </ul>
+  </section>
+
+  <section id="formula">
+    <h2>Calcular cada término mediante una fórmula</h2>
+
+    <p>La segunda manera consiste en utilizar la variable de control para contar las iteraciones y calcular el número que se imprime mediante una fórmula.</p>
+
+    <p>En el ejemplo siguiente, la variable <span class="php-var">$i</span> toma los valores 0, 1, 2, 3 y 4. En cada iteración se imprime el resultado de la expresión <code>4 * $i + 3</code>.</p>
+
+    <p>Para obtener la fórmula:</p>
+    <ul>
+      <li>Se calcula la diferencia entre dos términos consecutivos: 7 - 3 = <strong>4</strong>.</li>
+      <li>Se multiplica la variable de control por esa diferencia: <code>4 * $i</code>.</li>
+      <li>Se suma el primer término de la sucesión: <code>4 * $i + 3</code>.</li>
+    </ul>
+
+    <p>Esta fórmula supone que la variable de control empieza en 0 y aumenta de uno en uno. Así, para <span class="php-var">$i</span> igual a 0 se obtiene 4 * 0 + 3 = 3, para <span class="php-var">$i</span> igual a 1 se obtiene 4 * 1 + 3 = 7, etc.</p>
+
+    <div class="mcl-diapo" style="height: 18em">
+      <div id="d2000">
+        <p><strong>Ejemplo de fórmula</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <p class="control">
+          <a href="#d2001"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2001">
+        <p><strong>Ejemplo de fórmula - Paso 1</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for (<span class="codigo-resaltado">$i = 0</span>; $i &lt; 5; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>La asignación <code>$i = 0</code> establece el valor inicial de la variable de control: <strong>0</strong>.</p>
+        <p class="control">
+          <a href="#d2000"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2002"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2002">
+        <p><strong>Ejemplo de fórmula - Paso 2</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 0. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d2001"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2003"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2003">
+        <p><strong>Ejemplo de fórmula - Paso 3</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print 4 * $i + 3 . " ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>Se calcula la expresión 4 * 0 + 3 = <strong>3</strong> y se imprime el resultado seguido de un espacio. El operador <code>.</code> une el número calculado con el espacio.</p>
+        <p class="control">
+          <a href="#d2002"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2004"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2004">
+        <p><strong>Ejemplo de fórmula - Paso 4</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 0 a <strong>1</strong>.</p>
+        <p class="control">
+          <a href="#d2003"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2005"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2005">
+        <p><strong>Ejemplo de fórmula - Paso 5</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 1. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d2004"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2006"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2006">
+        <p><strong>Ejemplo de fórmula - Paso 6</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print 4 * $i + 3 . " ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>Se calcula la expresión 4 * 1 + 3 = <strong>7</strong> y se imprime el resultado seguido de un espacio. El operador <code>.</code> une el número calculado con el espacio.</p>
+        <p class="control">
+          <a href="#d2005"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2007"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2007">
+        <p><strong>Ejemplo de fórmula - Paso 7</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 1 a <strong>2</strong>.</p>
+        <p class="control">
+          <a href="#d2006"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2008"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2008">
+        <p><strong>Ejemplo de fórmula - Paso 8</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 2. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d2007"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2009"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2009">
+        <p><strong>Ejemplo de fórmula - Paso 9</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print 4 * $i + 3 . " ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>Se calcula la expresión 4 * 2 + 3 = <strong>11</strong> y se imprime el resultado seguido de un espacio. El operador <code>.</code> une el número calculado con el espacio.</p>
+        <p class="control">
+          <a href="#d2008"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2010"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2010">
+        <p><strong>Ejemplo de fórmula - Paso 10</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 2 a <strong>3</strong>.</p>
+        <p class="control">
+          <a href="#d2009"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2011"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2011">
+        <p><strong>Ejemplo de fórmula - Paso 11</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 3. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d2010"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2012"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2012">
+        <p><strong>Ejemplo de fórmula - Paso 12</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print 4 * $i + 3 . " ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>Se calcula la expresión 4 * 3 + 3 = <strong>15</strong> y se imprime el resultado seguido de un espacio. El operador <code>.</code> une el número calculado con el espacio.</p>
+        <p class="control">
+          <a href="#d2011"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2013"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2013">
+        <p><strong>Ejemplo de fórmula - Paso 13</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 3 a <strong>4</strong>.</p>
+        <p class="control">
+          <a href="#d2012"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2014"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2014">
+        <p><strong>Ejemplo de fórmula - Paso 14</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 4. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle.</p>
+        <p class="control">
+          <a href="#d2013"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2015"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2015">
+        <p><strong>Ejemplo de fórmula - Paso 15</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print 4 * $i + 3 . " ";</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Se calcula la expresión 4 * 4 + 3 = <strong>19</strong> y se imprime el resultado seguido de un espacio. El operador <code>.</code> une el número calculado con el espacio.</p>
+        <p class="control">
+          <a href="#d2014"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2016"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2016">
+        <p><strong>Ejemplo de fórmula - Paso 16</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 4 a <strong>5</strong>.</p>
+        <p class="control">
+          <a href="#d2015"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d2017"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d2017">
+        <p><strong>Ejemplo de fórmula - Paso 17</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print 4 * $i + 3 . " ";
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 5. La condición <code>$i &lt; 5</code> ya no se cumple y el bucle termina. No se vuelve a calcular ni a imprimir la expresión.</p>
+        <p class="control">
+          <a href="#d2016"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48">
+        </p>
+      </div>
+
+    </div>
+
+    <p>Detalles importantes:</p>
+    <ul>
+      <li>La variable de control cuenta las iteraciones, pero no se imprime directamente.</li>
+      <li>Como se quieren imprimir cinco términos, el bucle empieza en 0 y continúa mientras <span class="php-var">$i</span> sea menor que 5.</li>
+      <li>En la expresión <code>4 * $i + 3</code>, el 4 es la diferencia entre términos consecutivos y el 3 es el primer término.</li>
+    </ul>
+  </section>
+
+  <section id="calculo-iterativo">
+    <h2>Calcular cada término a partir del anterior</h2>
+
+    <p>La tercera manera consiste en guardar el término de la sucesión en una variable auxiliar. En cada iteración se imprime esa variable y después se modifica su valor para obtener el siguiente término. Este procedimiento se denomina cálculo iterativo.</p>
+
+    <p>En el ejemplo siguiente, la variable de control <span class="php-var">$i</span> cuenta las cinco iteraciones. La variable auxiliar <span class="php-var">$x</span> empieza valiendo 3 y aumenta en 4 después de imprimir cada número.</p>
+
+    <div class="mcl-diapo" style="height: 20em">
+      <div id="d3000">
+        <p><strong>Ejemplo de cálculo iterativo</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <p class="control">
+          <a href="#d3001"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3001">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 1</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+<span class="codigo-resaltado">$x = 3;</span>
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>Antes del bucle, se asigna a la variable auxiliar <span class="php-var">$x</span> el primer término de la sucesión: <strong>3</strong>.</p>
+        <p class="control">
+          <a href="#d3000"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3002"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3002">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 2</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for (<span class="codigo-resaltado">$i = 0</span>; $i &lt; 5; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>La asignación <code>$i = 0</code> establece el valor inicial de la variable de control: <strong>0</strong>. La variable <span class="php-var">$x</span> sigue valiendo 3.</p>
+        <p class="control">
+          <a href="#d3001"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3003"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3003">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 3</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"></code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 0. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle. La variable <span class="php-var">$x</span> vale 3.</p>
+        <p class="control">
+          <a href="#d3002"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3004"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3004">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 4</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print "$x ";</span>
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$x</span>, <strong>3</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d3003"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3005"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3005">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 5</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    <span class="codigo-resaltado">$x = $x + 4;</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>Se suma 4 a la variable auxiliar <span class="php-var">$x</span>, que pasa de 3 a <strong>7</strong>. La variable de control <span class="php-var">$i</span> sigue valiendo 0.</p>
+        <p class="control">
+          <a href="#d3004"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3006"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3006">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 6</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 0 a <strong>1</strong>. La variable auxiliar <span class="php-var">$x</span> sigue valiendo 7.</p>
+        <p class="control">
+          <a href="#d3005"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3007"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3007">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 7</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 1. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle. La variable <span class="php-var">$x</span> vale 7.</p>
+        <p class="control">
+          <a href="#d3006"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3008"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3008">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 8</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print "$x ";</span>
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$x</span>, <strong>7</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d3007"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3009"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3009">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 9</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    <span class="codigo-resaltado">$x = $x + 4;</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>Se suma 4 a la variable auxiliar <span class="php-var">$x</span>, que pasa de 7 a <strong>11</strong>. La variable de control <span class="php-var">$i</span> sigue valiendo 1.</p>
+        <p class="control">
+          <a href="#d3008"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3010"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3010">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 10</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 1 a <strong>2</strong>. La variable auxiliar <span class="php-var">$x</span> sigue valiendo 11.</p>
+        <p class="control">
+          <a href="#d3009"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3011"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3011">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 11</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 2. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle. La variable <span class="php-var">$x</span> vale 11.</p>
+        <p class="control">
+          <a href="#d3010"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3012"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3012">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 12</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print "$x ";</span>
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$x</span>, <strong>11</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d3011"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3013"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3013">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 13</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    <span class="codigo-resaltado">$x = $x + 4;</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>Se suma 4 a la variable auxiliar <span class="php-var">$x</span>, que pasa de 11 a <strong>15</strong>. La variable de control <span class="php-var">$i</span> sigue valiendo 2.</p>
+        <p class="control">
+          <a href="#d3012"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3014"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3014">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 14</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 2 a <strong>3</strong>. La variable auxiliar <span class="php-var">$x</span> sigue valiendo 15.</p>
+        <p class="control">
+          <a href="#d3013"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3015"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3015">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 15</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 3. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle. La variable <span class="php-var">$x</span> vale 15.</p>
+        <p class="control">
+          <a href="#d3014"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3016"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3016">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 16</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print "$x ";</span>
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$x</span>, <strong>15</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d3015"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3017"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3017">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 17</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    <span class="codigo-resaltado">$x = $x + 4;</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>Se suma 4 a la variable auxiliar <span class="php-var">$x</span>, que pasa de 15 a <strong>19</strong>. La variable de control <span class="php-var">$i</span> sigue valiendo 3.</p>
+        <p class="control">
+          <a href="#d3016"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3018"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3018">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 18</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 3 a <strong>4</strong>. La variable auxiliar <span class="php-var">$x</span> sigue valiendo 19.</p>
+        <p class="control">
+          <a href="#d3017"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3019"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3019">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 19</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 4. La condición <code>$i &lt; 5</code> se cumple y se ejecuta el cuerpo del bucle. La variable <span class="php-var">$x</span> vale 19.</p>
+        <p class="control">
+          <a href="#d3018"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3020"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3020">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 20</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    <span class="codigo-resaltado">print "$x ";</span>
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor de <span class="php-var">$x</span>, <strong>19</strong>, seguido de un espacio.</p>
+        <p class="control">
+          <a href="#d3019"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3021"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3021">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 21</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; $i++) {
+    print "$x ";
+    <span class="codigo-resaltado">$x = $x + 4;</span>
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>Se suma 4 a la variable auxiliar <span class="php-var">$x</span>, que pasa de 19 a <strong>23</strong>. La variable de control <span class="php-var">$i</span> sigue valiendo 4.</p>
+        <p class="control">
+          <a href="#d3020"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3022"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3022">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 22</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; $i &lt; 5; <span class="codigo-resaltado">$i++</span>) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>La instrucción <code>$i++</code> aumenta en 1 el valor de la variable de control, que pasa de 4 a <strong>5</strong>. La variable auxiliar <span class="php-var">$x</span> sigue valiendo 23.</p>
+        <p class="control">
+          <a href="#d3021"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d3023"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d3023">
+        <p><strong>Ejemplo de cálculo iterativo - Paso 23</strong></p>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php
+$x = 3;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 5</span>; $i++) {
+    print "$x ";
+    $x = $x + 4;
+}
+?&gt;</code></pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">3 7 11 15 19 </code></pre>
+          </div>
+        </div>
+
+        <p>La variable <span class="php-var">$i</span> vale 5. La condición <code>$i &lt; 5</code> ya no se cumple y el bucle termina. La variable <span class="php-var">$x</span> vale 23, pero ese valor no se imprime.</p>
+        <p class="control">
+          <a href="#d3022"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48">
+        </p>
+      </div>
+
+    </div>
+
+    <p>Detalles importantes:</p>
+    <ul>
+      <li>Antes del bucle se debe dar a la variable auxiliar el valor del primer término.</li>
+      <li>En el cuerpo del bucle se imprime primero el valor de la variable auxiliar y después se calcula el siguiente. Si se sumara 4 antes de imprimir, el primer número impreso sería 7.</li>
+      <li>La variable de control y la variable auxiliar tienen papeles distintos: <span class="php-var">$i</span> cuenta las iteraciones y <span class="php-var">$x</span> guarda los términos de la sucesión.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2026</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
