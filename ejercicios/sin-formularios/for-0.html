@@ -888,7 +888,9 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
           "<p>El primer valor que imprime el bucle es el primer valor de la variable de control, por tanto la asignación de la variable de control es: <strong><code>" + asignacion + "</code></strong></p>" +
           "<p>La diferencia entre valores impresos consecutivos es siempre la misma: " + diferencias.join(" = ") + " = <strong>" + diferencia + "</strong>, por tanto la expresión del cambio de la variable de control es: <strong><code>" + cambio + "</code></strong></p>" +
           "<p>El último valor impreso es <strong>" + ultimo + "</strong>, por tanto la expresión de continuación es: <code>" + condicion + "</code></p>" +
-          "<p>El control del bucle es: <strong><code>(" + asignacion + "; " + condicion + "; " + cambio + ")</code></strong></p>";
+          "<p>El control del bucle es: <strong><code>(" + asignacion + "; " + condicion + "; " + cambio + ")</code></strong></p>" +
+          '<div class="codigo"><pre><code class="language-php">&lt;?php\nfor (' + asignacion + "; " + condicion + "; " + cambio + ') {\n    print "$i ";\n}\n?&gt;</code></pre></div>';
+        Prism.highlightElement(e04_ayuda.querySelector("pre code"));
         if (!e04_solucionConsultada && !e04_acertado) {
           e04_nIncorrectas++;
         }
@@ -1012,7 +1014,26 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
       if (e05_ayuda.style.display == "none") {
         e05_ayuda.style.display = "block";
         e05_solucion.textContent = "Ocultar solución";
-        e05_ayuda.textContent = "Una posible solución es: N = " + e05_nums.length + ", expresión del print: " + e05_expresion;
+        var a = e05_nums[1] - e05_nums[0];
+        var b = e05_nums[0];
+        var terminoB = b < 0 ? " - " + Math.abs(b) : " + " + b;
+        var diferencias = e05_nums.slice(1).map(function (numero, indice) {
+          var anterior = e05_nums[indice];
+          return numero + " - " + (anterior < 0 ? "(" + anterior + ")" : anterior);
+        });
+        var explicacion = "<p>Como la variable de control aumenta de uno en uno desde 0, el límite de la variable de control coincide con el número de veces que se ejecuta el bucle, es decir, el número de valores impresos. En este caso se imprimen " + e05_nums.length + " valores, así que el límite es: <strong>" + e05_nums.length + "</strong></p>";
+        explicacion += "<p>La diferencia entre valores impresos consecutivos es siempre la misma: " + diferencias.join(" = ") + " = <strong>" + a + "</strong>, por tanto esos valores forman una sucesión aritmética.</p>";
+        explicacion += "<p>La fórmula que genera esa sucesión aritmética es del tipo <code>a * $i + b</code>, donde a es la diferencia entre términos consecutivos y b el primer valor de la sucesión. En este caso, la fórmula es: <strong>" + a + " * $i" + terminoB + "</strong>";
+        if (a == 1 || a == -1 || a == 0 || b == 0) {
+          var simplificada = a == 0 ? String(b) : a == 1 ? "$i" : a == -1 ? "-$i" : a + " * $i";
+          if (a != 0 && b != 0) {
+            simplificada += terminoB;
+          }
+          explicacion += " fórmula que se puede escribir como: <strong>" + simplificada + "</strong>.";
+        }
+        var formula = a == 1 || a == -1 || a == 0 || b == 0 ? simplificada : a + " * $i" + terminoB;
+        e05_ayuda.innerHTML = explicacion + '</p><div class="codigo"><pre><code class="language-php">&lt;?php\nfor ($i = 0; $i &lt; ' + e05_nums.length + '; $i++) {\n    print ' + formula + ' . " ";\n}\n?&gt;</code></pre></div>';
+        Prism.highlightElement(e05_ayuda.querySelector("pre code"));
         if (!e05_solucionConsultada && !e05_acertado) {
           e05_nIncorrectas++;
         }
@@ -1112,7 +1133,20 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
       if (e06_ayuda.style.display == "none") {
         e06_ayuda.style.display = "block";
         e06_solucion.textContent = "Ocultar solución";
-        e06_ayuda.textContent = "La solución es: " + e06_expresion;
+        var diferencias = e06_nums.slice(1).map(function (numero, indice) {
+          var anterior = e06_nums[indice];
+          return numero + " - " + (anterior < 0 ? "(" + anterior + ")" : anterior);
+        });
+        var operacion = e06_a < 0 ? "- " + Math.abs(e06_a) : "+ " + e06_a;
+        var explicacion = "<p>Como el bucle imprime el valor de la variable auxiliar <code>$x</code> y el primer valor impreso es <strong>" + e06_nums[0] + "</strong>, el valor asignado a la variable auxiliar antes del bucle es: <strong>" + e06_nums[0] + "</strong></p>";
+        explicacion += "<p>Como la variable de control aumenta de uno en uno desde 0, el límite de la variable de control coincide con el número de veces que se ejecuta el bucle, es decir, el número de valores impresos. En este caso se imprimen " + e06_nums.length + " valores, así que el límite es: <strong>" + e06_nums.length + "</strong></p>";
+        explicacion += "<p>La diferencia entre valores impresos consecutivos es siempre la misma: " + diferencias.join(" = ") + " = <strong>" + e06_a + "</strong>, por tanto la variable auxiliar se modifica en esa cantidad: <strong>$x = $x " + operacion + "</strong>";
+        if (e06_a == 0) {
+          explicacion += " fórmula que se puede escribir como <strong>$x = $x</strong> o incluso omitir la instrucción.";
+        }
+        var actualizacion = e06_a == 0 ? "" : "    $x = $x " + operacion + ";\n";
+        e06_ayuda.innerHTML = explicacion + '</p><div class="codigo"><pre><code class="language-php">&lt;?php\n$x = ' + e06_nums[0] + ';\nfor ($i = 0; $i &lt; ' + e06_nums.length + '; $i++) {\n    print "$x ";\n' + actualizacion + '}\n?&gt;</code></pre></div>';
+        Prism.highlightElement(e06_ayuda.querySelector("pre code"));
         if (!e06_solucionConsultada && !e06_acertado) {
           e06_nIncorrectas++;
         }
@@ -1123,12 +1157,10 @@ for ($i = 0; $i &lt; </code><input type="text" id="e06-respuesta-n" size="4" ari
         e06_solucion.textContent = "Mostrar solución";
       }
     }
-
-
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2026</p>
+    <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
