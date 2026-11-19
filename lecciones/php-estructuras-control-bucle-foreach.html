@@ -4713,6 +4713,48 @@ Array
       </ul>
     </section>
 
+    <section id="orden">
+      <h3>Orden de elementos en una matriz</h3>
+
+      <p>El orden de los elementos de una matriz es el orden en que se crearon los elementos. El bucle <span class="php-res">foreach</span> recorre los elementos en el orden de creación, no en orden creciente del valor de los índices.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$matriz1 = [1 =&gt; 10, 2 =&gt; 20];
+$matriz2 = [2 =&gt; 20, 1 =&gt; 10];
+
+if ($matriz1 == $matriz2) {
+    print "&lt;p&gt;Las dos matrices contienen los mismos valores.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;Las dos matrices no contienen los mismos valores.&lt;/p&gt;\n";
+}
+
+print "&lt;p&gt;Matriz 1:&lt;/p&gt;\n";
+foreach ($matriz1 as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+
+print "&lt;p&gt;Matriz 2:&lt;/p&gt;\n";
+foreach ($matriz2 as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+          <p>Las dos matrices contienen los mismos valores.</p>
+          <p>Matriz 1:</p>
+          <p>10</p>
+          <p>20</p>
+          <p>Matriz 2:</p>
+          <p>20</p>
+          <p>10</p>
+        </div>
+      </div>
+    </section>
+
     <section id="consultas">
       <h3>Consultas a bases de datos</h3>
 
@@ -4783,7 +4825,7 @@ Array
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 3 de diciembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 19 de noviembre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

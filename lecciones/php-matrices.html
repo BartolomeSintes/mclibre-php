@@ -52,9 +52,9 @@
   </section>
 
   <section id="crear">
-    <h2>Crear una matriz</h2>
+    <h2>Crear una matriz: valores e índices</h2>
 
-    <p>Las matrices se definen mediante corchetes ([]).</p>
+    <p>Las matrices se definen utilizando corchetes ([]).</p>
 
     <div class="codigo">
       <pre>
@@ -78,7 +78,7 @@ $nombres = ["Ana", "Bernardo", "Carmen", ];
 
     <p>Para hacer referencia a los valores individuales de la matriz, se deben utilizar índices, que se escriben entre corchetes ([ ]). Si al crear la matriz no se han indicado los valores de índices, PHP asigna al primer término el índice [0], el índice [1] al segundo, etc.:</p>
 
-    <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices.</p>
+    <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario escribir las referencias a matrices fuera de las cadenas.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -94,25 +94,6 @@ print "&lt;p&gt;$nombres[0]&lt;/p&gt;\n";
       <div class="resultado-html">
         <p>Bernardo</p>
         <p>Ana</p>
-      </div>
-    </div>
-
-    <hr class="corta">
-
-    <p>También se pueden crear matrices asignando directamente un elemento de la matriz.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$apellidos[0] = "García";
-
-print "&lt;p&gt;$apellidos[0]&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>García</p>
       </div>
     </div>
 
@@ -137,7 +118,7 @@ print "&lt;p&gt;$datos[0] $datos[1] nació en $datos[2].&lt;p&gt;\n";
 
     <hr class="corta">
 
-    <p>Una vez creada la matriz, los elementos individuales se pueden utilizar en el programa como cualquier otra variable. Para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
+    <p>Una vez creada la matriz, los elementos individuales se pueden modificar en el programa como cualquier otra variable. Para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -194,6 +175,46 @@ $nombres = [];
 </pre>
     </div>
 
+    <hr class="corta">
+
+    <p>También se pueden crear matrices asignando directamente un elemento de la matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$apellidos[0] = "García";
+
+print "&lt;p&gt;$apellidos[0]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>García</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>El operador doble flecha (también llamado clave-valor) permite elegir el índice asociado a cada valor. Su notación es: <strong>$índice =&gt; $valor</strong>:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz = [1 =&gt; "diez", 2 =&gt; "veinte"];
+
+print "&lt;p&gt;$matriz[1] $matriz[2]&lt;p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>10 20</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
     <p>Si queremos crear índice numéricos correlativos, podemos aprovechar que PHP genera automáticamente valores crecientes para simplificar la definición:</p>
 
     <div class="filaflex">
@@ -221,7 +242,7 @@ print "&lt;p&gt;$matriz[2] $matriz[3] $matriz[4]&lt;p&gt;\n";
       </div>
     </div>
 
-    <p>El índice que asigna PHP es el siguiente al máximo ya asignado:</p>
+    <p>El índice que asigna PHP es siempre un número entero, el entero siguiente al máximo ya asignado:</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -235,6 +256,70 @@ print "&lt;p&gt;$matriz[3] $matriz[11] $matriz[12]&lt;p&gt;\n";
       </div>
       <div class="resultado-html">
         <p>beta delta zeta</p>
+      </div>
+    </div>
+
+    <p>Si utilizando el operador doble flecha se repite algún índice, el valor que se guarda en la matriz es únicamente el último.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz = [1 =&gt; 10, 1 =&gt; 20, 1 =&gt; 30];
+print "&lt;p&gt;$matriz[1]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>30</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Dos matrices son iguales si contienen los mismos valores con los mismos índices, independientemente del orden en que se definan.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz1 = [1 =&gt; 10, 2 =&gt; 20];
+$matriz2 = [2 =&gt; 20, 1 =&gt; 10];
+
+if ($matriz1 == $matriz2) {
+    print "&lt;p&gt;Las dos matrices contienen los mismos valores.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;Las dos matrices no contienen los mismos valores.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Las dos matrices contienen los mismos valores.</p>
+      </div>
+    </div>
+
+    <p>Si accedemos a los elementos de una matriz explícitamente, utilizando los índices, el orden en que se definieron los elementos no es importante. Pero si recorremos una matriz utilizando un bucle <span class="php-res">foreach</span>, el orden sí importa, como se comenta en la lección <a href="php-estructuras-control-bucle-foreach.html#orden">Bucle foreach</a>.</p>
+
+    <p>Para comprobar si dos matrices contienen los mismos elementos en el mismo orden, se debe utilizar el operador de igualdad estricta <span class="php-res">===</span> en lugar del operador de igualdad <span class="php-res">==</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz1 = [1 =&gt; 10, 2 =&gt; 20];
+$matriz2 = [2 =&gt; 20, 1 =&gt; 10];
+
+if ($matriz1 === $matriz2) {
+    print "&lt;p&gt;Las dos matrices contienen los mismos valores en el mismo orden.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;Las dos matrices no contienen los mismos valores en el mismo orden.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Las dos matrices no contienen los mismos valores en el mismo orden.</p>
       </div>
     </div>
   </section>
@@ -281,22 +366,6 @@ $matriz["ciento veinte"] = 120;
 $matriz = [10 =&gt; "diez", -1 =&gt; "menos uno", "uno" =&gt; 1, "ciento veinte" =&gt; 120];
 ?&gt;</code>
 </pre>
-      </div>
-    </div>
-
-    <p>Si utilizando la notación <strong>$indice =&gt; $valor</strong> se repite algún índice, el valor que se guarda en la matriz es únicamente el último.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$matriz = [1 =&gt; 10, 1 =&gt; 20, 1 =&gt; 30];
-print "&lt;p&gt;$matriz[1]&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>30</p>
       </div>
     </div>
 
@@ -456,16 +525,20 @@ print "&lt;p&gt;$nombres[-2]&lt;p&gt;\n";
         <pre>
 <code class="language-php">&lt;?php
 // Definiciones equivalentes de una misma matriz
+
 // En una sola línea:
 $matriz = [[20, 30, 40], [100, 200, 300]];
+
 // En varias líneas para facilitar la lectura:
 $matriz = [
     [20, 30, 40],
     [100, 200, 300]
 ];
+
 // Definiendo los elementos de primer nivel:
 $matriz[0] = [20, 30, 40];
 $matriz[1] = [100, 200, 300];
+
 // Definiendo los elementos de segundo nivel:
 $matriz[0][0] = 20;
 $matriz[0][1] = 30;
@@ -576,11 +649,11 @@ print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
         <pre>
 <code class="language-php">&lt;?php
 $datos[0]["nombre"] = "pepe";
-$datos[0]["edad"] = 25;
-$datos[0]["peso"] = 80;
+$datos[0]["edad"]   = 25;
+$datos[0]["peso"]   = 80;
 $datos[1]["nombre"] = "juan";
-$datos[1]["edad"] = 22;
-$datos[1]["peso"] = 75;
+$datos[1]["edad"]   = 22;
+$datos[1]["peso"]   = 75;
 
 print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
 ?&gt;</code>
@@ -620,7 +693,7 @@ print "&lt;pre&gt;\n" . print_r($datos, true) . "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
+$datos["nombre"]    = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
 <span class="codigo-resaltado">print "Datos: $datos";</span>
@@ -639,7 +712,7 @@ $datos["apellidos"] = "Ramón y Cajal";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
+$datos["nombre"]    = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
 <span class="codigo-resaltado">print "Datos: {$datos}";</span>
@@ -651,11 +724,9 @@ $datos["apellidos"] = "Ramón y Cajal";
       </div>
     </div>
 
-    <hr class="corta">
-
     <p>La función <a href="https://www.php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable , $devolver = false])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
 
-    <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si la matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
+    <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si una matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
 
     <hr class="corta">
 
@@ -665,7 +736,7 @@ $datos["apellidos"] = "Ramón y Cajal";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
+$datos["nombre"]    = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
 print_r($datos);
@@ -677,13 +748,37 @@ print_r($datos);
       </div>
     </div>
 
-    <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
+    <hr class="corta">
+
+    <p>print_r() imprime los valores en el orden en que se crearon.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
+$matriz1 = [1 =&gt; 10, 2 =&gt; 20];
+$matriz2 = [2 =&gt; 20, 1 =&gt; 10];
+
+print_r($matriz1);
+
+print_r($matriz2);
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Array ( [1] =&gt; 10 [2] =&gt; 20 ) Array ( [2] =&gt; 20 [1] =&gt; 10 )</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Se puede abrir el código fuente de la página en el navegador para ver mejor la estructra de la matriz. Otra solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"]    = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
 print "&lt;pre&gt;";
@@ -706,9 +801,9 @@ print "&lt;/pre&gt;";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos[1]["nombre"] = "Santiago";
+$datos[1]["nombre"]    = "Santiago";
 $datos[1]["apellidos"] = "Ramón y Cajal";
-$datos[2]["nombre"] = "Leonardo";
+$datos[2]["nombre"]    = "Leonardo";
 $datos[2]["apellidos"] = "Torres Quevedo";
 
 print "&lt;pre&gt;";
@@ -744,7 +839,7 @@ print "&lt;/pre&gt;";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
+$datos["nombre"]    = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
 $tmp = print_r($datos, true);
@@ -761,7 +856,7 @@ print "&lt;p&gt;La matriz es $tmp&lt;/p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
+$datos["nombre"]    = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
 print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
@@ -779,7 +874,7 @@ print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
 
     <p>Se pueden añadir elementos a una matriz indicando o no el índice del nuevo elemento:</p>
     <ul>
-      <li>Si no se indica el índice, el nuevo elemento toma como índice el siguiente al mayor de los existentes (o el índice 0 si no había ningún valor numérico):
+      <li>Si no se indica el índice, el nuevo elemento toma como índice el entero siguiente al mayor de los existentes (o el índice 0 si no había ningún valor numérico):
 
         <div class="filaflex">
           <div class="codigo">
@@ -877,97 +972,9 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>Los siguientes ejemplos que crean una matriz con tres valores numéricos del 1 al 6 son prácticamente equivalentes:</p>
+    <p>Un error típico al añadir elementos es no tener en cuenta que la matriz ya contiene valores.</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$dados = [];
-for ($i = 0; $i &lt; 3; $i++) {
-    $dados[$i] = rand(1, 6);
-}
-
-print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>
-Array
-(
-    [0] =&gt; 2
-    [1] =&gt; 4
-    [2] =&gt; 6
-)
-</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-for ($i = 0; $i &lt; 3; $i++) {
-    $dados[] = rand(1, 6);
-}
-
-print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [0] =&gt; 6
-    [1] =&gt; 3
-    [2] =&gt; 3
-)
-</pre>
-      </div>
-    </div>
-
-    <p>La diferencia es que en el primer caso nos aseguramos de que la matriz no contenga valores (al igualarla a una matriz vacía) y cuáles son los índices de los elementos creados (0, 1 y 2). En el segundo caso damos por supuesto que la matriz no contiene valores y que al añadir valores a una matriz vacía PHP les dará 0, 1, 2 etc. como índice. En caso de que no sea así nos podemos encontrar con sorpresas.</p>
-
-    <p>Si repetimos en el mismo programa estos ejemplos de código, el resultado final no es el mismo:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$dados = [];
-for ($i = 0; $i &lt; 3; $i++) {
-    $dados[$i] = rand(1, 6);
-}
-
-print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
-
-$dados = [];
-for ($i = 0; $i &lt; 3; $i++) {
-    $dados[$i] = rand(1, 6);
-}
-
-print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [0] =&gt; 4
-    [1] =&gt; 2
-    [2] =&gt; 1
-)
-</pre>
-        <pre>Array
-(
-    [0] =&gt; 4
-    [1] =&gt; 5
-    [2] =&gt; 2
-)
-</pre>
-      </div>
-    </div>
+    <p>El ejemplo siguiente muestra un programa que no sería adecuado si pretendemos generar dos secuencias de tres valores, porque el segundo bucle añade tres nuevos valores a los ya existentes.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -1008,7 +1015,85 @@ print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>En el segundo ejemplo, la segunda vez que añadimos elementos a la matriz, estos se añaden a los ya existentes.</p>
+    <p>Este problema lo podemos resolver de varias maneras: utilizando dos variables diferentes, una en cada bucle, indicando explícitamente el valor del índice o reiniciando la matriz antes del segundo bucle:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[] = rand(1, 6);
+}
+
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
+
+// Reiniciamos la matriz antes del segundo bucle
+$dados = [];
+
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[] = rand(1, 6);
+}
+
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 4
+    [2] =&gt; 4
+)
+</pre>
+        <pre>Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 4
+    [2] =&gt; 4
+)
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 3; $i++) {
+    // Forzamos el valor del índice
+    $dados[$i] = rand(1, 6);
+}
+
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
+
+for ($i = 0; $i &lt; 3; $i++) {
+    // Forzamos el valor del índice
+    $dados[$i] = rand(1, 6);
+}
+
+print "&lt;pre&gt;\n" . print_r($dados, true) . "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 4
+    [2] =&gt; 4
+)
+</pre>
+        <pre>Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 4
+    [2] =&gt; 4
+)
+</pre>
+      </div>
+    </div>
+
   </section>
 
   <section id="borrar">
@@ -1357,7 +1442,7 @@ print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 19 de noviembre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
