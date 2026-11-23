@@ -220,7 +220,7 @@
         <span class="soft-atajo-teclado">Ctrl+clic izquierdo</span> se abre la imagen en otra pestaña.
       </p>
 
-      <p><strong>Nota</strong>: En cursos anteriores recomendaba este extensión para ver el tamaño de las imágenes insertadas y poder rellenar los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span> fácilmente. Pero en septiembre de 2019 añadí a la lista de atajos recomendados un atajo de teclado que permite crear de forma inmediata los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span>. Sitúe el cursor en el interior de la etiqueta <span class="html-eti">img</span> y escriba el atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+s</span> y automáticamente se añadirán los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span> con los valores de la imagen. La extensión Image Preview sigue siendo útil para ver una miniatura de la imagen, pero ya no es necesaria para indicar los tamaños.</p>
+      <p><strong>Nota</strong>: En cursos anteriores recomendaba este extensión para ver el tamaño de las imágenes insertadas y poder rellenar los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span> fácilmente. Pero en septiembre de 2019 añadí a la lista de atajos recomendados un atajo de teclado que permite crear de forma inmediata los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span>. Sitúe el cursor en el interior de la etiqueta <span class="html-eti">img</span> y escriba el atajo <span class="soft-atajo-teclado">Ctrl+Alt+m Ctrl+Alt+s</span> y automáticamente se añadirán los atributos <span class="html-atri">width</span> y <span class="html-atri">height</span> con los valores de la imagen. La extensión Image Preview sigue siendo útil para ver una miniatura de la imagen, pero ya no es necesaria para indicar los tamaños.</p>
     </section>
 
     <section id="extension-tag-inserter-mclibre-fork">
@@ -314,15 +314,23 @@
   // Iniciación a la programación de páginas web en PHP
   // https://www.mclibre.org/consultar/php/
   //
-  // Versión 2026-09-24
+  // Versión 2026-11-20
   //
   //
   // ATENCIÓN:
-  // * Se debe descomentar la línea 416 de este fichero settings.json
+  // * Se debe descomentar la línea 429 de este fichero settings.json
   //   que corresponde a la configuración php.validate.executablePath
   //
   //
   // Configuraciones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
+  //
+  // Chat: Title Bar: Open in Agents Window: Enabled
+  // Controla si el botón Abrir en la ventana Agentes se muestra en la barra de título.
+  "chat.titleBar.openInAgentsWindow.enabled": false,
+  //
+  // Chat: Title Bar: Sign In: Enabled
+  // Controla si el botón de inicio de sesión de Copilot se muestra en la barra de título cuando la sesión está cerrada. Cuando se desactiva, la opción de inicio de sesión pasa a la barra de estado.
+  "chat.titleBar.signIn.enabled": false,
   //
   // Editor: Insert Spaces
   // Insertar espacios al presionar "TAB"
@@ -332,7 +340,7 @@
   // Controla si el editor tiene habilitada la edición vinculada. Dependiendo del lenguaje, los símbolos relacionados (por ejemplo, las etiquetas HTML) se actualizan durante la edición.
   "editor.linkedEditing": true,
   //
-  // Editor: Minimap0: Enabled
+  // Editor: Minimap: Enabled
   // Controla si se muestra el minimapa.
   "editor.minimap.enabled": false,
   //
@@ -359,19 +367,20 @@
   // HTML: Auto Closing Tags
   // Habilita o deshabilita el cierre automático de las etiquetas HTML.
   "html.autoClosingTags": false,
+  //
   // HTML: Auto Create Quotes
-  // habilita o deshabilita la creación automática de comillas para la asignación de atributos HTML.
+  // Habilita o deshabilita la creación automática de comillas para la asignación de atributos HTML.
   "html.autoCreateQuotes": false,
   //
   // HTML: Format: End With Newline
   // Finalizar con una nueva línea.
   "html.format.endWithNewline": true,
   //
-  // HTML: Format Extra Liners
+  // HTML: Format: Extra Liners
   // Lista de etiquetas, separadas por comas, que deben tener una nueva línea adicional delante. null equivale a "head, body, /html".
   "html.format.extraLiners": "body",
   //
-  // HTML: Format Wrap Line Length
+  // HTML: Format: Wrap Line Length
   // Cantidad máxima de caracteres por línea (0 = deshabilitar).
   "html.format.wrapLineLength": 0,
   //
@@ -395,11 +404,15 @@
   // Controla el título de la ventana en función del contexto actual, como el área de trabajo abierta o el editor activo. Las variables se sustituyen en función del contexto:
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
   //
+  // Workbench: Browser: Show In Title Bar
+  // Controla si el botón del explorador integrado se muestra en la barra de título.
+  "workbench.browser.showInTitleBar": false,
+  //
   // Workbench: Color Theme
   // Especifica el tema de color que se usa en el área de trabajo cuando Window: Auto Detect Color Scheme no está habilitado.
   "workbench.colorTheme": "Dark Modern",
   //
-  // Workbench: Editor: useModal
+  // Workbench: Editor: Use Modal
   // Controla si los editores se abren en una superposición modal.
   "workbench.editor.useModal": "off",
   //
@@ -519,7 +532,7 @@
     "id-class-ad-disabled": true, //            Los atributos id o class no incluyen la palabra "ad" (que puede ser bloqueada por los bloqueadores de anuncios)
     "id-unique": true, //                       Los valores de los atributos id no se repiten
     // Formatting
-    "spec-char-escape": true, //                Los caracteres especiales &gt; &lt; y &amp; se escriben como entidades de carácter
+    "spec-char-escape": true, //                Los caracteres especiales &amp;gt; &amp;lt; y &amp;amp; se escriben como entidades de carácter
   },
   //
   //
@@ -724,7 +737,7 @@
   //
   // PHP: Validate: Executable path
   // Ubicación del intérprete de PHP.
-  // "php.validate.executablePath": "C:/xampp/php/php.exe",
+  "php.validate.executablePath": "C:/xampp/php/php.exe",
   //
   // PHP: Validate: Run
   // Indica la validación se ejecuta al guardar o al escribir.
@@ -766,6 +779,14 @@
             <div class="codigo">
               <pre class="line-numbers">
 <code class="language-json">  // Configuraciones de VSCode recomendadas para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
+  //
+  // Chat: Title Bar: Open in Agents Window: Enabled
+  // Controla si el botón Abrir en la ventana Agentes se muestra en la barra de título.
+  "chat.titleBar.openInAgentsWindow.enabled": false,
+  //
+  // Chat: Title Bar: Sign In: Enabled
+  // Controla si el botón de inicio de sesión de Copilot se muestra en la barra de título cuando la sesión está cerrada. Cuando se desactiva, la opción de inicio de sesión pasa a la barra de estado.
+  "chat.titleBar.signIn.enabled": false,
   //
   // Editor: Insert Spaces
   // Insertar espacios al presionar "TAB"
@@ -811,11 +832,11 @@
   // Finalizar con una nueva línea.
   "html.format.endWithNewline": true,
   //
-  // HTML: Format Extra Liners
+  // HTML: Format: Extra Liners
   // Lista de etiquetas, separadas por comas, que deben tener una nueva línea adicional delante. null equivale a "head, body, /html".
   "html.format.extraLiners": "body",
   //
-  // HTML: Format Wrap Line Length
+  // HTML: Format: Wrap Line Length
   // Cantidad máxima de caracteres por línea (0 = deshabilitar).
   "html.format.wrapLineLength": 0,
   //
@@ -839,11 +860,15 @@
   // Controla el título de la ventana en función del contexto actual, como el área de trabajo abierta o el editor activo. Las variables se sustituyen en función del contexto:
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
   //
+  // Workbench: Browser: Show In Title Bar
+  // Controla si el botón del explorador integrado se muestra en la barra de título.
+  "workbench.browser.showInTitleBar": false,
+  //
   // Workbench: Color Theme
   // Especifica el tema de color que se usa en el área de trabajo cuando Window: Auto Detect Color Scheme no está habilitado.
   "workbench.colorTheme": "Dark Modern",
   //
-  // Workbench: Editor: useModal
+  // Workbench: Editor: Use Modal
   // Controla si los editores se abren en una superposición modal.
   "workbench.editor.useModal": "off",
   //
@@ -859,6 +884,14 @@
             <summary>Haga clic aquí para ver/ocultar la explicación de las preferencias relacionadas con el editor en general:</summary>
 
             <ul>
+              <li>"chat.titleBar.openInAgentsWindow.enabled": false,
+                <p>Esta preferencia oculta un icono que se muestra en la barra de título que permite abrir la ventana de agentes, para simplificar el interfaz de VSCode.</p>
+                <p>Cuando el icono está oculto, se puede abrir la ventana de agentes abriendo la paleta de comandos (<kbd>Ctrl + Shift + p</kbd>), escribiendo "Chat: Open Agents window" y pulsando <kbd>Intro</kbd>.</p>
+              </li>
+              <li> "chat.titleBar.signIn.enabled": false,
+                <p>Esta preferencia oculta el botón "Iniciar sesión" que se muestra en la barra de título que permite iniciar sesión en GitHub Copilot, para simplificar el interfaz de VSCode.</p>
+                <p>Cuando el icono está oculto, se puede abrir la ventana de inicio de sesión haciendo clic en el icono de GitHub Copilot (una carita con unas gafas de aviador sobre la cabeza) situado enla barra de estado, abajo a la derecha.</p>
+              </li>
               <li>"editor.insertSpaces": true,
                 <p>Es conveniente sangrar adecuadamente los documentos para facilitar su lectura. Para sangrar un documento, se han utilizado siempre los tabuladores. Pero en los editores modernos no es necesario utilizar tabuladores porque los editores saben gestionar los espacios, de manera que cuando se pulsa la tecla <kbd>tabulador</kbd> el editor añade los espacios necesarios.</p>
               </li>
@@ -918,6 +951,11 @@
               </li>
               <li> "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
                 <p>El nombre del perfil no aparece en el título de la ventana.</p>
+              </li>
+              <li>"workbench.browser.showInTitleBar": false,
+                <p>Oculta el icono del explorador integrado (una bola del mundo) que se muestra en la barra de título (arriba, a la derecha), para simplificar el interfaz de VSCode.</p>
+                <p>Cuando el icono está oculto, se puede abrir una página web en el explorador integrado haciendo clic derecho en la pestaña de la página web y eligiendo la opción "Abrir en el explorador integrado".</p>
+                <p>En vez del explorado integrado, en estos apuntes se recomienda el uso de la extensión Live Preview, que actualiza continuamente la página que se está editando (el explorador integrado sólo la actualiza cuando se guarda el documento).</p>
               </li>
               <li>"workbench.colorTheme": "Dark Modern",
                 <p>El tema elegido es "Dark Modern".</p>
@@ -1222,7 +1260,7 @@ return (new PhpCsFixer\Config())
   // Iniciación a la programación de páginas web en PHP
   // https://www.mclibre.org/consultar/php/
   //
-  // Versión 2026-09-24
+  // Versión 2026-11-20
   //
   "version": "2.0.0",
   "tasks": [
@@ -1326,7 +1364,7 @@ return (new PhpCsFixer\Config())
     // Iniciación a la programación de páginas web en PHP
     // https://www.mclibre.org/consultar/php/
     //
-    // Versión 2026-09-24
+    // Versión 2026-11-20
     //
     //
     // SELECCIÓN de atajos de teclado de VSCode recomendados para el curso Páginas web HTML y hojas de estilo CSS de www.mclibre.org
@@ -1369,22 +1407,22 @@ return (new PhpCsFixer\Config())
     },
     {
         // Emmet: Borrar etiqueta
-        "key": "ctrl+alt+e ctrl+alt+b",
+        "key": "ctrl+alt+m ctrl+alt+b",
         "command": "editor.emmet.action.removeTag"
     },
     {
         // Emmet: Insertar tamaño imagen
-        "key": "ctrl+alt+e ctrl+alt+s",
+        "key": "ctrl+alt+m ctrl+alt+s",
         "command": "editor.emmet.action.updateImageSize"
     },
     {
         // Emmet: Seleccionar elemento superior
-        "key": "ctrl+alt+e ctrl+alt+o",
+        "key": "ctrl+alt+m ctrl+alt+o",
         "command": "editor.emmet.action.balanceOut"
     },
     {
         // Emmet: Seleccionar elemento inferior
-        "key": "ctrl+alt+e ctrl+alt+i",
+        "key": "ctrl+alt+m ctrl+alt+i",
         "command": "editor.emmet.action.balanceIn"
     },
     {
@@ -1436,10 +1474,10 @@ return (new PhpCsFixer\Config())
         </li>
         <li>Los cuatro siguientes atajos permiten aplicar comandos de Emmet. Estos comandos ya están incluidos en Visual Studio Code, por lo que los atajos funcionan inmediatamente. Para que sea más fácil recordar los atajos, todos empiezan por la letra "e" (de Emmet):
           <ul>
-            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+b</span> elimina la primera etiqueta que haya alrededor de la posición del cursor.</li>
-            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+s</span> inserta el tamaño de una imagen (atributos <span class="html-atri">width</span> y <span class="html-atri">height</span>) cuando el cursor se encuentra en la etiqueta correspondiente.</li>
-            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+o</span> selecciona la primera etiqueta que haya alrededor de la posición del cursor (o todo el texto que haya dentro de la primera etiqueta).</li>
-            <li>El atajo <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+i</span> retrocede la selección realizada con <span class="soft-atajo-teclado">ctrl+alt+e ctrl+alt+o</span> o selecciona el primer elemento o texto que haya dentro del fragmento seleccionado.</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+m Ctrl+Alt+b</span> elimina la primera etiqueta que haya alrededor de la posición del cursor.</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+m Ctrl+Alt+s</span> inserta el tamaño de una imagen (atributos <span class="html-atri">width</span> y <span class="html-atri">height</span>) cuando el cursor se encuentra en la etiqueta correspondiente.</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+m Ctrl+Alt+o</span> selecciona la primera etiqueta que haya alrededor de la posición del cursor (o todo el texto que haya dentro de la primera etiqueta).</li>
+            <li>El atajo <span class="soft-atajo-teclado">Ctrl+Alt+m Ctrl+Alt+i</span> retrocede la selección realizada con <span class="soft-atajo-teclado">Ctrl+Alt+m Ctrl+Alt+o</span> o selecciona el primer elemento o texto que haya dentro del fragmento seleccionado.</li>
           </ul>
         </li>
         <li>El siguiente atajo, <span class="soft-atajo-teclado">alt+shift+c alt+shift+f</span> en Windows o <span class="soft-atajo-teclado">alt+shift+c alt+shift+i</span> en Linux, ejecuta CSScomb, extensión que formatea hojas de estilo CSS. Este atajo sólo funciona cuando se está editando un archivo .css o .html.</li>
@@ -1459,7 +1497,7 @@ return (new PhpCsFixer\Config())
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 12 de octubre de 2026</p>
+    <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
