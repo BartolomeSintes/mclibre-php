@@ -45,7 +45,7 @@ $dado = rand(0, 5);
 
 $nombre = ["uno", "dos", "tres", "cuatro", "cinco", "seis"];
 
-print "  <p><img src=\"img/" . $dado + 1 . ".svg\" alt=\"" . $dado + 1 . "\" width=\"140\" height=\"140\"></p>\n";
+print "  <p><img src=\"img/dados/" . $dado + 1 . ".svg\" alt=\"" . $dado + 1 . "\" width=\"140\" height=\"140\"></p>\n";
 print "\n";
 print "  <p>Ha sacado un <strong>{$nombre[$dado]}</strong>.</p>\n";
 print "\n";
@@ -53,7 +53,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-11-25">25 de noviembre de 2025</time>
+      <time datetime="2026-11-23">23 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">

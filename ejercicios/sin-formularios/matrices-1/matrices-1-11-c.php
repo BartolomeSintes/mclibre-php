@@ -51,7 +51,7 @@ print "\n";
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dados[] = rand(1, 6);
-    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" width=\"140\" height=\"140\">\n";
+    print "    <img src=\"img/dados/$dados[$i].svg\" alt=\"$dados[$i]\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -69,7 +69,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-11-23">23 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">

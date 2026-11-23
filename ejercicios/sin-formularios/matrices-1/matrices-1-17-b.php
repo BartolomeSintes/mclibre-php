@@ -55,7 +55,7 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los resultados obtenidos por el Jugador 1
 print "  <p>\n";
 foreach ($dados1 as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
+    print "    <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -72,7 +72,7 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los resultados obtenidos por el Jugador 2
 print "  <p>\n";
 foreach ($dados2 as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
+    print "    <img src=\"img/dados/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -119,7 +119,7 @@ if ($gana1 > $gana2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-11-23">23 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">

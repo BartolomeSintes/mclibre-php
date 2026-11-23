@@ -37,8 +37,8 @@
           <ul>
             <li><a href="#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="#ejercicio-12">12 - Negación</a></li>
-            <li><a href="#ejercicio-13">13 - Cambio de bits</a></li>
-            <li><a href="#ejercicio-14">14 - De binario a Gray</a></li>
+            <li><a href="#ejercicio-13">13 - Cambio de bits <span style="color:red">&#8270;</span></a></li>
+            <li><a href="#ejercicio-14">14 - De binario a Gray <span style="color:red">&#8270;</span></a></li>
             <li><a href="#ejercicio-15">15 - "Y" lógico</a></li>
             <li><a href="#ejercicio-16">16 - El bit más común</a></li>
             <li><a href="#ejercicio-17">17 - Partida de dados</a></li>
@@ -133,7 +133,7 @@
           <li>Poco a poco
             <p>Empiece con sólo tres o cuatro nombres de animales y añade el resto una vez haya comprobado que el programa funciona.</p>
           </li>
-          <li>La cantidad de animales se puede obtener con la función <a href="../../../lecciones/php-matrices-funciones.html#count"><span class="php-fun">count()</span></a>.</li>
+          <li>La cantidad de animales que hay en la matriz se puede escribir como número fijo (que habría que cambiar si se añaden nuevos animales) o se puede obtener con la función <a href="../../../lecciones/php-matrices-funciones.html#count"><span class="php-fun">count()</span></a>.</li>
         </ul>
       </details>
 
@@ -254,7 +254,7 @@
           <li>Bucles
             <ul>
               <li>Cree la matriz con los valores con un bucle <span class="php-res">for</span> que en cada iteración añada un nuevo valor.</li>
-              <li>Dibuje o liste los valores también con sendos bucles <span class="php-res">for</span>.</li>
+              <li>Dibuje o liste los valores también con sendos bucles <span class="php-res">for</span> o <span class="php-res">foreach</span>.</li>
             </ul>
           </li>
         </ul>
@@ -275,10 +275,22 @@
 
       <details>
         <summary><strong>Ayuda</strong></summary>
+        <p>Este ejercicio se puede hacer con dos matrices o con una sola matriz:</p>
         <ul>
-          <li>Con un bucle, cree una matriz de diez elementos con los valores aleatorios (0, 1, etc.)</li>
-          <li>Con otro bucle, cree otra matriz a partir de los valores de la primera. Si en la primera matriz el valor es es 0, en su complementaria es 1, y viceversa.</li>
-          <li>Con dos bucles más, escriba los valores de las dos matrices.</li>
+          <li>Con dos matrices:
+            <ul>
+              <li>Con un bucle, cree una matriz de diez elementos con los valores aleatorios (0, 1, etc.)</li>
+              <li>Con otro bucle, cree otra matriz a partir de los valores de la primera. Si en la primera matriz el valor es es 0, en su complementaria es 1, y viceversa.</li>
+              <li>Con dos bucles más, escriba los valores de las dos matrices.</li>
+            </ul>
+          </li>
+          <li>Con una sola matriz:
+            <ul>
+              <li>Con un bucle, cree una matriz de diez elementos con los valores aleatorios (0, 1, etc.)</li>
+              <li>Con otro bucle, escriba los valores de la matriz.</li>
+              <li>Con otro bucle, escriba los valores complementarios. Si en la matriz el valor es es 0, se debe escribir 1, y viceversa.</li>
+            </ul>
+          </li>
         </ul>
       </details>
 
@@ -291,7 +303,7 @@
     </section>
 
     <section id="ejercicio-13">
-      <h3>Matrices (1) 13 - Cambio de bits</h3>
+      <h3>Matrices (1) 13 - Cambio de bits <span style="color:red">&#8270;</span></h3>
 
       <p>Escriba un programa que muestre una secuencia aleatoria de 10 bits y la detección de cambios de bits consecutivos en la secuencia. Es decir:</p>
       <ul>
@@ -303,7 +315,7 @@
         <summary><strong>Ayuda</strong></summary>
         <ul>
           <li>En el bucle que genera la matriz resultado se debe comparar cada valor de la secuencia inicial con el valor siguiente.</li>
-          <li>Ese bucle debe tener una iteración menos que el número de valores.</li>
+          <li>Ese bucle no debe recorrer toda la matriz, sino detenerse en el penúltimo valor, ya que si el bucle llegara al último valor al comparar con el valor siguiente (que en ese caso no existe) se produciría un aviso. Este bucle no puede ser un bucle <span class="php-res">foreach</span>, que recorre siempre todos los valores.</li>
         </ul>
       </details>
 
@@ -316,7 +328,7 @@
     </section>
 
     <section id="ejercicio-14">
-      <h3>Matrices (1) 14 - Convertidor de binario a código de Gray</h3>
+      <h3>Matrices (1) 14 - Convertidor de binario a código de Gray <span style="color:red; font-size: 150%">&#8270;</span></h3>
 
       <p>Escriba un programa que muestre una secuencia aleatoria de bits y su conversión a <a href="https://es.wikipedia.org/wiki/C%C3%B3digo_Gray">código de Gray</a>.</p>
 
@@ -369,7 +381,7 @@
       </details>
 
       <div class="filaflex">
-        <iframe src="matrices-1-16.php" style="height: 35em;"></iframe>
+        <iframe src="matrices-1-16.php" style="height: 38em;"></iframe>
         <div class="icono-enlace">
           <a href="matrices-1-16.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
@@ -385,10 +397,10 @@
         <summary><strong>Ayuda</strong></summary>
         <ul>
           <li>Contadores
-            <p>Defina tres contadores, uno para llevar la cuenta de partidas ganadas por cada jugador y otro para los empates.</p>
+            <p>Defina tres contadores, dos para llevar la cuenta de partidas ganadas por cada jugador y otro para los empates.</p>
           </li>
           <li>Bucles
-            <p>Una vez creadas las dos matrices de resultados, compare elemento a elemento usando un bucle <span class="php-res">for</span>, aumentando el contador correspondiente.</p>
+            <p>Una vez creadas las dos matrices de resultados, compare elemento a elemento usando un bucle <span class="php-res">for</span>, aumentando el contador de partidas correspondiente.</p>
           </li>
           <li>Plurales
             <p>Un detalle del programa es que al decir los resultados dice "1 vez", pero "2 veces", etc.</p>
@@ -436,7 +448,7 @@
       </details>
 
       <div class="filaflex">
-        <iframe src="matrices-1-21.php" style="height: 31em;"></iframe>
+        <iframe src="matrices-1-21.php" style="height: 32em;"></iframe>
         <div class="icono-enlace">
           <a href="matrices-1-21.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
@@ -454,7 +466,7 @@
       </ul>
 
       <div class="filaflex">
-        <iframe src="matrices-1-22.php" style="height: 31em;"></iframe>
+        <iframe src="matrices-1-22.php" style="height: 40em;"></iframe>
         <div class="icono-enlace">
           <a href="matrices-1-22.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
@@ -463,7 +475,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de noviembre de 2025</p>
+    <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2026</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
