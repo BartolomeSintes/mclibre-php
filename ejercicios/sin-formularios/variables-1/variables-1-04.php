@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 4 - variables-1-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-11-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,9 +47,9 @@ $c      = rand(1, 10);
 $maximo = max($a, $b, $c);
 
 print "  <p>\n";
-print "    <img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\">\n";
-print "    <img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\">\n";
-print "    <img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\">\n";
+print "    <img src=\"img/cartas/c$a.svg\" alt=\"$a\" height=\"200\">\n";
+print "    <img src=\"img/cartas/c$b.svg\" alt=\"$b\" height=\"200\">\n";
+print "    <img src=\"img/cartas/c$c.svg\" alt=\"$c\" height=\"200\">\n";
 print "  </p>\n";
 print "\n";
 print "  <p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
@@ -58,7 +58,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-11-26">26 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">
