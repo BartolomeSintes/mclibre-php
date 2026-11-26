@@ -3,9 +3,9 @@
  * if ... else ... (1) 5 - if-else-1-5-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-11-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -56,14 +56,14 @@ $j2d2 = rand(1, 6);
 $j2d3 = rand(1, 6);
 
 print "      <td style=\"padding: 10px; background-color: red;\">\n";
-print "        <img src=\"img/$j1d1.svg\" alt=\"$j1d1\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$j1d2.svg\" alt=\"$j1d2\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$j1d3.svg\" alt=\"$j1d3\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/dados/$j1d1.svg\" alt=\"$j1d1\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/dados/$j1d2.svg\" alt=\"$j1d2\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/dados/$j1d3.svg\" alt=\"$j1d3\" width=\"140\" height=\"140\">\n";
 print "      </td>\n";
 print "      <td style=\"padding: 10px; background-color: blue;\">\n";
-print "        <img src=\"img/$j2d1.svg\" alt=\"$j2d1\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$j2d2.svg\" alt=\"$j2d2\" width=\"140\" height=\"140\">\n";
-print "        <img src=\"img/$j2d3.svg\" alt=\"$j2d3\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/dados/$j2d1.svg\" alt=\"$j2d1\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/dados/$j2d2.svg\" alt=\"$j2d2\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/dados/$j2d3.svg\" alt=\"$j2d3\" width=\"140\" height=\"140\">\n";
 print "      </td>\n";
 
 $trio1 = $j1d1 == $j1d2 && $j1d1 == $j1d3 ? $j1d1 : 0;
@@ -97,7 +97,7 @@ if ($trio1 > $trio2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-11-08">8 de noviembre de 2025</time>
+      <time datetime="2026-11-26">26 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">

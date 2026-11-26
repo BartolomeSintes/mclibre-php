@@ -3,9 +3,9 @@
  * if ... else ... (1) 1 - if-else-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-11-06
+ * @version   2026-11-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dos dados.
+    Dado más alto. Juego.
     if .. elseif ... else ... (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,32 +36,43 @@
 </head>
 
 <body>
-  <h1>Dos dados</h1>
+  <h1>Juego: Dado más alto</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
+  <table>
+    <tr>
+      <th>Jugador 1</th>
+      <th>Jugador 2</th>
+      <th>Resultado</th>
+    </tr>
+    <tr>
 <?php
 $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
-print "  <p>\n";
-print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140\">\n";
-print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\">\n";
-print "  </p>\n";
-print "\n";
+print "      <td style=\"padding: 10px; background-color: red;\">\n";
+print "        <img src=\"img/dados/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140\">\n";
+print "      </td>\n";
+print "      <td style=\"padding: 10px; background-color: blue;\">\n";
+print "        <img src=\"img/dados/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\">\n";
+print "      </td>\n";
 
-if ($dado1 == $dado2) {
-    print "  <p>Ha sacado una pareja de $dado1.</p>\n";
-    print "\n";
+if ($dado1 > $dado2) {
+    print "      <td>Ha ganado el jugador 1</td>\n";
+} elseif ($dado1 < $dado2) {
+    print "      <td>Ha ganado el jugador 2</td>\n";
 } else {
-    print "  <p>No ha sacado pareja. La suma obtenida es " . $dado1 + $dado2 . ".</p>\n";
-    print "\n";
+    print "      <td>Han empatado</td>\n";
 }
 ?>
+    </tr>
+  </table>
+
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-11-06">6 de noviembre de 2025</time>
+      <time datetime="2026-11-26">26 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">
