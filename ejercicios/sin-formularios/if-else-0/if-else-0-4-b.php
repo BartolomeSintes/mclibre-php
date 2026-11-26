@@ -3,9 +3,9 @@
  * if ... else ... (0) 4 B - if-else-0-4-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2025 Bartolomé Sintes Marco
+ * @copyright 2026 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2025-02-08
+ * @version   2026-11-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ $dado1 = rand(1, 6);
 
 print "  <p>\n";
 print "    Queremos sacar un valor par:\n";
-print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
+print "    <img src=\"img/dados/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
 print "  </p>\n";
 print "\n";
 
@@ -54,7 +54,7 @@ if ($dado1 % 2 == 0) {
 
     print "  <p>\n";
     print "    Queremos sacar un valor impar:\n";
-    print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
+    print "    <img src=\"img/dados/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"100\" class=\"v-medio\">\n";
     print "  </p>\n";
     print "\n";
 
@@ -73,7 +73,7 @@ if ($dado1 % 2 == 0) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2025-02-08">8 de febrero de 2025</time>
+      <time datetime="2026-11-26">26 de noviembre de 2026</time>
     </p>
 
     <p class="licencia">
